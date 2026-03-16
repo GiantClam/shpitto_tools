@@ -44,39 +44,45 @@ const renderTemplateExclusiveRuntime = (componentKey: string) => (props: any) =>
   });
 
 export const generatedComponents: Record<string, any> = {
-    "TemplateExclusivePenSiteHomeHeroHeropenPrimary": {
-      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteHomeHeroHeropenPrimary"),
+    "TemplateExclusivePenSiteHomeNavigationHeaderpenPrimary": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteHomeNavigationHeaderpenPrimary"),
       defaultProps: {
-            "id": "TemplateExclusivePenSiteHomeHeroHeropenPrimary-1",
-            "heroImageimagesrc": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/vanmoof/page-home-img-1-5454a5fb.png",
-            "headerBrandtext": "VanMoof",
-            "navPageOurRidestext": "OUR RIDES",
-            "navPageAccessoriestext": "ACCESSORIES",
-            "navPageOurStorytext": "OUR STORY",
-            "navPagePeakDesigntext": "PEAK DESIGN",
-            "navPageShippingDeliverytext": "SHIPPING & DELIVERY",
-            "heroKickertext": "VANMOOF",
-            "heroTitletext": "Award-winning e-bikes with high-tech features",
-            "heroSubtitletext": "smart urban mobility from VanMoof, designed around city riding, integrated hardware and connected services.",
-            "heroPrimaryTexttext": "Our Rides",
-            "heroSecondaryTexttext": "Our Story",
+            "id": "TemplateExclusivePenSiteHomeNavigationHeaderpenPrimary-1",
+            "logomaintext": "VDM Metals",
+            "logomainhref": "/",
+            "logosubtext": "A company of ACERINOX",
+            "logosubhref": "/",
+            "nav1text": "Products and services",
+            "nav1href": "/vdm-products",
+            "nav2text": "Company",
+            "nav2href": "/",
+            "nav3text": "Your career at VDM Metals",
+            "nav3href": "/",
+            "r1text": "Contact",
+            "r1href": "/vdm-contact",
+            "r2text": "Downloads",
+            "r2href": "/",
+            "r3text": "Language",
+            "r3href": "/",
+            "searchtext": "⌕",
+            "searchhref": "/",
             "theme": {
                   "mode": "light",
-                  "fontHeading": "Helvetica Neue",
-                  "fontBody": "Helvetica Neue",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
                   "motion": "subtle",
                   "fontFamilies": [
-                        "Helvetica Neue"
+                        "Inter"
                   ],
                   "palette": {
-                        "bg": "#FFFFFF",
-                        "text": "#151515",
-                        "primary": "#7AC943",
-                        "accent": "#7AC943",
-                        "neutral": "#151515",
-                        "textSecondary": "#646A62"
+                        "bg": "#ffffff",
+                        "text": "#ffffff",
+                        "primary": "#f26922",
+                        "accent": "#f26922",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
                   },
-                  "primaryColor": "#7AC943",
+                  "primaryColor": "#f26922",
                   "layoutRules": {
                         "maxWidth": "1400px",
                         "sectionPadding": "py-24",
@@ -88,57 +94,53 @@ export const generatedComponents: Record<string, any> = {
                         "shadow": "dramatic",
                         "accent": "glow"
                   }
-            }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
       },
       fields: {
-        heroImageimagesrc: textField("HeroImageimagesrc"),
-        headerBrandtext: textField("HeaderBrandtext"),
-        navPageOurRidestext: textField("NavPageOurRidestext"),
-        navPageAccessoriestext: textField("NavPageAccessoriestext"),
-        navPageOurStorytext: textField("NavPageOurStorytext"),
-        navPagePeakDesigntext: textField("NavPagePeakDesigntext"),
-        navPageShippingDeliverytext: textField("NavPageShippingDeliverytext"),
-        heroKickertext: textField("HeroKickertext"),
-        heroTitletext: textField("HeroTitletext"),
-        heroSubtitletext: textField("HeroSubtitletext"),
-        heroPrimaryTexttext: textField("HeroPrimaryTexttext"),
-        heroSecondaryTexttext: textField("HeroSecondaryTexttext"),
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
       },
     },
-    "TemplateExclusivePenSiteHomeStoryCategoriespenAlt1": {
-      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteHomeStoryCategoriespenAlt1"),
+    "TemplateExclusivePenSiteHomeHeroHeropenAlt1": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteHomeHeroHeropenAlt1"),
       defaultProps: {
-            "id": "TemplateExclusivePenSiteHomeStoryCategoriespenAlt1-1",
-            "catTitletext": "Sections",
-            "catCardImg0imagesrc": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/vanmoof/page-our-rides-img-1-17e1ff50.png",
-            "catCardT0text": "Our Rides",
-            "catCardB0text": "The VanMoof A5 is an e-bike perfect for agile city rides. Find out more about this e-bike model, buy now and ride in 7 days.",
-            "catCardT1text": "Accessories",
-            "catCardB1text": "Our Front Rack is compatible with the VanMoof S5 & A5 e-bike. Designed to carry up to 10 kg weight. Includes elastic cord to fasten items.",
-            "catCardT2text": "Our Story",
-            "catCardB2text": "Our tech smart e-bikes are designed for the city. Discover more about our story on city mobility.",
-            "catCardImg3imagesrc": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/vanmoof/page-peak-design-img-1-ba82c7eb.jpg",
-            "catCardT3text": "Peak Design",
-            "catCardB3text": "Meet your ultimate phone mount. An exclusive, integrated design built to keep your device smartly locked in and secure.",
-            "catCardT4text": "Shipping & Delivery",
-            "catCardB4text": "We ship our e-bikes to 19 countries and counting. Your bike arrives pre-assembled, and will be ready to ride in minutes. Find out more.",
+            "id": "TemplateExclusivePenSiteHomeHeroHeropenAlt1-1",
+            "heroimgimagesrc": "https://images.unsplash.com/photo-1709318672600-eabc16e43ec7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyOTY4NTR8&ixlib=rb-4.1.0&q=80&w=1080",
+            "htitletext": "Power-to-X",
+            "hsubtext": "Nickel alloys from VDM Metals support the utilization of renewable energies in many ways, thus enabling innovation.",
+            "ctahref": "/",
+            "ctattext": "Learn more!",
             "theme": {
                   "mode": "light",
-                  "fontHeading": "Helvetica Neue",
-                  "fontBody": "Helvetica Neue",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
                   "motion": "subtle",
                   "fontFamilies": [
-                        "Helvetica Neue"
+                        "Inter"
                   ],
                   "palette": {
-                        "bg": "#FFFFFF",
-                        "text": "#151515",
-                        "primary": "#7AC943",
-                        "accent": "#7AC943",
-                        "neutral": "#151515",
-                        "textSecondary": "#646A62"
+                        "bg": "#ffffff",
+                        "text": "#ffffff",
+                        "primary": "#f26922",
+                        "accent": "#f26922",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
                   },
-                  "primaryColor": "#7AC943",
+                  "primaryColor": "#f26922",
                   "layoutRules": {
                         "maxWidth": "1400px",
                         "sectionPadding": "py-24",
@@ -150,56 +152,55 @@ export const generatedComponents: Record<string, any> = {
                         "shadow": "dramatic",
                         "accent": "glow"
                   }
-            }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
       },
       fields: {
-        catTitletext: textField("CatTitletext"),
-        catCardImg0imagesrc: textField("CatCardImg0imagesrc"),
-        catCardT0text: textField("CatCardT0text"),
-        catCardB0text: textField("CatCardB0text"),
-        catCardT1text: textField("CatCardT1text"),
-        catCardB1text: textField("CatCardB1text"),
-        catCardT2text: textField("CatCardT2text"),
-        catCardB2text: textField("CatCardB2text"),
-        catCardImg3imagesrc: textField("CatCardImg3imagesrc"),
-        catCardT3text: textField("CatCardT3text"),
-        catCardB3text: textField("CatCardB3text"),
-        catCardT4text: textField("CatCardT4text"),
-        catCardB4text: textField("CatCardB4text"),
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
       },
     },
-    "TemplateExclusivePenSiteHomeApproachFeaturedpenAlt2": {
-      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteHomeApproachFeaturedpenAlt2"),
+    "TemplateExclusivePenSiteHomeProductsProductrangepenAlt2": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteHomeProductsProductrangepenAlt2"),
       defaultProps: {
-            "id": "TemplateExclusivePenSiteHomeApproachFeaturedpenAlt2-1",
-            "featuredTitletext": "Featured pages",
-            "featCardImg0imagesrc": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/vanmoof/page-our-rides-img-1-17e1ff50.png",
-            "featCardK0text": "THIRD LEVEL",
-            "featCardT0text": "A5",
-            "featCardImg1imagesrc": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/vanmoof/page-s6-img-1-6c433dac.jpg",
-            "featCardK1text": "THIRD LEVEL",
-            "featCardT1text": "S6",
-            "featCardK2text": "THIRD LEVEL",
-            "featCardT2text": "S5 & A5 Front Rack",
-            "featCardK3text": "THIRD LEVEL",
-            "featCardT3text": "Handlebar Risers",
+            "id": "TemplateExclusivePenSiteHomeProductsProductrangepenAlt2-1",
+            "pttext": "Our product range: Materials for all applications",
+            "pstext": "High-performance materials by VDM Metals are used in many of today's key technologies for large-scale implementation and safe handling of corrosive and high-temperature processes and procedures.",
+            "i1ttext": "Oil and gas\n→",
+            "i2ttext": "Energy and environmental\nengineering\n→",
+            "i3ttext": "Aerospace\n→",
+            "i4ttext": "Chemical process industry\n→",
+            "i5ttext": "Electrical engineering\n→",
             "theme": {
                   "mode": "light",
-                  "fontHeading": "Helvetica Neue",
-                  "fontBody": "Helvetica Neue",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
                   "motion": "subtle",
                   "fontFamilies": [
-                        "Helvetica Neue"
+                        "Inter"
                   ],
                   "palette": {
-                        "bg": "#FFFFFF",
-                        "text": "#151515",
-                        "primary": "#7AC943",
-                        "accent": "#7AC943",
-                        "neutral": "#151515",
-                        "textSecondary": "#646A62"
+                        "bg": "#ffffff",
+                        "text": "#ffffff",
+                        "primary": "#f26922",
+                        "accent": "#f26922",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
                   },
-                  "primaryColor": "#7AC943",
+                  "primaryColor": "#f26922",
                   "layoutRules": {
                         "maxWidth": "1400px",
                         "sectionPadding": "py-24",
@@ -211,49 +212,54 @@ export const generatedComponents: Record<string, any> = {
                         "shadow": "dramatic",
                         "accent": "glow"
                   }
-            }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
       },
       fields: {
-        featuredTitletext: textField("FeaturedTitletext"),
-        featCardImg0imagesrc: textField("FeatCardImg0imagesrc"),
-        featCardK0text: textField("FeatCardK0text"),
-        featCardT0text: textField("FeatCardT0text"),
-        featCardImg1imagesrc: textField("FeatCardImg1imagesrc"),
-        featCardK1text: textField("FeatCardK1text"),
-        featCardT1text: textField("FeatCardT1text"),
-        featCardK2text: textField("FeatCardK2text"),
-        featCardT2text: textField("FeatCardT2text"),
-        featCardK3text: textField("FeatCardK3text"),
-        featCardT3text: textField("FeatCardT3text"),
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
       },
     },
-    "TemplateExclusivePenSiteHomeStoryInsightspenAlt3": {
-      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteHomeStoryInsightspenAlt3"),
+    "TemplateExclusivePenSiteHomeNavigationDarktoppenAlt3": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteHomeNavigationDarktoppenAlt3"),
       defaultProps: {
-            "id": "TemplateExclusivePenSiteHomeStoryInsightspenAlt3-1",
-            "insightK0text": "Story",
-            "insightT0text": "Our Story",
-            "insightB0text": "Our tech smart e-bikes are designed for the city. Discover more about our story on city mobility.",
-            "insightK1text": "Support",
-            "insightT1text": "Shipping & Delivery",
-            "insightB1text": "We ship our e-bikes to 19 countries and counting. Your bike arrives pre-assembled, and will be ready to ride in minutes. Find out more.",
+            "id": "TemplateExclusivePenSiteHomeNavigationDarktoppenAlt3-1",
+            "d1text": "Nickel, zirconium and much more",
+            "d1href": "/",
+            "d2text": "Nickel, cobalt and zirconium materials and a wide range of special stainless steels, all that and more can be found in the VDM Metals product portfolio. Immerse yourself into our world and find out what makes our materials so special!",
+            "d2href": "/vdm-products",
+            "arrtext": "→",
+            "arrhref": "/",
             "theme": {
                   "mode": "light",
-                  "fontHeading": "Helvetica Neue",
-                  "fontBody": "Helvetica Neue",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
                   "motion": "subtle",
                   "fontFamilies": [
-                        "Helvetica Neue"
+                        "Inter"
                   ],
                   "palette": {
-                        "bg": "#FFFFFF",
-                        "text": "#151515",
-                        "primary": "#7AC943",
-                        "accent": "#7AC943",
-                        "neutral": "#151515",
-                        "textSecondary": "#646A62"
+                        "bg": "#ffffff",
+                        "text": "#ffffff",
+                        "primary": "#f26922",
+                        "accent": "#f26922",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
                   },
-                  "primaryColor": "#7AC943",
+                  "primaryColor": "#f26922",
                   "layoutRules": {
                         "maxWidth": "1400px",
                         "sectionPadding": "py-24",
@@ -265,54 +271,56 @@ export const generatedComponents: Record<string, any> = {
                         "shadow": "dramatic",
                         "accent": "glow"
                   }
-            }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
       },
       fields: {
-        insightK0text: textField("InsightK0text"),
-        insightT0text: textField("InsightT0text"),
-        insightB0text: textField("InsightB0text"),
-        insightK1text: textField("InsightK1text"),
-        insightT1text: textField("InsightT1text"),
-        insightB1text: textField("InsightB1text"),
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
       },
     },
-    "TemplateExclusivePenSiteHomeFooterFooterpenAlt4": {
-      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteHomeFooterFooterpenAlt4"),
+    "TemplateExclusivePenSiteHomeStoryAlloyspenAlt4": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteHomeStoryAlloyspenAlt4"),
       defaultProps: {
-            "id": "TemplateExclusivePenSiteHomeFooterFooterpenAlt4-1",
-            "footerBrandtext": "VanMoof",
-            "footerBrandhref": "/",
-            "footerTitle0text": "Sections",
-            "footerTitle0href": "/",
-            "footerBody0text": "Our Rides Accessories",
-            "footerBody0href": "/our-rides",
-            "footerTitle1text": "Explore",
-            "footerTitle1href": "/our-story",
-            "footerBody1text": "Our Story Peak Design",
-            "footerBody1href": "/our-story",
-            "footerTitle2text": "Products",
-            "footerTitle2href": "/",
-            "footerBody2text": "Shipping & Delivery A5 S6",
-            "footerBody2href": "/shipping-delivery",
-            "footerCopytext": "VanMoof structured clone pen with desktop and mobile page sets.",
-            "footerCopyhref": "/",
+            "id": "TemplateExclusivePenSiteHomeStoryAlloyspenAlt4-1",
+            "a0text": "Materials for the future",
+            "a1text": "Alloys by VDM Metals",
+            "a2text": "Alloy 36, Alloy 625, Alloy 718 or Alloy 825 – each one of our alloys is characterized by a unique combination of properties. Contact us – we can help you identify suitable materials.",
+            "c1ttext": "Ni\nNickel",
+            "c2ttext": "Co\nCobalt",
+            "c3ttext": "Zr\nZirconium",
+            "c4ttext": "Fe\nIron",
+            "c5ttext": "Al\nAluminum",
             "theme": {
                   "mode": "light",
-                  "fontHeading": "Helvetica Neue",
-                  "fontBody": "Helvetica Neue",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
                   "motion": "subtle",
                   "fontFamilies": [
-                        "Helvetica Neue"
+                        "Inter"
                   ],
                   "palette": {
-                        "bg": "#FFFFFF",
-                        "text": "#151515",
-                        "primary": "#7AC943",
-                        "accent": "#7AC943",
-                        "neutral": "#151515",
-                        "textSecondary": "#646A62"
+                        "bg": "#ffffff",
+                        "text": "#ffffff",
+                        "primary": "#f26922",
+                        "accent": "#f26922",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
                   },
-                  "primaryColor": "#7AC943",
+                  "primaryColor": "#f26922",
                   "layoutRules": {
                         "maxWidth": "1400px",
                         "sectionPadding": "py-24",
@@ -324,60 +332,55 @@ export const generatedComponents: Record<string, any> = {
                         "shadow": "dramatic",
                         "accent": "glow"
                   }
-            }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
       },
       fields: {
-        footerBrandtext: textField("FooterBrandtext"),
-        footerBrandhref: textField("FooterBrandhref"),
-        footerTitle0text: textField("FooterTitle0text"),
-        footerTitle0href: textField("FooterTitle0href"),
-        footerBody0text: textField("FooterBody0text"),
-        footerBody0href: textField("FooterBody0href"),
-        footerTitle1text: textField("FooterTitle1text"),
-        footerTitle1href: textField("FooterTitle1href"),
-        footerBody1text: textField("FooterBody1text"),
-        footerBody1href: textField("FooterBody1href"),
-        footerTitle2text: textField("FooterTitle2text"),
-        footerTitle2href: textField("FooterTitle2href"),
-        footerBody2text: textField("FooterBody2text"),
-        footerBody2href: textField("FooterBody2href"),
-        footerCopytext: textField("FooterCopytext"),
-        footerCopyhref: textField("FooterCopyhref"),
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
       },
     },
-    "TemplateExclusivePenSiteOurRidesNavigationHeaderpenPrimary": {
-      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteOurRidesNavigationHeaderpenPrimary"),
+    "TemplateExclusivePenSiteHomeStoryWorldwidepenAlt5": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteHomeStoryWorldwidepenAlt5"),
       defaultProps: {
-            "id": "TemplateExclusivePenSiteOurRidesNavigationHeaderpenPrimary-1",
-            "headerBrandtext": "VanMoof",
-            "headerBrandhref": "/",
-            "navPageOurRidestext": "OUR RIDES",
-            "navPageOurRideshref": "/our-rides",
-            "navPageAccessoriestext": "ACCESSORIES",
-            "navPageAccessorieshref": "/accessories",
-            "navPageOurStorytext": "OUR STORY",
-            "navPageOurStoryhref": "/our-story",
-            "navPagePeakDesigntext": "PEAK DESIGN",
-            "navPagePeakDesignhref": "/peak-design",
-            "navPageShippingDeliverytext": "SHIPPING & DELIVERY",
-            "navPageShippingDeliveryhref": "/shipping-delivery",
+            "id": "TemplateExclusivePenSiteHomeStoryWorldwidepenAlt5-1",
+            "wttext": "Worldwide, timely and reliable",
+            "wstext": "The service offerings of VDM Metals' Service Centers",
+            "wdtext": "Reliable delivery of small quantities at short notice around the globe - this encapsulates the challenge of our Service Centers. Learn more about the materials and types of products that we stock and which add-on options we are able to offer at our individual locations.",
+            "wb1ttext": "Service Center Europe",
+            "wb2ttext": "Service Center China",
+            "wb3ttext": "Service Center Korea",
+            "wb4ttext": "Service Center Australia",
             "theme": {
                   "mode": "light",
-                  "fontHeading": "Helvetica Neue",
-                  "fontBody": "Helvetica Neue",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
                   "motion": "subtle",
                   "fontFamilies": [
-                        "Helvetica Neue"
+                        "Inter"
                   ],
                   "palette": {
-                        "bg": "#FFFFFF",
-                        "text": "#151515",
-                        "primary": "#7AC943",
-                        "accent": "#7AC943",
-                        "neutral": "#151515",
-                        "textSecondary": "#646A62"
+                        "bg": "#ffffff",
+                        "text": "#ffffff",
+                        "primary": "#f26922",
+                        "accent": "#f26922",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
                   },
-                  "primaryColor": "#7AC943",
+                  "primaryColor": "#f26922",
                   "layoutRules": {
                         "maxWidth": "1400px",
                         "sectionPadding": "py-24",
@@ -389,60 +392,54 @@ export const generatedComponents: Record<string, any> = {
                         "shadow": "dramatic",
                         "accent": "glow"
                   }
-            }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
       },
       fields: {
-        headerBrandtext: textField("HeaderBrandtext"),
-        headerBrandhref: textField("HeaderBrandhref"),
-        navPageOurRidestext: textField("NavPageOurRidestext"),
-        navPageOurRideshref: textField("NavPageOurRideshref"),
-        navPageAccessoriestext: textField("NavPageAccessoriestext"),
-        navPageAccessorieshref: textField("NavPageAccessorieshref"),
-        navPageOurStorytext: textField("NavPageOurStorytext"),
-        navPageOurStoryhref: textField("NavPageOurStoryhref"),
-        navPagePeakDesigntext: textField("NavPagePeakDesigntext"),
-        navPagePeakDesignhref: textField("NavPagePeakDesignhref"),
-        navPageShippingDeliverytext: textField("NavPageShippingDeliverytext"),
-        navPageShippingDeliveryhref: textField("NavPageShippingDeliveryhref"),
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
       },
     },
-    "TemplateExclusivePenSiteOurRidesFooterFooterpenAlt1": {
-      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteOurRidesFooterFooterpenAlt1"),
+    "TemplateExclusivePenSiteHomeContactContactpenAlt6": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteHomeContactContactpenAlt6"),
       defaultProps: {
-            "id": "TemplateExclusivePenSiteOurRidesFooterFooterpenAlt1-1",
-            "footerBrandtext": "VanMoof",
-            "footerBrandhref": "/",
-            "footerTitle0text": "Sections",
-            "footerTitle0href": "/",
-            "footerBody0text": "Our Rides Accessories",
-            "footerBody0href": "/our-rides",
-            "footerTitle1text": "Explore",
-            "footerTitle1href": "/our-story",
-            "footerBody1text": "Our Story Peak Design",
-            "footerBody1href": "/our-story",
-            "footerTitle2text": "Products",
-            "footerTitle2href": "/",
-            "footerBody2text": "Shipping & Delivery A5 S6",
-            "footerBody2href": "/shipping-delivery",
-            "footerCopytext": "VanMoof structured clone pen with desktop and mobile page sets.",
-            "footerCopyhref": "/",
+            "id": "TemplateExclusivePenSiteHomeContactContactpenAlt6-1",
+            "ct1text": "VDM Metals\nService Line\n▶ vCard",
+            "ct2text": "✉ Email\n+49 2392550",
+            "cbtnhref": "/vdm-contact",
+            "cbtnttext": "All contacts",
+            "ctitletext": "Your contact for VDM Metals",
+            "rinfotext": "◉ Route\nVDM Metals International GmbH\nPlettenberger Str. 2\n58791 Werdohl",
             "theme": {
                   "mode": "light",
-                  "fontHeading": "Helvetica Neue",
-                  "fontBody": "Helvetica Neue",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
                   "motion": "subtle",
                   "fontFamilies": [
-                        "Helvetica Neue"
+                        "Inter"
                   ],
                   "palette": {
-                        "bg": "#FFFFFF",
-                        "text": "#151515",
-                        "primary": "#7AC943",
-                        "accent": "#7AC943",
-                        "neutral": "#151515",
-                        "textSecondary": "#646A62"
+                        "bg": "#ffffff",
+                        "text": "#ffffff",
+                        "primary": "#f26922",
+                        "accent": "#f26922",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
                   },
-                  "primaryColor": "#7AC943",
+                  "primaryColor": "#f26922",
                   "layoutRules": {
                         "maxWidth": "1400px",
                         "sectionPadding": "py-24",
@@ -454,60 +451,61 @@ export const generatedComponents: Record<string, any> = {
                         "shadow": "dramatic",
                         "accent": "glow"
                   }
-            }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
       },
       fields: {
-        footerBrandtext: textField("FooterBrandtext"),
-        footerBrandhref: textField("FooterBrandhref"),
-        footerTitle0text: textField("FooterTitle0text"),
-        footerTitle0href: textField("FooterTitle0href"),
-        footerBody0text: textField("FooterBody0text"),
-        footerBody0href: textField("FooterBody0href"),
-        footerTitle1text: textField("FooterTitle1text"),
-        footerTitle1href: textField("FooterTitle1href"),
-        footerBody1text: textField("FooterBody1text"),
-        footerBody1href: textField("FooterBody1href"),
-        footerTitle2text: textField("FooterTitle2text"),
-        footerTitle2href: textField("FooterTitle2href"),
-        footerBody2text: textField("FooterBody2text"),
-        footerBody2href: textField("FooterBody2href"),
-        footerCopytext: textField("FooterCopytext"),
-        footerCopyhref: textField("FooterCopyhref"),
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
       },
     },
-    "TemplateExclusivePenSiteAccessoriesNavigationHeaderpenPrimary": {
-      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteAccessoriesNavigationHeaderpenPrimary"),
+    "TemplateExclusivePenSiteHomeCtaNewspenAlt7": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteHomeCtaNewspenAlt7"),
       defaultProps: {
-            "id": "TemplateExclusivePenSiteAccessoriesNavigationHeaderpenPrimary-1",
-            "headerBrandtext": "VanMoof",
-            "headerBrandhref": "/",
-            "navPageOurRidestext": "OUR RIDES",
-            "navPageOurRideshref": "/our-rides",
-            "navPageAccessoriestext": "ACCESSORIES",
-            "navPageAccessorieshref": "/accessories",
-            "navPageOurStorytext": "OUR STORY",
-            "navPageOurStoryhref": "/our-story",
-            "navPagePeakDesigntext": "PEAK DESIGN",
-            "navPagePeakDesignhref": "/peak-design",
-            "navPageShippingDeliverytext": "SHIPPING & DELIVERY",
-            "navPageShippingDeliveryhref": "/shipping-delivery",
+            "id": "TemplateExclusivePenSiteHomeCtaNewspenAlt7-1",
+            "nttext": "News & Events",
+            "c1dtext": "19. February 2026",
+            "c1ttext": "Groundbreaking ceremony marks the future at the Unna site",
+            "c1ptext": "Unna, 18 February 2026. VDM today’s groundbreaking ceremony marks the beginning of a major expansion project.",
+            "c1atext": "→",
+            "c2dtext": "21. October 2025",
+            "c2ttext": "New ASME Code Case for VDM® Alloy 699 XA released",
+            "c2ptext": "The American Society of Mechanical Engineers (ASME) has released a new Code Case for VDM® Alloy 699 XA.",
+            "c2atext": "→",
+            "c3dtext": "29. August 2025",
+            "c3ttext": "VDM Metals once again achieves platinum status in EcoVadis sustainability rating",
+            "c3atext": "→",
+            "sharettext": "Share on",
             "theme": {
                   "mode": "light",
-                  "fontHeading": "Helvetica Neue",
-                  "fontBody": "Helvetica Neue",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
                   "motion": "subtle",
                   "fontFamilies": [
-                        "Helvetica Neue"
+                        "Inter"
                   ],
                   "palette": {
-                        "bg": "#FFFFFF",
-                        "text": "#151515",
-                        "primary": "#7AC943",
-                        "accent": "#7AC943",
-                        "neutral": "#151515",
-                        "textSecondary": "#646A62"
+                        "bg": "#ffffff",
+                        "text": "#ffffff",
+                        "primary": "#f26922",
+                        "accent": "#f26922",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
                   },
-                  "primaryColor": "#7AC943",
+                  "primaryColor": "#f26922",
                   "layoutRules": {
                         "maxWidth": "1400px",
                         "sectionPadding": "py-24",
@@ -519,60 +517,99 @@ export const generatedComponents: Record<string, any> = {
                         "shadow": "dramatic",
                         "accent": "glow"
                   }
-            }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
       },
       fields: {
-        headerBrandtext: textField("HeaderBrandtext"),
-        headerBrandhref: textField("HeaderBrandhref"),
-        navPageOurRidestext: textField("NavPageOurRidestext"),
-        navPageOurRideshref: textField("NavPageOurRideshref"),
-        navPageAccessoriestext: textField("NavPageAccessoriestext"),
-        navPageAccessorieshref: textField("NavPageAccessorieshref"),
-        navPageOurStorytext: textField("NavPageOurStorytext"),
-        navPageOurStoryhref: textField("NavPageOurStoryhref"),
-        navPagePeakDesigntext: textField("NavPagePeakDesigntext"),
-        navPagePeakDesignhref: textField("NavPagePeakDesignhref"),
-        navPageShippingDeliverytext: textField("NavPageShippingDeliverytext"),
-        navPageShippingDeliveryhref: textField("NavPageShippingDeliveryhref"),
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
       },
     },
-    "TemplateExclusivePenSiteAccessoriesFooterFooterpenAlt1": {
-      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteAccessoriesFooterFooterpenAlt1"),
+    "TemplateExclusivePenSiteHomeFooterFooterpenAlt8": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteHomeFooterFooterpenAlt8"),
       defaultProps: {
-            "id": "TemplateExclusivePenSiteAccessoriesFooterFooterpenAlt1-1",
-            "footerBrandtext": "VanMoof",
-            "footerBrandhref": "/",
-            "footerTitle0text": "Sections",
-            "footerTitle0href": "/",
-            "footerBody0text": "Our Rides Accessories",
-            "footerBody0href": "/our-rides",
-            "footerTitle1text": "Explore",
-            "footerTitle1href": "/our-story",
-            "footerBody1text": "Our Story Peak Design",
-            "footerBody1href": "/our-story",
-            "footerTitle2text": "Products",
-            "footerTitle2href": "/",
-            "footerBody2text": "Shipping & Delivery A5 S6",
-            "footerBody2href": "/shipping-delivery",
-            "footerCopytext": "VanMoof structured clone pen with desktop and mobile page sets.",
-            "footerCopyhref": "/",
+            "id": "TemplateExclusivePenSiteHomeFooterFooterpenAlt8-1",
+            "flogotext": "VDM Metals",
+            "subtext": "A company of ACERINOX",
+            "subhref": "/",
+            "lt1text": "Alloys and Semi-Finished Products",
+            "lt1href": "/vdm-products",
+            "rt1text": "Fields of application",
+            "rt1href": "/",
+            "lb1text": "Nickel and nickel alloys from VDM Metals\nCobalt alloys\nZirconium\nSpecial stainless steels\nAluminium and copper products\nPowder for Additive Manufacturing\nWelding consumables\nDelivery forms and dimensions\nComplete product range",
+            "lb1href": "/",
+            "rb1text": "Automotive\nOil and gas\nChemical process industry\nAerospace\nElectronics and Electrical Engineering\nEnergy, Environment, Sustainability\nMedical engineering\nMechanical engineering and hydraulics",
+            "rb1href": "/",
+            "lt2text": "Services",
+            "lt2href": "/",
+            "rt2text": "Service Centers",
+            "rt2href": "/",
+            "lb2text": "Research and development\nPowder Development\nEngineered Solutions\nTechnical customer advisory\nWelding technology center of excellence\nContract toll manufacturing\nCustomer Portal",
+            "lb2href": "/",
+            "rb2text": "Service Center Europe\nService Center China\nService Center Korea\nService Center Australia\nWebshop",
+            "rb2href": "/",
+            "lt3text": "News and Events",
+            "lt3href": "/",
+            "rt3text": "About VDM Metals",
+            "rt3href": "/vdm-about",
+            "lb3text": "Newsroom\nEvents calendar",
+            "lb3href": "/",
+            "rb3text": "Our Mission Statement\nManagement Board\nProduction capabilities\nHistory\nCorporate responsibility\nCompliance\nLocations\nIdeas Management",
+            "rb3href": "/",
+            "lt4text": "Procurement",
+            "lt4href": "/",
+            "rt4text": "current jobs at VDM Metals",
+            "rt4href": "/",
+            "lb4text": "Supplier profile requirements\nSupplier management",
+            "lb4href": "/",
+            "proftext": "professionals at VDM Metals",
+            "profhref": "/",
+            "schooltext": "school students at VDM Metals",
+            "schoolhref": "/",
+            "unitext": "university students at VDM Metals",
+            "unihref": "/",
+            "culturetext": "VDM Metals culture",
+            "culturehref": "/",
+            "benefitstext": "benefits at VDM Metals",
+            "benefitshref": "/",
+            "contactstext": "Contacts",
+            "contactshref": "/vdm-contact",
+            "addrtext": "VDM Metals GmbH, Plettenberger Straße 2, 58791 Werdohl, Germany   vd m@vdm-metals.com",
+            "addrhref": "/",
+            "legaltext": "Sitemap   Legal Information   Data Protection",
+            "legalhref": "/",
+            "copytext": "© 2026 Copyright by VDM Metals",
+            "copyhref": "/",
             "theme": {
                   "mode": "light",
-                  "fontHeading": "Helvetica Neue",
-                  "fontBody": "Helvetica Neue",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
                   "motion": "subtle",
                   "fontFamilies": [
-                        "Helvetica Neue"
+                        "Inter"
                   ],
                   "palette": {
-                        "bg": "#FFFFFF",
-                        "text": "#151515",
-                        "primary": "#7AC943",
-                        "accent": "#7AC943",
-                        "neutral": "#151515",
-                        "textSecondary": "#646A62"
+                        "bg": "#ffffff",
+                        "text": "#ffffff",
+                        "primary": "#f26922",
+                        "accent": "#f26922",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
                   },
-                  "primaryColor": "#7AC943",
+                  "primaryColor": "#f26922",
                   "layoutRules": {
                         "maxWidth": "1400px",
                         "sectionPadding": "py-24",
@@ -584,60 +621,168 @@ export const generatedComponents: Record<string, any> = {
                         "shadow": "dramatic",
                         "accent": "glow"
                   }
-            }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": "",
+            "columns": [
+                  {
+                        "title": "Fields of application",
+                        "links": [
+                              {
+                                    "label": "Nickel and nickel alloys from VDM Metals",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Cobalt alloys",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Zirconium",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Special stainless steels",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Aluminium and copper products",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Powder for Additive Manufacturing",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Welding consumables",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Delivery forms and dimensions",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Complete product range",
+                                    "href": "/"
+                              }
+                        ]
+                  },
+                  {
+                        "title": "Service Centers",
+                        "links": [
+                              {
+                                    "label": "Research and development",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Powder Development",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Engineered Solutions",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Technical customer advisory",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Welding technology center of excellence",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Contract toll manufacturing",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Customer Portal",
+                                    "href": "/"
+                              }
+                        ]
+                  },
+                  {
+                        "title": "About VDM Metals",
+                        "links": [
+                              {
+                                    "label": "Newsroom",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Events calendar",
+                                    "href": "/"
+                              }
+                        ]
+                  },
+                  {
+                        "title": "current jobs at VDM Metals",
+                        "links": [
+                              {
+                                    "label": "Supplier profile requirements",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Supplier management",
+                                    "href": "/"
+                              }
+                        ]
+                  }
+            ]
       },
       fields: {
-        footerBrandtext: textField("FooterBrandtext"),
-        footerBrandhref: textField("FooterBrandhref"),
-        footerTitle0text: textField("FooterTitle0text"),
-        footerTitle0href: textField("FooterTitle0href"),
-        footerBody0text: textField("FooterBody0text"),
-        footerBody0href: textField("FooterBody0href"),
-        footerTitle1text: textField("FooterTitle1text"),
-        footerTitle1href: textField("FooterTitle1href"),
-        footerBody1text: textField("FooterBody1text"),
-        footerBody1href: textField("FooterBody1href"),
-        footerTitle2text: textField("FooterTitle2text"),
-        footerTitle2href: textField("FooterTitle2href"),
-        footerBody2text: textField("FooterBody2text"),
-        footerBody2href: textField("FooterBody2href"),
-        footerCopytext: textField("FooterCopytext"),
-        footerCopyhref: textField("FooterCopyhref"),
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
       },
     },
-    "TemplateExclusivePenSiteOurStoryNavigationHeaderpenPrimary": {
-      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteOurStoryNavigationHeaderpenPrimary"),
+    "TemplateExclusivePenSiteVdmAboutNavigationHeaderpenPrimary": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteVdmAboutNavigationHeaderpenPrimary"),
       defaultProps: {
-            "id": "TemplateExclusivePenSiteOurStoryNavigationHeaderpenPrimary-1",
-            "headerBrandtext": "VanMoof",
-            "headerBrandhref": "/",
-            "navPageOurRidestext": "OUR RIDES",
-            "navPageOurRideshref": "/our-rides",
-            "navPageAccessoriestext": "ACCESSORIES",
-            "navPageAccessorieshref": "/accessories",
-            "navPageOurStorytext": "OUR STORY",
-            "navPageOurStoryhref": "/our-story",
-            "navPagePeakDesigntext": "PEAK DESIGN",
-            "navPagePeakDesignhref": "/peak-design",
-            "navPageShippingDeliverytext": "SHIPPING & DELIVERY",
-            "navPageShippingDeliveryhref": "/shipping-delivery",
+            "id": "TemplateExclusivePenSiteVdmAboutNavigationHeaderpenPrimary-1",
+            "logomaintext": "VDM Metals",
+            "logomainhref": "/",
+            "logosubtext": "A company of ACERINOX",
+            "logosubhref": "/",
+            "nav1text": "Products and services",
+            "nav1href": "/vdm-products",
+            "nav2text": "Company",
+            "nav2href": "/",
+            "nav3text": "Your career at VDM Metals",
+            "nav3href": "/",
+            "r1text": "Contact",
+            "r1href": "/vdm-contact",
+            "r2text": "Downloads",
+            "r2href": "/",
+            "r3text": "Language",
+            "r3href": "/",
+            "searchtext": "⌕",
+            "searchhref": "/",
             "theme": {
                   "mode": "light",
-                  "fontHeading": "Helvetica Neue",
-                  "fontBody": "Helvetica Neue",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
                   "motion": "subtle",
                   "fontFamilies": [
-                        "Helvetica Neue"
+                        "Inter"
                   ],
                   "palette": {
-                        "bg": "#FFFFFF",
-                        "text": "#151515",
-                        "primary": "#7AC943",
-                        "accent": "#7AC943",
-                        "neutral": "#151515",
-                        "textSecondary": "#646A62"
+                        "bg": "#ffffff",
+                        "text": "#d8e3ee",
+                        "primary": "#4F77FF",
+                        "accent": "#4F77FF",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
                   },
-                  "primaryColor": "#7AC943",
+                  "primaryColor": "#4F77FF",
                   "layoutRules": {
                         "maxWidth": "1400px",
                         "sectionPadding": "py-24",
@@ -649,60 +794,99 @@ export const generatedComponents: Record<string, any> = {
                         "shadow": "dramatic",
                         "accent": "glow"
                   }
-            }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
       },
       fields: {
-        headerBrandtext: textField("HeaderBrandtext"),
-        headerBrandhref: textField("HeaderBrandhref"),
-        navPageOurRidestext: textField("NavPageOurRidestext"),
-        navPageOurRideshref: textField("NavPageOurRideshref"),
-        navPageAccessoriestext: textField("NavPageAccessoriestext"),
-        navPageAccessorieshref: textField("NavPageAccessorieshref"),
-        navPageOurStorytext: textField("NavPageOurStorytext"),
-        navPageOurStoryhref: textField("NavPageOurStoryhref"),
-        navPagePeakDesigntext: textField("NavPagePeakDesigntext"),
-        navPagePeakDesignhref: textField("NavPagePeakDesignhref"),
-        navPageShippingDeliverytext: textField("NavPageShippingDeliverytext"),
-        navPageShippingDeliveryhref: textField("NavPageShippingDeliveryhref"),
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
       },
     },
-    "TemplateExclusivePenSiteOurStoryFooterFooterpenAlt1": {
-      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteOurStoryFooterFooterpenAlt1"),
+    "TemplateExclusivePenSiteVdmAboutFooterFooterpenAlt1": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteVdmAboutFooterFooterpenAlt1"),
       defaultProps: {
-            "id": "TemplateExclusivePenSiteOurStoryFooterFooterpenAlt1-1",
-            "footerBrandtext": "VanMoof",
-            "footerBrandhref": "/",
-            "footerTitle0text": "Sections",
-            "footerTitle0href": "/",
-            "footerBody0text": "Our Rides Accessories",
-            "footerBody0href": "/our-rides",
-            "footerTitle1text": "Explore",
-            "footerTitle1href": "/our-story",
-            "footerBody1text": "Our Story Peak Design",
-            "footerBody1href": "/our-story",
-            "footerTitle2text": "Products",
-            "footerTitle2href": "/",
-            "footerBody2text": "Shipping & Delivery A5 S6",
-            "footerBody2href": "/shipping-delivery",
-            "footerCopytext": "VanMoof structured clone pen with desktop and mobile page sets.",
-            "footerCopyhref": "/",
+            "id": "TemplateExclusivePenSiteVdmAboutFooterFooterpenAlt1-1",
+            "flogotext": "VDM Metals",
+            "subtext": "A company of ACERINOX",
+            "subhref": "/",
+            "lt1text": "Alloys and Semi-Finished Products",
+            "lt1href": "/vdm-products",
+            "rt1text": "Fields of application",
+            "rt1href": "/",
+            "lb1text": "Nickel and nickel alloys from VDM Metals\nCobalt alloys\nZirconium\nSpecial stainless steels\nAluminium and copper products\nPowder for Additive Manufacturing\nWelding consumables\nDelivery forms and dimensions\nComplete product range",
+            "lb1href": "/",
+            "rb1text": "Automotive\nOil and gas\nChemical process industry\nAerospace\nElectronics and Electrical Engineering\nEnergy, Environment, Sustainability\nMedical engineering\nMechanical engineering and hydraulics",
+            "rb1href": "/",
+            "lt2text": "Services",
+            "lt2href": "/",
+            "rt2text": "Service Centers",
+            "rt2href": "/",
+            "lb2text": "Research and development\nPowder Development\nEngineered Solutions\nTechnical customer advisory\nWelding technology center of excellence\nContract toll manufacturing\nCustomer Portal",
+            "lb2href": "/",
+            "rb2text": "Service Center Europe\nService Center China\nService Center Korea\nService Center Australia\nWebshop",
+            "rb2href": "/",
+            "lt3text": "News and Events",
+            "lt3href": "/",
+            "rt3text": "About VDM Metals",
+            "rt3href": "/vdm-about",
+            "lb3text": "Newsroom\nEvents calendar",
+            "lb3href": "/",
+            "rb3text": "Our Mission Statement\nManagement Board\nProduction capabilities\nHistory\nCorporate responsibility\nCompliance\nLocations\nIdeas Management",
+            "rb3href": "/",
+            "lt4text": "Procurement",
+            "lt4href": "/",
+            "rt4text": "current jobs at VDM Metals",
+            "rt4href": "/",
+            "lb4text": "Supplier profile requirements\nSupplier management",
+            "lb4href": "/",
+            "proftext": "professionals at VDM Metals",
+            "profhref": "/",
+            "schooltext": "school students at VDM Metals",
+            "schoolhref": "/",
+            "unitext": "university students at VDM Metals",
+            "unihref": "/",
+            "culturetext": "VDM Metals culture",
+            "culturehref": "/",
+            "benefitstext": "benefits at VDM Metals",
+            "benefitshref": "/",
+            "contactstext": "Contacts",
+            "contactshref": "/vdm-contact",
+            "addrtext": "VDM Metals GmbH, Plettenberger Straße 2, 58791 Werdohl, Germany   vd m@vdm-metals.com",
+            "addrhref": "/",
+            "legaltext": "Sitemap   Legal Information   Data Protection",
+            "legalhref": "/",
+            "copytext": "© 2026 Copyright by VDM Metals",
+            "copyhref": "/",
             "theme": {
                   "mode": "light",
-                  "fontHeading": "Helvetica Neue",
-                  "fontBody": "Helvetica Neue",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
                   "motion": "subtle",
                   "fontFamilies": [
-                        "Helvetica Neue"
+                        "Inter"
                   ],
                   "palette": {
-                        "bg": "#FFFFFF",
-                        "text": "#151515",
-                        "primary": "#7AC943",
-                        "accent": "#7AC943",
-                        "neutral": "#151515",
-                        "textSecondary": "#646A62"
+                        "bg": "#ffffff",
+                        "text": "#d8e3ee",
+                        "primary": "#4F77FF",
+                        "accent": "#4F77FF",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
                   },
-                  "primaryColor": "#7AC943",
+                  "primaryColor": "#4F77FF",
                   "layoutRules": {
                         "maxWidth": "1400px",
                         "sectionPadding": "py-24",
@@ -714,60 +898,164 @@ export const generatedComponents: Record<string, any> = {
                         "shadow": "dramatic",
                         "accent": "glow"
                   }
-            }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": "",
+            "columns": [
+                  {
+                        "title": "Fields of application",
+                        "links": [
+                              {
+                                    "label": "Nickel and nickel alloys from VDM Metals",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Cobalt alloys",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Zirconium",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Special stainless steels",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Aluminium and copper products",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Powder for Additive Manufacturing",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Welding consumables",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Delivery forms and dimensions",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Complete product range",
+                                    "href": "/"
+                              }
+                        ]
+                  },
+                  {
+                        "title": "Service Centers",
+                        "links": [
+                              {
+                                    "label": "Research and development",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Powder Development",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Engineered Solutions",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Technical customer advisory",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Welding technology center of excellence",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Contract toll manufacturing",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Customer Portal",
+                                    "href": "/"
+                              }
+                        ]
+                  },
+                  {
+                        "title": "About VDM Metals",
+                        "links": [
+                              {
+                                    "label": "Newsroom",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Events calendar",
+                                    "href": "/"
+                              }
+                        ]
+                  },
+                  {
+                        "title": "current jobs at VDM Metals",
+                        "links": [
+                              {
+                                    "label": "Supplier profile requirements",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Supplier management",
+                                    "href": "/"
+                              }
+                        ]
+                  }
+            ]
       },
       fields: {
-        footerBrandtext: textField("FooterBrandtext"),
-        footerBrandhref: textField("FooterBrandhref"),
-        footerTitle0text: textField("FooterTitle0text"),
-        footerTitle0href: textField("FooterTitle0href"),
-        footerBody0text: textField("FooterBody0text"),
-        footerBody0href: textField("FooterBody0href"),
-        footerTitle1text: textField("FooterTitle1text"),
-        footerTitle1href: textField("FooterTitle1href"),
-        footerBody1text: textField("FooterBody1text"),
-        footerBody1href: textField("FooterBody1href"),
-        footerTitle2text: textField("FooterTitle2text"),
-        footerTitle2href: textField("FooterTitle2href"),
-        footerBody2text: textField("FooterBody2text"),
-        footerBody2href: textField("FooterBody2href"),
-        footerCopytext: textField("FooterCopytext"),
-        footerCopyhref: textField("FooterCopyhref"),
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
       },
     },
-    "TemplateExclusivePenSitePeakDesignNavigationHeaderpenPrimary": {
-      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSitePeakDesignNavigationHeaderpenPrimary"),
+    "TemplateExclusivePenSiteVdmAboutStoryAboutmainpenAlt2": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteVdmAboutStoryAboutmainpenAlt2"),
       defaultProps: {
-            "id": "TemplateExclusivePenSitePeakDesignNavigationHeaderpenPrimary-1",
-            "headerBrandtext": "VanMoof",
-            "headerBrandhref": "/",
-            "navPageOurRidestext": "OUR RIDES",
-            "navPageOurRideshref": "/our-rides",
-            "navPageAccessoriestext": "ACCESSORIES",
-            "navPageAccessorieshref": "/accessories",
-            "navPageOurStorytext": "OUR STORY",
-            "navPageOurStoryhref": "/our-story",
-            "navPagePeakDesigntext": "PEAK DESIGN",
-            "navPagePeakDesignhref": "/peak-design",
-            "navPageShippingDeliverytext": "SHIPPING & DELIVERY",
-            "navPageShippingDeliveryhref": "/shipping-delivery",
+            "id": "TemplateExclusivePenSiteVdmAboutStoryAboutmainpenAlt2-1",
+            "lab1text": "History",
+            "herotitletext": "VDM Metals",
+            "herosubtext": "As part of ACERINOX AG, the VDM Metals brand stands for innovation\nand experience in corrosion resistant and heat-resistant alloys",
+            "heroimgimagesrc": "https://images.unsplash.com/photo-1733846867128-6e97e191a950?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMzMDE0MjZ8&ixlib=rb-4.1.0&q=80&w=1080",
+            "seckickertext": "What makes us special",
+            "sectitletext": "Technology, people,\ntradition",
+            "secbodytext": "VDM Metals is delivering materials for the future and has been doing so for more than 100 years. Being one of the world's leading producers of alloys in Germany and the United States, we are a competent supplier of corrosion resistant and heat-resistant materials for key growth technologies and pioneering industries.\nThe quality of our employees is exemplary. With a rich and diverse workforce and over 1,500 employees worldwide, we are trusted partners with broad expertise in corrosion resistant and heat-resistant alloys.",
+            "t1imagesrc": "https://images.unsplash.com/photo-1764115424737-25aca6f47835?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMzMDE0ODR8&ixlib=rb-4.1.0&q=80&w=1080",
+            "t2imagesrc": "https://images.unsplash.com/photo-1601998539036-006e7fbddb0c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMzMDE0ODV8&ixlib=rb-4.1.0&q=80&w=1080",
+            "t3imagesrc": "https://images.unsplash.com/photo-1758691737182-d42aefd6dee8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMzMDE0ODZ8&ixlib=rb-4.1.0&q=80&w=1080",
+            "t4imagesrc": "https://images.unsplash.com/photo-1759850344200-e4b29ddcc974?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMzMDE0ODd8&ixlib=rb-4.1.0&q=80&w=1080",
+            "lab2text": "Production capabilities",
+            "lab3text": "Management Board",
+            "lab4text": "Corporate Responsibility",
             "theme": {
                   "mode": "light",
-                  "fontHeading": "Helvetica Neue",
-                  "fontBody": "Helvetica Neue",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
                   "motion": "subtle",
                   "fontFamilies": [
-                        "Helvetica Neue"
+                        "Inter"
                   ],
                   "palette": {
-                        "bg": "#FFFFFF",
-                        "text": "#151515",
-                        "primary": "#7AC943",
-                        "accent": "#7AC943",
-                        "neutral": "#151515",
-                        "textSecondary": "#646A62"
+                        "bg": "#ffffff",
+                        "text": "#d8e3ee",
+                        "primary": "#4F77FF",
+                        "accent": "#4F77FF",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
                   },
-                  "primaryColor": "#7AC943",
+                  "primaryColor": "#4F77FF",
                   "layoutRules": {
                         "maxWidth": "1400px",
                         "sectionPadding": "py-24",
@@ -779,60 +1067,66 @@ export const generatedComponents: Record<string, any> = {
                         "shadow": "dramatic",
                         "accent": "glow"
                   }
-            }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
       },
       fields: {
-        headerBrandtext: textField("HeaderBrandtext"),
-        headerBrandhref: textField("HeaderBrandhref"),
-        navPageOurRidestext: textField("NavPageOurRidestext"),
-        navPageOurRideshref: textField("NavPageOurRideshref"),
-        navPageAccessoriestext: textField("NavPageAccessoriestext"),
-        navPageAccessorieshref: textField("NavPageAccessorieshref"),
-        navPageOurStorytext: textField("NavPageOurStorytext"),
-        navPageOurStoryhref: textField("NavPageOurStoryhref"),
-        navPagePeakDesigntext: textField("NavPagePeakDesigntext"),
-        navPagePeakDesignhref: textField("NavPagePeakDesignhref"),
-        navPageShippingDeliverytext: textField("NavPageShippingDeliverytext"),
-        navPageShippingDeliveryhref: textField("NavPageShippingDeliveryhref"),
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
       },
     },
-    "TemplateExclusivePenSitePeakDesignFooterFooterpenAlt1": {
-      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSitePeakDesignFooterFooterpenAlt1"),
+    "TemplateExclusivePenSiteVdmProductsNavigationHeaderpenPrimary": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteVdmProductsNavigationHeaderpenPrimary"),
       defaultProps: {
-            "id": "TemplateExclusivePenSitePeakDesignFooterFooterpenAlt1-1",
-            "footerBrandtext": "VanMoof",
-            "footerBrandhref": "/",
-            "footerTitle0text": "Sections",
-            "footerTitle0href": "/",
-            "footerBody0text": "Our Rides Accessories",
-            "footerBody0href": "/our-rides",
-            "footerTitle1text": "Explore",
-            "footerTitle1href": "/our-story",
-            "footerBody1text": "Our Story Peak Design",
-            "footerBody1href": "/our-story",
-            "footerTitle2text": "Products",
-            "footerTitle2href": "/",
-            "footerBody2text": "Shipping & Delivery A5 S6",
-            "footerBody2href": "/shipping-delivery",
-            "footerCopytext": "VanMoof structured clone pen with desktop and mobile page sets.",
-            "footerCopyhref": "/",
+            "id": "TemplateExclusivePenSiteVdmProductsNavigationHeaderpenPrimary-1",
+            "logomaintext": "VDM Metals",
+            "logomainhref": "/",
+            "logosubtext": "A company of ACERINOX",
+            "logosubhref": "/",
+            "nav1text": "Products and services",
+            "nav1href": "/vdm-products",
+            "nav2text": "Company",
+            "nav2href": "/",
+            "nav3text": "Your career at VDM Metals",
+            "nav3href": "/",
+            "r1text": "Contact",
+            "r1href": "/vdm-contact",
+            "r2text": "Downloads",
+            "r2href": "/",
+            "r3text": "Language",
+            "r3href": "/",
+            "searchtext": "⌕",
+            "searchhref": "/",
             "theme": {
                   "mode": "light",
-                  "fontHeading": "Helvetica Neue",
-                  "fontBody": "Helvetica Neue",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
                   "motion": "subtle",
                   "fontFamilies": [
-                        "Helvetica Neue"
+                        "Inter"
                   ],
                   "palette": {
-                        "bg": "#FFFFFF",
-                        "text": "#151515",
-                        "primary": "#7AC943",
-                        "accent": "#7AC943",
-                        "neutral": "#151515",
-                        "textSecondary": "#646A62"
+                        "bg": "#ffffff",
+                        "text": "#ffffff",
+                        "primary": "#00365e",
+                        "accent": "#00365e",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
                   },
-                  "primaryColor": "#7AC943",
+                  "primaryColor": "#00365e",
                   "layoutRules": {
                         "maxWidth": "1400px",
                         "sectionPadding": "py-24",
@@ -844,60 +1138,54 @@ export const generatedComponents: Record<string, any> = {
                         "shadow": "dramatic",
                         "accent": "glow"
                   }
-            }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
       },
       fields: {
-        footerBrandtext: textField("FooterBrandtext"),
-        footerBrandhref: textField("FooterBrandhref"),
-        footerTitle0text: textField("FooterTitle0text"),
-        footerTitle0href: textField("FooterTitle0href"),
-        footerBody0text: textField("FooterBody0text"),
-        footerBody0href: textField("FooterBody0href"),
-        footerTitle1text: textField("FooterTitle1text"),
-        footerTitle1href: textField("FooterTitle1href"),
-        footerBody1text: textField("FooterBody1text"),
-        footerBody1href: textField("FooterBody1href"),
-        footerTitle2text: textField("FooterTitle2text"),
-        footerTitle2href: textField("FooterTitle2href"),
-        footerBody2text: textField("FooterBody2text"),
-        footerBody2href: textField("FooterBody2href"),
-        footerCopytext: textField("FooterCopytext"),
-        footerCopyhref: textField("FooterCopyhref"),
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
       },
     },
-    "TemplateExclusivePenSiteShippingDeliveryNavigationHeaderpenPrimary": {
-      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteShippingDeliveryNavigationHeaderpenPrimary"),
+    "TemplateExclusivePenSiteVdmProductsContactContactpenAlt1": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteVdmProductsContactContactpenAlt1"),
       defaultProps: {
-            "id": "TemplateExclusivePenSiteShippingDeliveryNavigationHeaderpenPrimary-1",
-            "headerBrandtext": "VanMoof",
-            "headerBrandhref": "/",
-            "navPageOurRidestext": "OUR RIDES",
-            "navPageOurRideshref": "/our-rides",
-            "navPageAccessoriestext": "ACCESSORIES",
-            "navPageAccessorieshref": "/accessories",
-            "navPageOurStorytext": "OUR STORY",
-            "navPageOurStoryhref": "/our-story",
-            "navPagePeakDesigntext": "PEAK DESIGN",
-            "navPagePeakDesignhref": "/peak-design",
-            "navPageShippingDeliverytext": "SHIPPING & DELIVERY",
-            "navPageShippingDeliveryhref": "/shipping-delivery",
+            "id": "TemplateExclusivePenSiteVdmProductsContactContactpenAlt1-1",
+            "ct1text": "VDM Metals\nService Line\n▶ vCard",
+            "ct2text": "✉ Email\n+49 2392550",
+            "cbtnhref": "/vdm-contact",
+            "cbtnttext": "All contacts",
+            "ctitletext": "Your contact for VDM Metals",
+            "rinfotext": "◉ Route\nVDM Metals International GmbH\nPlettenberger Str. 2\n58791 Werdohl",
             "theme": {
                   "mode": "light",
-                  "fontHeading": "Helvetica Neue",
-                  "fontBody": "Helvetica Neue",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
                   "motion": "subtle",
                   "fontFamilies": [
-                        "Helvetica Neue"
+                        "Inter"
                   ],
                   "palette": {
-                        "bg": "#FFFFFF",
-                        "text": "#151515",
-                        "primary": "#7AC943",
-                        "accent": "#7AC943",
-                        "neutral": "#151515",
-                        "textSecondary": "#646A62"
+                        "bg": "#ffffff",
+                        "text": "#ffffff",
+                        "primary": "#00365e",
+                        "accent": "#00365e",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
                   },
-                  "primaryColor": "#7AC943",
+                  "primaryColor": "#00365e",
                   "layoutRules": {
                         "maxWidth": "1400px",
                         "sectionPadding": "py-24",
@@ -909,60 +1197,99 @@ export const generatedComponents: Record<string, any> = {
                         "shadow": "dramatic",
                         "accent": "glow"
                   }
-            }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
       },
       fields: {
-        headerBrandtext: textField("HeaderBrandtext"),
-        headerBrandhref: textField("HeaderBrandhref"),
-        navPageOurRidestext: textField("NavPageOurRidestext"),
-        navPageOurRideshref: textField("NavPageOurRideshref"),
-        navPageAccessoriestext: textField("NavPageAccessoriestext"),
-        navPageAccessorieshref: textField("NavPageAccessorieshref"),
-        navPageOurStorytext: textField("NavPageOurStorytext"),
-        navPageOurStoryhref: textField("NavPageOurStoryhref"),
-        navPagePeakDesigntext: textField("NavPagePeakDesigntext"),
-        navPagePeakDesignhref: textField("NavPagePeakDesignhref"),
-        navPageShippingDeliverytext: textField("NavPageShippingDeliverytext"),
-        navPageShippingDeliveryhref: textField("NavPageShippingDeliveryhref"),
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
       },
     },
-    "TemplateExclusivePenSiteShippingDeliveryFooterFooterpenAlt1": {
-      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteShippingDeliveryFooterFooterpenAlt1"),
+    "TemplateExclusivePenSiteVdmProductsFooterFooterpenAlt2": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteVdmProductsFooterFooterpenAlt2"),
       defaultProps: {
-            "id": "TemplateExclusivePenSiteShippingDeliveryFooterFooterpenAlt1-1",
-            "footerBrandtext": "VanMoof",
-            "footerBrandhref": "/",
-            "footerTitle0text": "Sections",
-            "footerTitle0href": "/",
-            "footerBody0text": "Our Rides Accessories",
-            "footerBody0href": "/our-rides",
-            "footerTitle1text": "Explore",
-            "footerTitle1href": "/our-story",
-            "footerBody1text": "Our Story Peak Design",
-            "footerBody1href": "/our-story",
-            "footerTitle2text": "Products",
-            "footerTitle2href": "/",
-            "footerBody2text": "Shipping & Delivery A5 S6",
-            "footerBody2href": "/shipping-delivery",
-            "footerCopytext": "VanMoof structured clone pen with desktop and mobile page sets.",
-            "footerCopyhref": "/",
+            "id": "TemplateExclusivePenSiteVdmProductsFooterFooterpenAlt2-1",
+            "flogotext": "VDM Metals",
+            "subtext": "A company of ACERINOX",
+            "subhref": "/",
+            "lt1text": "Alloys and Semi-Finished Products",
+            "lt1href": "/vdm-products",
+            "rt1text": "Fields of application",
+            "rt1href": "/",
+            "lb1text": "Nickel and nickel alloys from VDM Metals\nCobalt alloys\nZirconium\nSpecial stainless steels\nAluminium and copper products\nPowder for Additive Manufacturing\nWelding consumables\nDelivery forms and dimensions\nComplete product range",
+            "lb1href": "/",
+            "rb1text": "Automotive\nOil and gas\nChemical process industry\nAerospace\nElectronics and Electrical Engineering\nEnergy, Environment, Sustainability\nMedical engineering\nMechanical engineering and hydraulics",
+            "rb1href": "/",
+            "lt2text": "Services",
+            "lt2href": "/",
+            "rt2text": "Service Centers",
+            "rt2href": "/",
+            "lb2text": "Research and development\nPowder Development\nEngineered Solutions\nTechnical customer advisory\nWelding technology center of excellence\nContract toll manufacturing\nCustomer Portal",
+            "lb2href": "/",
+            "rb2text": "Service Center Europe\nService Center China\nService Center Korea\nService Center Australia\nWebshop",
+            "rb2href": "/",
+            "lt3text": "News and Events",
+            "lt3href": "/",
+            "rt3text": "About VDM Metals",
+            "rt3href": "/vdm-about",
+            "lb3text": "Newsroom\nEvents calendar",
+            "lb3href": "/",
+            "rb3text": "Our Mission Statement\nManagement Board\nProduction capabilities\nHistory\nCorporate responsibility\nCompliance\nLocations\nIdeas Management",
+            "rb3href": "/",
+            "lt4text": "Procurement",
+            "lt4href": "/",
+            "rt4text": "current jobs at VDM Metals",
+            "rt4href": "/",
+            "lb4text": "Supplier profile requirements\nSupplier management",
+            "lb4href": "/",
+            "proftext": "professionals at VDM Metals",
+            "profhref": "/",
+            "schooltext": "school students at VDM Metals",
+            "schoolhref": "/",
+            "unitext": "university students at VDM Metals",
+            "unihref": "/",
+            "culturetext": "VDM Metals culture",
+            "culturehref": "/",
+            "benefitstext": "benefits at VDM Metals",
+            "benefitshref": "/",
+            "contactstext": "Contacts",
+            "contactshref": "/vdm-contact",
+            "addrtext": "VDM Metals GmbH, Plettenberger Straße 2, 58791 Werdohl, Germany   vd m@vdm-metals.com",
+            "addrhref": "/",
+            "legaltext": "Sitemap   Legal Information   Data Protection",
+            "legalhref": "/",
+            "copytext": "© 2026 Copyright by VDM Metals",
+            "copyhref": "/",
             "theme": {
                   "mode": "light",
-                  "fontHeading": "Helvetica Neue",
-                  "fontBody": "Helvetica Neue",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
                   "motion": "subtle",
                   "fontFamilies": [
-                        "Helvetica Neue"
+                        "Inter"
                   ],
                   "palette": {
-                        "bg": "#FFFFFF",
-                        "text": "#151515",
-                        "primary": "#7AC943",
-                        "accent": "#7AC943",
-                        "neutral": "#151515",
-                        "textSecondary": "#646A62"
+                        "bg": "#ffffff",
+                        "text": "#ffffff",
+                        "primary": "#00365e",
+                        "accent": "#00365e",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
                   },
-                  "primaryColor": "#7AC943",
+                  "primaryColor": "#00365e",
                   "layoutRules": {
                         "maxWidth": "1400px",
                         "sectionPadding": "py-24",
@@ -974,60 +1301,160 @@ export const generatedComponents: Record<string, any> = {
                         "shadow": "dramatic",
                         "accent": "glow"
                   }
-            }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": "",
+            "columns": [
+                  {
+                        "title": "Fields of application",
+                        "links": [
+                              {
+                                    "label": "Nickel and nickel alloys from VDM Metals",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Cobalt alloys",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Zirconium",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Special stainless steels",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Aluminium and copper products",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Powder for Additive Manufacturing",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Welding consumables",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Delivery forms and dimensions",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Complete product range",
+                                    "href": "/"
+                              }
+                        ]
+                  },
+                  {
+                        "title": "Service Centers",
+                        "links": [
+                              {
+                                    "label": "Research and development",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Powder Development",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Engineered Solutions",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Technical customer advisory",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Welding technology center of excellence",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Contract toll manufacturing",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Customer Portal",
+                                    "href": "/"
+                              }
+                        ]
+                  },
+                  {
+                        "title": "About VDM Metals",
+                        "links": [
+                              {
+                                    "label": "Newsroom",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Events calendar",
+                                    "href": "/"
+                              }
+                        ]
+                  },
+                  {
+                        "title": "current jobs at VDM Metals",
+                        "links": [
+                              {
+                                    "label": "Supplier profile requirements",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Supplier management",
+                                    "href": "/"
+                              }
+                        ]
+                  }
+            ]
       },
       fields: {
-        footerBrandtext: textField("FooterBrandtext"),
-        footerBrandhref: textField("FooterBrandhref"),
-        footerTitle0text: textField("FooterTitle0text"),
-        footerTitle0href: textField("FooterTitle0href"),
-        footerBody0text: textField("FooterBody0text"),
-        footerBody0href: textField("FooterBody0href"),
-        footerTitle1text: textField("FooterTitle1text"),
-        footerTitle1href: textField("FooterTitle1href"),
-        footerBody1text: textField("FooterBody1text"),
-        footerBody1href: textField("FooterBody1href"),
-        footerTitle2text: textField("FooterTitle2text"),
-        footerTitle2href: textField("FooterTitle2href"),
-        footerBody2text: textField("FooterBody2text"),
-        footerBody2href: textField("FooterBody2href"),
-        footerCopytext: textField("FooterCopytext"),
-        footerCopyhref: textField("FooterCopyhref"),
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
       },
     },
-    "TemplateExclusivePenSiteA5NavigationHeaderpenPrimary": {
-      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteA5NavigationHeaderpenPrimary"),
+    "TemplateExclusivePenSiteVdmProductsProductsProductsmainpenAlt3": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteVdmProductsProductsProductsmainpenAlt3"),
       defaultProps: {
-            "id": "TemplateExclusivePenSiteA5NavigationHeaderpenPrimary-1",
-            "headerBrandtext": "VanMoof",
-            "headerBrandhref": "/",
-            "navPageOurRidestext": "OUR RIDES",
-            "navPageOurRideshref": "/our-rides",
-            "navPageAccessoriestext": "ACCESSORIES",
-            "navPageAccessorieshref": "/accessories",
-            "navPageOurStorytext": "OUR STORY",
-            "navPageOurStoryhref": "/our-story",
-            "navPagePeakDesigntext": "PEAK DESIGN",
-            "navPagePeakDesignhref": "/peak-design",
-            "navPageShippingDeliverytext": "SHIPPING & DELIVERY",
-            "navPageShippingDeliveryhref": "/shipping-delivery",
+            "id": "TemplateExclusivePenSiteVdmProductsProductsProductsmainpenAlt3-1",
+            "prodheroimageimagesrc": "https://images.unsplash.com/photo-1765734482991-7c60829a0bff?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMzMDI1MjN8&ixlib=rb-4.1.0&q=80&w=1080",
+            "biztitletext": "VDM Metals - Our Business",
+            "bizbodytext": "For VDM Metals, stainless materials and high-performance materials consisting of diverse metallic alloys are related to one another by one thing in common: reliability in the quality and variety of alloys made and sold all over the world. VDM Metals develops, manufactures and markets materials that are custom-made for use in safety-oriented process technology, highly demanding applications and products with increased quality standards. From individual profiles to complete process solutions, from pure metal products and single alloy semi-finished products, VDM Metals offers exceptional support.",
+            "i1imagesrc": "https://images.unsplash.com/photo-1758873263428-f4b2edb45fe1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMzMDI2MDZ8&ixlib=rb-4.1.0&q=80&w=1080",
+            "t1text": "Alloys and Semi-Finished Products",
+            "t2text": "Fields of application",
+            "i3imagesrc": "https://images.unsplash.com/photo-1676030789476-b42a14ad298d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMzMDI2MDh8&ixlib=rb-4.1.0&q=80&w=1080",
+            "t3text": "Service Centers",
+            "i4imagesrc": "https://images.unsplash.com/photo-1764114441123-586d13fc6ece?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMzMDI2MDl8&ixlib=rb-4.1.0&q=80&w=1080",
+            "t4text": "Services",
             "theme": {
                   "mode": "light",
-                  "fontHeading": "Helvetica Neue",
-                  "fontBody": "Helvetica Neue",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
                   "motion": "subtle",
                   "fontFamilies": [
-                        "Helvetica Neue"
+                        "Inter"
                   ],
                   "palette": {
-                        "bg": "#FFFFFF",
-                        "text": "#151515",
-                        "primary": "#7AC943",
-                        "accent": "#7AC943",
-                        "neutral": "#151515",
-                        "textSecondary": "#646A62"
+                        "bg": "#ffffff",
+                        "text": "#ffffff",
+                        "primary": "#00365e",
+                        "accent": "#00365e",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
                   },
-                  "primaryColor": "#7AC943",
+                  "primaryColor": "#00365e",
                   "layoutRules": {
                         "maxWidth": "1400px",
                         "sectionPadding": "py-24",
@@ -1039,60 +1466,66 @@ export const generatedComponents: Record<string, any> = {
                         "shadow": "dramatic",
                         "accent": "glow"
                   }
-            }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
       },
       fields: {
-        headerBrandtext: textField("HeaderBrandtext"),
-        headerBrandhref: textField("HeaderBrandhref"),
-        navPageOurRidestext: textField("NavPageOurRidestext"),
-        navPageOurRideshref: textField("NavPageOurRideshref"),
-        navPageAccessoriestext: textField("NavPageAccessoriestext"),
-        navPageAccessorieshref: textField("NavPageAccessorieshref"),
-        navPageOurStorytext: textField("NavPageOurStorytext"),
-        navPageOurStoryhref: textField("NavPageOurStoryhref"),
-        navPagePeakDesigntext: textField("NavPagePeakDesigntext"),
-        navPagePeakDesignhref: textField("NavPagePeakDesignhref"),
-        navPageShippingDeliverytext: textField("NavPageShippingDeliverytext"),
-        navPageShippingDeliveryhref: textField("NavPageShippingDeliveryhref"),
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
       },
     },
-    "TemplateExclusivePenSiteA5FooterFooterpenAlt1": {
-      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteA5FooterFooterpenAlt1"),
+    "TemplateExclusivePenSiteVdmProducts1NavigationHeaderpenPrimary": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteVdmProducts1NavigationHeaderpenPrimary"),
       defaultProps: {
-            "id": "TemplateExclusivePenSiteA5FooterFooterpenAlt1-1",
-            "footerBrandtext": "VanMoof",
-            "footerBrandhref": "/",
-            "footerTitle0text": "Sections",
-            "footerTitle0href": "/",
-            "footerBody0text": "Our Rides Accessories",
-            "footerBody0href": "/our-rides",
-            "footerTitle1text": "Explore",
-            "footerTitle1href": "/our-story",
-            "footerBody1text": "Our Story Peak Design",
-            "footerBody1href": "/our-story",
-            "footerTitle2text": "Products",
-            "footerTitle2href": "/",
-            "footerBody2text": "Shipping & Delivery A5 S6",
-            "footerBody2href": "/shipping-delivery",
-            "footerCopytext": "VanMoof structured clone pen with desktop and mobile page sets.",
-            "footerCopyhref": "/",
+            "id": "TemplateExclusivePenSiteVdmProducts1NavigationHeaderpenPrimary-1",
+            "logomaintext": "VDM Metals",
+            "logomainhref": "/",
+            "logosubtext": "A company of ACERINOX",
+            "logosubhref": "/",
+            "nav1text": "Products and services",
+            "nav1href": "/vdm-products",
+            "nav2text": "Company",
+            "nav2href": "/",
+            "nav3text": "Your career at VDM Metals",
+            "nav3href": "/",
+            "r1text": "Contact",
+            "r1href": "/vdm-contact",
+            "r2text": "Downloads",
+            "r2href": "/",
+            "r3text": "Language",
+            "r3href": "/",
+            "searchtext": "⌕",
+            "searchhref": "/",
             "theme": {
                   "mode": "light",
-                  "fontHeading": "Helvetica Neue",
-                  "fontBody": "Helvetica Neue",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
                   "motion": "subtle",
                   "fontFamilies": [
-                        "Helvetica Neue"
+                        "Inter"
                   ],
                   "palette": {
-                        "bg": "#FFFFFF",
-                        "text": "#151515",
-                        "primary": "#7AC943",
-                        "accent": "#7AC943",
-                        "neutral": "#151515",
-                        "textSecondary": "#646A62"
+                        "bg": "#ffffff",
+                        "text": "#d8e3ee",
+                        "primary": "#ef6f2e",
+                        "accent": "#ef6f2e",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
                   },
-                  "primaryColor": "#7AC943",
+                  "primaryColor": "#ef6f2e",
                   "layoutRules": {
                         "maxWidth": "1400px",
                         "sectionPadding": "py-24",
@@ -1104,60 +1537,99 @@ export const generatedComponents: Record<string, any> = {
                         "shadow": "dramatic",
                         "accent": "glow"
                   }
-            }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
       },
       fields: {
-        footerBrandtext: textField("FooterBrandtext"),
-        footerBrandhref: textField("FooterBrandhref"),
-        footerTitle0text: textField("FooterTitle0text"),
-        footerTitle0href: textField("FooterTitle0href"),
-        footerBody0text: textField("FooterBody0text"),
-        footerBody0href: textField("FooterBody0href"),
-        footerTitle1text: textField("FooterTitle1text"),
-        footerTitle1href: textField("FooterTitle1href"),
-        footerBody1text: textField("FooterBody1text"),
-        footerBody1href: textField("FooterBody1href"),
-        footerTitle2text: textField("FooterTitle2text"),
-        footerTitle2href: textField("FooterTitle2href"),
-        footerBody2text: textField("FooterBody2text"),
-        footerBody2href: textField("FooterBody2href"),
-        footerCopytext: textField("FooterCopytext"),
-        footerCopyhref: textField("FooterCopyhref"),
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
       },
     },
-    "TemplateExclusivePenSiteS6NavigationHeaderpenPrimary": {
-      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteS6NavigationHeaderpenPrimary"),
+    "TemplateExclusivePenSiteVdmProducts1FooterFooterpenAlt1": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteVdmProducts1FooterFooterpenAlt1"),
       defaultProps: {
-            "id": "TemplateExclusivePenSiteS6NavigationHeaderpenPrimary-1",
-            "headerBrandtext": "VanMoof",
-            "headerBrandhref": "/",
-            "navPageOurRidestext": "OUR RIDES",
-            "navPageOurRideshref": "/our-rides",
-            "navPageAccessoriestext": "ACCESSORIES",
-            "navPageAccessorieshref": "/accessories",
-            "navPageOurStorytext": "OUR STORY",
-            "navPageOurStoryhref": "/our-story",
-            "navPagePeakDesigntext": "PEAK DESIGN",
-            "navPagePeakDesignhref": "/peak-design",
-            "navPageShippingDeliverytext": "SHIPPING & DELIVERY",
-            "navPageShippingDeliveryhref": "/shipping-delivery",
+            "id": "TemplateExclusivePenSiteVdmProducts1FooterFooterpenAlt1-1",
+            "flogotext": "VDM Metals",
+            "subtext": "A company of ACERINOX",
+            "subhref": "/",
+            "lt1text": "Alloys and Semi-Finished Products",
+            "lt1href": "/vdm-products",
+            "rt1text": "Fields of application",
+            "rt1href": "/",
+            "lb1text": "Nickel and nickel alloys from VDM Metals\nCobalt alloys\nZirconium\nSpecial stainless steels\nAluminium and copper products\nPowder for Additive Manufacturing\nWelding consumables\nDelivery forms and dimensions\nComplete product range",
+            "lb1href": "/",
+            "rb1text": "Automotive\nOil and gas\nChemical process industry\nAerospace\nElectronics and Electrical Engineering\nEnergy, Environment, Sustainability\nMedical engineering\nMechanical engineering and hydraulics",
+            "rb1href": "/",
+            "lt2text": "Services",
+            "lt2href": "/",
+            "rt2text": "Service Centers",
+            "rt2href": "/",
+            "lb2text": "Research and development\nPowder Development\nEngineered Solutions\nTechnical customer advisory\nWelding technology center of excellence\nContract toll manufacturing\nCustomer Portal",
+            "lb2href": "/",
+            "rb2text": "Service Center Europe\nService Center China\nService Center Korea\nService Center Australia\nWebshop",
+            "rb2href": "/",
+            "lt3text": "News and Events",
+            "lt3href": "/",
+            "rt3text": "About VDM Metals",
+            "rt3href": "/vdm-about",
+            "lb3text": "Newsroom\nEvents calendar",
+            "lb3href": "/",
+            "rb3text": "Our Mission Statement\nManagement Board\nProduction capabilities\nHistory\nCorporate responsibility\nCompliance\nLocations\nIdeas Management",
+            "rb3href": "/",
+            "lt4text": "Procurement",
+            "lt4href": "/",
+            "rt4text": "current jobs at VDM Metals",
+            "rt4href": "/",
+            "lb4text": "Supplier profile requirements\nSupplier management",
+            "lb4href": "/",
+            "proftext": "professionals at VDM Metals",
+            "profhref": "/",
+            "schooltext": "school students at VDM Metals",
+            "schoolhref": "/",
+            "unitext": "university students at VDM Metals",
+            "unihref": "/",
+            "culturetext": "VDM Metals culture",
+            "culturehref": "/",
+            "benefitstext": "benefits at VDM Metals",
+            "benefitshref": "/",
+            "contactstext": "Contacts",
+            "contactshref": "/vdm-contact",
+            "addrtext": "VDM Metals GmbH, Plettenberger Straße 2, 58791 Werdohl, Germany   vd m@vdm-metals.com",
+            "addrhref": "/",
+            "legaltext": "Sitemap   Legal Information   Data Protection",
+            "legalhref": "/",
+            "copytext": "© 2026 Copyright by VDM Metals",
+            "copyhref": "/",
             "theme": {
                   "mode": "light",
-                  "fontHeading": "Helvetica Neue",
-                  "fontBody": "Helvetica Neue",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
                   "motion": "subtle",
                   "fontFamilies": [
-                        "Helvetica Neue"
+                        "Inter"
                   ],
                   "palette": {
-                        "bg": "#FFFFFF",
-                        "text": "#151515",
-                        "primary": "#7AC943",
-                        "accent": "#7AC943",
-                        "neutral": "#151515",
-                        "textSecondary": "#646A62"
+                        "bg": "#ffffff",
+                        "text": "#d8e3ee",
+                        "primary": "#ef6f2e",
+                        "accent": "#ef6f2e",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
                   },
-                  "primaryColor": "#7AC943",
+                  "primaryColor": "#ef6f2e",
                   "layoutRules": {
                         "maxWidth": "1400px",
                         "sectionPadding": "py-24",
@@ -1169,60 +1641,169 @@ export const generatedComponents: Record<string, any> = {
                         "shadow": "dramatic",
                         "accent": "glow"
                   }
-            }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": "",
+            "columns": [
+                  {
+                        "title": "Fields of application",
+                        "links": [
+                              {
+                                    "label": "Nickel and nickel alloys from VDM Metals",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Cobalt alloys",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Zirconium",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Special stainless steels",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Aluminium and copper products",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Powder for Additive Manufacturing",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Welding consumables",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Delivery forms and dimensions",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Complete product range",
+                                    "href": "/"
+                              }
+                        ]
+                  },
+                  {
+                        "title": "Service Centers",
+                        "links": [
+                              {
+                                    "label": "Research and development",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Powder Development",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Engineered Solutions",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Technical customer advisory",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Welding technology center of excellence",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Contract toll manufacturing",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Customer Portal",
+                                    "href": "/"
+                              }
+                        ]
+                  },
+                  {
+                        "title": "About VDM Metals",
+                        "links": [
+                              {
+                                    "label": "Newsroom",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Events calendar",
+                                    "href": "/"
+                              }
+                        ]
+                  },
+                  {
+                        "title": "current jobs at VDM Metals",
+                        "links": [
+                              {
+                                    "label": "Supplier profile requirements",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Supplier management",
+                                    "href": "/"
+                              }
+                        ]
+                  }
+            ]
       },
       fields: {
-        headerBrandtext: textField("HeaderBrandtext"),
-        headerBrandhref: textField("HeaderBrandhref"),
-        navPageOurRidestext: textField("NavPageOurRidestext"),
-        navPageOurRideshref: textField("NavPageOurRideshref"),
-        navPageAccessoriestext: textField("NavPageAccessoriestext"),
-        navPageAccessorieshref: textField("NavPageAccessorieshref"),
-        navPageOurStorytext: textField("NavPageOurStorytext"),
-        navPageOurStoryhref: textField("NavPageOurStoryhref"),
-        navPagePeakDesigntext: textField("NavPagePeakDesigntext"),
-        navPagePeakDesignhref: textField("NavPagePeakDesignhref"),
-        navPageShippingDeliverytext: textField("NavPageShippingDeliverytext"),
-        navPageShippingDeliveryhref: textField("NavPageShippingDeliveryhref"),
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
       },
     },
-    "TemplateExclusivePenSiteS6FooterFooterpenAlt1": {
-      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteS6FooterFooterpenAlt1"),
+    "TemplateExclusivePenSiteVdmProducts1ProductsProducts1mainpenAlt2": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteVdmProducts1ProductsProducts1mainpenAlt2"),
       defaultProps: {
-            "id": "TemplateExclusivePenSiteS6FooterFooterpenAlt1-1",
-            "footerBrandtext": "VanMoof",
-            "footerBrandhref": "/",
-            "footerTitle0text": "Sections",
-            "footerTitle0href": "/",
-            "footerBody0text": "Our Rides Accessories",
-            "footerBody0href": "/our-rides",
-            "footerTitle1text": "Explore",
-            "footerTitle1href": "/our-story",
-            "footerBody1text": "Our Story Peak Design",
-            "footerBody1href": "/our-story",
-            "footerTitle2text": "Products",
-            "footerTitle2href": "/",
-            "footerBody2text": "Shipping & Delivery A5 S6",
-            "footerBody2href": "/shipping-delivery",
-            "footerCopytext": "VanMoof structured clone pen with desktop and mobile page sets.",
-            "footerCopyhref": "/",
+            "id": "TemplateExclusivePenSiteVdmProducts1ProductsProducts1mainpenAlt2-1",
+            "introtitletext": "Alloys and Semi-Finished Products",
+            "introbodytext": "The broad and deep product portfolio of VDM Metals provides specific solutions to your requirements. We can supply products in all forms and dimensions and in all major alloy groups. Please choose your area of interest for more information.",
+            "secatext": "Materials in all dimensions and alloy classes",
+            "secabodytext": "At VDM Metals we have all major standards and dimensions in stock. Should your requirements call for special dimensions, we can supply custom-made products quickly and reliably.",
+            "btnhref": "/",
+            "btnttext": "Nickel and cobalt alloys",
+            "secbtext": "Delivery forms and dimensions",
+            "secbbodytext": "We supply sheet, strip, plate, bar, wire and welding consumables in a wide range of dimensions. The most common dimensions are available from stock.\n\nDownloads:",
+            "li1text": "• Standard dimensions",
+            "li2text": "• Material forms",
+            "li3text": "• Product groups",
+            "li4text": "• Technical data sheets",
+            "i1imagesrc": "https://images.unsplash.com/photo-1758873263428-f4b2edb45fe1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMzMDI2MDZ8&ixlib=rb-4.1.0&q=80&w=1080",
+            "t1text": "Alloys and Semi-Finished Products",
+            "t2text": "Fields of application",
+            "i3imagesrc": "https://images.unsplash.com/photo-1676030789476-b42a14ad298d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMzMDI2MDh8&ixlib=rb-4.1.0&q=80&w=1080",
+            "t3text": "Service Centers",
+            "i4imagesrc": "https://images.unsplash.com/photo-1764114441123-586d13fc6ece?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMzMDI2MDl8&ixlib=rb-4.1.0&q=80&w=1080",
+            "t4text": "Services",
             "theme": {
                   "mode": "light",
-                  "fontHeading": "Helvetica Neue",
-                  "fontBody": "Helvetica Neue",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
                   "motion": "subtle",
                   "fontFamilies": [
-                        "Helvetica Neue"
+                        "Inter"
                   ],
                   "palette": {
-                        "bg": "#FFFFFF",
-                        "text": "#151515",
-                        "primary": "#7AC943",
-                        "accent": "#7AC943",
-                        "neutral": "#151515",
-                        "textSecondary": "#646A62"
+                        "bg": "#ffffff",
+                        "text": "#d8e3ee",
+                        "primary": "#ef6f2e",
+                        "accent": "#ef6f2e",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
                   },
-                  "primaryColor": "#7AC943",
+                  "primaryColor": "#ef6f2e",
                   "layoutRules": {
                         "maxWidth": "1400px",
                         "sectionPadding": "py-24",
@@ -1234,60 +1815,54 @@ export const generatedComponents: Record<string, any> = {
                         "shadow": "dramatic",
                         "accent": "glow"
                   }
-            }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
       },
       fields: {
-        footerBrandtext: textField("FooterBrandtext"),
-        footerBrandhref: textField("FooterBrandhref"),
-        footerTitle0text: textField("FooterTitle0text"),
-        footerTitle0href: textField("FooterTitle0href"),
-        footerBody0text: textField("FooterBody0text"),
-        footerBody0href: textField("FooterBody0href"),
-        footerTitle1text: textField("FooterTitle1text"),
-        footerTitle1href: textField("FooterTitle1href"),
-        footerBody1text: textField("FooterBody1text"),
-        footerBody1href: textField("FooterBody1href"),
-        footerTitle2text: textField("FooterTitle2text"),
-        footerTitle2href: textField("FooterTitle2href"),
-        footerBody2text: textField("FooterBody2text"),
-        footerBody2href: textField("FooterBody2href"),
-        footerCopytext: textField("FooterCopytext"),
-        footerCopyhref: textField("FooterCopyhref"),
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
       },
     },
-    "TemplateExclusivePenSiteS5A5FrontRackNavigationHeaderpenPrimary": {
-      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteS5A5FrontRackNavigationHeaderpenPrimary"),
+    "TemplateExclusivePenSiteVdmProducts1ContactContactpenAlt3": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteVdmProducts1ContactContactpenAlt3"),
       defaultProps: {
-            "id": "TemplateExclusivePenSiteS5A5FrontRackNavigationHeaderpenPrimary-1",
-            "headerBrandtext": "VanMoof",
-            "headerBrandhref": "/",
-            "navPageOurRidestext": "OUR RIDES",
-            "navPageOurRideshref": "/our-rides",
-            "navPageAccessoriestext": "ACCESSORIES",
-            "navPageAccessorieshref": "/accessories",
-            "navPageOurStorytext": "OUR STORY",
-            "navPageOurStoryhref": "/our-story",
-            "navPagePeakDesigntext": "PEAK DESIGN",
-            "navPagePeakDesignhref": "/peak-design",
-            "navPageShippingDeliverytext": "SHIPPING & DELIVERY",
-            "navPageShippingDeliveryhref": "/shipping-delivery",
+            "id": "TemplateExclusivePenSiteVdmProducts1ContactContactpenAlt3-1",
+            "ct1text": "VDM Metals\nService Line\n▶ vCard",
+            "ct2text": "✉ Email\n+49 2392550",
+            "cbtnhref": "/vdm-contact",
+            "cbtnttext": "All contacts",
+            "ctitletext": "Your contact for VDM Metals",
+            "rinfotext": "◉ Route\nVDM Metals International GmbH\nPlettenberger Str. 2\n58791 Werdohl",
             "theme": {
                   "mode": "light",
-                  "fontHeading": "Helvetica Neue",
-                  "fontBody": "Helvetica Neue",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
                   "motion": "subtle",
                   "fontFamilies": [
-                        "Helvetica Neue"
+                        "Inter"
                   ],
                   "palette": {
-                        "bg": "#FFFFFF",
-                        "text": "#151515",
-                        "primary": "#7AC943",
-                        "accent": "#7AC943",
-                        "neutral": "#151515",
-                        "textSecondary": "#646A62"
+                        "bg": "#ffffff",
+                        "text": "#d8e3ee",
+                        "primary": "#ef6f2e",
+                        "accent": "#ef6f2e",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
                   },
-                  "primaryColor": "#7AC943",
+                  "primaryColor": "#ef6f2e",
                   "layoutRules": {
                         "maxWidth": "1400px",
                         "sectionPadding": "py-24",
@@ -1299,60 +1874,67 @@ export const generatedComponents: Record<string, any> = {
                         "shadow": "dramatic",
                         "accent": "glow"
                   }
-            }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
       },
       fields: {
-        headerBrandtext: textField("HeaderBrandtext"),
-        headerBrandhref: textField("HeaderBrandhref"),
-        navPageOurRidestext: textField("NavPageOurRidestext"),
-        navPageOurRideshref: textField("NavPageOurRideshref"),
-        navPageAccessoriestext: textField("NavPageAccessoriestext"),
-        navPageAccessorieshref: textField("NavPageAccessorieshref"),
-        navPageOurStorytext: textField("NavPageOurStorytext"),
-        navPageOurStoryhref: textField("NavPageOurStoryhref"),
-        navPagePeakDesigntext: textField("NavPagePeakDesigntext"),
-        navPagePeakDesignhref: textField("NavPagePeakDesignhref"),
-        navPageShippingDeliverytext: textField("NavPageShippingDeliverytext"),
-        navPageShippingDeliveryhref: textField("NavPageShippingDeliveryhref"),
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
       },
     },
-    "TemplateExclusivePenSiteS5A5FrontRackFooterFooterpenAlt1": {
-      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteS5A5FrontRackFooterFooterpenAlt1"),
+    "TemplateExclusivePenSiteVdmProducts1ProductsProducts1mainpenAlt4": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteVdmProducts1ProductsProducts1mainpenAlt4"),
       defaultProps: {
-            "id": "TemplateExclusivePenSiteS5A5FrontRackFooterFooterpenAlt1-1",
-            "footerBrandtext": "VanMoof",
-            "footerBrandhref": "/",
-            "footerTitle0text": "Sections",
-            "footerTitle0href": "/",
-            "footerBody0text": "Our Rides Accessories",
-            "footerBody0href": "/our-rides",
-            "footerTitle1text": "Explore",
-            "footerTitle1href": "/our-story",
-            "footerBody1text": "Our Story Peak Design",
-            "footerBody1href": "/our-story",
-            "footerTitle2text": "Products",
-            "footerTitle2href": "/",
-            "footerBody2text": "Shipping & Delivery A5 S6",
-            "footerBody2href": "/shipping-delivery",
-            "footerCopytext": "VanMoof structured clone pen with desktop and mobile page sets.",
-            "footerCopyhref": "/",
+            "id": "TemplateExclusivePenSiteVdmProducts1ProductsProducts1mainpenAlt4-1",
+            "introtitletext": "Alloys and Semi-Finished Products",
+            "introbodytext": "The broad and deep product portfolio of VDM Metals provides specific solutions to your requirements. We can supply products in all forms and dimensions and in all major alloy groups. Please choose your area of interest for more information.",
+            "secatext": "Materials in all dimensions and alloy classes",
+            "secabodytext": "At VDM Metals we have all major standards and dimensions in stock. Should your requirements call for special dimensions, we can supply custom-made products quickly and reliably.",
+            "btnhref": "/",
+            "btnttext": "Nickel and cobalt alloys",
+            "secbtext": "Delivery forms and dimensions",
+            "secbbodytext": "We supply sheet, strip, plate, bar, wire and welding consumables in a wide range of dimensions. The most common dimensions are available from stock.\n\nDownloads:",
+            "li1text": "• Standard dimensions",
+            "li2text": "• Material forms",
+            "li3text": "• Product groups",
+            "li4text": "• Technical data sheets",
+            "i1imagesrc": "https://images.unsplash.com/photo-1758873263428-f4b2edb45fe1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMzMDI2MDZ8&ixlib=rb-4.1.0&q=80&w=1080",
+            "t1text": "Alloys and Semi-Finished Products",
+            "t2text": "Fields of application",
+            "i3imagesrc": "https://images.unsplash.com/photo-1676030789476-b42a14ad298d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMzMDI2MDh8&ixlib=rb-4.1.0&q=80&w=1080",
+            "t3text": "Service Centers",
+            "i4imagesrc": "https://images.unsplash.com/photo-1764114441123-586d13fc6ece?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMzMDI2MDl8&ixlib=rb-4.1.0&q=80&w=1080",
+            "t4text": "Services",
             "theme": {
                   "mode": "light",
-                  "fontHeading": "Helvetica Neue",
-                  "fontBody": "Helvetica Neue",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
                   "motion": "subtle",
                   "fontFamilies": [
-                        "Helvetica Neue"
+                        "Inter"
                   ],
                   "palette": {
-                        "bg": "#FFFFFF",
-                        "text": "#151515",
-                        "primary": "#7AC943",
-                        "accent": "#7AC943",
-                        "neutral": "#151515",
-                        "textSecondary": "#646A62"
+                        "bg": "#ffffff",
+                        "text": "#d8e3ee",
+                        "primary": "#ef6f2e",
+                        "accent": "#ef6f2e",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
                   },
-                  "primaryColor": "#7AC943",
+                  "primaryColor": "#ef6f2e",
                   "layoutRules": {
                         "maxWidth": "1400px",
                         "sectionPadding": "py-24",
@@ -1364,60 +1946,66 @@ export const generatedComponents: Record<string, any> = {
                         "shadow": "dramatic",
                         "accent": "glow"
                   }
-            }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
       },
       fields: {
-        footerBrandtext: textField("FooterBrandtext"),
-        footerBrandhref: textField("FooterBrandhref"),
-        footerTitle0text: textField("FooterTitle0text"),
-        footerTitle0href: textField("FooterTitle0href"),
-        footerBody0text: textField("FooterBody0text"),
-        footerBody0href: textField("FooterBody0href"),
-        footerTitle1text: textField("FooterTitle1text"),
-        footerTitle1href: textField("FooterTitle1href"),
-        footerBody1text: textField("FooterBody1text"),
-        footerBody1href: textField("FooterBody1href"),
-        footerTitle2text: textField("FooterTitle2text"),
-        footerTitle2href: textField("FooterTitle2href"),
-        footerBody2text: textField("FooterBody2text"),
-        footerBody2href: textField("FooterBody2href"),
-        footerCopytext: textField("FooterCopytext"),
-        footerCopyhref: textField("FooterCopyhref"),
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
       },
     },
-    "TemplateExclusivePenSiteHandlebarRisersNavigationHeaderpenPrimary": {
-      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteHandlebarRisersNavigationHeaderpenPrimary"),
+    "TemplateExclusivePenSiteVdmApplicationNavigationHeaderpenPrimary": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteVdmApplicationNavigationHeaderpenPrimary"),
       defaultProps: {
-            "id": "TemplateExclusivePenSiteHandlebarRisersNavigationHeaderpenPrimary-1",
-            "headerBrandtext": "VanMoof",
-            "headerBrandhref": "/",
-            "navPageOurRidestext": "OUR RIDES",
-            "navPageOurRideshref": "/our-rides",
-            "navPageAccessoriestext": "ACCESSORIES",
-            "navPageAccessorieshref": "/accessories",
-            "navPageOurStorytext": "OUR STORY",
-            "navPageOurStoryhref": "/our-story",
-            "navPagePeakDesigntext": "PEAK DESIGN",
-            "navPagePeakDesignhref": "/peak-design",
-            "navPageShippingDeliverytext": "SHIPPING & DELIVERY",
-            "navPageShippingDeliveryhref": "/shipping-delivery",
+            "id": "TemplateExclusivePenSiteVdmApplicationNavigationHeaderpenPrimary-1",
+            "logomaintext": "VDM Metals",
+            "logomainhref": "/",
+            "logosubtext": "A company of ACERINOX",
+            "logosubhref": "/",
+            "nav1text": "Products and services",
+            "nav1href": "/vdm-products",
+            "nav2text": "Company",
+            "nav2href": "/",
+            "nav3text": "Your career at VDM Metals",
+            "nav3href": "/",
+            "r1text": "Contact",
+            "r1href": "/vdm-contact",
+            "r2text": "Downloads",
+            "r2href": "/",
+            "r3text": "Language",
+            "r3href": "/",
+            "searchtext": "⌕",
+            "searchhref": "/",
             "theme": {
                   "mode": "light",
-                  "fontHeading": "Helvetica Neue",
-                  "fontBody": "Helvetica Neue",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
                   "motion": "subtle",
                   "fontFamilies": [
-                        "Helvetica Neue"
+                        "Inter"
                   ],
                   "palette": {
-                        "bg": "#FFFFFF",
-                        "text": "#151515",
-                        "primary": "#7AC943",
-                        "accent": "#7AC943",
-                        "neutral": "#151515",
-                        "textSecondary": "#646A62"
+                        "bg": "#ffffff",
+                        "text": "#d8e3ee",
+                        "primary": "#ef6f2e",
+                        "accent": "#ef6f2e",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
                   },
-                  "primaryColor": "#7AC943",
+                  "primaryColor": "#ef6f2e",
                   "layoutRules": {
                         "maxWidth": "1400px",
                         "sectionPadding": "py-24",
@@ -1429,60 +2017,99 @@ export const generatedComponents: Record<string, any> = {
                         "shadow": "dramatic",
                         "accent": "glow"
                   }
-            }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
       },
       fields: {
-        headerBrandtext: textField("HeaderBrandtext"),
-        headerBrandhref: textField("HeaderBrandhref"),
-        navPageOurRidestext: textField("NavPageOurRidestext"),
-        navPageOurRideshref: textField("NavPageOurRideshref"),
-        navPageAccessoriestext: textField("NavPageAccessoriestext"),
-        navPageAccessorieshref: textField("NavPageAccessorieshref"),
-        navPageOurStorytext: textField("NavPageOurStorytext"),
-        navPageOurStoryhref: textField("NavPageOurStoryhref"),
-        navPagePeakDesigntext: textField("NavPagePeakDesigntext"),
-        navPagePeakDesignhref: textField("NavPagePeakDesignhref"),
-        navPageShippingDeliverytext: textField("NavPageShippingDeliverytext"),
-        navPageShippingDeliveryhref: textField("NavPageShippingDeliveryhref"),
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
       },
     },
-    "TemplateExclusivePenSiteHandlebarRisersFooterFooterpenAlt1": {
-      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteHandlebarRisersFooterFooterpenAlt1"),
+    "TemplateExclusivePenSiteVdmApplicationFooterFooterpenAlt1": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteVdmApplicationFooterFooterpenAlt1"),
       defaultProps: {
-            "id": "TemplateExclusivePenSiteHandlebarRisersFooterFooterpenAlt1-1",
-            "footerBrandtext": "VanMoof",
-            "footerBrandhref": "/",
-            "footerTitle0text": "Sections",
-            "footerTitle0href": "/",
-            "footerBody0text": "Our Rides Accessories",
-            "footerBody0href": "/our-rides",
-            "footerTitle1text": "Explore",
-            "footerTitle1href": "/our-story",
-            "footerBody1text": "Our Story Peak Design",
-            "footerBody1href": "/our-story",
-            "footerTitle2text": "Products",
-            "footerTitle2href": "/",
-            "footerBody2text": "Shipping & Delivery A5 S6",
-            "footerBody2href": "/shipping-delivery",
-            "footerCopytext": "VanMoof structured clone pen with desktop and mobile page sets.",
-            "footerCopyhref": "/",
+            "id": "TemplateExclusivePenSiteVdmApplicationFooterFooterpenAlt1-1",
+            "flogotext": "VDM Metals",
+            "subtext": "A company of ACERINOX",
+            "subhref": "/",
+            "lt1text": "Alloys and Semi-Finished Products",
+            "lt1href": "/vdm-products",
+            "rt1text": "Fields of application",
+            "rt1href": "/",
+            "lb1text": "Nickel and nickel alloys from VDM Metals\nCobalt alloys\nZirconium\nSpecial stainless steels\nAluminium and copper products\nPowder for Additive Manufacturing\nWelding consumables\nDelivery forms and dimensions\nComplete product range",
+            "lb1href": "/",
+            "rb1text": "Automotive\nOil and gas\nChemical process industry\nAerospace\nElectronics and Electrical Engineering\nEnergy, Environment, Sustainability\nMedical engineering\nMechanical engineering and hydraulics",
+            "rb1href": "/",
+            "lt2text": "Services",
+            "lt2href": "/",
+            "rt2text": "Service Centers",
+            "rt2href": "/",
+            "lb2text": "Research and development\nPowder Development\nEngineered Solutions\nTechnical customer advisory\nWelding technology center of excellence\nContract toll manufacturing\nCustomer Portal",
+            "lb2href": "/",
+            "rb2text": "Service Center Europe\nService Center China\nService Center Korea\nService Center Australia\nWebshop",
+            "rb2href": "/",
+            "lt3text": "News and Events",
+            "lt3href": "/",
+            "rt3text": "About VDM Metals",
+            "rt3href": "/vdm-about",
+            "lb3text": "Newsroom\nEvents calendar",
+            "lb3href": "/",
+            "rb3text": "Our Mission Statement\nManagement Board\nProduction capabilities\nHistory\nCorporate responsibility\nCompliance\nLocations\nIdeas Management",
+            "rb3href": "/",
+            "lt4text": "Procurement",
+            "lt4href": "/",
+            "rt4text": "current jobs at VDM Metals",
+            "rt4href": "/",
+            "lb4text": "Supplier profile requirements\nSupplier management",
+            "lb4href": "/",
+            "proftext": "professionals at VDM Metals",
+            "profhref": "/",
+            "schooltext": "school students at VDM Metals",
+            "schoolhref": "/",
+            "unitext": "university students at VDM Metals",
+            "unihref": "/",
+            "culturetext": "VDM Metals culture",
+            "culturehref": "/",
+            "benefitstext": "benefits at VDM Metals",
+            "benefitshref": "/",
+            "contactstext": "Contacts",
+            "contactshref": "/vdm-contact",
+            "addrtext": "VDM Metals GmbH, Plettenberger Straße 2, 58791 Werdohl, Germany   vd m@vdm-metals.com",
+            "addrhref": "/",
+            "legaltext": "Sitemap   Legal Information   Data Protection",
+            "legalhref": "/",
+            "copytext": "© 2026 Copyright by VDM Metals",
+            "copyhref": "/",
             "theme": {
                   "mode": "light",
-                  "fontHeading": "Helvetica Neue",
-                  "fontBody": "Helvetica Neue",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
                   "motion": "subtle",
                   "fontFamilies": [
-                        "Helvetica Neue"
+                        "Inter"
                   ],
                   "palette": {
-                        "bg": "#FFFFFF",
-                        "text": "#151515",
-                        "primary": "#7AC943",
-                        "accent": "#7AC943",
-                        "neutral": "#151515",
-                        "textSecondary": "#646A62"
+                        "bg": "#ffffff",
+                        "text": "#d8e3ee",
+                        "primary": "#ef6f2e",
+                        "accent": "#ef6f2e",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
                   },
-                  "primaryColor": "#7AC943",
+                  "primaryColor": "#ef6f2e",
                   "layoutRules": {
                         "maxWidth": "1400px",
                         "sectionPadding": "py-24",
@@ -1494,56 +2121,164 @@ export const generatedComponents: Record<string, any> = {
                         "shadow": "dramatic",
                         "accent": "glow"
                   }
-            }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": "",
+            "columns": [
+                  {
+                        "title": "Fields of application",
+                        "links": [
+                              {
+                                    "label": "Nickel and nickel alloys from VDM Metals",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Cobalt alloys",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Zirconium",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Special stainless steels",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Aluminium and copper products",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Powder for Additive Manufacturing",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Welding consumables",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Delivery forms and dimensions",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Complete product range",
+                                    "href": "/"
+                              }
+                        ]
+                  },
+                  {
+                        "title": "Service Centers",
+                        "links": [
+                              {
+                                    "label": "Research and development",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Powder Development",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Engineered Solutions",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Technical customer advisory",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Welding technology center of excellence",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Contract toll manufacturing",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Customer Portal",
+                                    "href": "/"
+                              }
+                        ]
+                  },
+                  {
+                        "title": "About VDM Metals",
+                        "links": [
+                              {
+                                    "label": "Newsroom",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Events calendar",
+                                    "href": "/"
+                              }
+                        ]
+                  },
+                  {
+                        "title": "current jobs at VDM Metals",
+                        "links": [
+                              {
+                                    "label": "Supplier profile requirements",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Supplier management",
+                                    "href": "/"
+                              }
+                        ]
+                  }
+            ]
       },
       fields: {
-        footerBrandtext: textField("FooterBrandtext"),
-        footerBrandhref: textField("FooterBrandhref"),
-        footerTitle0text: textField("FooterTitle0text"),
-        footerTitle0href: textField("FooterTitle0href"),
-        footerBody0text: textField("FooterBody0text"),
-        footerBody0href: textField("FooterBody0href"),
-        footerTitle1text: textField("FooterTitle1text"),
-        footerTitle1href: textField("FooterTitle1href"),
-        footerBody1text: textField("FooterBody1text"),
-        footerBody1href: textField("FooterBody1href"),
-        footerTitle2text: textField("FooterTitle2text"),
-        footerTitle2href: textField("FooterTitle2href"),
-        footerBody2text: textField("FooterBody2text"),
-        footerBody2href: textField("FooterBody2href"),
-        footerCopytext: textField("FooterCopytext"),
-        footerCopyhref: textField("FooterCopyhref"),
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
       },
     },
-    "TemplateExclusivePenSiteHomeHeroHeropenPrimary_3454fdf0": {
-      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteHomeHeroHeropenPrimary_3454fdf0"),
+    "TemplateExclusivePenSiteVdmApplicationStoryApplicationmainpenAlt2": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteVdmApplicationStoryApplicationmainpenAlt2"),
       defaultProps: {
-            "id": "TemplateExclusivePenSiteHomeHeroHeropenPrimary_3454fdf0-1",
-            "heroImageimagesrc": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/vanmoof/page-home-img-1-5454a5fb.png",
-            "headerBrandtext": "VanMoof",
-            "headerMenutext": "☰",
-            "heroKickertext": "VANMOOF",
-            "heroTitletext": "Award-winning e-bikes with high-tech features",
-            "heroSubtitletext": "smart urban mobility from VanMoof, designed around city riding, integrated hardware and connected services.",
-            "heroPrimaryTexttext": "Our Rides",
-            "heroSecondaryTexttext": "Our Story",
+            "id": "TemplateExclusivePenSiteVdmApplicationStoryApplicationmainpenAlt2-1",
+            "heroimgimagesrc": "https://images.unsplash.com/photo-1761042192361-3b181f5e4955?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMzMDUyMTZ8&ixlib=rb-4.1.0&q=80&w=1080",
+            "midimgimagesrc": "https://images.unsplash.com/photo-1641199788610-16a62156b619?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMzMDUyMTZ8&ixlib=rb-4.1.0&q=80&w=1080",
+            "midtitletext": "Strong materials for various applications",
+            "midbodytext": "In today’s automotive industry the trend is towards ever more powerful engines with smaller engine displacement. It is the stated goal of downsizing to reduce fuel consumption while lowering the emission of pollutants at the same time. The design of these usually turbocharged engines results in higher exhaust temperatures, which entails greater requirements for the design of the components and the materials used. As a result, the service life of the engines depends on both the design as well as the materials used. Here VDM Metals has recourse to a wide variety of materials that fulfill the diverse requirements within different sections in the automobile. These include e.g. high temperatures, creep resistance, load alternation, corrosion resistance or wear resistance. Strip, sheet, wire and bars from VDM Metals are indispensable to many automotive components.\n",
+            "linkstitletext": "Our full product portfolio consists of the following product groups:",
+            "li1text": "• Nickel and nickel alloys",
+            "li2text": "• Cobalt alloys",
+            "li3text": "• Zirconium",
+            "li4text": "• Special stainless steels",
+            "li5text": "• Aluminium and copper products",
+            "btnhref": "/vdm-products",
+            "btnttext": "Visit product portfolio",
+            "biztitletext": "Automotive",
+            "bizbodytext": "Hardly any other technological development has changed everyday lives more than the automobile. Mobility forms the basis of our modern lifestyle and economic activity – it is the factor with the greatest influence on how we live within a globalized world. The issues of climate protection, environmental friendliness and resource saving are the key driving force for technological development in the automotive industry. The increasing need for mobility – coupled with a shortage of resources and ever stricter requirements for environmental protection at the same time – poses one of the greatest challenges worldwide.",
             "theme": {
                   "mode": "light",
-                  "fontHeading": "Helvetica Neue",
-                  "fontBody": "Helvetica Neue",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
                   "motion": "subtle",
                   "fontFamilies": [
-                        "Helvetica Neue"
+                        "Inter"
                   ],
                   "palette": {
-                        "bg": "#FFFFFF",
-                        "text": "#151515",
-                        "primary": "#7AC943",
-                        "accent": "#7AC943",
-                        "neutral": "#151515",
-                        "textSecondary": "#646A62"
+                        "bg": "#ffffff",
+                        "text": "#d8e3ee",
+                        "primary": "#ef6f2e",
+                        "accent": "#ef6f2e",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
                   },
-                  "primaryColor": "#7AC943",
+                  "primaryColor": "#ef6f2e",
                   "layoutRules": {
                         "maxWidth": "1400px",
                         "sectionPadding": "py-24",
@@ -1555,53 +2290,64 @@ export const generatedComponents: Record<string, any> = {
                         "shadow": "dramatic",
                         "accent": "glow"
                   }
-            }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
       },
       fields: {
-        heroImageimagesrc: textField("HeroImageimagesrc"),
-        headerBrandtext: textField("HeaderBrandtext"),
-        headerMenutext: textField("HeaderMenutext"),
-        heroKickertext: textField("HeroKickertext"),
-        heroTitletext: textField("HeroTitletext"),
-        heroSubtitletext: textField("HeroSubtitletext"),
-        heroPrimaryTexttext: textField("HeroPrimaryTexttext"),
-        heroSecondaryTexttext: textField("HeroSecondaryTexttext"),
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
       },
     },
-    "TemplateExclusivePenSiteHomeStoryCategoriespenAlt1_60f97314": {
-      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteHomeStoryCategoriespenAlt1_60f97314"),
+    "TemplateExclusivePenSiteVdmApplicationStoryApplicationaccordionpenAlt3": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteVdmApplicationStoryApplicationaccordionpenAlt3"),
       defaultProps: {
-            "id": "TemplateExclusivePenSiteHomeStoryCategoriespenAlt1_60f97314-1",
-            "catTitletext": "Sections",
-            "catCardImg0imagesrc": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/vanmoof/page-our-rides-img-1-17e1ff50.png",
-            "catCardT0text": "Our Rides",
-            "catCardB0text": "The VanMoof A5 is an e-bike perfect for agile city rides. Find out more about this e-bike model, buy now and ride in 7 days.",
-            "catCardT1text": "Accessories",
-            "catCardB1text": "Our Front Rack is compatible with the VanMoof S5 & A5 e-bike. Designed to carry up to 10 kg weight. Includes elastic cord to fasten items.",
-            "catCardT2text": "Our Story",
-            "catCardB2text": "Our tech smart e-bikes are designed for the city. Discover more about our story on city mobility.",
-            "catCardImg3imagesrc": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/vanmoof/page-peak-design-img-1-ba82c7eb.jpg",
-            "catCardT3text": "Peak Design",
-            "catCardB3text": "Meet your ultimate phone mount. An exclusive, integrated design built to keep your device smartly locked in and secure.",
-            "catCardT4text": "Shipping & Delivery",
-            "catCardB4text": "We ship our e-bikes to 19 countries and counting. Your bike arrives pre-assembled, and will be ready to ride in minutes. Find out more.",
+            "id": "TemplateExclusivePenSiteVdmApplicationStoryApplicationaccordionpenAlt3-1",
+            "tatext": "Alloys",
+            "tbtext": "Semi-finished products",
+            "tctext": "Special stainless steels",
+            "tdtext": "Alloy concepts",
+            "tetext": "Fuel applications",
+            "tftext": "Semi-finished products",
+            "tgtext": "Smart applications and pricing",
+            "p1text": "+",
+            "p2text": "+",
+            "p3text": "+",
+            "p4text": "+",
+            "p5text": "+",
+            "p6text": "+",
+            "p7text": "+",
+            "infotitletext": "Additional information and links",
+            "infolinktext": "Automotive applications overview",
             "theme": {
                   "mode": "light",
-                  "fontHeading": "Helvetica Neue",
-                  "fontBody": "Helvetica Neue",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
                   "motion": "subtle",
                   "fontFamilies": [
-                        "Helvetica Neue"
+                        "Inter"
                   ],
                   "palette": {
-                        "bg": "#FFFFFF",
-                        "text": "#151515",
-                        "primary": "#7AC943",
-                        "accent": "#7AC943",
-                        "neutral": "#151515",
-                        "textSecondary": "#646A62"
+                        "bg": "#ffffff",
+                        "text": "#d8e3ee",
+                        "primary": "#ef6f2e",
+                        "accent": "#ef6f2e",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
                   },
-                  "primaryColor": "#7AC943",
+                  "primaryColor": "#ef6f2e",
                   "layoutRules": {
                         "maxWidth": "1400px",
                         "sectionPadding": "py-24",
@@ -1613,56 +2359,54 @@ export const generatedComponents: Record<string, any> = {
                         "shadow": "dramatic",
                         "accent": "glow"
                   }
-            }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
       },
       fields: {
-        catTitletext: textField("CatTitletext"),
-        catCardImg0imagesrc: textField("CatCardImg0imagesrc"),
-        catCardT0text: textField("CatCardT0text"),
-        catCardB0text: textField("CatCardB0text"),
-        catCardT1text: textField("CatCardT1text"),
-        catCardB1text: textField("CatCardB1text"),
-        catCardT2text: textField("CatCardT2text"),
-        catCardB2text: textField("CatCardB2text"),
-        catCardImg3imagesrc: textField("CatCardImg3imagesrc"),
-        catCardT3text: textField("CatCardT3text"),
-        catCardB3text: textField("CatCardB3text"),
-        catCardT4text: textField("CatCardT4text"),
-        catCardB4text: textField("CatCardB4text"),
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
       },
     },
-    "TemplateExclusivePenSiteHomeApproachFeaturedpenAlt2_81b10fee": {
-      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteHomeApproachFeaturedpenAlt2_81b10fee"),
+    "TemplateExclusivePenSiteVdmApplicationContactContactpenAlt4": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteVdmApplicationContactContactpenAlt4"),
       defaultProps: {
-            "id": "TemplateExclusivePenSiteHomeApproachFeaturedpenAlt2_81b10fee-1",
-            "featuredTitletext": "Featured pages",
-            "featCardImg0imagesrc": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/vanmoof/page-our-rides-img-1-17e1ff50.png",
-            "featCardK0text": "THIRD LEVEL",
-            "featCardT0text": "A5",
-            "featCardImg1imagesrc": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/vanmoof/page-s6-img-1-6c433dac.jpg",
-            "featCardK1text": "THIRD LEVEL",
-            "featCardT1text": "S6",
-            "featCardK2text": "THIRD LEVEL",
-            "featCardT2text": "S5 & A5 Front Rack",
-            "featCardK3text": "THIRD LEVEL",
-            "featCardT3text": "Handlebar Risers",
+            "id": "TemplateExclusivePenSiteVdmApplicationContactContactpenAlt4-1",
+            "ct1text": "VDM Metals\nService Line\n▶ vCard",
+            "ct2text": "✉ Email\n+49 2392550",
+            "cbtnhref": "/vdm-contact",
+            "cbtnttext": "All contacts",
+            "ctitletext": "Your contact for VDM Metals",
+            "rinfotext": "◉ Route\nVDM Metals International GmbH\nPlettenberger Str. 2\n58791 Werdohl",
             "theme": {
                   "mode": "light",
-                  "fontHeading": "Helvetica Neue",
-                  "fontBody": "Helvetica Neue",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
                   "motion": "subtle",
                   "fontFamilies": [
-                        "Helvetica Neue"
+                        "Inter"
                   ],
                   "palette": {
-                        "bg": "#FFFFFF",
-                        "text": "#151515",
-                        "primary": "#7AC943",
-                        "accent": "#7AC943",
-                        "neutral": "#151515",
-                        "textSecondary": "#646A62"
+                        "bg": "#ffffff",
+                        "text": "#d8e3ee",
+                        "primary": "#ef6f2e",
+                        "accent": "#ef6f2e",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
                   },
-                  "primaryColor": "#7AC943",
+                  "primaryColor": "#ef6f2e",
                   "layoutRules": {
                         "maxWidth": "1400px",
                         "sectionPadding": "py-24",
@@ -1674,49 +2418,66 @@ export const generatedComponents: Record<string, any> = {
                         "shadow": "dramatic",
                         "accent": "glow"
                   }
-            }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
       },
       fields: {
-        featuredTitletext: textField("FeaturedTitletext"),
-        featCardImg0imagesrc: textField("FeatCardImg0imagesrc"),
-        featCardK0text: textField("FeatCardK0text"),
-        featCardT0text: textField("FeatCardT0text"),
-        featCardImg1imagesrc: textField("FeatCardImg1imagesrc"),
-        featCardK1text: textField("FeatCardK1text"),
-        featCardT1text: textField("FeatCardT1text"),
-        featCardK2text: textField("FeatCardK2text"),
-        featCardT2text: textField("FeatCardT2text"),
-        featCardK3text: textField("FeatCardK3text"),
-        featCardT3text: textField("FeatCardT3text"),
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
       },
     },
-    "TemplateExclusivePenSiteHomeStoryInsightspenAlt3_dafe972c": {
-      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteHomeStoryInsightspenAlt3_dafe972c"),
+    "TemplateExclusivePenSiteVdmContactNavigationHeaderpenPrimary": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteVdmContactNavigationHeaderpenPrimary"),
       defaultProps: {
-            "id": "TemplateExclusivePenSiteHomeStoryInsightspenAlt3_dafe972c-1",
-            "insightK0text": "Story",
-            "insightT0text": "Our Story",
-            "insightB0text": "Our tech smart e-bikes are designed for the city. Discover more about our story on city mobility.",
-            "insightK1text": "Support",
-            "insightT1text": "Shipping & Delivery",
-            "insightB1text": "We ship our e-bikes to 19 countries and counting. Your bike arrives pre-assembled, and will be ready to ride in minutes. Find out more.",
+            "id": "TemplateExclusivePenSiteVdmContactNavigationHeaderpenPrimary-1",
+            "logomaintext": "VDM Metals",
+            "logomainhref": "/",
+            "logosubtext": "A company of ACERINOX",
+            "logosubhref": "/",
+            "nav1text": "Products and services",
+            "nav1href": "/vdm-products",
+            "nav2text": "Company",
+            "nav2href": "/",
+            "nav3text": "Your career at VDM Metals",
+            "nav3href": "/",
+            "r1text": "Contact",
+            "r1href": "/vdm-contact",
+            "r2text": "Downloads",
+            "r2href": "/",
+            "r3text": "Language",
+            "r3href": "/",
+            "searchtext": "⌕",
+            "searchhref": "/",
             "theme": {
                   "mode": "light",
-                  "fontHeading": "Helvetica Neue",
-                  "fontBody": "Helvetica Neue",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
                   "motion": "subtle",
                   "fontFamilies": [
-                        "Helvetica Neue"
+                        "Inter"
                   ],
                   "palette": {
-                        "bg": "#FFFFFF",
-                        "text": "#151515",
-                        "primary": "#7AC943",
-                        "accent": "#7AC943",
-                        "neutral": "#151515",
-                        "textSecondary": "#646A62"
+                        "bg": "#ffffff",
+                        "text": "#d8e3ee",
+                        "primary": "#ffffff",
+                        "accent": "#ffffff",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
                   },
-                  "primaryColor": "#7AC943",
+                  "primaryColor": "#ffffff",
                   "layoutRules": {
                         "maxWidth": "1400px",
                         "sectionPadding": "py-24",
@@ -1728,46 +2489,99 @@ export const generatedComponents: Record<string, any> = {
                         "shadow": "dramatic",
                         "accent": "glow"
                   }
-            }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
       },
       fields: {
-        insightK0text: textField("InsightK0text"),
-        insightT0text: textField("InsightT0text"),
-        insightB0text: textField("InsightB0text"),
-        insightK1text: textField("InsightK1text"),
-        insightT1text: textField("InsightT1text"),
-        insightB1text: textField("InsightB1text"),
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
       },
     },
-    "TemplateExclusivePenSiteHomeFooterFooterpenAlt4_22086462": {
-      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteHomeFooterFooterpenAlt4_22086462"),
+    "TemplateExclusivePenSiteVdmContactFooterFooterpenAlt1": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteVdmContactFooterFooterpenAlt1"),
       defaultProps: {
-            "id": "TemplateExclusivePenSiteHomeFooterFooterpenAlt4_22086462-1",
-            "footerBrandtext": "VanMoof",
-            "footerBrandhref": "/",
-            "footerCol1text": "Our Rides Accessories Our Story",
-            "footerCol1href": "/our-rides",
-            "footerCol2text": "Peak Design Shipping & Delivery A5 S6",
-            "footerCol2href": "/peak-design",
-            "footerCopytext": "VanMoof structured clone pen. Editable text, cards, buttons and image containers.",
-            "footerCopyhref": "/",
+            "id": "TemplateExclusivePenSiteVdmContactFooterFooterpenAlt1-1",
+            "flogotext": "VDM Metals",
+            "subtext": "A company of ACERINOX",
+            "subhref": "/",
+            "lt1text": "Alloys and Semi-Finished Products",
+            "lt1href": "/vdm-products",
+            "rt1text": "Fields of application",
+            "rt1href": "/",
+            "lb1text": "Nickel and nickel alloys from VDM Metals\nCobalt alloys\nZirconium\nSpecial stainless steels\nAluminium and copper products\nPowder for Additive Manufacturing\nWelding consumables\nDelivery forms and dimensions\nComplete product range",
+            "lb1href": "/",
+            "rb1text": "Automotive\nOil and gas\nChemical process industry\nAerospace\nElectronics and Electrical Engineering\nEnergy, Environment, Sustainability\nMedical engineering\nMechanical engineering and hydraulics",
+            "rb1href": "/",
+            "lt2text": "Services",
+            "lt2href": "/",
+            "rt2text": "Service Centers",
+            "rt2href": "/",
+            "lb2text": "Research and development\nPowder Development\nEngineered Solutions\nTechnical customer advisory\nWelding technology center of excellence\nContract toll manufacturing\nCustomer Portal",
+            "lb2href": "/",
+            "rb2text": "Service Center Europe\nService Center China\nService Center Korea\nService Center Australia\nWebshop",
+            "rb2href": "/",
+            "lt3text": "News and Events",
+            "lt3href": "/",
+            "rt3text": "About VDM Metals",
+            "rt3href": "/vdm-about",
+            "lb3text": "Newsroom\nEvents calendar",
+            "lb3href": "/",
+            "rb3text": "Our Mission Statement\nManagement Board\nProduction capabilities\nHistory\nCorporate responsibility\nCompliance\nLocations\nIdeas Management",
+            "rb3href": "/",
+            "lt4text": "Procurement",
+            "lt4href": "/",
+            "rt4text": "current jobs at VDM Metals",
+            "rt4href": "/",
+            "lb4text": "Supplier profile requirements\nSupplier management",
+            "lb4href": "/",
+            "proftext": "professionals at VDM Metals",
+            "profhref": "/",
+            "schooltext": "school students at VDM Metals",
+            "schoolhref": "/",
+            "unitext": "university students at VDM Metals",
+            "unihref": "/",
+            "culturetext": "VDM Metals culture",
+            "culturehref": "/",
+            "benefitstext": "benefits at VDM Metals",
+            "benefitshref": "/",
+            "contactstext": "Contacts",
+            "contactshref": "/vdm-contact",
+            "addrtext": "VDM Metals GmbH, Plettenberger Straße 2, 58791 Werdohl, Germany   vd m@vdm-metals.com",
+            "addrhref": "/",
+            "legaltext": "Sitemap   Legal Information   Data Protection",
+            "legalhref": "/",
+            "copytext": "© 2026 Copyright by VDM Metals",
+            "copyhref": "/",
             "theme": {
                   "mode": "light",
-                  "fontHeading": "Helvetica Neue",
-                  "fontBody": "Helvetica Neue",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
                   "motion": "subtle",
                   "fontFamilies": [
-                        "Helvetica Neue"
+                        "Inter"
                   ],
                   "palette": {
-                        "bg": "#FFFFFF",
-                        "text": "#151515",
-                        "primary": "#7AC943",
-                        "accent": "#7AC943",
-                        "neutral": "#151515",
-                        "textSecondary": "#646A62"
+                        "bg": "#ffffff",
+                        "text": "#d8e3ee",
+                        "primary": "#ffffff",
+                        "accent": "#ffffff",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
                   },
-                  "primaryColor": "#7AC943",
+                  "primaryColor": "#ffffff",
                   "layoutRules": {
                         "maxWidth": "1400px",
                         "sectionPadding": "py-24",
@@ -1779,44 +2593,168 @@ export const generatedComponents: Record<string, any> = {
                         "shadow": "dramatic",
                         "accent": "glow"
                   }
-            }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": "",
+            "columns": [
+                  {
+                        "title": "Fields of application",
+                        "links": [
+                              {
+                                    "label": "Nickel and nickel alloys from VDM Metals",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Cobalt alloys",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Zirconium",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Special stainless steels",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Aluminium and copper products",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Powder for Additive Manufacturing",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Welding consumables",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Delivery forms and dimensions",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Complete product range",
+                                    "href": "/"
+                              }
+                        ]
+                  },
+                  {
+                        "title": "Service Centers",
+                        "links": [
+                              {
+                                    "label": "Research and development",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Powder Development",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Engineered Solutions",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Technical customer advisory",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Welding technology center of excellence",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Contract toll manufacturing",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Customer Portal",
+                                    "href": "/"
+                              }
+                        ]
+                  },
+                  {
+                        "title": "About VDM Metals",
+                        "links": [
+                              {
+                                    "label": "Newsroom",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Events calendar",
+                                    "href": "/"
+                              }
+                        ]
+                  },
+                  {
+                        "title": "current jobs at VDM Metals",
+                        "links": [
+                              {
+                                    "label": "Supplier profile requirements",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Supplier management",
+                                    "href": "/"
+                              }
+                        ]
+                  }
+            ]
       },
       fields: {
-        footerBrandtext: textField("FooterBrandtext"),
-        footerBrandhref: textField("FooterBrandhref"),
-        footerCol1text: textField("FooterCol1text"),
-        footerCol1href: textField("FooterCol1href"),
-        footerCol2text: textField("FooterCol2text"),
-        footerCol2href: textField("FooterCol2href"),
-        footerCopytext: textField("FooterCopytext"),
-        footerCopyhref: textField("FooterCopyhref"),
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
       },
     },
-    "TemplateExclusivePenSiteOurRidesNavigationHeaderpenPrimary_88976515": {
-      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteOurRidesNavigationHeaderpenPrimary_88976515"),
+    "TemplateExclusivePenSiteVdmContactContactContactmainpenAlt2": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteVdmContactContactContactmainpenAlt2"),
       defaultProps: {
-            "id": "TemplateExclusivePenSiteOurRidesNavigationHeaderpenPrimary_88976515-1",
-            "headerBrandtext": "VanMoof",
-            "headerBrandhref": "/",
-            "headerMenutext": "☰",
-            "headerMenuhref": "/",
+            "id": "TemplateExclusivePenSiteVdmContactContactContactmainpenAlt2-1",
+            "zltavtext": "Contact",
+            "jkvyztext": "Please use this overview to find your contact person quickly and easily.",
+            "yibfutext": "Contacts",
+            "n8cuxtext": "Sales",
+            "i3axxtext": "Service Center",
+            "jvlq7text": "Technical Customer Advisory",
+            "aqb1ytext": "Human Resources",
+            "l0hrltext": "Research & Development",
+            "jm6petext": "Engineered Solutions",
+            "quanktext": "Toll manufacturing",
+            "qdhy3text": "Welding Competence Center",
+            "bsgktext": "Procurement",
+            "uly6gtext": "SCM",
+            "lx2kbtext": "Marketing & PR",
+            "m5sn7text": "Compliance",
+            "rqigstext": "All contact persons",
+            "crumbtext": "Home  >  Contact",
+            "evitftext": "Select an area to search for the contact person for:",
             "theme": {
                   "mode": "light",
-                  "fontHeading": "Helvetica Neue",
-                  "fontBody": "Helvetica Neue",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
                   "motion": "subtle",
                   "fontFamilies": [
-                        "Helvetica Neue"
+                        "Inter"
                   ],
                   "palette": {
-                        "bg": "#FFFFFF",
-                        "text": "#151515",
-                        "primary": "#7AC943",
-                        "accent": "#7AC943",
-                        "neutral": "#151515",
-                        "textSecondary": "#646A62"
+                        "bg": "#ffffff",
+                        "text": "#d8e3ee",
+                        "primary": "#ffffff",
+                        "accent": "#ffffff",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
                   },
-                  "primaryColor": "#7AC943",
+                  "primaryColor": "#ffffff",
                   "layoutRules": {
                         "maxWidth": "1400px",
                         "sectionPadding": "py-24",
@@ -1828,44 +2766,56 @@ export const generatedComponents: Record<string, any> = {
                         "shadow": "dramatic",
                         "accent": "glow"
                   }
-            }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
       },
       fields: {
-        headerBrandtext: textField("HeaderBrandtext"),
-        headerBrandhref: textField("HeaderBrandhref"),
-        headerMenutext: textField("HeaderMenutext"),
-        headerMenuhref: textField("HeaderMenuhref"),
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
       },
     },
-    "TemplateExclusivePenSiteOurRidesFooterFooterpenAlt1_fe671913": {
-      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteOurRidesFooterFooterpenAlt1_fe671913"),
+    "TemplateExclusivePenSiteHomeNavigationNavpenPrimary": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteHomeNavigationNavpenPrimary"),
       defaultProps: {
-            "id": "TemplateExclusivePenSiteOurRidesFooterFooterpenAlt1_fe671913-1",
-            "footerBrandtext": "VanMoof",
-            "footerBrandhref": "/",
-            "footerCol1text": "Our Rides Accessories Our Story",
-            "footerCol1href": "/our-rides",
-            "footerCol2text": "Peak Design Shipping & Delivery A5 S6",
-            "footerCol2href": "/peak-design",
-            "footerCopytext": "VanMoof structured clone pen. Editable text, cards, buttons and image containers.",
-            "footerCopyhref": "/",
+            "id": "TemplateExclusivePenSiteHomeNavigationNavpenPrimary-1",
+            "zfiqotext": "JABIL",
+            "zfiqohref": "/",
+            "hpoe5text": "PROCUREMENT & SUPPLY CHAIN SERVICES",
+            "hpoe5href": "/",
+            "wkvegtext": "Who we are    What we do    What we think",
+            "wkveghref": "/",
+            "duzb0text": "⌕",
+            "duzb0href": "/",
             "theme": {
                   "mode": "light",
-                  "fontHeading": "Helvetica Neue",
-                  "fontBody": "Helvetica Neue",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
                   "motion": "subtle",
                   "fontFamilies": [
-                        "Helvetica Neue"
+                        "Inter"
                   ],
                   "palette": {
-                        "bg": "#FFFFFF",
-                        "text": "#151515",
-                        "primary": "#7AC943",
-                        "accent": "#7AC943",
-                        "neutral": "#151515",
-                        "textSecondary": "#646A62"
+                        "bg": "#f6f6f2",
+                        "text": "#ffffff",
+                        "primary": "#1eb4ef",
+                        "accent": "#1eb4ef",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
                   },
-                  "primaryColor": "#7AC943",
+                  "primaryColor": "#1eb4ef",
                   "layoutRules": {
                         "maxWidth": "1400px",
                         "sectionPadding": "py-24",
@@ -1877,44 +2827,55 @@ export const generatedComponents: Record<string, any> = {
                         "shadow": "dramatic",
                         "accent": "glow"
                   }
-            }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
       },
       fields: {
-        footerBrandtext: textField("FooterBrandtext"),
-        footerBrandhref: textField("FooterBrandhref"),
-        footerCol1text: textField("FooterCol1text"),
-        footerCol1href: textField("FooterCol1href"),
-        footerCol2text: textField("FooterCol2text"),
-        footerCol2href: textField("FooterCol2href"),
-        footerCopytext: textField("FooterCopytext"),
-        footerCopyhref: textField("FooterCopyhref"),
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
       },
     },
-    "TemplateExclusivePenSiteAccessoriesNavigationHeaderpenPrimary_a6cfdc59": {
-      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteAccessoriesNavigationHeaderpenPrimary_a6cfdc59"),
+    "TemplateExclusivePenSiteHomeHeroHeropenAlt1_4f48f580": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteHomeHeroHeropenAlt1_4f48f580"),
       defaultProps: {
-            "id": "TemplateExclusivePenSiteAccessoriesNavigationHeaderpenPrimary_a6cfdc59-1",
-            "headerBrandtext": "VanMoof",
-            "headerBrandhref": "/",
-            "headerMenutext": "☰",
-            "headerMenuhref": "/",
+            "id": "TemplateExclusivePenSiteHomeHeroHeropenAlt1_4f48f580-1",
+            "yqclhtext": "PROCUREMENT",
+            "h9bqktext": "SUPPLY CHAIN",
+            "sjib8text": "ID8",
+            "btnrowbhref": "/",
+            "agwxutext": "Supply Chain",
+            "s32z6text": "Market Intelligence",
+            "q7j1ftext": "Procurement Services",
             "theme": {
                   "mode": "light",
-                  "fontHeading": "Helvetica Neue",
-                  "fontBody": "Helvetica Neue",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
                   "motion": "subtle",
                   "fontFamilies": [
-                        "Helvetica Neue"
+                        "Inter"
                   ],
                   "palette": {
-                        "bg": "#FFFFFF",
-                        "text": "#151515",
-                        "primary": "#7AC943",
-                        "accent": "#7AC943",
-                        "neutral": "#151515",
-                        "textSecondary": "#646A62"
+                        "bg": "#f6f6f2",
+                        "text": "#ffffff",
+                        "primary": "#1eb4ef",
+                        "accent": "#1eb4ef",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
                   },
-                  "primaryColor": "#7AC943",
+                  "primaryColor": "#1eb4ef",
                   "layoutRules": {
                         "maxWidth": "1400px",
                         "sectionPadding": "py-24",
@@ -1926,44 +2887,72 @@ export const generatedComponents: Record<string, any> = {
                         "shadow": "dramatic",
                         "accent": "glow"
                   }
-            }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
       },
       fields: {
-        headerBrandtext: textField("HeaderBrandtext"),
-        headerBrandhref: textField("HeaderBrandhref"),
-        headerMenutext: textField("HeaderMenutext"),
-        headerMenuhref: textField("HeaderMenuhref"),
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
       },
     },
-    "TemplateExclusivePenSiteAccessoriesFooterFooterpenAlt1_71046523": {
-      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteAccessoriesFooterFooterpenAlt1_71046523"),
+    "TemplateExclusivePenSiteHomeStoryWhowearepenAlt2": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteHomeStoryWhowearepenAlt2"),
       defaultProps: {
-            "id": "TemplateExclusivePenSiteAccessoriesFooterFooterpenAlt1_71046523-1",
-            "footerBrandtext": "VanMoof",
-            "footerBrandhref": "/",
-            "footerCol1text": "Our Rides Accessories Our Story",
-            "footerCol1href": "/our-rides",
-            "footerCol2text": "Peak Design Shipping & Delivery A5 S6",
-            "footerCol2href": "/peak-design",
-            "footerCopytext": "VanMoof structured clone pen. Editable text, cards, buttons and image containers.",
-            "footerCopyhref": "/",
+            "id": "TemplateExclusivePenSiteHomeStoryWhowearepenAlt2-1",
+            "grkmvtext": "Who We Are",
+            "e8gkntext": "Leveraging a $25 billion annual procurement spend and over\n50 years of experience managing global supply chains for the\nworld's leading brands, Jabil brings proven processes and\npractical know-how to help customers navigate challenges\nwith speed, agility, and confidence.",
+            "gxrgatext": "Made by Practitioners. For Practitioners.",
+            "gtc37text": "Looking to transform your business operations? Welcome to Jabil's comprehensive procurement and supply chain services.",
+            "dxsxqtext": "JABIL",
+            "v3z1wtext": "PROCUREMENT &\nSUPPLY CHAIN SERVICES",
+            "t1text": "A",
+            "label1text": "AWARD",
+            "bes0vtext": "55+",
+            "fxfg1text": "Years of Experience",
+            "t2text": "$",
+            "rmsx6text": "SPEND",
+            "yamfltext": "25B",
+            "dv0hktext": "Global Spend",
+            "t3text": "*",
+            "feylntext": "EXPERTS",
+            "fbi9wtext": "3,000",
+            "wqjbctext": "Procurement & Supply Chain\nExperts",
+            "t4text": "O",
+            "tra4text": "SUPPLIERS",
+            "yzp0dtext": "38,000",
+            "zipsotext": "Global Suppliers",
+            "q85k1text": "Discover More",
+            "ctawhobhref": "/",
             "theme": {
                   "mode": "light",
-                  "fontHeading": "Helvetica Neue",
-                  "fontBody": "Helvetica Neue",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
                   "motion": "subtle",
                   "fontFamilies": [
-                        "Helvetica Neue"
+                        "Inter"
                   ],
                   "palette": {
-                        "bg": "#FFFFFF",
-                        "text": "#151515",
-                        "primary": "#7AC943",
-                        "accent": "#7AC943",
-                        "neutral": "#151515",
-                        "textSecondary": "#646A62"
+                        "bg": "#f6f6f2",
+                        "text": "#ffffff",
+                        "primary": "#1eb4ef",
+                        "accent": "#1eb4ef",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
                   },
-                  "primaryColor": "#7AC943",
+                  "primaryColor": "#1eb4ef",
                   "layoutRules": {
                         "maxWidth": "1400px",
                         "sectionPadding": "py-24",
@@ -1975,44 +2964,65 @@ export const generatedComponents: Record<string, any> = {
                         "shadow": "dramatic",
                         "accent": "glow"
                   }
-            }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
       },
       fields: {
-        footerBrandtext: textField("FooterBrandtext"),
-        footerBrandhref: textField("FooterBrandhref"),
-        footerCol1text: textField("FooterCol1text"),
-        footerCol1href: textField("FooterCol1href"),
-        footerCol2text: textField("FooterCol2text"),
-        footerCol2href: textField("FooterCol2href"),
-        footerCopytext: textField("FooterCopytext"),
-        footerCopyhref: textField("FooterCopyhref"),
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
       },
     },
-    "TemplateExclusivePenSiteOurStoryNavigationHeaderpenPrimary_7d74687d": {
-      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteOurStoryNavigationHeaderpenPrimary_7d74687d"),
+    "TemplateExclusivePenSiteHomeStoryResourcespenAlt3": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteHomeStoryResourcespenAlt3"),
       defaultProps: {
-            "id": "TemplateExclusivePenSiteOurStoryNavigationHeaderpenPrimary_7d74687d-1",
-            "headerBrandtext": "VanMoof",
-            "headerBrandhref": "/",
-            "headerMenutext": "☰",
-            "headerMenuhref": "/",
+            "id": "TemplateExclusivePenSiteHomeStoryResourcespenAlt3-1",
+            "vptvytext": "\"I've known Jabil for years as a trusted manufacturing solutions provider, so when I learned they also offer procurement and supply chain services, I had full confidence in their capabilities. We initially engaged with their procurement technology services, but quickly realized the vast scope of what they offer. Today, we also leverage their procurement and logistics services, and the possibilities feel limitless. Jabil is more than a typical consultancy - they are committed to delivering real value. From the start, they guided us, introducing new services that have driven significant efficiencies and cost savings. Jabil understands our needs like true practitioners and has become an invaluable partner.\"",
+            "logomarktext": "mankind",
+            "banbgaimagesrc": "https://images.unsplash.com/photo-1746470427617-91e8dd28298d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMzMjkzODR8&ixlib=rb-4.1.0&q=80&w=1080",
+            "b2tuptext": "White Paper: De-Risking Supply Chains for Private\nEquity Investments",
+            "odt1ztext": "Private equity firms are now investing into structurally higher supply chain risk.\nGeopolitics, supplier concentration, regulatory complexity, and ongoing\ndisruption have made volatility a constant, not an exception.",
+            "r1iaimagesrc": "https://images.unsplash.com/photo-1738918897772-0ba101be25c8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMzMjk0MTF8&ixlib=rb-4.1.0&q=80&w=1080",
+            "xhi1text": "3PL vs 4PL vs LaaS: WhatChanges as Logistics Matures Learn More\n",
+            "learn1text": "LEARN MORE",
+            "r2iaimagesrc": "https://images.unsplash.com/photo-1697665896491-c88543c6cd77?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMzMjk0MTJ8&ixlib=rb-4.1.0&q=80&w=1080",
+            "uszhctext": "A New Framework for the Next Generation of Procurement: Beyond Cost Savings\n",
+            "learn2text": "LEARN MORE",
+            "r3iaimagesrc": "https://images.unsplash.com/photo-1773125929765-99d4d67e831d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMzMjk0MTN8&ixlib=rb-4.1.0&q=80&w=1080",
+            "zlsextext": "Procurement Optimization That Drives Efficiency and Resilience Across \nIndustries",
+            "learn3text": "LEARN MORE",
+            "r4iaimagesrc": "https://images.unsplash.com/photo-1758873268364-15bef4162221?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMzMjk0MTN8&ixlib=rb-4.1.0&q=80&w=1080",
+            "zot34text": "End-to-End Procurement in Highly Regulated Industries\n",
+            "learn4text": "LEARN MORE",
             "theme": {
                   "mode": "light",
-                  "fontHeading": "Helvetica Neue",
-                  "fontBody": "Helvetica Neue",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
                   "motion": "subtle",
                   "fontFamilies": [
-                        "Helvetica Neue"
+                        "Inter"
                   ],
                   "palette": {
-                        "bg": "#FFFFFF",
-                        "text": "#151515",
-                        "primary": "#7AC943",
-                        "accent": "#7AC943",
-                        "neutral": "#151515",
-                        "textSecondary": "#646A62"
+                        "bg": "#f6f6f2",
+                        "text": "#ffffff",
+                        "primary": "#1eb4ef",
+                        "accent": "#1eb4ef",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
                   },
-                  "primaryColor": "#7AC943",
+                  "primaryColor": "#1eb4ef",
                   "layoutRules": {
                         "maxWidth": "1400px",
                         "sectionPadding": "py-24",
@@ -2024,44 +3034,54 @@ export const generatedComponents: Record<string, any> = {
                         "shadow": "dramatic",
                         "accent": "glow"
                   }
-            }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
       },
       fields: {
-        headerBrandtext: textField("HeaderBrandtext"),
-        headerBrandhref: textField("HeaderBrandhref"),
-        headerMenutext: textField("HeaderMenutext"),
-        headerMenuhref: textField("HeaderMenuhref"),
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
       },
     },
-    "TemplateExclusivePenSiteOurStoryFooterFooterpenAlt1_cf6ae4e8": {
-      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteOurStoryFooterFooterpenAlt1_cf6ae4e8"),
+    "TemplateExclusivePenSiteHomeSocialproofLogostrippenAlt4": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteHomeSocialproofLogostrippenAlt4"),
       defaultProps: {
-            "id": "TemplateExclusivePenSiteOurStoryFooterFooterpenAlt1_cf6ae4e8-1",
-            "footerBrandtext": "VanMoof",
-            "footerBrandhref": "/",
-            "footerCol1text": "Our Rides Accessories Our Story",
-            "footerCol1href": "/our-rides",
-            "footerCol2text": "Peak Design Shipping & Delivery A5 S6",
-            "footerCol2href": "/peak-design",
-            "footerCopytext": "VanMoof structured clone pen. Editable text, cards, buttons and image containers.",
-            "footerCopyhref": "/",
+            "id": "TemplateExclusivePenSiteHomeSocialproofLogostrippenAlt4-1",
+            "rkc4text": "e2open\nconnect",
+            "tgjnptext": "ONCON\nICON",
+            "mspsxtext": "Pros to\nKnow",
+            "rn404text": "Supply Chain\nProjects",
+            "g0ysctext": "Top 100\nLeaders 2025",
+            "awardtexttext": "Women in\nSupply Chain",
             "theme": {
                   "mode": "light",
-                  "fontHeading": "Helvetica Neue",
-                  "fontBody": "Helvetica Neue",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
                   "motion": "subtle",
                   "fontFamilies": [
-                        "Helvetica Neue"
+                        "Inter"
                   ],
                   "palette": {
-                        "bg": "#FFFFFF",
-                        "text": "#151515",
-                        "primary": "#7AC943",
-                        "accent": "#7AC943",
-                        "neutral": "#151515",
-                        "textSecondary": "#646A62"
+                        "bg": "#f6f6f2",
+                        "text": "#ffffff",
+                        "primary": "#1eb4ef",
+                        "accent": "#1eb4ef",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
                   },
-                  "primaryColor": "#7AC943",
+                  "primaryColor": "#1eb4ef",
                   "layoutRules": {
                         "maxWidth": "1400px",
                         "sectionPadding": "py-24",
@@ -2073,44 +3093,67 @@ export const generatedComponents: Record<string, any> = {
                         "shadow": "dramatic",
                         "accent": "glow"
                   }
-            }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
       },
       fields: {
-        footerBrandtext: textField("FooterBrandtext"),
-        footerBrandhref: textField("FooterBrandhref"),
-        footerCol1text: textField("FooterCol1text"),
-        footerCol1href: textField("FooterCol1href"),
-        footerCol2text: textField("FooterCol2text"),
-        footerCol2href: textField("FooterCol2href"),
-        footerCopytext: textField("FooterCopytext"),
-        footerCopyhref: textField("FooterCopyhref"),
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
       },
     },
-    "TemplateExclusivePenSitePeakDesignNavigationHeaderpenPrimary_ab067744": {
-      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSitePeakDesignNavigationHeaderpenPrimary_ab067744"),
+    "TemplateExclusivePenSiteHomeStoryWhatwedopenAlt5": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteHomeStoryWhatwedopenAlt5"),
       defaultProps: {
-            "id": "TemplateExclusivePenSitePeakDesignNavigationHeaderpenPrimary_ab067744-1",
-            "headerBrandtext": "VanMoof",
-            "headerBrandhref": "/",
-            "headerMenutext": "☰",
-            "headerMenuhref": "/",
+            "id": "TemplateExclusivePenSiteHomeStoryWhatwedopenAlt5-1",
+            "fj7ntext": "What We Do",
+            "q6krqtext": "Explore our services and find out how we can help your business deliver.",
+            "wd1bgaimagesrc": "https://images.unsplash.com/photo-1771814574230-49e5a374aafe?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMzMjk1Mjh8&ixlib=rb-4.1.0&q=80&w=1080",
+            "k9vyttext": "MARKET\nINTELLIGENCE",
+            "wd2bgaimagesrc": "https://images.unsplash.com/photo-1600506451234-9e555c0c8d05?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMzMjk1Mjl8&ixlib=rb-4.1.0&q=80&w=1080",
+            "us3rvtext": "PROCUREMENT\nSERVICES",
+            "wd3bgaimagesrc": "https://images.unsplash.com/photo-1759272548470-d0686d071036?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMzMjk1Mjl8&ixlib=rb-4.1.0&q=80&w=1080",
+            "w5mhqtext": "SUPPLY CHAIN\nSERVICES",
+            "zxya9imagesrc": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80",
+            "cry5qtext": "SMART HOME &\nAPPLIANCES",
+            "emy9imagesrc": "https://images.unsplash.com/photo-1517479149777-5f3b1511d5ad?auto=format&fit=crop&w=800&q=80",
+            "mnczytext": "UAV",
+            "kxmauimagesrc": "https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&w=800&q=80",
+            "dz8ztext": "WIRELESS\nINFRASTRUCTURE",
+            "mex4zimagesrc": "https://images.unsplash.com/photo-1517976487492-5750f3195933?auto=format&fit=crop&w=800&q=80",
+            "vlc6xtext": "AEROSPACE &\nDEFENCE",
+            "industrybtnwraphref": "/",
+            "zgfpbtext": "View all industries",
+            "industrybtnhref": "/",
             "theme": {
                   "mode": "light",
-                  "fontHeading": "Helvetica Neue",
-                  "fontBody": "Helvetica Neue",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
                   "motion": "subtle",
                   "fontFamilies": [
-                        "Helvetica Neue"
+                        "Inter"
                   ],
                   "palette": {
-                        "bg": "#FFFFFF",
-                        "text": "#151515",
-                        "primary": "#7AC943",
-                        "accent": "#7AC943",
-                        "neutral": "#151515",
-                        "textSecondary": "#646A62"
+                        "bg": "#f6f6f2",
+                        "text": "#ffffff",
+                        "primary": "#1eb4ef",
+                        "accent": "#1eb4ef",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
                   },
-                  "primaryColor": "#7AC943",
+                  "primaryColor": "#1eb4ef",
                   "layoutRules": {
                         "maxWidth": "1400px",
                         "sectionPadding": "py-24",
@@ -2122,44 +3165,70 @@ export const generatedComponents: Record<string, any> = {
                         "shadow": "dramatic",
                         "accent": "glow"
                   }
-            }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
       },
       fields: {
-        headerBrandtext: textField("HeaderBrandtext"),
-        headerBrandhref: textField("HeaderBrandhref"),
-        headerMenutext: textField("HeaderMenutext"),
-        headerMenuhref: textField("HeaderMenuhref"),
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
       },
     },
-    "TemplateExclusivePenSitePeakDesignFooterFooterpenAlt1_aa850542": {
-      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSitePeakDesignFooterFooterpenAlt1_aa850542"),
+    "TemplateExclusivePenSiteHomeStoryEventspenAlt6": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteHomeStoryEventspenAlt6"),
       defaultProps: {
-            "id": "TemplateExclusivePenSitePeakDesignFooterFooterpenAlt1_aa850542-1",
-            "footerBrandtext": "VanMoof",
-            "footerBrandhref": "/",
-            "footerCol1text": "Our Rides Accessories Our Story",
-            "footerCol1href": "/our-rides",
-            "footerCol2text": "Peak Design Shipping & Delivery A5 S6",
-            "footerCol2href": "/peak-design",
-            "footerCopytext": "VanMoof structured clone pen. Editable text, cards, buttons and image containers.",
-            "footerCopyhref": "/",
+            "id": "TemplateExclusivePenSiteHomeStoryEventspenAlt6-1",
+            "xrk0text": "Upcoming Events",
+            "qdmbwtext": "AMERICAS\nPROCUREMENT\nCONGRESS\n& GEP",
+            "fosctext": "Americas Procurement\nCongress",
+            "lkkvitext": "March 24-25, 2026",
+            "oypjktext": "The Roosevelt, New Orleans",
+            "g8ldytext": "Read More",
+            "jw9ltext": "PROCUREMENT &\nSUPPLY CHAIN LIVE",
+            "wglogtext": "Procurement & Supply chain\nLIVE",
+            "pdca8text": "April 21-22, 2026",
+            "xcjnbtext": "Navy Pier, Chicago",
+            "bfsjtext": "Read More",
+            "fqrtatext": "X",
+            "itkvtext": "coupa\ninspire",
+            "vl5text": "Coupa Inspire",
+            "lnbttext": "May 11-14, 2026",
+            "knqhitext": "ARIA, Las Vegas",
+            "hav1ptext": "Read More",
+            "ftbgjtext": "WORLD\nPROCUREMENT\nCONGRESS\n& GEP",
+            "mc4kjtext": "World Procurement Congress",
+            "v1noktext": "May 20-21, 2026",
+            "r5rbrtext": "InterContinental London - The O2,\nLondon",
+            "ror01text": "Read More",
             "theme": {
                   "mode": "light",
-                  "fontHeading": "Helvetica Neue",
-                  "fontBody": "Helvetica Neue",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
                   "motion": "subtle",
                   "fontFamilies": [
-                        "Helvetica Neue"
+                        "Inter"
                   ],
                   "palette": {
-                        "bg": "#FFFFFF",
-                        "text": "#151515",
-                        "primary": "#7AC943",
-                        "accent": "#7AC943",
-                        "neutral": "#151515",
-                        "textSecondary": "#646A62"
+                        "bg": "#f6f6f2",
+                        "text": "#ffffff",
+                        "primary": "#1eb4ef",
+                        "accent": "#1eb4ef",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
                   },
-                  "primaryColor": "#7AC943",
+                  "primaryColor": "#1eb4ef",
                   "layoutRules": {
                         "maxWidth": "1400px",
                         "sectionPadding": "py-24",
@@ -2171,44 +3240,58 @@ export const generatedComponents: Record<string, any> = {
                         "shadow": "dramatic",
                         "accent": "glow"
                   }
-            }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
       },
       fields: {
-        footerBrandtext: textField("FooterBrandtext"),
-        footerBrandhref: textField("FooterBrandhref"),
-        footerCol1text: textField("FooterCol1text"),
-        footerCol1href: textField("FooterCol1href"),
-        footerCol2text: textField("FooterCol2text"),
-        footerCol2href: textField("FooterCol2href"),
-        footerCopytext: textField("FooterCopytext"),
-        footerCopyhref: textField("FooterCopyhref"),
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
       },
     },
-    "TemplateExclusivePenSiteShippingDeliveryNavigationHeaderpenPrimary_f3662355": {
-      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteShippingDeliveryNavigationHeaderpenPrimary_f3662355"),
+    "TemplateExclusivePenSiteHomeContactHomecontactpenAlt7": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteHomeContactHomecontactpenAlt7"),
       defaultProps: {
-            "id": "TemplateExclusivePenSiteShippingDeliveryNavigationHeaderpenPrimary_f3662355-1",
-            "headerBrandtext": "VanMoof",
-            "headerBrandhref": "/",
-            "headerMenutext": "☰",
-            "headerMenuhref": "/",
+            "id": "TemplateExclusivePenSiteHomeContactHomecontactpenAlt7-1",
+            "xvezktext": "Contact us to learn more",
+            "mtgetext": "We can pull together report samples, subscription pricing, and other helpful information that will get you better insights into supply chain realities.",
+            "ieae8text": "First Name*",
+            "p5aeatext": "Last Name*",
+            "avgedtext": "Company Name*",
+            "c6xgtext": "Company URL*",
+            "ewg1ctext": "Business Email*",
+            "osgwitext": "Phone Number",
+            "ryrpwtext": "Additional Comments",
+            "stymmtext": "Submit",
             "theme": {
                   "mode": "light",
-                  "fontHeading": "Helvetica Neue",
-                  "fontBody": "Helvetica Neue",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
                   "motion": "subtle",
                   "fontFamilies": [
-                        "Helvetica Neue"
+                        "Inter"
                   ],
                   "palette": {
-                        "bg": "#FFFFFF",
-                        "text": "#151515",
-                        "primary": "#7AC943",
-                        "accent": "#7AC943",
-                        "neutral": "#151515",
-                        "textSecondary": "#646A62"
+                        "bg": "#f6f6f2",
+                        "text": "#ffffff",
+                        "primary": "#1eb4ef",
+                        "accent": "#1eb4ef",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
                   },
-                  "primaryColor": "#7AC943",
+                  "primaryColor": "#1eb4ef",
                   "layoutRules": {
                         "maxWidth": "1400px",
                         "sectionPadding": "py-24",
@@ -2220,44 +3303,76 @@ export const generatedComponents: Record<string, any> = {
                         "shadow": "dramatic",
                         "accent": "glow"
                   }
-            }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
       },
       fields: {
-        headerBrandtext: textField("HeaderBrandtext"),
-        headerBrandhref: textField("HeaderBrandhref"),
-        headerMenutext: textField("HeaderMenutext"),
-        headerMenuhref: textField("HeaderMenuhref"),
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
       },
     },
-    "TemplateExclusivePenSiteShippingDeliveryFooterFooterpenAlt1_2a4328e6": {
-      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteShippingDeliveryFooterFooterpenAlt1_2a4328e6"),
+    "TemplateExclusivePenSiteHomeFooterHomefooterpenAlt8": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteHomeFooterHomefooterpenAlt8"),
       defaultProps: {
-            "id": "TemplateExclusivePenSiteShippingDeliveryFooterFooterpenAlt1_2a4328e6-1",
-            "footerBrandtext": "VanMoof",
-            "footerBrandhref": "/",
-            "footerCol1text": "Our Rides Accessories Our Story",
-            "footerCol1href": "/our-rides",
-            "footerCol2text": "Peak Design Shipping & Delivery A5 S6",
-            "footerCol2href": "/peak-design",
-            "footerCopytext": "VanMoof structured clone pen. Editable text, cards, buttons and image containers.",
-            "footerCopyhref": "/",
+            "id": "TemplateExclusivePenSiteHomeFooterHomefooterpenAlt8-1",
+            "zonbrtext": "OUR EXPERIENCE. YOUR FUTURE.",
+            "ad9rmtext": "We are proud to be part of Jabil, a trusted partner for the world's top brands, offering comprehensive engineering, manufacturing, and supply chain solutions. With over 50 years of experience across industries and a vast network of over 100 sites worldwide, Jabil combines global reach with local expertise to deliver both scalable and customized solutions.",
+            "ad9rmhref": "/",
+            "x7fnvtext": "JABIL",
+            "x7fnvhref": "/",
+            "r8k6text": "Who we are",
+            "snqtext": "About us\nAwards\nMeet the team\nWhat we think\nContact us",
+            "snqhref": "/",
+            "umnaetext": "What we do",
+            "hfa4ztext": "Market Intelligence\nProcurement Services\nSupply Chain Services",
+            "hfa4zhref": "/",
+            "rtuitext": "Follow us",
+            "q4qnttext": "Keep up-to-date with our\nlatest news on social.",
+            "q4qnthref": "/",
+            "km2tqtext": "f",
+            "ey8kztext": "X",
+            "l8t2ftext": "◎",
+            "pzc3dtext": "in",
+            "pwpndtext": "© 2026 Jabil Procurement & Supply Chain Services. All rights reserved.",
+            "rud9text": "Privacy Policy",
+            "s531btext": "|",
+            "s531bhref": "/",
+            "db204text": "Cookie Policy",
+            "db204href": "/",
+            "donsxtext": "|",
+            "donsxhref": "/",
+            "hymbatext": "Terms of Use",
+            "hymbahref": "/",
             "theme": {
                   "mode": "light",
-                  "fontHeading": "Helvetica Neue",
-                  "fontBody": "Helvetica Neue",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
                   "motion": "subtle",
                   "fontFamilies": [
-                        "Helvetica Neue"
+                        "Inter"
                   ],
                   "palette": {
-                        "bg": "#FFFFFF",
-                        "text": "#151515",
-                        "primary": "#7AC943",
-                        "accent": "#7AC943",
-                        "neutral": "#151515",
-                        "textSecondary": "#646A62"
+                        "bg": "#f6f6f2",
+                        "text": "#ffffff",
+                        "primary": "#1eb4ef",
+                        "accent": "#1eb4ef",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
                   },
-                  "primaryColor": "#7AC943",
+                  "primaryColor": "#1eb4ef",
                   "layoutRules": {
                         "maxWidth": "1400px",
                         "sectionPadding": "py-24",
@@ -2269,44 +3384,113 @@ export const generatedComponents: Record<string, any> = {
                         "shadow": "dramatic",
                         "accent": "glow"
                   }
-            }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": "",
+            "columns": [
+                  {
+                        "title": "Who we are",
+                        "links": [
+                              {
+                                    "label": "About us",
+                                    "href": "/about"
+                              },
+                              {
+                                    "label": "Awards",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Meet the team",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "What we think",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Contact us",
+                                    "href": "/contact"
+                              }
+                        ]
+                  },
+                  {
+                        "title": "What we do",
+                        "links": [
+                              {
+                                    "label": "Market Intelligence",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Procurement Services",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Supply Chain Services",
+                                    "href": "/"
+                              }
+                        ]
+                  },
+                  {
+                        "title": "Follow us",
+                        "links": [
+                              {
+                                    "label": "Keep up-to-date with our",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "latest news on social.",
+                                    "href": "/"
+                              }
+                        ]
+                  }
+            ]
       },
       fields: {
-        footerBrandtext: textField("FooterBrandtext"),
-        footerBrandhref: textField("FooterBrandhref"),
-        footerCol1text: textField("FooterCol1text"),
-        footerCol1href: textField("FooterCol1href"),
-        footerCol2text: textField("FooterCol2text"),
-        footerCol2href: textField("FooterCol2href"),
-        footerCopytext: textField("FooterCopytext"),
-        footerCopyhref: textField("FooterCopyhref"),
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
       },
     },
-    "TemplateExclusivePenSiteA5NavigationHeaderpenPrimary_3e0d46b3": {
-      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteA5NavigationHeaderpenPrimary_3e0d46b3"),
+    "TemplateExclusivePenSitePscsAboutNavigationNavpenPrimary": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSitePscsAboutNavigationNavpenPrimary"),
       defaultProps: {
-            "id": "TemplateExclusivePenSiteA5NavigationHeaderpenPrimary_3e0d46b3-1",
-            "headerBrandtext": "VanMoof",
-            "headerBrandhref": "/",
-            "headerMenutext": "☰",
-            "headerMenuhref": "/",
+            "id": "TemplateExclusivePenSitePscsAboutNavigationNavpenPrimary-1",
+            "nwsojtext": "JABIL",
+            "nwsojhref": "/",
+            "nqk3ntext": "PROCUREMENT & SUPPLY CHAIN SERVICES",
+            "nqk3nhref": "/",
+            "seec5text": "Who we are    What we do    What we think",
+            "seec5href": "/",
+            "lnxyotext": "⌕",
+            "lnxyohref": "/",
             "theme": {
                   "mode": "light",
-                  "fontHeading": "Helvetica Neue",
-                  "fontBody": "Helvetica Neue",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
                   "motion": "subtle",
                   "fontFamilies": [
-                        "Helvetica Neue"
+                        "Inter"
                   ],
                   "palette": {
-                        "bg": "#FFFFFF",
-                        "text": "#151515",
-                        "primary": "#7AC943",
-                        "accent": "#7AC943",
-                        "neutral": "#151515",
-                        "textSecondary": "#646A62"
+                        "bg": "#f6f6f2",
+                        "text": "#ffffff",
+                        "primary": "#4F77FF",
+                        "accent": "#4F77FF",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
                   },
-                  "primaryColor": "#7AC943",
+                  "primaryColor": "#4F77FF",
                   "layoutRules": {
                         "maxWidth": "1400px",
                         "sectionPadding": "py-24",
@@ -2318,44 +3502,51 @@ export const generatedComponents: Record<string, any> = {
                         "shadow": "dramatic",
                         "accent": "glow"
                   }
-            }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
       },
       fields: {
-        headerBrandtext: textField("HeaderBrandtext"),
-        headerBrandhref: textField("HeaderBrandhref"),
-        headerMenutext: textField("HeaderMenutext"),
-        headerMenuhref: textField("HeaderMenuhref"),
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
       },
     },
-    "TemplateExclusivePenSiteA5FooterFooterpenAlt1_c8836675": {
-      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteA5FooterFooterpenAlt1_c8836675"),
+    "TemplateExclusivePenSitePscsAboutHeroAboutheropenAlt1": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSitePscsAboutHeroAboutheropenAlt1"),
       defaultProps: {
-            "id": "TemplateExclusivePenSiteA5FooterFooterpenAlt1_c8836675-1",
-            "footerBrandtext": "VanMoof",
-            "footerBrandhref": "/",
-            "footerCol1text": "Our Rides Accessories Our Story",
-            "footerCol1href": "/our-rides",
-            "footerCol2text": "Peak Design Shipping & Delivery A5 S6",
-            "footerCol2href": "/peak-design",
-            "footerCopytext": "VanMoof structured clone pen. Editable text, cards, buttons and image containers.",
-            "footerCopyhref": "/",
+            "id": "TemplateExclusivePenSitePscsAboutHeroAboutheropenAlt1-1",
+            "herotitletext": "About us",
+            "herobodytext": "Founded in 1966, Jabil is one of the world's largest manufacturing solutions providers with more than 140,000 employees across 100 locations in 25+ countries.",
+            "heroimgimagesrc": "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1600&q=80",
             "theme": {
                   "mode": "light",
-                  "fontHeading": "Helvetica Neue",
-                  "fontBody": "Helvetica Neue",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
                   "motion": "subtle",
                   "fontFamilies": [
-                        "Helvetica Neue"
+                        "Inter"
                   ],
                   "palette": {
-                        "bg": "#FFFFFF",
-                        "text": "#151515",
-                        "primary": "#7AC943",
-                        "accent": "#7AC943",
-                        "neutral": "#151515",
-                        "textSecondary": "#646A62"
+                        "bg": "#f6f6f2",
+                        "text": "#ffffff",
+                        "primary": "#4F77FF",
+                        "accent": "#4F77FF",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
                   },
-                  "primaryColor": "#7AC943",
+                  "primaryColor": "#4F77FF",
                   "layoutRules": {
                         "maxWidth": "1400px",
                         "sectionPadding": "py-24",
@@ -2367,44 +3558,62 @@ export const generatedComponents: Record<string, any> = {
                         "shadow": "dramatic",
                         "accent": "glow"
                   }
-            }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
       },
       fields: {
-        footerBrandtext: textField("FooterBrandtext"),
-        footerBrandhref: textField("FooterBrandhref"),
-        footerCol1text: textField("FooterCol1text"),
-        footerCol1href: textField("FooterCol1href"),
-        footerCol2text: textField("FooterCol2text"),
-        footerCol2href: textField("FooterCol2href"),
-        footerCopytext: textField("FooterCopytext"),
-        footerCopyhref: textField("FooterCopyhref"),
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
       },
     },
-    "TemplateExclusivePenSiteS6NavigationHeaderpenPrimary_ec2db442": {
-      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteS6NavigationHeaderpenPrimary_ec2db442"),
+    "TemplateExclusivePenSitePscsAboutApproachOurapproachpenAlt2": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSitePscsAboutApproachOurapproachpenAlt2"),
       defaultProps: {
-            "id": "TemplateExclusivePenSiteS6NavigationHeaderpenPrimary_ec2db442-1",
-            "headerBrandtext": "VanMoof",
-            "headerBrandhref": "/",
-            "headerMenutext": "☰",
-            "headerMenuhref": "/",
+            "id": "TemplateExclusivePenSitePscsAboutApproachOurapproachpenAlt2-1",
+            "introleadtext": "This wealth of experience positions Jabil as not just a manufacturing leader, but a trusted partner in procurement and supply chain management. As part of Jabil, the Procurement and Supply Chain Services team leverages 55+ years of expertise to help companies achieve operational efficiencies, risk mitigation, and cost leadership throughout their supply chain.",
+            "introp1text": "With intricate knowledge of global markets and an expansive network of 38,000 suppliers, we empower businesses to navigate today's complex supply chain challenges with confidence.",
+            "introp2text": "Acting as an extension of your team, we offer flexible and scalable procurement and supply chain services tailored to your unique business needs, ensuring your business can adapt and thrive in today's dynamic marketplace.",
+            "approachtitletext": "Our Approach",
+            "approachp1text": "We believe that successful procurement and supply chain management is about more than just efficiency. It's about transforming your supply chain into a strategic asset. By combining our extensive global resources with cutting-edge technology, we deliver tailored solutions that reduce costs, enhance flexibility, and improve supply chain performance.",
+            "approachp2text": "You'll have a dedicated, single point-of-contact within Jabil to access the company's vast networks of experts, processes, and tools.",
+            "flowlabeltext": "Customer",
+            "ggxmctext": "Dedicated Business Unit Leader",
+            "rqhctext": "Process & Infrastructure",
+            "emsgrtext": "Sales & Operations Planning\nPurchasing\nExcess & Obsolete\nSupplier Selection & Management\nCentralized Procurement & Planning",
+            "mndsntext": "Tools & Technology",
+            "fwftntext": "Supply Chain Network Optimization\nProcurement Intelligence Platform\nDesign for Supply Chain",
+            "saxjdtext": "Subject Matter Experts",
+            "yddyttext": "Supplier Relationship Management\nCommodity & Category Managers\nLogistics Coordinators\nTrade Compliance Experts\nBuyers & Planners",
             "theme": {
                   "mode": "light",
-                  "fontHeading": "Helvetica Neue",
-                  "fontBody": "Helvetica Neue",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
                   "motion": "subtle",
                   "fontFamilies": [
-                        "Helvetica Neue"
+                        "Inter"
                   ],
                   "palette": {
-                        "bg": "#FFFFFF",
-                        "text": "#151515",
-                        "primary": "#7AC943",
-                        "accent": "#7AC943",
-                        "neutral": "#151515",
-                        "textSecondary": "#646A62"
+                        "bg": "#f6f6f2",
+                        "text": "#ffffff",
+                        "primary": "#4F77FF",
+                        "accent": "#4F77FF",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
                   },
-                  "primaryColor": "#7AC943",
+                  "primaryColor": "#4F77FF",
                   "layoutRules": {
                         "maxWidth": "1400px",
                         "sectionPadding": "py-24",
@@ -2416,44 +3625,54 @@ export const generatedComponents: Record<string, any> = {
                         "shadow": "dramatic",
                         "accent": "glow"
                   }
-            }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
       },
       fields: {
-        headerBrandtext: textField("HeaderBrandtext"),
-        headerBrandhref: textField("HeaderBrandhref"),
-        headerMenutext: textField("HeaderMenutext"),
-        headerMenuhref: textField("HeaderMenuhref"),
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
       },
     },
-    "TemplateExclusivePenSiteS6FooterFooterpenAlt1_ae06f89b": {
-      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteS6FooterFooterpenAlt1_ae06f89b"),
+    "TemplateExclusivePenSitePscsAboutStoryAwardspenAlt3": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSitePscsAboutStoryAwardspenAlt3"),
       defaultProps: {
-            "id": "TemplateExclusivePenSiteS6FooterFooterpenAlt1_ae06f89b-1",
-            "footerBrandtext": "VanMoof",
-            "footerBrandhref": "/",
-            "footerCol1text": "Our Rides Accessories Our Story",
-            "footerCol1href": "/our-rides",
-            "footerCol2text": "Peak Design Shipping & Delivery A5 S6",
-            "footerCol2href": "/peak-design",
-            "footerCopytext": "VanMoof structured clone pen. Editable text, cards, buttons and image containers.",
-            "footerCopyhref": "/",
+            "id": "TemplateExclusivePenSitePscsAboutStoryAwardspenAlt3-1",
+            "ypnlztext": "Procurement and Supply Chain Team Awards",
+            "gzme4text": "JABIL\nAWARD",
+            "w4kp1text": "Pros\nTo Know",
+            "btklhtext": "ICON\nAward",
+            "s6nzvtext": "TOP\nPROJECTS",
+            "kahnttext": "Top\nWomen",
             "theme": {
                   "mode": "light",
-                  "fontHeading": "Helvetica Neue",
-                  "fontBody": "Helvetica Neue",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
                   "motion": "subtle",
                   "fontFamilies": [
-                        "Helvetica Neue"
+                        "Inter"
                   ],
                   "palette": {
-                        "bg": "#FFFFFF",
-                        "text": "#151515",
-                        "primary": "#7AC943",
-                        "accent": "#7AC943",
-                        "neutral": "#151515",
-                        "textSecondary": "#646A62"
+                        "bg": "#f6f6f2",
+                        "text": "#ffffff",
+                        "primary": "#4F77FF",
+                        "accent": "#4F77FF",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
                   },
-                  "primaryColor": "#7AC943",
+                  "primaryColor": "#4F77FF",
                   "layoutRules": {
                         "maxWidth": "1400px",
                         "sectionPadding": "py-24",
@@ -2465,44 +3684,51 @@ export const generatedComponents: Record<string, any> = {
                         "shadow": "dramatic",
                         "accent": "glow"
                   }
-            }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
       },
       fields: {
-        footerBrandtext: textField("FooterBrandtext"),
-        footerBrandhref: textField("FooterBrandhref"),
-        footerCol1text: textField("FooterCol1text"),
-        footerCol1href: textField("FooterCol1href"),
-        footerCol2text: textField("FooterCol2text"),
-        footerCol2href: textField("FooterCol2href"),
-        footerCopytext: textField("FooterCopytext"),
-        footerCopyhref: textField("FooterCopyhref"),
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
       },
     },
-    "TemplateExclusivePenSiteS5A5FrontRackNavigationHeaderpenPrimary_441c7f47": {
-      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteS5A5FrontRackNavigationHeaderpenPrimary_441c7f47"),
+    "TemplateExclusivePenSitePscsAboutStoryWhyjabilpenAlt4": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSitePscsAboutStoryWhyjabilpenAlt4"),
       defaultProps: {
-            "id": "TemplateExclusivePenSiteS5A5FrontRackNavigationHeaderpenPrimary_441c7f47-1",
-            "headerBrandtext": "VanMoof",
-            "headerBrandhref": "/",
-            "headerMenutext": "☰",
-            "headerMenuhref": "/",
+            "id": "TemplateExclusivePenSitePscsAboutStoryWhyjabilpenAlt4-1",
+            "a1zintext": "Why Jabil",
+            "mzqlktext": "For over 55 years, Jabil has proven its ability to manage large, complex supply chains for more than 400 of the world's leading companies. By partnering with us, you gain access to the expertise, technology, and global reach needed to transform your supply chain into a powerful driver of business success while you can focus on your core competencies.",
+            "uggkltext": "Meet the team",
             "theme": {
                   "mode": "light",
-                  "fontHeading": "Helvetica Neue",
-                  "fontBody": "Helvetica Neue",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
                   "motion": "subtle",
                   "fontFamilies": [
-                        "Helvetica Neue"
+                        "Inter"
                   ],
                   "palette": {
-                        "bg": "#FFFFFF",
-                        "text": "#151515",
-                        "primary": "#7AC943",
-                        "accent": "#7AC943",
-                        "neutral": "#151515",
-                        "textSecondary": "#646A62"
+                        "bg": "#f6f6f2",
+                        "text": "#ffffff",
+                        "primary": "#4F77FF",
+                        "accent": "#4F77FF",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
                   },
-                  "primaryColor": "#7AC943",
+                  "primaryColor": "#4F77FF",
                   "layoutRules": {
                         "maxWidth": "1400px",
                         "sectionPadding": "py-24",
@@ -2514,44 +3740,58 @@ export const generatedComponents: Record<string, any> = {
                         "shadow": "dramatic",
                         "accent": "glow"
                   }
-            }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
       },
       fields: {
-        headerBrandtext: textField("HeaderBrandtext"),
-        headerBrandhref: textField("HeaderBrandhref"),
-        headerMenutext: textField("HeaderMenutext"),
-        headerMenuhref: textField("HeaderMenuhref"),
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
       },
     },
-    "TemplateExclusivePenSiteS5A5FrontRackFooterFooterpenAlt1_ac58e4ab": {
-      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteS5A5FrontRackFooterFooterpenAlt1_ac58e4ab"),
+    "TemplateExclusivePenSitePscsAboutStoryAboutstatspenAlt5": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSitePscsAboutStoryAboutstatspenAlt5"),
       defaultProps: {
-            "id": "TemplateExclusivePenSiteS5A5FrontRackFooterFooterpenAlt1_ac58e4ab-1",
-            "footerBrandtext": "VanMoof",
-            "footerBrandhref": "/",
-            "footerCol1text": "Our Rides Accessories Our Story",
-            "footerCol1href": "/our-rides",
-            "footerCol2text": "Peak Design Shipping & Delivery A5 S6",
-            "footerCol2href": "/peak-design",
-            "footerCopytext": "VanMoof structured clone pen. Editable text, cards, buttons and image containers.",
-            "footerCopyhref": "/",
+            "id": "TemplateExclusivePenSitePscsAboutStoryAboutstatspenAlt5-1",
+            "al5text": "50+",
+            "sasxstext": "years of experience",
+            "gs0sztext": "400+",
+            "yhh20text": "brands trust us",
+            "m9fi2text": "$25B+",
+            "dcjbtext": "global spend",
+            "rgrxvtext": "38,000",
+            "bos9atext": "global suppliers",
+            "vyxjmtext": "3,000",
+            "sy1ntext": "global supply chain experts",
             "theme": {
                   "mode": "light",
-                  "fontHeading": "Helvetica Neue",
-                  "fontBody": "Helvetica Neue",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
                   "motion": "subtle",
                   "fontFamilies": [
-                        "Helvetica Neue"
+                        "Inter"
                   ],
                   "palette": {
-                        "bg": "#FFFFFF",
-                        "text": "#151515",
-                        "primary": "#7AC943",
-                        "accent": "#7AC943",
-                        "neutral": "#151515",
-                        "textSecondary": "#646A62"
+                        "bg": "#f6f6f2",
+                        "text": "#ffffff",
+                        "primary": "#4F77FF",
+                        "accent": "#4F77FF",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
                   },
-                  "primaryColor": "#7AC943",
+                  "primaryColor": "#4F77FF",
                   "layoutRules": {
                         "maxWidth": "1400px",
                         "sectionPadding": "py-24",
@@ -2563,44 +3803,76 @@ export const generatedComponents: Record<string, any> = {
                         "shadow": "dramatic",
                         "accent": "glow"
                   }
-            }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
       },
       fields: {
-        footerBrandtext: textField("FooterBrandtext"),
-        footerBrandhref: textField("FooterBrandhref"),
-        footerCol1text: textField("FooterCol1text"),
-        footerCol1href: textField("FooterCol1href"),
-        footerCol2text: textField("FooterCol2text"),
-        footerCol2href: textField("FooterCol2href"),
-        footerCopytext: textField("FooterCopytext"),
-        footerCopyhref: textField("FooterCopyhref"),
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
       },
     },
-    "TemplateExclusivePenSiteHandlebarRisersNavigationHeaderpenPrimary_e359a81a": {
-      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteHandlebarRisersNavigationHeaderpenPrimary_e359a81a"),
+    "TemplateExclusivePenSitePscsAboutFooterFooterpenAlt6": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSitePscsAboutFooterFooterpenAlt6"),
       defaultProps: {
-            "id": "TemplateExclusivePenSiteHandlebarRisersNavigationHeaderpenPrimary_e359a81a-1",
-            "headerBrandtext": "VanMoof",
-            "headerBrandhref": "/",
-            "headerMenutext": "☰",
-            "headerMenuhref": "/",
+            "id": "TemplateExclusivePenSitePscsAboutFooterFooterpenAlt6-1",
+            "jleyktext": "OUR EXPERIENCE. YOUR FUTURE.",
+            "dm2rtext": "We are proud to be part of Jabil, a trusted partner for the world's top brands, offering comprehensive engineering, manufacturing, and supply chain solutions. With over 50 years of experience across industries and a vast network of over 100 sites worldwide, Jabil combines global reach with local expertise to deliver both scalable and customized solutions.",
+            "dm2rhref": "/",
+            "turjgtext": "JABIL",
+            "turjghref": "/",
+            "uyzatext": "Who we are",
+            "vleqitext": "About us\nAwards\nMeet the team\nWhat we think\nContact us",
+            "vleqihref": "/",
+            "fliatext": "What we do",
+            "lnuvltext": "Market Intelligence\nProcurement Services\nSupply Chain Services",
+            "lnuvlhref": "/",
+            "u2qdztext": "Follow us",
+            "fk7ztext": "Keep up-to-date with our\nlatest news on social.",
+            "fk7zhref": "/",
+            "bkzmvtext": "f",
+            "zms4atext": "X",
+            "fuzxtext": "◎",
+            "hdueotext": "in",
+            "ecydtext": "© 2026 Jabil Procurement & Supply Chain Services. All rights reserved.",
+            "ym1xotext": "Privacy Policy",
+            "hlicntext": "|",
+            "hlicnhref": "/",
+            "vqp31text": "Cookie Policy",
+            "vqp31href": "/",
+            "t7wvutext": "|",
+            "t7wvuhref": "/",
+            "mrjt3text": "Terms of Use",
+            "mrjt3href": "/",
             "theme": {
                   "mode": "light",
-                  "fontHeading": "Helvetica Neue",
-                  "fontBody": "Helvetica Neue",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
                   "motion": "subtle",
                   "fontFamilies": [
-                        "Helvetica Neue"
+                        "Inter"
                   ],
                   "palette": {
-                        "bg": "#FFFFFF",
-                        "text": "#151515",
-                        "primary": "#7AC943",
-                        "accent": "#7AC943",
-                        "neutral": "#151515",
-                        "textSecondary": "#646A62"
+                        "bg": "#f6f6f2",
+                        "text": "#ffffff",
+                        "primary": "#4F77FF",
+                        "accent": "#4F77FF",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
                   },
-                  "primaryColor": "#7AC943",
+                  "primaryColor": "#4F77FF",
                   "layoutRules": {
                         "maxWidth": "1400px",
                         "sectionPadding": "py-24",
@@ -2612,44 +3884,113 @@ export const generatedComponents: Record<string, any> = {
                         "shadow": "dramatic",
                         "accent": "glow"
                   }
-            }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": "",
+            "columns": [
+                  {
+                        "title": "Who we are",
+                        "links": [
+                              {
+                                    "label": "About us",
+                                    "href": "/about"
+                              },
+                              {
+                                    "label": "Awards",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Meet the team",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "What we think",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Contact us",
+                                    "href": "/contact"
+                              }
+                        ]
+                  },
+                  {
+                        "title": "What we do",
+                        "links": [
+                              {
+                                    "label": "Market Intelligence",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Procurement Services",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Supply Chain Services",
+                                    "href": "/"
+                              }
+                        ]
+                  },
+                  {
+                        "title": "Follow us",
+                        "links": [
+                              {
+                                    "label": "Keep up-to-date with our",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "latest news on social.",
+                                    "href": "/"
+                              }
+                        ]
+                  }
+            ]
       },
       fields: {
-        headerBrandtext: textField("HeaderBrandtext"),
-        headerBrandhref: textField("HeaderBrandhref"),
-        headerMenutext: textField("HeaderMenutext"),
-        headerMenuhref: textField("HeaderMenuhref"),
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
       },
     },
-    "TemplateExclusivePenSiteHandlebarRisersFooterFooterpenAlt1_b004a31b": {
-      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteHandlebarRisersFooterFooterpenAlt1_b004a31b"),
+    "TemplateExclusivePenSitePscsContactNavigationNavpenPrimary": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSitePscsContactNavigationNavpenPrimary"),
       defaultProps: {
-            "id": "TemplateExclusivePenSiteHandlebarRisersFooterFooterpenAlt1_b004a31b-1",
-            "footerBrandtext": "VanMoof",
-            "footerBrandhref": "/",
-            "footerCol1text": "Our Rides Accessories Our Story",
-            "footerCol1href": "/our-rides",
-            "footerCol2text": "Peak Design Shipping & Delivery A5 S6",
-            "footerCol2href": "/peak-design",
-            "footerCopytext": "VanMoof structured clone pen. Editable text, cards, buttons and image containers.",
-            "footerCopyhref": "/",
+            "id": "TemplateExclusivePenSitePscsContactNavigationNavpenPrimary-1",
+            "hwmt6text": "JABIL",
+            "hwmt6href": "/",
+            "ix2xtext": "PROCUREMENT & SUPPLY CHAIN SERVICES",
+            "ix2xhref": "/",
+            "ehwrtext": "Who we are    What we do    What we think",
+            "ehwrhref": "/",
+            "j2tiptext": "⌕",
+            "j2tiphref": "/",
             "theme": {
                   "mode": "light",
-                  "fontHeading": "Helvetica Neue",
-                  "fontBody": "Helvetica Neue",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
                   "motion": "subtle",
                   "fontFamilies": [
-                        "Helvetica Neue"
+                        "Inter"
                   ],
                   "palette": {
-                        "bg": "#FFFFFF",
-                        "text": "#151515",
-                        "primary": "#7AC943",
-                        "accent": "#7AC943",
-                        "neutral": "#151515",
-                        "textSecondary": "#646A62"
+                        "bg": "#f6f6f2",
+                        "text": "#ffffff",
+                        "primary": "#002b47",
+                        "accent": "#002b47",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
                   },
-                  "primaryColor": "#7AC943",
+                  "primaryColor": "#002b47",
                   "layoutRules": {
                         "maxWidth": "1400px",
                         "sectionPadding": "py-24",
@@ -2661,17 +4002,14519 @@ export const generatedComponents: Record<string, any> = {
                         "shadow": "dramatic",
                         "accent": "glow"
                   }
-            }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
       },
       fields: {
-        footerBrandtext: textField("FooterBrandtext"),
-        footerBrandhref: textField("FooterBrandhref"),
-        footerCol1text: textField("FooterCol1text"),
-        footerCol1href: textField("FooterCol1href"),
-        footerCol2text: textField("FooterCol2text"),
-        footerCol2href: textField("FooterCol2href"),
-        footerCopytext: textField("FooterCopytext"),
-        footerCopyhref: textField("FooterCopyhref"),
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSitePscsContactContactContactmainpenAlt1": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSitePscsContactContactContactmainpenAlt1"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSitePscsContactContactContactmainpenAlt1-1",
+            "contacttitletext": "Contact Us",
+            "label1text": "First Name*",
+            "label2text": "Last Name*",
+            "label3text": "Company Name*",
+            "label4text": "Company URL*",
+            "label5text": "Business Email*",
+            "label6text": "Phone Number",
+            "label7text": "Additional Comments",
+            "submittexttext": "Submit",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f6f6f2",
+                        "text": "#ffffff",
+                        "primary": "#002b47",
+                        "accent": "#002b47",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#002b47",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSitePscsContactFooterFooterpenAlt2": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSitePscsContactFooterFooterpenAlt2"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSitePscsContactFooterFooterpenAlt2-1",
+            "ynjxxtext": "OUR EXPERIENCE. YOUR FUTURE.",
+            "zozn6text": "We are proud to be part of Jabil, a trusted partner for the world's top brands, offering comprehensive engineering, manufacturing, and supply chain solutions. With over 50 years of experience across industries and a vast network of over 100 sites worldwide, Jabil combines global reach with local expertise to deliver both scalable and customized solutions.",
+            "zozn6href": "/",
+            "zmqvdtext": "JABIL",
+            "zmqvdhref": "/",
+            "z2ce1text": "Who we are",
+            "g2pmtext": "About us\nAwards\nMeet the team\nWhat we think\nContact us",
+            "g2pmhref": "/",
+            "orsltext": "What we do",
+            "v8z7qtext": "Market Intelligence\nProcurement Services\nSupply Chain Services",
+            "v8z7qhref": "/",
+            "fv5itext": "Follow us",
+            "b1dwjtext": "Keep up-to-date with our\nlatest news on social.",
+            "b1dwjhref": "/",
+            "jccqttext": "f",
+            "wvxstext": "X",
+            "djftbtext": "◎",
+            "znvtytext": "in",
+            "gq0ytext": "© 2026 Jabil Procurement & Supply Chain Services. All rights reserved.",
+            "eghevtext": "Privacy Policy",
+            "h6oxutext": "|",
+            "h6oxuhref": "/",
+            "is9attext": "Cookie Policy",
+            "is9athref": "/",
+            "g2mnjtext": "|",
+            "g2mnjhref": "/",
+            "du1mtext": "Terms of Use",
+            "du1mhref": "/",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f6f6f2",
+                        "text": "#ffffff",
+                        "primary": "#002b47",
+                        "accent": "#002b47",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#002b47",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": "",
+            "columns": [
+                  {
+                        "title": "Who we are",
+                        "links": [
+                              {
+                                    "label": "About us",
+                                    "href": "/about"
+                              },
+                              {
+                                    "label": "Awards",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Meet the team",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "What we think",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Contact us",
+                                    "href": "/contact"
+                              }
+                        ]
+                  },
+                  {
+                        "title": "What we do",
+                        "links": [
+                              {
+                                    "label": "Market Intelligence",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Procurement Services",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Supply Chain Services",
+                                    "href": "/"
+                              }
+                        ]
+                  },
+                  {
+                        "title": "Follow us",
+                        "links": [
+                              {
+                                    "label": "Keep up-to-date with our",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "latest news on social.",
+                                    "href": "/"
+                              }
+                        ]
+                  }
+            ]
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSitePscsSolutionNavigationNavpenPrimary": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSitePscsSolutionNavigationNavpenPrimary"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSitePscsSolutionNavigationNavpenPrimary-1",
+            "jkbzitext": "JABIL",
+            "jkbzihref": "/",
+            "rpfr2text": "PROCUREMENT & SUPPLY CHAIN SERVICES",
+            "rpfr2href": "/",
+            "rpepctext": "Who we are    What we do    What we think",
+            "rpepchref": "/",
+            "nhthftext": "⌕",
+            "nhthfhref": "/",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f6f6f2",
+                        "text": "#ffffff",
+                        "primary": "#19acec",
+                        "accent": "#19acec",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#19acec",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSitePscsSolutionHeroSolutionheropenAlt1": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSitePscsSolutionHeroSolutionheropenAlt1"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSitePscsSolutionHeroSolutionheropenAlt1-1",
+            "herotitletext": "Market Intelligence",
+            "heroleadtext": "Actionable procurement expertise fuels supply chain and procurement power at your fingertips.",
+            "herobtnhref": "/",
+            "herobtntexttext": "Learn More",
+            "heroimageimagesrc": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f6f6f2",
+                        "text": "#ffffff",
+                        "primary": "#19acec",
+                        "accent": "#19acec",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#19acec",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSitePscsSolutionStoryOverviewpenAlt2": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSitePscsSolutionStoryOverviewpenAlt2"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSitePscsSolutionStoryOverviewpenAlt2-1",
+            "overviewp1text": "Market intelligence gives you the insights you need to make smart, strategic sourcing and design decisions. Built by a global team of analysts and deep procurement practitioners, our reports, pricing intelligence, and category expertise translate complex market shifts into practical actions.",
+            "overviewp2text": "At Jabil, our market intelligence experts help you monitor emerging risks, understand pricing volatility, evaluate suppliers, and uncover opportunities across regions and categories. We deliver market data in a form that sourcing teams can use immediately.",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f6f6f2",
+                        "text": "#ffffff",
+                        "primary": "#19acec",
+                        "accent": "#19acec",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#19acec",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSitePscsSolutionProductsCardssectionpenAlt3": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSitePscsSolutionProductsCardssectionpenAlt3"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSitePscsSolutionProductsCardssectionpenAlt3-1",
+            "cardstitletext": "How Jabil's Market Intelligence Drives Informed Sourcing Decisions",
+            "cardsintrotext": "With a vast network of over 380 market suppliers and more than 780,000 managed parts across key raw material segments, Jabil offers billions of data points daily. Our team applies that intelligence across priority domains including commodities, component pricing, indices, cost drivers, and supplier health.",
+            "img1imagesrc": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80",
+            "t1text": "Market Price Intelligence",
+            "b1text": "Monitor movements in metals, resins, freight and other critical cost drivers.",
+            "img2imagesrc": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80",
+            "t2text": "Industry Intelligence",
+            "b2text": "Track market developments, supplier shifts and macroeconomic changes impacting supply continuity.",
+            "img3imagesrc": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80",
+            "t3text": "Intelligence Reporting",
+            "b3text": "Receive curated reports with practical recommendations that sourcing teams can act on immediately.",
+            "img4imagesrc": "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=800&q=80",
+            "t4text": "Compliance",
+            "b4text": "Support responsible sourcing and regulatory readiness with visibility into suppliers and regions.",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f6f6f2",
+                        "text": "#ffffff",
+                        "primary": "#19acec",
+                        "accent": "#19acec",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#19acec",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSitePscsSolutionStoryWhymipenAlt4": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSitePscsSolutionStoryWhymipenAlt4"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSitePscsSolutionStoryWhymipenAlt4-1",
+            "whytitletext": "Why Market Intelligence is Critical for Business Success",
+            "whybodytext": "Market intelligence provides a wealth of data that most companies simply can’t access on their own. At Jabil, we go beyond the numbers, combining internal market expertise with procurement, industry trends, customer demand, and risk to deliver a comprehensive view of your business landscape.",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f6f6f2",
+                        "text": "#ffffff",
+                        "primary": "#19acec",
+                        "accent": "#19acec",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#19acec",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSitePscsSolutionStoryUnlockpenAlt5": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSitePscsSolutionStoryUnlockpenAlt5"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSitePscsSolutionStoryUnlockpenAlt5-1",
+            "unlocktitletext": "Unlock Data-Driven Insights with Jabil's Market Intelligence",
+            "unlockbodytext": "Jabil’s resources and market intelligence services are built on decades of experience and a vast global supply chain network. We identify patterns of supply and demand dynamics, provide clear actionable intelligence you need to optimize your procurement and supply chain strategies.",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f6f6f2",
+                        "text": "#ffffff",
+                        "primary": "#19acec",
+                        "accent": "#19acec",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#19acec",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSitePscsSolutionSocialproofTestimonialpenAlt6": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSitePscsSolutionSocialproofTestimonialpenAlt6"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSitePscsSolutionSocialproofTestimonialpenAlt6-1",
+            "testtitletext": "Testimonial",
+            "testbodytext": "We’ve been incredibly impressed with Jabil’s approach. Their commitment to delivering the right insights has become our confidence in identifying opportunities to strengthen supply chain resiliency.",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f6f6f2",
+                        "text": "#ffffff",
+                        "primary": "#19acec",
+                        "accent": "#19acec",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#19acec",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSitePscsSolutionContactContactcopypenAlt7": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSitePscsSolutionContactContactcopypenAlt7"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSitePscsSolutionContactContactcopypenAlt7-1",
+            "jec4ctext": "Contact us to learn more",
+            "hponptext": "We can pull together report samples, subscription pricing, and other helpful information that will get you better insights into supply chain realities.",
+            "jlz47text": "First Name*",
+            "bmsnqtext": "Last Name*",
+            "qzbmwtext": "Company Name*",
+            "o5kqtext": "Company URL*",
+            "r3wyftext": "Business Email*",
+            "ym7eotext": "Phone Number",
+            "ii7oktext": "Additional Comments",
+            "q5kb5text": "Submit",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f6f6f2",
+                        "text": "#ffffff",
+                        "primary": "#19acec",
+                        "accent": "#19acec",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#19acec",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSitePscsSolutionFooterFootercopypenAlt8": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSitePscsSolutionFooterFootercopypenAlt8"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSitePscsSolutionFooterFootercopypenAlt8-1",
+            "gbcnvtext": "OUR EXPERIENCE. YOUR FUTURE.",
+            "eb0jptext": "We are proud to be part of Jabil, a trusted partner for the world's top brands, offering comprehensive engineering, manufacturing, and supply chain solutions. With over 50 years of experience across industries and a vast network of over 100 sites worldwide, Jabil combines global reach with local expertise to deliver both scalable and customized solutions.",
+            "eb0jphref": "/",
+            "vg8letext": "JABIL",
+            "vg8lehref": "/",
+            "sflltext": "Who we are",
+            "yhkietext": "About us\nAwards\nMeet the team\nWhat we think\nContact us",
+            "yhkiehref": "/",
+            "omjrptext": "What we do",
+            "qqa0atext": "Market Intelligence\nProcurement Services\nSupply Chain Services",
+            "qqa0ahref": "/",
+            "tfrv5text": "Follow us",
+            "nwrketext": "Keep up-to-date with our\nlatest news on social.",
+            "nwrkehref": "/",
+            "nekaftext": "f",
+            "cw2hetext": "X",
+            "d2acqtext": "◎",
+            "s80wttext": "in",
+            "u07w8text": "© 2026 Jabil Procurement & Supply Chain Services. All rights reserved.",
+            "xx3dutext": "Privacy Policy",
+            "hxe7text": "|",
+            "hxe7href": "/",
+            "uqmgutext": "Cookie Policy",
+            "uqmguhref": "/",
+            "v1qixtext": "|",
+            "v1qixhref": "/",
+            "z3v9etext": "Terms of Use",
+            "z3v9ehref": "/",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f6f6f2",
+                        "text": "#ffffff",
+                        "primary": "#19acec",
+                        "accent": "#19acec",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#19acec",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": "",
+            "columns": [
+                  {
+                        "title": "Who we are",
+                        "links": [
+                              {
+                                    "label": "About us",
+                                    "href": "/about"
+                              },
+                              {
+                                    "label": "Awards",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Meet the team",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "What we think",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Contact us",
+                                    "href": "/contact"
+                              }
+                        ]
+                  },
+                  {
+                        "title": "What we do",
+                        "links": [
+                              {
+                                    "label": "Market Intelligence",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Procurement Services",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Supply Chain Services",
+                                    "href": "/"
+                              }
+                        ]
+                  },
+                  {
+                        "title": "Follow us",
+                        "links": [
+                              {
+                                    "label": "Keep up-to-date with our",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "latest news on social.",
+                                    "href": "/"
+                              }
+                        ]
+                  }
+            ]
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSitePscsProductsNavigationNavpenPrimary": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSitePscsProductsNavigationNavpenPrimary"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSitePscsProductsNavigationNavpenPrimary-1",
+            "ri5tytext": "JABIL",
+            "ri5tyhref": "/",
+            "fzccvtext": "PROCUREMENT & SUPPLY CHAIN SERVICES",
+            "fzccvhref": "/",
+            "alluvtext": "Who we are    What we do    What we think",
+            "alluvhref": "/",
+            "pndhztext": "⌕",
+            "pndhzhref": "/",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f6f6f2",
+                        "text": "#ffffff",
+                        "primary": "#002b47",
+                        "accent": "#002b47",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#002b47",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSitePscsProductsHeroProductsheropenAlt1": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSitePscsProductsHeroProductsheropenAlt1"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSitePscsProductsHeroProductsheropenAlt1-1",
+            "herotitletext": "Supply Chain Consulting Services",
+            "heroleadtext": "Optimize, Adapt, and Thrive with Jabil's Proven Consulting Services",
+            "heroimageimagesrc": "https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=1200&q=80",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f6f6f2",
+                        "text": "#ffffff",
+                        "primary": "#002b47",
+                        "accent": "#002b47",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#002b47",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSitePscsProductsStoryExpertintropenAlt2": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSitePscsProductsStoryExpertintropenAlt2"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSitePscsProductsStoryExpertintropenAlt2-1",
+            "introtitletext": "Expert Supply Chain Consulting Services",
+            "introleadtext": "Managing a modern supply chain is no small feat. From unpredictable disruptions to mounting pressure for cost efficiency and sustainability, the stakes have never been higher.",
+            "introbodytext": "Our Supply Chain Consulting Services simplify these complexities, offering customized strategies that address your unique challenges. With over 50 years of experience managing global supply chains for 400+ leading brands, we bring hands-on expertise to help your business improve efficiency, mitigate risks, and build a foundation for sustained growth.",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f6f6f2",
+                        "text": "#ffffff",
+                        "primary": "#002b47",
+                        "accent": "#002b47",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#002b47",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSitePscsProductsStoryTransformsectionpenAlt3": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSitePscsProductsStoryTransformsectionpenAlt3"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSitePscsProductsStoryTransformsectionpenAlt3-1",
+            "transformtitletext": "How Jabil's Supply Chain Consulting Transforms Businesses.",
+            "transformleadtext": "We pride ourselves on offering more than just advice, we provide solutions that work in the real world.",
+            "c1ttext": "End-to-End Expertise",
+            "c1btext": "Whether it’s procurement or supply chain transformation, our experts bring deep practical experience and industry-specific know-how.",
+            "c2ttext": "Data-Driven Insights",
+            "c2btext": "Using advanced analytics and our global market visibility, we identify opportunities to streamline operations, reduce cost, and improve resilience.",
+            "c3ttext": "Actionable Solutions",
+            "c3btext": "Our consultants don’t just identify gaps, they help you implement strategies that drive measurable operational improvement.",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f6f6f2",
+                        "text": "#ffffff",
+                        "primary": "#002b47",
+                        "accent": "#002b47",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#002b47",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSitePscsProductsStoryAssessmentpenAlt4": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSitePscsProductsStoryAssessmentpenAlt4"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSitePscsProductsStoryAssessmentpenAlt4-1",
+            "assesstitletext": "Getting Started: The Supply Chain Assessment",
+            "assessbodytext": "When you engage with our consulting team, we begin with a tailored assessment of your current state, growth objectives, and operational opportunities. This process helps us prioritize the right focus areas and define a roadmap for measurable improvement.",
+            "list1text": "• Supply disruption and resilience planning\n• Inventory and working capital strategy\n• Network and footprint optimization\n• Demand, supply, and logistics alignment",
+            "assessimgimagesrc": "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f6f6f2",
+                        "text": "#ffffff",
+                        "primary": "#002b47",
+                        "accent": "#002b47",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#002b47",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSitePscsProductsCtaInactionpenAlt5": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSitePscsProductsCtaInactionpenAlt5"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSitePscsProductsCtaInactionpenAlt5-1",
+            "actiontitletext": "Jabil Supply Chain Consulting in Action",
+            "actionleadtext": "Whether you need logistics redesign, procurement optimization, or end-to-end supply chain managed services, our team provides the structure and insight to execute faster.",
+            "ac1iimagesrc": "https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&w=800&q=80",
+            "ac1ttext": "Supply Chain Managed Services",
+            "ac2iimagesrc": "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=800&q=80",
+            "ac2ttext": "Procurement Managed Services",
+            "ac3iimagesrc": "https://images.unsplash.com/photo-1494412651409-8963ce7935a7?auto=format&fit=crop&w=800&q=80",
+            "ac3ttext": "Logistics Management Services",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f6f6f2",
+                        "text": "#ffffff",
+                        "primary": "#002b47",
+                        "accent": "#002b47",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#002b47",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSitePscsProductsStoryWhyjabilpenAlt6": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSitePscsProductsStoryWhyjabilpenAlt6"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSitePscsProductsStoryWhyjabilpenAlt6-1",
+            "whytitletext": "Why Jabil",
+            "whyleadtext": "When you partner with Jabil, you gain more than supply chain expertise, you gain a trusted extension of your procurement and supply chain operations.",
+            "why1ttext": "Global Expertise",
+            "why1btext": "With our global network and decades of operational experience, we understand how to make supply chains work across regions and industries.",
+            "why2ttext": "Results-Focused",
+            "why2btext": "Our solutions are designed to improve service, reduce cost, and strengthen continuity with measurable business outcomes.",
+            "why3ttext": "Future-Ready Partnership",
+            "why3btext": "From strategy through execution, we help organizations build supply chains that are resilient, efficient, and ready for change.",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f6f6f2",
+                        "text": "#ffffff",
+                        "primary": "#002b47",
+                        "accent": "#002b47",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#002b47",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSitePscsProductsContactContactpenAlt7": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSitePscsProductsContactContactpenAlt7"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSitePscsProductsContactContactpenAlt7-1",
+            "ckpfltext": "Contact us to learn more",
+            "aaomutext": "We can pull together report samples, subscription pricing, and other helpful information that will get you better insights into supply chain realities.",
+            "gzw6ktext": "First Name*",
+            "qoafvtext": "Last Name*",
+            "eozcwtext": "Company Name*",
+            "wiu5text": "Company URL*",
+            "zl3vktext": "Business Email*",
+            "g23jbtext": "Phone Number",
+            "wwmtdtext": "Additional Comments",
+            "ynfotext": "Submit",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f6f6f2",
+                        "text": "#ffffff",
+                        "primary": "#002b47",
+                        "accent": "#002b47",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#002b47",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSitePscsProductsFooterFooterpenAlt8": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSitePscsProductsFooterFooterpenAlt8"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSitePscsProductsFooterFooterpenAlt8-1",
+            "gw6v0text": "OUR EXPERIENCE. YOUR FUTURE.",
+            "vhbctext": "We are proud to be part of Jabil, a trusted partner for the world's top brands, offering comprehensive engineering, manufacturing, and supply chain solutions. With over 50 years of experience across industries and a vast network of over 100 sites worldwide, Jabil combines global reach with local expertise to deliver both scalable and customized solutions.",
+            "vhbchref": "/",
+            "egxdrtext": "JABIL",
+            "egxdrhref": "/",
+            "dk8zitext": "Who we are",
+            "rodlftext": "About us\nAwards\nMeet the team\nWhat we think\nContact us",
+            "rodlfhref": "/",
+            "ul4qqtext": "What we do",
+            "ntn3ltext": "Market Intelligence\nProcurement Services\nSupply Chain Services",
+            "ntn3lhref": "/",
+            "tnezmtext": "Follow us",
+            "w3nestext": "Keep up-to-date with our\nlatest news on social.",
+            "w3neshref": "/",
+            "pvr8text": "f",
+            "yhgp9text": "X",
+            "ggg0atext": "◎",
+            "rpwz4text": "in",
+            "imlxtext": "© 2026 Jabil Procurement & Supply Chain Services. All rights reserved.",
+            "ziinjtext": "Privacy Policy",
+            "aypgstext": "|",
+            "aypgshref": "/",
+            "ckxtext": "Cookie Policy",
+            "ckxhref": "/",
+            "vylhtext": "|",
+            "vylhhref": "/",
+            "pdfmntext": "Terms of Use",
+            "pdfmnhref": "/",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f6f6f2",
+                        "text": "#ffffff",
+                        "primary": "#002b47",
+                        "accent": "#002b47",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#002b47",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": "",
+            "columns": [
+                  {
+                        "title": "Who we are",
+                        "links": [
+                              {
+                                    "label": "About us",
+                                    "href": "/about"
+                              },
+                              {
+                                    "label": "Awards",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Meet the team",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "What we think",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Contact us",
+                                    "href": "/contact"
+                              }
+                        ]
+                  },
+                  {
+                        "title": "What we do",
+                        "links": [
+                              {
+                                    "label": "Market Intelligence",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Procurement Services",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Supply Chain Services",
+                                    "href": "/"
+                              }
+                        ]
+                  },
+                  {
+                        "title": "Follow us",
+                        "links": [
+                              {
+                                    "label": "Keep up-to-date with our",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "latest news on social.",
+                                    "href": "/"
+                              }
+                        ]
+                  }
+            ]
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSitePscsBlogNavigationNavpenPrimary": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSitePscsBlogNavigationNavpenPrimary"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSitePscsBlogNavigationNavpenPrimary-1",
+            "gtg0jtext": "JABIL",
+            "gtg0jhref": "/",
+            "u1i5xtext": "PROCUREMENT & SUPPLY CHAIN SERVICES",
+            "u1i5xhref": "/",
+            "rkeetext": "Who we are    What we do    What we think",
+            "rkeehref": "/",
+            "g2fu3text": "⌕",
+            "g2fu3href": "/",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f6f6f2",
+                        "text": "#ffffff",
+                        "primary": "#4F77FF",
+                        "accent": "#4F77FF",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#4F77FF",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSitePscsBlogHeroBlogheropenAlt1": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSitePscsBlogHeroBlogheropenAlt1"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSitePscsBlogHeroBlogheropenAlt1-1",
+            "heroimgimagesrc": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
+            "blogtitletext": "Blogs",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f6f6f2",
+                        "text": "#ffffff",
+                        "primary": "#4F77FF",
+                        "accent": "#4F77FF",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#4F77FF",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSitePscsBlogStoryTabspenAlt2": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSitePscsBlogStoryTabspenAlt2"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSitePscsBlogStoryTabspenAlt2-1",
+            "tab1texttext": "Blogs",
+            "tab2texttext": "In the Media",
+            "tab3texttext": "Resources",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f6f6f2",
+                        "text": "#ffffff",
+                        "primary": "#4F77FF",
+                        "accent": "#4F77FF",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#4F77FF",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSitePscsBlogProductsBloggridpenAlt3": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSitePscsBlogProductsBloggridpenAlt3"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSitePscsBlogProductsBloggridpenAlt3-1",
+            "img1imagesrc": "https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&w=800&q=80",
+            "t1text": "3PL vs. 4PL vs. Lead: What Changes in Logistics Maturity",
+            "img2imagesrc": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80",
+            "t2text": "A New Framework for the Next Generation of Strategic Spend",
+            "img3imagesrc": "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=800&q=80",
+            "t3text": "Procurement Optimization That Drives Efficiency and Reduces Across Industries",
+            "img4imagesrc": "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80",
+            "t4text": "End-to-End Procurement in Highly Regulated Industries",
+            "img5imagesrc": "https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=800&q=80",
+            "t5text": "Why Logistics Management is Critical for Business Resilience",
+            "img6imagesrc": "https://images.unsplash.com/photo-1494412651409-8963ce7935a7?auto=format&fit=crop&w=800&q=80",
+            "t6text": "End-to-End Procurement Consulting: Finding Efficiencies, Savings, and Compliance",
+            "img7imagesrc": "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=800&q=80",
+            "t7text": "Beyond Cost Savings: Procurement and Outsourcing Strategies that Build Resilience",
+            "img8imagesrc": "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=800&q=80",
+            "t8text": "How End-to-End Supply Chain Design Enables Sourcing and Reshoring",
+            "img9imagesrc": "https://images.unsplash.com/photo-1494412519320-aa613dfb7738?auto=format&fit=crop&w=800&q=80",
+            "t9text": "End-to-End Procurement: A Strategic Framework for Modern Supply Chains",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f6f6f2",
+                        "text": "#ffffff",
+                        "primary": "#4F77FF",
+                        "accent": "#4F77FF",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#4F77FF",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSitePscsBlogFooterHomefooterpenAlt4": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSitePscsBlogFooterHomefooterpenAlt4"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSitePscsBlogFooterHomefooterpenAlt4-1",
+            "tgluqtext": "OUR EXPERIENCE. YOUR FUTURE.",
+            "hnjyftext": "We are proud to be part of Jabil, a trusted partner for the world's top brands, offering comprehensive engineering, manufacturing, and supply chain solutions. With over 50 years of experience across industries and a vast network of over 100 sites worldwide, Jabil combines global reach with local expertise to deliver both scalable and customized solutions.",
+            "hnjyfhref": "/",
+            "xcdgtext": "JABIL",
+            "xcdghref": "/",
+            "k5aw9text": "Who we are",
+            "d6avitext": "About us\nAwards\nMeet the team\nWhat we think\nContact us",
+            "d6avihref": "/",
+            "qmipftext": "What we do",
+            "c6rhtext": "Market Intelligence\nProcurement Services\nSupply Chain Services",
+            "c6rhhref": "/",
+            "fcw5text": "Follow us",
+            "dmvdttext": "Keep up-to-date with our\nlatest news on social.",
+            "dmvdthref": "/",
+            "fhlnmtext": "f",
+            "xmgwqtext": "X",
+            "suck7text": "◎",
+            "wq76otext": "in",
+            "glmtktext": "© 2026 Jabil Procurement & Supply Chain Services. All rights reserved.",
+            "pnzntext": "Privacy Policy",
+            "q1cg3text": "|",
+            "q1cg3href": "/",
+            "ffxaktext": "Cookie Policy",
+            "ffxakhref": "/",
+            "xremqtext": "|",
+            "xremqhref": "/",
+            "ifquvtext": "Terms of Use",
+            "ifquvhref": "/",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f6f6f2",
+                        "text": "#ffffff",
+                        "primary": "#4F77FF",
+                        "accent": "#4F77FF",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#4F77FF",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": "",
+            "columns": [
+                  {
+                        "title": "Who we are",
+                        "links": [
+                              {
+                                    "label": "About us",
+                                    "href": "/about"
+                              },
+                              {
+                                    "label": "Awards",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Meet the team",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "What we think",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Contact us",
+                                    "href": "/contact"
+                              }
+                        ]
+                  },
+                  {
+                        "title": "What we do",
+                        "links": [
+                              {
+                                    "label": "Market Intelligence",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Procurement Services",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Supply Chain Services",
+                                    "href": "/"
+                              }
+                        ]
+                  },
+                  {
+                        "title": "Follow us",
+                        "links": [
+                              {
+                                    "label": "Keep up-to-date with our",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "latest news on social.",
+                                    "href": "/"
+                              }
+                        ]
+                  }
+            ]
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteHomeNavigationHeaderpenPrimary_69fa0030": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteHomeNavigationHeaderpenPrimary_69fa0030"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteHomeNavigationHeaderpenPrimary_69fa0030-1",
+            "logotext": "JABIL",
+            "logohref": "/",
+            "brandtext": "We make anything possible and everything better.",
+            "brandhref": "/",
+            "navtext": "ABOUT  •  SOLUTIONS & SERVICES  •  INDUSTRIES  •  INSIGHTS  •  CAREERS  •  INVESTORS  •  CONTACT",
+            "navhref": "/jabil-contact",
+            "searchtext": "⌕   ◎   EN ▾",
+            "searchhref": "/",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f4f6f7",
+                        "text": "#ffffff",
+                        "primary": "#7ac043",
+                        "accent": "#7ac043",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#7ac043",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteHomeHeroHeropenAlt1_3d348a3f": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteHomeHeroHeropenAlt1_3d348a3f"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteHomeHeroHeropenAlt1_3d348a3f-1",
+            "heroimageimagesrc": "https://images.unsplash.com/photo-1753426722153-41ca376ba6ee?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMzNjc2NDd8&ixlib=rb-4.1.0&q=80&w=1080",
+            "eyebrowtext": "OUR COMPANY",
+            "herotitletext": "MADE POSSIBLE.\nMADE BETTER.",
+            "herobodytext": "Engineering, supply chain, and manufacturing solutions trusted by the world’s leading brands.",
+            "herobtnhref": "/",
+            "herobtntxttext": "HOW WE DO IT",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f4f6f7",
+                        "text": "#ffffff",
+                        "primary": "#7ac043",
+                        "accent": "#7ac043",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#7ac043",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteHomeStoryHellopenAlt2": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteHomeStoryHellopenAlt2"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteHomeStoryHellopenAlt2-1",
+            "helloeyebrowtext": "HELLO",
+            "hellotitletext": "Welcome to Jabil",
+            "hellobodytext": "We are an engineering-led, supply chain-enabled manufacturing company. Our global team designs, builds, and delivers products that enable the future today. Together, we build upon decades of experience to provide solutions across almost every industry — driving our vision to become the world’s most technologically advanced and trusted manufacturing solutions provider.",
+            "hellolinktxttext": "About Jabil",
+            "helloimageimagesrc": "https://images.unsplash.com/photo-1755937303351-57ad0f70f773?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMzNjc2NDh8&ixlib=rb-4.1.0&q=80&w=1080",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f4f6f7",
+                        "text": "#ffffff",
+                        "primary": "#7ac043",
+                        "accent": "#7ac043",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#7ac043",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteHomeStoryGlobalpenAlt3": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteHomeStoryGlobalpenAlt3"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteHomeStoryGlobalpenAlt3-1",
+            "globaleyebrowtext": "GLOBAL",
+            "globaltitletext": "Built for scale, engineered for impact",
+            "ctqqtext": "25+",
+            "zjk9htext": "Countries",
+            "xyof9text": "100+",
+            "fdjojtext": "Sites strategically located around\nthe world",
+            "psyvitext": "140K+",
+            "w5ccptext": "Dedicated employees worldwide",
+            "icmntext": "35M+",
+            "ey99gtext": "Square feet of manufacturing\nspace",
+            "yh67otext": "$29.8B",
+            "etsdotext": "Revenue in Fiscal Year 2025",
+            "xghbgtext": "400+",
+            "ugnmtext": "Customers across diverse markets",
+            "linktxttext": "OUR GLOBAL REACH",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f4f6f7",
+                        "text": "#ffffff",
+                        "primary": "#7ac043",
+                        "accent": "#7ac043",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#7ac043",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteHomeStoryCustomizedpenAlt4": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteHomeStoryCustomizedpenAlt4"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteHomeStoryCustomizedpenAlt4-1",
+            "y4658text": "CUSTOMIZED",
+            "w4sgitext": "Vertically integrated solutions and services across the product lifecycle",
+            "card1imagesrc": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=80",
+            "nz2wztext": "Engineering",
+            "card2imagesrc": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=900&q=80",
+            "cvugrtext": "Supply Chain\nManagement",
+            "card3imagesrc": "https://images.unsplash.com/photo-1567789884554-0b844b597180?auto=format&fit=crop&w=900&q=80",
+            "qffxhtext": "Manufacturing",
+            "card4imagesrc": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=900&q=80",
+            "hntlitext": "Post-Manufacturing",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f4f6f7",
+                        "text": "#ffffff",
+                        "primary": "#7ac043",
+                        "accent": "#7ac043",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#7ac043",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteHomeStoryCuttingedgepenAlt5": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteHomeStoryCuttingedgepenAlt5"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteHomeStoryCuttingedgepenAlt5-1",
+            "edgebgimagesrc": "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1800&q=80",
+            "uptext": "⌃",
+            "textatext": "Data Center\nInfrastructure",
+            "linkatext": "EXPLORE  ›",
+            "textbtext": "Healthcare",
+            "linkbtext": "EXPLORE  ›",
+            "textctext": "Semiconductor Capital\nEquipment",
+            "linkctext": "EXPLORE  ›",
+            "textdtext": "Warehouse Automation",
+            "linkdtext": "EXPLORE  ›",
+            "feattxttext": "Featured",
+            "zqusmtext": "Supporting leading brands with decades of cross-industry experience",
+            "j7fjutext": "CUTTING EDGE",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f4f6f7",
+                        "text": "#ffffff",
+                        "primary": "#7ac043",
+                        "accent": "#7ac043",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#7ac043",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteHomeStoryInsightfulpenAlt6": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteHomeStoryInsightfulpenAlt6"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteHomeStoryInsightfulpenAlt6-1",
+            "wx3vtext": "INSIGHTFUL",
+            "lst0ptext": "The latest thinking and news from Jabil.",
+            "i3imagesrc": "https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=900&q=80",
+            "t3text": "Jabil Acquires Hanley Energy\nGroup to Support AI Data\nCenter Power Management",
+            "i1imagesrc": "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=900&q=80",
+            "t1text": "Jabil’s Second Quarter of\nFiscal Year 2026 Earnings\nAnnouncement Set",
+            "i2imagesrc": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80",
+            "t2text": "Jabil Releases Fiscal Year\n2025 Sustainability Progress\nReport",
+            "i4imagesrc": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=900&q=80",
+            "t4text": "Jabil Opens Adv...",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f4f6f7",
+                        "text": "#ffffff",
+                        "primary": "#7ac043",
+                        "accent": "#7ac043",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#7ac043",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteHomeStoryPeoplecenteredpenAlt7": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteHomeStoryPeoplecenteredpenAlt7"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteHomeStoryPeoplecenteredpenAlt7-1",
+            "pqpivtext": "PEOPLE-CENTERED",
+            "n5u34text": "A culture of integrity, ingenuity, and inspiration",
+            "pt03text": "At Jabil, you’re not just an employee. You are the navigator of your career, an inspiration to your colleagues, a guardian of your own wellbeing, and a change-maker in our global community. Explore a World of Possibilities with Jabil and join our team.",
+            "peobtnhref": "/",
+            "myyrltext": "JOB OPPORTUNITIES  ›",
+            "peopleimgimagesrc": "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1400&q=80",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f4f6f7",
+                        "text": "#ffffff",
+                        "primary": "#7ac043",
+                        "accent": "#7ac043",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#7ac043",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteHomeCtaCtapenAlt8": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteHomeCtaCtapenAlt8"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteHomeCtaCtapenAlt8-1",
+            "ctahref": "/",
+            "ctaimgimagesrc": "https://images.unsplash.com/photo-1494412651409-8963ce7935a7?auto=format&fit=crop&w=1800&q=80",
+            "xkitztext": "Let’s accelerate your success.",
+            "vrdiwtext": "CONTACT SALES",
+            "ctabtnhref": "/jabil-contact",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f4f6f7",
+                        "text": "#ffffff",
+                        "primary": "#7ac043",
+                        "accent": "#7ac043",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#7ac043",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteHomeFooterFooterpenAlt9": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteHomeFooterFooterpenAlt9"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteHomeFooterFooterpenAlt9-1",
+            "uoecftext": "JABIL",
+            "bsprptext": "MADE POSSIBLE.\nMADE BETTER.",
+            "bsprphref": "/",
+            "socialrowtext": "in    ◎    X    f",
+            "socialrowhref": "/",
+            "supplierbtnhref": "/",
+            "suptxttext": "SUPPLIER PORTAL",
+            "customerbtnhref": "/jabil-contact",
+            "cuttxttext": "CUSTOMER PORTAL",
+            "footerlinkstext": "CONTACT US      PRIVACY POLICY      COOKIE POLICY      INTEGRITY HOTLINE      TERMS OF USE      GLOBAL ENTITIES      SITEMAP",
+            "footerlinkshref": "/",
+            "footercopytext": "© Jabil Inc. 2026. All Rights Reserved.",
+            "footercopyhref": "/",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f4f6f7",
+                        "text": "#ffffff",
+                        "primary": "#7ac043",
+                        "accent": "#7ac043",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#7ac043",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": "",
+            "columns": [
+                  {
+                        "title": "JABIL",
+                        "links": [
+                              {
+                                    "label": "MADE POSSIBLE.",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "MADE BETTER.",
+                                    "href": "/"
+                              }
+                        ]
+                  }
+            ]
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteJabilAboutNavigationHeaderpenPrimary": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteJabilAboutNavigationHeaderpenPrimary"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteJabilAboutNavigationHeaderpenPrimary-1",
+            "logotext": "JABIL",
+            "logohref": "/",
+            "navtext": "ABOUT  •  SOLUTIONS & SERVICES  •  INDUSTRIES  •  INSIGHTS  •  CAREERS  •  INVESTORS  •  CONTACT",
+            "navhref": "/jabil-contact",
+            "searchtext": "⌕   ◎   EN ▾",
+            "searchhref": "/",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f4f6f7",
+                        "text": "#ffffff",
+                        "primary": "#0b406a00",
+                        "accent": "#0b406a00",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#0b406a00",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteJabilAboutHeroHeropenAlt1": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteJabilAboutHeroHeropenAlt1"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteJabilAboutHeroHeropenAlt1-1",
+            "herobodytext": "Bringing products to life for the world’s leading brands with engineering, supply chain, and manufacturing solutions",
+            "herotitletext": "About Jabil",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f4f6f7",
+                        "text": "#ffffff",
+                        "primary": "#0b406a00",
+                        "accent": "#0b406a00",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#0b406a00",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteJabilAboutStoryAboutintropenAlt2": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteJabilAboutStoryAboutintropenAlt2"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteJabilAboutStoryAboutintropenAlt2-1",
+            "introtexttext": "Intense market competition is driving companies to find new ways to reduce costs, focus on their core competencies, and bring their products to market faster. At the same time, automated technologies like robotics and AI are creating transformative change for businesses in nearly every industry.\n\nJabil goes beyond the traditional role of a manufacturing service provider. We serve as a trusted partner to the world’s leading brands across markets like AI cloud data centers, healthcare, robotics, automotive and transportation, warehouse automation, and energy.\n\nTogether, we transform ideas from sketches on a napkin to the cutting-edge products that power people’s daily lives. You’ve likely interacted with at least one product today that has passed through a Jabil facility.\n\nFrom medical devices and digital payment solutions to data centers and semiconductor capital equipment, our expertise and capabilities extend to nearly every industry. We deliver speed, consistent quality and service at scale through our global footprint and agile engineering, supply chain, and manufacturing solutions.",
+            "videocardimagesrc": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80",
+            "videobtnhref": "/",
+            "videoplaytext": "▶",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f4f6f7",
+                        "text": "#ffffff",
+                        "primary": "#0b406a00",
+                        "accent": "#0b406a00",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#0b406a00",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteJabilAboutStoryGlobalpenAlt3": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteJabilAboutStoryGlobalpenAlt3"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteJabilAboutStoryGlobalpenAlt3-1",
+            "globaleyebrowtext": "GLOBAL",
+            "globaltitletext": "Built for scale, engineered for impact",
+            "ap3uatext": "25+",
+            "byqw3text": "Countries",
+            "w5uftext": "100+",
+            "orxo4text": "Sites strategically located around\nthe world",
+            "s42xstext": "140K+",
+            "sl6wtext": "Dedicated employees worldwide",
+            "fsm7rtext": "35M+",
+            "sbxkutext": "Square feet of manufacturing\nspace",
+            "umcgetext": "$29.8B",
+            "d8pthtext": "Revenue in Fiscal Year 2025",
+            "e2ibotext": "400+",
+            "huv70text": "Customers across diverse markets",
+            "linktxttext": "OUR GLOBAL REACH",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f4f6f7",
+                        "text": "#ffffff",
+                        "primary": "#0b406a00",
+                        "accent": "#0b406a00",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#0b406a00",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteJabilAboutStoryHistorypenAlt4": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteJabilAboutStoryHistorypenAlt4"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteJabilAboutStoryHistorypenAlt4-1",
+            "hbgimagesrc": "https://images.unsplash.com/photo-1662623646616-16247b3f26b6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMzODc3MzN8&ixlib=rb-4.1.0&q=80&w=1080",
+            "historyeyebrowtext": "HISTORY",
+            "historytitletext": "Our humble beginnings",
+            "historybodytext": "Jabil’s entrepreneurial founders started assembling circuit boards around a kitchen table in Michigan in 1966. Even back then, our driving force was always to find new ways to add value for our customers.",
+            "historylinktxttext": "VIEW OUR HISTORY",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f4f6f7",
+                        "text": "#ffffff",
+                        "primary": "#0b406a00",
+                        "accent": "#0b406a00",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#0b406a00",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteJabilAboutStoryOurnamepenAlt5": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteJabilAboutStoryOurnamepenAlt5"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteJabilAboutStoryOurnamepenAlt5-1",
+            "onimgimagesrc": "https://images.unsplash.com/photo-1687618049680-3b334671044c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMzODc3MzR8&ixlib=rb-4.1.0&q=80&w=1080",
+            "onbadgetext": "How do you pronounce",
+            "onplayicontext": "▶",
+            "onlogotext": "Jabil?",
+            "oneytext": "OUR NAME",
+            "onsubtext": "Collaboration from the start",
+            "onbodytext": "The Jabil story begins with partnership, as founders James Golden and Bill Morean combined their first names to create the company’s. Learn how to pronounce Jabil in this video.\n\n",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f4f6f7",
+                        "text": "#ffffff",
+                        "primary": "#0b406a00",
+                        "accent": "#0b406a00",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#0b406a00",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteJabilAboutStoryValuespenAlt6": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteJabilAboutStoryValuespenAlt6"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteJabilAboutStoryValuespenAlt6-1",
+            "pb4j6text": "Integrity",
+            "v1text": "Integrity\nWe put safety first and do what’s right by acting morally and ethically every day. Our teams across the globe take accountability and work to improve our communities and the environment.",
+            "dt1dktext": "Inspiration",
+            "v1text2": "We respect others and embrace diversity through collaboration. Continuous improvement is at the core of our culture, so we challenge ourselves and each other while making time to build strong bonds and have fun.\n",
+            "sqsqhtext": "Ingenuity",
+            "v1text3": "We think creatively, bring a positive attitude, and take an innovative approach to our work to delight our customers — moving with speed and purpose while taking calculated risks. ",
+            "jhrrtext": "Integrity",
+            "v1text4": "We put safety first and do what’s right by acting morally and ethically every day. Our teams across the globe take accountability and work to improve our communities and the environment.",
+            "veytext": "VALUES",
+            "vsubtext": "Our common purpose: making a positive impact for employees, communities, partners, and the environment",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f4f6f7",
+                        "text": "#ffffff",
+                        "primary": "#0b406a00",
+                        "accent": "#0b406a00",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#0b406a00",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteJabilAboutStoryCommitmentpenAlt7": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteJabilAboutStoryCommitmentpenAlt7"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteJabilAboutStoryCommitmentpenAlt7-1",
+            "historyeyebrowtext": "COMMITMENT",
+            "historytitletext": "We operate in alignment with the Jabil Code of Conduct, ensuring integrity and ethical standards in all our partnerships and operations.",
+            "historylinktxttext": "OUR CODE",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f4f6f7",
+                        "text": "#ffffff",
+                        "primary": "#0b406a00",
+                        "accent": "#0b406a00",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#0b406a00",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteJabilAboutStoryRecognizedpenAlt8": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteJabilAboutStoryRecognizedpenAlt8"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteJabilAboutStoryRecognizedpenAlt8-1",
+            "reytext": "RECOGNIZED",
+            "rsubtext": "Awards and honors reflect our employees’ commitment to making a difference",
+            "r1text": "Newsweek America’s Greatest Workplaces in Manufacturing\n2025",
+            "r2text": "The World’s Best Companies of 2024 by Time and Statista",
+            "r3text": "Fortune 2024 World’s Most Admired Companies",
+            "recbtnhref": "/",
+            "recbtnttext": "VIEW ALL AWARDS",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f4f6f7",
+                        "text": "#ffffff",
+                        "primary": "#0b406a00",
+                        "accent": "#0b406a00",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#0b406a00",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteJabilAboutStoryPeoplepenAlt9": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteJabilAboutStoryPeoplepenAlt9"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteJabilAboutStoryPeoplepenAlt9-1",
+            "peytext": "PEOPLE",
+            "psubtext": "Our people are our greatest strength",
+            "pbodytext": "Jabil’s dedicated employees work within a people-centered culture of trust, prioritizing safety, quality, and continuous learning. Our people are empowered to explore new pathways, take chances, and develop their talents to help them come up with the next big idea.",
+            "pbtnhref": "/",
+            "pbtnttext": "MEET OUR LEADERS",
+            "peoplebtn2href": "/",
+            "peoplebtn2ttext": "JOB OPPORTUNITIES",
+            "pimgimagesrc": "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f4f6f7",
+                        "text": "#ffffff",
+                        "primary": "#0b406a00",
+                        "accent": "#0b406a00",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#0b406a00",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteJabilAboutStoryInnovativepenAlt10": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteJabilAboutStoryInnovativepenAlt10"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteJabilAboutStoryInnovativepenAlt10-1",
+            "peytext": "INNOVATIVE",
+            "psubtext": "Enabled by our global operations, Jabil’s vision is to be the world’s most technologically advanced and trusted manufacturing solutions provider. We are delivering the future of manufacturing today by building predictable manufacturing outcomes underpinned by superior asset management and operational excellence — embracing future automation, AI, and machine learning that works alongside our people to generate continuous improvements in safety, quality, and cost.",
+            "pbtnhref": "/",
+            "pbtnttext": "STRATEGIC CAPABILITIES",
+            "icardimagesrc": "https://images.unsplash.com/photo-1741900587348-72fb67190bee?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMzOTQxNDZ8&ixlib=rb-4.1.0&q=80&w=1080",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f4f6f7",
+                        "text": "#ffffff",
+                        "primary": "#0b406a00",
+                        "accent": "#0b406a00",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#0b406a00",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteJabilAboutStoryWhyjabilpenAlt11": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteJabilAboutStoryWhyjabilpenAlt11"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteJabilAboutStoryWhyjabilpenAlt11-1",
+            "weytext": "WHY JABIL?",
+            "wsubtext": "Precise execution delivers success for our customers",
+            "whybodytext": "Jabil’s unique customer engagement model provides customers with a dedicated business unit and a single point of contact, enabling clear communication and fast decision-making. We blend Jabil’s cross-industry expertise and local knowledge with vertically integrated services across the product lifecycle to develop tailored solutions for your specific needs — anywhere in the world. We are an extension of our customers’ teams, putting Jabil’s global resources and scale at your fingertips.",
+            "wbtnhref": "/",
+            "wbtnttext": "WORKING WITH JABIL",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f4f6f7",
+                        "text": "#ffffff",
+                        "primary": "#0b406a00",
+                        "accent": "#0b406a00",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#0b406a00",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteJabilAboutCtaCtabgpenAlt12": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteJabilAboutCtaCtabgpenAlt12"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteJabilAboutCtaCtabgpenAlt12-1",
+            "ctabgimagesrc": "https://images.unsplash.com/photo-1494412651409-8963ce7935a7?auto=format&fit=crop&w=1800&q=80",
+            "ctabtnhref": "/",
+            "ctabtntxttext": "GET IN TOUCH",
+            "ctatitletext": "Ready to turn your possible into reality?",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f4f6f7",
+                        "text": "#ffffff",
+                        "primary": "#0b406a00",
+                        "accent": "#0b406a00",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#0b406a00",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteJabilAboutContactContactpenAlt13": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteJabilAboutContactContactpenAlt13"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteJabilAboutContactContactpenAlt13-1",
+            "formtitletext": "Contact us.",
+            "fnlabeltext": "First Name*",
+            "lnlabeltext": "Last Name*",
+            "colabeltext": "Company Name",
+            "joblabeltext": "Job Title",
+            "indlabeltext": "Industry",
+            "emaillabeltext": "Email*",
+            "phonelabeltext": "Phone Number",
+            "reasonlabeltext": "Reason for Request",
+            "commentlabeltext": "Comment",
+            "flagtxttext": "🇨🇳 ▼",
+            "cctxttext": "+86",
+            "captxttext": "protected by reCAPTCHA\nPrivacy - Terms",
+            "capicontext": "↻",
+            "submitbtnhref": "/",
+            "submittxttext": "SUBMIT",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f4f6f7",
+                        "text": "#ffffff",
+                        "primary": "#0b406a00",
+                        "accent": "#0b406a00",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#0b406a00",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteJabilAboutFooterFooterpenAlt14": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteJabilAboutFooterFooterpenAlt14"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteJabilAboutFooterFooterpenAlt14-1",
+            "mgzntext": "JABIL",
+            "opjqqtext": "MADE POSSIBLE.\nMADE BETTER.",
+            "opjqqhref": "/",
+            "socialrowtext": "in    ◎    X    f",
+            "socialrowhref": "/",
+            "supplierbtnhref": "/",
+            "suptxttext": "SUPPLIER PORTAL",
+            "customerbtnhref": "/jabil-contact",
+            "cuttxttext": "CUSTOMER PORTAL",
+            "footerlinkstext": "CONTACT US      PRIVACY POLICY      COOKIE POLICY      INTEGRITY HOTLINE      TERMS OF USE      GLOBAL ENTITIES      SITEMAP",
+            "footerlinkshref": "/",
+            "footercopytext": "© Jabil Inc. 2026. All Rights Reserved.",
+            "footercopyhref": "/",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f4f6f7",
+                        "text": "#ffffff",
+                        "primary": "#0b406a00",
+                        "accent": "#0b406a00",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#0b406a00",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": "",
+            "columns": [
+                  {
+                        "title": "JABIL",
+                        "links": [
+                              {
+                                    "label": "MADE POSSIBLE.",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "MADE BETTER.",
+                                    "href": "/"
+                              }
+                        ]
+                  }
+            ]
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteJabilCapabilitiesNavigationHeaderpenPrimary": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteJabilCapabilitiesNavigationHeaderpenPrimary"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteJabilCapabilitiesNavigationHeaderpenPrimary-1",
+            "logotext": "JABIL",
+            "logohref": "/",
+            "navtext": "ABOUT  •  SOLUTIONS & SERVICES  •  INDUSTRIES  •  INSIGHTS  •  CAREERS  •  INVESTORS  •  CONTACT",
+            "navhref": "/jabil-contact",
+            "searchtext": "⌕   ◎   EN ▾",
+            "searchhref": "/",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f4f6f7",
+                        "text": "#ffffff",
+                        "primary": "#4F77FF",
+                        "accent": "#4F77FF",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#4F77FF",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteJabilCapabilitiesHeroHeropenAlt1": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteJabilCapabilitiesHeroHeropenAlt1"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteJabilCapabilitiesHeroHeropenAlt1-1",
+            "hbgimagesrc": "https://images.unsplash.com/photo-1662623646616-16247b3f26b6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMzODc3MzN8&ixlib=rb-4.1.0&q=80&w=1080",
+            "herobodytext": "Advanced capabilities for real-world demands",
+            "herotitletext": "Capabilities",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f4f6f7",
+                        "text": "#ffffff",
+                        "primary": "#4F77FF",
+                        "accent": "#4F77FF",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#4F77FF",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteJabilCapabilitiesStoryCapintropenAlt2": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteJabilCapabilitiesStoryCapintropenAlt2"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteJabilCapabilitiesStoryCapintropenAlt2-1",
+            "introtexttext": "Markets are shifting faster than ever, with rising customer expectations, global disruptions, and constant advances in technology reshaping how companies design, build, and deliver. Staying ahead requires the ability to adapt at a moment’s notice, whether it be by adopting new materials, using smarter automation, or expanding regional production.\nJabil addresses these needs through a comprehensive set of advanced capabilities in automation, electronics, metals, optics, plastics, and photonics. With a global network of over 100 sites, a strong digital infrastructure, and broad cross-industry experience, we enable flexible manufacturing that accelerates innovation, improves efficiency, and supports long-term growth for our customers across the world.",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f4f6f7",
+                        "text": "#ffffff",
+                        "primary": "#4F77FF",
+                        "accent": "#4F77FF",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#4F77FF",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteJabilCapabilitiesStoryInnovativepenAlt3": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteJabilCapabilitiesStoryInnovativepenAlt3"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteJabilCapabilitiesStoryInnovativepenAlt3-1",
+            "peytext": "Automation",
+            "psubtext": "At Jabil, we help our customers define clear automation goals and align them with the right technical solutions. Our consultative approach, backed by deep engineering and hardware expertise, ensures every solution is built for long-term performance and seamless integration. Automation is embedded into our factory systems through standardized processes and rigorous design guidelines, enabling consistent execution and faster time to market across our global network.",
+            "pbtnhref": "/",
+            "pbtnttext": "LEARN MORE",
+            "icardimagesrc": "https://images.unsplash.com/photo-1741900587348-72fb67190bee?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMzOTQxNDZ8&ixlib=rb-4.1.0&q=80&w=1080",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f4f6f7",
+                        "text": "#ffffff",
+                        "primary": "#4F77FF",
+                        "accent": "#4F77FF",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#4F77FF",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteJabilCapabilitiesStoryInnovativepenAlt4": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteJabilCapabilitiesStoryInnovativepenAlt4"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteJabilCapabilitiesStoryInnovativepenAlt4-1",
+            "peytext": "Electronics",
+            "psubtext": "Jabil is one of the world’s leading electronics manufacturing services (EMS) providers, trusted by customers to deliver complex, high-performance electronic solutions from initial prototype to full-scale production. With a focus on precision, scalability, and speed, Jabil consistently meets exacting specifications while maintaining the highest standards of quality.\n",
+            "pbtnhref": "/",
+            "pbtnttext": "LEARN MORE",
+            "icardimagesrc": "https://images.unsplash.com/photo-1741900587348-72fb67190bee?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMzOTQxNDZ8&ixlib=rb-4.1.0&q=80&w=1080",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f4f6f7",
+                        "text": "#ffffff",
+                        "primary": "#4F77FF",
+                        "accent": "#4F77FF",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#4F77FF",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteJabilCapabilitiesStoryInnovativepenAlt5": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteJabilCapabilitiesStoryInnovativepenAlt5"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteJabilCapabilitiesStoryInnovativepenAlt5-1",
+            "peytext": "Large Form Factor Assembly",
+            "psubtext": "Jabil’s industry-leading supply chain and product lifecycle management capabilities enable efficient, reliable large form factor assembly solutions. With more than a dozen global facilities tailored for large form factor assembly, Jabil delivers the expertise and infrastructure needed to support your most ambitious builds.",
+            "pbtnhref": "/",
+            "pbtnttext": "LEARN MORE",
+            "icardimagesrc": "https://images.unsplash.com/photo-1741900587348-72fb67190bee?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMzOTQxNDZ8&ixlib=rb-4.1.0&q=80&w=1080",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f4f6f7",
+                        "text": "#ffffff",
+                        "primary": "#4F77FF",
+                        "accent": "#4F77FF",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#4F77FF",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteJabilCapabilitiesStoryInnovativepenAlt6": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteJabilCapabilitiesStoryInnovativepenAlt6"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteJabilCapabilitiesStoryInnovativepenAlt6-1",
+            "peytext": "Metals",
+            "psubtext": "Enabled by our global operations, Jabil’s vision is to be the world’s most technologically advanced and trusted manufacturing solutions provider. We are delivering the future of manufacturing today by building predictable manufacturing outcomes underpinned by superior asset management and operational excellence — embracing future automation, AI, and machine learning that works alongside our people to generate continuous improvements in safety, quality, and cost.",
+            "pbtnhref": "/",
+            "pbtnttext": "LEARN MORE",
+            "icardimagesrc": "https://images.unsplash.com/photo-1741900587348-72fb67190bee?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMzOTQxNDZ8&ixlib=rb-4.1.0&q=80&w=1080",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f4f6f7",
+                        "text": "#ffffff",
+                        "primary": "#4F77FF",
+                        "accent": "#4F77FF",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#4F77FF",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteJabilCapabilitiesFooterFooterpenAlt7": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteJabilCapabilitiesFooterFooterpenAlt7"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteJabilCapabilitiesFooterFooterpenAlt7-1",
+            "zyqzktext": "JABIL",
+            "q7otext": "MADE POSSIBLE.\nMADE BETTER.",
+            "q7ohref": "/",
+            "socialrowtext": "in    ◎    X    f",
+            "socialrowhref": "/",
+            "supplierbtnhref": "/",
+            "suptxttext": "SUPPLIER PORTAL",
+            "customerbtnhref": "/jabil-contact",
+            "cuttxttext": "CUSTOMER PORTAL",
+            "footerlinkstext": "CONTACT US      PRIVACY POLICY      COOKIE POLICY      INTEGRITY HOTLINE      TERMS OF USE      GLOBAL ENTITIES      SITEMAP",
+            "footerlinkshref": "/",
+            "footercopytext": "© Jabil Inc. 2026. All Rights Reserved.",
+            "footercopyhref": "/",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f4f6f7",
+                        "text": "#ffffff",
+                        "primary": "#4F77FF",
+                        "accent": "#4F77FF",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#4F77FF",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": "",
+            "columns": [
+                  {
+                        "title": "JABIL",
+                        "links": [
+                              {
+                                    "label": "MADE POSSIBLE.",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "MADE BETTER.",
+                                    "href": "/"
+                              }
+                        ]
+                  }
+            ]
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteJabilContactNavigationHeaderpenPrimary": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteJabilContactNavigationHeaderpenPrimary"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteJabilContactNavigationHeaderpenPrimary-1",
+            "logotext": "JABIL",
+            "logohref": "/",
+            "navtext": "ABOUT  •  SOLUTIONS & SERVICES  •  INDUSTRIES  •  INSIGHTS  •  CAREERS  •  INVESTORS  •  CONTACT",
+            "navhref": "/jabil-contact",
+            "searchtext": "⌕   ◎   EN ▾",
+            "searchhref": "/",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f4f6f7",
+                        "text": "#ffffff",
+                        "primary": "#003865ff",
+                        "accent": "#003865ff",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#003865ff",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteJabilContactHeroHeropenAlt1": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteJabilContactHeroHeropenAlt1"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteJabilContactHeroHeropenAlt1-1",
+            "herotitletext": "Contact Us\n",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f4f6f7",
+                        "text": "#ffffff",
+                        "primary": "#003865ff",
+                        "accent": "#003865ff",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#003865ff",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteJabilContactContactContactpenAlt2": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteJabilContactContactContactpenAlt2"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteJabilContactContactContactpenAlt2-1",
+            "formtitletext": "Contact us.",
+            "fnlabeltext": "First Name*",
+            "lnlabeltext": "Last Name*",
+            "colabeltext": "Company Name",
+            "joblabeltext": "Job Title",
+            "indlabeltext": "Industry",
+            "emaillabeltext": "Email*",
+            "phonelabeltext": "Phone Number",
+            "reasonlabeltext": "Reason for Request",
+            "commentlabeltext": "Comment",
+            "flagtxttext": "🇨🇳 ▼",
+            "cctxttext": "+86",
+            "captxttext": "protected by reCAPTCHA\nPrivacy - Terms",
+            "capicontext": "↻",
+            "submitbtnhref": "/",
+            "submittxttext": "SUBMIT REQUEST",
+            "peytext": "Contact Us",
+            "psubtext": "General Inquiries           (727) 577-9749\nInvestor Relations         (727) 803-3349\nHuman Resources        (727) 577-9749",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f4f6f7",
+                        "text": "#ffffff",
+                        "primary": "#003865ff",
+                        "accent": "#003865ff",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#003865ff",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteJabilContactFooterFooterpenAlt3": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteJabilContactFooterFooterpenAlt3"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteJabilContactFooterFooterpenAlt3-1",
+            "xpcqhtext": "JABIL",
+            "qif6qtext": "MADE POSSIBLE.\nMADE BETTER.",
+            "qif6qhref": "/",
+            "socialrowtext": "in    ◎    X    f",
+            "socialrowhref": "/",
+            "supplierbtnhref": "/",
+            "suptxttext": "SUPPLIER PORTAL",
+            "customerbtnhref": "/jabil-contact",
+            "cuttxttext": "CUSTOMER PORTAL",
+            "footerlinkstext": "CONTACT US      PRIVACY POLICY      COOKIE POLICY      INTEGRITY HOTLINE      TERMS OF USE      GLOBAL ENTITIES      SITEMAP",
+            "footerlinkshref": "/",
+            "footercopytext": "© Jabil Inc. 2026. All Rights Reserved.",
+            "footercopyhref": "/",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f4f6f7",
+                        "text": "#ffffff",
+                        "primary": "#003865ff",
+                        "accent": "#003865ff",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#003865ff",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": "",
+            "columns": [
+                  {
+                        "title": "JABIL",
+                        "links": [
+                              {
+                                    "label": "MADE POSSIBLE.",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "MADE BETTER.",
+                                    "href": "/"
+                              }
+                        ]
+                  }
+            ]
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteJabilSolutionNavigationHeaderpenPrimary": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteJabilSolutionNavigationHeaderpenPrimary"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteJabilSolutionNavigationHeaderpenPrimary-1",
+            "logotext": "JABIL",
+            "logohref": "/",
+            "navtext": "ABOUT  •  SOLUTIONS & SERVICES  •  INDUSTRIES  •  INSIGHTS  •  CAREERS  •  INVESTORS  •  CONTACT",
+            "navhref": "/jabil-contact",
+            "searchtext": "⌕   ◎   EN ▾",
+            "searchhref": "/",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f4f6f7",
+                        "text": "#ffffff",
+                        "primary": "#003865ff",
+                        "accent": "#003865ff",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#003865ff",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteJabilSolutionHeroHeropenAlt1": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteJabilSolutionHeroHeropenAlt1"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteJabilSolutionHeroHeropenAlt1-1",
+            "hbgimagesrc": "https://images.unsplash.com/photo-1662623646616-16247b3f26b6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMzODc3MzN8&ixlib=rb-4.1.0&q=80&w=1080",
+            "herobodytext": "From design and manufacturing to delivery and beyond, Jabil has you covered",
+            "herotitletext": "Our Solutions",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f4f6f7",
+                        "text": "#ffffff",
+                        "primary": "#003865ff",
+                        "accent": "#003865ff",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#003865ff",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteJabilSolutionStoryAboutintropenAlt2": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteJabilSolutionStoryAboutintropenAlt2"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteJabilSolutionStoryAboutintropenAlt2-1",
+            "introtexttext": "In many organizations, product development is fragmented. Design, manufacturing, delivery, and service are siloed, making it challenging for an organization to stay aligned on goals, timelines, and customer expectations. Without a unified approach, teams often duplicate efforts and overlook insights, resulting in slower response times and inconsistent product experiences.\n\nOur vertically integrated model covers the entire product lifecycle — from innovation and design to sourcing, manufacturing, delivery, and service. With deep engineering expertise, advanced technologies, and a global supply chain, we streamline every step of the product lifecycle to increase efficiency and quality. \n\nJabil acts as a strategic partner to help you accelerate time-to-market, reduce risk, and stay competitive in a fast-moving global market. Whether you're launching a new product or scaling operations, we ensure every step of the lifecycle is aligned with your business goals.",
+            "videocardimagesrc": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80",
+            "peytext": "Our Differentiator: The Customer Engagement Model",
+            "introtexttext2": "Our unique customer engagement model is a pillar of Jabil's people-focused, relationship-based culture. We call it the workcell model — a dedicated team approach that aligns with your individual business needs and supports the success of your product line. \n",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f4f6f7",
+                        "text": "#ffffff",
+                        "primary": "#003865ff",
+                        "accent": "#003865ff",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#003865ff",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteJabilSolutionSocialproofQuotebarpenAlt3": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteJabilSolutionSocialproofQuotebarpenAlt3"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteJabilSolutionSocialproofQuotebarpenAlt3-1",
+            "quotetexttext": "“The high reliability we demand requires a different level of attention. Jabil has proven to be a great partner to fulfill our quantity, quality, delivery, and pricing at the right time. It’s been a journey that Jabil has invested in, too.” ",
+            "quotetexttext2": "— Uri Bechor, Chief Operating Officer, SolarEdge Technologies",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f4f6f7",
+                        "text": "#ffffff",
+                        "primary": "#003865ff",
+                        "accent": "#003865ff",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#003865ff",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteJabilSolutionStoryManufacturepenAlt4": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteJabilSolutionStoryManufacturepenAlt4"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteJabilSolutionStoryManufacturepenAlt4-1",
+            "manimgimagesrc": "https://images.unsplash.com/photo-1567789884554-0b844b597180?auto=format&fit=crop&w=900&q=80",
+            "peytext": "INNOVATE",
+            "abp6jtext": "Turning ideas into strategic product solutions",
+            "psubtext": "With over 50 years of experience as a trusted manufacturing partner to hundreds of the world’s leading brands, Jabil understands that the greatest opportunity to optimize a product is in its earliest stages. Backed by a global team of 140,000 employees across 100 sites in more than 25 countries, we bring deep cross-industry expertise to help you identify the smartest path forward — accelerating time-to-market, improving yields, reducing costs, and turning complex ideas into reality.\nInnovation is the common thread in everything we do.\n",
+            "pbtnhref": "/",
+            "pbtnttext": "LEARN MORE",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f4f6f7",
+                        "text": "#ffffff",
+                        "primary": "#003865ff",
+                        "accent": "#003865ff",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#003865ff",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteJabilSolutionStoryDesignpenAlt5": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteJabilSolutionStoryDesignpenAlt5"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteJabilSolutionStoryDesignpenAlt5-1",
+            "designimgimagesrc": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80",
+            "peytext": "DESIGN",
+            "sn0dztext": "Insight-driven design for performance and scalability",
+            "psubtext": "Maximizing your product’s potential starts with early collaboration. At Jabil, we engage with your team from the concept phase, giving you access to thousands of experienced engineers across multiple domains, each focused on optimizing your design for performance, manufacturability, and scalability. \nOur hands-on, consultative approach ensures every element is thoughtfully evaluated—from materials and components to processes and production methods. We work closely with you to streamline design, reduce complexity and risk, and improve overall efficiency. \n",
+            "pbtnhref": "/",
+            "pbtnttext": "LEARN MORE",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f4f6f7",
+                        "text": "#ffffff",
+                        "primary": "#003865ff",
+                        "accent": "#003865ff",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#003865ff",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteJabilSolutionStoryDeveloppenAlt6": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteJabilSolutionStoryDeveloppenAlt6"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteJabilSolutionStoryDeveloppenAlt6-1",
+            "developimgimagesrc": "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=900&q=80",
+            "peytext": "DEVELOP",
+            "i1bamtext": "Bridge your design to full-scale production",
+            "psubtext": "The development phase will bring your product from concept to reality. At Jabil, we work closely with your team to build a strategic roadmap that guides your design through prototyping and into full-scale production. \nOur engineering, design, and other cross-functional teams collaborate with you to fine-tune your product, optimize manufacturing processes, and manage procurement. We focus on improving manufacturability, boosting performance, and strengthening supply chain resilience. \n",
+            "pbtnhref": "/",
+            "pbtnttext": "LEARN MORE",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f4f6f7",
+                        "text": "#ffffff",
+                        "primary": "#003865ff",
+                        "accent": "#003865ff",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#003865ff",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteJabilSolutionStorySourceplanpenAlt7": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteJabilSolutionStorySourceplanpenAlt7"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteJabilSolutionStorySourceplanpenAlt7-1",
+            "sourceimgimagesrc": "https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=900&q=80",
+            "peytext": "SOURCE & PLAN",
+            "wwkketext": "Smart planning for agile, resilient supply chains",
+            "psubtext": "We align material planning with real-world demand by combining advanced forecasting tools, real-time data, and deep supply chain expertise. Through predictive analytics and close collaboration with customers and suppliers, we make sourcing decisions that are proactive, cost-effective, and tightly integrated with downstream operations — reducing lead times, minimizing waste, and accelerating time-to-market.\n",
+            "pbtnhref": "/",
+            "pbtnttext": "LEARN MORE",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f4f6f7",
+                        "text": "#ffffff",
+                        "primary": "#003865ff",
+                        "accent": "#003865ff",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#003865ff",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteJabilSolutionApproachServicepenAlt8": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteJabilSolutionApproachServicepenAlt8"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteJabilSolutionApproachServicepenAlt8-1",
+            "serviceimgimagesrc": "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=900&q=80",
+            "peytext": "SERVICE",
+            "pl9fytext": "After-market support that extends product value and circularity",
+            "psubtext": "Jabil’s after-market service solutions go beyond warranty coverage. They’re designed to extend product life, reduce waste, and support a more sustainable future. During the warranty period, we manage repairs and replacements at no additional cost, ensuring minimal disruption for your customers. Our intuitive customer service portal enables real-time tracking, collaboration, and communication, making support seamless and transparent.\n",
+            "pbtnhref": "/",
+            "pbtnttext": "LEARN MORE",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f4f6f7",
+                        "text": "#ffffff",
+                        "primary": "#003865ff",
+                        "accent": "#003865ff",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#003865ff",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteJabilSolutionContactContactpenAlt9": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteJabilSolutionContactContactpenAlt9"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteJabilSolutionContactContactpenAlt9-1",
+            "formtitletext": "How can we add value to your product value chain?",
+            "fnlabeltext": "First Name*",
+            "lnlabeltext": "Last Name*",
+            "colabeltext": "Company Name",
+            "joblabeltext": "Job Title",
+            "indlabeltext": "Industry",
+            "emaillabeltext": "Email*",
+            "phonelabeltext": "Phone Number",
+            "reasonlabeltext": "Reason for Request",
+            "commentlabeltext": "Comment",
+            "flagtxttext": "🇨🇳 ▼",
+            "cctxttext": "+86",
+            "captxttext": "protected by reCAPTCHA\nPrivacy - Terms",
+            "capicontext": "↻",
+            "submitbtnhref": "/",
+            "submittxttext": "SUBMIT",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f4f6f7",
+                        "text": "#ffffff",
+                        "primary": "#003865ff",
+                        "accent": "#003865ff",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#003865ff",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteJabilSolutionFooterFooterpenAlt10": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteJabilSolutionFooterFooterpenAlt10"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteJabilSolutionFooterFooterpenAlt10-1",
+            "seqbptext": "JABIL",
+            "qeoiwtext": "MADE POSSIBLE.\nMADE BETTER.",
+            "qeoiwhref": "/",
+            "socialrowtext": "in    ◎    X    f",
+            "socialrowhref": "/",
+            "supplierbtnhref": "/",
+            "suptxttext": "SUPPLIER PORTAL",
+            "customerbtnhref": "/jabil-contact",
+            "cuttxttext": "CUSTOMER PORTAL",
+            "footerlinkstext": "CONTACT US      PRIVACY POLICY      COOKIE POLICY      INTEGRITY HOTLINE      TERMS OF USE      GLOBAL ENTITIES      SITEMAP",
+            "footerlinkshref": "/",
+            "footercopytext": "© Jabil Inc. 2026. All Rights Reserved.",
+            "footercopyhref": "/",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f4f6f7",
+                        "text": "#ffffff",
+                        "primary": "#003865ff",
+                        "accent": "#003865ff",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#003865ff",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": "",
+            "columns": [
+                  {
+                        "title": "JABIL",
+                        "links": [
+                              {
+                                    "label": "MADE POSSIBLE.",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "MADE BETTER.",
+                                    "href": "/"
+                              }
+                        ]
+                  }
+            ]
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteHomeNavigationHeaderpenPrimary_75aa15fc": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteHomeNavigationHeaderpenPrimary_75aa15fc"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteHomeNavigationHeaderpenPrimary_75aa15fc-1",
+            "elhutext": "About Us     Careers     Investors     Collaboration Space",
+            "elhuhref": "/about",
+            "xg0zjtext": "US(EN)      (833) 893-1514",
+            "xg0zjhref": "/",
+            "vvetext": "Chat with an Expert",
+            "vvehref": "/",
+            "nizdctext": "KENNAMETAL",
+            "nizdchref": "/",
+            "yjeptext": "Products",
+            "yjephref": "/products",
+            "f57oqtext": "Industries",
+            "f57oqhref": "/",
+            "uj4aftext": "Services",
+            "uj4afhref": "/",
+            "vlkr7text": "Resources",
+            "vlkr7href": "/",
+            "ybebrtext": "Search by Keyword or Item",
+            "ybebrhref": "/",
+            "wzietext": "Contact",
+            "wziehref": "/contact",
+            "nilptext": "Sign In",
+            "nilphref": "/",
+            "hvhywtext": "Take your shop to the next level.   See Promotions",
+            "hvhywhref": "/products",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#ffffff",
+                        "text": "#ffffff",
+                        "primary": "#f4c300",
+                        "accent": "#f4c300",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#f4c300",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteHomeHeroHeropenAlt1_971bb0ca": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteHomeHeroHeropenAlt1_971bb0ca"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteHomeHeroHeropenAlt1_971bb0ca-1",
+            "x8zgjimagesrc": "https://images.unsplash.com/photo-1758271452953-46f4e12ae2fd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyODEzNzJ8&ixlib=rb-4.1.0&q=80&w=1080",
+            "fxfprtext": "BECOME THE MACHINIST OF\nTHE YEAR",
+            "z6x5atext": "BRING HOME THE GLORY & THE\nTOOLS",
+            "yeubitext": "ENTER TODAY",
+            "gf0irtext": "VIEW PRINT",
+            "z5epbtext": "Catalogs",
+            "cg3jctext": "GET STARTED WITH",
+            "rszngtext": "Collaboration Space",
+            "gat6ntext": "VIEW OUR",
+            "fldaxtext": "CAM Integrations",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#ffffff",
+                        "text": "#ffffff",
+                        "primary": "#f4c300",
+                        "accent": "#f4c300",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#f4c300",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteHomeProductsCatsectionpenAlt2": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteHomeProductsCatsectionpenAlt2"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteHomeProductsCatsectionpenAlt2-1",
+            "npew7text": "METAL CUTTING",
+            "u8z9ytext": "EARTH CUTTING & WEAR SOLUTIONS",
+            "izhuqimagesrc": "https://images.unsplash.com/photo-1562946723-2ee1c79439fc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyODEzOTJ8&ixlib=rb-4.1.0&q=80&w=1080",
+            "er64ytext": "NEW PRODUCTS",
+            "bcel2imagesrc": "https://images.unsplash.com/photo-1609745881196-bc2af0676777?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyODEzOTN8&ixlib=rb-4.1.0&q=80&w=1080",
+            "u2ddtext": "TURNING",
+            "dkkwlimagesrc": "https://images.unsplash.com/photo-1602052793312-b99c2a9ee797?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyODEzOTR8&ixlib=rb-4.1.0&q=80&w=1080",
+            "sodrtext": "SOLID END MILLING",
+            "bmfzeimagesrc": "https://images.unsplash.com/photo-1549986676-4a401c873ce7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyODEzOTV8&ixlib=rb-4.1.0&q=80&w=1080",
+            "bs4xytext": "MINING",
+            "dmybzimagesrc": "https://images.unsplash.com/photo-1741049827867-e94d5b8bb60b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyODEzOTV8&ixlib=rb-4.1.0&q=80&w=1080",
+            "yukvutext": "CONSTRUCTION",
+            "oycnimagesrc": "https://images.unsplash.com/photo-1758297679736-2e6ff92d2021?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyODEzOTZ8&ixlib=rb-4.1.0&q=80&w=1080",
+            "lf08btext": "CARBIDE WEAR\nPARTS",
+            "moqugimagesrc": "https://images.unsplash.com/photo-1713662653109-5e372136d4bd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyODE0MTR8&ixlib=rb-4.1.0&q=80&w=1080",
+            "owbi2text": "INDEXABLE MILLING",
+            "iqjisimagesrc": "https://images.unsplash.com/photo-1763042175581-158809f5271f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyODE0MTR8&ixlib=rb-4.1.0&q=80&w=1080",
+            "hjfudtext": "HOLEMAKING",
+            "intoqimagesrc": "https://images.unsplash.com/photo-1559715543-8f98c9898322?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyODE0MTV8&ixlib=rb-4.1.0&q=80&w=1080",
+            "vusxutext": "TOOL HOLDERS &\nADAPTERS",
+            "pzijximagesrc": "https://images.unsplash.com/photo-1769540950944-7a63b190037a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyODE0MTZ8&ixlib=rb-4.1.0&q=80&w=1080",
+            "akyrstext": "BORON NITRIDE\nSOLUTIONS",
+            "tnuy2imagesrc": "https://images.unsplash.com/photo-1625464735911-5e9074afe9cf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyODE0MTd8&ixlib=rb-4.1.0&q=80&w=1080",
+            "yts1gtext": "CONFORMA CLAD\nCOATINGS",
+            "dnsnkimagesrc": "https://images.unsplash.com/photo-1611235726510-7ece968ab6db?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyODE0MTh8&ixlib=rb-4.1.0&q=80&w=1080",
+            "yw8fktext": "ADDITIVE\nMANUFACTURING",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#ffffff",
+                        "text": "#ffffff",
+                        "primary": "#f4c300",
+                        "accent": "#f4c300",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#f4c300",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteHomeCtaPromo1penAlt3": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteHomeCtaPromo1penAlt3"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteHomeCtaPromo1penAlt3-1",
+            "protexttext": "Unlock Your Full Tooling Potential—Create Your Free Account Today!",
+            "prodesctext": "Why create an account?",
+            "btn1href": "/",
+            "btn1txttext": "Create Account",
+            "bulletsatext": "• See product price and availability\n• Create and manage your tooling solutions and projects\n• Get recommended solutions based on your project requirements\n• Add your machines to view compatible tooling and specific machining data\n• Collaborate with your team\n• Business accounts can easily create and manage quotes and orders",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#ffffff",
+                        "text": "#ffffff",
+                        "primary": "#f4c300",
+                        "accent": "#f4c300",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#f4c300",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteHomeCtaPromo2penAlt4": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteHomeCtaPromo2penAlt4"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteHomeCtaPromo2penAlt4-1",
+            "promo2imgimagesrc": "https://images.unsplash.com/photo-1662767784028-f22926bc7dd8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyODE5NzZ8&ixlib=rb-4.1.0&q=80&w=1080",
+            "p2titletext": "CREATE. COLLABORATE.\nINNOVATE.",
+            "p2desctext": "• Build tooling solutions, interact with 3D models,\n  download digital assets\n• Organize your projects, solutions and machines in one place\n• Get recommended tooling solutions by providing\n  your requirements",
+            "btn2href": "/",
+            "btn2txttext": "Start Collaborating",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#ffffff",
+                        "text": "#ffffff",
+                        "primary": "#f4c300",
+                        "accent": "#f4c300",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#f4c300",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteHomeApproachFeaturedpenAlt5": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteHomeApproachFeaturedpenAlt5"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteHomeApproachFeaturedpenAlt5-1",
+            "fttitletext": "FEATURED PRODUCTS",
+            "fp1imgimagesrc": "https://images.unsplash.com/photo-1574948833472-137f20a4a700?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyODE5NzZ8&ixlib=rb-4.1.0&q=80&w=1080",
+            "fp1tagtext": "TURNING",
+            "fp1titletext": "KCP25C with KENGold™ CVD",
+            "fp1desctext": "For steel · Highly uniform structure\nprotects against wear · Reliable tool life",
+            "fp2imgimagesrc": "https://images.unsplash.com/photo-1741827866663-6ad8ec20480c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyODE5Nzd8&ixlib=rb-4.1.0&q=80&w=1080",
+            "fp2tagtext": "INDEXABLE DRILLING",
+            "fp2titletext": "Drill Fix PRO",
+            "fp2desctext": "12–65mm Diameter · Up to 5×D · Insert\ntype: Squared inboard, squared outboard",
+            "fp3imgimagesrc": "https://images.unsplash.com/photo-1550980217-9451a338c2b6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyODE5Nzh8&ixlib=rb-4.1.0&q=80&w=1080",
+            "fp3tagtext": "CONSTRUCTION",
+            "fp3titletext": "Road King Diamond™ 303R",
+            "fp3desctext": "Mill Road Surfaces with Greater Efficiency",
+            "fp4imgimagesrc": "https://images.unsplash.com/photo-1580744434685-a81aee2bd642?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyODE5Nzl8&ixlib=rb-4.1.0&q=80&w=1080",
+            "fp4tagtext": "MINING",
+            "fp4titletext": "PrimePoint™",
+            "fp4desctext": "For Longwall mining · Get the Picks That\nAre a Cut Above the Rest",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#ffffff",
+                        "text": "#ffffff",
+                        "primary": "#f4c300",
+                        "accent": "#f4c300",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#f4c300",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteHomeStoryArticlespenAlt6": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteHomeStoryArticlespenAlt6"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteHomeStoryArticlespenAlt6-1",
+            "arttitletext": "HIGHLIGHTS & ARTICLES",
+            "a1imgimagesrc": "https://images.unsplash.com/photo-1645754884761-6ada0d53807b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyODQ0MTB8&ixlib=rb-4.1.0&q=80&w=1080",
+            "a1txttext": "Kennametal Introduces New PCD Road Milling\nPick Designed to Cut Downtime and Boost\nPerformance at CONEXPO",
+            "a2imgimagesrc": "https://images.unsplash.com/photo-1716469802026-ad9275f8d724?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyODQ0MzF8&ixlib=rb-4.1.0&q=80&w=1080",
+            "a2txttext": "Update on Insert Coating Process for Enhanced\nVisual Appearance",
+            "a3imgimagesrc": "https://images.unsplash.com/photo-1676143617406-55e7b493b1b7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyODQ0MTJ8&ixlib=rb-4.1.0&q=80&w=1080",
+            "a3txttext": "Kennametal Expands Mining Portfolio with\nThree New Product Lines",
+            "newsbtn1href": "/",
+            "newsbtntxttext": "See All",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#ffffff",
+                        "text": "#ffffff",
+                        "primary": "#f4c300",
+                        "accent": "#f4c300",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#f4c300",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteHomeCtaNewsbtnspenAlt7": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteHomeCtaNewsbtnspenAlt7"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteHomeCtaNewsbtnspenAlt7-1",
+            "newsbtnshref": "/",
+            "news1text": "LATEST COMPANY NEWS",
+            "newsbtntxttext": "See All",
+            "newsbtntxthref": "/",
+            "n1ttext": "Kennametal Honors 2026 STEP Ahead Award\nWinner from the Manufacturing Institute",
+            "n1dtext": "Kennametal Inc. (NYSE: KMT) announced today\nthat Ellen Whittingham, Vice President, Strategic\nTalent Enablement, has been recognized as a 2026\nSTEP Ahead Award Honoree by The...",
+            "n2ttext": "Kennametal Launches 'Machinist of the Year'\nGlobal Program to Honor Long-Time Customers\nand Industry Leaders",
+            "n2dtext": "Kennametal Inc. (NYSE: KMT), a global leader in\nmetal cutting solutions, today announced the\nlaunch of its Machinist of the Year program, a new\nannual initiative designed to recognize the skill...",
+            "n3ttext": "Kennametal to Attend J.P. Morgan Industrials\nConference",
+            "n3dtext": "Kennametal Inc. (NYSE: KMT) announced today\nthat they will attend the J.P. Morgan Industrials\nConference in Washington DC. Details of this\nconference are as follows: When: Tuesday, March...",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#ffffff",
+                        "text": "#ffffff",
+                        "primary": "#f4c300",
+                        "accent": "#f4c300",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#f4c300",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteHomeStoryEventspenAlt8": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteHomeStoryEventspenAlt8"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteHomeStoryEventspenAlt8-1",
+            "evtxt1text": "AMPP",
+            "e1imgimagesrc": "https://images.unsplash.com/photo-1558008258-3256797b43f3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyODQ0Njh8&ixlib=rb-4.1.0&q=80&w=1080",
+            "e1ttext": "AMPP 2026",
+            "e1dtext": "March 15-19, 2026 · Houston, TX, USA · Booth # 1902",
+            "evtxt2text": "CMTS",
+            "e2imgimagesrc": "https://images.unsplash.com/photo-1761195696518-6384573549ea?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyODQ0Njl8&ixlib=rb-4.1.0&q=80&w=1080",
+            "e2ttext": "Ceramitec 2026",
+            "e2dtext": "March 24-26, 2026 · Munich, Germany · Booth # A6.503",
+            "evtxt3text": "cippe",
+            "e3imgimagesrc": "https://images.unsplash.com/photo-1772550018808-ebbcc271726c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyODQ0NzB8&ixlib=rb-4.1.0&q=80&w=1080",
+            "e3ttext": "The 26th China International Petroleum &\nPetrochemical Technology and Equipment",
+            "e3dtext": "March 26-28, 2026 · Beijing, China · Booth #W2520",
+            "evheadtext": "UPCOMING EVENTS",
+            "evbtnhref": "/",
+            "evbtntxttext": "See All Events",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#ffffff",
+                        "text": "#ffffff",
+                        "primary": "#f4c300",
+                        "accent": "#f4c300",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#f4c300",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteHomeStoryDarkband2penAlt9": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteHomeStoryDarkband2penAlt9"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteHomeStoryDarkband2penAlt9-1",
+            "db2ttext": "Join the Community",
+            "dbinputtxttext": "Enter your email address",
+            "db2btnhref": "/",
+            "dbbtntxttext": "Sign Me Up",
+            "dbsubtext": "Get the latest updates on product innovations, expert tips, events, promotions, and\ntraining.",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#ffffff",
+                        "text": "#ffffff",
+                        "primary": "#f4c300",
+                        "accent": "#f4c300",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#f4c300",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteHomeFooterFooterpenAlt10": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteHomeFooterFooterpenAlt10"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteHomeFooterFooterpenAlt10-1",
+            "oiy6ntext": "Chat with Experts",
+            "tsjntext": "(833) 893-1514",
+            "bodyktext": "Message Sales",
+            "col2ttext": "Need Help?",
+            "col2thref": "/",
+            "nojpwtext": "Customer Support",
+            "nojpwhref": "/contact",
+            "emdpotext": "Frequently Asked Questions",
+            "emdpohref": "/",
+            "orh7btext": "Track Order",
+            "orh7bhref": "/",
+            "tsjzltext": "Returns & Cancellations",
+            "tsjzlhref": "/",
+            "kh4ttext": "Safety Data Sheets",
+            "kh4thref": "/",
+            "ym8dgtext": "Popular Categories",
+            "ym8dghref": "/",
+            "bzr50text": "O.D. and I.D. Turning",
+            "bzr50href": "/",
+            "vxyrutext": "Modular Drills",
+            "vxyruhref": "/",
+            "a89tctext": "Solid Carbide Drills",
+            "a89tchref": "/",
+            "dq1qtext": "High-Performance Solid Carbide End Mills",
+            "dq1qhref": "/",
+            "bpmbgtext": "0°/90° Shoulder Mills",
+            "bpmbghref": "/",
+            "ipxjftext": "Indexable Milling",
+            "ipxjfhref": "/",
+            "rcp8vtext": "Solid End Milling",
+            "rcp8vhref": "/",
+            "dhvhgtext": "Grooving and Cut-Off",
+            "dhvhghref": "/",
+            "ps0z6text": "Indexable Drilling",
+            "ps0z6href": "/",
+            "zqmhktext": "Profiling",
+            "zqmhkhref": "/",
+            "ehqqtext": "About Us",
+            "ehqqhref": "/about",
+            "hmvwntext": "About Kennametal",
+            "hmvwnhref": "/about",
+            "hnrjttext": "Kennametal Careers",
+            "hnrjthref": "/",
+            "rxjytext": "Investor Relations",
+            "rxjyhref": "/",
+            "hfjlftext": "History",
+            "hfjlfhref": "/",
+            "iey8ztext": "Events",
+            "iey8zhref": "/",
+            "gkvjitext": "Corporate News",
+            "gkvjihref": "/",
+            "sgum0text": "Doing Business with Kennametal",
+            "sgum0href": "/",
+            "lgrsntext": "Ethics & Compliance",
+            "lgrsnhref": "/",
+            "fetpgtext": "Certificates",
+            "fetpghref": "/",
+            "tlvdetext": "2026 Terms & Conditions of Use | Conditions of Sale | Data Privacy Policy | Sitemap",
+            "tlvdehref": "/privacy",
+            "dfovgtext": "Kennametal Inc. 525 William Penn Place Suite 3300, Pittsburgh, PA 15219",
+            "dfovghref": "/",
+            "socialtext": "f   in   yt   ig",
+            "socialhref": "/",
+            "uweqntext": "Give Feedback",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#ffffff",
+                        "text": "#ffffff",
+                        "primary": "#f4c300",
+                        "accent": "#f4c300",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#f4c300",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteAboutNavigationHeaderpenPrimary": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteAboutNavigationHeaderpenPrimary"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteAboutNavigationHeaderpenPrimary-1",
+            "ga6m4text": "About Us     Careers     Investors     Collaboration Space",
+            "ga6m4href": "/about",
+            "d5gmvtext": "US(EN)      (833) 893-1514",
+            "d5gmvhref": "/",
+            "mthowtext": "Chat with an Expert",
+            "mthowhref": "/",
+            "mu19mtext": "KENNAMETAL",
+            "mu19mhref": "/",
+            "xr64ztext": "Products",
+            "xr64zhref": "/products",
+            "jzraitext": "Industries",
+            "jzraihref": "/",
+            "qsbgtext": "Services",
+            "qsbghref": "/",
+            "mikx0text": "Resources",
+            "mikx0href": "/",
+            "baeftext": "Search by Keyword or Item",
+            "baefhref": "/",
+            "vuj5ttext": "Contact",
+            "vuj5thref": "/contact",
+            "ywxxptext": "Sign In",
+            "ywxxphref": "/",
+            "liqatext": "Take your shop to the next level.   See Promotions",
+            "liqahref": "/products",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#ffffff",
+                        "text": "#ffffff",
+                        "primary": "#f4c300",
+                        "accent": "#f4c300",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#f4c300",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteAboutStoryDarkband2penAlt1": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteAboutStoryDarkband2penAlt1"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteAboutStoryDarkband2penAlt1-1",
+            "db2ttext": "Join the Community",
+            "dbinputtxttext": "Enter your email address",
+            "db2btnhref": "/",
+            "dbbtntxttext": "Sign Me Up",
+            "dbsubtext": "Get the latest updates on product innovations, expert tips, events, promotions, and\ntraining.",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#ffffff",
+                        "text": "#ffffff",
+                        "primary": "#f4c300",
+                        "accent": "#f4c300",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#f4c300",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteAboutFooterFooterpenAlt2": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteAboutFooterFooterpenAlt2"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteAboutFooterFooterpenAlt2-1",
+            "xssxstext": "Chat with Experts",
+            "fpdytext": "(833) 893-1514",
+            "qoxtbtext": "Message Sales",
+            "col2ttext": "Need Help?",
+            "col2thref": "/",
+            "mj1lytext": "Customer Support",
+            "mj1lyhref": "/contact",
+            "uyywtext": "Frequently Asked Questions",
+            "uyywhref": "/",
+            "wlwcutext": "Track Order",
+            "wlwcuhref": "/",
+            "z2boxtext": "Returns & Cancellations",
+            "z2boxhref": "/",
+            "vz9vgtext": "Safety Data Sheets",
+            "vz9vghref": "/",
+            "okjkptext": "Popular Categories",
+            "okjkphref": "/",
+            "wzdoztext": "O.D. and I.D. Turning",
+            "wzdozhref": "/",
+            "lb0zbtext": "Modular Drills",
+            "lb0zbhref": "/",
+            "bzv5qtext": "Solid Carbide Drills",
+            "bzv5qhref": "/",
+            "c4qoktext": "High-Performance Solid Carbide End Mills",
+            "c4qokhref": "/",
+            "djvzgtext": "0°/90° Shoulder Mills",
+            "djvzghref": "/",
+            "xwyltext": "Indexable Milling",
+            "xwylhref": "/",
+            "mirttext": "Solid End Milling",
+            "mirthref": "/",
+            "bli4text": "Grooving and Cut-Off",
+            "bli4href": "/",
+            "xfviotext": "Indexable Drilling",
+            "xfviohref": "/",
+            "t2xketext": "Profiling",
+            "t2xkehref": "/",
+            "hkezctext": "About Us",
+            "hkezchref": "/about",
+            "ycitqtext": "About Kennametal",
+            "ycitqhref": "/about",
+            "trb1itext": "Kennametal Careers",
+            "trb1ihref": "/",
+            "yghiytext": "Investor Relations",
+            "yghiyhref": "/",
+            "e7twptext": "History",
+            "e7twphref": "/",
+            "wsqitext": "Events",
+            "wsqihref": "/",
+            "pnpd9text": "Corporate News",
+            "pnpd9href": "/",
+            "rmfb9text": "Doing Business with Kennametal",
+            "rmfb9href": "/",
+            "fsdqdtext": "Ethics & Compliance",
+            "fsdqdhref": "/",
+            "bc2e9text": "Certificates",
+            "bc2e9href": "/",
+            "quttext": "2026 Terms & Conditions of Use | Conditions of Sale | Data Privacy Policy | Sitemap",
+            "quthref": "/privacy",
+            "q9snktext": "Kennametal Inc. 525 William Penn Place Suite 3300, Pittsburgh, PA 15219",
+            "q9snkhref": "/",
+            "socialtext": "f   in   yt   ig",
+            "socialhref": "/",
+            "n5gx3text": "Give Feedback",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#ffffff",
+                        "text": "#ffffff",
+                        "primary": "#f4c300",
+                        "accent": "#f4c300",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#f4c300",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteAboutHeroAboutheropenAlt3": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteAboutHeroAboutheropenAlt3"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteAboutHeroAboutheropenAlt3-1",
+            "herobannerimagesrc": "https://images.unsplash.com/photo-1589648508211-fa8971fbeb12?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyODgyMjh8&ixlib=rb-4.1.0&q=80&w=1080",
+            "herotagtexttext": "About Kennametal",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#ffffff",
+                        "text": "#ffffff",
+                        "primary": "#f4c300",
+                        "accent": "#f4c300",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#f4c300",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteAboutStoryTransformsecpenAlt4": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteAboutStoryTransformsecpenAlt4"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteAboutStoryTransformsecpenAlt4-1",
+            "transtitletext": "Transforming how everyday life is built",
+            "transsubtext": "Kennametal powers progress from the city to the plant to your hand — we reliably produce and durable materials. Kennametal creates the advanced tooling and materials that manufacturers around the world depend on.",
+            "img1imagesrc": "https://images.unsplash.com/photo-1581094480465-4e6c25fb4a52?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyODgyMzF8&ixlib=rb-4.1.0&q=80&w=1080",
+            "t1text": "Safer Sites, Secure World",
+            "b1text": "• Protect workers with stronger materials and reliable systems\n• Bring safety and performance to critical infrastructure",
+            "img2imagesrc": "https://images.unsplash.com/photo-1515344905723-babc01aac23d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyODgyMzJ8&ixlib=rb-4.1.0&q=80&w=1080",
+            "t2text": "Powering Digital & Clean Energy",
+            "b2text": "• Build cleaner power through precision components\n• Accelerate the transition to sustainable energy",
+            "img3imagesrc": "https://images.unsplash.com/photo-1530026405186-ed1f139313f8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyODgyMzN8&ixlib=rb-4.1.0&q=80&w=1080",
+            "t3text": "Precision in Modern Medicine",
+            "b3text": "• Produce high-tolerance tools for modern medicine\n• Enable repeatable quality at scale",
+            "img4imagesrc": "https://images.unsplash.com/photo-1550281378-521929a11c42?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyODgyMzN8&ixlib=rb-4.1.0&q=80&w=1080",
+            "t4text": "Building the World's Foundation",
+            "b4text": "• Keep global supply chains moving with durable tooling\n• Support road, rail, and heavy construction",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#ffffff",
+                        "text": "#ffffff",
+                        "primary": "#f4c300",
+                        "accent": "#f4c300",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#f4c300",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteAboutStoryWhysecpenAlt5": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteAboutStoryWhysecpenAlt5"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteAboutStoryWhysecpenAlt5-1",
+            "whytitletext": "Why Our Work Matters",
+            "wt1text": "EXTREME RELIABILITY",
+            "wd1text": "Built to perform in the toughest environments.",
+            "wt2text": "PINPOINT PRECISION",
+            "wd2text": "Sharp tolerances and repeatable outcomes.",
+            "wt3text": "SUPPLY SECURITY",
+            "wd3text": "A dependable supply network for global demand.",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#ffffff",
+                        "text": "#ffffff",
+                        "primary": "#f4c300",
+                        "accent": "#f4c300",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#f4c300",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteAboutStoryInnovsecpenAlt6": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteAboutStoryInnovsecpenAlt6"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteAboutStoryInnovsecpenAlt6-1",
+            "invtitletext": "Fiscal Year 2025 Innovation by the Numbers",
+            "stat1text": "20+",
+            "stat2text": "70+",
+            "stat3text": "1,000+",
+            "videoimagesrc": "https://images.unsplash.com/photo-1648488380909-667f6b249942?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyODgyMjl8&ixlib=rb-4.1.0&q=80&w=1080",
+            "sd1text": "products introduced",
+            "sd2text": "patents granted",
+            "sd3text": "social media interactions",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#ffffff",
+                        "text": "#ffffff",
+                        "primary": "#f4c300",
+                        "accent": "#f4c300",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#f4c300",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteAboutStoryLearnsecpenAlt7": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteAboutStoryLearnsecpenAlt7"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteAboutStoryLearnsecpenAlt7-1",
+            "learntitletext": "Learn More About Kennametal",
+            "lt1text": "Mission, Vision & Values",
+            "imgaimagesrc": "https://images.unsplash.com/photo-1660075235409-ac9de82d2b4d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyODg5OTB8&ixlib=rb-4.1.0&q=80&w=1080",
+            "desc1text": "Learn more about our mission, values and long-term vision.",
+            "lt2text": "Community Engagement",
+            "imgbimagesrc": "https://images.unsplash.com/photo-1601570699061-d88b40595b4c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyODg5OTF8&ixlib=rb-4.1.0&q=80&w=1080",
+            "desc2text": "See how we partner with communities around the world.",
+            "lt3text": "Sustainability",
+            "imgcimagesrc": "https://images.unsplash.com/photo-1618225767913-334d00cccb94?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyODg5OTJ8&ixlib=rb-4.1.0&q=80&w=1080",
+            "desc3text": "Discover our approach to responsible innovation and growth.",
+            "lt4text": "History",
+            "imgdimagesrc": "https://images.unsplash.com/photo-1768121496235-9c16c4125562?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyODg5OTR8&ixlib=rb-4.1.0&q=80&w=1080",
+            "desc4text": "Explore key milestones that shaped Kennametal over time.",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#ffffff",
+                        "text": "#ffffff",
+                        "primary": "#f4c300",
+                        "accent": "#f4c300",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#f4c300",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteProductsNavigationHeaderpenPrimary": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteProductsNavigationHeaderpenPrimary"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteProductsNavigationHeaderpenPrimary-1",
+            "zos5ctext": "About Us     Careers     Investors     Collaboration Space",
+            "zos5chref": "/about",
+            "snxaltext": "US(EN)      (833) 893-1514",
+            "snxalhref": "/",
+            "mdw9ftext": "Chat with an Expert",
+            "mdw9fhref": "/",
+            "ur5xstext": "KENNAMETAL",
+            "ur5xshref": "/",
+            "cnuk2text": "Products",
+            "cnuk2href": "/products",
+            "p1rietext": "Industries",
+            "p1riehref": "/",
+            "oa5nwtext": "Services",
+            "oa5nwhref": "/",
+            "js37ytext": "Resources",
+            "js37yhref": "/",
+            "aklmltext": "Search by Keyword or Item",
+            "aklmlhref": "/",
+            "mn3vktext": "Contact",
+            "mn3vkhref": "/contact",
+            "tm2dtext": "Sign In",
+            "tm2dhref": "/",
+            "dcyoxtext": "Take your shop to the next level.   See Promotions",
+            "dcyoxhref": "/products",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#ffffff",
+                        "text": "#ffffff",
+                        "primary": "#f4c300",
+                        "accent": "#f4c300",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#f4c300",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteProductsStoryDarkband2penAlt1": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteProductsStoryDarkband2penAlt1"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteProductsStoryDarkband2penAlt1-1",
+            "db2ttext": "Join the Community",
+            "dbinputtxttext": "Enter your email address",
+            "db2btnhref": "/",
+            "dbbtntxttext": "Sign Me Up",
+            "dbsubtext": "Get the latest updates on product innovations, expert tips, events, promotions, and\ntraining.",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#ffffff",
+                        "text": "#ffffff",
+                        "primary": "#f4c300",
+                        "accent": "#f4c300",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#f4c300",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteProductsFooterFooterpenAlt2": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteProductsFooterFooterpenAlt2"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteProductsFooterFooterpenAlt2-1",
+            "xyzptext": "Chat with Experts",
+            "lckeltext": "(833) 893-1514",
+            "wmmi2text": "Message Sales",
+            "col2ttext": "Need Help?",
+            "col2thref": "/",
+            "fwzo2text": "Customer Support",
+            "fwzo2href": "/contact",
+            "dlncjtext": "Frequently Asked Questions",
+            "dlncjhref": "/",
+            "imhfgtext": "Track Order",
+            "imhfghref": "/",
+            "iiiy8text": "Returns & Cancellations",
+            "iiiy8href": "/",
+            "n0bn2text": "Safety Data Sheets",
+            "n0bn2href": "/",
+            "rk9axtext": "Popular Categories",
+            "rk9axhref": "/",
+            "bpuzvtext": "O.D. and I.D. Turning",
+            "bpuzvhref": "/",
+            "m0bz8text": "Modular Drills",
+            "m0bz8href": "/",
+            "ohmxotext": "Solid Carbide Drills",
+            "ohmxohref": "/",
+            "lxl6atext": "High-Performance Solid Carbide End Mills",
+            "lxl6ahref": "/",
+            "vsxghtext": "0°/90° Shoulder Mills",
+            "vsxghhref": "/",
+            "yikfhtext": "Indexable Milling",
+            "yikfhhref": "/",
+            "kxqttext": "Solid End Milling",
+            "kxqthref": "/",
+            "p3ldstext": "Grooving and Cut-Off",
+            "p3ldshref": "/",
+            "bqqegtext": "Indexable Drilling",
+            "bqqeghref": "/",
+            "t2dpgtext": "Profiling",
+            "t2dpghref": "/",
+            "vlifmtext": "About Us",
+            "vlifmhref": "/about",
+            "twz5text": "About Kennametal",
+            "twz5href": "/about",
+            "vpo4ktext": "Kennametal Careers",
+            "vpo4khref": "/",
+            "era0mtext": "Investor Relations",
+            "era0mhref": "/",
+            "pjf35text": "History",
+            "pjf35href": "/",
+            "utiketext": "Events",
+            "utikehref": "/",
+            "cimqetext": "Corporate News",
+            "cimqehref": "/",
+            "hzvwbtext": "Doing Business with Kennametal",
+            "hzvwbhref": "/",
+            "z6hxutext": "Ethics & Compliance",
+            "z6hxuhref": "/",
+            "nqscktext": "Certificates",
+            "nqsckhref": "/",
+            "rsubbtext": "2026 Terms & Conditions of Use | Conditions of Sale | Data Privacy Policy | Sitemap",
+            "rsubbhref": "/privacy",
+            "oysimtext": "Kennametal Inc. 525 William Penn Place Suite 3300, Pittsburgh, PA 15219",
+            "oysimhref": "/",
+            "socialtext": "f   in   yt   ig",
+            "socialhref": "/",
+            "bxz8ktext": "Give Feedback",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#ffffff",
+                        "text": "#ffffff",
+                        "primary": "#f4c300",
+                        "accent": "#f4c300",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#f4c300",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteProductsProductsProductsmainpenAlt3": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteProductsProductsProductsmainpenAlt3"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteProductsProductsProductsmainpenAlt3-1",
+            "tagtext": "Products",
+            "titletext": "Products",
+            "subtext": "With Kennametal tooling, you will run longer, cut faster and machine with greater precision. All Kennametal products are designed to face the most demanding conditions and protect your operation against downtime. Check out our latest offerings.",
+            "i1imagesrc": "https://images.unsplash.com/photo-1583737077720-03c9ca7604f1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyODk3OTZ8&ixlib=rb-4.1.0&q=80&w=1080",
+            "t1text": "Metalworking Tools",
+            "d1text": "Machine the parts you need with high performance tooling solutions.",
+            "l1text": "View Categories ▾",
+            "i2imagesrc": "https://images.unsplash.com/photo-1523299746571-fa1412c28fb8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyODk3OTd8&ixlib=rb-4.1.0&q=80&w=1080",
+            "t2text": "Mining",
+            "d2text": "No matter the application, turn to Kennametal for productive mining performance.",
+            "l2text": "View Categories ▾",
+            "i3imagesrc": "https://images.unsplash.com/photo-1580901369227-308f6f40bdeb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyODk3OTd8&ixlib=rb-4.1.0&q=80&w=1080",
+            "t3text": "Construction",
+            "d3text": "Kennametal construction tooling for road reclamation and trenching.",
+            "l3text": "View Categories ▾",
+            "i4imagesrc": "https://images.unsplash.com/photo-1650797785884-54b4d3062120?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyODk3OTh8&ixlib=rb-4.1.0&q=80&w=1080",
+            "t4text": "Carbide Rods & Blanks",
+            "d4text": "Kennametal high-performance carbide blanks and preforms.",
+            "l4text": "View Categories ▾",
+            "i5imagesrc": "https://images.unsplash.com/photo-1623569559000-c3031217d717?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyODk3OTh8&ixlib=rb-4.1.0&q=80&w=1080",
+            "t5text": "Metal Powders, Materials & Consumables",
+            "d5text": "Kennametal powder and wear materials engineered for demanding applications.",
+            "l5text": "View Categories ▾",
+            "i6imagesrc": "https://images.unsplash.com/photo-1572657018301-8270f2fd2b9f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyODk3OTl8&ixlib=rb-4.1.0&q=80&w=1080",
+            "t6text": "Conforma Clad Wear Resistant Coatings",
+            "d6text": "Customized wear solutions and overlays to maximize component life.",
+            "l6text": "View Categories ▾",
+            "i7imagesrc": "https://images.unsplash.com/photo-1655137414518-95bb094b9c9f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyODk3OTl8&ixlib=rb-4.1.0&q=80&w=1080",
+            "t7text": "Boron Nitride Ceramic Solutions",
+            "d7text": "High-performance ceramic components for extreme thermal environments.",
+            "l7text": "View Categories ▾",
+            "i8imagesrc": "https://images.unsplash.com/photo-1646702423992-abcca5bc2c12?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyODk4MDB8&ixlib=rb-4.1.0&q=80&w=1080",
+            "t8text": "Satellite Products",
+            "d8text": "Advanced components and systems designed for mission-critical aerospace applications.",
+            "l8text": "View Categories ▾",
+            "i9imagesrc": "https://images.unsplash.com/photo-1612886649464-4a888608eace?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyODk4MDB8&ixlib=rb-4.1.0&q=80&w=1080",
+            "t9text": "Additive Manufacturing",
+            "d9text": "Build better parts faster with Kennametal additive solutions.",
+            "l9text": "View Categories ▾",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#ffffff",
+                        "text": "#ffffff",
+                        "primary": "#f4c300",
+                        "accent": "#f4c300",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#f4c300",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteProducts1NavigationHeaderpenPrimary": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteProducts1NavigationHeaderpenPrimary"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteProducts1NavigationHeaderpenPrimary-1",
+            "mcpprtext": "About Us     Careers     Investors     Collaboration Space",
+            "mcpprhref": "/about",
+            "et5ybtext": "US(EN)      (833) 893-1514",
+            "et5ybhref": "/",
+            "ozyp5text": "Chat with an Expert",
+            "ozyp5href": "/",
+            "ky86ttext": "KENNAMETAL",
+            "ky86thref": "/",
+            "ysmhctext": "Products",
+            "ysmhchref": "/products",
+            "ri5eftext": "Industries",
+            "ri5efhref": "/",
+            "idnvltext": "Services",
+            "idnvlhref": "/",
+            "ej20xtext": "Resources",
+            "ej20xhref": "/",
+            "qdc7text": "Search by Keyword or Item",
+            "qdc7href": "/",
+            "szugttext": "Contact",
+            "szugthref": "/contact",
+            "dp3z6text": "Sign In",
+            "dp3z6href": "/",
+            "iveudtext": "Take your shop to the next level.   See Promotions",
+            "iveudhref": "/products",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#ffffff",
+                        "text": "#ffffff",
+                        "primary": "#f4c300",
+                        "accent": "#f4c300",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#f4c300",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteProducts1StoryDarkband2penAlt1": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteProducts1StoryDarkband2penAlt1"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteProducts1StoryDarkband2penAlt1-1",
+            "db2ttext": "Join the Community",
+            "dbinputtxttext": "Enter your email address",
+            "db2btnhref": "/",
+            "dbbtntxttext": "Sign Me Up",
+            "dbsubtext": "Get the latest updates on product innovations, expert tips, events, promotions, and\ntraining.",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#ffffff",
+                        "text": "#ffffff",
+                        "primary": "#f4c300",
+                        "accent": "#f4c300",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#f4c300",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteProducts1FooterFooterpenAlt2": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteProducts1FooterFooterpenAlt2"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteProducts1FooterFooterpenAlt2-1",
+            "ygowatext": "Chat with Experts",
+            "en0vttext": "(833) 893-1514",
+            "e5hltext": "Message Sales",
+            "col2ttext": "Need Help?",
+            "col2thref": "/",
+            "cgx84text": "Customer Support",
+            "cgx84href": "/contact",
+            "kgdwltext": "Frequently Asked Questions",
+            "kgdwlhref": "/",
+            "pvxsgtext": "Track Order",
+            "pvxsghref": "/",
+            "idhptext": "Returns & Cancellations",
+            "idhphref": "/",
+            "fknqqtext": "Safety Data Sheets",
+            "fknqqhref": "/",
+            "lke0atext": "Popular Categories",
+            "lke0ahref": "/",
+            "dsrutext": "O.D. and I.D. Turning",
+            "dsruhref": "/",
+            "j8bxhtext": "Modular Drills",
+            "j8bxhhref": "/",
+            "jw89ntext": "Solid Carbide Drills",
+            "jw89nhref": "/",
+            "cw1ejtext": "High-Performance Solid Carbide End Mills",
+            "cw1ejhref": "/",
+            "apsu1text": "0°/90° Shoulder Mills",
+            "apsu1href": "/",
+            "bhdnqtext": "Indexable Milling",
+            "bhdnqhref": "/",
+            "yx6gdtext": "Solid End Milling",
+            "yx6gdhref": "/",
+            "i4kmltext": "Grooving and Cut-Off",
+            "i4kmlhref": "/",
+            "kr6fntext": "Indexable Drilling",
+            "kr6fnhref": "/",
+            "rzkdytext": "Profiling",
+            "rzkdyhref": "/",
+            "xiivttext": "About Us",
+            "xiivthref": "/about",
+            "ruhitext": "About Kennametal",
+            "ruhihref": "/about",
+            "jwuxqtext": "Kennametal Careers",
+            "jwuxqhref": "/",
+            "ztsyftext": "Investor Relations",
+            "ztsyfhref": "/",
+            "ciwjhtext": "History",
+            "ciwjhhref": "/",
+            "l3xztext": "Events",
+            "l3xzhref": "/",
+            "dkm2ctext": "Corporate News",
+            "dkm2chref": "/",
+            "ztmytext": "Doing Business with Kennametal",
+            "ztmyhref": "/",
+            "o5nprtext": "Ethics & Compliance",
+            "o5nprhref": "/",
+            "nbcwetext": "Certificates",
+            "nbcwehref": "/",
+            "dhspbtext": "2026 Terms & Conditions of Use | Conditions of Sale | Data Privacy Policy | Sitemap",
+            "dhspbhref": "/privacy",
+            "y4ewxtext": "Kennametal Inc. 525 William Penn Place Suite 3300, Pittsburgh, PA 15219",
+            "y4ewxhref": "/",
+            "socialtext": "f   in   yt   ig",
+            "socialhref": "/",
+            "lg5rvtext": "Give Feedback",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#ffffff",
+                        "text": "#ffffff",
+                        "primary": "#f4c300",
+                        "accent": "#f4c300",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#f4c300",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteProducts1ProductsProductsmainpenAlt3": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteProducts1ProductsProductsmainpenAlt3"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteProducts1ProductsProductsmainpenAlt3-1",
+            "tagtext": "Products / Mining / Underground Mining",
+            "titletext": "Underground Mining\nTooling and Wear Solutions",
+            "subtext": "With Kennametal tooling, you will run longer, cut faster and machine with greater precision. All Kennametal products are designed to face the most demanding conditions and protect your operation against downtime. Check out our latest offerings.",
+            "t1text": "Crushers",
+            "d1text": "Tough-cutting conditions call for a tougher tool. Kennametal ensures you make the most out of your operation.",
+            "l1text": "View Categories  >",
+            "t2text": "Conical Picks / Bits",
+            "d2text": "Our right bits do the job faster with more penetration and less dust, for increased production and reduced tooling costs.",
+            "l2text": "View Categories  >",
+            "t3text": "Radials",
+            "d3text": "Superior tooling solutions for all your radial tooling applications. The difference comes from wear resistance and productivity.",
+            "l3text": "View Categories  >",
+            "t4text": "Cutting Systems",
+            "d4text": "Secure your bit through a cutting block system built for extreme duty and maximum safety.",
+            "l4text": "View Categories  >",
+            "t5text": "Roof Bits",
+            "d5text": "The KSH Round Shank picks out lasts and out-toughs the competition under severe roof and floor drilling conditions.",
+            "l5text": "View Categories  >",
+            "t6text": "Drilling Systems",
+            "d6text": "This system is fast, easy to use, and versatile. It keeps your work clean and helps improve productivity for your underground operation.",
+            "l6text": "View Categories  >",
+            "t7text": "KenCast™",
+            "d7text": "We understand the importance of preserving your tooling. KenCast wear parts are proven in traditional abrasive abrasion and high impact applications.",
+            "l7text": "View Categories  >",
+            "t8text": "CLAN",
+            "d8text": "Kennametal's cutting-edge tooling and CLAN are designed with engineering productivity and longevity in mind.",
+            "l8text": "View Categories  >",
+            "t9text": "Accessories",
+            "d9text": "Dynamically engineered accessory solutions provide options and value where your operation needs productivity.",
+            "l9text": "View Categories  >",
+            "herobtnhref": "/contact",
+            "herobtntxttext": "Contact an Expert",
+            "heroimgimagesrc": "https://images.unsplash.com/photo-1620196146819-16c840404a82?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyOTA2ODN8&ixlib=rb-4.1.0&q=80&w=1080",
+            "sectitletext": "Tooling solutions to let you dig deeper",
+            "secdesctext": "At Kennametal, we continuously design and manufacture solutions for the harshest underground mining applications. Our wear solutions and advanced tooling systems are developed for continuous miner drums and longwall shearer drums, and include complete systems for crushers, conical picks and bits, radials, cutting systems, roof bits, drilling systems, KenCast, CLAN and accessories.",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#ffffff",
+                        "text": "#ffffff",
+                        "primary": "#f4c300",
+                        "accent": "#f4c300",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#f4c300",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteProducts1StoryQfsspenAlt4": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteProducts1StoryQfsspenAlt4"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteProducts1StoryQfsspenAlt4-1",
+            "ctabtnhref": "/",
+            "ctabtntxttext": "Request More Information",
+            "ctalinktext": "For any technical inquiries, please reach out to us via our Customer Support center",
+            "ctalinktext2": "Our qualified staff is here!",
+            "ctatitletext": "Have Questions For Us?",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#ffffff",
+                        "text": "#ffffff",
+                        "primary": "#f4c300",
+                        "accent": "#f4c300",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#f4c300",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteServiceNavigationHeaderpenPrimary": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteServiceNavigationHeaderpenPrimary"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteServiceNavigationHeaderpenPrimary-1",
+            "xx5uptext": "About Us     Careers     Investors     Collaboration Space",
+            "xx5uphref": "/about",
+            "uo0itext": "US(EN)      (833) 893-1514",
+            "uo0ihref": "/",
+            "yis2ttext": "Chat with an Expert",
+            "yis2thref": "/",
+            "huvntext": "KENNAMETAL",
+            "huvnhref": "/",
+            "b4fgvtext": "Products",
+            "b4fgvhref": "/products",
+            "i8gf1text": "Industries",
+            "i8gf1href": "/",
+            "jcvwwtext": "Services",
+            "jcvwwhref": "/",
+            "kdcjetext": "Resources",
+            "kdcjehref": "/",
+            "abnmutext": "Search by Keyword or Item",
+            "abnmuhref": "/",
+            "ba7vstext": "Contact",
+            "ba7vshref": "/contact",
+            "krlpetext": "Sign In",
+            "krlpehref": "/",
+            "dsbgitext": "Take your shop to the next level.   See Promotions",
+            "dsbgihref": "/products",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#ffffff",
+                        "text": "#ffffff",
+                        "primary": "#f4c300",
+                        "accent": "#f4c300",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#f4c300",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteServiceStoryDarkband2penAlt1": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteServiceStoryDarkband2penAlt1"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteServiceStoryDarkband2penAlt1-1",
+            "db2ttext": "Join the Community",
+            "dbinputtxttext": "Enter your email address",
+            "db2btnhref": "/",
+            "dbbtntxttext": "Sign Me Up",
+            "dbsubtext": "Get the latest updates on product innovations, expert tips, events, promotions, and\ntraining.",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#ffffff",
+                        "text": "#ffffff",
+                        "primary": "#f4c300",
+                        "accent": "#f4c300",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#f4c300",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteServiceFooterFooterpenAlt2": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteServiceFooterFooterpenAlt2"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteServiceFooterFooterpenAlt2-1",
+            "qhsydtext": "Chat with Experts",
+            "zwsytext": "(833) 893-1514",
+            "cgdojtext": "Message Sales",
+            "col2ttext": "Need Help?",
+            "col2thref": "/",
+            "hafjjtext": "Customer Support",
+            "hafjjhref": "/contact",
+            "ikvvztext": "Frequently Asked Questions",
+            "ikvvzhref": "/",
+            "sc0text": "Track Order",
+            "sc0href": "/",
+            "lyvoutext": "Returns & Cancellations",
+            "lyvouhref": "/",
+            "zpxzstext": "Safety Data Sheets",
+            "zpxzshref": "/",
+            "podltext": "Popular Categories",
+            "podlhref": "/",
+            "gtduetext": "O.D. and I.D. Turning",
+            "gtduehref": "/",
+            "o8fibtext": "Modular Drills",
+            "o8fibhref": "/",
+            "iyov7text": "Solid Carbide Drills",
+            "iyov7href": "/",
+            "eueovtext": "High-Performance Solid Carbide End Mills",
+            "eueovhref": "/",
+            "gwtwvtext": "0°/90° Shoulder Mills",
+            "gwtwvhref": "/",
+            "n0pjptext": "Indexable Milling",
+            "n0pjphref": "/",
+            "d9yxutext": "Solid End Milling",
+            "d9yxuhref": "/",
+            "xbswdtext": "Grooving and Cut-Off",
+            "xbswdhref": "/",
+            "rxgrhtext": "Indexable Drilling",
+            "rxgrhhref": "/",
+            "hkbixtext": "Profiling",
+            "hkbixhref": "/",
+            "tynoatext": "About Us",
+            "tynoahref": "/about",
+            "fmb2text": "About Kennametal",
+            "fmb2href": "/about",
+            "got79text": "Kennametal Careers",
+            "got79href": "/",
+            "liqtext": "Investor Relations",
+            "liqhref": "/",
+            "lpltext": "History",
+            "lplhref": "/",
+            "jzrqptext": "Events",
+            "jzrqphref": "/",
+            "zwbsitext": "Corporate News",
+            "zwbsihref": "/",
+            "fh6vntext": "Doing Business with Kennametal",
+            "fh6vnhref": "/",
+            "blpz6text": "Ethics & Compliance",
+            "blpz6href": "/",
+            "xrhaetext": "Certificates",
+            "xrhaehref": "/",
+            "xmjp0text": "2026 Terms & Conditions of Use | Conditions of Sale | Data Privacy Policy | Sitemap",
+            "xmjp0href": "/privacy",
+            "b5dtext": "Kennametal Inc. 525 William Penn Place Suite 3300, Pittsburgh, PA 15219",
+            "b5dhref": "/",
+            "socialtext": "f   in   yt   ig",
+            "socialhref": "/",
+            "r9bmctext": "Give Feedback",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#ffffff",
+                        "text": "#ffffff",
+                        "primary": "#f4c300",
+                        "accent": "#f4c300",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#f4c300",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteServiceProductsProductsmainpenAlt3": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteServiceProductsProductsmainpenAlt3"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteServiceProductsProductsmainpenAlt3-1",
+            "tagtext": "Services",
+            "titletext": "Underground Mining\nTooling and Wear Solutions",
+            "subtext": "With Kennametal tooling, you will run longer, cut faster and machine with greater precision. All Kennametal products are designed to face the most demanding conditions and protect your operation against downtime. Check out our latest offerings.",
+            "i1imagesrc": "https://images.unsplash.com/photo-1738162837335-3745e5d16c09?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyOTE0Mzl8&ixlib=rb-4.1.0&q=80&w=1080",
+            "t1text": "Collaboration Space",
+            "d1text": "Experience a new level of manufacturing with Kennametal's machine and process optimization services for your machining needs in one place.",
+            "l1text": "View Categories  >",
+            "i2imagesrc": "https://images.unsplash.com/photo-1764336312138-14a5368a6cd3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyOTE0Mzl8&ixlib=rb-4.1.0&q=80&w=1080",
+            "t2text": "Online Services",
+            "d2text": "Kennametal's suite of digital tools makes it easier to do business with us. Explore advanced capabilities and increase your productivity at your facility.",
+            "l2text": "View Categories  >",
+            "i3imagesrc": "https://images.unsplash.com/photo-1639091824355-48221063de7f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyOTE0NDB8&ixlib=rb-4.1.0&q=80&w=1080",
+            "t3text": "Technical Support Service",
+            "d3text": "Kennametal's Technical Support Service offers immediate and responsive application support to improve metal cutting challenges.",
+            "l3text": "View Categories  >",
+            "i4imagesrc": "https://images.unsplash.com/photo-1716703742196-9986679eb03f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyOTE0NzF8&ixlib=rb-4.1.0&q=80&w=1080",
+            "t4text": "ToolBOSS Machines",
+            "d4text": "Kennametal's ToolBOSS solutions drive smarter inventory control and accountability in facilities with secure vending and inventory capabilities.",
+            "l4text": "View Categories  >",
+            "i5imagesrc": "https://images.unsplash.com/photo-1537402006040-bb6fb35ef422?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyOTE0NzF8&ixlib=rb-4.1.0&q=80&w=1080",
+            "t5text": "Carbide Recycling",
+            "d5text": "Kennametal recycles hard scrap carbide by reclaiming cobalt. All it takes from us to get it started is your scrap carbide to us, and we can pay your carbide.",
+            "l5text": "View Categories  >",
+            "i6imagesrc": "https://images.unsplash.com/photo-1759159091728-e2c87b9d9315?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyOTE0NzJ8&ixlib=rb-4.1.0&q=80&w=1080",
+            "t6text": "Tool Reconditioning",
+            "d6text": "Kennametal's expert reconditioning services offer a cost-effective option to restore your worn tools and bring them back to their original performance.",
+            "l6text": "View Categories  >",
+            "t7text": "KenCast™",
+            "d7text": "We understand the importance of preserving your tooling. KenCast wear parts are proven in traditional abrasive abrasion and high impact applications.",
+            "l7text": "View Categories  >",
+            "t8text": "CLAN",
+            "d8text": "Kennametal's cutting-edge tooling and CLAN are designed with engineering productivity and longevity in mind.",
+            "l8text": "View Categories  >",
+            "t9text": "Accessories",
+            "d9text": "Dynamically engineered accessory solutions provide options and value where your operation needs productivity.",
+            "l9text": "View Categories  >",
+            "herobtnhref": "/contact",
+            "herobtntxttext": "Contact an Expert",
+            "heroimgimagesrc": "https://images.unsplash.com/photo-1697181775774-c87e11b0a521?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyOTEzNzR8&ixlib=rb-4.1.0&q=80&w=1080",
+            "sectitletext": "Tooling solutions to let you dig deeper",
+            "secdesctext": "At Kennametal, we continuously design and manufacture solutions for the harshest underground mining applications. Our wear solutions and advanced tooling systems are developed for continuous miner drums and longwall shearer drums, and include complete systems for crushers, conical picks and bits, radials, cutting systems, roof bits, drilling systems, KenCast, CLAN and accessories.",
+            "ctalinktext": "Our skilled staff is ready to help.",
+            "herotitletext": "Services",
+            "herodesctext": "Kennametal offers a range of services to support our tooling solutions, from help choosing the right tool to restoring your tools and recycling scrap carbide.",
+            "herobtn2href": "/contact",
+            "herobtntxt2text": "Contact an Expert",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#ffffff",
+                        "text": "#ffffff",
+                        "primary": "#f4c300",
+                        "accent": "#f4c300",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#f4c300",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteServiceStoryQfsspenAlt4": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteServiceStoryQfsspenAlt4"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteServiceStoryQfsspenAlt4-1",
+            "ctabtnhref": "/contact",
+            "ctabtntxttext": "Contact Sales",
+            "ctalinktext": "For any technical inquiries, please reach out to us via our Customer Support center",
+            "ctalinktext2": "Our skilled staff is ready to help.",
+            "ctatitletext": "Have Questions For Us?",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#ffffff",
+                        "text": "#ffffff",
+                        "primary": "#f4c300",
+                        "accent": "#f4c300",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#f4c300",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSitePrivacyNavigationHeaderpenPrimary": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSitePrivacyNavigationHeaderpenPrimary"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSitePrivacyNavigationHeaderpenPrimary-1",
+            "dl1uytext": "About Us     Careers     Investors     Collaboration Space",
+            "dl1uyhref": "/about",
+            "cl6fmtext": "US(EN)      (833) 893-1514",
+            "cl6fmhref": "/",
+            "e1rfgtext": "Chat with an Expert",
+            "e1rfghref": "/",
+            "rva14text": "KENNAMETAL",
+            "rva14href": "/",
+            "fds0text": "Products",
+            "fds0href": "/products",
+            "de06ztext": "Industries",
+            "de06zhref": "/",
+            "o96phtext": "Services",
+            "o96phhref": "/",
+            "j7zkbtext": "Resources",
+            "j7zkbhref": "/",
+            "ludtutext": "Search by Keyword or Item",
+            "ludtuhref": "/",
+            "nwndqtext": "Contact",
+            "nwndqhref": "/contact",
+            "lvwh9text": "Sign In",
+            "lvwh9href": "/",
+            "zjsxrtext": "Take your shop to the next level.   See Promotions",
+            "zjsxrhref": "/products",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#ffffff",
+                        "text": "#ffffff",
+                        "primary": "#f4c300",
+                        "accent": "#f4c300",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#f4c300",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSitePrivacyStoryDarkband2penAlt1": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSitePrivacyStoryDarkband2penAlt1"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSitePrivacyStoryDarkband2penAlt1-1",
+            "db2ttext": "Join the Community",
+            "dbinputtxttext": "Enter your email address",
+            "db2btnhref": "/",
+            "dbbtntxttext": "Sign Me Up",
+            "dbsubtext": "Get the latest updates on product innovations, expert tips, events, promotions, and\ntraining.",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#ffffff",
+                        "text": "#ffffff",
+                        "primary": "#f4c300",
+                        "accent": "#f4c300",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#f4c300",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSitePrivacyFooterFooterpenAlt2": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSitePrivacyFooterFooterpenAlt2"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSitePrivacyFooterFooterpenAlt2-1",
+            "c2x5ctext": "Chat with Experts",
+            "lihsvtext": "(833) 893-1514",
+            "qcjkgtext": "Message Sales",
+            "col2ttext": "Need Help?",
+            "col2thref": "/",
+            "mlyxxtext": "Customer Support",
+            "mlyxxhref": "/contact",
+            "stuwptext": "Frequently Asked Questions",
+            "stuwphref": "/",
+            "z9cdztext": "Track Order",
+            "z9cdzhref": "/",
+            "wecmutext": "Returns & Cancellations",
+            "wecmuhref": "/",
+            "rp1tztext": "Safety Data Sheets",
+            "rp1tzhref": "/",
+            "yd31text": "Popular Categories",
+            "yd31href": "/",
+            "vpotctext": "O.D. and I.D. Turning",
+            "vpotchref": "/",
+            "urqtext": "Modular Drills",
+            "urqhref": "/",
+            "qaseptext": "Solid Carbide Drills",
+            "qasephref": "/",
+            "rsi3rtext": "High-Performance Solid Carbide End Mills",
+            "rsi3rhref": "/",
+            "fc5citext": "0°/90° Shoulder Mills",
+            "fc5cihref": "/",
+            "vw8ektext": "Indexable Milling",
+            "vw8ekhref": "/",
+            "ytdl4text": "Solid End Milling",
+            "ytdl4href": "/",
+            "d7zpntext": "Grooving and Cut-Off",
+            "d7zpnhref": "/",
+            "ulbtbtext": "Indexable Drilling",
+            "ulbtbhref": "/",
+            "mthretext": "Profiling",
+            "mthrehref": "/",
+            "qxvrutext": "About Us",
+            "qxvruhref": "/about",
+            "awpdutext": "About Kennametal",
+            "awpduhref": "/about",
+            "pr2kvtext": "Kennametal Careers",
+            "pr2kvhref": "/",
+            "dksmwtext": "Investor Relations",
+            "dksmwhref": "/",
+            "kfmbutext": "History",
+            "kfmbuhref": "/",
+            "inxu3text": "Events",
+            "inxu3href": "/",
+            "ljrfltext": "Corporate News",
+            "ljrflhref": "/",
+            "btr8ftext": "Doing Business with Kennametal",
+            "btr8fhref": "/",
+            "bcitext": "Ethics & Compliance",
+            "bcihref": "/",
+            "qic00text": "Certificates",
+            "qic00href": "/",
+            "xddgwtext": "2026 Terms & Conditions of Use | Conditions of Sale | Data Privacy Policy | Sitemap",
+            "xddgwhref": "/privacy",
+            "g6gyxtext": "Kennametal Inc. 525 William Penn Place Suite 3300, Pittsburgh, PA 15219",
+            "g6gyxhref": "/",
+            "socialtext": "f   in   yt   ig",
+            "socialhref": "/",
+            "fljrvtext": "Give Feedback",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#ffffff",
+                        "text": "#ffffff",
+                        "primary": "#f4c300",
+                        "accent": "#f4c300",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#f4c300",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSitePrivacyStoryPrivacymainpenAlt3": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSitePrivacyStoryPrivacymainpenAlt3"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSitePrivacyStoryPrivacymainpenAlt3-1",
+            "crumbtext": "Data Privacy",
+            "titletext": "Data Privacy",
+            "headtext": "We Are Committed to Your Privacy",
+            "p1text": "Kennametal Inc. is committed to user privacy and handling your personal information responsibly. All of the data collected on this site is done so to offer an optimal experience for all our digital guests.\nThis applies to the individual, household, and businesses who we communicate with digitally on our corporate website and email communications. We intend to use this section of the website to offer complete transparency on how the data is collected, stored and used.",
+            "ct1text": "Our Data Privacy Policy",
+            "cd1text": "Disclose the use of your personal digital information and how it is secured.",
+            "b1ttext": "View Privacy Policy",
+            "ct2text": "Kennametal Inc. Subsidiaries",
+            "cd2text": "All policies and privacy concerns include the following subsidiaries.",
+            "b2ttext": "View Subsidiaries",
+            "ct3text": "Data Privacy Policy for Job Applicants",
+            "cd3text": "Find our application policy here for the recruitment process.",
+            "b3ttext": "View Applicant Policy",
+            "ct4text": "Change your cookie Settings",
+            "cd4text": "You can change your cookie settings by going to the cookie preference center by clicking on the cookie button below.",
+            "b4ttext": "Manage Preferences",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#ffffff",
+                        "text": "#ffffff",
+                        "primary": "#f4c300",
+                        "accent": "#f4c300",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#f4c300",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteContactNavigationHeaderpenPrimary": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteContactNavigationHeaderpenPrimary"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteContactNavigationHeaderpenPrimary-1",
+            "jdos4text": "About Us     Careers     Investors     Collaboration Space",
+            "jdos4href": "/about",
+            "hi3tqtext": "US(EN)      (833) 893-1514",
+            "hi3tqhref": "/",
+            "veix0text": "Chat with an Expert",
+            "veix0href": "/",
+            "vfs6ytext": "KENNAMETAL",
+            "vfs6yhref": "/",
+            "btswstext": "Products",
+            "btswshref": "/products",
+            "l7dcjtext": "Industries",
+            "l7dcjhref": "/",
+            "gpnltext": "Services",
+            "gpnlhref": "/",
+            "m3fedtext": "Resources",
+            "m3fedhref": "/",
+            "fmj38text": "Search by Keyword or Item",
+            "fmj38href": "/",
+            "grb1ktext": "Contact",
+            "grb1khref": "/contact",
+            "zvqo2text": "Sign In",
+            "zvqo2href": "/",
+            "mxg7jtext": "Take your shop to the next level.   See Promotions",
+            "mxg7jhref": "/products",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#ffffff",
+                        "text": "#ffffff",
+                        "primary": "#f4c300",
+                        "accent": "#f4c300",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#f4c300",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteContactStoryDarkband2penAlt1": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteContactStoryDarkband2penAlt1"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteContactStoryDarkband2penAlt1-1",
+            "db2ttext": "Join the Community",
+            "dbinputtxttext": "Enter your email address",
+            "db2btnhref": "/",
+            "dbbtntxttext": "Sign Me Up",
+            "dbsubtext": "Get the latest updates on product innovations, expert tips, events, promotions, and\ntraining.",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#ffffff",
+                        "text": "#ffffff",
+                        "primary": "#f4c300",
+                        "accent": "#f4c300",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#f4c300",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteContactFooterFooterpenAlt2": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteContactFooterFooterpenAlt2"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteContactFooterFooterpenAlt2-1",
+            "tjgbbtext": "Chat with Experts",
+            "fafdetext": "(833) 893-1514",
+            "tjtext": "Message Sales",
+            "col2ttext": "Need Help?",
+            "col2thref": "/",
+            "lcxuwtext": "Customer Support",
+            "lcxuwhref": "/contact",
+            "wr3eitext": "Frequently Asked Questions",
+            "wr3eihref": "/",
+            "u7xzatext": "Track Order",
+            "u7xzahref": "/",
+            "ctcbptext": "Returns & Cancellations",
+            "ctcbphref": "/",
+            "sjsfttext": "Safety Data Sheets",
+            "sjsfthref": "/",
+            "tpp1ntext": "Popular Categories",
+            "tpp1nhref": "/",
+            "gg6mttext": "O.D. and I.D. Turning",
+            "gg6mthref": "/",
+            "qipirtext": "Modular Drills",
+            "qipirhref": "/",
+            "bonrutext": "Solid Carbide Drills",
+            "bonruhref": "/",
+            "shewetext": "High-Performance Solid Carbide End Mills",
+            "shewehref": "/",
+            "ilnhftext": "0°/90° Shoulder Mills",
+            "ilnhfhref": "/",
+            "gv3kztext": "Indexable Milling",
+            "gv3kzhref": "/",
+            "fhjhxtext": "Solid End Milling",
+            "fhjhxhref": "/",
+            "ek51text": "Grooving and Cut-Off",
+            "ek51href": "/",
+            "paktext": "Indexable Drilling",
+            "pakhref": "/",
+            "nrkhvtext": "Profiling",
+            "nrkhvhref": "/",
+            "ofeqptext": "About Us",
+            "ofeqphref": "/about",
+            "aln9ptext": "About Kennametal",
+            "aln9phref": "/about",
+            "kbnetext": "Kennametal Careers",
+            "kbnehref": "/",
+            "r6rcytext": "Investor Relations",
+            "r6rcyhref": "/",
+            "c4vp2text": "History",
+            "c4vp2href": "/",
+            "lvxftext": "Events",
+            "lvxfhref": "/",
+            "t6ke3text": "Corporate News",
+            "t6ke3href": "/",
+            "e5irmtext": "Doing Business with Kennametal",
+            "e5irmhref": "/",
+            "text": "Ethics & Compliance",
+            "href": "/",
+            "iosugtext": "Certificates",
+            "iosughref": "/",
+            "ngdkbtext": "2026 Terms & Conditions of Use | Conditions of Sale | Data Privacy Policy | Sitemap",
+            "ngdkbhref": "/privacy",
+            "moertext": "Kennametal Inc. 525 William Penn Place Suite 3300, Pittsburgh, PA 15219",
+            "moerhref": "/",
+            "socialtext": "f   in   yt   ig",
+            "socialhref": "/",
+            "b4947text": "Give Feedback",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#ffffff",
+                        "text": "#ffffff",
+                        "primary": "#f4c300",
+                        "accent": "#f4c300",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#f4c300",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteContactContactContactmainpenAlt3": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteContactContactContactmainpenAlt3"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteContactContactContactmainpenAlt3-1",
+            "crumbtext": "Support",
+            "titletext": "Customer Support",
+            "subtext": "Find customer service centers around the globe.",
+            "card1ttext": "Phone",
+            "card1dtext": "Phone\n(833) 893-1514\n\nCustomer Service Hours\nMonday - Thursday\n8am - 9pm EST\nFriday\n8am - 7pm EST\n\nAdd to contacts",
+            "card2ttext": "Email",
+            "card2dtext": "Email\nmetalcutting@kennametal.com\n\nMailing Address\nKennametal Inc\n1600 Technology Way\nLatrobe, PA 15650",
+            "card3ttext": "Fax",
+            "card3dtext": "Fax\n(800) 456-6622\n\nCustomer Service\nLatrobe, PA\nUnited States",
+            "card4ttext": "Email",
+            "card4dtext": "Email\nearthcutting@kennametal.com\n\nMailing Address\nKennametal Inc\n1600 Technology Way\nLatrobe, PA 15650",
+            "sectext": "Earth Cutting & Wear Solutions Order Support (US Only)",
+            "c1imgimagesrc": "https://images.unsplash.com/photo-1736664030438-251abe59a342?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyOTM5NTF8&ixlib=rb-4.1.0&q=80&w=1080",
+            "c1ttext": "Mining & Construction",
+            "c1ltext": "• Drill bits\n• Cutting systems\n• Conical picks\n• CLAN\n\nPhone: (833) 893-1514\nAdd to contacts",
+            "c2imgimagesrc": "https://images.unsplash.com/photo-1731397979951-054128e9c6d4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyOTM5NTF8&ixlib=rb-4.1.0&q=80&w=1080",
+            "c2ttext": "Solid Components, Solid",
+            "c2ltext": "• Drill bits\n• Wear parts\n• Tool holders\n• Adaptors\n\nPhone: (833) 893-1514\nAdd to contacts",
+            "c3imgimagesrc": "https://images.unsplash.com/photo-1747999461210-a56f72294428?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyOTM5NTJ8&ixlib=rb-4.1.0&q=80&w=1080",
+            "c3ttext": "Cutting Tool Matrix",
+            "c3ltext": "• Full Matrix\n• Drill Matrix\n• Specialty Matrix\n\nPhone: (833) 893-1514\nAdd to contacts",
+            "c4imgimagesrc": "https://images.unsplash.com/photo-1736788265336-6d5ba0cfefe0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyOTM5NTJ8&ixlib=rb-4.1.0&q=80&w=1080",
+            "c4ttext": "Continual Tooling Service",
+            "c4ltext": "• Machine tools\n• Coating systems\n• Repair service\n\nPhone: (833) 893-1514\nAdd to contacts",
+            "c5imgimagesrc": "https://images.unsplash.com/photo-1503791774117-08c379dd7f7c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyOTM5NTN8&ixlib=rb-4.1.0&q=80&w=1080",
+            "c5ttext": "Industrial Knives / New Products",
+            "c5ltext": "• Industrial knives\n• Wear products\n• New products\n\nPhone: (833) 893-1514\nAdd to contacts",
+            "resttext": "Other Resources",
+            "t1text": "Find A Distributor >",
+            "t2text": "Frequently Asked Questions >",
+            "t3text": "Download Tool Brochures >",
+            "t4text": "Kennametal Events >",
+            "c6imgimagesrc": "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyOTM5NTR8&ixlib=rb-4.1.0&q=80&w=1080",
+            "c6ttext": "Cutting Tool Matrix",
+            "c6ltext": "• Full matrix\n• Drill matrix\n• Specialty matrix\n\nPhone: (833) 893-1514\nAdd to contacts",
+            "c7imgimagesrc": "https://images.unsplash.com/photo-1690259378861-ac689090a537?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyOTM5NTV8&ixlib=rb-4.1.0&q=80&w=1080",
+            "c7ttext": "Castings Parts & Components",
+            "c7ltext": "• Rod forms\n• Powders\n• Castings\n\nPhone: (833) 893-1514\nAdd to contacts",
+            "c8imgimagesrc": "https://images.unsplash.com/photo-1762951317733-9e800909e93f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyOTM5NTV8&ixlib=rb-4.1.0&q=80&w=1080",
+            "c8ttext": "Products & Product Protection",
+            "c8ltext": "• Engineered products\n• Inserts\n• Tooling components\n\nPhone: (833) 893-1514\nAdd to contacts",
+            "c9imgimagesrc": "https://images.unsplash.com/photo-1768508917406-75780a1fb421?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyOTM5NTZ8&ixlib=rb-4.1.0&q=80&w=1080",
+            "c9ttext": "Sintered Advanced Ceramics",
+            "c9ltext": "• Components\n• Powders\n• Specialty grades\n\nPhone: (833) 893-1514\nAdd to contacts",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#ffffff",
+                        "text": "#ffffff",
+                        "primary": "#f4c300",
+                        "accent": "#f4c300",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#f4c300",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteSolutionNavigationHeaderpenPrimary": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteSolutionNavigationHeaderpenPrimary"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteSolutionNavigationHeaderpenPrimary-1",
+            "vlcf8text": "About Us     Careers     Investors     Collaboration Space",
+            "vlcf8href": "/about",
+            "s5mxtext": "US(EN)      (833) 893-1514",
+            "s5mxhref": "/",
+            "o2jbstext": "Chat with an Expert",
+            "o2jbshref": "/",
+            "nwcdgtext": "KENNAMETAL",
+            "nwcdghref": "/",
+            "yjiodtext": "Products",
+            "yjiodhref": "/products",
+            "u6qe9text": "Industries",
+            "u6qe9href": "/",
+            "anbl6text": "Services",
+            "anbl6href": "/",
+            "yn04atext": "Resources",
+            "yn04ahref": "/",
+            "asf4ltext": "Search by Keyword or Item",
+            "asf4lhref": "/",
+            "v4lmktext": "Contact",
+            "v4lmkhref": "/contact",
+            "ico5stext": "Sign In",
+            "ico5shref": "/",
+            "fnecdtext": "Take your shop to the next level.   See Promotions",
+            "fnecdhref": "/products",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#ffffff",
+                        "text": "#ffffff",
+                        "primary": "#f4c300",
+                        "accent": "#f4c300",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#f4c300",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteSolutionStoryDarkband2penAlt1": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteSolutionStoryDarkband2penAlt1"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteSolutionStoryDarkband2penAlt1-1",
+            "db2ttext": "Join the Community",
+            "dbinputtxttext": "Enter your email address",
+            "db2btnhref": "/",
+            "dbbtntxttext": "Sign Me Up",
+            "dbsubtext": "Get the latest updates on product innovations, expert tips, events, promotions, and\ntraining.",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#ffffff",
+                        "text": "#ffffff",
+                        "primary": "#f4c300",
+                        "accent": "#f4c300",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#f4c300",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteSolutionFooterFooterpenAlt2": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteSolutionFooterFooterpenAlt2"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteSolutionFooterFooterpenAlt2-1",
+            "cu7kctext": "Chat with Experts",
+            "gtmsntext": "(833) 893-1514",
+            "fqregtext": "Message Sales",
+            "col2ttext": "Need Help?",
+            "col2thref": "/",
+            "d8zctext": "Customer Support",
+            "d8zchref": "/contact",
+            "aus4ytext": "Frequently Asked Questions",
+            "aus4yhref": "/",
+            "slpfqtext": "Track Order",
+            "slpfqhref": "/",
+            "nivfhtext": "Returns & Cancellations",
+            "nivfhhref": "/",
+            "pvr1ttext": "Safety Data Sheets",
+            "pvr1thref": "/",
+            "luh0atext": "Popular Categories",
+            "luh0ahref": "/",
+            "unx7ytext": "O.D. and I.D. Turning",
+            "unx7yhref": "/",
+            "gk8vvtext": "Modular Drills",
+            "gk8vvhref": "/",
+            "jf8pwtext": "Solid Carbide Drills",
+            "jf8pwhref": "/",
+            "dvskitext": "High-Performance Solid Carbide End Mills",
+            "dvskihref": "/",
+            "enud2text": "0°/90° Shoulder Mills",
+            "enud2href": "/",
+            "obwtntext": "Indexable Milling",
+            "obwtnhref": "/",
+            "yty6htext": "Solid End Milling",
+            "yty6hhref": "/",
+            "o2ut7text": "Grooving and Cut-Off",
+            "o2ut7href": "/",
+            "fsrk1text": "Indexable Drilling",
+            "fsrk1href": "/",
+            "y7tcltext": "Profiling",
+            "y7tclhref": "/",
+            "gvfemtext": "About Us",
+            "gvfemhref": "/about",
+            "hfmcltext": "About Kennametal",
+            "hfmclhref": "/about",
+            "mbahtext": "Kennametal Careers",
+            "mbahhref": "/",
+            "d6f2jtext": "Investor Relations",
+            "d6f2jhref": "/",
+            "nfk98text": "History",
+            "nfk98href": "/",
+            "spfxjtext": "Events",
+            "spfxjhref": "/",
+            "jir9ltext": "Corporate News",
+            "jir9lhref": "/",
+            "hhmcqtext": "Doing Business with Kennametal",
+            "hhmcqhref": "/",
+            "p40rxtext": "Ethics & Compliance",
+            "p40rxhref": "/",
+            "sbmnktext": "Certificates",
+            "sbmnkhref": "/",
+            "vbfwtext": "2026 Terms & Conditions of Use | Conditions of Sale | Data Privacy Policy | Sitemap",
+            "vbfwhref": "/privacy",
+            "matamtext": "Kennametal Inc. 525 William Penn Place Suite 3300, Pittsburgh, PA 15219",
+            "matamhref": "/",
+            "socialtext": "f   in   yt   ig",
+            "socialhref": "/",
+            "kyo5qtext": "Give Feedback",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#ffffff",
+                        "text": "#ffffff",
+                        "primary": "#f4c300",
+                        "accent": "#f4c300",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#f4c300",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteSolutionApproachQfsspenAlt3": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteSolutionApproachQfsspenAlt3"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteSolutionApproachQfsspenAlt3-1",
+            "ctabtnhref": "/contact",
+            "ctabtntxttext": "Contact Sales",
+            "ctalinktext": "For any technical inquiries, please reach out to us via our Customer Support center",
+            "ctalinktext2": "Our skilled staff is ready to help.",
+            "ctatitletext": "Have Questions For Us?",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#ffffff",
+                        "text": "#ffffff",
+                        "primary": "#f4c300",
+                        "accent": "#f4c300",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#f4c300",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteSolutionStoryIndustriesmainpenAlt4": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteSolutionStoryIndustriesmainpenAlt4"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteSolutionStoryIndustriesmainpenAlt4-1",
+            "tagtext": "Industries",
+            "heroimgimagesrc": "https://images.unsplash.com/photo-1513692398020-cbaea622c427?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyOTQ2NTR8&ixlib=rb-4.1.0&q=80&w=1080",
+            "httext": "Industry Solutions",
+            "hdtext": "Kennametal's experts provide industry-specific knowledge and tooling solutions to conduct the toughest challenges.",
+            "hbttext": "View all on fgear",
+            "sttext": "Breaking Barriers in Materials Science is What We Do",
+            "sdtext": "We have a reputation for building innovative solutions for the most challenging applications. The same Kennametal is synonymous for high-quality, high-performance solutions that can withstand the most strenuous conditions and deliver superior results to a wide range of machining operations.",
+            "i1imagesrc": "https://images.unsplash.com/photo-1706777274313-4dc6d8f0a894?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyOTQ2NTV8&ixlib=rb-4.1.0&q=80&w=1080",
+            "t1text": "Additive Manufacturing",
+            "d1text": "Our groundbreaking additive products high-performance materials and process expertise improve results.",
+            "i2imagesrc": "https://images.unsplash.com/photo-1767436594078-511c8b59304a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyOTQ2NTV8&ixlib=rb-4.1.0&q=80&w=1080",
+            "t2text": "Aerospace",
+            "d2text": "We are proud to support the industry with powerful solutions and process efficiency.",
+            "i3imagesrc": "https://images.unsplash.com/photo-1644410576498-676bcee3f5a2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyOTQ2NTZ8&ixlib=rb-4.1.0&q=80&w=1080",
+            "t3text": "Automotive",
+            "d3text": "High-performance tooling solutions for global automotive manufacturing.",
+            "i4imagesrc": "https://images.unsplash.com/photo-1763478432874-3557fe1310b4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyOTQ3MDV8&ixlib=rb-4.1.0&q=80&w=1080",
+            "t4text": "Construction",
+            "d4text": "Support for construction operations and harsh working conditions.",
+            "i5imagesrc": "https://images.unsplash.com/photo-1761070792716-0c3a6e09a442?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyOTQ3MDZ8&ixlib=rb-4.1.0&q=80&w=1080",
+            "t5text": "Defense",
+            "d5text": "Solutions for defense applications with durability and reliability.",
+            "i6imagesrc": "https://images.unsplash.com/photo-1682218505825-e9f47dfb0777?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyOTQ3MDd8&ixlib=rb-4.1.0&q=80&w=1080",
+            "t6text": "General Engineering",
+            "d6text": "Robust solutions for small to medium scale manufacturing operations.",
+            "i7imagesrc": "https://images.unsplash.com/photo-1742281695329-7220ded48a6e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyOTQ3MDd8&ixlib=rb-4.1.0&q=80&w=1080",
+            "t7text": "Medical",
+            "d7text": "Precision machining solutions for healthcare and medical manufacturing.",
+            "i8imagesrc": "https://images.unsplash.com/photo-1761432339044-cfd862009b50?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyOTQ3NDh8&ixlib=rb-4.1.0&q=80&w=1080",
+            "t8text": "Mining",
+            "d8text": "Engineered products and cutting solutions to support mining operations.",
+            "i9imagesrc": "https://images.unsplash.com/photo-1642285709726-f9eb035b034b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyOTQ3NDl8&ixlib=rb-4.1.0&q=80&w=1080",
+            "t9text": "Oil & Gas",
+            "d9text": "Our customer-focused solutions empower the oil and gas industry.",
+            "i10imagesrc": "https://images.unsplash.com/photo-1769078382658-898cd4023f6c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyOTQ3NDl8&ixlib=rb-4.1.0&q=80&w=1080",
+            "t10text": "Power Generation",
+            "d10text": "Explore a wide range of products tailored to power generation demands.",
+            "i11imagesrc": "https://images.unsplash.com/photo-1764115424737-25aca6f47835?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyOTQ3NTB8&ixlib=rb-4.1.0&q=80&w=1080",
+            "t11text": "Process Industries",
+            "d11text": "Discover innovative technologies and digital production solutions.",
+            "mrttext": "More Resources",
+            "mrdtext": "You can find more on our latest tooling news and industries, testimonials from businesses like yours, match your way and more on The Manufacturing Minute blog",
+            "mrltext": "Read More >",
+            "mriimagesrc": "https://images.unsplash.com/photo-1773145513138-0d46d3cd4fbd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyOTQ3ODJ8&ixlib=rb-4.1.0&q=80&w=1080",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#ffffff",
+                        "text": "#ffffff",
+                        "primary": "#f4c300",
+                        "accent": "#f4c300",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#f4c300",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteHomeNavigationNavpenPrimary_4826b70f": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteHomeNavigationNavpenPrimary_4826b70f"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteHomeNavigationNavpenPrimary_4826b70f-1",
+            "topmenutext": "Search    Locations    Careers    Language",
+            "topmenuhref": "/",
+            "contactbtnhref": "/",
+            "contactdottext": "✉",
+            "contacttexttext": "Contact",
+            "logotext": "oerlikon",
+            "logohref": "/",
+            "navPortfoliotext": "Portfolio ▾",
+            "navPortfoliohref": "/",
+            "navIndustriestext": "Industries ▾",
+            "navIndustrieshref": "/oerlikon-industries",
+            "navInnovationtext": "Innovation ▾",
+            "navInnovationhref": "/",
+            "navSustainabilitytext": "Sustainability ▾",
+            "navSustainabilityhref": "/",
+            "navInvestorstext": "Investors ▾",
+            "navInvestorshref": "/",
+            "navAbouttext": "About Us ▾",
+            "navAbouthref": "/",
+            "navCareerstext": "Careers ▾",
+            "navCareershref": "/",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f5f5f5",
+                        "text": "#FFFFFF",
+                        "primary": "#e3000f",
+                        "accent": "#e3000f",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#e3000f",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteHomeHeroHeropenAlt1_f43de3d1": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteHomeHeroHeropenAlt1_f43de3d1"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteHomeHeroHeropenAlt1_f43de3d1-1",
+            "herobgimagesrc": "https://images.unsplash.com/photo-1666618509094-64d78fa7c61d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMzMTE0OTl8&ixlib=rb-4.1.0&q=80&w=1080",
+            "herotitletext": "Creating innovative\nindustrial solutions for a better life",
+            "herosubtext": "Oerlikon engineers innovative technologies and solutions to give products improved and more desirable functions. Our leading high-tech surface solutions and advanced materials are designed for applications in growing markets, such as the automotive industry, aerospace, energy, the tooling industry and additive manufacturing.",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f5f5f5",
+                        "text": "#FFFFFF",
+                        "primary": "#e3000f",
+                        "accent": "#e3000f",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#e3000f",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteHomeProductsQuickcardspenAlt2": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteHomeProductsQuickcardspenAlt2"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteHomeProductsQuickcardspenAlt2-1",
+            "qc1ktext": "Press Releases",
+            "qc1ttext": "2025 Full-Year results",
+            "qc4ktext": "PFA's-free performance is possible",
+            "qc2ktext": "Press Release",
+            "qc2ttext": "ATL Turbine Services invests in Surface Two™",
+            "qc4ktext2": "Dundee-based ATL Turbine Services has expanded its technological capabilities by investing in the Surface Two™ thermal spray system from Oerlikon.",
+            "qc3ktext": "No single day without Oerlikon",
+            "qc3ttext": "Oerlikon at the bottom of the sea",
+            "qc4ttext": "Advanced PFAS-free coatings for a safer and better tomorrow",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f5f5f5",
+                        "text": "#FFFFFF",
+                        "primary": "#e3000f",
+                        "accent": "#e3000f",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#e3000f",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteHomeHeroVideobannerpenAlt3": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteHomeHeroVideobannerpenAlt3"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteHomeHeroVideobannerpenAlt3-1",
+            "vbgimagesrc": "https://images.unsplash.com/photo-1628929287969-64ad67e7c472?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMzMTE1MDB8&ixlib=rb-4.1.0&q=80&w=1080",
+            "videotitletext": "We make\nproducts\nbetter",
+            "playtritext": "▶",
+            "videologotext": "oerlikon",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f5f5f5",
+                        "text": "#FFFFFF",
+                        "primary": "#e3000f",
+                        "accent": "#e3000f",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#e3000f",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteHomeStoryNosingledaypenAlt4": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteHomeStoryNosingledaypenAlt4"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteHomeStoryNosingledaypenAlt4-1",
+            "nstitletext": "No single day without Oerlikon",
+            "nsheroimagesrc": "https://images.unsplash.com/photo-1627838744181-7079f193b151?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMzMTI4ODh8&ixlib=rb-4.1.0&q=80&w=1080",
+            "nstxttext": "From the bottom of the\nocean to outer space",
+            "l1text": "Aviation",
+            "l2text": "Semiconductor",
+            "l3text": "Satellites",
+            "l4text": "Subsea hardware",
+            "l5text": "Automotive",
+            "l6text": "Medical",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f5f5f5",
+                        "text": "#FFFFFF",
+                        "primary": "#e3000f",
+                        "accent": "#e3000f",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#e3000f",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteHomeApproachIndustrysolutionspenAlt5": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteHomeApproachIndustrysolutionspenAlt5"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteHomeApproachIndustrysolutionspenAlt5-1",
+            "intitletext": "Solutions for your industry",
+            "cardaeroimagesrc": "https://images.unsplash.com/photo-1735543552331-81e25f8a38d0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMzMTMxNjF8&ixlib=rb-4.1.0&q=80&w=1080",
+            "w5ywbtext": "→",
+            "sufsytext": "Aerospace",
+            "cardautoimagesrc": "https://images.unsplash.com/photo-1608051711057-85f4bf3ec23f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMzMTMxNjJ8&ixlib=rb-4.1.0&q=80&w=1080",
+            "drmutext": "→",
+            "fb7w3text": "Automotive",
+            "cardenergyimagesrc": "https://images.unsplash.com/photo-1598006844670-d8ef9bd2eed2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMzMTMxNjN8&ixlib=rb-4.1.0&q=80&w=1080",
+            "cj6cktext": "→",
+            "yl66ntext": "Energy",
+            "cardtoolingimagesrc": "https://images.unsplash.com/photo-1738162837335-3745e5d16c09?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMzMTMxNjN8&ixlib=rb-4.1.0&q=80&w=1080",
+            "nsqz8text": "→",
+            "kychftext": "Tooling",
+            "cardgeneralimagesrc": "https://images.unsplash.com/photo-1769757797867-a9439edc649b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMzMTMxNjR8&ixlib=rb-4.1.0&q=80&w=1080",
+            "s8bxdtext": "→",
+            "ad81text": "General industries",
+            "cardmedicalimagesrc": "https://images.unsplash.com/photo-1686916058141-a04d7f501ba8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMzMTMxNjV8&ixlib=rb-4.1.0&q=80&w=1080",
+            "merl6text": "→",
+            "xahbutext": "Medical",
+            "cardluxuryimagesrc": "https://images.unsplash.com/photo-1551809594-a4655ccc4a26?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMzMTMxNjZ8&ixlib=rb-4.1.0&q=80&w=1080",
+            "dzmvetext": "→",
+            "oskxrtext": "Luxury",
+            "cardsemiimagesrc": "https://images.unsplash.com/photo-1697665896572-35775520b8f8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMzMTMxNjZ8&ixlib=rb-4.1.0&q=80&w=1080",
+            "ueycztext": "→",
+            "pycb4text": "Semiconductor",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f5f5f5",
+                        "text": "#FFFFFF",
+                        "primary": "#e3000f",
+                        "accent": "#e3000f",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#e3000f",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteHomeStoryBrandspenAlt6": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteHomeStoryBrandspenAlt6"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteHomeStoryBrandspenAlt6-1",
+            "brtitletext": "Brands",
+            "idzotext": "oerlikon\nbalzers",
+            "nowtxtext": "oerlikon\nmetco",
+            "wlspvtext": "oerlikon\nhrsflow",
+            "nlvzftext": "oerlikon\npolymer processing\nsolutions",
+            "rw5c3text": "oerlikon\nAM",
+            "fojphtext": "oerlikon\nfineparts",
+            "brdesctext": "Oerlikon Balzers, world-leading provider of surface technologies, develops solutions and equipment and offers services to considerably improve the efficiency and longevity of precision components and tools for the metal and polymer processing industry.",
+            "brbtnhref": "/",
+            "tvsjrtext": "Learn more",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f5f5f5",
+                        "text": "#FFFFFF",
+                        "primary": "#e3000f",
+                        "accent": "#e3000f",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#e3000f",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteHomeHeroStoriespenAlt7": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteHomeHeroStoriespenAlt7"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteHomeHeroStoriespenAlt7-1",
+            "sttitletext": "Stories & Insights",
+            "story1imagesrc": "https://images.unsplash.com/photo-1695199360616-cbc493367bb7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMzMTQxNTN8&ixlib=rb-4.1.0&q=80&w=1080",
+            "p6f2otext": "Enhancing performance in electrosurgery",
+            "story2imagesrc": "https://images.unsplash.com/photo-1758719228842-e27105262291?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMzMTQxNTR8&ixlib=rb-4.1.0&q=80&w=1080",
+            "yd0zjtext": "Compelling reasons to switch from hard chrome plating to advanced PVD coatings",
+            "story3imagesrc": "https://images.unsplash.com/photo-1436918898788-ebce04d38e46?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMzMTQxNTV8&ixlib=rb-4.1.0&q=80&w=1080",
+            "y1hegtext": "PFAS-free performance is possible",
+            "stlinktext": "Read the stories from the Oerlikon World",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f5f5f5",
+                        "text": "#FFFFFF",
+                        "primary": "#e3000f",
+                        "accent": "#e3000f",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#e3000f",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteHomeStoryPressandeventspenAlt8": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteHomeStoryPressandeventspenAlt8"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteHomeStoryPressandeventspenAlt8-1",
+            "pressttext": "Press Releases",
+            "pressltext": "Feb 24, 2026    Ad hoc announcement pursuant to Art. 53 LR\n\n2025 Full-Year results",
+            "evttext": "Events",
+            "evltext": "Mar 10, 2026 - Mar 13, 2026",
+            "ek3etext": "ESF",
+            "evloctext": "Utrecht, Netherlands",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f5f5f5",
+                        "text": "#FFFFFF",
+                        "primary": "#e3000f",
+                        "accent": "#e3000f",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#e3000f",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteHomeFooterFooterpenAlt9_bef8cd5c": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteHomeFooterFooterpenAlt9_bef8cd5c"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteHomeFooterFooterpenAlt9_bef8cd5c-1",
+            "jepkjtext": "Portfolio",
+            "orajgtext": "Product Finder",
+            "l8jrttext": "Brands",
+            "l8jrthref": "/",
+            "bdiktext": "Industries",
+            "bdikhref": "/oerlikon-industries",
+            "vt6hztext": "Innovation",
+            "vt6hzhref": "/",
+            "lfytdtext": "Investors & Media",
+            "bsdw2text": "Reports & Publications",
+            "fqxfltext": "Press Releases",
+            "fqxflhref": "/",
+            "r9yl0text": "Share Information",
+            "r9yl0href": "/",
+            "qhwrmtext": "About Us",
+            "c0zfltext": "Careers",
+            "rzp7ctext": "Job Openings",
+            "rzp7chref": "/",
+            "d74ectext": "Locations",
+            "d74echref": "/",
+            "ajqntext": "Company Profile",
+            "ajqnhref": "/",
+            "av9swtext": "Legal & Data Protection",
+            "ml9hatext": "Privacy & Cookie Policy",
+            "yxnomtext": "Terms of Use & Legal Notice",
+            "yxnomhref": "/",
+            "gmysetext": "Whistleblowing",
+            "gmysehref": "/",
+            "lfermtext": "Current Share Price",
+            "nkx6qtext": "Mar 12, 2026 09:38 am   3.96 CHF   -0.01 (-0.35%)",
+            "nkx6qhref": "/",
+            "czlbltext": "in",
+            "wntntext": "▶",
+            "vwebftext": "f",
+            "orm4stext": "◎",
+            "gg7cxtext": "▢",
+            "contactbtnhref": "/",
+            "contacttexttext": "Contact",
+            "ugbqftext": "OC Oerlikon Corporation AG, Pfäffikon",
+            "p7bcwtext": "Churerstrasse 120 CH-8808 Pfäffikon SZ,",
+            "p7bcwhref": "/",
+            "o1swrtext": "Switzerland",
+            "o1swrhref": "/",
+            "yr5tftext": "© Copyright 2026 OC Oerlikon Management AG",
+            "nnknctext": "Back to top ^",
+            "nnknchref": "/",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f5f5f5",
+                        "text": "#FFFFFF",
+                        "primary": "#e3000f",
+                        "accent": "#e3000f",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#e3000f",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteOerlikonAboutNavigationNavcopyapenPrimary": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteOerlikonAboutNavigationNavcopyapenPrimary"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteOerlikonAboutNavigationNavcopyapenPrimary-1",
+            "topmenutext": "Search    Locations    Careers    Language",
+            "topmenuhref": "/",
+            "contactbtnhref": "/",
+            "contactdottext": "✉",
+            "contacttexttext": "Contact",
+            "logotext": "oerlikon",
+            "logohref": "/",
+            "navPortfoliotext": "Portfolio ▾",
+            "navPortfoliohref": "/",
+            "navIndustriestext": "Industries ▾",
+            "navIndustrieshref": "/oerlikon-industries",
+            "navInnovationtext": "Innovation ▾",
+            "navInnovationhref": "/",
+            "navSustainabilitytext": "Sustainability ▾",
+            "navSustainabilityhref": "/",
+            "navInvestorstext": "Investors ▾",
+            "navInvestorshref": "/",
+            "navAbouttext": "About Us ▾",
+            "navAbouthref": "/",
+            "navCareerstext": "Careers ▾",
+            "navCareershref": "/",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f4f4f4",
+                        "text": "#FFFFFF",
+                        "primary": "#e3000f",
+                        "accent": "#e3000f",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#e3000f",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteOerlikonAboutHeroAboutheropenAlt1": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteOerlikonAboutHeroAboutheropenAlt1"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteOerlikonAboutHeroAboutheropenAlt1-1",
+            "herobgaimagesrc": "https://images.unsplash.com/photo-1768974973344-bce5b8a6c066?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMzMTcwMDV8&ixlib=rb-4.1.0&q=80&w=1080",
+            "herotitleatext": "About us",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f4f4f4",
+                        "text": "#FFFFFF",
+                        "primary": "#e3000f",
+                        "accent": "#e3000f",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#e3000f",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteOerlikonAboutStoryIntropenAlt2": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteOerlikonAboutStoryIntropenAlt2"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteOerlikonAboutStoryIntropenAlt2-1",
+            "breadcrumbatext": "Home   /   About Us",
+            "introtextatext": "Oerlikon is a global leader in surface technologies, dedicated to making products stronger, more efficient, and longer lasting. With a unique portfolio in surface engineering, advanced materials, coating equipment, and components, we help industries overcome tough engineering challenges every day.\nFrom applying ultra-thin coatings that reduce wear on engine parts to producing advanced metal powders for 3D printing, our innovations improve efficiency, durability, and sustainability across a wide range of sectors including aerospace, automotive, energy, luxury, medical, semiconductors and tooling.\n\nDiscover how we're shaping the future - one solution at a time.",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f4f4f4",
+                        "text": "#FFFFFF",
+                        "primary": "#e3000f",
+                        "accent": "#e3000f",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#e3000f",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteOerlikonAboutStoryCompanyprofilepenAlt3": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteOerlikonAboutStoryCompanyprofilepenAlt3"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteOerlikonAboutStoryCompanyprofilepenAlt3-1",
+            "companyheadbtext": "Company profile",
+            "companydescbtext": "OC Oerlikon Corporation AG is a global leader in surface technologies. Our solutions and comprehensive services, together with our advanced materials, enhance and maximize the performance, function, design and sustainability of our customers' and their customers' products in key industries.",
+            "companybtnbhref": "/",
+            "companybtntxtbtext": "Read more",
+            "right1btext": "> Corporate Governance",
+            "right2btext": "> History",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f4f4f4",
+                        "text": "#FFFFFF",
+                        "primary": "#e3000f",
+                        "accent": "#e3000f",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#e3000f",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteOerlikonAboutStoryPresscopybpenAlt4": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteOerlikonAboutStoryPresscopybpenAlt4"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteOerlikonAboutStoryPresscopybpenAlt4-1",
+            "pressttext": "Press Releases",
+            "pressltext": "Feb 24, 2026    Ad hoc announcement pursuant to Art. 53 LR\n\n2025 Full-Year results",
+            "evttext": "Events",
+            "evltext": "Mar 10, 2026 - Mar 13, 2026",
+            "hhxf6text": "ESF",
+            "evloctext": "Utrecht, Netherlands",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f4f4f4",
+                        "text": "#FFFFFF",
+                        "primary": "#e3000f",
+                        "accent": "#e3000f",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#e3000f",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteOerlikonAboutStoryAboutlinkgridpenAlt5": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteOerlikonAboutStoryAboutlinkgridpenAlt5"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteOerlikonAboutStoryAboutlinkgridpenAlt5-1",
+            "card1ttext": "Media center",
+            "card1dtext": "Discover our media center for journalists and media professionals.",
+            "card2ttext": "Company profile",
+            "card2dtext": "Read up on Oerlikon and discover company facts, key figures and milestones.",
+            "card3ttext": "Location",
+            "card3dtext": "Our business sites and offices and our largest production locations around the globe.",
+            "card4ttext": "Compliance",
+            "card4dtext": "The compliance organization ensures transparency and legal integrity for all stakeholders.",
+            "card5ttext": "Procurement",
+            "card5dtext": "Acting as a service organization and linking up suppliers globally in an efficient and fair way.",
+            "card6ttext": "Annual General Meeting of Shareholders",
+            "card6dtext": "This page contains details regarding the Annual General Meeting and all associated documents.",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f4f4f4",
+                        "text": "#FFFFFF",
+                        "primary": "#e3000f",
+                        "accent": "#e3000f",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#e3000f",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteOerlikonAboutStoryStoriescopybpenAlt6": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteOerlikonAboutStoryStoriescopybpenAlt6"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteOerlikonAboutStoryStoriescopybpenAlt6-1",
+            "sttitletext": "Stories & Insights",
+            "story1imagesrc": "https://images.unsplash.com/photo-1695199360616-cbc493367bb7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMzMTQxNTN8&ixlib=rb-4.1.0&q=80&w=1080",
+            "ykbtext": "Enhancing performance in electrosurgery",
+            "story2imagesrc": "https://images.unsplash.com/photo-1758719228842-e27105262291?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMzMTQxNTR8&ixlib=rb-4.1.0&q=80&w=1080",
+            "zjjq7text": "Compelling reasons to switch from hard chrome plating to advanced PVD coatings",
+            "story3imagesrc": "https://images.unsplash.com/photo-1436918898788-ebce04d38e46?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMzMTQxNTV8&ixlib=rb-4.1.0&q=80&w=1080",
+            "yfglntext": "PFAS-free performance is possible",
+            "stlinktext": "Read the stories from the Oerlikon World",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f4f4f4",
+                        "text": "#FFFFFF",
+                        "primary": "#e3000f",
+                        "accent": "#e3000f",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#e3000f",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteOerlikonAboutStoryMinilinkspenAlt7": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteOerlikonAboutStoryMinilinkspenAlt7"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteOerlikonAboutStoryMinilinkspenAlt7-1",
+            "m1ttext": "Oerlikon trends",
+            "card1dtext": "Discover our media center for journalists and media professionals.",
+            "m2ttext": "Oerlikon locations in Germany",
+            "m3ttext": "Oerlikon locations in Switzerland",
+            "m3ttext2": "Oerlikon locations in Austria",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f4f4f4",
+                        "text": "#FFFFFF",
+                        "primary": "#e3000f",
+                        "accent": "#e3000f",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#e3000f",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteOerlikonAboutFooterFootercopybpenAlt8": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteOerlikonAboutFooterFootercopybpenAlt8"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteOerlikonAboutFooterFootercopybpenAlt8-1",
+            "ayfgwtext": "Portfolio",
+            "w0hkqtext": "Product Finder",
+            "b9ljutext": "Brands",
+            "b9ljuhref": "/",
+            "qjdictext": "Industries",
+            "qjdichref": "/oerlikon-industries",
+            "j8xsztext": "Innovation",
+            "j8xszhref": "/",
+            "flye8text": "Investors & Media",
+            "skbajtext": "Reports & Publications",
+            "r9zjltext": "Press Releases",
+            "r9zjlhref": "/",
+            "dmacctext": "Share Information",
+            "dmacchref": "/",
+            "kbuqtext": "About Us",
+            "dekitext": "Careers",
+            "pgfrtext": "Job Openings",
+            "pgfrhref": "/",
+            "rn6vstext": "Locations",
+            "rn6vshref": "/",
+            "macq0text": "Company Profile",
+            "macq0href": "/",
+            "mrk0jtext": "Legal & Data Protection",
+            "ibpiutext": "Privacy & Cookie Policy",
+            "lllktext": "Terms of Use & Legal Notice",
+            "lllkhref": "/",
+            "n8sftext": "Whistleblowing",
+            "n8sfhref": "/",
+            "zyyi6text": "Current Share Price",
+            "ko9ojtext": "Mar 12, 2026 09:38 am   3.96 CHF   -0.01 (-0.35%)",
+            "ko9ojhref": "/",
+            "ya6jftext": "in",
+            "vnsutext": "▶",
+            "pdmr2text": "f",
+            "soglrtext": "◎",
+            "x5jottext": "▢",
+            "contactbtnhref": "/",
+            "contacttexttext": "Contact",
+            "d9y04text": "OC Oerlikon Corporation AG, Pfäffikon",
+            "uy7pjtext": "Churerstrasse 120 CH-8808 Pfäffikon SZ,",
+            "uy7pjhref": "/",
+            "uyzqtext": "Switzerland",
+            "uyzqhref": "/",
+            "i7wmetext": "© Copyright 2026 OC Oerlikon Management AG",
+            "iseoftext": "Back to top ^",
+            "iseofhref": "/",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f4f4f4",
+                        "text": "#FFFFFF",
+                        "primary": "#e3000f",
+                        "accent": "#e3000f",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#e3000f",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteOerlikonIndustriesNavigationNavcopyapenPrimary": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteOerlikonIndustriesNavigationNavcopyapenPrimary"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteOerlikonIndustriesNavigationNavcopyapenPrimary-1",
+            "topmenutext": "Search    Locations    Careers    Language",
+            "topmenuhref": "/",
+            "contactbtnhref": "/",
+            "contactdottext": "✉",
+            "contacttexttext": "Contact",
+            "logotext": "oerlikon",
+            "logohref": "/",
+            "navPortfoliotext": "Portfolio ▾",
+            "navPortfoliohref": "/",
+            "navIndustriestext": "Industries ▾",
+            "navIndustrieshref": "/oerlikon-industries",
+            "navInnovationtext": "Innovation ▾",
+            "navInnovationhref": "/",
+            "navSustainabilitytext": "Sustainability ▾",
+            "navSustainabilityhref": "/",
+            "navInvestorstext": "Investors ▾",
+            "navInvestorshref": "/",
+            "navAbouttext": "About Us ▾",
+            "navAbouthref": "/",
+            "navCareerstext": "Careers ▾",
+            "navCareershref": "/",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f4f4f4",
+                        "text": "#FFFFFF",
+                        "primary": "#e3000f",
+                        "accent": "#e3000f",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#e3000f",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteOerlikonIndustriesHeroIndustriesheropenAlt1": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteOerlikonIndustriesHeroIndustriesheropenAlt1"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteOerlikonIndustriesHeroIndustriesheropenAlt1-1",
+            "herobgaimagesrc": "https://images.unsplash.com/photo-1768974973344-bce5b8a6c066?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMzMTcwMDV8&ixlib=rb-4.1.0&q=80&w=1080",
+            "herotitleatext": "Industries",
+            "herosubitext": "Every day we are helping people to live safer and healthier life. Oerlikon has the tools and the expertise to partner today and help to address tomorrow's needs. We make this possible with our wide surface solutions, and our application know-how and process expertise.",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f4f4f4",
+                        "text": "#FFFFFF",
+                        "primary": "#e3000f",
+                        "accent": "#e3000f",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#e3000f",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteOerlikonIndustriesProductsIndustriesgridsectionpenAlt2": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteOerlikonIndustriesProductsIndustriesgridsectionpenAlt2"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteOerlikonIndustriesProductsIndustriesgridsectionpenAlt2-1",
+            "t11text": "Aerospace",
+            "d11text": "Oerlikon has long-standing materials know-how and surface treatment expertise, providing highly integrated solutions and technologies for aerospace, turbines and landing gears.",
+            "t12text": "Automotive",
+            "d12text": "We are one of the world’s leading global solutions providers and technology partner to automotive and transportation industries. Oerlikon delivers components, coatings and systems.",
+            "t21text": "Energy",
+            "d21text": "The world’s digital evolution of power generation requires trusted solutions and efficient resource processes. Surface coatings and process technologies improve performance and reliability.",
+            "t22text": "Tooling",
+            "d22text": "Coating and technology partner for innovative toolmakers helps to optimize wear resistance and machining performance for cutting tools, dies and precision components.",
+            "t31text": "General industries",
+            "d31text": "Oerlikon’s portfolio of integrated surface solutions for industrial applications increases process efficiency, product lifetime and overall economic value.",
+            "t32text": "Medical",
+            "d32text": "Medical device manufacturers have relied on Oerlikon’s expertise and processes for decades. We support strict quality and bio-compatible coating requirements.",
+            "t41text": "Luxury",
+            "d41text": "Low-friction and wear-resistant coatings provide durability and premium appearance. Oerlikon supports watchmaking, fashion accessories and decorative applications.",
+            "t42text": "Semiconductor",
+            "d42text": "Oerlikon offers integrated coating technologies, materials and components for semiconductor manufacturing with high purity and process stability for demanding use cases.",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f4f4f4",
+                        "text": "#FFFFFF",
+                        "primary": "#e3000f",
+                        "accent": "#e3000f",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#e3000f",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteOerlikonIndustriesStoryPresscopybpenAlt3": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteOerlikonIndustriesStoryPresscopybpenAlt3"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteOerlikonIndustriesStoryPresscopybpenAlt3-1",
+            "pressttext": "Press Releases",
+            "pressltext": "Feb 24, 2026    Ad hoc announcement pursuant to Art. 53 LR\n\n2025 Full-Year results",
+            "evttext": "Events",
+            "evltext": "Mar 10, 2026 - Mar 13, 2026",
+            "ablr1text": "ESF",
+            "evloctext": "Utrecht, Netherlands",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f4f4f4",
+                        "text": "#FFFFFF",
+                        "primary": "#e3000f",
+                        "accent": "#e3000f",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#e3000f",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteOerlikonIndustriesStoryStoriescopybpenAlt4": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteOerlikonIndustriesStoryStoriescopybpenAlt4"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteOerlikonIndustriesStoryStoriescopybpenAlt4-1",
+            "sttitletext": "Stories & Insights",
+            "story1imagesrc": "https://images.unsplash.com/photo-1695199360616-cbc493367bb7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMzMTQxNTN8&ixlib=rb-4.1.0&q=80&w=1080",
+            "mvqegtext": "Enhancing performance in electrosurgery",
+            "story2imagesrc": "https://images.unsplash.com/photo-1758719228842-e27105262291?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMzMTQxNTR8&ixlib=rb-4.1.0&q=80&w=1080",
+            "yng28text": "Compelling reasons to switch from hard chrome plating to advanced PVD coatings",
+            "story3imagesrc": "https://images.unsplash.com/photo-1436918898788-ebce04d38e46?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMzMTQxNTV8&ixlib=rb-4.1.0&q=80&w=1080",
+            "tst9ntext": "PFAS-free performance is possible",
+            "stlinktext": "Read the stories from the Oerlikon World",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f4f4f4",
+                        "text": "#FFFFFF",
+                        "primary": "#e3000f",
+                        "accent": "#e3000f",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#e3000f",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteOerlikonIndustriesFooterFootercopybpenAlt5": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteOerlikonIndustriesFooterFootercopybpenAlt5"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteOerlikonIndustriesFooterFootercopybpenAlt5-1",
+            "ge8rctext": "Portfolio",
+            "j94ibtext": "Product Finder",
+            "d9apitext": "Brands",
+            "d9apihref": "/",
+            "z0yaetext": "Industries",
+            "z0yaehref": "/oerlikon-industries",
+            "y9ybttext": "Innovation",
+            "y9ybthref": "/",
+            "ugkkytext": "Investors & Media",
+            "ce57ytext": "Reports & Publications",
+            "tqvq8text": "Press Releases",
+            "tqvq8href": "/",
+            "vgvadtext": "Share Information",
+            "vgvadhref": "/",
+            "f8lgotext": "About Us",
+            "dbbcgtext": "Careers",
+            "ba1pltext": "Job Openings",
+            "ba1plhref": "/",
+            "uusmktext": "Locations",
+            "uusmkhref": "/",
+            "ahafstext": "Company Profile",
+            "ahafshref": "/",
+            "zgdwtext": "Legal & Data Protection",
+            "t6bzstext": "Privacy & Cookie Policy",
+            "frpttext": "Terms of Use & Legal Notice",
+            "frpthref": "/",
+            "rmmytext": "Whistleblowing",
+            "rmmyhref": "/",
+            "nz6qgtext": "Current Share Price",
+            "ruu6stext": "Mar 12, 2026 09:38 am   3.96 CHF   -0.01 (-0.35%)",
+            "ruu6shref": "/",
+            "aylvtext": "in",
+            "ejh9vtext": "▶",
+            "j1swvtext": "f",
+            "zd5otext": "◎",
+            "hv3nctext": "▢",
+            "contactbtnhref": "/",
+            "contacttexttext": "Contact",
+            "l0zbtext": "OC Oerlikon Corporation AG, Pfäffikon",
+            "vt2nttext": "Churerstrasse 120 CH-8808 Pfäffikon SZ,",
+            "vt2nthref": "/",
+            "bxre4text": "Switzerland",
+            "bxre4href": "/",
+            "yyso8text": "© Copyright 2026 OC Oerlikon Management AG",
+            "ykvtext": "Back to top ^",
+            "ykvhref": "/",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f4f4f4",
+                        "text": "#FFFFFF",
+                        "primary": "#e3000f",
+                        "accent": "#e3000f",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#e3000f",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteOerlikonProductsNavigationPortnavpenPrimary": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteOerlikonProductsNavigationPortnavpenPrimary"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteOerlikonProductsNavigationPortnavpenPrimary-1",
+            "topmenutext": "Search    Locations    Careers    Language",
+            "topmenuhref": "/",
+            "contactbtnhref": "/",
+            "contactdottext": "✉",
+            "contacttexttext": "Contact",
+            "logotext": "oerlikon",
+            "logohref": "/",
+            "navPortfoliotext": "Portfolio ▾",
+            "navPortfoliohref": "/",
+            "navIndustriestext": "Industries ▾",
+            "navIndustrieshref": "/oerlikon-industries",
+            "navInnovationtext": "Innovation ▾",
+            "navInnovationhref": "/",
+            "navSustainabilitytext": "Sustainability ▾",
+            "navSustainabilityhref": "/",
+            "navInvestorstext": "Investors ▾",
+            "navInvestorshref": "/",
+            "navAbouttext": "About Us ▾",
+            "navAbouthref": "/",
+            "navCareerstext": "Careers ▾",
+            "navCareershref": "/",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f4f4f4",
+                        "text": "#FFFFFF",
+                        "primary": "#e3000f",
+                        "accent": "#e3000f",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#e3000f",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteOerlikonProductsHeroPortfolioheropenAlt1": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteOerlikonProductsHeroPortfolioheropenAlt1"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteOerlikonProductsHeroPortfolioheropenAlt1-1",
+            "herobgpimagesrc": "https://images.unsplash.com/photo-1763848843013-e83a5f30b8e5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMzMjAyNjJ8&ixlib=rb-4.1.0&q=80&w=1080",
+            "herotitleptext": "Portfolio",
+            "herodescptext": "From wear-resistant coatings to advanced metal powders and thermal spray technologies, our innovations help customers solve complex engineering challenges and unlock new possibilities for their products.",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f4f4f4",
+                        "text": "#FFFFFF",
+                        "primary": "#e3000f",
+                        "accent": "#e3000f",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#e3000f",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteOerlikonProductsProductsPortfoliomainpenAlt2": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteOerlikonProductsProductsPortfoliomainpenAlt2"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteOerlikonProductsProductsPortfoliomainpenAlt2-1",
+            "tabittext": "Industries",
+            "tabihref": "/oerlikon-industries",
+            "tabbttext": "Brands",
+            "tabbhref": "/",
+            "r1ltext": "Aerospace",
+            "r1mtext": "Engines\nLanding Gears\nTurbines",
+            "r1rtext": "Hot section components\nSpace\nAircraft structures",
+            "r2ltext": "Automotive",
+            "r2mtext": "Passenger cars\nCommercial vehicles\nTransmission systems",
+            "r2rtext": "EV components\nEngine applications\nThermal management",
+            "r3ltext": "Energy",
+            "r3mtext": "Power generation\nRenewable energy\nOil and gas",
+            "r3rtext": "Hydrogen\nCarbon capture\nNuclear",
+            "r4ltext": "Tooling",
+            "r4mtext": "Metal cutting\nMolding tools\nForming applications",
+            "r4rtext": "Die casting\nStamping\nPrecision tools",
+            "r5ltext": "General industries",
+            "r5mtext": "Industrial components\nMachinery\nTextile",
+            "r5rtext": "Packaging\nInfrastructure\nConsumer goods",
+            "r6ltext": "Medical",
+            "r6mtext": "Orthopedic implants\nDental tools\nSurgical instruments",
+            "r6rtext": "Biocompatible coatings\nHigh precision parts\nMedical devices",
+            "r7ltext": "Luxury",
+            "r7mtext": "Watches\nFashion accessories\nDesign hardware",
+            "r7rtext": "Decorative coatings\nScratch resistance\nPremium finishing",
+            "r8ltext": "Semiconductor",
+            "r8mtext": "Wafer processing\nEtch and deposition\nAdvanced packaging",
+            "r8rtext": "High purity materials\nVacuum technology\nProcess stability",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f4f4f4",
+                        "text": "#FFFFFF",
+                        "primary": "#e3000f",
+                        "accent": "#e3000f",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#e3000f",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteOerlikonProductsStoryCorecompetenciespenAlt3": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteOerlikonProductsStoryCorecompetenciespenAlt3"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteOerlikonProductsStoryCorecompetenciespenAlt3-1",
+            "coretitletext": "Core competencies",
+            "coretext1text": "Advanced Materials",
+            "coretext2text": "Surface Engineering",
+            "coretitletext2": "We engineer and process materials and surfaces to give products desired and improved functions. We help cars and airplanes use less fuel, make tools last longer, and improve the manufacturing of textiles. Our technologies advance industrial innovation and enable manufacturers to do things they simply couldn’t do before and advance industrial innovation.",
+            "corebtnhref": "/",
+            "corebtnttext": "Full Company Profile",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f4f4f4",
+                        "text": "#FFFFFF",
+                        "primary": "#e3000f",
+                        "accent": "#e3000f",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#e3000f",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteOerlikonProductsStoryImagestrippenAlt4": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteOerlikonProductsStoryImagestrippenAlt4"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteOerlikonProductsStoryImagestrippenAlt4-1",
+            "strip1imagesrc": "https://images.unsplash.com/photo-1503422978795-9f178e016648?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMzMjAxMDV8&ixlib=rb-4.1.0&q=80&w=1080",
+            "label1text": "Sector focus",
+            "strip2imagesrc": "https://images.unsplash.com/photo-1558234336-b5379131bf43?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMzMjAxMDZ8&ixlib=rb-4.1.0&q=80&w=1080",
+            "label2text": "Case studies",
+            "strip3imagesrc": "https://images.unsplash.com/photo-1551609189-eba71b3a8566?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMzMjAxMDZ8&ixlib=rb-4.1.0&q=80&w=1080",
+            "label3text": "Applications",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f4f4f4",
+                        "text": "#FFFFFF",
+                        "primary": "#e3000f",
+                        "accent": "#e3000f",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#e3000f",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteOerlikonProductsStoryPresscopyppenAlt5": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteOerlikonProductsStoryPresscopyppenAlt5"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteOerlikonProductsStoryPresscopyppenAlt5-1",
+            "pressttext": "Press Releases",
+            "pressltext": "Feb 24, 2026    Ad hoc announcement pursuant to Art. 53 LR\n\n2025 Full-Year results",
+            "evttext": "Events",
+            "evltext": "Mar 10, 2026 - Mar 13, 2026",
+            "cnmktext": "ESF",
+            "evloctext": "Utrecht, Netherlands",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f4f4f4",
+                        "text": "#FFFFFF",
+                        "primary": "#e3000f",
+                        "accent": "#e3000f",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#e3000f",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteOerlikonProductsStoryBrandscopyppenAlt6": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteOerlikonProductsStoryBrandscopyppenAlt6"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteOerlikonProductsStoryBrandscopyppenAlt6-1",
+            "brtitletext": "Brands",
+            "kovdytext": "oerlikon\nbalzers",
+            "ui18wtext": "oerlikon\nmetco",
+            "zxktatext": "oerlikon\nhrsflow",
+            "tmml9text": "oerlikon\npolymer processing\nsolutions",
+            "phgbttext": "oerlikon\nAM",
+            "stnhltext": "oerlikon\nfineparts",
+            "brdesctext": "Oerlikon Balzers, world-leading provider of surface technologies, develops solutions and equipment and offers services to considerably improve the efficiency and longevity of precision components and tools for the metal and polymer processing industry.",
+            "brbtnhref": "/",
+            "uenrotext": "Learn more",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f4f4f4",
+                        "text": "#FFFFFF",
+                        "primary": "#e3000f",
+                        "accent": "#e3000f",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#e3000f",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteOerlikonProductsFooterFootercopyppenAlt7": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteOerlikonProductsFooterFootercopyppenAlt7"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteOerlikonProductsFooterFootercopyppenAlt7-1",
+            "fkd6ttext": "Portfolio",
+            "cqh9text": "Product Finder",
+            "vmqhhtext": "Brands",
+            "vmqhhhref": "/",
+            "u69t6text": "Industries",
+            "u69t6href": "/oerlikon-industries",
+            "blchntext": "Innovation",
+            "blchnhref": "/",
+            "htmatext": "Investors & Media",
+            "bluhqtext": "Reports & Publications",
+            "c0emtext": "Press Releases",
+            "c0emhref": "/",
+            "zrjwtext": "Share Information",
+            "zrjwhref": "/",
+            "cu3xbtext": "About Us",
+            "ahhrdtext": "Careers",
+            "ckrbxtext": "Job Openings",
+            "ckrbxhref": "/",
+            "ikct7text": "Locations",
+            "ikct7href": "/",
+            "bvxvtext": "Company Profile",
+            "bvxvhref": "/",
+            "bqoltext": "Legal & Data Protection",
+            "qpsztext": "Privacy & Cookie Policy",
+            "owi9ntext": "Terms of Use & Legal Notice",
+            "owi9nhref": "/",
+            "eey5ttext": "Whistleblowing",
+            "eey5thref": "/",
+            "kchstext": "Current Share Price",
+            "n6d3qtext": "Mar 12, 2026 09:38 am   3.96 CHF   -0.01 (-0.35%)",
+            "n6d3qhref": "/",
+            "h5ditext": "in",
+            "k6paftext": "▶",
+            "z6uxhtext": "f",
+            "siowbtext": "◎",
+            "dz4bbtext": "▢",
+            "contactbtnhref": "/",
+            "contacttexttext": "Contact",
+            "knv5qtext": "OC Oerlikon Corporation AG, Pfäffikon",
+            "tqgtdtext": "Churerstrasse 120 CH-8808 Pfäffikon SZ,",
+            "tqgtdhref": "/",
+            "kagiotext": "Switzerland",
+            "kagiohref": "/",
+            "gkiv9text": "© Copyright 2026 OC Oerlikon Management AG",
+            "h2f4text": "Back to top ^",
+            "h2f4href": "/",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f4f4f4",
+                        "text": "#FFFFFF",
+                        "primary": "#e3000f",
+                        "accent": "#e3000f",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#e3000f",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteOerlikonCompanyNavigationNavcopyapenPrimary": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteOerlikonCompanyNavigationNavcopyapenPrimary"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteOerlikonCompanyNavigationNavcopyapenPrimary-1",
+            "topmenutext": "Search    Locations    Careers    Language",
+            "topmenuhref": "/",
+            "contactbtnhref": "/",
+            "contactdottext": "✉",
+            "contacttexttext": "Contact",
+            "logotext": "oerlikon",
+            "logohref": "/",
+            "navPortfoliotext": "Portfolio ▾",
+            "navPortfoliohref": "/",
+            "navIndustriestext": "Industries ▾",
+            "navIndustrieshref": "/oerlikon-industries",
+            "navInnovationtext": "Innovation ▾",
+            "navInnovationhref": "/",
+            "navSustainabilitytext": "Sustainability ▾",
+            "navSustainabilityhref": "/",
+            "navInvestorstext": "Investors ▾",
+            "navInvestorshref": "/",
+            "navAbouttext": "About Us ▾",
+            "navAbouthref": "/",
+            "navCareerstext": "Careers ▾",
+            "navCareershref": "/",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f4f4f4",
+                        "text": "#FFFFFF",
+                        "primary": "#e3000f",
+                        "accent": "#e3000f",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#e3000f",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteOerlikonCompanyHeroCompanyheropenAlt1": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteOerlikonCompanyHeroCompanyheropenAlt1"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteOerlikonCompanyHeroCompanyheropenAlt1-1",
+            "jd0l5imagesrc": "https://images.unsplash.com/photo-1767413406256-002b9baeb633?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMzMjY4NDl8&ixlib=rb-4.1.0&q=80&w=1080",
+            "m7lxdtext": "Company profile",
+            "cicu0text": "We make products better. Learn more about our business and core competencies.",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f4f4f4",
+                        "text": "#FFFFFF",
+                        "primary": "#e3000f",
+                        "accent": "#e3000f",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#e3000f",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteOerlikonCompanyStoryIntropenAlt2": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteOerlikonCompanyStoryIntropenAlt2"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteOerlikonCompanyStoryIntropenAlt2-1",
+            "pevqmtext": "Home    /    About Us    /    Company Profile",
+            "r7usmtext": "A global innovation powerhouse",
+            "itrwhtext": "Oerlikon is a global leader in surface technologies and advanced materials. We create protective coatings, high-performance components and additive manufacturing solutions for highly demanding applications.",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f4f4f4",
+                        "text": "#FFFFFF",
+                        "primary": "#e3000f",
+                        "accent": "#e3000f",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#e3000f",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteOerlikonCompanyStoryValuespenAlt3": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteOerlikonCompanyStoryValuespenAlt3"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteOerlikonCompanyStoryValuespenAlt3-1",
+            "evg0timagesrc": "https://images.unsplash.com/photo-1532601224476-15c79f2f7a51?auto=format&fit=crop&w=900&q=80",
+            "eelmttext": "Vision",
+            "uip9vtext": "Oerlikon creates innovative industrial solutions for a better life.",
+            "gagduimagesrc": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=900&q=80",
+            "fvb0text": "Mission",
+            "iszj7text": "To be the most innovative partner in surface technologies and materials.",
+            "thgceimagesrc": "https://images.unsplash.com/photo-1557682250-33bd709cbe85?auto=format&fit=crop&w=900&q=80",
+            "dtlk3text": "Core Values",
+            "lkaqitext": "Integrity, Team Spirit, Excellence, Innovation",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f4f4f4",
+                        "text": "#FFFFFF",
+                        "primary": "#e3000f",
+                        "accent": "#e3000f",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#e3000f",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteOerlikonCompanyNavigationCorecompetenciespenAlt4": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteOerlikonCompanyNavigationCorecompetenciespenAlt4"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteOerlikonCompanyNavigationCorecompetenciespenAlt4-1",
+            "iov6qtext": "Core competencies",
+            "iov6qhref": "/",
+            "x2idetext": "Oerlikon is a world leader in surface technologies. Our additive materials, coating equipment and services build on core technology competencies.",
+            "x2idehref": "/",
+            "axjooimagesrc": "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=900&q=80",
+            "wsamttext": "Advanced materials",
+            "wsamthref": "/",
+            "ehkjetext": "High-performance materials for demanding applications.",
+            "ehkjehref": "/",
+            "p88adimagesrc": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=80",
+            "e85ektext": "Surface services",
+            "e85ekhref": "/",
+            "noioitext": "Coating and finishing services for optimized performance.",
+            "noioihref": "/",
+            "kqpgimagesrc": "https://images.unsplash.com/photo-1758873263428-f4b2edb45fe1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMzMjY3OTN8&ixlib=rb-4.1.0&q=80&w=1080",
+            "uuslotext": "High specialized components",
+            "uuslohref": "/",
+            "t6natext": "Precision components for mission critical environments.",
+            "t6nahref": "/",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f4f4f4",
+                        "text": "#FFFFFF",
+                        "primary": "#e3000f",
+                        "accent": "#e3000f",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#e3000f",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteOerlikonCompanyFooterFootercopybpenAlt5": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteOerlikonCompanyFooterFootercopybpenAlt5"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteOerlikonCompanyFooterFootercopybpenAlt5-1",
+            "jikbztext": "Portfolio",
+            "ctfi7text": "Product Finder",
+            "qn27vtext": "Brands",
+            "qn27vhref": "/",
+            "j3yzttext": "Industries",
+            "j3yzthref": "/oerlikon-industries",
+            "ngxzwtext": "Innovation",
+            "ngxzwhref": "/",
+            "jxlzitext": "Investors & Media",
+            "urwpetext": "Reports & Publications",
+            "pjqntext": "Press Releases",
+            "pjqnhref": "/",
+            "eehrwtext": "Share Information",
+            "eehrwhref": "/",
+            "kddc1text": "About Us",
+            "q88text": "Careers",
+            "fssaitext": "Job Openings",
+            "fssaihref": "/",
+            "dpyjftext": "Locations",
+            "dpyjfhref": "/",
+            "gotjatext": "Company Profile",
+            "gotjahref": "/",
+            "fbmjqtext": "Legal & Data Protection",
+            "ooas5text": "Privacy & Cookie Policy",
+            "b90dtext": "Terms of Use & Legal Notice",
+            "b90dhref": "/",
+            "inpxotext": "Whistleblowing",
+            "inpxohref": "/",
+            "jeshtext": "Current Share Price",
+            "bmxhwtext": "Mar 12, 2026 09:38 am   3.96 CHF   -0.01 (-0.35%)",
+            "bmxhwhref": "/",
+            "xofrotext": "in",
+            "rliuytext": "▶",
+            "lvibztext": "f",
+            "k5rnctext": "◎",
+            "cubdetext": "▢",
+            "contactbtnhref": "/",
+            "contacttexttext": "Contact",
+            "ybqhtext": "OC Oerlikon Corporation AG, Pfäffikon",
+            "upwjwtext": "Churerstrasse 120 CH-8808 Pfäffikon SZ,",
+            "upwjwhref": "/",
+            "bmjertext": "Switzerland",
+            "bmjerhref": "/",
+            "klk0atext": "© Copyright 2026 OC Oerlikon Management AG",
+            "lmbztext": "Back to top ^",
+            "lmbzhref": "/",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f4f4f4",
+                        "text": "#FFFFFF",
+                        "primary": "#e3000f",
+                        "accent": "#e3000f",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#e3000f",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteOerlikonRDNavigationNavcopyapenPrimary": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteOerlikonRDNavigationNavcopyapenPrimary"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteOerlikonRDNavigationNavcopyapenPrimary-1",
+            "topmenutext": "Search    Locations    Careers    Language",
+            "topmenuhref": "/",
+            "contactbtnhref": "/",
+            "contactdottext": "✉",
+            "contacttexttext": "Contact",
+            "logotext": "oerlikon",
+            "logohref": "/",
+            "navPortfoliotext": "Portfolio ▾",
+            "navPortfoliohref": "/",
+            "navIndustriestext": "Industries ▾",
+            "navIndustrieshref": "/oerlikon-industries",
+            "navInnovationtext": "Innovation ▾",
+            "navInnovationhref": "/",
+            "navSustainabilitytext": "Sustainability ▾",
+            "navSustainabilityhref": "/",
+            "navInvestorstext": "Investors ▾",
+            "navInvestorshref": "/",
+            "navAbouttext": "About Us ▾",
+            "navAbouthref": "/",
+            "navCareerstext": "Careers ▾",
+            "navCareershref": "/",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f4f4f4",
+                        "text": "#FFFFFF",
+                        "primary": "#e3000f",
+                        "accent": "#e3000f",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#e3000f",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteOerlikonRDHeroRdheropenAlt1": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteOerlikonRDHeroRdheropenAlt1"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteOerlikonRDHeroRdheropenAlt1-1",
+            "herobgaimagesrc": "https://images.unsplash.com/photo-1624775106346-874426ec3831?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMzMjc5NDl8&ixlib=rb-4.1.0&q=80&w=1080",
+            "fstext": "Everyday Innovation",
+            "jjd0ntext": "Innovation is at the center of what we do every day. It is not merely one single product but a portfolio approach that optimizes the entire value chain.",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f4f4f4",
+                        "text": "#FFFFFF",
+                        "primary": "#e3000f",
+                        "accent": "#e3000f",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#e3000f",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteOerlikonRDStoryBreadcrumbpenAlt2": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteOerlikonRDStoryBreadcrumbpenAlt2"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteOerlikonRDStoryBreadcrumbpenAlt2-1",
+            "fz8zltext": "Home    /    Innovation",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f4f4f4",
+                        "text": "#FFFFFF",
+                        "primary": "#e3000f",
+                        "accent": "#e3000f",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#e3000f",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteOerlikonRDSocialproofQuotesectionpenAlt3": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteOerlikonRDSocialproofQuotesectionpenAlt3"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteOerlikonRDSocialproofQuotesectionpenAlt3-1",
+            "f4y7stext": "19",
+            "wdiuetext": "Innovation is and will continue to be our key strength. We need and should be in a profitable business with superior quality and perfect customer service and at all points in the value chain.",
+            "portraitaimagesrc": "https://images.unsplash.com/photo-1563538935831-7ce29f370ad3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMzMjc5NTB8&ixlib=rb-4.1.0&q=80&w=1080",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f4f4f4",
+                        "text": "#FFFFFF",
+                        "primary": "#e3000f",
+                        "accent": "#e3000f",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#e3000f",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteOerlikonRDStoryAwardpenAlt4": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteOerlikonRDStoryAwardpenAlt4"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteOerlikonRDStoryAwardpenAlt4-1",
+            "rj9setext": "TOP 100",
+            "dof4text": "MOST INNOVATIVE\nCOMPANIES",
+            "lvk28text": "The #1 Most Innovative Company in Switzerland in 2023",
+            "p7ibutext": "According to the annual ranking by Statista and PME, Oerlikon has been named the most innovative company in Switzerland. The ranking recognizes organizations that consistently introduce impactful technologies and deliver measurable customer value.",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f4f4f4",
+                        "text": "#FFFFFF",
+                        "primary": "#e3000f",
+                        "accent": "#e3000f",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#e3000f",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteOerlikonRDStoryWhereinnovationspenAlt5": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteOerlikonRDStoryWhereinnovationspenAlt5"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteOerlikonRDStoryWhereinnovationspenAlt5-1",
+            "j9zzktext": "Where You Have Met Our Innovations",
+            "img1aimagesrc": "https://images.unsplash.com/photo-1549588167-2350464e784f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMzMjc5OTR8&ixlib=rb-4.1.0&q=80&w=1080",
+            "fy6a3text": "Who you smile with",
+            "ubggstext": "Dental technologies and materials shape daily life and improve comfort and durability.",
+            "img2aimagesrc": "https://images.unsplash.com/photo-1697577418970-95d99b5a55cf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMzMjc5OTV8&ixlib=rb-4.1.0&q=80&w=1080",
+            "m7jpstext": "Who you are everywhere",
+            "uwfpatext": "Power, electronics and precision coatings enable reliable products for modern life.",
+            "img3aimagesrc": "https://images.unsplash.com/photo-1672533004947-639471a8395b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMzMjc5OTV8&ixlib=rb-4.1.0&q=80&w=1080",
+            "vtuektext": "Who are in time",
+            "gsaaptext": "High precision timing and wear-resistant surfaces ensure reliability in demanding applications.",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f4f4f4",
+                        "text": "#FFFFFF",
+                        "primary": "#e3000f",
+                        "accent": "#e3000f",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#e3000f",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteOerlikonRDStoryExtremeingenuitypenAlt6": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteOerlikonRDStoryExtremeingenuitypenAlt6"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteOerlikonRDStoryExtremeingenuitypenAlt6-1",
+            "extimgaimagesrc": "https://images.unsplash.com/photo-1761131222491-1e5e90662311?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMzMjgwNDZ8&ixlib=rb-4.1.0&q=80&w=1080",
+            "muzdntext": "Extreme Ingenuity for Demanding Conditions",
+            "u3a4otext": "From aviation and energy to semiconductors and automotive, Oerlikon develops advanced surface technologies designed for highly demanding conditions.",
+            "extbtnahref": "/",
+            "j2ehqtext": "Extreme ingenuity in numbers",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f4f4f4",
+                        "text": "#FFFFFF",
+                        "primary": "#e3000f",
+                        "accent": "#e3000f",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#e3000f",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteOerlikonRDStoryResearchdevelopmentpenAlt7": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteOerlikonRDStoryResearchdevelopmentpenAlt7"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteOerlikonRDStoryResearchdevelopmentpenAlt7-1",
+            "cltputext": "Research, Development and Publication",
+            "txcv3text": "Research and development are key levers in our innovation strategy. We collaborate globally with customers, research institutions and partners to transfer discoveries into practical industrial applications.",
+            "rdbtnahref": "/",
+            "bgnk8text": "Innovation from lab to launch",
+            "rdimgaimagesrc": "https://images.unsplash.com/photo-1669707040737-a6237bc0ae50?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMzMjgwNDh8&ixlib=rb-4.1.0&q=80&w=1080",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f4f4f4",
+                        "text": "#FFFFFF",
+                        "primary": "#e3000f",
+                        "accent": "#e3000f",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#e3000f",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteOerlikonRDStoryMinilinkspenAlt8": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteOerlikonRDStoryMinilinkspenAlt8"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteOerlikonRDStoryMinilinkspenAlt8-1",
+            "mini1imgimagesrc": "https://images.unsplash.com/photo-1631556759597-96df19797d7d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMzMjgxNjB8&ixlib=rb-4.1.0&q=80&w=1080",
+            "cq6wgtext": "Research & Development",
+            "mini2imgimagesrc": "https://images.unsplash.com/photo-1767739791243-af1facf4b87b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMzMjgxNjJ8&ixlib=rb-4.1.0&q=80&w=1080",
+            "j8wjqtext": "Core Competencies",
+            "mini3imgimagesrc": "https://images.unsplash.com/photo-1743984631276-927e5f462946?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMzMjgxNjJ8&ixlib=rb-4.1.0&q=80&w=1080",
+            "upcfptext": "Product Portfolio",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f4f4f4",
+                        "text": "#FFFFFF",
+                        "primary": "#e3000f",
+                        "accent": "#e3000f",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#e3000f",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteOerlikonRDStoryInnovatewithuspenAlt9": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteOerlikonRDStoryInnovatewithuspenAlt9"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteOerlikonRDStoryInnovatewithuspenAlt9-1",
+            "prhbwtext": "Innovate With Us",
+            "i73tjtext": "Innovation is in Oerlikon's DNA. Whether through strategic partnerships, collaborative development, or technology scouting, we continuously explore new opportunities to build the next generation of high-performance solutions.",
+            "invbtnhref": "/",
+            "nglgntext": "Show opportunities now",
+            "invimgimagesrc": "https://images.unsplash.com/photo-1758873272345-40f377c21e7f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMzMjgxNjN8&ixlib=rb-4.1.0&q=80&w=1080",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f4f4f4",
+                        "text": "#FFFFFF",
+                        "primary": "#e3000f",
+                        "accent": "#e3000f",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#e3000f",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteOerlikonRDFooterFootercopybpenAlt10": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteOerlikonRDFooterFootercopybpenAlt10"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteOerlikonRDFooterFootercopybpenAlt10-1",
+            "llf4jtext": "Portfolio",
+            "ua6tvtext": "Product Finder",
+            "djdystext": "Brands",
+            "djdyshref": "/",
+            "wohybtext": "Industries",
+            "wohybhref": "/oerlikon-industries",
+            "aye03text": "Innovation",
+            "aye03href": "/",
+            "g8kitext": "Investors & Media",
+            "rj4vtext": "Reports & Publications",
+            "xdfiotext": "Press Releases",
+            "xdfiohref": "/",
+            "vdnzstext": "Share Information",
+            "vdnzshref": "/",
+            "iiodstext": "About Us",
+            "wuqvdtext": "Careers",
+            "q23wxtext": "Job Openings",
+            "q23wxhref": "/",
+            "p6text": "Locations",
+            "p6href": "/",
+            "yfrs2text": "Company Profile",
+            "yfrs2href": "/",
+            "vqjg2text": "Legal & Data Protection",
+            "mynbetext": "Privacy & Cookie Policy",
+            "eytletext": "Terms of Use & Legal Notice",
+            "eytlehref": "/",
+            "eozsetext": "Whistleblowing",
+            "eozsehref": "/",
+            "xuyfltext": "Current Share Price",
+            "qmllttext": "Mar 12, 2026 09:38 am   3.96 CHF   -0.01 (-0.35%)",
+            "qmllthref": "/",
+            "grzm4text": "in",
+            "itoctext": "▶",
+            "qcryftext": "f",
+            "nmwoetext": "◎",
+            "rasdvtext": "▢",
+            "contactbtnhref": "/",
+            "contacttexttext": "Contact",
+            "j6vxbtext": "OC Oerlikon Corporation AG, Pfäffikon",
+            "rxs7ytext": "Churerstrasse 120 CH-8808 Pfäffikon SZ,",
+            "rxs7yhref": "/",
+            "veydetext": "Switzerland",
+            "veydehref": "/",
+            "c0cghtext": "© Copyright 2026 OC Oerlikon Management AG",
+            "t2ystext": "Back to top ^",
+            "t2yshref": "/",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f4f4f4",
+                        "text": "#FFFFFF",
+                        "primary": "#e3000f",
+                        "accent": "#e3000f",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#e3000f",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteHomeNavigationNavpenPrimary_041fb414": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteHomeNavigationNavpenPrimary_041fb414"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteHomeNavigationNavpenPrimary_041fb414-1",
+            "logotext": "URSAMAJOR",
+            "logohref": "/",
+            "menu1text": "Who We Are",
+            "menu1href": "/",
+            "menu2text": "What We Do",
+            "menu2href": "/",
+            "menu3text": "Work With Us",
+            "menu3href": "/",
+            "menu4text": "News",
+            "menu4href": "/ursa-news",
+            "iconstext": "◯  ◯  ◯  ✕",
+            "iconshref": "/",
+            "soc1ttext": "in",
+            "soc1thref": "/",
+            "soc2ttext": "◉",
+            "soc2thref": "/",
+            "soc3ttext": "▶",
+            "soc3thref": "/",
+            "xittext": "X",
+            "xithref": "/",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f6f6f6ff",
+                        "text": "#F3F5F7",
+                        "primary": "#4F77FF",
+                        "accent": "#4F77FF",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#4F77FF",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteHomeHeroHeropenAlt1_f5c6510a": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteHomeHeroHeropenAlt1_f5c6510a"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteHomeHeroHeropenAlt1_f5c6510a-1",
+            "heroimagesrc": "https://images.unsplash.com/photo-1737719158987-e7cd95068bec?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyMzgzNzJ8&ixlib=rb-4.1.0&q=80&w=1080",
+            "h1text": "UNLEASHING",
+            "h2text": "HAVOC",
+            "hdesctext": "The Ursa Major HAVOC Missile System - a hypersonic weapon meeting the demand for high speed, affordable mass.",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f6f6f6ff",
+                        "text": "#F3F5F7",
+                        "primary": "#4F77FF",
+                        "accent": "#4F77FF",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#4F77FF",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteHomeStorySec2penAlt2": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteHomeStorySec2penAlt2"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteHomeStorySec2penAlt2-1",
+            "sec2lefttitle1text": "URSA MAJOR IS",
+            "sec2lefttitle2text": "FLIGHT-PROVEN AND",
+            "sec2lefttitle3text": "SCALABLE",
+            "sec2bodytext": "Ursa Major delivers mission-ready aerospace and defense systems across hypersonics, solid rocket motors, and space-based defense, leveraging additive manufacturing and modular architectures to produce scalable all up rounds, engines and SRMs faster than legacy providers.\nFrom throttleable, storable hypergols to tactically responsive satellite propulsion and extended-range solid rocket motors, Ursa Major is powering the joint force with flexible, American-made systems for any mission, in any domain.",
+            "sec2rightimagesrc": "https://images.unsplash.com/photo-1743036875444-64b5f74a2b57?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyMzgzNzJ8&ixlib=rb-4.1.0&q=80&w=1080",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f6f6f6ff",
+                        "text": "#F3F5F7",
+                        "primary": "#4F77FF",
+                        "accent": "#4F77FF",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#4F77FF",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteHomeApproachCapabilitiespenAlt3": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteHomeApproachCapabilitiespenAlt3"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteHomeApproachCapabilitiespenAlt3-1",
+            "captitletext": "MISSION-DRIVEN CAPABILITIES",
+            "capimgimagesrc": "https://images.unsplash.com/photo-1516849841032-87cbac4d88f7?auto=format&fit=crop&w=1700&q=80",
+            "capnametext": "Hypersonics",
+            "capdesctext": "Storable, liquid hypersonic rocket engines and systems with the maneuverability and flexibility needed to match tomorrow's threats.",
+            "rail1imagesrc": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=700&q=80",
+            "rail1ttext": "Solid Rocket Motors",
+            "rail2imagesrc": "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&w=700&q=80",
+            "rail2ttext": "Space",
+            "capbtnhref": "/",
+            "capbtntexttext": "Read More",
+            "capbtnarrowtext": "→",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f6f6f6ff",
+                        "text": "#F3F5F7",
+                        "primary": "#4F77FF",
+                        "accent": "#4F77FF",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#4F77FF",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteHomeCtaRecentnewspenAlt4": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteHomeCtaRecentnewspenAlt4"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteHomeCtaRecentnewspenAlt4-1",
+            "recentNewsimagesrc": "https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?auto=format&fit=crop&w=2200&q=80",
+            "newstitletext": "RECENT NEWS",
+            "newsimg1imagesrc": "https://images.unsplash.com/photo-1527004013197-933c4bb611b3?auto=format&fit=crop&w=1200&q=80",
+            "newst1text": "Ursa Major Rapidly Advances its Hadley H13 Engine",
+            "pr1ttext": "Press Release",
+            "btn1href": "/",
+            "btn1ttext": "Read More",
+            "btn1atext": "→",
+            "newsimg2imagesrc": "https://images.unsplash.com/photo-1454789548928-9efd52dc4031?auto=format&fit=crop&w=1200&q=80",
+            "newst2text": "Introducing the “Ursa Major HAVOC Missile System”: A Medium-Range, Affordable Hypersonic Capability",
+            "pr2ttext": "Press Release",
+            "btn2href": "/",
+            "btn2ttext": "Read More",
+            "btn2atext": "→",
+            "newsimg3imagesrc": "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=1200&q=80",
+            "newst3text": "Ursa Major Appoints Chris Spagnoletti as Chief Executive Officer",
+            "pr3ttext": "Press Release",
+            "btn3href": "/",
+            "btn3ttext": "Read More",
+            "btn3atext": "→",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f6f6f6ff",
+                        "text": "#F3F5F7",
+                        "primary": "#4F77FF",
+                        "accent": "#4F77FF",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#4F77FF",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteHomeFooterFooterpenAlt5": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteHomeFooterFooterpenAlt5"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteHomeFooterFooterpenAlt5-1",
+            "ftlogotext": "URSAMAJOR",
+            "ftlogohref": "/",
+            "ftsocialtext": "Follow Us On",
+            "ftsocialhref": "/",
+            "ftcopytext": "©2026 URSA MAJOR Technologies Inc",
+            "ftcopyhref": "/",
+            "col1titletext": "Company",
+            "col1titlehref": "/",
+            "col1atext": "About Us",
+            "col1ahref": "/",
+            "col1btext": "Leadership",
+            "col1bhref": "/",
+            "col1ctext": "News",
+            "col1chref": "/ursa-news",
+            "col2titletext": "Work With Us",
+            "col2titlehref": "/",
+            "col2atext": "Suppliers",
+            "col2ahref": "/",
+            "col3titletext": "Products",
+            "col3titlehref": "/ursa-products",
+            "col3atext": "Hypersonics",
+            "col3ahref": "/",
+            "col3btext": "Space",
+            "col3bhref": "/",
+            "col3ctext": "Solid Rocket Motors",
+            "col3chref": "/",
+            "privacytext": "Privacy Policy",
+            "privacyhref": "/ursa-privacy",
+            "addrtext": "19750 Co Rd 7, Berthoud, Co 80513",
+            "addrhref": "/",
+            "littext": "in",
+            "lithref": "/",
+            "igttext": "◎",
+            "igthref": "/",
+            "ytttext": "▶",
+            "ytthref": "/",
+            "xittext": "X",
+            "xithref": "/",
+            "termstext": "Terms of Use",
+            "termshref": "/ursa-privacy",
+            "septext": "|",
+            "sephref": "/",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#f6f6f6ff",
+                        "text": "#F3F5F7",
+                        "primary": "#4F77FF",
+                        "accent": "#4F77FF",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#4F77FF",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteUrsaAboutNavigationNavcopypenPrimary": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteUrsaAboutNavigationNavcopypenPrimary"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteUrsaAboutNavigationNavcopypenPrimary-1",
+            "logotext": "URSAMAJOR",
+            "logohref": "/",
+            "menu1text": "Who We Are",
+            "menu1href": "/",
+            "menu2text": "What We Do",
+            "menu2href": "/",
+            "menu3text": "Work With Us",
+            "menu3href": "/",
+            "menu4text": "News",
+            "menu4href": "/ursa-news",
+            "iconstext": "◯  ◯  ◯  ✕",
+            "iconshref": "/",
+            "soc1ttext": "in",
+            "soc1thref": "/",
+            "soc2ttext": "◉",
+            "soc2thref": "/",
+            "soc3ttext": "▶",
+            "soc3thref": "/",
+            "xittext": "X",
+            "xithref": "/",
+            "theme": {
+                  "mode": "dark",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#06080D",
+                        "text": "#F3F5F7",
+                        "primary": "#4F77FF",
+                        "accent": "#4F77FF",
+                        "neutral": "#1F2937",
+                        "textSecondary": "#9CA3AF"
+                  },
+                  "primaryColor": "#4F77FF",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "glass",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteUrsaAboutFooterFootercopypenAlt1": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteUrsaAboutFooterFootercopypenAlt1"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteUrsaAboutFooterFootercopypenAlt1-1",
+            "ftlogotext": "URSAMAJOR",
+            "ftlogohref": "/",
+            "ftsocialtext": "Follow Us On",
+            "ftsocialhref": "/",
+            "ftcopytext": "©2026 URSA MAJOR Technologies Inc",
+            "ftcopyhref": "/",
+            "col1titletext": "Company",
+            "col1titlehref": "/",
+            "col1atext": "About Us",
+            "col1ahref": "/",
+            "col1btext": "Leadership",
+            "col1bhref": "/",
+            "col1ctext": "News",
+            "col1chref": "/ursa-news",
+            "col2titletext": "Work With Us",
+            "col2titlehref": "/",
+            "col2atext": "Suppliers",
+            "col2ahref": "/",
+            "col3titletext": "Products",
+            "col3titlehref": "/ursa-products",
+            "col3atext": "Hypersonics",
+            "col3ahref": "/",
+            "col3btext": "Space",
+            "col3bhref": "/",
+            "col3ctext": "Solid Rocket Motors",
+            "col3chref": "/",
+            "privacytext": "Privacy Policy",
+            "privacyhref": "/ursa-privacy",
+            "addrtext": "19750 Co Rd 7, Berthoud, Co 80513",
+            "addrhref": "/",
+            "littext": "in",
+            "lithref": "/",
+            "igttext": "◎",
+            "igthref": "/",
+            "ytttext": "▶",
+            "ytthref": "/",
+            "xittext": "X",
+            "xithref": "/",
+            "termstext": "Terms of Use",
+            "termshref": "/ursa-privacy",
+            "septext": "|",
+            "sephref": "/",
+            "theme": {
+                  "mode": "dark",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#06080D",
+                        "text": "#F3F5F7",
+                        "primary": "#4F77FF",
+                        "accent": "#4F77FF",
+                        "neutral": "#1F2937",
+                        "textSecondary": "#9CA3AF"
+                  },
+                  "primaryColor": "#4F77FF",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "glass",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteUrsaAboutHeroAboutheropenAlt2": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteUrsaAboutHeroAboutheropenAlt2"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteUrsaAboutHeroAboutheropenAlt2-1",
+            "aboutHeroimagesrc": "https://images.unsplash.com/photo-1762135245629-1e79d4cc30b3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyNDE3Njl8&ixlib=rb-4.1.0&q=80&w=1080",
+            "herotitletext": "FLYING FASTER",
+            "herodesctext": "Ursa Major is redefining aerospace and defense with rapid innovation, affordable mass, and mission-ready propulsion systems.",
+            "herodesctext2": "Home > About Us",
+            "theme": {
+                  "mode": "dark",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#06080D",
+                        "text": "#F3F5F7",
+                        "primary": "#4F77FF",
+                        "accent": "#4F77FF",
+                        "neutral": "#1F2937",
+                        "textSecondary": "#9CA3AF"
+                  },
+                  "primaryColor": "#4F77FF",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "glass",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteUrsaAboutStoryAboutcompanypenAlt3": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteUrsaAboutStoryAboutcompanypenAlt3"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteUrsaAboutStoryAboutcompanypenAlt3-1",
+            "companytitletext": "BUILDING THE NEXT GREAT AEROSPACE AND DEFENSE COMPANY",
+            "companybodytext": "Ursa Major develops a family of flight-proven propulsion products designed to deliver capability at speed. Through additive manufacturing, vertical integration, and modular architectures, we accelerate the path from concept to launch with reliable, scalable engines and systems for defense and space missions.",
+            "theme": {
+                  "mode": "dark",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#06080D",
+                        "text": "#F3F5F7",
+                        "primary": "#4F77FF",
+                        "accent": "#4F77FF",
+                        "neutral": "#1F2937",
+                        "textSecondary": "#9CA3AF"
+                  },
+                  "primaryColor": "#4F77FF",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "glass",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteUrsaAboutStorySectionlocationspenAlt4": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteUrsaAboutStorySectionlocationspenAlt4"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteUrsaAboutStorySectionlocationspenAlt4-1",
+            "loctitletext": "LOCATIONS",
+            "leftMountainimagesrc": "https://images.unsplash.com/photo-1493013112549-b8b8e788bad9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyNDI1NTl8&ixlib=rb-4.1.0&q=80&w=1080",
+            "loclefttexttext": "Our headquarters in Berthoud, Colorado, is home to Ursa Major’s engineering, testing, and core operations.",
+            "locationsRightimagesrc": "https://images.unsplash.com/photo-1735655839309-07c4481393f5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyNDI1OTF8&ixlib=rb-4.1.0&q=80&w=1080",
+            "theme": {
+                  "mode": "dark",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#06080D",
+                        "text": "#F3F5F7",
+                        "primary": "#4F77FF",
+                        "accent": "#4F77FF",
+                        "neutral": "#1F2937",
+                        "textSecondary": "#9CA3AF"
+                  },
+                  "primaryColor": "#4F77FF",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "glass",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteUrsaAboutStorySectionhistorypenAlt5": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteUrsaAboutStorySectionhistorypenAlt5"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteUrsaAboutStorySectionhistorypenAlt5-1",
+            "historyleftimagesrc": "https://images.unsplash.com/photo-1575831315238-dfe02ecedf26?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyNDI5Njl8&ixlib=rb-4.1.0&q=80&w=1080",
+            "historycenterimagesrc": "https://images.unsplash.com/photo-1640900135541-464b2e1788b0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyNDMwMDZ8&ixlib=rb-4.1.0&q=80&w=1080",
+            "textcardbodytext": "What started as a small team in Colorado quickly became a national force in advanced propulsion. Ursa Major became the first American company to fire an oxygen-rich staged combustion engine - a milestone previously only achieved by Russian engine-makers.",
+            "historyrightimagesrc": "https://images.unsplash.com/photo-1720642496695-98827b69822e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyNDI5NzF8&ixlib=rb-4.1.0&q=80&w=1080",
+            "historytitletext": "HISTORY",
+            "theme": {
+                  "mode": "dark",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#06080D",
+                        "text": "#F3F5F7",
+                        "primary": "#4F77FF",
+                        "accent": "#4F77FF",
+                        "neutral": "#1F2937",
+                        "textSecondary": "#9CA3AF"
+                  },
+                  "primaryColor": "#4F77FF",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "glass",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteUrsaAboutStorySectionmajorvaluepenAlt6": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteUrsaAboutStorySectionmajorvaluepenAlt6"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteUrsaAboutStorySectionmajorvaluepenAlt6-1",
+            "valuesline1text": "We get RESULTS.",
+            "valuesline2text": "We show RESPECT.",
+            "valuesline3text": "We are RESILIENT.",
+            "valuesimgimagesrc": "https://images.unsplash.com/photo-1765396419739-673d1d90f67d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyNDM0OTJ8&ixlib=rb-4.1.0&q=80&w=1080",
+            "valuetagtext": "We get RESULTS.",
+            "valuessubtitletext": "IN THE PURSUIT OF EXCELLENCE...",
+            "valuestitletext": "THE URSA MAJOR VALUES.",
+            "theme": {
+                  "mode": "dark",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#06080D",
+                        "text": "#F3F5F7",
+                        "primary": "#4F77FF",
+                        "accent": "#4F77FF",
+                        "neutral": "#1F2937",
+                        "textSecondary": "#9CA3AF"
+                  },
+                  "primaryColor": "#4F77FF",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "glass",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteUrsaProductsNavigationNavpenPrimary": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteUrsaProductsNavigationNavpenPrimary"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteUrsaProductsNavigationNavpenPrimary-1",
+            "logotext": "URSAMAJOR",
+            "logohref": "/",
+            "menu1text": "Who We Are",
+            "menu1href": "/",
+            "menu2text": "What We Do",
+            "menu2href": "/",
+            "menu3text": "Work With Us",
+            "menu3href": "/",
+            "menu4text": "News",
+            "menu4href": "/ursa-news",
+            "iconstext": "◯  ◯  ◯  ✕",
+            "iconshref": "/",
+            "soc1ttext": "in",
+            "soc1thref": "/",
+            "soc2ttext": "◉",
+            "soc2thref": "/",
+            "soc3ttext": "▶",
+            "soc3thref": "/",
+            "xittext": "X",
+            "xithref": "/",
+            "theme": {
+                  "mode": "dark",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#06080D",
+                        "text": "#F3F5F7",
+                        "primary": "#4F77FF",
+                        "accent": "#4F77FF",
+                        "neutral": "#1F2937",
+                        "textSecondary": "#9CA3AF"
+                  },
+                  "primaryColor": "#4F77FF",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "glass",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteUrsaProductsHeroHeropenAlt1": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteUrsaProductsHeroHeropenAlt1"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteUrsaProductsHeroHeropenAlt1-1",
+            "heroimagesrc": "https://images.unsplash.com/photo-1767469194952-6b6720d8108e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyNDM5NTN8&ixlib=rb-4.1.0&q=80&w=1080",
+            "h1text": "URSA MAJOR IS ON A MISSION",
+            "h2text": "TO SOLVE HYPERSONICS AT\nSCALE",
+            "hdesctext": "",
+            "herodesctext": "Home > Hypersonics",
+            "theme": {
+                  "mode": "dark",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#06080D",
+                        "text": "#F3F5F7",
+                        "primary": "#4F77FF",
+                        "accent": "#4F77FF",
+                        "neutral": "#1F2937",
+                        "textSecondary": "#9CA3AF"
+                  },
+                  "primaryColor": "#4F77FF",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "glass",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteUrsaProductsCtaRecentnewspenAlt2": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteUrsaProductsCtaRecentnewspenAlt2"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteUrsaProductsCtaRecentnewspenAlt2-1",
+            "recentNewsimagesrc": "https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?auto=format&fit=crop&w=2200&q=80",
+            "newstitletext": "RECENT NEWS",
+            "newsimg1imagesrc": "https://images.unsplash.com/photo-1527004013197-933c4bb611b3?auto=format&fit=crop&w=1200&q=80",
+            "newst1text": "Ursa Major Rapidly Advances its Hadley H13 Engine",
+            "pr1ttext": "Press Release",
+            "btn1href": "/",
+            "btn1ttext": "Read More",
+            "btn1atext": "→",
+            "newsimg2imagesrc": "https://images.unsplash.com/photo-1454789548928-9efd52dc4031?auto=format&fit=crop&w=1200&q=80",
+            "newst2text": "Introducing the “Ursa Major HAVOC Missile System”: A Medium-Range, Affordable Hypersonic Capability",
+            "pr2ttext": "Press Release",
+            "btn2href": "/",
+            "btn2ttext": "Read More",
+            "btn2atext": "→",
+            "newsimg3imagesrc": "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=1200&q=80",
+            "newst3text": "Ursa Major Appoints Chris Spagnoletti as Chief Executive Officer",
+            "pr3ttext": "Press Release",
+            "btn3href": "/",
+            "btn3ttext": "Read More",
+            "btn3atext": "→",
+            "theme": {
+                  "mode": "dark",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#06080D",
+                        "text": "#F3F5F7",
+                        "primary": "#4F77FF",
+                        "accent": "#4F77FF",
+                        "neutral": "#1F2937",
+                        "textSecondary": "#9CA3AF"
+                  },
+                  "primaryColor": "#4F77FF",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "glass",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteUrsaProductsFooterFooterpenAlt3": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteUrsaProductsFooterFooterpenAlt3"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteUrsaProductsFooterFooterpenAlt3-1",
+            "ftlogotext": "URSAMAJOR",
+            "ftlogohref": "/",
+            "ftsocialtext": "Follow Us On",
+            "ftsocialhref": "/",
+            "ftcopytext": "©2026 URSA MAJOR Technologies Inc",
+            "ftcopyhref": "/",
+            "col1titletext": "Company",
+            "col1titlehref": "/",
+            "col1atext": "About Us",
+            "col1ahref": "/",
+            "col1btext": "Leadership",
+            "col1bhref": "/",
+            "col1ctext": "News",
+            "col1chref": "/ursa-news",
+            "col2titletext": "Work With Us",
+            "col2titlehref": "/",
+            "col2atext": "Suppliers",
+            "col2ahref": "/",
+            "col3titletext": "Products",
+            "col3titlehref": "/ursa-products",
+            "col3atext": "Hypersonics",
+            "col3ahref": "/",
+            "col3btext": "Space",
+            "col3bhref": "/",
+            "col3ctext": "Solid Rocket Motors",
+            "col3chref": "/",
+            "privacytext": "Privacy Policy",
+            "privacyhref": "/ursa-privacy",
+            "addrtext": "19750 Co Rd 7, Berthoud, Co 80513",
+            "addrhref": "/",
+            "littext": "in",
+            "lithref": "/",
+            "igttext": "◎",
+            "igthref": "/",
+            "ytttext": "▶",
+            "ytthref": "/",
+            "xittext": "X",
+            "xithref": "/",
+            "termstext": "Terms of Use",
+            "termshref": "/ursa-privacy",
+            "septext": "|",
+            "sephref": "/",
+            "theme": {
+                  "mode": "dark",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#06080D",
+                        "text": "#F3F5F7",
+                        "primary": "#4F77FF",
+                        "accent": "#4F77FF",
+                        "neutral": "#1F2937",
+                        "textSecondary": "#9CA3AF"
+                  },
+                  "primaryColor": "#4F77FF",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "glass",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteUrsaProductsProductsProducttabspenAlt4": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteUrsaProductsProductsProducttabspenAlt4"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteUrsaProductsProductsProducttabspenAlt4-1",
+            "kkcvgtext": "HAVOC Missile System",
+            "pd8zhtext": "SRM Program",
+            "esxwwtext": "Draper Engine",
+            "czkq5text": "Hadley Engine",
+            "theme": {
+                  "mode": "dark",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#06080D",
+                        "text": "#F3F5F7",
+                        "primary": "#4F77FF",
+                        "accent": "#4F77FF",
+                        "neutral": "#1F2937",
+                        "textSecondary": "#9CA3AF"
+                  },
+                  "primaryColor": "#4F77FF",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "glass",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteUrsaProductsProductsProductrowspenAlt5": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteUrsaProductsProductsProductrowspenAlt5"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteUrsaProductsProductsProductrowspenAlt5-1",
+            "r1imgimagesrc": "https://images.unsplash.com/photo-1568723470069-93cff75ca041?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyNDQwNzV8&ixlib=rb-4.1.0&q=80&w=1080",
+            "t6rlctext": "THE URSA MAJOR HAVOC\nMISSILE SYSTEM",
+            "pwmfotext": "A scalable hypersonic strike system engineered for survivability, mass affordability, and operational flexibility. Built on modular propulsion and proven manufacturing, HAVOC gives operators a rapid path from test to deployment across contested environments.",
+            "cuvtext": ">",
+            "jelbatext": "DELIVERING HYPERSONIC\nREADINESS: DRAPER TO FLY IN TACTICAL DEMONSTRATOR",
+            "r2imgimagesrc": "https://images.unsplash.com/photo-1529614258582-54907e08bc3b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyNDQwNzZ8&ixlib=rb-4.1.0&q=80&w=1080",
+            "h0jx8text": ">",
+            "vnplytext": "A tactically responsive propulsion path that bridges design agility and mission-scale production. Draper powers near-term hypersonic demonstrators with rapid iteration, efficient operations, and reliable performance under demanding timelines.",
+            "r3imgimagesrc": "https://images.unsplash.com/photo-1750803444962-797465a3a429?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyNDQwNzd8&ixlib=rb-4.1.0&q=80&w=1080",
+            "mulwhtext": "DRAPER: TACTICAL, STORABLE,\nAND THE FUTURE OF DEFENSE PROPULSION",
+            "i0gxftext": "From near-term fielding to scalable production, the Draper family is built for endurance, rapid launch cycles, and mission adaptation. Designed for modern operational needs, it brings high-performance propulsion to evolving defense architectures.",
+            "ub1votext": ">",
+            "hmsk6text": "HADLEY: FLIGHT PROVEN\nHYPERSONIC PROPULSION",
+            "zfjxtext": "Hadley delivers compact, reliable propulsion for responsive hypersonic missions where high performance and repeatability matter most. Designed for rapid integration and operational scale.",
+            "r4imgimagesrc": "https://images.unsplash.com/photo-1598846797027-6b6e0b471744?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyNDQxMTh8&ixlib=rb-4.1.0&q=80&w=1080",
+            "pebytext": ">",
+            "theme": {
+                  "mode": "dark",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#06080D",
+                        "text": "#F3F5F7",
+                        "primary": "#4F77FF",
+                        "accent": "#4F77FF",
+                        "neutral": "#1F2937",
+                        "textSecondary": "#9CA3AF"
+                  },
+                  "primaryColor": "#4F77FF",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "glass",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteUrsaSolutionNavigationNavpenPrimary": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteUrsaSolutionNavigationNavpenPrimary"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteUrsaSolutionNavigationNavpenPrimary-1",
+            "logotext": "URSAMAJOR",
+            "logohref": "/",
+            "menu1text": "Who We Are",
+            "menu1href": "/",
+            "menu2text": "What We Do",
+            "menu2href": "/",
+            "menu3text": "Work With Us",
+            "menu3href": "/",
+            "menu4text": "News",
+            "menu4href": "/ursa-news",
+            "iconstext": "◯  ◯  ◯  ✕",
+            "iconshref": "/",
+            "soc1ttext": "in",
+            "soc1thref": "/",
+            "soc2ttext": "◉",
+            "soc2thref": "/",
+            "soc3ttext": "▶",
+            "soc3thref": "/",
+            "xittext": "X",
+            "xithref": "/",
+            "theme": {
+                  "mode": "dark",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#06080D",
+                        "text": "#F3F5F7",
+                        "primary": "#4F77FF",
+                        "accent": "#4F77FF",
+                        "neutral": "#1F2937",
+                        "textSecondary": "#9CA3AF"
+                  },
+                  "primaryColor": "#4F77FF",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "glass",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteUrsaSolutionHeroHeropenAlt1": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteUrsaSolutionHeroHeropenAlt1"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteUrsaSolutionHeroHeropenAlt1-1",
+            "heroimagesrc": "https://images.unsplash.com/photo-1728965573278-ac2802251381?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyNDU1MzB8&ixlib=rb-4.1.0&q=80&w=1080",
+            "h1text": "THE URSA MAJOR",
+            "h2text": "STANDARD",
+            "hdesctext": "Hypersonic systems that deliver reliability, scale, and operational agility.",
+            "herodesctext": "Home > Capabilities",
+            "theme": {
+                  "mode": "dark",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#06080D",
+                        "text": "#F3F5F7",
+                        "primary": "#4F77FF",
+                        "accent": "#4F77FF",
+                        "neutral": "#1F2937",
+                        "textSecondary": "#9CA3AF"
+                  },
+                  "primaryColor": "#4F77FF",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "glass",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteUrsaSolutionFooterFooterpenAlt2": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteUrsaSolutionFooterFooterpenAlt2"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteUrsaSolutionFooterFooterpenAlt2-1",
+            "ftlogotext": "URSAMAJOR",
+            "ftlogohref": "/",
+            "ftsocialtext": "Follow Us On",
+            "ftsocialhref": "/",
+            "ftcopytext": "©2026 URSA MAJOR Technologies Inc",
+            "ftcopyhref": "/",
+            "col1titletext": "Company",
+            "col1titlehref": "/",
+            "col1atext": "About Us",
+            "col1ahref": "/",
+            "col1btext": "Leadership",
+            "col1bhref": "/",
+            "col1ctext": "News",
+            "col1chref": "/ursa-news",
+            "col2titletext": "Work With Us",
+            "col2titlehref": "/",
+            "col2atext": "Suppliers",
+            "col2ahref": "/",
+            "col3titletext": "Products",
+            "col3titlehref": "/ursa-products",
+            "col3atext": "Hypersonics",
+            "col3ahref": "/",
+            "col3btext": "Space",
+            "col3bhref": "/",
+            "col3ctext": "Solid Rocket Motors",
+            "col3chref": "/",
+            "privacytext": "Privacy Policy",
+            "privacyhref": "/ursa-privacy",
+            "addrtext": "19750 Co Rd 7, Berthoud, Co 80513",
+            "addrhref": "/",
+            "littext": "in",
+            "lithref": "/",
+            "igttext": "◎",
+            "igthref": "/",
+            "ytttext": "▶",
+            "ytthref": "/",
+            "xittext": "X",
+            "xithref": "/",
+            "termstext": "Terms of Use",
+            "termshref": "/ursa-privacy",
+            "septext": "|",
+            "sephref": "/",
+            "theme": {
+                  "mode": "dark",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#06080D",
+                        "text": "#F3F5F7",
+                        "primary": "#4F77FF",
+                        "accent": "#4F77FF",
+                        "neutral": "#1F2937",
+                        "textSecondary": "#9CA3AF"
+                  },
+                  "primaryColor": "#4F77FF",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "glass",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteUrsaSolutionStorySectionqualitypenAlt3": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteUrsaSolutionStorySectionqualitypenAlt3"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteUrsaSolutionStorySectionqualitypenAlt3-1",
+            "sectionQualityimagesrc": "https://images.unsplash.com/photo-1720036237059-d88afda159cf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyNDU1MzF8&ixlib=rb-4.1.0&q=80&w=1080",
+            "kcqautext": "QUALITY",
+            "bkdqztext": "Certified Precision, Operational Excellence.",
+            "z5rmntext": "At Ursa Major, quality is built into every stage of production. We maintain strict standards across development and manufacturing so systems perform consistently under mission stress.",
+            "gtrlbtext": "From raw material controls to final validation, our quality framework enables repeatable, flight-ready propulsion products built for scale.",
+            "y7hcptext": "Production Capabilities",
+            "srjootext": ">",
+            "theme": {
+                  "mode": "dark",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#06080D",
+                        "text": "#F3F5F7",
+                        "primary": "#4F77FF",
+                        "accent": "#4F77FF",
+                        "neutral": "#1F2937",
+                        "textSecondary": "#9CA3AF"
+                  },
+                  "primaryColor": "#4F77FF",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "glass",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteUrsaSolutionApproachSectionsolutionmainpenAlt4": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteUrsaSolutionApproachSectionsolutionmainpenAlt4"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteUrsaSolutionApproachSectionsolutionmainpenAlt4-1",
+            "sectionSolutionMainimagesrc": "https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?auto=format&fit=crop&w=2200&q=80",
+            "dulxrimagesrc": "https://images.unsplash.com/photo-1716126825412-c6c24bfb26e7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyNDU3Njh8&ixlib=rb-4.1.0&q=80&w=1080",
+            "nyda6text": "DESIGN",
+            "s2aaytext": "System architecture and mission-driven engineering.",
+            "zt6cimagesrc": "https://images.unsplash.com/photo-1738132692838-994f9b28f913?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyNDU3Njh8&ixlib=rb-4.1.0&q=80&w=1080",
+            "ppievtext": "FABRICATE",
+            "thjkhtext": "Scalable, repeatable manufacturing for flight hardware.",
+            "ybiqdimagesrc": "https://images.unsplash.com/photo-1643166429935-ea8fab9c4834?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyNDU3Njl8&ixlib=rb-4.1.0&q=80&w=1080",
+            "afloktext": "TEST",
+            "ncysotext": "Validation at subsystem and integrated system levels.",
+            "frcibimagesrc": "https://images.unsplash.com/photo-1717386255785-59c670564341?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyNDU3NzB8&ixlib=rb-4.1.0&q=80&w=1080",
+            "nqvzotext": "SCALE",
+            "iflzitext": "Production readiness and sustained output for defense programs.",
+            "ufluttext": "ADDITIVE MANUFACTURING AT URSA MAJOR",
+            "pfnsimagesrc": "https://images.unsplash.com/photo-1730858550309-ad76ee190417?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyNDU3NzF8&ixlib=rb-4.1.0&q=80&w=1080",
+            "peitext": "When Agility Meets Scale",
+            "co7nmtext": "Additive manufacturing allows rapid design evolution while preserving production consistency. By integrating this capability directly into our propulsion pipeline, Ursa Major can move faster from concept to qualified hardware.",
+            "ch4sxtext": "Strengthening the Defense Industrial Base",
+            "mvkutext": "Rewriting the Playbook for Qualification",
+            "theme": {
+                  "mode": "dark",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#06080D",
+                        "text": "#F3F5F7",
+                        "primary": "#4F77FF",
+                        "accent": "#4F77FF",
+                        "neutral": "#1F2937",
+                        "textSecondary": "#9CA3AF"
+                  },
+                  "primaryColor": "#4F77FF",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "glass",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteUrsaNewsNavigationNavpenPrimary": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteUrsaNewsNavigationNavpenPrimary"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteUrsaNewsNavigationNavpenPrimary-1",
+            "logotext": "URSAMAJOR",
+            "logohref": "/",
+            "menu1text": "Who We Are",
+            "menu1href": "/",
+            "menu2text": "What We Do",
+            "menu2href": "/",
+            "menu3text": "Work With Us",
+            "menu3href": "/",
+            "menu4text": "News",
+            "menu4href": "/ursa-news",
+            "iconstext": "◯  ◯  ◯  ✕",
+            "iconshref": "/",
+            "soc1ttext": "in",
+            "soc1thref": "/",
+            "soc2ttext": "◉",
+            "soc2thref": "/",
+            "soc3ttext": "▶",
+            "soc3thref": "/",
+            "xittext": "X",
+            "xithref": "/",
+            "theme": {
+                  "mode": "dark",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#06080D",
+                        "text": "#F3F5F7",
+                        "primary": "#4F77FF",
+                        "accent": "#4F77FF",
+                        "neutral": "#1F2937",
+                        "textSecondary": "#9CA3AF"
+                  },
+                  "primaryColor": "#4F77FF",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "glass",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteUrsaNewsHeroHeropenAlt1": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteUrsaNewsHeroHeropenAlt1"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteUrsaNewsHeroHeropenAlt1-1",
+            "h1text": "NEWS",
+            "h2text": "",
+            "hdesctext": "For media queries or interview requests, contact us at media@ursamajor.com",
+            "herodesctext": "Home > News",
+            "theme": {
+                  "mode": "dark",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#06080D",
+                        "text": "#F3F5F7",
+                        "primary": "#4F77FF",
+                        "accent": "#4F77FF",
+                        "neutral": "#1F2937",
+                        "textSecondary": "#9CA3AF"
+                  },
+                  "primaryColor": "#4F77FF",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "glass",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteUrsaNewsFooterFooterpenAlt2": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteUrsaNewsFooterFooterpenAlt2"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteUrsaNewsFooterFooterpenAlt2-1",
+            "ftlogotext": "URSAMAJOR",
+            "ftlogohref": "/",
+            "ftsocialtext": "Follow Us On",
+            "ftsocialhref": "/",
+            "ftcopytext": "©2026 URSA MAJOR Technologies Inc",
+            "ftcopyhref": "/",
+            "col1titletext": "Company",
+            "col1titlehref": "/",
+            "col1atext": "About Us",
+            "col1ahref": "/",
+            "col1btext": "Leadership",
+            "col1bhref": "/",
+            "col1ctext": "News",
+            "col1chref": "/ursa-news",
+            "col2titletext": "Work With Us",
+            "col2titlehref": "/",
+            "col2atext": "Suppliers",
+            "col2ahref": "/",
+            "col3titletext": "Products",
+            "col3titlehref": "/ursa-products",
+            "col3atext": "Hypersonics",
+            "col3ahref": "/",
+            "col3btext": "Space",
+            "col3bhref": "/",
+            "col3ctext": "Solid Rocket Motors",
+            "col3chref": "/",
+            "privacytext": "Privacy Policy",
+            "privacyhref": "/ursa-privacy",
+            "addrtext": "19750 Co Rd 7, Berthoud, Co 80513",
+            "addrhref": "/",
+            "littext": "in",
+            "lithref": "/",
+            "igttext": "◎",
+            "igthref": "/",
+            "ytttext": "▶",
+            "ytthref": "/",
+            "xittext": "X",
+            "xithref": "/",
+            "termstext": "Terms of Use",
+            "termshref": "/ursa-privacy",
+            "septext": "|",
+            "sephref": "/",
+            "theme": {
+                  "mode": "dark",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#06080D",
+                        "text": "#F3F5F7",
+                        "primary": "#4F77FF",
+                        "accent": "#4F77FF",
+                        "neutral": "#1F2937",
+                        "textSecondary": "#9CA3AF"
+                  },
+                  "primaryColor": "#4F77FF",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "glass",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteUrsaNewsApproachFeaturednewspenAlt3": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteUrsaNewsApproachFeaturednewspenAlt3"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteUrsaNewsApproachFeaturednewspenAlt3-1",
+            "nx0wimagesrc": "https://images.unsplash.com/photo-1716126825412-c6c24bfb26e7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyNDU3Njh8&ixlib=rb-4.1.0&q=80&w=1080",
+            "djv3etext": "Ursa Major Rapidly\nAdvances its Hadley H13\nEngine",
+            "w7yystext": "Hadley H13 is Ursa Major's on-the-shelf\nliquid rocket engine designed for a variety\nof applications, including hypersonics and\nsign launch.",
+            "hbsqdtext": ">",
+            "theme": {
+                  "mode": "dark",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#06080D",
+                        "text": "#F3F5F7",
+                        "primary": "#4F77FF",
+                        "accent": "#4F77FF",
+                        "neutral": "#1F2937",
+                        "textSecondary": "#9CA3AF"
+                  },
+                  "primaryColor": "#4F77FF",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "glass",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteUrsaNewsProductsNewsgridpenAlt4": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteUrsaNewsProductsNewsgridpenAlt4"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteUrsaNewsProductsNewsgridpenAlt4-1",
+            "qzfvrtext": "LATEST NEWS",
+            "kp79uimagesrc": "https://images.unsplash.com/photo-1643166429935-ea8fab9c4834?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyNDU3Njl8&ixlib=rb-4.1.0&q=80&w=1080",
+            "aziptext": "Press Release",
+            "uuxggtext": "Introducing the \"Ursa Major\nHAVOC Missile System\": A\nMedium-Range, Affordable\nHypersonic Capability",
+            "wedoztext": "Read More",
+            "fo7rkimagesrc": "https://images.unsplash.com/photo-1738132692838-994f9b28f913?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyNDU3Njh8&ixlib=rb-4.1.0&q=80&w=1080",
+            "y2hf4text": "Press Release",
+            "ag9hatext": "Ursa Major Appoints Chris\nSpagnoletti as Chief Executive\nOfficer",
+            "m27aitext": "Read More",
+            "w5hliimagesrc": "https://images.unsplash.com/photo-1717386255785-59c670564341?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyNDU3NzB8&ixlib=rb-4.1.0&q=80&w=1080",
+            "j0ig6text": "Press Release",
+            "walwutext": "Ursa Major Adds Proven\nOperator to Lead Production\nRamp and SRM Growth",
+            "pmfxutext": "Read More",
+            "v5uhtext": "Load More",
+            "turkitext": "↓",
+            "om50zimagesrc": "https://images.unsplash.com/photo-1643166429935-ea8fab9c4834?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyNDU3Njl8&ixlib=rb-4.1.0&q=80&w=1080",
+            "eqhgstext": "Press Release",
+            "mwxj9text": "Introducing the \"Ursa Major\nHAVOC Missile System\": A\nMedium-Range, Affordable\nHypersonic Capability",
+            "aq1lztext": "Read More",
+            "fiuaaimagesrc": "https://images.unsplash.com/photo-1738132692838-994f9b28f913?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyNDU3Njh8&ixlib=rb-4.1.0&q=80&w=1080",
+            "y2clmtext": "Press Release",
+            "yoqg2text": "Ursa Major Appoints Chris\nSpagnoletti as Chief Executive\nOfficer",
+            "n97qtext": "Read More",
+            "ggtdrimagesrc": "https://images.unsplash.com/photo-1717386255785-59c670564341?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyNDU3NzB8&ixlib=rb-4.1.0&q=80&w=1080",
+            "saun5text": "Press Release",
+            "dquyutext": "Ursa Major Adds Proven\nOperator to Lead Production\nRamp and SRM Growth",
+            "hevxptext": "Read More",
+            "ccgqimagesrc": "https://images.unsplash.com/photo-1643166429935-ea8fab9c4834?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyNDU3Njl8&ixlib=rb-4.1.0&q=80&w=1080",
+            "gqnf6text": "Press Release",
+            "nfjz6text": "Introducing the \"Ursa Major\nHAVOC Missile System\": A\nMedium-Range, Affordable\nHypersonic Capability",
+            "y1mmatext": "Read More",
+            "orcxpimagesrc": "https://images.unsplash.com/photo-1738132692838-994f9b28f913?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyNDU3Njh8&ixlib=rb-4.1.0&q=80&w=1080",
+            "vkpkbtext": "Press Release",
+            "cfl0itext": "Ursa Major Appoints Chris\nSpagnoletti as Chief Executive\nOfficer",
+            "su6qltext": "Read More",
+            "tixqvimagesrc": "https://images.unsplash.com/photo-1717386255785-59c670564341?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyNDU3NzB8&ixlib=rb-4.1.0&q=80&w=1080",
+            "chr3vtext": "Press Release",
+            "oi4ztext": "Ursa Major Adds Proven\nOperator to Lead Production\nRamp and SRM Growth",
+            "gdwxntext": "Read More",
+            "theme": {
+                  "mode": "dark",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#06080D",
+                        "text": "#F3F5F7",
+                        "primary": "#4F77FF",
+                        "accent": "#4F77FF",
+                        "neutral": "#1F2937",
+                        "textSecondary": "#9CA3AF"
+                  },
+                  "primaryColor": "#4F77FF",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "glass",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteUrsaContactNavigationNavpenPrimary": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteUrsaContactNavigationNavpenPrimary"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteUrsaContactNavigationNavpenPrimary-1",
+            "logotext": "URSAMAJOR",
+            "logohref": "/",
+            "menu1text": "Who We Are",
+            "menu1href": "/",
+            "menu2text": "What We Do",
+            "menu2href": "/",
+            "menu3text": "Work With Us",
+            "menu3href": "/",
+            "menu4text": "News",
+            "menu4href": "/ursa-news",
+            "iconstext": "◯  ◯  ◯  ✕",
+            "iconshref": "/",
+            "soc1ttext": "in",
+            "soc1thref": "/",
+            "soc2ttext": "◉",
+            "soc2thref": "/",
+            "soc3ttext": "▶",
+            "soc3thref": "/",
+            "xittext": "X",
+            "xithref": "/",
+            "theme": {
+                  "mode": "dark",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#06080D",
+                        "text": "#F3F5F7",
+                        "primary": "#4F77FF",
+                        "accent": "#4F77FF",
+                        "neutral": "#1F2937",
+                        "textSecondary": "#9CA3AF"
+                  },
+                  "primaryColor": "#4F77FF",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "glass",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteUrsaContactHeroHeropenAlt1": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteUrsaContactHeroHeropenAlt1"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteUrsaContactHeroHeropenAlt1-1",
+            "h1text": "WORK AT URSA MAJOR",
+            "h2text": "",
+            "hdesctext": "The best years of your career are waiting for you at Ursa Major.\n",
+            "herodesctext": "Home > Careers",
+            "theme": {
+                  "mode": "dark",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#06080D",
+                        "text": "#F3F5F7",
+                        "primary": "#4F77FF",
+                        "accent": "#4F77FF",
+                        "neutral": "#1F2937",
+                        "textSecondary": "#9CA3AF"
+                  },
+                  "primaryColor": "#4F77FF",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "glass",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteUrsaContactFooterFooterpenAlt2": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteUrsaContactFooterFooterpenAlt2"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteUrsaContactFooterFooterpenAlt2-1",
+            "ftlogotext": "URSAMAJOR",
+            "ftlogohref": "/",
+            "ftsocialtext": "Follow Us On",
+            "ftsocialhref": "/",
+            "ftcopytext": "©2026 URSA MAJOR Technologies Inc",
+            "ftcopyhref": "/",
+            "col1titletext": "Company",
+            "col1titlehref": "/",
+            "col1atext": "About Us",
+            "col1ahref": "/",
+            "col1btext": "Leadership",
+            "col1bhref": "/",
+            "col1ctext": "News",
+            "col1chref": "/ursa-news",
+            "col2titletext": "Work With Us",
+            "col2titlehref": "/",
+            "col2atext": "Suppliers",
+            "col2ahref": "/",
+            "col3titletext": "Products",
+            "col3titlehref": "/ursa-products",
+            "col3atext": "Hypersonics",
+            "col3ahref": "/",
+            "col3btext": "Space",
+            "col3bhref": "/",
+            "col3ctext": "Solid Rocket Motors",
+            "col3chref": "/",
+            "privacytext": "Privacy Policy",
+            "privacyhref": "/ursa-privacy",
+            "addrtext": "19750 Co Rd 7, Berthoud, Co 80513",
+            "addrhref": "/",
+            "littext": "in",
+            "lithref": "/",
+            "igttext": "◎",
+            "igthref": "/",
+            "ytttext": "▶",
+            "ytthref": "/",
+            "xittext": "X",
+            "xithref": "/",
+            "termstext": "Terms of Use",
+            "termshref": "/ursa-privacy",
+            "septext": "|",
+            "sephref": "/",
+            "theme": {
+                  "mode": "dark",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#06080D",
+                        "text": "#F3F5F7",
+                        "primary": "#4F77FF",
+                        "accent": "#4F77FF",
+                        "neutral": "#1F2937",
+                        "textSecondary": "#9CA3AF"
+                  },
+                  "primaryColor": "#4F77FF",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "glass",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteUrsaContactStoryCareersintropenAlt3": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteUrsaContactStoryCareersintropenAlt3"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteUrsaContactStoryCareersintropenAlt3-1",
+            "xupg8text": "This is where your work has national impact. Where your code, your designs, your hands-on problem solving all push American-made engines and aerospace and defense systems faster than ever before.\nAt Ursa Major, we’re building the future of defense and changing the entire industrial base while we’re at it. And we do it while living our values every day: we show respect, we are resilient, and we get results.\nIf you’re looking for the chapter of your career where you’ll move with urgency, build with purpose, and fly faster, then this is it.\nCome be part of an exceptional team with unparalleled culture and join us in building the next great aerospace and defense company.",
+            "g7ww8imagesrc": "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1000&q=80",
+            "p13uuimagesrc": "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1000&q=80",
+            "yur38imagesrc": "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=1000&q=80",
+            "rcfsyimagesrc": "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=1000&q=80",
+            "theme": {
+                  "mode": "dark",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#06080D",
+                        "text": "#F3F5F7",
+                        "primary": "#4F77FF",
+                        "accent": "#4F77FF",
+                        "neutral": "#1F2937",
+                        "textSecondary": "#9CA3AF"
+                  },
+                  "primaryColor": "#4F77FF",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "glass",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteUrsaContactStoryCareersmainpenAlt4": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteUrsaContactStoryCareersmainpenAlt4"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteUrsaContactStoryCareersmainpenAlt4-1",
+            "glttext": "FEATURED POSITIONS",
+            "nskxtext": "Senior Additive Technician",
+            "uyiottext": "Colorado",
+            "vnbputext": "Propulsion Engineer",
+            "q4olrtext": "Colorado",
+            "nhqwtext": "Strategic Program Manager",
+            "oqfvltext": "Colorado",
+            "qnwoctext": "OPEN POSITIONS",
+            "qztfetext": "Role",
+            "x7xvbtext": "Location",
+            "kla0text": "Director of Manufacturing Development",
+            "rj55text": "Berthoud, CO",
+            "jyq3ntext": "Additive Quality Engineer",
+            "nmdu8text": "Berthoud, CO",
+            "n1dnotext": "Advanced Propulsion Program Director",
+            "ay4odtext": "Berthoud, CO",
+            "oezzktext": "GNC Engineer",
+            "rxm1stext": "Long Beach, CA",
+            "ahlgxtext": "Senior Test Technician",
+            "dzlfdtext": "Pueblo, CO",
+            "u2fiutext": "BENEFITS",
+            "k4zgqtext": "Financial Security",
+            "bumtext": "Paid Time Off",
+            "ksqmrtext": "CONTACT",
+            "cbgd3imagesrc": "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1000&q=80",
+            "ymhbmtext": "Let us know your background and interests.\nOur team will follow up with relevant roles.",
+            "jczsxtext": "Name",
+            "ix97ytext": "Email",
+            "ugptext": "Message",
+            "llzd5text": "Submit",
+            "klovntext": "Health & Care",
+            "theme": {
+                  "mode": "dark",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#06080D",
+                        "text": "#F3F5F7",
+                        "primary": "#4F77FF",
+                        "accent": "#4F77FF",
+                        "neutral": "#1F2937",
+                        "textSecondary": "#9CA3AF"
+                  },
+                  "primaryColor": "#4F77FF",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "glass",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteUrsaPrivacyNavigationNavpenPrimary": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteUrsaPrivacyNavigationNavpenPrimary"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteUrsaPrivacyNavigationNavpenPrimary-1",
+            "logotext": "URSAMAJOR",
+            "logohref": "/",
+            "menu1text": "Who We Are",
+            "menu1href": "/",
+            "menu2text": "What We Do",
+            "menu2href": "/",
+            "menu3text": "Work With Us",
+            "menu3href": "/",
+            "menu4text": "News",
+            "menu4href": "/ursa-news",
+            "iconstext": "◯  ◯  ◯  ✕",
+            "iconshref": "/",
+            "soc1ttext": "in",
+            "soc1thref": "/",
+            "soc2ttext": "◉",
+            "soc2thref": "/",
+            "soc3ttext": "▶",
+            "soc3thref": "/",
+            "xittext": "X",
+            "xithref": "/",
+            "theme": {
+                  "mode": "dark",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#06080D",
+                        "text": "#F3F5F7",
+                        "primary": "#4F77FF",
+                        "accent": "#4F77FF",
+                        "neutral": "#1F2937",
+                        "textSecondary": "#9CA3AF"
+                  },
+                  "primaryColor": "#4F77FF",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "glass",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteUrsaPrivacyHeroHeropenAlt1": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteUrsaPrivacyHeroHeropenAlt1"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteUrsaPrivacyHeroHeropenAlt1-1",
+            "h1text": "PRIVACY POLICY",
+            "h2text": "",
+            "hdesctext": "Effective date: January 1, 2026. This Privacy Policy explains how Ursa Major collects, uses, and protects information when you use our website and services.",
+            "herodesctext": "Home > Privacy Policy",
+            "theme": {
+                  "mode": "dark",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#06080D",
+                        "text": "#F3F5F7",
+                        "primary": "#4F77FF",
+                        "accent": "#4F77FF",
+                        "neutral": "#1F2937",
+                        "textSecondary": "#9CA3AF"
+                  },
+                  "primaryColor": "#4F77FF",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "glass",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteUrsaPrivacyFooterFooterpenAlt2": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteUrsaPrivacyFooterFooterpenAlt2"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteUrsaPrivacyFooterFooterpenAlt2-1",
+            "ftlogotext": "URSAMAJOR",
+            "ftlogohref": "/",
+            "ftsocialtext": "Follow Us On",
+            "ftsocialhref": "/",
+            "ftcopytext": "©2026 URSA MAJOR Technologies Inc",
+            "ftcopyhref": "/",
+            "col1titletext": "Company",
+            "col1titlehref": "/",
+            "col1atext": "About Us",
+            "col1ahref": "/",
+            "col1btext": "Leadership",
+            "col1bhref": "/",
+            "col1ctext": "News",
+            "col1chref": "/ursa-news",
+            "col2titletext": "Work With Us",
+            "col2titlehref": "/",
+            "col2atext": "Suppliers",
+            "col2ahref": "/",
+            "col3titletext": "Products",
+            "col3titlehref": "/ursa-products",
+            "col3atext": "Hypersonics",
+            "col3ahref": "/",
+            "col3btext": "Space",
+            "col3bhref": "/",
+            "col3ctext": "Solid Rocket Motors",
+            "col3chref": "/",
+            "privacytext": "Privacy Policy",
+            "privacyhref": "/ursa-privacy",
+            "addrtext": "19750 Co Rd 7, Berthoud, Co 80513",
+            "addrhref": "/",
+            "littext": "in",
+            "lithref": "/",
+            "igttext": "◎",
+            "igthref": "/",
+            "ytttext": "▶",
+            "ytthref": "/",
+            "xittext": "X",
+            "xithref": "/",
+            "termstext": "Terms of Use",
+            "termshref": "/ursa-privacy",
+            "septext": "|",
+            "sephref": "/",
+            "theme": {
+                  "mode": "dark",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#06080D",
+                        "text": "#F3F5F7",
+                        "primary": "#4F77FF",
+                        "accent": "#4F77FF",
+                        "neutral": "#1F2937",
+                        "textSecondary": "#9CA3AF"
+                  },
+                  "primaryColor": "#4F77FF",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "glass",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteUrsaPrivacyNavigationPrivacybodytoppenAlt3": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteUrsaPrivacyNavigationPrivacybodytoppenAlt3"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteUrsaPrivacyNavigationPrivacybodytoppenAlt3-1",
+            "scdmutext": "PRIVACY POLICY",
+            "scdmuhref": "/ursa-privacy",
+            "beqcctext": "Last Updated: January 1, 2026",
+            "beqcchref": "/",
+            "hqgqvtext": "1. INTRODUCTION",
+            "hqgqvhref": "/",
+            "lhcgxtext": "Ursa Major Technologies Inc. respects your privacy and is committed to protecting your personal data. This policy describes what information we collect, why we collect it, how we use it, and the choices available to you.",
+            "lhcgxhref": "/ursa-privacy",
+            "ecejtext": "2. INFORMATION WE COLLECT",
+            "ecejhref": "/",
+            "w4diltext": "We may collect identity data, contact details, employer information, role and company profile, account credentials, communication preferences, and technical metadata such as IP address, browser type, and pages viewed.",
+            "w4dilhref": "/ursa-contact",
+            "qvlivtext": "3. HOW WE COLLECT INFORMATION",
+            "qvlivhref": "/",
+            "k67bhtext": "Information is collected directly when you submit forms, apply for roles, subscribe to updates, contact us, or engage with our services. We also collect certain usage data automatically through cookies and similar technologies.",
+            "k67bhhref": "/ursa-contact",
+            "mkdentext": "4. HOW WE USE INFORMATION",
+            "mkdenhref": "/",
+            "ol7rptext": "We use your data to operate our website, respond to inquiries, process job applications, improve user experience, maintain system security, evaluate recruiting and supplier opportunities, and comply with legal obligations.",
+            "ol7rphref": "/ursa-privacy",
+            "p9cwgtext": "5. LEGAL BASES FOR PROCESSING",
+            "p9cwghref": "/ursa-privacy",
+            "df7u9text": "Where applicable, we rely on consent, contractual necessity, legitimate interests, and legal compliance as legal bases for processing personal data.",
+            "df7u9href": "/ursa-privacy",
+            "ffwcvtext": "6. DISCLOSURE OF INFORMATION",
+            "ffwcvhref": "/",
+            "z1ddmtext": "We may share data with affiliated entities, service providers, advisors, and regulators when required. We do not sell personal information.",
+            "z1ddmhref": "/",
+            "q4ia1text": "7. DATA RETENTION",
+            "q4ia1href": "/",
+            "p5nbntext": "We retain information only for as long as needed for business and legal purposes, then securely delete or anonymize it.",
+            "p5nbnhref": "/ursa-privacy",
+            "xwuwetext": "8. SECURITY",
+            "xwuwehref": "/",
+            "wjitjtext": "We use administrative, technical, and physical controls designed to protect personal data from unauthorized access, alteration, disclosure, or destruction.",
+            "wjitjhref": "/",
+            "ps9ytext": "9. CONTACT",
+            "ps9yhref": "/ursa-contact",
+            "owfsetext": "For privacy questions or requests, email privacy@ursamajor.com or write to: 19750 Co Rd 7, Berthoud, CO 80513, United States.",
+            "owfsehref": "/ursa-privacy",
+            "theme": {
+                  "mode": "dark",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#06080D",
+                        "text": "#F3F5F7",
+                        "primary": "#4F77FF",
+                        "accent": "#4F77FF",
+                        "neutral": "#1F2937",
+                        "textSecondary": "#9CA3AF"
+                  },
+                  "primaryColor": "#4F77FF",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "glass",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": ""
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
+      },
+    },
+    "TemplateExclusivePenSiteUrsaPrivacyFooterPrivacybodybottompenAlt4": {
+      render: renderTemplateExclusiveRuntime("TemplateExclusivePenSiteUrsaPrivacyFooterPrivacybodybottompenAlt4"),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteUrsaPrivacyFooterPrivacybodybottompenAlt4-1",
+            "l1rq2text": "10. YOUR RIGHTS",
+            "qhhkctext": "Depending on your location, you may have rights to access, correct, delete, restrict, or object to certain processing, and to request data portability.",
+            "qhhkchref": "/",
+            "y0eatext": "11. CALIFORNIA PRIVACY DISCLOSURES",
+            "y0eahref": "/ursa-privacy",
+            "jcr2ytext": "California residents may request information regarding categories of personal information collected, sources, business purposes, third-party disclosures, and rights under applicable law.",
+            "jcr2yhref": "/",
+            "qwemdtext": "12. COOKIES AND TRACKING",
+            "qwemdhref": "/",
+            "sg2iztext": "We use cookies and similar technologies for site functionality, performance analytics, and user preference retention. You can control cookies through browser settings.",
+            "sg2izhref": "/",
+            "ningotext": "13. INTERNATIONAL TRANSFERS",
+            "ningohref": "/",
+            "eilwtext": "Your data may be transferred and processed in countries other than your own. When required, we use safeguards designed to provide adequate protection.",
+            "eilwhref": "/",
+            "v6i29text": "14. CHILDREN'S PRIVACY",
+            "v6i29href": "/ursa-privacy",
+            "xl48stext": "Our services are not directed to children under 16, and we do not knowingly collect personal information from children.",
+            "xl48shref": "/",
+            "llklotext": "15. CHANGES TO THIS POLICY",
+            "llklohref": "/ursa-privacy",
+            "vwrptext": "We may update this Privacy Policy from time to time. The updated version will be posted with a revised effective date.",
+            "vwrphref": "/ursa-privacy",
+            "gsanytext": "16. HOW TO CONTACT US",
+            "gsanyhref": "/ursa-contact",
+            "hqeztext": "Privacy Team\nUrsa Major Technologies Inc.\n19750 Co Rd 7, Berthoud, CO 80513\nprivacy@ursamajor.com",
+            "hqezhref": "/ursa-privacy",
+            "theme": {
+                  "mode": "dark",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#06080D",
+                        "text": "#F3F5F7",
+                        "primary": "#4F77FF",
+                        "accent": "#4F77FF",
+                        "neutral": "#1F2937",
+                        "textSecondary": "#9CA3AF"
+                  },
+                  "primaryColor": "#4F77FF",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "glass",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "child": "",
+            "index": "",
+            "top": "",
+            "left": "",
+            "width": "",
+            "fontSize": "",
+            "isAbsolute": "",
+            "isText": "",
+            "columns": [
+                  {
+                        "title": "16. HOW TO CONTACT US",
+                        "links": [
+                              {
+                                    "label": "Privacy Team",
+                                    "href": "/ursa-privacy"
+                              },
+                              {
+                                    "label": "Ursa Major Technologies Inc.",
+                                    "href": "/ursa-privacy"
+                              },
+                              {
+                                    "label": "19750 Co Rd 7, Berthoud, CO 80513",
+                                    "href": "/ursa-privacy"
+                              },
+                              {
+                                    "label": "privacy@ursamajor.com",
+                                    "href": "/ursa-privacy"
+                              }
+                        ]
+                  }
+            ]
+      },
+      fields: {
+        child: textField("Child"),
+        index: textField("Index"),
+        top: textField("Top"),
+        left: textField("Left"),
+        width: textField("Width"),
+        fontSize: textField("FontSize"),
+        isAbsolute: textField("IsAbsolute"),
+        isText: textField("IsText"),
       },
     },
 };

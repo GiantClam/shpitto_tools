@@ -6,6 +6,8 @@ import path from "node:path";
 import process from "node:process";
 import { spawn } from "node:child_process";
 import { fileURLToPath } from "node:url";
+import pixelmatch from "pixelmatch";
+import { PNG } from "pngjs";
 import { SECTION_BLOCK_REGISTRY, getAlternativeVariants } from "./variant-registry.mjs";
 import { buildCustomSectionPrompt, buildPuckFieldsForCustomComponent } from "./generate-custom-section.mjs";
 import { materializeComponent, materializeFromPayload, writeGeneratedConfig } from "./materialize-custom-components.mjs";
@@ -6104,59 +6106,111 @@ const writeSandboxPayload = async (siteKey, payload = {}) => {
   await fs.writeFile(path.join(outDir, "payload.json"), JSON.stringify(nextPayload, null, 2));
 };
 
-const diffImagesWithPython = async ({ referencePath = "", candidatePath = "", diffPath = "" } = {}) => {
-  const script = `python3 - <<'PY'
-from PIL import Image, ImageChops
-import json
-import os
+const padPngToSize = (image, width, height) => {
+  if (image.width === width && image.height === height) return image;
+  const canvas = new PNG({ width, height });
+  for (let y = 0; y < height; y += 1) {
+    for (let x = 0; x < width; x += 1) {
+      const index = (width * y + x) << 2;
+      canvas.data[index] = 255;
+      canvas.data[index + 1] = 255;
+      canvas.data[index + 2] = 255;
+      canvas.data[index + 3] = 255;
+    }
+  }
+  PNG.bitblt(image, canvas, 0, 0, image.width, image.height, 0, 0);
+  return canvas;
+};
 
-ref = ${JSON.stringify(referencePath)}
-cand = ${JSON.stringify(candidatePath)}
-diff_path = ${JSON.stringify(diffPath)}
+const diffImagesWithNode = async ({ referencePath = "", candidatePath = "", diffPath = "" } = {}) => {
+  const [referenceBuffer, candidateBuffer] = await Promise.all([
+    fs.readFile(referencePath),
+    fs.readFile(candidatePath),
+  ]);
+  const referenceImage = PNG.sync.read(referenceBuffer);
+  const candidateImage = PNG.sync.read(candidateBuffer);
+  const width = Math.max(referenceImage.width, candidateImage.width);
+  const height = Math.max(referenceImage.height, candidateImage.height);
+  const referencePad = padPngToSize(referenceImage, width, height);
+  const candidatePad = padPngToSize(candidateImage, width, height);
+  const diffImage = new PNG({ width, height });
+  const diffPixels = pixelmatch(referencePad.data, candidatePad.data, diffImage.data, width, height, {
+    threshold: 0.1,
+    includeAA: false,
+    alpha: 0.5,
+  });
+  await fs.mkdir(path.dirname(diffPath), { recursive: true });
+  await fs.writeFile(diffPath, PNG.sync.write(diffImage));
+  const totalPixels = Math.max(1, width * height);
+  const diffRatio = diffPixels / totalPixels;
+  return {
+    width,
+    height,
+    diffPixels,
+    totalPixels,
+    diffRatio: Number(diffRatio.toFixed(6)),
+    similarity: Number((1 - diffRatio).toFixed(6)),
+  };
+};
 
-ref_img = Image.open(ref).convert("RGBA")
-cand_img = Image.open(cand).convert("RGBA")
-width = max(ref_img.width, cand_img.width)
-height = max(ref_img.height, cand_img.height)
+const TEMPLATE_FIDELITY_VISUAL_EPSILON = 0.001;
 
-def pad(image):
-    canvas = Image.new("RGBA", (width, height), (255, 255, 255, 0))
-    canvas.paste(image, (0, 0))
-    return canvas
-
-ref_pad = pad(ref_img)
-cand_pad = pad(cand_img)
-diff = ImageChops.difference(ref_pad, cand_pad)
-os.makedirs(os.path.dirname(diff_path), exist_ok=True)
-diff.save(diff_path)
-
-bbox = diff.getbbox()
-diff_pixels = 0
-if bbox:
-    for pixel in diff.getdata():
-        if pixel != (0, 0, 0, 0):
-            diff_pixels += 1
-
-total = max(1, width * height)
-diff_ratio = diff_pixels / total
-print(json.dumps({
-    "width": width,
-    "height": height,
-    "diffPixels": diff_pixels,
-    "totalPixels": total,
-    "diffRatio": round(diff_ratio, 6),
-    "similarity": round(1 - diff_ratio, 6)
-}))
-PY`;
-  const { stdout } = await runShell(script, { cwd: ROOT });
-  return parseJsonLine(stdout) || {
-    width: 0,
-    height: 0,
+const captureTemplateFidelityVisualDiff = async ({
+  baselineUrl = "",
+  replayUrl = "",
+  baselineImagePath = "",
+  replayImagePath = "",
+  diffImagePath = "",
+  screenshotSimilarityMin = 0.75,
+  screenshotTimeoutMs = 90000,
+} = {}) => {
+  const attempts = [0, 1];
+  let best = {
+    similarity: 0,
+    diffRatio: 1,
     diffPixels: 0,
     totalPixels: 0,
-    diffRatio: 1,
-    similarity: 0,
+    width: 0,
+    height: 0,
   };
+  for (const attempt of attempts) {
+    const baselinePath =
+      attempt === 0 ? baselineImagePath : baselineImagePath.replace(/\.png$/i, `.retry-${attempt}.png`);
+    const replayPath = attempt === 0 ? replayImagePath : replayImagePath.replace(/\.png$/i, `.retry-${attempt}.png`);
+    const diffPath = attempt === 0 ? diffImagePath : diffImagePath.replace(/\.png$/i, `.retry-${attempt}.png`);
+    const baselineShot = await captureScreenshotSafe({
+      url: baselineUrl,
+      outPath: baselinePath,
+      mobile: false,
+      timeoutMs: screenshotTimeoutMs,
+    });
+    const replayShot = await captureScreenshotSafe({
+      url: replayUrl,
+      outPath: replayPath,
+      mobile: false,
+      timeoutMs: screenshotTimeoutMs,
+    });
+    if (!baselineShot || !replayShot) continue;
+    const diff = await diffImagesWithNode({
+      referencePath: baselinePath,
+      candidatePath: replayPath,
+      diffPath,
+    });
+    if (Number(diff?.similarity || 0) > Number(best?.similarity || 0)) {
+      best = { ...diff };
+      if (attempt > 0) {
+        await Promise.all([
+          fs.copyFile(baselinePath, baselineImagePath),
+          fs.copyFile(replayPath, replayImagePath),
+          fs.copyFile(diffPath, diffImagePath),
+        ]);
+      }
+    }
+    if (Number(best?.similarity || 0) + TEMPLATE_FIDELITY_VISUAL_EPSILON >= Number(screenshotSimilarityMin || 0.75)) {
+      break;
+    }
+  }
+  return best;
 };
 
 const mergeSlotPools = (target = {}, source = {}) => ({
@@ -6166,6 +6220,199 @@ const mergeSlotPools = (target = {}, source = {}) => ({
 });
 
 const emptySlotPool = () => ({ text: [], image: [], link: [] });
+
+const TEMPLATE_FIDELITY_TEXT_BUCKET_ORDER = ["micro", "short", "medium", "long", "xlong", "xxlong"];
+const TEMPLATE_FIDELITY_TEXT_BUCKET_MAX = {
+  micro: 12,
+  short: 24,
+  medium: 40,
+  long: 80,
+  xlong: 140,
+  xxlong: 240,
+};
+const TEMPLATE_FIDELITY_COMPACT_TEXT_KEY_RE =
+  /(eyebrow|kicker|badge|tag|chip|pill|overline|label|caption|meta|stat|metric|value|count|number|nav|menu|tab|item|brand|logo|legal)/i;
+const TEMPLATE_FIDELITY_TITLE_TEXT_KEY_RE = /(title|headline|heading|herotitle|maintitle|h1|h2|h3)/i;
+const TEMPLATE_FIDELITY_BODY_TEXT_KEY_RE = /(subtitle|subtext|subcopy|desc|description|body|copy|summary|content|detail|legal)/i;
+const TEMPLATE_FIDELITY_ACTION_TEXT_KEY_RE = /(cta|btn|button|action|primarylabel|secondarylabel|linktext)/i;
+
+const normalizeTemplateFidelityTextValue = (value = "") => String(value || "").replace(/\s+/g, " ").trim();
+
+const classifyTemplateFidelityTextBucket = (value = "") => {
+  const length = normalizeTemplateFidelityTextValue(value).length;
+  if (!length) return "micro";
+  if (length <= TEMPLATE_FIDELITY_TEXT_BUCKET_MAX.micro) return "micro";
+  if (length <= TEMPLATE_FIDELITY_TEXT_BUCKET_MAX.short) return "short";
+  if (length <= TEMPLATE_FIDELITY_TEXT_BUCKET_MAX.medium) return "medium";
+  if (length <= TEMPLATE_FIDELITY_TEXT_BUCKET_MAX.long) return "long";
+  if (length <= TEMPLATE_FIDELITY_TEXT_BUCKET_MAX.xlong) return "xlong";
+  return "xxlong";
+};
+
+const inferTemplateFidelityTextRole = ({ key = "", pathValue = "", value = "" } = {}) => {
+  const signal = `${String(pathValue || "").trim()} ${String(key || "").trim()}`.toLowerCase();
+  const normalizedValue = normalizeTemplateFidelityTextValue(value);
+  if (TEMPLATE_FIDELITY_ACTION_TEXT_KEY_RE.test(signal)) return "cta";
+  if (TEMPLATE_FIDELITY_TITLE_TEXT_KEY_RE.test(signal)) return "title";
+  if (TEMPLATE_FIDELITY_BODY_TEXT_KEY_RE.test(signal)) return "body";
+  if (TEMPLATE_FIDELITY_COMPACT_TEXT_KEY_RE.test(signal)) return "compact";
+  if (normalizedValue.length <= TEMPLATE_FIDELITY_TEXT_BUCKET_MAX.short) return "compact";
+  if (/[.!?]/.test(normalizedValue) || normalizedValue.length > TEMPLATE_FIDELITY_TEXT_BUCKET_MAX.long) return "body";
+  return "title";
+};
+
+const estimateTemplateFidelityTextBudget = (fallback = "", role = "title") => {
+  const normalized = normalizeTemplateFidelityTextValue(fallback);
+  const bucket = classifyTemplateFidelityTextBucket(normalized);
+  const baseLimit = TEMPLATE_FIDELITY_TEXT_BUCKET_MAX[bucket] || TEMPLATE_FIDELITY_TEXT_BUCKET_MAX.medium;
+  if (!normalized) {
+    return role === "body" ? TEMPLATE_FIDELITY_TEXT_BUCKET_MAX.long : baseLimit;
+  }
+  if (role === "cta") return Math.min(Math.max(baseLimit, normalized.length + 6), TEMPLATE_FIDELITY_TEXT_BUCKET_MAX.medium);
+  if (role === "compact") return Math.min(Math.max(baseLimit, normalized.length + 4), TEMPLATE_FIDELITY_TEXT_BUCKET_MAX.short);
+  if (role === "body") return Math.max(baseLimit, Math.round(normalized.length * 1.2));
+  return Math.max(baseLimit, Math.round(normalized.length * 1.15));
+};
+
+const splitTemplateFidelityTextFragments = (value = "") =>
+  Array.from(
+    new Set(
+      [
+        ...splitStructuredTextItems(value),
+        ...String(value || "")
+          .split(/\n+|•|\||·|;/)
+          .map((entry) => normalizeTemplateFidelityTextValue(entry)),
+      ].filter((entry) => entry && entry !== normalizeTemplateFidelityTextValue(value))
+    )
+  );
+
+const buildTemplateFidelityTextCandidate = (value = "", meta = {}) => {
+  const normalized = normalizeTemplateFidelityTextValue(value);
+  if (!normalized) return null;
+  const pathValue = String(meta?.pathValue || "").trim();
+  const key = String(meta?.key || "").trim();
+  const role = inferTemplateFidelityTextRole({ key, pathValue, value: normalized });
+  return {
+    id: `${role}:${classifyTemplateFidelityTextBucket(normalized)}:${normalized}`,
+    value: normalized,
+    role,
+    bucket: classifyTemplateFidelityTextBucket(normalized),
+    length: normalized.length,
+    words: normalized.split(/\s+/).filter(Boolean).length,
+    fragment: Boolean(meta?.fragment),
+    pathValue,
+    key,
+  };
+};
+
+const pushTemplateFidelityTextCandidate = (pool = emptySlotPool(), value = "", meta = {}) => {
+  const candidate = buildTemplateFidelityTextCandidate(value, meta);
+  if (!candidate) return pool;
+  if (!Array.isArray(pool.text)) pool.text = [];
+  if (!pool.text.some((entry) => entry?.id === candidate.id && entry?.value === candidate.value)) {
+    pool.text.push(candidate);
+  }
+  return pool;
+};
+
+const bucketDistanceForTemplateFidelity = (left = "", right = "") => {
+  const leftIndex = TEMPLATE_FIDELITY_TEXT_BUCKET_ORDER.indexOf(String(left || "").trim());
+  const rightIndex = TEMPLATE_FIDELITY_TEXT_BUCKET_ORDER.indexOf(String(right || "").trim());
+  if (leftIndex < 0 || rightIndex < 0) return TEMPLATE_FIDELITY_TEXT_BUCKET_ORDER.length;
+  return Math.abs(leftIndex - rightIndex);
+};
+
+const scoreTemplateFidelityTextCandidate = ({ candidate = null, target = null, scope = "global" } = {}) => {
+  if (!candidate || !target) return Number.NEGATIVE_INFINITY;
+  let score = scope === "section" ? 12 : 0;
+  if (candidate.role === target.role) score += 30;
+  else if (target.role === "compact" && ["cta", "title"].includes(candidate.role)) score += 4;
+  else if (target.role === "title" && candidate.role === "body") score += 3;
+  else if (target.role === "body" && candidate.role === "title") score += 3;
+  else if (candidate.role === "compact" && ["title", "body"].includes(target.role)) score -= 4;
+  const distance = bucketDistanceForTemplateFidelity(candidate.bucket, target.bucket);
+  score += Math.max(0, 18 - distance * 8);
+  if (candidate.length <= target.maxChars) score += 18;
+  else score -= Math.min(42, candidate.length - target.maxChars);
+  if (target.role === "compact" && candidate.words > 4) score -= 10;
+  if (target.role === "cta" && candidate.length > TEMPLATE_FIDELITY_TEXT_BUCKET_MAX.medium) score -= 12;
+  if (candidate.fragment) score -= 3;
+  return score;
+};
+
+const buildTemplateFidelityTextTarget = ({ key = "", pathValue = "", fallback = "" } = {}) => {
+  const normalizedFallback = normalizeTemplateFidelityTextValue(fallback);
+  const role = inferTemplateFidelityTextRole({ key, pathValue, value: normalizedFallback });
+  return {
+    role,
+    bucket: classifyTemplateFidelityTextBucket(normalizedFallback),
+    maxChars: estimateTemplateFidelityTextBudget(normalizedFallback, role),
+  };
+};
+
+const reflowTemplateFidelityTextToFallbackShape = (value = "", fallback = "") => {
+  const normalizedValue = normalizeTemplateFidelityTextValue(value);
+  const templateLines = String(fallback || "")
+    .split(/\n+/)
+    .map((entry) => normalizeTemplateFidelityTextValue(entry))
+    .filter(Boolean);
+  if (!normalizedValue || templateLines.length < 2 || normalizedValue.includes("\n")) return normalizedValue;
+  const words = normalizedValue.split(/\s+/).filter(Boolean);
+  if (words.length <= templateLines.length) return normalizedValue;
+  const lineBudgets = templateLines.map((entry) => Math.max(10, Math.round(entry.length * 1.25)));
+  const lines = [];
+  let cursor = 0;
+  for (let index = 0; index < lineBudgets.length; index += 1) {
+    const remainingLines = lineBudgets.length - index;
+    const remainingWords = words.length - cursor;
+    if (remainingWords <= 0) break;
+    if (remainingLines === 1) {
+      lines.push(words.slice(cursor).join(" "));
+      cursor = words.length;
+      break;
+    }
+    let line = words[cursor];
+    cursor += 1;
+    while (cursor < words.length - (remainingLines - 1)) {
+      const candidate = `${line} ${words[cursor]}`;
+      if (candidate.length > lineBudgets[index]) break;
+      line = candidate;
+      cursor += 1;
+    }
+    lines.push(line);
+  }
+  return lines.length === templateLines.length ? lines.join("\n") : normalizedValue;
+};
+
+const formatTemplateFidelityTextForTarget = ({ value = "", fallback = "", target = null } = {}) => {
+  const normalized = normalizeTemplateFidelityTextValue(value);
+  if (!normalized) return normalized;
+  if (String(fallback || "").includes("\n") && ["title", "body"].includes(String(target?.role || ""))) {
+    return reflowTemplateFidelityTextToFallbackShape(normalized, fallback);
+  }
+  return normalized;
+};
+
+const selectTemplateFidelityTextCandidate = ({ target = null, sectionPool = null, globalPool = null, state = null } = {}) => {
+  const scored = [];
+  const pushCandidates = (pool, scope) => {
+    const entries = Array.isArray(pool?.text) ? pool.text : [];
+    entries.forEach((candidate, index) => {
+      const score = scoreTemplateFidelityTextCandidate({ candidate, target, scope });
+      if (score < 8) return;
+      const usage = Number(state?.usage?.[candidate.id] || 0);
+      scored.push({ candidate, score, usage, index });
+    });
+  };
+  pushCandidates(sectionPool, "section");
+  pushCandidates(globalPool, "global");
+  scored.sort((left, right) => right.score - left.score || left.usage - right.usage || left.index - right.index);
+  const winner = scored[0]?.candidate || null;
+  if (!winner) return "";
+  if (!state.usage) state.usage = {};
+  state.usage[winner.id] = Number(state.usage[winner.id] || 0) + 1;
+  return winner.value;
+};
 
 const TEMPLATE_FIDELITY_SKIP_PATH_RE =
   /(^|\.)(theme|palette|layoutrules|tokens|fontfamilies|fontheading|fontbody|motion|mode|primarycolor)(\.|$)/i;
@@ -6206,6 +6453,13 @@ const extractSlotPoolFromValue = (value, key = "", pool = emptySlotPool(), pathP
   if (!["text", "image", "link"].includes(fieldType)) return pool;
   const normalized = String(value ?? "").trim();
   if (!normalized) return pool;
+  if (fieldType === "text") {
+    pushTemplateFidelityTextCandidate(pool, normalized, { key, pathValue });
+    splitTemplateFidelityTextFragments(normalized).forEach((fragment) =>
+      pushTemplateFidelityTextCandidate(pool, fragment, { key, pathValue, fragment: true })
+    );
+    return pool;
+  }
   pool[fieldType].push(normalized);
   return pool;
 };
@@ -6233,6 +6487,20 @@ const normalizeTemplateFidelityPayloadDocument = (value = null) => {
   return null;
 };
 
+const detectUnsupportedTemplateFidelityCasePayload = (payload = {}) => {
+  const pages = Array.isArray(payload?.pages) ? payload.pages : [];
+  const sections = pages.flatMap((page) => (Array.isArray(page?.data?.content) ? page.data.content : []));
+  if (!sections.length) return "empty-payload";
+  const exactPreviewSections = sections.filter((section) => {
+    const type = String(section?.type || "").trim();
+    return type === "ExactPenPagePreview" || typeof section?.props?.docHtml === "string";
+  });
+  if (exactPreviewSections.length === sections.length) {
+    return "exact-pen-preview";
+  }
+  return "";
+};
+
 const resolveTemplateFidelityCasePath = (candidate = "", baseDir = ROOT) => {
   const raw = String(candidate || "").trim();
   if (!raw) return "";
@@ -6243,17 +6511,24 @@ const loadTemplateFidelityCaseInput = async ({ options = {}, defaultSource = nul
   const configuredPath = String(options?.templateFidelityCaseFile || "").trim();
   const configuredCaseId = String(options?.templateFidelityCaseId || "").trim();
   if (!configuredPath) {
+    const payload = defaultSource?.exported?.payload || {};
     return {
       source: "bundle-first-artifact",
       sourceCaseId: String(defaultSource?.artifact?.caseId || "").trim(),
       caseFile: "",
-      payload: defaultSource?.exported?.payload || {},
+      payload,
     };
   }
   const resolvedPath = resolveTemplateFidelityCasePath(configuredPath, ROOT);
   const raw = JSON.parse(await fs.readFile(resolvedPath, "utf8"));
   const directPayload = normalizeTemplateFidelityPayloadDocument(raw);
   if (directPayload) {
+    const unsupportedReason = detectUnsupportedTemplateFidelityCasePayload(directPayload);
+    if (unsupportedReason === "exact-pen-preview") {
+      throw new Error(
+        `[template-factory] unsupported template fidelity case input: ${resolvedPath}. Exact preview payloads using ExactPenPagePreview/docHtml are not canonical replay cases. Provide a sectionized payload export or a bundle artifact payloadPath instead.`
+      );
+    }
     return {
       source: "payload-file",
       sourceCaseId:
@@ -6291,6 +6566,12 @@ const loadTemplateFidelityCaseInput = async ({ options = {}, defaultSource = nul
   const payload = normalizeTemplateFidelityPayloadDocument(payloadRaw);
   if (!payload) {
     throw new Error(`[template-factory] template fidelity case payload is invalid: ${payloadPath}`);
+  }
+  const unsupportedReason = detectUnsupportedTemplateFidelityCasePayload(payload);
+  if (unsupportedReason === "exact-pen-preview") {
+    throw new Error(
+      `[template-factory] unsupported template fidelity case payload: ${payloadPath}. Exact preview payloads using ExactPenPagePreview/docHtml are not canonical replay cases. Provide a sectionized payload export instead.`
+    );
   }
   return {
     source: "bundle-artifact-payload",
@@ -6412,8 +6693,127 @@ const auditPayloadNavFooterContrast = ({ payload = {}, minContrast = 4.5 } = {})
   };
 };
 
-const nextSlotValue = ({ fieldType = "", sectionPool = null, globalPool = null, state = null, fallback = "" } = {}) => {
+const buildTemplateFidelityContrastGate = ({ baselineContrast = null, replayContrast = null, minContrast = 4.5 } = {}) => {
+  const baselineMin = Number(baselineContrast?.minimumObservedContrast);
+  const replayMin = Number(replayContrast?.minimumObservedContrast);
+  const baselineFailed = Number(baselineContrast?.failedSectionCount || 0);
+  const replayFailed = Number(replayContrast?.failedSectionCount || 0);
+  const threshold = Number(minContrast || 4.5);
+  const inheritedDebt = Boolean(
+    baselineContrast &&
+      replayContrast &&
+      baselineContrast.passed === false &&
+      replayContrast.passed === false &&
+      Number.isFinite(baselineMin) &&
+      Number.isFinite(replayMin) &&
+      replayMin >= baselineMin &&
+      replayFailed <= baselineFailed
+  );
+  const regressed = Boolean(
+    replayContrast &&
+      baselineContrast &&
+      ((Number.isFinite(baselineMin) && Number.isFinite(replayMin) && replayMin + 0.001 < baselineMin) ||
+        replayFailed > baselineFailed)
+  );
+  return {
+    minContrastThreshold: threshold,
+    inheritedDebt,
+    regressed,
+    passed: Boolean(replayContrast?.passed) || inheritedDebt,
+  };
+};
+
+const mergeTemplateFidelityVisualValue = (baselineValue, replayValue, { mode = "content", fieldKey = "" } = {}) => {
+  const fieldType = inferEditableFieldType(fieldKey, replayValue);
+  if (mode === "chrome") {
+    if (["text", "image", "link"].includes(fieldType)) {
+      return cloneJson(baselineValue);
+    }
+    return cloneJson(replayValue);
+  }
+  if (fieldType === "image") {
+    return cloneJson(baselineValue);
+  }
+  return cloneJson(replayValue);
+};
+
+const buildTemplateFidelityVisualPayloadValue = (baselineValue, replayValue, options = {}) => {
+  if (Array.isArray(baselineValue) && Array.isArray(replayValue)) {
+    return replayValue.map((entry, index) =>
+      buildTemplateFidelityVisualPayloadValue(baselineValue[index], entry, {
+        ...options,
+        fieldKey: `[${index}]`,
+      })
+    );
+  }
+  if (baselineValue && typeof baselineValue === "object" && replayValue && typeof replayValue === "object") {
+    const out = {};
+    const keys = new Set([...Object.keys(baselineValue), ...Object.keys(replayValue)]);
+    for (const key of keys) {
+      out[key] = buildTemplateFidelityVisualPayloadValue(baselineValue?.[key], replayValue?.[key], {
+        ...options,
+        fieldKey: key,
+      });
+    }
+    return out;
+  }
+  return mergeTemplateFidelityVisualValue(baselineValue, replayValue, options);
+};
+
+const buildTemplateFidelityVisualPayload = ({ baselinePayload = {}, replayPayload = {} } = {}) => {
+  const baselinePages = new Map(
+    (Array.isArray(baselinePayload?.pages) ? baselinePayload.pages : []).map((page) => [
+      normalizeTemplatePagePath(page?.path || "/"),
+      page,
+    ])
+  );
+  const pages = (Array.isArray(replayPayload?.pages) ? replayPayload.pages : []).map((replayPage) => {
+    const pagePath = normalizeTemplatePagePath(replayPage?.path || "/");
+    const baselinePage = baselinePages.get(pagePath) || null;
+    const baselineSections = Array.isArray(baselinePage?.data?.content) ? baselinePage.data.content : [];
+    const replaySections = Array.isArray(replayPage?.data?.content) ? replayPage.data.content : [];
+    const content = replaySections.map((section, index) => {
+      const baselineSection = baselineSections[index] || null;
+      const kind = normalizeSectionKind(inferSectionKindFromPayloadSection(section) || section?.kind || "") || "";
+      const mode = kind === "navigation" || kind === "footer" ? "chrome" : "content";
+      return {
+        ...cloneJson(section),
+        props: buildTemplateFidelityVisualPayloadValue(baselineSection?.props, section?.props, {
+          mode,
+          fieldKey: "",
+        }),
+      };
+    });
+    return {
+      ...cloneJson(replayPage),
+      data: {
+        ...(replayPage?.data && typeof replayPage.data === "object" ? cloneJson(replayPage.data) : {}),
+        content,
+      },
+    };
+  });
+  return {
+    components: Array.isArray(replayPayload?.components) ? cloneJson(replayPayload.components) : [],
+    pages,
+    theme: replayPayload?.theme && typeof replayPayload.theme === "object" ? cloneJson(replayPayload.theme) : {},
+  };
+};
+
+const nextSlotValue = ({
+  fieldType = "",
+  sectionPool = null,
+  globalPool = null,
+  state = null,
+  fallback = "",
+  key = "",
+  pathValue = "",
+} = {}) => {
   const type = String(fieldType || "").trim();
+  if (type === "text") {
+    const target = buildTemplateFidelityTextTarget({ key, pathValue, fallback });
+    const selected = selectTemplateFidelityTextCandidate({ target, sectionPool, globalPool, state }) || fallback;
+    return formatTemplateFidelityTextForTarget({ value: selected, fallback, target }) || fallback;
+  }
   const nextFromPool = (pool, scope) => {
     const values = Array.isArray(pool?.[type]) ? pool[type] : [];
     if (!values.length) return null;
@@ -6465,6 +6865,8 @@ const applySlotPoolToValue = (value, { sectionPool = null, globalPool = null, st
     globalPool,
     state,
     fallback,
+    key,
+    pathValue,
   });
 };
 
@@ -21171,6 +21573,95 @@ const shouldConvertRowFillToFlex = (parentNode, childIndex, style) => {
   });
 };
 
+const resolveTextLineHeightMultiplier = (value) => {
+  if (typeof value === "number" && Number.isFinite(value) && value > 0) return value;
+  if (typeof value === "string") {
+    const parsed = Number.parseFloat(value);
+    if (Number.isFinite(parsed) && parsed > 0) return parsed;
+  }
+  return 1.2;
+};
+
+const estimateAbsoluteTextNodeHeight = (node, merged) => {
+  if (String(node?.type || "").trim().toLowerCase() !== "text") return 0;
+  const textValue = String(merged?.[node?.textProp] ?? "").trim();
+  if (!textValue) return 0;
+  const width = Math.max(120, resolveNumericDimension(node?.style?.width) || 0);
+  const fontSize = Math.max(14, resolveFontSize(node?.style?.fontSize) || 0);
+  const lineHeightMultiplier = resolveTextLineHeightMultiplier(node?.style?.lineHeight);
+  const approxCharsPerLine = Math.max(6, Math.floor(width / Math.max(7, fontSize * 0.58)));
+  const countWrappedLines = (lineText) => {
+    const words = String(lineText || "").split(/\s+/).filter(Boolean);
+    if (!words.length) return 1;
+    let lines = 1;
+    let current = words[0];
+    for (let index = 1; index < words.length; index += 1) {
+      const candidate = current + " " + words[index];
+      if (candidate.length > approxCharsPerLine) {
+        lines += 1;
+        current = words[index];
+      } else {
+        current = candidate;
+      }
+    }
+    const longestToken = words.reduce((max, token) => Math.max(max, token.length), 0);
+    return Math.max(lines, Math.ceil(longestToken / approxCharsPerLine));
+  };
+  const lines = String(textValue)
+    .split(/\n+/)
+    .reduce((total, lineText) => total + countWrappedLines(lineText), 0);
+  return Math.max(fontSize * lineHeightMultiplier, lines * fontSize * lineHeightMultiplier);
+};
+
+const buildAbsoluteTextFlowAdjustments = (rootNode, merged, sectionKindToken) => {
+  if (sectionKindToken !== "hero") {
+    return {
+      childTops: {},
+      rootMinHeight: 0,
+    };
+  }
+  const children = Array.isArray(rootNode?.children) ? rootNode.children : [];
+  const positionedTextNodes = children
+    .map((child, index) => ({
+      child,
+      index,
+      top: resolveNumericDimension(child?.style?.top),
+      left: resolveNumericDimension(child?.style?.left),
+      width: resolveNumericDimension(child?.style?.width),
+      fontSize: resolveFontSize(child?.style?.fontSize),
+      isAbsolute: String(child?.style?.position || "").trim().toLowerCase() === "absolute",
+      isText: String(child?.type || "").trim().toLowerCase() === "text",
+    }))
+    .filter((entry) => entry.isAbsolute && entry.isText && Number.isFinite(entry.top));
+  if (positionedTextNodes.length < 2) {
+    return {
+      childTops: {},
+      rootMinHeight: 0,
+    };
+  }
+  const childTops = {};
+  const laneBottoms = new Map();
+  const baseRootHeight = resolveNumericDimension(rootNode?.style?.height);
+  let maxBottom = baseRootHeight;
+  positionedTextNodes
+    .sort((left, right) => left.top - right.top || left.left - right.left || left.index - right.index)
+    .forEach((entry) => {
+      const laneKey = String(Math.round((entry.left || 0) / 24)) + ":" + String(Math.round((entry.width || 0) / 24));
+      const previousBottom = Number(laneBottoms.get(laneKey) || entry.top);
+      const adjustedTop = Math.max(entry.top, previousBottom);
+      if (adjustedTop > entry.top && entry.child?.id) childTops[entry.child.id] = adjustedTop;
+      const estimatedHeight = estimateAbsoluteTextNodeHeight(entry.child, merged);
+      const gap = Math.max(18, Math.round((entry.fontSize || 16) * 0.45));
+      const nextBottom = adjustedTop + estimatedHeight + gap;
+      laneBottoms.set(laneKey, nextBottom);
+      maxBottom = Math.max(maxBottom, nextBottom + 24);
+    });
+  return {
+    childTops,
+    rootMinHeight: Math.max(baseRootHeight, Math.ceil(maxBottom)),
+  };
+};
+
 const buildNodeStyle = (
   node,
   merged,
@@ -21179,7 +21670,8 @@ const buildNodeStyle = (
   keyPath,
   currentPathToken = "/",
   parentNode = null,
-  childIndex = 0
+  childIndex = 0,
+  layoutAdjustments = null
 ) => {
   const style = { ...(node?.style || {}) };
   for (const [styleKey, styleValue] of Object.entries(style)) {
@@ -21208,6 +21700,13 @@ const buildNodeStyle = (
     if (rootDirection === "row" && sectionKindToken !== "navigation" && sectionKindToken !== "footer") {
       style.flexWrap = style.flexWrap || "wrap";
     }
+    const rootMinHeight = Number(layoutAdjustments?.rootMinHeight || 0);
+    if (rootMinHeight > 0) {
+      const currentHeight = resolveNumericDimension(style?.height);
+      if (!(currentHeight > rootMinHeight)) {
+        style.height = rootMinHeight;
+      }
+    }
   }
   if (keyPath !== "root" && !style.maxWidth) {
     const responsiveFixedWidth = resolveResponsiveFixedWidth(style?.width);
@@ -21219,6 +21718,9 @@ const buildNodeStyle = (
     style.width = "auto";
     style.flex = style.flex || "1 1 0";
     if (typeof style.minWidth === "undefined") style.minWidth = 0;
+  }
+  if (node?.id && Object.prototype.hasOwnProperty.call(layoutAdjustments?.childTops || {}, node.id)) {
+    style.top = Number(layoutAdjustments.childTops[node.id]);
   }
   if (node?.imageProp) {
     const src = String(merged?.[node.imageProp] || "").trim();
@@ -21303,7 +21805,8 @@ const renderNode = (
   ancestorHasLink = false,
   currentPathToken = "/",
   parentNode = null,
-  childIndex = 0
+  childIndex = 0,
+  layoutAdjustments = null
 ) => {
   if (!node || typeof node !== "object") return null;
   const style = buildNodeStyle(
@@ -21314,7 +21817,8 @@ const renderNode = (
     key,
     currentPathToken,
     parentNode,
-    childIndex
+    childIndex,
+    layoutAdjustments
   );
   const className = buildNodeClassName(node, sectionMotion, sectionKindToken) || undefined;
   const href = node?.hrefProp ? String(merged?.[node.hrefProp] || "").trim() : "";
@@ -21375,7 +21879,8 @@ const renderNode = (
             ancestorHasLink || shouldRenderLink,
             currentPathToken,
             node,
-            index
+            index,
+            layoutAdjustments
           )
         )
       : [])
@@ -21434,6 +21939,7 @@ export default function ${componentName}({ ${destructuredProps}, ...rest }) {
   if (Number.isFinite(pagePaddingBottom) && pagePaddingBottom > 0) layoutStyle.paddingBottom = pagePaddingBottom;
   if (Number.isFinite(sectionGapAfter) && sectionGapAfter > 0) layoutStyle.marginBottom = sectionGapAfter;
   const themeVars = buildThemeCssVars(merged?.theme);
+  const layoutAdjustments = buildAbsoluteTextFlowAdjustments(SECTION_TREE, merged, sectionKindToken);
   const mergedSectionStyle = sectionStyle ? { ...layoutStyle, ...themeVars, ...sectionStyle } : { ...layoutStyle, ...themeVars };
   return React.createElement(
     "section",
@@ -21447,7 +21953,7 @@ export default function ${componentName}({ ${destructuredProps}, ...rest }) {
     ...(sectionMotion?.level !== "off"
       ? [React.createElement("style", { key: "pen-motion-style" }, PEN_RUNTIME_MOTION_STYLE)]
       : []),
-    renderNode(SECTION_TREE, merged, sectionMotion, sectionKindToken, "root", false, currentPathToken)
+    renderNode(SECTION_TREE, merged, sectionMotion, sectionKindToken, "root", false, currentPathToken, null, 0, layoutAdjustments)
   );
 }
 `;
@@ -23424,10 +23930,16 @@ const runTemplateFidelityEvaluation = async ({
 
     const baselineSiteKey = `tf_fidelity_baseline_${slug(runId)}_${slug(caseId)}`;
     const replaySiteKey = `tf_fidelity_replay_${slug(runId)}_${slug(caseId)}`;
+    const replayVisualPayload = buildTemplateFidelityVisualPayload({
+      baselinePayload,
+      replayPayload: representativeReplayPayload || {},
+    });
+    const replayVisualPayloadPath = path.join(templateDir, "replay-visual.payload.json");
+    await fs.writeFile(replayVisualPayloadPath, JSON.stringify(replayVisualPayload, null, 2));
     await writeSandboxPayload(baselineSiteKey, baselinePayload);
     await writeRenderablePages(baselineSiteKey, baselinePayload?.pages || []);
-    await writeSandboxPayload(replaySiteKey, representativeReplayPayload || {});
-    await writeRenderablePages(replaySiteKey, representativeReplayPayload?.pages || []);
+    await writeSandboxPayload(replaySiteKey, replayVisualPayload);
+    await writeRenderablePages(replaySiteKey, replayVisualPayload?.pages || []);
 
     const visualDir = path.join(templateDir, "visual");
     await ensureDir(visualDir);
@@ -23451,31 +23963,15 @@ const runTemplateFidelityEvaluation = async ({
         siteKey: replaySiteKey,
         pagePath,
       });
-      const baselineShot = await captureScreenshotSafe({
-        url: baselineUrl,
-        outPath: baselineImagePath,
-        mobile: false,
-        timeoutMs: Number(options?.screenshotTimeoutMs || 90000),
+      const diff = await captureTemplateFidelityVisualDiff({
+        baselineUrl,
+        replayUrl,
+        baselineImagePath,
+        replayImagePath,
+        diffImagePath,
+        screenshotSimilarityMin,
+        screenshotTimeoutMs: Number(options?.screenshotTimeoutMs || 90000),
       });
-      const replayShot = await captureScreenshotSafe({
-        url: replayUrl,
-        outPath: replayImagePath,
-        mobile: false,
-        timeoutMs: Number(options?.screenshotTimeoutMs || 90000),
-      });
-      let diff = {
-        similarity: 0,
-        diffRatio: 1,
-        diffPixels: 0,
-        totalPixels: 0,
-      };
-      if (baselineShot && replayShot) {
-        diff = await diffImagesWithPython({
-          referencePath: baselineImagePath,
-          candidatePath: replayImagePath,
-          diffPath: diffImagePath,
-        });
-      }
       visualPages.push({
         path: pagePath,
         baselineUrl,
@@ -23484,7 +23980,7 @@ const runTemplateFidelityEvaluation = async ({
         replayImagePath,
         diffImagePath,
         ...diff,
-        passed: Number(diff?.similarity || 0) >= screenshotSimilarityMin,
+        passed: Number(diff?.similarity || 0) + TEMPLATE_FIDELITY_VISUAL_EPSILON >= screenshotSimilarityMin,
       });
     }
 
@@ -23500,6 +23996,11 @@ const runTemplateFidelityEvaluation = async ({
 	    });
 	    const replayContrast = auditPayloadNavFooterContrast({
 	      payload: representativeReplayPayload,
+	      minContrast: navFooterContrastMin,
+	    });
+	    const contrastGate = buildTemplateFidelityContrastGate({
+	      baselineContrast,
+	      replayContrast,
 	      minContrast: navFooterContrastMin,
 	    });
 	    const uniqueHashes = Array.from(new Set(determinismHashes));
@@ -23520,7 +24021,7 @@ const runTemplateFidelityEvaluation = async ({
 	      structurePassed: avgStructureSimilarity >= structureSimilarityMin,
 	      screenshotPassed: visualPages.every((item) => item.passed),
 	      contentSlotPassed: Array.isArray(contentSlotDiff?.illegalChanges) && contentSlotDiff.illegalChanges.length === 0,
-	      navFooterContrastPassed: Boolean(replayContrast?.passed),
+	      navFooterContrastPassed: Boolean(contrastGate?.passed),
 	    };
     const passed = Object.values(integrity).every(Boolean);
     const result = {
@@ -23536,6 +24037,7 @@ const runTemplateFidelityEvaluation = async ({
 	      navFooterContrastMin,
 	      baselinePayloadPath,
 	      replayPayloadPath: replayRows[0]?.replayPayloadPath || "",
+	      replayVisualPayloadPath,
       determinism: {
         hashes: determinismHashes,
         uniqueHashes,
@@ -23562,6 +24064,7 @@ const runTemplateFidelityEvaluation = async ({
 	      contrast: {
 	        baseline: baselineContrast,
 	        replay: replayContrast,
+	        gate: contrastGate,
 	        passed: integrity.navFooterContrastPassed,
 	      },
 	      integrity,

@@ -24,83 +24,84 @@ import {
 const SECTION_KIND = "hero";
 const SECTION_TREE = {
   "type": "frame",
-  "id": "7QIe5",
-  "name": "hero",
+  "id": "Y04xI",
+  "name": "Hero",
   "style": {
     "boxSizing": "border-box",
-    "width": 1440,
-    "height": 615,
-    "background": "#000000",
+    "width": "100%",
+    "height": 610,
+    "background": "#d9e2e8",
     "position": "relative",
     "overflow": "hidden"
   },
   "children": [
     {
+      "type": "rectangle",
+      "id": "x4vge",
+      "name": "heroBg",
+      "style": {
+        "boxSizing": "border-box",
+        "width": 1440,
+        "height": 610,
+        "backgroundRepeat": "no-repeat",
+        "backgroundPosition": "center",
+        "backgroundSize": "cover",
+        "position": "absolute",
+        "left": 0,
+        "top": 0
+      },
+      "children": [],
+      "imageProp": "herobgimagesrc"
+    },
+    {
       "type": "text",
-      "id": "fZ8xi",
+      "id": "paRA0",
       "name": "heroTitle",
       "style": {
         "boxSizing": "border-box",
         "margin": 0,
         "whiteSpace": "pre-line",
-        "color": "#FFFFFF",
+        "color": "#ef2e56",
         "fontFamily": "Inter",
-        "fontSize": 90,
-        "fontWeight": "500",
-        "lineHeight": 1.1,
-        "width": 520,
+        "fontSize": 56,
+        "fontWeight": "normal",
+        "lineHeight": 1.05,
+        "width": 531,
         "position": "absolute",
-        "left": 36,
-        "top": 161
+        "left": 748,
+        "top": 88
       },
       "children": [],
       "textProp": "herotitletext"
     },
     {
       "type": "text",
-      "id": "L0JNk",
-      "name": "heroDesc",
+      "id": "YXTnh",
+      "name": "heroSub",
       "style": {
         "boxSizing": "border-box",
         "margin": 0,
         "whiteSpace": "pre-line",
-        "color": "#ffffff",
+        "color": "#000000",
         "fontFamily": "Inter",
-        "fontSize": 26,
-        "fontWeight": "500",
-        "lineHeight": 1.35,
-        "width": 490,
+        "fontSize": 16,
+        "fontWeight": "normal",
+        "lineHeight": 1.48,
+        "width": 531,
         "position": "absolute",
-        "left": 36,
-        "top": 423
+        "left": 748,
+        "top": 318
       },
       "children": [],
-      "textProp": "herodesctext"
-    },
-    {
-      "type": "ellipse",
-      "id": "lnGv6",
-      "name": "heroOrb",
-      "style": {
-        "boxSizing": "border-box"
-      },
-      "children": []
-    },
-    {
-      "type": "ellipse",
-      "id": "HAXA5",
-      "name": "orbShadow",
-      "style": {
-        "boxSizing": "border-box"
-      },
-      "children": []
+      "textProp": "herosubtext"
     }
   ]
 };
 const DEFAULT_PROPS = {
-  "id": "7QIe5",
-  "herotitletext": "We all have\na mission",
-  "herodesctext": "Ours is delivering platforms that empower resilient connectivity from anywhere on Earth"
+  "id": "Y04xI",
+  "herobgimagesrc": "https://images.unsplash.com/photo-1666618509094-64d78fa7c61d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMzMTE0OTl8&ixlib=rb-4.1.0&q=80&w=1080",
+  "herotitletext": "Creating innovative\nindustrial solutions for a better life",
+  "herosubtext": "Oerlikon engineers innovative technologies and solutions to give products improved and more desirable functions. Our leading high-tech surface solutions and advanced materials are designed for applications in growing markets, such as the automotive industry, aerospace, energy, the tooling industry and additive manufacturing."
 };
 const DEFAULT_THEME = {
   "mode": "light",
@@ -111,14 +112,14 @@ const DEFAULT_THEME = {
     "Inter"
   ],
   "palette": {
-    "bg": "#FFFFFF",
+    "bg": "#f5f5f5",
     "text": "#FFFFFF",
-    "primary": "#4F77FF",
-    "accent": "#4F77FF",
+    "primary": "#e3000f",
+    "accent": "#e3000f",
     "neutral": "#E5E7EB",
     "textSecondary": "#4B5563"
   },
-  "primaryColor": "#4F77FF",
+  "primaryColor": "#e3000f",
   "layoutRules": {
     "maxWidth": "1400px",
     "sectionPadding": "py-24",
@@ -456,6 +457,96 @@ const shouldConvertRowFillToFlex = (parentNode, childIndex, style) => {
   });
 };
 
+const resolveTextLineHeightMultiplier = (value) => {
+  if (typeof value === "number" && Number.isFinite(value) && value > 0) return value;
+  if (typeof value === "string") {
+    const parsed = Number.parseFloat(value);
+    if (Number.isFinite(parsed) && parsed > 0) return parsed;
+  }
+  return 1.2;
+};
+
+const estimateAbsoluteTextNodeHeight = (node, merged) => {
+  if (String(node?.type || "").trim().toLowerCase() !== "text") return 0;
+  const textValue = String(merged?.[node?.textProp] ?? "").trim();
+  if (!textValue) return 0;
+  const width = Math.max(120, resolveNumericDimension(node?.style?.width) || 0);
+  const fontSize = Math.max(14, resolveFontSize(node?.style?.fontSize) || 0);
+  const lineHeightMultiplier = resolveTextLineHeightMultiplier(node?.style?.lineHeight);
+  const approxCharsPerLine = Math.max(6, Math.floor(width / Math.max(7, fontSize * 0.58)));
+  const countWrappedLines = (lineText) => {
+    const words = String(lineText || "").split(/s+/).filter(Boolean);
+    if (!words.length) return 1;
+    let lines = 1;
+    let current = words[0];
+    for (let index = 1; index < words.length; index += 1) {
+      const candidate = current + " " + words[index];
+      if (candidate.length > approxCharsPerLine) {
+        lines += 1;
+        current = words[index];
+      } else {
+        current = candidate;
+      }
+    }
+    const longestToken = words.reduce((max, token) => Math.max(max, token.length), 0);
+    return Math.max(lines, Math.ceil(longestToken / approxCharsPerLine));
+  };
+  const lines = String(textValue)
+    .split(/
++/)
+    .reduce((total, lineText) => total + countWrappedLines(lineText), 0);
+  return Math.max(fontSize * lineHeightMultiplier, lines * fontSize * lineHeightMultiplier);
+};
+
+const buildAbsoluteTextFlowAdjustments = (rootNode, merged, sectionKindToken) => {
+  if (sectionKindToken !== "hero") {
+    return {
+      childTops: {},
+      rootMinHeight: 0,
+    };
+  }
+  const children = Array.isArray(rootNode?.children) ? rootNode.children : [];
+  const positionedTextNodes = children
+    .map((child, index) => ({
+      child,
+      index,
+      top: resolveNumericDimension(child?.style?.top),
+      left: resolveNumericDimension(child?.style?.left),
+      width: resolveNumericDimension(child?.style?.width),
+      fontSize: resolveFontSize(child?.style?.fontSize),
+      isAbsolute: String(child?.style?.position || "").trim().toLowerCase() === "absolute",
+      isText: String(child?.type || "").trim().toLowerCase() === "text",
+    }))
+    .filter((entry) => entry.isAbsolute && entry.isText && Number.isFinite(entry.top));
+  if (positionedTextNodes.length < 2) {
+    return {
+      childTops: {},
+      rootMinHeight: 0,
+    };
+  }
+  const childTops = {};
+  const laneBottoms = new Map();
+  const baseRootHeight = resolveNumericDimension(rootNode?.style?.height);
+  let maxBottom = baseRootHeight;
+  positionedTextNodes
+    .sort((left, right) => left.top - right.top || left.left - right.left || left.index - right.index)
+    .forEach((entry) => {
+      const laneKey = String(Math.round((entry.left || 0) / 24)) + ":" + String(Math.round((entry.width || 0) / 24));
+      const previousBottom = Number(laneBottoms.get(laneKey) || entry.top);
+      const adjustedTop = Math.max(entry.top, previousBottom);
+      if (adjustedTop > entry.top && entry.child?.id) childTops[entry.child.id] = adjustedTop;
+      const estimatedHeight = estimateAbsoluteTextNodeHeight(entry.child, merged);
+      const gap = Math.max(18, Math.round((entry.fontSize || 16) * 0.45));
+      const nextBottom = adjustedTop + estimatedHeight + gap;
+      laneBottoms.set(laneKey, nextBottom);
+      maxBottom = Math.max(maxBottom, nextBottom + 24);
+    });
+  return {
+    childTops,
+    rootMinHeight: Math.max(baseRootHeight, Math.ceil(maxBottom)),
+  };
+};
+
 const buildNodeStyle = (
   node,
   merged,
@@ -464,7 +555,8 @@ const buildNodeStyle = (
   keyPath,
   currentPathToken = "/",
   parentNode = null,
-  childIndex = 0
+  childIndex = 0,
+  layoutAdjustments = null
 ) => {
   const style = { ...(node?.style || {}) };
   for (const [styleKey, styleValue] of Object.entries(style)) {
@@ -493,6 +585,13 @@ const buildNodeStyle = (
     if (rootDirection === "row" && sectionKindToken !== "navigation" && sectionKindToken !== "footer") {
       style.flexWrap = style.flexWrap || "wrap";
     }
+    const rootMinHeight = Number(layoutAdjustments?.rootMinHeight || 0);
+    if (rootMinHeight > 0) {
+      const currentHeight = resolveNumericDimension(style?.height);
+      if (!(currentHeight > rootMinHeight)) {
+        style.height = rootMinHeight;
+      }
+    }
   }
   if (keyPath !== "root" && !style.maxWidth) {
     const responsiveFixedWidth = resolveResponsiveFixedWidth(style?.width);
@@ -504,6 +603,9 @@ const buildNodeStyle = (
     style.width = "auto";
     style.flex = style.flex || "1 1 0";
     if (typeof style.minWidth === "undefined") style.minWidth = 0;
+  }
+  if (node?.id && Object.prototype.hasOwnProperty.call(layoutAdjustments?.childTops || {}, node.id)) {
+    style.top = Number(layoutAdjustments.childTops[node.id]);
   }
   if (node?.imageProp) {
     const src = String(merged?.[node.imageProp] || "").trim();
@@ -588,7 +690,8 @@ const renderNode = (
   ancestorHasLink = false,
   currentPathToken = "/",
   parentNode = null,
-  childIndex = 0
+  childIndex = 0,
+  layoutAdjustments = null
 ) => {
   if (!node || typeof node !== "object") return null;
   const style = buildNodeStyle(
@@ -599,7 +702,8 @@ const renderNode = (
     key,
     currentPathToken,
     parentNode,
-    childIndex
+    childIndex,
+    layoutAdjustments
   );
   const className = buildNodeClassName(node, sectionMotion, sectionKindToken) || undefined;
   const href = node?.hrefProp ? String(merged?.[node.hrefProp] || "").trim() : "";
@@ -660,18 +764,19 @@ const renderNode = (
             ancestorHasLink || shouldRenderLink,
             currentPathToken,
             node,
-            index
+            index,
+            layoutAdjustments
           )
         )
       : [])
   );
 };
 
-export default function TemplateExclusivePenSiteHomeHeroHeropenAlt1({ id, herotitletext, herodesctext, ...rest }) {
+export default function TemplateExclusivePenSiteHomeHeroHeropenAlt1({ id, herobgimagesrc, herotitletext, herosubtext, ...rest }) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const providerMotionMode = useMotionMode();
-  const merged = assignDefined({ ...DEFAULT_PROPS }, { id, herotitletext, herodesctext });
+  const merged = assignDefined({ ...DEFAULT_PROPS }, { id, herobgimagesrc, herotitletext, herosubtext });
   assignDefined(merged, rest);
   const runtimeCurrentPath = resolveRuntimeCurrentPath(merged, pathname, searchParams);
   const currentPathToken = normalizeNavPath(runtimeCurrentPath || "/");
@@ -719,6 +824,7 @@ export default function TemplateExclusivePenSiteHomeHeroHeropenAlt1({ id, heroti
   if (Number.isFinite(pagePaddingBottom) && pagePaddingBottom > 0) layoutStyle.paddingBottom = pagePaddingBottom;
   if (Number.isFinite(sectionGapAfter) && sectionGapAfter > 0) layoutStyle.marginBottom = sectionGapAfter;
   const themeVars = buildThemeCssVars(merged?.theme);
+  const layoutAdjustments = buildAbsoluteTextFlowAdjustments(SECTION_TREE, merged, sectionKindToken);
   const mergedSectionStyle = sectionStyle ? { ...layoutStyle, ...themeVars, ...sectionStyle } : { ...layoutStyle, ...themeVars };
   return React.createElement(
     "section",
@@ -732,6 +838,6 @@ export default function TemplateExclusivePenSiteHomeHeroHeropenAlt1({ id, heroti
     ...(sectionMotion?.level !== "off"
       ? [React.createElement("style", { key: "pen-motion-style" }, PEN_RUNTIME_MOTION_STYLE)]
       : []),
-    renderNode(SECTION_TREE, merged, sectionMotion, sectionKindToken, "root", false, currentPathToken)
+    renderNode(SECTION_TREE, merged, sectionMotion, sectionKindToken, "root", false, currentPathToken, null, 0, layoutAdjustments)
   );
 }

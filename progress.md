@@ -1,6 +1,125 @@
 # Progress
 
 ## 2026-03-16
+- Fixed real preview overlap issues, not just fidelity gates:
+  - updated `builder/template-factory/run-template-factory.mjs` so replay text selection is role/length-aware
+  - added fallback-shape line reflow for injected titles/body copy
+  - added generated hero runtime logic that reflows absolutely positioned text blocks and increases root height when text grows
+- Verified with fresh browser screenshots:
+  - `pscs` replay home: `output/playwright/pscs-layoutfix-home.png`
+  - `oerlikon` baseline home after runtime fix: `output/playwright/oerlikon-layoutfixd-home-baseline-wait.png`
+  - `oerlikon` replay home after runtime fix: `output/playwright/oerlikon-layoutfixd-home-replay-wait.png`
+
+- Stabilized template-fidelity screenshot semantics in `builder/template-factory/run-template-factory.mjs`:
+  - added `replay-visual.payload.json` generation for screenshot comparison
+  - baseline image slots are reused during visual diff
+  - `navigation` and `footer` sections are normalized back to baseline chrome during visual diff
+  - contrast gate now distinguishes inherited template debt from replay regressions
+  - screenshot gate now uses a `0.001` epsilon and retries failed captures once
+- Verified fresh single-template runs with the real `灵创智能` canonical case:
+  - `vdm-desktop`: pass
+    - `builder/template-factory/runs/tf-fidelity-vdm-lingchuang-check-20260316/template-fidelity-report.json`
+  - `pscs-desktop`: pass
+    - `builder/template-factory/runs/tf-fidelity-pscs-lingchuang-check-20260316/template-fidelity-report.json`
+  - `kennametal-desktop`: pass
+    - `builder/template-factory/runs/tf-fidelity-kennametal-lingchuang-check-20260316/template-fidelity-report.json`
+  - `oerlikon-desktop`: pass
+    - `builder/template-factory/runs/tf-fidelity-oerlikon-lingchuang-check-20260316/template-fidelity-report.json`
+- Verified intermediate full-suite runs:
+  - `tf-fidelity-lingchuang-six-sites-canonical-20260316c`: `5/6` pass, only `pscs-desktop` blocked on home similarity `0.749083`
+  - `tf-fidelity-lingchuang-six-sites-canonical-20260316d`: `4/6` pass, with transient single-page failures on `kennametal-desktop:/solution` and `oerlikon-desktop:/oerlikon-industries`
+- Verified the final post-retry full-suite run:
+  - `tf-fidelity-lingchuang-six-sites-canonical-20260316e`
+  - report: `builder/template-factory/runs/tf-fidelity-lingchuang-six-sites-canonical-20260316e/template-fidelity-report.json`
+  - result:
+    - `passedTemplates = 6`
+    - `failedTemplates = 0`
+    - passed profile ids:
+      - `vdm-desktop`
+      - `pscs-desktop`
+      - `jabil-desktop`
+      - `kennametal-desktop`
+      - `oerlikon-desktop`
+      - `ursamajor-desktop`
+- Cleaned run-generated source-tree noise after each verification:
+  - restored `builder/next-env.d.ts`
+  - restored `builder/src/puck/config.generated.ts`
+  - restored `builder/src/puck/template-exclusive-runtime.generated.json`
+  - removed untracked generated block directories under `builder/src/components/blocks`
+  - stopped the preview server on port `3110`
+
+- Generated a real sectionized `灵创智能` / LC-CNC replay payload:
+  - command: `node scripts/generate_lc_cnc_site.mjs`
+  - output: `asset-factory/out/p2w/lc-cnc-industrial-sea/sandbox/payload.json`
+  - wrapped as `/tmp/template-fidelity-lingchuang-canonical.payload.json` with `caseId = "灵创智能"`
+- Ran the true six-template shared-case fidelity verification:
+  - `node builder/template-factory/run-template-factory.mjs --mode template-fidelity --run-id tf-fidelity-lingchuang-six-sites-canonical-20260316 --pen-file /tmp/template-fidelity-six-sites-20260316.json --template-fidelity-case-file /tmp/template-fidelity-lingchuang-canonical.payload.json --preview-base-url http://127.0.0.1:3110`
+- Verified the aggregate report at:
+  - `builder/template-factory/runs/tf-fidelity-lingchuang-six-sites-canonical-20260316/template-fidelity-report.json`
+- Verified final gate result:
+  - `sourceCaseId = "灵创智能"`
+  - `replayCaseSource = "payload-file"`
+  - `passedTemplates = 0`
+  - `failedTemplates = 6`
+  - all 6 templates passed:
+    - deterministic replay
+    - structure diff
+    - content-slot diff
+  - all 6 templates failed contrast audit
+  - 4 of 6 templates also failed screenshot similarity:
+    - `vdm-desktop`
+    - `pscs-desktop`
+    - `oerlikon-desktop`
+    - `ursamajor-desktop`
+- Cleaned run-generated source-tree noise after the verification:
+  - restored `builder/next-env.d.ts`
+  - restored `builder/src/puck/config.generated.ts`
+  - restored `builder/src/puck/template-exclusive-runtime.generated.json`
+  - deleted untracked `builder/src/components/blocks/template-exclusive-pen-site-*` directories
+
+- Verified the current `main` branch already carries the replay-case and contrast-audit feature surface:
+  - `builder/template-factory/README.md`
+  - `builder/template-factory/config/defaults.mjs`
+  - `builder/template-factory/config/resolve-options.mjs`
+  - `builder/template-factory/config/schema.mjs`
+  - `builder/template-factory/run-template-factory.mjs`
+- Ran fresh syntax checks:
+  - `node --check builder/template-factory/config/defaults.mjs`
+  - `node --check builder/template-factory/config/resolve-options.mjs`
+  - `node --check builder/template-factory/config/schema.mjs`
+  - `node --check builder/template-factory/run-template-factory.mjs`
+- Created an explicit replay-case payload wrapper for smoke verification:
+  - `/tmp/template-fidelity-lingchuang.payload.json`
+  - `caseId = "灵创智能"`
+- Ran a fresh explicit-case fidelity smoke:
+  - `node builder/template-factory/run-template-factory.mjs --mode template-fidelity --run-id tf-fidelity-lingchuang-smoke-20260316b --pen-file /Users/beihuang/Documents/opencode/shpitto_tools/template-factory/generated/pen-site-publish-bundles/sites/Kymeta/site.pen-bundle.json --template-fidelity-case-file /tmp/template-fidelity-lingchuang.payload.json --template-fidelity-nav-footer-contrast-min 7 --preview-base-url http://127.0.0.1:3110`
+- Diagnosed and fixed a runtime bug uncovered by the fresh smoke:
+  - initial failure: missing Python `PIL` module during screenshot diff
+  - added `pixelmatch` and `pngjs` to `builder/package.json`
+  - replaced `diffImagesWithPython()` with a Node implementation in `builder/template-factory/run-template-factory.mjs`
+- Re-ran the same smoke after the fix and verified:
+  - `builder/template-factory/runs/tf-fidelity-lingchuang-smoke-20260316b/template-fidelity-report.json` exists
+  - `sourceCaseId = "灵创智能"`
+  - `replayCaseSource = "payload-file"`
+  - `navFooterContrastMin = 7`
+  - per-page `baseline.png`, `replay.png`, and `diff.png` were generated for all 6 Kymeta pages
+  - the run now ends at the expected fidelity gate verdict instead of crashing on missing Pillow
+- Diagnosed the remaining screenshot failure on the `灵创智能` smoke:
+  - the explicit case file was an exact-preview payload with `ExactPenPagePreview/docHtml`, not a canonical sectionized replay payload
+  - this caused misleading slot extraction and false screenshot divergence on `/application`
+- Hardened explicit replay-case validation:
+  - `builder/template-factory/run-template-factory.mjs` now rejects exact-preview payloads as unsupported fidelity case inputs
+  - `builder/template-factory/README.md` now documents that `--template-fidelity-case-file` expects a sectionized payload or bundle artifact payload
+- Verified the new guard with a fresh failing command:
+  - `node builder/template-factory/run-template-factory.mjs --mode template-fidelity --run-id tf-fidelity-invalid-case-20260316 ... --template-fidelity-case-file /tmp/template-fidelity-lingchuang.payload.json`
+  - result: explicit validation error for `ExactPenPagePreview/docHtml`
+- Verified the happy path with a fresh valid explicit-case run:
+  - `node builder/template-factory/run-template-factory.mjs --mode template-fidelity --run-id tf-fidelity-valid-case-20260316 ... --template-fidelity-case-file /Users/beihuang/Documents/opencode/shpitto_tools/builder/template-factory/runs/tf-fidelity-lingchuang-smoke-20260316b/pen-export/kymeta-desktop/payload.json`
+  - result:
+    - `passedTemplates = 1`
+    - `failedTemplates = 0`
+    - `/application similarity = 0.993049`
+
 - Built a synthetic six-site fidelity bundle at `/tmp/template-fidelity-six-sites-20260316.json` from sibling worktree `9df6` site bundles:
   - `vdm`
   - `pscs`

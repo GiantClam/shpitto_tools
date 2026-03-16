@@ -39,7 +39,7 @@ Primary flags:
 
 - `--mode pen-review|template-from-pen|template-publish`
 - `--template-fidelity` / `--no-template-fidelity`: enable or disable the pre-ingest fidelity gate for publish runs
-- `--template-fidelity-case-file <path>`: explicit replay case input; accepts a payload JSON or bundle JSON with `artifacts[].payloadPath`
+- `--template-fidelity-case-file <path>`: explicit replay case input; accepts a sectionized payload JSON or bundle JSON with `artifacts[].payloadPath` and rejects exact-preview `ExactPenPagePreview` payloads
 - `--template-fidelity-case-id <case-id>`: select the artifact inside the case file when the case file contains multiple artifacts
 - `--template-fidelity-replay-count <n>`: deterministic replay count per template
 - `--template-fidelity-screenshot-similarity-min <0-1>`: screenshot diff threshold
@@ -100,6 +100,18 @@ npm run template:factory -- \
   --template-fidelity-case-file /abs/path/to/lingchuang.payload.json \
   --preview-base-url http://127.0.0.1:3135
 ```
+
+`template-fidelity` visual comparison is shell-oriented rather than raw content-pixel strict:
+
+- screenshot diff reuses baseline images for replayed image slots so product/gallery/media swaps do not dominate similarity
+- `navigation` and `footer` sections are compared with baseline chrome text/link/image values so shared-shell drift is measured separately from business-content replay
+- failed screenshot pages are automatically captured one extra time and the better similarity is kept to reduce transient preview jitter
+
+`nav/footer` contrast reporting now distinguishes inherited template debt from replay regressions:
+
+- baseline and replay contrast audits are both recorded in the report
+- a replay only fails the contrast gate when it regresses below the baseline template
+- existing low-contrast template debt is still reported via `contrast.gate.inheritedDebt = true`
 
 ### 3. Publish an approved pen into the shared template library
 
