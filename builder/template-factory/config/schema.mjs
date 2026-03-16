@@ -73,6 +73,7 @@ const normalizeTemplateFactoryMode = (value) => {
   const token = String(value || "").trim().toLowerCase();
   if (token === "pen-build" || token === "pen_build") return "pen-build";
   if (token === "pen-review" || token === "pen_review") return "pen-review";
+  if (token === "template-fidelity" || token === "template_fidelity") return "template-fidelity";
   if (token === "template-from-pen" || token === "template_from_pen") return "template-publish";
   return "template-publish";
 };
@@ -110,6 +111,12 @@ export const normalizeTemplateFactoryOptions = (input, context = {}) => {
       ? penFileRaw
       : path.resolve(root, penFileRaw)
     : "";
+  const templateFidelityCaseFileRaw = String(input?.templateFidelityCaseFile || "").trim();
+  const templateFidelityCaseFile = templateFidelityCaseFileRaw
+    ? path.isAbsolute(templateFidelityCaseFileRaw)
+      ? templateFidelityCaseFileRaw
+      : path.resolve(root, templateFidelityCaseFileRaw)
+    : "";
   const penReviewFileRaw = String(input?.penReviewFile || "").trim();
   const penReviewFile = penReviewFileRaw
     ? path.isAbsolute(penReviewFileRaw)
@@ -119,6 +126,25 @@ export const normalizeTemplateFactoryOptions = (input, context = {}) => {
 
   const options = {
     mode: normalizeTemplateFactoryMode(input?.mode),
+    templateFidelityEnabled: input?.templateFidelityEnabled !== false,
+    templateFidelityCaseFile,
+    templateFidelityCaseId: String(input?.templateFidelityCaseId || "").trim(),
+    templateFidelityReplayCount: clampInt(input?.templateFidelityReplayCount, { min: 1, max: 5, fallback: 2 }),
+    templateFidelityScreenshotSimilarityMin: clampNumber(input?.templateFidelityScreenshotSimilarityMin, {
+      min: 0,
+      max: 1,
+      fallback: 0.75,
+    }),
+    templateFidelityStructureSimilarityMin: clampNumber(input?.templateFidelityStructureSimilarityMin, {
+      min: 0,
+      max: 1,
+      fallback: 0.8,
+    }),
+    templateFidelityNavFooterContrastMin: clampNumber(input?.templateFidelityNavFooterContrastMin, {
+      min: 1,
+      max: 21,
+      fallback: 4.5,
+    }),
     penFile,
     penReviewFile,
     penReviewStatus: normalizePenReviewStatus(input?.penReviewStatus),
@@ -234,6 +260,11 @@ export const normalizeTemplateFactoryOptions = (input, context = {}) => {
     options.gateMinSiteVisualSimilarity = 0;
     options.gateRequireKeyFlowIntegrity = false;
     options.fastMode = options.homeOnlyEval ? options.fastMode : true;
+  }
+
+  if (options.mode === "template-fidelity") {
+    options.publish = false;
+    options.launchPreviewServer = true;
   }
 
   return options;

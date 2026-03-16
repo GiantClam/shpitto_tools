@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import fs from "node:fs/promises";
+import { createHash } from "node:crypto";
 import path from "node:path";
 import process from "node:process";
 import { spawn } from "node:child_process";
@@ -6061,6 +6062,671 @@ const captureScreenshotSafe = async ({ url, outPath, mobile, timeoutMs = 90000 }
   } catch {
     return null;
   }
+};
+
+const sha256Json = (value) =>
+  createHash("sha256")
+    .update(JSON.stringify(value ?? null))
+    .digest("hex");
+
+const pagePathToParam = (pagePath = "/") => {
+  const normalized = normalizeTemplatePagePath(pagePath || "/");
+  return normalized === "/" ? "home" : normalized;
+};
+
+const renderPreviewUrlForPayload = ({ previewBaseUrl = DEFAULT_PREVIEW_BASE_URL, siteKey = "", pagePath = "/" } = {}) =>
+  `${normalizePreviewBaseUrl(previewBaseUrl)}/creation/sandbox?mode=preview&siteKey=${encodeURIComponent(
+    String(siteKey || "").trim()
+  )}&page=${encodeURIComponent(pagePathToParam(pagePath))}`;
+
+const writeRenderablePage = async (siteKey, pagePath, pageData) => {
+  const pageDir = pagePathToParam(pagePath);
+  const outDir = path.join(ROOT, "..", "asset-factory", "out", siteKey, "pages", pageDir);
+  await fs.mkdir(outDir, { recursive: true });
+  await fs.writeFile(path.join(outDir, "page.json"), JSON.stringify(pageData, null, 2));
+};
+
+const writeRenderablePages = async (siteKey, pages = []) => {
+  for (const page of Array.isArray(pages) ? pages : []) {
+    const pagePath = normalizeTemplatePagePath(page?.path || "/");
+    await writeRenderablePage(siteKey, pagePath, page?.data || {});
+  }
+};
+
+const writeSandboxPayload = async (siteKey, payload = {}) => {
+  const outDir = path.join(ROOT, "..", "asset-factory", "out", siteKey, "sandbox");
+  await fs.mkdir(outDir, { recursive: true });
+  const nextPayload = {
+    components: Array.isArray(payload?.components) ? payload.components : [],
+    pages: Array.isArray(payload?.pages) ? payload.pages : [],
+    theme: payload?.theme && typeof payload.theme === "object" ? payload.theme : {},
+  };
+  await fs.writeFile(path.join(outDir, "payload.json"), JSON.stringify(nextPayload, null, 2));
+};
+
+const diffImagesWithPython = async ({ referencePath = "", candidatePath = "", diffPath = "" } = {}) => {
+  const script = `python3 - <<'PY'
+from PIL import Image, ImageChops
+import json
+import os
+
+ref = ${JSON.stringify(referencePath)}
+cand = ${JSON.stringify(candidatePath)}
+diff_path = ${JSON.stringify(diffPath)}
+
+ref_img = Image.open(ref).convert("RGBA")
+cand_img = Image.open(cand).convert("RGBA")
+width = max(ref_img.width, cand_img.width)
+height = max(ref_img.height, cand_img.height)
+
+def pad(image):
+    canvas = Image.new("RGBA", (width, height), (255, 255, 255, 0))
+    canvas.paste(image, (0, 0))
+    return canvas
+
+ref_pad = pad(ref_img)
+cand_pad = pad(cand_img)
+diff = ImageChops.difference(ref_pad, cand_pad)
+os.makedirs(os.path.dirname(diff_path), exist_ok=True)
+diff.save(diff_path)
+
+bbox = diff.getbbox()
+diff_pixels = 0
+if bbox:
+    for pixel in diff.getdata():
+        if pixel != (0, 0, 0, 0):
+            diff_pixels += 1
+
+total = max(1, width * height)
+diff_ratio = diff_pixels / total
+print(json.dumps({
+    "width": width,
+    "height": height,
+    "diffPixels": diff_pixels,
+    "totalPixels": total,
+    "diffRatio": round(diff_ratio, 6),
+    "similarity": round(1 - diff_ratio, 6)
+}))
+PY`;
+  const { stdout } = await runShell(script, { cwd: ROOT });
+  return parseJsonLine(stdout) || {
+    width: 0,
+    height: 0,
+    diffPixels: 0,
+    totalPixels: 0,
+    diffRatio: 1,
+    similarity: 0,
+  };
+};
+
+const mergeSlotPools = (target = {}, source = {}) => ({
+  text: [...(Array.isArray(target?.text) ? target.text : []), ...(Array.isArray(source?.text) ? source.text : [])],
+  image: [...(Array.isArray(target?.image) ? target.image : []), ...(Array.isArray(source?.image) ? source.image : [])],
+  link: [...(Array.isArray(target?.link) ? target.link : []), ...(Array.isArray(source?.link) ? source.link : [])],
+});
+
+const emptySlotPool = () => ({ text: [], image: [], link: [] });
+
+const TEMPLATE_FIDELITY_SKIP_PATH_RE =
+  /(^|\.)(theme|palette|layoutrules|tokens|fontfamilies|fontheading|fontbody|motion|mode|primarycolor)(\.|$)/i;
+
+const isTemplateFidelityRichMarkup = (value = "") => {
+  const raw = String(value || "").trim();
+  if (!raw) return false;
+  if (raw.length > 20000) return true;
+  return /<!doctype html|<html\b|<head\b|<body\b|<svg\b|<style\b/i.test(raw);
+};
+
+const shouldSkipTemplateFidelitySlotPath = (pathValue = "") => {
+  const normalized = String(pathValue || "").trim().toLowerCase();
+  if (!normalized) return false;
+  return TEMPLATE_FIDELITY_SKIP_PATH_RE.test(normalized);
+};
+
+const extractSlotPoolFromValue = (value, key = "", pool = emptySlotPool(), pathPrefix = "") => {
+  const pathValue = pathPrefix ? `${pathPrefix}.${key}` : key;
+  if (shouldSkipTemplateFidelitySlotPath(pathValue)) {
+    return pool;
+  }
+  if (Array.isArray(value)) {
+    value.forEach((entry, index) => extractSlotPoolFromValue(entry, `[${index}]`, pool, pathValue));
+    return pool;
+  }
+  if (value && typeof value === "object") {
+    Object.entries(value).forEach(([childKey, childValue]) =>
+      extractSlotPoolFromValue(childValue, childKey, pool, pathValue)
+    );
+    return pool;
+  }
+  if (typeof value !== "string" && typeof value !== "number" && typeof value !== "boolean") {
+    return pool;
+  }
+  if (shouldSkipEditableField(key) || isTemplateFidelityRichMarkup(value)) return pool;
+  const fieldType = inferEditableFieldType(key, value);
+  if (!["text", "image", "link"].includes(fieldType)) return pool;
+  const normalized = String(value ?? "").trim();
+  if (!normalized) return pool;
+  pool[fieldType].push(normalized);
+  return pool;
+};
+
+const extractSlotPoolsFromPayload = (payload = {}) => {
+  const globalPool = emptySlotPool();
+  const byKind = new Map();
+  const pages = Array.isArray(payload?.pages) ? payload.pages : [];
+  for (const page of pages) {
+    const content = Array.isArray(page?.data?.content) ? page.data.content : [];
+    for (const section of content) {
+      const kind = normalizeSectionKind(inferSectionKindFromPayloadSection(section) || "generic") || "generic";
+      const sectionPool = byKind.get(kind) || emptySlotPool();
+      extractSlotPoolFromValue(section?.props && typeof section.props === "object" ? section.props : {}, "", sectionPool);
+      byKind.set(kind, sectionPool);
+      extractSlotPoolFromValue(section?.props && typeof section.props === "object" ? section.props : {}, "", globalPool);
+    }
+  }
+  return { global: globalPool, byKind };
+};
+
+const normalizeTemplateFidelityPayloadDocument = (value = null) => {
+  if (value && typeof value === "object" && Array.isArray(value?.pages)) return value;
+  if (value && typeof value === "object" && value?.payload && Array.isArray(value.payload?.pages)) return value.payload;
+  return null;
+};
+
+const resolveTemplateFidelityCasePath = (candidate = "", baseDir = ROOT) => {
+  const raw = String(candidate || "").trim();
+  if (!raw) return "";
+  return path.isAbsolute(raw) ? raw : path.resolve(baseDir, raw);
+};
+
+const loadTemplateFidelityCaseInput = async ({ options = {}, defaultSource = null } = {}) => {
+  const configuredPath = String(options?.templateFidelityCaseFile || "").trim();
+  const configuredCaseId = String(options?.templateFidelityCaseId || "").trim();
+  if (!configuredPath) {
+    return {
+      source: "bundle-first-artifact",
+      sourceCaseId: String(defaultSource?.artifact?.caseId || "").trim(),
+      caseFile: "",
+      payload: defaultSource?.exported?.payload || {},
+    };
+  }
+  const resolvedPath = resolveTemplateFidelityCasePath(configuredPath, ROOT);
+  const raw = JSON.parse(await fs.readFile(resolvedPath, "utf8"));
+  const directPayload = normalizeTemplateFidelityPayloadDocument(raw);
+  if (directPayload) {
+    return {
+      source: "payload-file",
+      sourceCaseId:
+        configuredCaseId ||
+        String(raw?.caseId || raw?.siteKey || raw?.siteId || "").trim() ||
+        path.basename(resolvedPath, path.extname(resolvedPath)),
+      caseFile: resolvedPath,
+      payload: directPayload,
+    };
+  }
+  const artifacts = Array.isArray(raw?.artifacts)
+    ? raw.artifacts
+    : raw && typeof raw === "object" && (raw?.payloadPath || raw?.caseId)
+      ? [raw]
+      : [];
+  if (!artifacts.length) {
+    throw new Error(
+      `[template-factory] unsupported template fidelity case input: ${resolvedPath}. Expected a payload JSON or bundle JSON with artifacts[].payloadPath.`
+    );
+  }
+  const artifact =
+    artifacts.find((entry) => String(entry?.caseId || "").trim() === configuredCaseId) ||
+    artifacts.find((entry) => String(entry?.siteId || "").trim() === configuredCaseId) ||
+    artifacts[0];
+  const payloadPath = resolveTemplateFidelityCasePath(
+    String(artifact?.payloadPath || artifact?.payloadFile || "").trim(),
+    path.dirname(resolvedPath)
+  );
+  if (!payloadPath) {
+    throw new Error(
+      `[template-factory] template fidelity case input ${resolvedPath} is missing payloadPath for ${configuredCaseId || artifact?.caseId || "selected artifact"}.`
+    );
+  }
+  const payloadRaw = JSON.parse(await fs.readFile(payloadPath, "utf8"));
+  const payload = normalizeTemplateFidelityPayloadDocument(payloadRaw);
+  if (!payload) {
+    throw new Error(`[template-factory] template fidelity case payload is invalid: ${payloadPath}`);
+  }
+  return {
+    source: "bundle-artifact-payload",
+    sourceCaseId:
+      String(artifact?.caseId || "").trim() ||
+      configuredCaseId ||
+      path.basename(payloadPath, path.extname(payloadPath)),
+    caseFile: resolvedPath,
+    payloadPath,
+    payload,
+  };
+};
+
+const TEMPLATE_FIDELITY_BG_KEY_RE = /(background|bg|surface|fill|overlay|panel|canvas)/i;
+const TEMPLATE_FIDELITY_TEXT_KEY_RE =
+  /(text|label|title|subtitle|body|copy|caption|menu|nav|link|item|foreground|fg|icon|legal|meta|color)/i;
+
+const dedupeTemplateFidelityColors = (values = []) =>
+  Array.from(
+    new Set(
+      (Array.isArray(values) ? values : [])
+        .map((entry) => String(entry || "").trim())
+        .filter((entry) => entry && penColorLuminance(entry) && !isPenTransparentColorValue(entry))
+    )
+  );
+
+const collectTemplateFidelityColorHints = (value, key = "", report = null) => {
+  const target =
+    report ||
+    {
+      backgrounds: [],
+      foregrounds: [],
+    };
+  if (Array.isArray(value)) {
+    value.forEach((entry) => collectTemplateFidelityColorHints(entry, key, target));
+    return target;
+  }
+  if (value && typeof value === "object") {
+    Object.entries(value).forEach(([childKey, childValue]) =>
+      collectTemplateFidelityColorHints(childValue, childKey, target)
+    );
+    return target;
+  }
+  const color = String(value || "").trim();
+  if (!color || !penColorLuminance(color) || isPenTransparentColorValue(color)) return target;
+  const token = String(key || "").trim().toLowerCase();
+  if (TEMPLATE_FIDELITY_BG_KEY_RE.test(token) && !/(text|label|title|body|copy|link|fg|foreground|icon)/i.test(token)) {
+    target.backgrounds.push(color);
+    return target;
+  }
+  if (TEMPLATE_FIDELITY_TEXT_KEY_RE.test(token)) {
+    target.foregrounds.push(color);
+  }
+  return target;
+};
+
+const auditPayloadNavFooterContrast = ({ payload = {}, minContrast = 4.5 } = {}) => {
+  const globalTheme = payload?.theme && typeof payload.theme === "object" ? payload.theme : {};
+  const sectionRows = [];
+  const pages = Array.isArray(payload?.pages) ? payload.pages : [];
+  for (const page of pages) {
+    const pagePath = normalizeTemplatePagePath(page?.path || "/");
+    const pageTheme =
+      page?.data?.root?.props?.theme && typeof page.data.root.props.theme === "object"
+        ? page.data.root.props.theme
+        : globalTheme;
+    const palette = pageTheme?.palette && typeof pageTheme.palette === "object" ? pageTheme.palette : {};
+    const sections = Array.isArray(page?.data?.content) ? page.data.content : [];
+    for (const section of sections) {
+      const kind = normalizeSectionKind(inferSectionKindFromPayloadSection(section) || "") || "";
+      if (!["navigation", "footer"].includes(kind)) continue;
+      const hints = collectTemplateFidelityColorHints(section?.props && typeof section.props === "object" ? section.props : {});
+      const backgrounds = dedupeTemplateFidelityColors([palette.bg, palette.neutral, ...hints.backgrounds]);
+      const foregrounds = dedupeTemplateFidelityColors([
+        palette.text,
+        palette.textSecondary,
+        palette.primary,
+        palette.accent,
+        ...hints.foregrounds,
+      ]).filter((color) => !backgrounds.includes(color));
+      const background = backgrounds[0] || "";
+      const evaluatedForegrounds = foregrounds
+        .map((color) => ({
+          color,
+          contrast: Number(penColorContrastRatio(background, color).toFixed(3)),
+        }))
+        .sort((left, right) => left.contrast - right.contrast);
+      const weakest = evaluatedForegrounds[0] || null;
+      sectionRows.push({
+        pagePath,
+        sectionKey: String(section?._key || section?.props?.id || `${kind}-${pagePath}`),
+        kind,
+        background,
+        minimumContrast: weakest ? weakest.contrast : null,
+        weakestForeground: weakest?.color || "",
+        evaluatedForegrounds,
+        passed: weakest ? weakest.contrast >= minContrast : false,
+        reason: weakest ? "" : "insufficient_color_data",
+      });
+    }
+  }
+  const failedSections = sectionRows.filter((row) => !row.passed);
+  const minimumObservedContrast =
+    sectionRows.length > 0
+      ? Number(
+          Math.min(
+            ...sectionRows.map((row) => (Number.isFinite(Number(row.minimumContrast)) ? Number(row.minimumContrast) : Infinity))
+          ).toFixed(3)
+        )
+      : null;
+  return {
+    minContrastThreshold: Number(minContrast),
+    auditedSectionCount: sectionRows.length,
+    failedSectionCount: failedSections.length,
+    minimumObservedContrast:
+      minimumObservedContrast === Infinity || Number.isNaN(minimumObservedContrast) ? null : minimumObservedContrast,
+    sections: sectionRows,
+    passed: failedSections.length === 0,
+  };
+};
+
+const nextSlotValue = ({ fieldType = "", sectionPool = null, globalPool = null, state = null, fallback = "" } = {}) => {
+  const type = String(fieldType || "").trim();
+  const nextFromPool = (pool, scope) => {
+    const values = Array.isArray(pool?.[type]) ? pool[type] : [];
+    if (!values.length) return null;
+    if (!state[scope]) state[scope] = {};
+    const index = Number(state[scope][type] || 0);
+    const next = values[index % values.length];
+    state[scope][type] = index + 1;
+    return next;
+  };
+  return nextFromPool(sectionPool, "section") ?? nextFromPool(globalPool, "global") ?? fallback;
+};
+
+const applySlotPoolToValue = (value, { sectionPool = null, globalPool = null, state = null, key = "", pathPrefix = "" } = {}) => {
+  const pathValue = pathPrefix ? `${pathPrefix}.${key}` : key;
+  if (shouldSkipTemplateFidelitySlotPath(pathValue)) {
+    return cloneJson(value);
+  }
+  if (Array.isArray(value)) {
+    return value.map((entry, index) =>
+      applySlotPoolToValue(entry, { sectionPool, globalPool, state, key: `[${index}]`, pathPrefix: pathValue })
+    );
+  }
+  if (value && typeof value === "object") {
+    const out = {};
+    Object.entries(value).forEach(([childKey, childValue]) => {
+      out[childKey] = applySlotPoolToValue(childValue, {
+        sectionPool,
+        globalPool,
+        state,
+        key: childKey,
+        pathPrefix: pathValue,
+      });
+    });
+    return out;
+  }
+  if (
+    (typeof value !== "string" && typeof value !== "number" && typeof value !== "boolean") ||
+    shouldSkipEditableField(key) ||
+    isTemplateFidelityRichMarkup(value)
+  ) {
+    return value;
+  }
+  const fieldType = inferEditableFieldType(key, value);
+  if (!["text", "image", "link"].includes(fieldType)) return value;
+  const fallback = String(value ?? "");
+  return nextSlotValue({
+    fieldType,
+    sectionPool,
+    globalPool,
+    state,
+    fallback,
+  });
+};
+
+const resolveReplaySectionsForPageSpec = ({ profile = {}, pageSpec = {} } = {}) => {
+  const explicitSections = Array.isArray(pageSpec?.sections) ? pageSpec.sections : [];
+  if (explicitSections.length) return explicitSections;
+  const requiredKinds = Array.isArray(pageSpec?.requiredCategories) ? pageSpec.requiredCategories : [];
+  return requiredKinds
+    .map((kind, index) => ({
+      kind,
+      ordinal: index + 1,
+      source: pageSpec?.templates?.[kind] ? "page" : "profile",
+      block: pageSpec?.templates?.[kind] || profile?.templates?.[kind] || null,
+    }))
+    .filter((entry) => entry?.block);
+};
+
+const buildReplayPayloadFromProfile = ({ profile = {}, baselinePayload = {}, sharedSlotPools = null } = {}) => {
+  const baselinePages = new Map(
+    (Array.isArray(baselinePayload?.pages) ? baselinePayload.pages : []).map((page) => [
+      normalizeTemplatePagePath(page?.path || "/"),
+      page,
+    ])
+  );
+  const globalPool = sharedSlotPools?.global || emptySlotPool();
+  const pages = (Array.isArray(profile?.pageSpecs) ? profile.pageSpecs : []).map((pageSpec) => {
+    const pagePath = normalizeTemplatePagePath(pageSpec?.path || "/");
+    const baselinePage = baselinePages.get(pagePath) || null;
+    const baselineSections = Array.isArray(baselinePage?.data?.content) ? baselinePage.data.content : [];
+    const sections = resolveReplaySectionsForPageSpec({ profile, pageSpec });
+    const content = sections.map((section, index) => {
+      const block = cloneJson(section?.block || {});
+      const baselineSection = baselineSections[index] || null;
+      const kind = normalizeSectionKind(section?.kind || "") || "generic";
+      const sectionPool = sharedSlotPools?.byKind instanceof Map ? sharedSlotPools.byKind.get(kind) || emptySlotPool() : emptySlotPool();
+      const state = { section: {}, global: {} };
+      const nextProps = applySlotPoolToValue(block?.props && typeof block.props === "object" ? block.props : {}, {
+        sectionPool,
+        globalPool,
+        state,
+        key: "",
+      });
+      if (!String(nextProps?.id || "").trim()) {
+        nextProps.id = `${kind}-${index + 1}`;
+      }
+      return {
+        type: String(block?.type || "").trim(),
+        _key: String(baselineSection?._key || block?._key || nextProps.id || `${kind}-${index + 1}`),
+        kind,
+        props: nextProps,
+        ...(baselineSection?.meta && typeof baselineSection.meta === "object" ? { meta: cloneJson(baselineSection.meta) } : {}),
+      };
+    });
+    const baselineRootProps =
+      baselinePage?.data?.root?.props && typeof baselinePage.data.root.props === "object"
+        ? cloneJson(baselinePage.data.root.props)
+        : {};
+    return {
+      path: pagePath,
+      name: String(pageSpec?.name || "").trim() || formatTemplatePageName(pagePath),
+      data: {
+        root: {
+          props: {
+            ...baselineRootProps,
+            title: String(baselineRootProps?.title || pageSpec?.name || formatTemplatePageName(pagePath)),
+          },
+        },
+        content,
+      },
+    };
+  });
+  const theme =
+    baselinePayload?.theme && typeof baselinePayload.theme === "object"
+      ? cloneJson(baselinePayload.theme)
+      : pages[0]?.data?.root?.props?.theme && typeof pages[0].data.root.props.theme === "object"
+        ? cloneJson(pages[0].data.root.props.theme)
+        : {};
+  return {
+    components: Array.isArray(baselinePayload?.components) ? cloneJson(baselinePayload.components) : [],
+    pages,
+    theme,
+  };
+};
+
+const summarizeStructureSection = (section = {}) => ({
+  key: String(section?._key || section?.props?.id || ""),
+  type: String(section?.type || "").trim(),
+  kind: normalizeSectionKind(inferSectionKindFromPayloadSection(section) || "") || "",
+});
+
+const buildPayloadStructureDiffReport = ({ expectedPayload = {}, actualPayload = {} } = {}) => {
+  const expectedPages = Array.isArray(expectedPayload?.pages) ? expectedPayload.pages : [];
+  const actualPages = Array.isArray(actualPayload?.pages) ? actualPayload.pages : [];
+  const actualByPath = new Map(
+    actualPages.map((page) => [normalizeTemplatePagePath(page?.path || "/"), page])
+  );
+  const criticalKinds = new Set(["navigation", "hero", "footer"]);
+  let matchedPages = 0;
+  let expectedSectionsTotal = 0;
+  let matchedSections = 0;
+  let expectedCriticalBlocks = 0;
+  let matchedCriticalBlocks = 0;
+  const pages = expectedPages.map((expectedPage) => {
+    const pathValue = normalizeTemplatePagePath(expectedPage?.path || "/");
+    const actualPage = actualByPath.get(pathValue) || null;
+    const expectedSections = (Array.isArray(expectedPage?.data?.content) ? expectedPage.data.content : []).map(summarizeStructureSection);
+    const actualSections = (Array.isArray(actualPage?.data?.content) ? actualPage.data.content : []).map(summarizeStructureSection);
+    const max = Math.max(expectedSections.length, actualSections.length);
+    const rows = [];
+    let pageMatches = 0;
+    let pageCriticalExpected = 0;
+    let pageCriticalMatched = 0;
+    for (let index = 0; index < max; index += 1) {
+      const expected = expectedSections[index] || null;
+      const actual = actualSections[index] || null;
+      const sameKind = expected?.kind && actual?.kind && expected.kind === actual.kind;
+      const sameType = expected?.type && actual?.type && expected.type === actual.type;
+      const matched = Boolean(expected && actual && sameKind && sameType);
+      const mismatches = [];
+      if (!expected || !actual) mismatches.push("missing_section");
+      else {
+        if (!sameKind) mismatches.push("kind");
+        if (!sameType) mismatches.push("type");
+      }
+      if (expected) {
+        expectedSectionsTotal += 1;
+        if (criticalKinds.has(expected.kind)) {
+          expectedCriticalBlocks += 1;
+          pageCriticalExpected += 1;
+        }
+      }
+      if (matched) {
+        matchedSections += 1;
+        pageMatches += 1;
+        if (expected && criticalKinds.has(expected.kind)) {
+          matchedCriticalBlocks += 1;
+          pageCriticalMatched += 1;
+        }
+      }
+      rows.push({
+        index,
+        status: matched ? "match" : "mismatch",
+        mismatches,
+        expected,
+        actual,
+      });
+    }
+    if (actualPage) matchedPages += 1;
+    return {
+      path: pathValue,
+      expectedSectionCount: expectedSections.length,
+      actualSectionCount: actualSections.length,
+      matchedSectionCount: pageMatches,
+      criticalBlockMatchedCount: pageCriticalMatched,
+      criticalBlockExpectedCount: pageCriticalExpected,
+      rows,
+    };
+  });
+  const pageHitRate = expectedPages.length > 0 ? matchedPages / expectedPages.length : 1;
+  const sectionHitRate = expectedSectionsTotal > 0 ? matchedSections / expectedSectionsTotal : 1;
+  const blockHitRate = expectedCriticalBlocks > 0 ? matchedCriticalBlocks / expectedCriticalBlocks : 1;
+  const similarity = Number((pageHitRate * 0.35 + sectionHitRate * 0.4 + blockHitRate * 0.25).toFixed(6));
+  return {
+    generatedAt: new Date().toISOString(),
+    expectedPageCount: expectedPages.length,
+    actualPageCount: actualPages.length,
+    matchedPageCount: matchedPages,
+    expectedSectionCount: expectedSectionsTotal,
+    matchedSectionCount: matchedSections,
+    expectedCriticalBlockCount: expectedCriticalBlocks,
+    matchedCriticalBlockCount: matchedCriticalBlocks,
+    pageHitRate: Number(pageHitRate.toFixed(6)),
+    sectionHitRate: Number(sectionHitRate.toFixed(6)),
+    blockHitRate: Number(blockHitRate.toFixed(6)),
+    similarity,
+    pages,
+  };
+};
+
+const collectContentSlotDiff = ({ expected = null, actual = null, key = "", pathPrefix = "", report = null } = {}) => {
+  const reportRef =
+    report ||
+    {
+      allowedChanges: { text: 0, image: 0, link: 0 },
+      illegalChanges: [],
+    };
+  const pathValue = pathPrefix ? `${pathPrefix}.${key}` : key;
+  if (Array.isArray(expected) || Array.isArray(actual)) {
+    if (!Array.isArray(expected) || !Array.isArray(actual) || expected.length !== actual.length) {
+      reportRef.illegalChanges.push({ path: pathValue, reason: "array_length_changed" });
+      return reportRef;
+    }
+    expected.forEach((entry, index) =>
+      collectContentSlotDiff({
+        expected: entry,
+        actual: actual[index],
+        key: `[${index}]`,
+        pathPrefix: pathValue,
+        report: reportRef,
+      })
+    );
+    return reportRef;
+  }
+  if ((expected && typeof expected === "object") || (actual && typeof actual === "object")) {
+    if (!expected || !actual || typeof expected !== "object" || typeof actual !== "object") {
+      reportRef.illegalChanges.push({ path: pathValue, reason: "shape_changed" });
+      return reportRef;
+    }
+    const keys = new Set([...Object.keys(expected), ...Object.keys(actual)]);
+    for (const childKey of keys) {
+      collectContentSlotDiff({
+        expected: expected?.[childKey],
+        actual: actual?.[childKey],
+        key: childKey,
+        pathPrefix: pathValue,
+        report: reportRef,
+      });
+    }
+    return reportRef;
+  }
+  if (expected === actual) return reportRef;
+  const fieldType = inferEditableFieldType(key, expected);
+  if (!shouldSkipEditableField(key) && ["text", "image", "link"].includes(fieldType)) {
+    reportRef.allowedChanges[fieldType] += 1;
+    return reportRef;
+  }
+  reportRef.illegalChanges.push({
+    path: pathValue,
+    reason: "non_slot_value_changed",
+    expected,
+    actual,
+  });
+  return reportRef;
+};
+
+const filterRunLibraryByProfileIds = (runLibrary = {}, profileIds = new Set()) => {
+  const keep = new Set(Array.isArray(profileIds) ? profileIds : Array.from(profileIds || []));
+  const profiles = (Array.isArray(runLibrary?.profiles) ? runLibrary.profiles : []).filter((profile) =>
+    keep.has(String(profile?.id || ""))
+  );
+  const templateExclusiveComponents = (Array.isArray(runLibrary?.templateExclusiveComponents)
+    ? runLibrary.templateExclusiveComponents
+    : []
+  ).filter((component) => keep.has(String(component?.templateExclusive?.siteId || "")));
+  const templateBlockCatalog = (Array.isArray(runLibrary?.templateBlockCatalog) ? runLibrary.templateBlockCatalog : []).filter((entry) =>
+    keep.has(String(entry?.profileId || ""))
+  );
+  const templateGenerationContracts = (Array.isArray(runLibrary?.templateGenerationContracts)
+    ? runLibrary.templateGenerationContracts
+    : []
+  ).filter((entry) => keep.has(String(entry?.profileId || "")));
+  return {
+    ...runLibrary,
+    profileCount: profiles.length,
+    profiles,
+    templateExclusiveComponentCount: templateExclusiveComponents.length,
+    templateExclusiveComponents,
+    templateBlockCatalogCount: templateBlockCatalog.length,
+    templateBlockCatalog,
+    templateGenerationContractsCount: templateGenerationContracts.length,
+    templateGenerationContracts,
+  };
 };
 
 const buildCrawledPageAssetPack = async ({
@@ -22083,6 +22749,7 @@ const buildRunLibraryFromPenBundle = async ({ penBundle, runId = "", runDir = ""
   const materializedComponents = [];
   const profiles = [];
   const exportRows = [];
+  const fidelityArtifacts = [];
   const qualityGateReports = [];
   const qualityGateFailures = [];
 
@@ -22104,14 +22771,13 @@ const buildRunLibraryFromPenBundle = async ({ penBundle, runId = "", runDir = ""
     if (Array.isArray(materialized?.components) && materialized.components.length) {
       materializedComponents.push(...materialized.components);
     }
-    profiles.push(
-      buildStyleProfileFromPenPayload({
-        payload: exported.payload,
-        artifact,
-        exportDoc: exported.exportDoc,
-        runId,
-      })
-    );
+    const profile = buildStyleProfileFromPenPayload({
+      payload: exported.payload,
+      artifact,
+      exportDoc: exported.exportDoc,
+      runId,
+    });
+    profiles.push(profile);
     exportRows.push({
       caseId: String(artifact?.caseId || ""),
       penFile: String(artifact?.penFile || ""),
@@ -22122,6 +22788,11 @@ const buildRunLibraryFromPenBundle = async ({ penBundle, runId = "", runDir = ""
         payloadPath: exported.payloadPath,
         siteKey: String(artifact?.caseId || ""),
       }),
+    });
+    fidelityArtifacts.push({
+      artifact,
+      profile,
+      exported,
     });
   }
 
@@ -22575,6 +23246,7 @@ const buildRunLibraryFromPenBundle = async ({ penBundle, runId = "", runDir = ""
     runLibraryPath,
     generatedComponents,
     exportRows,
+    fidelityArtifacts,
     qualityGateReportPath,
   };
 };
@@ -22682,6 +23354,253 @@ const exportPenArtifactsFromRun = async ({
   };
 };
 
+const runTemplateFidelityEvaluation = async ({
+  runId = "",
+  runDir = "",
+  fidelityArtifacts = [],
+  options = {},
+} = {}) => {
+  const rows = Array.isArray(fidelityArtifacts) ? fidelityArtifacts.filter(Boolean) : [];
+  if (!rows.length) {
+    throw new Error("[template-factory] template fidelity evaluation requires at least one template artifact.");
+  }
+
+  const sharedSource = rows[0];
+  const replayCase = await loadTemplateFidelityCaseInput({
+    options,
+    defaultSource: sharedSource,
+  });
+  const sharedSlotPools = extractSlotPoolsFromPayload(replayCase?.payload || {});
+  const previewServer = await ensurePreviewServer({ previewBaseUrl: options.previewBaseUrl });
+  const reportDir = path.join(runDir, "template-fidelity");
+  await ensureDir(reportDir);
+  await fs.writeFile(path.join(reportDir, "replay-case.payload.json"), JSON.stringify(replayCase?.payload || {}, null, 2));
+
+  const replayCount = Math.max(1, Math.floor(Number(options?.templateFidelityReplayCount || 1)));
+  const screenshotSimilarityMin = Number(options?.templateFidelityScreenshotSimilarityMin || 0.75);
+  const structureSimilarityMin = Number(options?.templateFidelityStructureSimilarityMin || 0.8);
+  const navFooterContrastMin = Number(options?.templateFidelityNavFooterContrastMin || 4.5);
+  const results = [];
+
+  for (const row of rows) {
+    const profileId = String(row?.profile?.id || row?.artifact?.caseId || "").trim();
+    const caseId = String(row?.artifact?.caseId || profileId || "").trim();
+    const baselinePayload = row?.exported?.payload || {};
+    const templateDir = path.join(reportDir, slug(profileId || caseId || "template"));
+    await ensureDir(templateDir);
+
+    const baselinePayloadPath = path.join(templateDir, "baseline.payload.json");
+    await fs.writeFile(baselinePayloadPath, JSON.stringify(baselinePayload, null, 2));
+
+    const structureReports = [];
+    const determinismHashes = [];
+    const replayRows = [];
+    let representativeReplayPayload = null;
+
+    for (let replayIndex = 0; replayIndex < replayCount; replayIndex += 1) {
+      const replayPayload = buildReplayPayloadFromProfile({
+        profile: row?.profile || {},
+        baselinePayload,
+        sharedSlotPools,
+      });
+      representativeReplayPayload = representativeReplayPayload || replayPayload;
+      determinismHashes.push(sha256Json(replayPayload));
+      const structureDiff = buildPayloadStructureDiffReport({
+        expectedPayload: baselinePayload,
+        actualPayload: replayPayload,
+      });
+      const structurePath = path.join(templateDir, `replay-${replayIndex + 1}.structure-diff.json`);
+      const replayPayloadPath = path.join(templateDir, `replay-${replayIndex + 1}.payload.json`);
+      await fs.writeFile(structurePath, JSON.stringify(structureDiff, null, 2));
+      await fs.writeFile(replayPayloadPath, JSON.stringify(replayPayload, null, 2));
+      structureReports.push(structureDiff);
+      replayRows.push({
+        replayIndex: replayIndex + 1,
+        replayPayloadPath,
+        structureDiffPath: structurePath,
+        structureSimilarity: Number(structureDiff?.similarity || 0),
+      });
+    }
+
+    const baselineSiteKey = `tf_fidelity_baseline_${slug(runId)}_${slug(caseId)}`;
+    const replaySiteKey = `tf_fidelity_replay_${slug(runId)}_${slug(caseId)}`;
+    await writeSandboxPayload(baselineSiteKey, baselinePayload);
+    await writeRenderablePages(baselineSiteKey, baselinePayload?.pages || []);
+    await writeSandboxPayload(replaySiteKey, representativeReplayPayload || {});
+    await writeRenderablePages(replaySiteKey, representativeReplayPayload?.pages || []);
+
+    const visualDir = path.join(templateDir, "visual");
+    await ensureDir(visualDir);
+    const baselinePages = Array.isArray(baselinePayload?.pages) ? baselinePayload.pages : [];
+    const visualPages = [];
+    for (const page of baselinePages) {
+      const pagePath = normalizeTemplatePagePath(page?.path || "/");
+      const pageSlug = slug(pagePath === "/" ? "home" : pagePath) || "page";
+      const pageDir = path.join(visualDir, pageSlug);
+      await ensureDir(pageDir);
+      const baselineImagePath = path.join(pageDir, "baseline.png");
+      const replayImagePath = path.join(pageDir, "replay.png");
+      const diffImagePath = path.join(pageDir, "diff.png");
+      const baselineUrl = renderPreviewUrlForPayload({
+        previewBaseUrl: previewServer.origin || options.previewBaseUrl,
+        siteKey: baselineSiteKey,
+        pagePath,
+      });
+      const replayUrl = renderPreviewUrlForPayload({
+        previewBaseUrl: previewServer.origin || options.previewBaseUrl,
+        siteKey: replaySiteKey,
+        pagePath,
+      });
+      const baselineShot = await captureScreenshotSafe({
+        url: baselineUrl,
+        outPath: baselineImagePath,
+        mobile: false,
+        timeoutMs: Number(options?.screenshotTimeoutMs || 90000),
+      });
+      const replayShot = await captureScreenshotSafe({
+        url: replayUrl,
+        outPath: replayImagePath,
+        mobile: false,
+        timeoutMs: Number(options?.screenshotTimeoutMs || 90000),
+      });
+      let diff = {
+        similarity: 0,
+        diffRatio: 1,
+        diffPixels: 0,
+        totalPixels: 0,
+      };
+      if (baselineShot && replayShot) {
+        diff = await diffImagesWithPython({
+          referencePath: baselineImagePath,
+          candidatePath: replayImagePath,
+          diffPath: diffImagePath,
+        });
+      }
+      visualPages.push({
+        path: pagePath,
+        baselineUrl,
+        replayUrl,
+        baselineImagePath,
+        replayImagePath,
+        diffImagePath,
+        ...diff,
+        passed: Number(diff?.similarity || 0) >= screenshotSimilarityMin,
+      });
+    }
+
+	    const contentSlotDiff = collectContentSlotDiff({
+	      expected: baselinePayload,
+	      actual: representativeReplayPayload,
+	      key: "payload",
+	      pathPrefix: "",
+	    });
+	    const baselineContrast = auditPayloadNavFooterContrast({
+	      payload: baselinePayload,
+	      minContrast: navFooterContrastMin,
+	    });
+	    const replayContrast = auditPayloadNavFooterContrast({
+	      payload: representativeReplayPayload,
+	      minContrast: navFooterContrastMin,
+	    });
+	    const uniqueHashes = Array.from(new Set(determinismHashes));
+    const avgStructureSimilarity =
+      structureReports.length > 0
+        ? Number(
+            (
+              structureReports.reduce((sum, item) => sum + Number(item?.similarity || 0), 0) / structureReports.length
+            ).toFixed(6)
+          )
+        : 0;
+    const avgScreenshotSimilarity =
+      visualPages.length > 0
+        ? Number((visualPages.reduce((sum, item) => sum + Number(item?.similarity || 0), 0) / visualPages.length).toFixed(6))
+        : 0;
+	    const integrity = {
+	      deterministicReplayPassed: uniqueHashes.length === 1,
+	      structurePassed: avgStructureSimilarity >= structureSimilarityMin,
+	      screenshotPassed: visualPages.every((item) => item.passed),
+	      contentSlotPassed: Array.isArray(contentSlotDiff?.illegalChanges) && contentSlotDiff.illegalChanges.length === 0,
+	      navFooterContrastPassed: Boolean(replayContrast?.passed),
+	    };
+    const passed = Object.values(integrity).every(Boolean);
+    const result = {
+	      caseId,
+	      profileId,
+	      sourceCaseId: String(replayCase?.sourceCaseId || sharedSource?.artifact?.caseId || "").trim(),
+	      replayCaseSource: String(replayCase?.source || "").trim(),
+	      replayCaseFile: String(replayCase?.caseFile || "").trim(),
+	      replayCasePayloadPath: String(replayCase?.payloadPath || "").trim(),
+	      replayCount,
+	      screenshotSimilarityMin,
+	      structureSimilarityMin,
+	      navFooterContrastMin,
+	      baselinePayloadPath,
+	      replayPayloadPath: replayRows[0]?.replayPayloadPath || "",
+      determinism: {
+        hashes: determinismHashes,
+        uniqueHashes,
+        passed: integrity.deterministicReplayPassed,
+      },
+      structure: {
+        averageSimilarity: avgStructureSimilarity,
+        pageHitRate: Number(structureReports[0]?.pageHitRate || 0),
+        sectionHitRate: Number(structureReports[0]?.sectionHitRate || 0),
+        blockHitRate: Number(structureReports[0]?.blockHitRate || 0),
+        replays: replayRows,
+        passed: integrity.structurePassed,
+      },
+      visual: {
+        averageSimilarity: avgScreenshotSimilarity,
+        pageCount: visualPages.length,
+        pages: visualPages,
+        passed: integrity.screenshotPassed,
+      },
+	      contentSlotDiff: {
+	        ...contentSlotDiff,
+	        passed: integrity.contentSlotPassed,
+	      },
+	      contrast: {
+	        baseline: baselineContrast,
+	        replay: replayContrast,
+	        passed: integrity.navFooterContrastPassed,
+	      },
+	      integrity,
+	      passed,
+	    };
+    await fs.writeFile(path.join(templateDir, "template-integrity-report.json"), JSON.stringify(result, null, 2));
+    results.push(result);
+  }
+
+  const summary = {
+    schemaVersion: "template-fidelity-report.v1",
+	    generatedAt: new Date().toISOString(),
+	    runId,
+	    mode: "template_fidelity",
+	    previewBaseUrl: previewServer.origin || normalizePreviewBaseUrl(options.previewBaseUrl),
+	    sourceCaseId: String(replayCase?.sourceCaseId || sharedSource?.artifact?.caseId || "").trim(),
+	    replayCaseSource: String(replayCase?.source || "").trim(),
+	    replayCaseFile: String(replayCase?.caseFile || "").trim(),
+	    replayCasePayloadPath: String(replayCase?.payloadPath || "").trim(),
+	    replayCount,
+	    screenshotSimilarityMin,
+	    structureSimilarityMin,
+	    navFooterContrastMin,
+	    totalTemplates: results.length,
+    passedTemplates: results.filter((item) => item.passed).length,
+    failedTemplates: results.filter((item) => !item.passed).length,
+    passedProfileIds: results.filter((item) => item.passed).map((item) => item.profileId),
+    failedProfileIds: results.filter((item) => !item.passed).map((item) => item.profileId),
+    templates: results,
+  };
+  const reportPath = path.join(runDir, "template-fidelity-report.json");
+  await fs.writeFile(reportPath, JSON.stringify(summary, null, 2));
+  return {
+    reportPath,
+    summary,
+    previewServer,
+  };
+};
+
 const writePenReviewFile = async ({
   penBundle,
   reviewFilePath = "",
@@ -22784,33 +23703,54 @@ const runTemplatePublishFromPenMode = async ({ options }) => {
     .map((item) => String(item?.caseId || "").trim())
     .filter(Boolean);
   const reviewPath = options.penReviewFile || resolveDefaultPenReviewPath(penBundle.path);
-  const review = await readJsonIfExists(reviewPath);
-  const approval = isPenReviewApproved({ review, caseIds });
-  if (!approval.approved) {
-    const rejected = approval.rejected.length ? `rejected=${approval.rejected.join(",")}` : "";
-    const pending = approval.pending.length ? `pending=${approval.pending.join(",")}` : "";
-    const detail = [rejected, pending].filter(Boolean).join(" ");
-    throw new Error(
-      `[template-factory] pen review not approved (${reviewPath || "missing review file"}). ${detail || "No approved cases."}`
-    );
+  if (options.mode !== "template-fidelity") {
+    const review = await readJsonIfExists(reviewPath);
+    const approval = isPenReviewApproved({ review, caseIds });
+    if (!approval.approved) {
+      const rejected = approval.rejected.length ? `rejected=${approval.rejected.join(",")}` : "";
+      const pending = approval.pending.length ? `pending=${approval.pending.join(",")}` : "";
+      const detail = [rejected, pending].filter(Boolean).join(" ");
+      throw new Error(
+        `[template-factory] pen review not approved (${reviewPath || "missing review file"}). ${detail || "No approved cases."}`
+      );
+    }
   }
   const outRunDir = path.join(RUNS_DIR, options.runId);
   await ensureDir(outRunDir);
-  const { runLibrary, runLibraryPath: resolvedRunLibraryPath, generatedComponents, exportRows } =
+  const { runLibrary, runLibraryPath: resolvedRunLibraryPath, generatedComponents, exportRows, fidelityArtifacts } =
     await buildRunLibraryFromPenBundle({
       penBundle,
       runId: options.runId,
       runDir: outRunDir,
     });
+  const fidelityEnabled = options.templateFidelityEnabled !== false;
+  const fidelityEvaluation = fidelityEnabled
+    ? await runTemplateFidelityEvaluation({
+        runId: options.runId,
+        runDir: outRunDir,
+        fidelityArtifacts,
+        options,
+      })
+    : null;
+  const passedProfileIds = new Set(
+    Array.isArray(fidelityEvaluation?.summary?.passedProfileIds) ? fidelityEvaluation.summary.passedProfileIds : []
+  );
+  const filteredRunLibrary =
+    fidelityEnabled ? filterRunLibraryByProfileIds(runLibrary, passedProfileIds) : runLibrary;
+  if (fidelityEnabled && filteredRunLibrary.profileCount <= 0) {
+    throw new Error(
+      `[template-factory] template fidelity gate blocked all templates. See ${fidelityEvaluation?.reportPath || "template-fidelity-report.json"}`
+    );
+  }
   const publishResult = await mergeAndPublishRunLibrary({
-    runLibrary,
-    allowPublish: options.publish !== false,
-    runId: String(runLibrary?.runId || options.runId || ""),
+    runLibrary: filteredRunLibrary,
+    allowPublish: options.mode === "template-fidelity" ? false : options.publish !== false,
+    runId: String(filteredRunLibrary?.runId || options.runId || ""),
   });
   const publishSummary = {
     schemaVersion: PEN_SCHEMA_VERSION,
     generatedAt: new Date().toISOString(),
-    mode: "template-publish",
+    mode: options.mode === "template-fidelity" ? "template-fidelity" : "template-publish",
     sourcePenFile: penBundle.path,
     reviewFile: reviewPath,
     runLibraryPath: resolvedRunLibraryPath,
@@ -22819,6 +23759,16 @@ const runTemplatePublishFromPenMode = async ({ options }) => {
     publishTemplateBlockCatalogPath: publishResult.publishTemplateBlockCatalogPath,
     published: publishResult.published,
     reason: publishResult.reason,
+	    templateFidelityEnabled: fidelityEnabled,
+	    templateFidelityReportPath: fidelityEvaluation?.reportPath || "",
+	    templateFidelitySourceCaseId: String(fidelityEvaluation?.summary?.sourceCaseId || ""),
+	    templateFidelityPassedTemplates: fidelityEvaluation?.summary?.passedTemplates ?? null,
+	    templateFidelityFailedTemplates: fidelityEvaluation?.summary?.failedTemplates ?? null,
+    requestedTemplateCount: Array.isArray(runLibrary?.profiles) ? runLibrary.profiles.length : 0,
+    admittedTemplateCount: Array.isArray(filteredRunLibrary?.profiles) ? filteredRunLibrary.profiles.length : 0,
+    admittedProfileIds: Array.isArray(filteredRunLibrary?.profiles)
+      ? filteredRunLibrary.profiles.map((profile) => String(profile?.id || "")).filter(Boolean)
+      : [],
     exportedPenPayloads: exportRows,
     generatedConfigComponentCount: Array.isArray(generatedComponents) ? generatedComponents.length : 0,
   };
@@ -22838,6 +23788,9 @@ const runTemplatePublishFromPenMode = async ({ options }) => {
     console.log(
       `[template-factory] published template-block catalog: ${publishResult.publishTemplateBlockCatalogPath}`
     );
+  }
+  if (fidelityEvaluation?.reportPath) {
+    console.log(`[template-factory] template fidelity report: ${fidelityEvaluation.reportPath}`);
   }
   console.log("[template-factory] done");
 };
@@ -25468,12 +26421,12 @@ const main = async () => {
     await runPenReviewMode({ options });
     return;
   }
-  if (options.mode === "template-publish" && options.penFile) {
+  if ((options.mode === "template-publish" || options.mode === "template-fidelity") && options.penFile) {
     await runTemplatePublishFromPenMode({ options });
     return;
   }
   throw new Error(
-    "[template-factory] simplified pen-first workflow: only `--mode pen-review` and `--mode template-from-pen|template-publish --pen-file <file.pen>` are supported."
+    "[template-factory] simplified pen-first workflow: only `--mode pen-review` and `--mode template-from-pen|template-publish|template-fidelity --pen-file <file.pen>` are supported."
   );
 
   const runMain = async () => {

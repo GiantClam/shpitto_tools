@@ -13,6 +13,7 @@ Pen-first pipeline for producing reusable style templates from reviewed `.pen` f
 ## Supported modes
 
 - `pen-review`: write or update review state for a `.pen`
+- `template-fidelity`: deterministic replay for template integrity validation only
 - `template-from-pen` / `template-publish --pen-file ...`: generate template library from an approved `.pen`
 
 Older URL/crawl/pen-build modes are no longer part of the active workflow.
@@ -37,6 +38,13 @@ npm run template:factory -- <flags>
 Primary flags:
 
 - `--mode pen-review|template-from-pen|template-publish`
+- `--template-fidelity` / `--no-template-fidelity`: enable or disable the pre-ingest fidelity gate for publish runs
+- `--template-fidelity-case-file <path>`: explicit replay case input; accepts a payload JSON or bundle JSON with `artifacts[].payloadPath`
+- `--template-fidelity-case-id <case-id>`: select the artifact inside the case file when the case file contains multiple artifacts
+- `--template-fidelity-replay-count <n>`: deterministic replay count per template
+- `--template-fidelity-screenshot-similarity-min <0-1>`: screenshot diff threshold
+- `--template-fidelity-structure-similarity-min <0-1>`: structure diff threshold
+- `--template-fidelity-nav-footer-contrast-min <1-21>`: minimum WCAG contrast ratio enforced on replayed `navigation` and `footer` sections
 - `--run-id <slug>`: stable run folder name under `template-factory/runs/`
 - `--pen-file <path>`: `.pen`, pen bundle json, or `*.pen.source.json`
 - `--pen-review-file <path>`: explicit review file path; default is inferred beside the pen
@@ -79,6 +87,20 @@ npm run template:factory -- \
   --no-publish
 ```
 
+### 2.5 Run template fidelity only
+
+Use this to validate template completeness before any library ingest. This mode runs deterministic replay against the bundle, emits structure diff + screenshot diff + integrity reports, and does not publish.
+
+```bash
+cd builder
+npm run template:factory -- \
+  --mode template-fidelity \
+  --run-id tf-my-site-fidelity \
+  --pen-file /abs/path/to/site.pen \
+  --template-fidelity-case-file /abs/path/to/lingchuang.payload.json \
+  --preview-base-url http://127.0.0.1:3135
+```
+
 ### 3. Publish an approved pen into the shared template library
 
 `template-from-pen` and `template-publish` use the same pen-first publish path. Use either mode if `--pen-file` is present.
@@ -92,6 +114,8 @@ npm run template:factory -- \
   --pen-review-file /abs/path/to/site.pen-review.manual.json \
   --preview-base-url http://127.0.0.1:3135
 ```
+
+`template-publish` now runs the same template fidelity gate first. Only templates that pass `template-fidelity-report.json` are admitted into the merged library. If `--template-fidelity-case-file` is omitted, the first artifact in the bundle is still used as the replay source for backward compatibility.
 
 ### 4. Export a live payload directly from a pen file
 
@@ -128,6 +152,8 @@ Expected behavior:
 - Pen review file: custom `--pen-review-file`
 - Published library: `template-factory/library/style-profiles.generated.json`
 - Publish summary: `template-factory/runs/<run-id>/pen-publish-summary.json`
+- Template fidelity summary: `template-factory/runs/<run-id>/template-fidelity-report.json`
+- Explicit replay case snapshot: `template-factory/runs/<run-id>/template-fidelity/replay-case.payload.json`
 - Materialized component manifest: `template-factory/runs/<run-id>/materialized-components.json`
 - Generated Puck registry: `src/puck/config.generated.ts`
 - Materialized block code: `src/components/blocks/template-exclusive-*/`

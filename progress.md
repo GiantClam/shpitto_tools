@@ -1,5 +1,80 @@
 # Progress
 
+## 2026-03-16
+- Built a synthetic six-site fidelity bundle at `/tmp/template-fidelity-six-sites-20260316.json` from sibling worktree `9df6` site bundles:
+  - `vdm`
+  - `pscs`
+  - `jabil`
+  - `kennametal`
+  - `oerlikon`
+  - `ursamajor`
+- Ran the full fidelity command:
+  - `node builder/template-factory/run-template-factory.mjs --mode template_fidelity --run-id tf-fidelity-six-sites-20260316 --pen-file /tmp/template-fidelity-six-sites-20260316.json --preview-base-url http://127.0.0.1:3110`
+- Verified produced artifacts:
+  - `builder/template-factory/runs/tf-fidelity-six-sites-20260316/template-fidelity-report.json`
+  - per-template `template-integrity-report.json`
+  - per-page screenshot diff PNGs under `builder/template-factory/runs/tf-fidelity-six-sites-20260316/template-fidelity/<profile>/visual/`
+- Final fidelity result:
+  - requested templates: `6`
+  - passed templates: `3`
+  - failed templates: `3`
+  - admitted by gate: `vdm-desktop`, `jabil-desktop`, `kennametal-desktop`
+  - blocked by gate: `pscs-desktop`, `oerlikon-desktop`, `ursamajor-desktop`
+- Cleaned the test-generated source-tree artifacts after the run:
+  - restored `builder/next-env.d.ts`
+  - restored `builder/src/puck/config.generated.ts`
+  - restored `builder/src/puck/template-exclusive-runtime.generated.json`
+  - deleted the untracked `builder/src/components/blocks/template-exclusive-pen-site-*` directories created by the fidelity run
+  - stopped the preview server on port `3110`
+- Located the six requested fidelity inputs in sibling worktree `9df6`:
+  - `vdm`
+  - `pscs`
+  - `jabil`
+  - `kennametal`
+  - `oerlikon`
+  - `ursamajor`
+- Confirmed each requested site bundle contains a single desktop artifact, so the requested comparison should be executed as one synthetic six-artifact bundle under `template_fidelity`.
+- Read the `brainstorming`, `writing-plans`, and `planning-with-files` skills required for this task.
+- Recovered current repo state and confirmed existing planning files were stale for this request.
+- Traced the actual active template-factory execution path and confirmed the pen-first workflow bypasses the older fullsite fidelity pipeline.
+- Identified the integration points for the new feature:
+  - CLI normalization in `builder/template-factory/config/schema.mjs`
+  - CLI argument parsing in `builder/template-factory/config/resolve-options.mjs`
+  - publish flow and artifact processing in `builder/template-factory/run-template-factory.mjs`
+- Confirmed reusable building blocks already exist for:
+  - structure diff: `buildPenSectionDiffReport()`
+  - screenshot capture: `builder/regression/run-strategy-comparison.mjs`
+  - image diff: `visual-qa/scripts/validate-pen-exact-visuals.mjs`
+- Decided the implementation should add a real `template_fidelity` mode plus publish-time enforcement in the pen-first path, rather than trying to revive the unreachable legacy fidelity path.
+- Added CLI/config support for:
+  - `--mode template-fidelity`
+  - `--template-fidelity`
+  - `--template-fidelity-replay-count`
+  - `--template-fidelity-screenshot-similarity-min`
+  - `--template-fidelity-structure-similarity-min`
+- Implemented a new pen-first template fidelity evaluator in `builder/template-factory/run-template-factory.mjs` that:
+  - replays templates deterministically from profile data
+  - produces structure diff reports
+  - renders baseline/replay screenshots through `/creation/sandbox`
+  - writes screenshot diffs
+  - writes per-template integrity reports and an aggregate `template-fidelity-report.json`
+- Wired `template-publish` to run the fidelity gate first and admit only passing profile IDs into the library merge.
+- Added a dedicated `template-fidelity` mode that skips manual review approval and runs the fidelity gate without publishing.
+- Updated `builder/template-factory/README.md` with the new mode and gate behavior.
+- Verified syntax:
+  - `node --check builder/template-factory/config/defaults.mjs`
+  - `node --check builder/template-factory/config/resolve-options.mjs`
+  - `node --check builder/template-factory/config/schema.mjs`
+  - `node --check builder/template-factory/run-template-factory.mjs`
+- Ran a minimal end-to-end smoke with a temporary `.pen` fixture:
+  - `node builder/template-factory/run-template-factory.mjs --mode template_fidelity --run-id tf-fidelity-smoke-20260316b --pen-file /tmp/template-fidelity-smoke.pen --preview-base-url http://127.0.0.1:3110`
+  - confirmed outputs:
+    - `template-fidelity-report.json`
+    - per-template `replay-*.structure-diff.json`
+    - `visual/home/{baseline,replay,diff}.png`
+    - `template-integrity-report.json`
+  - smoke result: `passedTemplates=1`, `failedTemplates=0`
+
 ## 2026-03-12
 - Read `brainstorming` and `planning-with-files` skill instructions relevant to this task.
 - Verified that the source `.pen` files are JSON and inspected representative desktop/mobile files (`pagani`, `nothing-tech`, `teenage-engineering`).

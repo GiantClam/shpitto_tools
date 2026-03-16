@@ -1,36 +1,16 @@
 # Task Plan
 
 ## Goal
-Read all `.pen` files under `/Users/beihuang/Documents/opencode/shpitto_tools/pen`, including desktop-only sites, and generate exact-match, skinnable full-site templates organized by `site -> page -> section -> block`, with strict per-file validation against the source `.pen` plus Pencil-backed verification wherever the desktop bridge is available.
+Add a `template_fidelity` runtime mode to the pen-first template factory so a bundle of six templates can be replayed deterministically against the same use case, producing structure diffs, screenshot diffs, and template-integrity reports, with library ingestion blocked unless a template passes the report gate.
 
 ## Phases
-1. Confirm full corpus coverage, including paired and desktop-only `.pen` files.
-2. Define an exact template schema that preserves raw document/page/section/block structure while still exposing theme tokens and catalogs.
-3. Implement a batch generator that emits per-variant exact templates, per-site bundles, and global `site/page/section/block` catalogs.
-4. Implement strict validation that rebuilds expected output from source `.pen` and compares hashes, counts, pages, sections, and blocks for every file.
-5. Restore Pencil-backed verification by diagnosing the desktop launch path and wiring it into the validation flow.
-6. Run full generation and full validation across all 27 `.pen` files and record any remaining gaps.
-7. Operationalize the pipeline for repeatable release: parameterized paths, optional structural-only validation, full Pencil-backed release gate, and a manual self-hosted workflow.
-8. Upgrade the site-level sandbox runtime so exact templates can be previewed as real multi-page sites with working navigation/footer links, preserved visual parity, and defensible motion.
-9. Audit all 27 variant previews for navigation/footer coverage, invalid-link cleanup, style parity, and runtime motion support.
-10. Add a reusable skinnable-template layer so all exact templates expose editable theme, copy, image, link, and style slots and the renderer can apply overrides directly.
-11. Wire the skinnable layer into sandbox preview so page-level slots can be edited live against the exact rendered site output.
-12. Generate commercial-ready publish bundles so each site ships as a unified desktop/mobile template input for the existing builder publish flow.
-13. Publish the 16 site bundles into the builder shared library and harden natural-language template selection so explicit brand prompts reliably hit the intended site template while defaulting to desktop unless mobile is requested.
-14. Reuse the existing builder orchestration layers to add multi-strategy candidate selection (`template_first` / `hybrid` / `llm_first`) with QA-based best-result selection and visible resolution diagnostics.
-15. Strengthen automatic candidate routing heuristics and wire the new multi-candidate path into existing regression tooling with pen-published brand prompt coverage.
-16. Run live strategy regressions against the published pen-template library, tune candidate scoring/routing based on failures, and verify the automatic path is strong enough for commercial use.
-17. Harden generic/non-brand prompt routing so common commercial prompts (industrial, SaaS, luxury editorial) resolve to the right published template family and bypass unnecessary architect latency when template confidence is high.
-18. Close the remaining generic commercial gap by fixing sector-specific selector drift (finance, ecommerce, education, wellness, travel, developer tooling) and ensuring prompt-required `approach` sections survive both `page` and `full-site` template resolution.
-19. Productize template adaptation for known template families and known commercial scenarios so generation can reuse template visuals while auditing out brand residue, semantically wrong block reuse, and page-contract violations.
-20. Wire template-adaptation diagnostics into payload audit, save/generate routes, and candidate scoring so bad template adaptations are blocked or penalized before reaching preview/persist.
-21. Verify the new adaptation gate with fresh typecheck plus positive/negative API smokes against the LC-CNC Breton site.
-22. Expand template adaptation beyond `breton / pamamachinetools / sandvik + industrial` to additional published families (`sixtine`, `ionq`, `framework`, `transpa-rent`) and non-industrial scenarios (`luxury_editorial`, `ai_saas`, `developer_tooling`, `design_led_ecommerce`).
-23. Validate the expanded rules with deterministic save-route positive/negative fixtures so each new family/scenario pair proves both pass and fail paths.
-24. Extend adaptation-family coverage to the remaining high-value published consumer/luxury brands (`pagani`, `nothing-tech`, `vanmoof`, `analogue`, `teenage-engineering`) and verify family-specific residue/mismatch blocking.
-25. Extend adaptation-family coverage to the remaining enterprise/technology/audio/mobility families (`carbon3d`, `plexus`, `ridecake`, `siemens`, `audeze`, `devialet`, `unistellar`, `masterdynamic`) and broaden scenario inference for additive manufacturing, premium audio, and smart-telescope commerce prompts.
-26. Add a reusable save-route adaptation fixture runner and verify the full supported family matrix with fresh production build/start plus positive/negative payload persistence checks.
-27. Remove the last family-specific home-assembly gap by changing industrial template normalization from narrow original-block-name matching to family-agnostic structural slot matching, then re-verify across multiple template families with fresh prompt-driven generations.
+1. Confirm the current pen-first publish path, current quality gates, and reusable diff/screenshot utilities.
+2. Define the `template_fidelity` mode contract, report schema, and publish-gating behavior.
+3. Implement CLI/config support for `template_fidelity` and fidelity-related options.
+4. Implement deterministic replay + structural diff + screenshot diff generation for pen bundle artifacts.
+5. Implement per-template integrity scoring and pass/fail evaluation.
+6. Wire the publish path to filter or block non-passing templates before library merge.
+7. Run targeted verification and record produced artifacts, pass/fail behavior, and remaining gaps.
 
 ## Status
 - [x] Phase 1
@@ -40,84 +20,25 @@ Read all `.pen` files under `/Users/beihuang/Documents/opencode/shpitto_tools/pe
 - [x] Phase 5
 - [x] Phase 6
 - [x] Phase 7
-- [x] Phase 8
-- [x] Phase 9
-- [x] Phase 10
-- [x] Phase 11
-- [x] Phase 12
-- [x] Phase 13
-- [x] Phase 14
-- [x] Phase 15
-- [x] Phase 16
-- [x] Phase 17
-- [x] Phase 18
-- [x] Phase 19
-- [x] Phase 20
-- [x] Phase 21
-- [x] Phase 22
-- [x] Phase 23
-- [x] Phase 24
-- [x] Phase 25
-- [x] Phase 26
-- [x] Phase 27
 
 ## Constraints
-- All 27 `.pen` files must be included. Desktop-only sites cannot be skipped.
-- Template output must preserve page and section structure exactly enough to support byte-stable structural validation.
-- Keep outputs skinnable by extracting reusable theme tokens instead of only raw style literals.
-- Pencil verification is required, but current app launch behavior differs depending on launch path and must be stabilized before claiming end-to-end validation.
-- The pipeline must be runnable on other machines, so hard-coded worktree output paths and source-directory assumptions need CLI or env overrides.
-- The sandbox preview must remain visually faithful to the source `.pen` pages while still supporting real navigation behavior. Any interaction enhancement that changes the default rendered pixels is a regression.
-- Some source `.pen` files encode navigation/footer as plain text rather than explicit link nodes. Recovering clickable behavior from those cases requires inference or runtime overlays; if inference is wrong, functional preview quality regresses.
+- The active workflow is the simplified pen-first path in `builder/template-factory/run-template-factory.mjs`; older fullsite branches are effectively unreachable and should not be used as the main execution path.
+- The fidelity mode must stay deterministic: same input bundle + same replay case should produce stable payload, structure diff, screenshot diff, and verdict outputs.
+- The report must be concrete enough to gate publish automatically, not just descriptive.
+- Publish behavior must enforce “only passing templates can enter the library”.
+- Reuse existing repo primitives where possible: pen section diff logic, visual diff utilities, and current run artifact layout.
 
 ## Current State
-- Exact-template generator and validator exist under `scripts/`.
-- Full corpus generation already ran once into `template-factory/generated/pen-exact-templates`.
-- Structural validation passes for all 27 files.
-- Site-level templates, bundles, and global `site/page/section/block` catalogs validate cleanly.
-- Pencil-backed validation also passes for all 27 files after:
-  - binding `batch_get.filePath`
-  - enabling `includePathGeometry: true` in the Pencil export request
-  - projecting source trees with observed Pencil defaults when the source omits scalar fields
-- Release automation now exists as:
-  - `node scripts/generate_pen_exact_templates.mjs --source-dir ... --out-dir ...`
-  - `node scripts/validate_pen_exact_templates.mjs --source-dir ... --skip-pencil`
-  - `node scripts/validate_pen_exact_templates.mjs --source-dir ... --require-pencil`
-  - `node scripts/release_pen_exact_templates.mjs --source-dir ... --out-dir ...`
-- Visual validation now also passes for the full corpus:
-  - 261/261 template pages produced `source-render.png`, `template-render.png`, `diff.png`, and `report.json`
-  - aggregated visual manifest: `template-factory/generated/pen-exact-templates/visual-validation/manifest.json`
-  - `passedPages: 261`
-  - `failedPages: 0`
-  - `averageSimilarity: 1`
-  - `minSimilarity: 1`
-- Visual release gating uses `source-render` parity as the hard pass/fail check. Pencil screenshots are retained as optional references only because `get_screenshot` is too lossy and thumbnail-like to serve as a reliable image oracle for exact-release decisions.
-- A first pass of site-level sandbox payload generation now exists:
-  - `scripts/generate_pen_site_sandbox_payloads.mjs`
-  - `template-factory/generated/pen-exact-templates/site-sandbox-payloads.json`
-  - one sandbox payload per variant under `asset-factory/out/p2w/pen-exact-site-*/sandbox/payload.json`
-- Current site sandbox payloads already:
-  - render full-size pages instead of thumbnail comparison HTML
-  - rewrite explicit internal page links to valid `/creation/sandbox?...page=...` URLs
-  - strip unresolved invalid hrefs
-- A first full audit also exists:
-  - `scripts/audit_pen_site_templates.mjs`
-  - `template-factory/generated/pen-exact-templates/site-template-audit.json`
-- Current audit result shows the remaining gap clearly:
-  - explicit invalid links are cleaned (`invalidLinkVariants: 0`)
-  - navigation/page coverage is still incomplete across all 27 variants
-  - footer coverage is incomplete on 18 variants
-  - motion support fails on all 27 variants because the current runtime is only a raw page preview wrapper
-- Site-runtime repair is now implemented and the audit gate is green:
-  - 27/27 variants pass navigation/footer coverage, invalid-link cleanup, and motion checks in `site-template-audit.json`
-- Remaining open work is limited to browser-level hit-testing stability on overlay-dense home pages during Playwright automation. This does not change the generated sandbox URLs or the audit result, but it still affects the confidence level of fully automated end-to-end click replay.
-- A skinnable layer now exists for the full corpus under `template-factory/generated/pen-skinnable-templates`, backed by renderer-level `overrideMap` support.
-- The next gap is runtime consumption: skinnable slots are generated and verified offline, but sandbox preview does not yet expose them as a live editing surface for users.
-- Sandbox preview now consumes page-level skinnable metadata directly from `payload.json`, exposes a live skinning drawer in preview mode, persists per-page drafts to localStorage, and patches the exact iframe DOM in place for text, image, link, and style slots.
-- The existing builder publish flow already accepts multi-artifact pen bundle JSON, so the cleanest commercial bridge is to generate per-site publish bundles that group desktop/mobile variants into one publish input instead of publishing raw variant files separately.
-- Site-level publish bundles now exist for all 16 sites, with paired desktop/mobile artifacts grouped together where available and explicit responsive fallback metadata for the 5 desktop-only sites.
-- The 16 site bundles are now published into the builder shared library, and builder-style-profile selection has been hardened so explicit brand prompts such as `like Pagani`, `inspired by VanMoof`, `like Kymeta`, and `like Fptindustrie` resolve to the intended published pen-derived templates instead of older semantic matches.
-- The builder generation stack already contained most of the “arbitrary prompt” architecture:
+- `template-publish` currently loads a pen file/bundle, exports payloads, runs a link-safety quality gate, materializes components, and merges all resulting profiles into `builder/template-factory/library/style-profiles.generated.json`.
+- `buildRunLibraryFromPenBundle()` already writes:
+  - `pen-export/<case>/payload.json`
+  - `pen-export/<case>/section-diff-report.json`
+  - `pen-quality-gate-report.json`
+- Structural section diff logic already exists in `buildPenSectionDiffReport()`.
+- Screenshot capture and diff primitives already exist in:
+  - `builder/regression/run-strategy-comparison.mjs`
+  - `visual-qa/scripts/validate-pen-exact-visuals.mjs`
+- Current publish path has no template-fidelity replay stage, and the only hard gate before publish is the link-safety `pen-quality-gate-report.json`.
   - architect blueprint generation
   - structured brief parsing
   - site planner

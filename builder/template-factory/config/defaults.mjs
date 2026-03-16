@@ -1,5 +1,12 @@
 export const TEMPLATE_FACTORY_DEFAULTS = Object.freeze({
   mode: "template-publish",
+  templateFidelityEnabled: true,
+  templateFidelityCaseFile: "",
+  templateFidelityCaseId: "",
+  templateFidelityReplayCount: 2,
+  templateFidelityScreenshotSimilarityMin: 0.75,
+  templateFidelityStructureSimilarityMin: 0.8,
+  templateFidelityNavFooterContrastMin: 4.5,
   penFile: "",
   penReviewFile: "",
   penReviewStatus: "pending",

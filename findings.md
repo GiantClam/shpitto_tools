@@ -1,5 +1,61 @@
 # Findings
 
+- 2026-03-16 six-template fidelity run input discovery:
+  - this worktree does not contain the requested six-site publish bundles
+  - sibling worktree `/Users/beihuang/.codex/worktrees/9df6/shpitto_tools` does contain all six as `template-factory/generated/pen-site-publish-bundles/sites/<site>/site.pen-bundle.json`
+  - available requested sites:
+    - `vdm`
+    - `pscs`
+    - `jabil`
+    - `kennametal`
+    - `oerlikon`
+    - `ursamajor`
+  - each of those site bundles currently contains exactly one artifact, the desktop template case:
+    - `vdm-desktop`
+    - `pscs-desktop`
+    - `jabil-desktop`
+    - `kennametal-desktop`
+    - `oerlikon-desktop`
+    - `ursamajor-desktop`
+  - the fidelity run for this request therefore needs a synthetic combined bundle assembled from those six desktop artifacts so they can replay against one shared slot pool in a single run
+- 2026-03-16 six-template fidelity run result:
+  - run id: `tf-fidelity-six-sites-20260316`
+  - aggregate report: `builder/template-factory/runs/tf-fidelity-six-sites-20260316/template-fidelity-report.json`
+  - fidelity source case: `vdm-desktop`
+  - replay count: `2`
+  - structure/content verdict:
+    - all 6 templates passed deterministic replay
+    - all 6 templates passed structure diff with `pageHitRate=1`, `sectionHitRate=1`, `blockHitRate=1`
+    - all 6 templates passed content-slot diff with `illegalChanges=0`
+  - screenshot verdict:
+    - passed: `vdm-desktop`, `jabil-desktop`, `kennametal-desktop`
+    - failed: `pscs-desktop`, `oerlikon-desktop`, `ursamajor-desktop`
+  - representative screenshot failures:
+    - `pscs-desktop`: average similarity `0.182636`; failed `/`, `/pscs-about`, `/pscs-contact`, `/pscs-solution`, `/pscs-blog`
+    - `oerlikon-desktop`: average similarity `0.336762`; failed `/oerlikon-about`, `/oerlikon-products`, `/oerlikon-company`, `/oerlikon-r-d`
+    - `ursamajor-desktop`: average similarity `0.878332`; only `/ursa-about` failed with similarity `0.148321`
+  - admission gate result from `pen-publish-summary.json`:
+    - requested templates: `6`
+    - admitted templates: `3`
+    - admitted profile ids: `vdm-desktop`, `jabil-desktop`, `kennametal-desktop`
+
+- The active `builder/template-factory/run-template-factory.mjs` entrypoint now short-circuits into the simplified pen-first workflow:
+  - `--mode pen-review`
+  - `--mode template-from-pen|template-publish --pen-file ...`
+  - the older fullsite regression/fidelity code in the same file is currently unreachable from `main()`.
+- `buildRunLibraryFromPenBundle()` is the correct integration point for new publish-time gating. It already iterates artifact-by-artifact and has access to:
+  - exported payloads
+  - section diff reports
+  - per-artifact pen/source metadata
+- Existing pen publish gate is narrow:
+  - `validatePenPayloadQualityGate()` only checks navigation/footer href safety.
+  - if that passes, every artifact in the bundle is eligible for publish.
+- Existing reusable assets for the requested feature:
+  - `buildPenSectionDiffReport()` already generates structure diff data per artifact.
+  - `visual-qa/scripts/validate-pen-exact-visuals.mjs` already contains deterministic screenshot/diff logic based on `playwright + pngjs + pixelmatch`.
+  - `builder/regression/run-strategy-comparison.mjs` already contains hardened screenshot capture logic for sandbox/render URLs with motion disabled.
+- `builder/regression/prompts.pen-published.json` contains six published-template prompt cases, but they are six different brand prompts, not a single shared replay case. For this task, the safer implementation is to make replay cases explicit in the new mode rather than silently assuming that file.
+
 - `/Users/beihuang/Documents/opencode/shpitto_tools/pen/*.pen` are JSON files and can be parsed directly without Pencil.
 - The corpus contains 27 `.pen` files across 16 sites:
   - 11 sites have both desktop and mobile variants

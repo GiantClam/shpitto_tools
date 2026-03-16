@@ -39,6 +39,44 @@ export const resolveCliOptions = (argv, context = {}) => {
       i += 1;
       continue;
     }
+    if (arg === "--template-fidelity") {
+      raw.templateFidelityEnabled = true;
+      continue;
+    }
+    if (arg === "--no-template-fidelity") {
+      raw.templateFidelityEnabled = false;
+      continue;
+    }
+    if (arg === "--template-fidelity-replay-count" && next) {
+      raw.templateFidelityReplayCount = Number(next);
+      i += 1;
+      continue;
+    }
+    if (arg === "--template-fidelity-case-file" && next) {
+      raw.templateFidelityCaseFile = String(next).trim();
+      i += 1;
+      continue;
+    }
+    if (arg === "--template-fidelity-case-id" && next) {
+      raw.templateFidelityCaseId = String(next).trim();
+      i += 1;
+      continue;
+    }
+    if (arg === "--template-fidelity-screenshot-similarity-min" && next) {
+      raw.templateFidelityScreenshotSimilarityMin = Number(next);
+      i += 1;
+      continue;
+    }
+    if (arg === "--template-fidelity-structure-similarity-min" && next) {
+      raw.templateFidelityStructureSimilarityMin = Number(next);
+      i += 1;
+      continue;
+    }
+    if (arg === "--template-fidelity-nav-footer-contrast-min" && next) {
+      raw.templateFidelityNavFooterContrastMin = Number(next);
+      i += 1;
+      continue;
+    }
     if (arg === "--pen-file" && next) {
       raw.penFile = String(next).trim();
       i += 1;
