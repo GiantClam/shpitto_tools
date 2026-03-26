@@ -115,8 +115,11 @@ const inferPageType = (pathValue: unknown, nameValue: unknown): TemplatePageType
   if (!pathToken || pathToken === "/") return "home";
   if (pathToken === "/" || /(^|[^a-z])home($|[^a-z])/.test(token)) return "home";
   if (/(about|company|story|mission|vision|who|team)/.test(token)) return "about";
+  if (/(careers?|jobs?|hiring|join[-\s]?us|talent|recruit)/.test(token)) return "careers";
   if (/(legal|privacy|term|policy|cookie|gdpr)/.test(token)) return "legal";
-  if (/(support|help|faq|docs|documentation)/.test(token)) return "support";
+  if (/(pricing|plans?|tiers?|subscription|quote|cost|套餐|报价|价格)/.test(token)) return "pricing";
+  if (/(faq|frequently\s*asked|questions?|q&a|qanda|常见问题|问答)/.test(token)) return "faq";
+  if (/(support|help|docs|documentation|knowledge|guide)/.test(token)) return "support";
   if (/(blog|news|journal|article|insight|press)/.test(token)) return "blog";
   if (/(contact|quote|inquir|demo|consult|book)/.test(token)) return "contact";
   if (/(case|customer|testimonial|proof|review|success|portfolio|use-case|usecase|results?)/.test(token))
@@ -124,7 +127,7 @@ const inferPageType = (pathValue: unknown, nameValue: unknown): TemplatePageType
   if (/(solution|service|capabilit|workflow|industry|technology|technologies|integration)/.test(token))
     return "solutions";
   if (
-    /(product|catalog|collection|pricing|plan|store|shop|telescope|binocular|device|hardware|machine|machines|equipment|center|centres|cnc|model|models|series|frame|shell|bezel|keypad|lineup)/.test(
+    /(product|catalog|collection|store|shop|telescope|binocular|device|hardware|machine|machines|equipment|center|centres|cnc|model|models|series|frame|shell|bezel|keypad|lineup)/.test(
       token
     )
   )
@@ -230,9 +233,12 @@ const defaultKindsByPageType: Record<TemplatePageType, TemplatePlanSectionKind[]
   about: ["navigation", "hero", "story", "approach", "socialproof", "cta", "footer"],
   solutions: ["navigation", "hero", "approach", "products", "story", "socialproof", "contact", "cta", "footer"],
   products: ["navigation", "hero", "story", "products", "approach", "socialproof", "contact", "cta", "footer"],
+  pricing: ["navigation", "hero", "products", "approach", "socialproof", "contact", "cta", "footer"],
   cases: ["navigation", "hero", "products", "socialproof", "story", "contact", "cta", "footer"],
   contact: ["navigation", "hero", "story", "socialproof", "contact", "cta", "footer"],
+  faq: ["navigation", "hero", "story", "approach", "contact", "cta", "footer"],
   blog: ["navigation", "hero", "story", "products", "socialproof", "cta", "footer"],
+  careers: ["navigation", "hero", "story", "approach", "socialproof", "contact", "cta", "footer"],
   legal: ["navigation", "story", "footer"],
   support: ["navigation", "hero", "story", "approach", "contact", "cta", "footer"],
   generic: ["navigation", "hero", "story", "approach", "cta", "footer"],
@@ -249,7 +255,7 @@ const dedupeKinds = (kinds: TemplatePlanSectionKind[]) => {
   return deduped;
 };
 
-const strictProfilePageTypes = new Set<TemplatePageType>(["about", "solutions", "cases"]);
+const strictProfilePageTypes = new Set<TemplatePageType>(["about", "solutions", "cases", "pricing", "faq", "careers"]);
 
 const filterTemplateFirstFallbackKinds = (
   pageType: TemplatePageType,

@@ -15,12 +15,14 @@ export type QaGateReport = {
   coverageScore: number;
   linkIntegrityScore: number;
   themeConsistencyScore: number;
+  middleSectionScore: number;
   semanticFidelityScore: number;
   overallScore: number;
   thresholds: {
     coverage: number;
     linkIntegrity: number;
     themeConsistency: number;
+    middleSection: number;
     semantic: number;
     overall: number;
   };
@@ -34,6 +36,7 @@ export type QaGateReport = {
     semanticHitPages: string[];
     sourceBrandLeakPages: string[];
     genericPlaceholderPages: string[];
+    thinMiddleSectionPages: string[];
   };
 };
 
@@ -81,6 +84,43 @@ const blockIsFooter = (item: { type?: string; props?: Record<string, unknown> } 
   const anchor = String(item?.props?.anchor || "").toLowerCase();
   const id = String(item?.props?.id || "").toLowerCase();
   return type.includes("footer") || anchor === "footer" || id.includes("footer");
+};
+
+const blockIsHero = (item: { type?: string; props?: Record<string, unknown> } | undefined) => {
+  const type = String(item?.type || "").toLowerCase();
+  const id = String(item?.props?.id || "").toLowerCase();
+  return type.includes("hero") || type.includes("masthead") || id.includes("hero");
+};
+
+const blockIsCtaOrContact = (item: { type?: string; props?: Record<string, unknown> } | undefined) => {
+  const type = String(item?.type || "").toLowerCase();
+  const id = String(item?.props?.id || "").toLowerCase();
+  const anchor = String(item?.props?.anchor || "").toLowerCase();
+  return (
+    type.includes("cta") ||
+    type.includes("calltoaction") ||
+    type.includes("leadcapture") ||
+    type.includes("contact") ||
+    id.includes("cta") ||
+    id.includes("contact") ||
+    anchor.includes("cta") ||
+    anchor.includes("contact")
+  );
+};
+
+const inferPageIntent = (pathValue: string, nameValue: string) => {
+  const token = `${normalizePagePath(pathValue)} ${String(nameValue || "")}`.toLowerCase();
+  if (/privacy|terms?|policy|legal|cookie|gdpr/.test(token)) return "legal";
+  if (/contact|consult|quote|sales|get[-\s]?in[-\s]?touch/.test(token)) return "contact";
+  if (/faq|support|help|docs|documentation|knowledge/.test(token)) return "support";
+  if (/home|^\/$/.test(token)) return "home";
+  return "generic";
+};
+
+const minMiddleSectionsForIntent = (intent: string) => {
+  if (intent === "home") return 3;
+  if (intent === "contact" || intent === "support" || intent === "legal") return 1;
+  return 2;
 };
 
 const stableThemeFingerprint = (theme: unknown) => {
@@ -142,6 +182,7 @@ export const evaluateGenerationQa = (input: {
     coverage: clamp(Number(input.thresholds?.coverage ?? 0.85)),
     linkIntegrity: clamp(Number(input.thresholds?.linkIntegrity ?? 0.95)),
     themeConsistency: clamp(Number(input.thresholds?.themeConsistency ?? 0.9)),
+    middleSection: clamp(Number(input.thresholds?.middleSection ?? 0.75)),
     semantic: clamp(Number(input.thresholds?.semantic ?? 0.9)),
     overall: clamp(Number(input.thresholds?.overall ?? 0.9)),
   };
@@ -205,6 +246,38 @@ export const evaluateGenerationQa = (input: {
     themeFingerprints.length ? (themeFingerprints.length - inconsistentThemePages.length) / themeFingerprints.length : 1
   );
 
+  let middleSectionPoints = 0;
+  const thinMiddleSectionPages: string[] = [];
+  const middleTypeSet = new Set<string>();
+  for (const page of contentPages) {
+    const pagePath = normalizePagePath(page?.path);
+    const pageIntent = inferPageIntent(pagePath, String(page?.name || ""));
+    const blocks = Array.isArray(page?.data?.content) ? page.data.content : [];
+    const middleBlocks = blocks.filter(
+      (block) => !blockIsNavbar(block) && !blockIsFooter(block) && !blockIsHero(block)
+    );
+    const substantiveBlocks =
+      pageIntent === "contact" || pageIntent === "support" || pageIntent === "legal"
+        ? middleBlocks
+        : middleBlocks.filter((block) => !blockIsCtaOrContact(block));
+    substantiveBlocks.forEach((block) => {
+      const type = String(block?.type || "").toLowerCase();
+      if (!type) return;
+      if (/feature|approach|process|workflow|capability/.test(type)) middleTypeSet.add("approach");
+      else if (/product|catalog|pricing|plan|tier/.test(type)) middleTypeSet.add("products");
+      else if (/testimonial|review|social|proof|logo|trust/.test(type)) middleTypeSet.add("socialproof");
+      else if (/team|timeline|history|story|content|editorial|faq|resource|blog/.test(type)) middleTypeSet.add("story");
+      else middleTypeSet.add("generic");
+    });
+    const minRequired = minMiddleSectionsForIntent(pageIntent);
+    const densityScore = clamp(substantiveBlocks.length / Math.max(1, minRequired));
+    middleSectionPoints += densityScore;
+    if (substantiveBlocks.length < minRequired) thinMiddleSectionPages.push(pagePath);
+  }
+  const middleDensityScore = clamp(contentPages.length ? middleSectionPoints / contentPages.length : 1);
+  const middleDiversityScore = clamp(middleTypeSet.size / 4);
+  const middleSectionScore = clamp(middleDensityScore * 0.75 + middleDiversityScore * 0.25);
+
   const expectedBrand = extractPromptBrand(String(input.prompt || ""));
   const semanticHitPages: string[] = [];
   const sourceBrandLeakPages: string[] = [];
@@ -229,15 +302,17 @@ export const evaluateGenerationQa = (input: {
   );
 
   const overallScore = clamp(
-    coverageScore * 0.3 +
-      linkIntegrityScore * 0.25 +
+    coverageScore * 0.25 +
+      linkIntegrityScore * 0.2 +
       themeConsistencyScore * 0.2 +
-      semanticFidelityScore * 0.25
+      middleSectionScore * 0.15 +
+      semanticFidelityScore * 0.2
   );
   const pass =
     coverageScore >= thresholds.coverage &&
     linkIntegrityScore >= thresholds.linkIntegrity &&
     themeConsistencyScore >= thresholds.themeConsistency &&
+    middleSectionScore >= thresholds.middleSection &&
     semanticFidelityScore >= thresholds.semantic &&
     overallScore >= thresholds.overall;
 
@@ -246,6 +321,7 @@ export const evaluateGenerationQa = (input: {
     coverageScore,
     linkIntegrityScore,
     themeConsistencyScore,
+    middleSectionScore,
     semanticFidelityScore,
     overallScore,
     thresholds,
@@ -259,6 +335,7 @@ export const evaluateGenerationQa = (input: {
       semanticHitPages: Array.from(new Set(semanticHitPages)),
       sourceBrandLeakPages: Array.from(new Set(sourceBrandLeakPages)),
       genericPlaceholderPages: Array.from(new Set(genericPlaceholderPages)),
+      thinMiddleSectionPages: Array.from(new Set(thinMiddleSectionPages)),
     },
   };
 };

@@ -1,6 +1,25 @@
 # Progress
 
 ## 2026-03-16
+- Fixed preview-link invalidation across single-template runs:
+  - updated `builder/template-factory/materialize-custom-components.mjs`
+  - generated registry writes now merge with existing `src/puck/config.generated.ts` and `src/puck/template-exclusive-runtime.generated.json` instead of replacing them
+  - this removes the `Missing block renderer` regression when a later single-template run is performed after an earlier one
+- Re-seeded refreshed replay preview payloads with the merge-safe registry for:
+  - `tf-fidelity-vdm-lingchuang-preview-20260316`
+  - `tf-fidelity-pscs-lingchuang-preview-20260316`
+  - `tf-fidelity-jabil-lingchuang-preview-20260316`
+  - `tf-fidelity-kennametal-lingchuang-preview-20260316`
+  - `tf-fidelity-oerlikon-lingchuang-preview-20260316`
+  - `tf-fidelity-ursamajor-lingchuang-preview-20260316`
+- Verified refreshed `home` preview links with waited Playwright screenshots:
+  - `output/playwright/vdm-final-preview-home.png`
+  - `output/playwright/pscs-final-preview-home.png`
+  - `output/playwright/jabil-final-preview-home.png`
+  - `output/playwright/kennametal-final-preview-home.png`
+  - `output/playwright/oerlikon-final-preview-home.png`
+  - `output/playwright/ursamajor-final-preview-home-ready.png`
+
 - Fixed real preview overlap issues, not just fidelity gates:
   - updated `builder/template-factory/run-template-factory.mjs` so replay text selection is role/length-aware
   - added fallback-shape line reflow for injected titles/body copy
@@ -1238,3 +1257,26 @@
     - `cd builder && npm run regression:creation:interiors -- --base-url http://127.0.0.1:3186`
   - fresh passing report:
     - `builder/regression/reports/creation-baseline-20260315-190117.json`
+
+## 2026-03-26
+- Implemented website-generation refactor phase 1 (taxonomy + enterprise scope + gating).
+- Updated runtime classification and planning defaults:
+  - `builder/src/lib/agent/section-template-registry.ts`
+  - `builder/src/lib/agent/template-resolver.ts`
+- Expanded enterprise site structure and semantic page matching:
+  - `builder/shared/enterprise-site-structure.json`
+  - `builder/src/lib/agent/enterprise-site-structure.ts`
+- Expanded template-factory contract layer and middle-section quality scoring:
+  - `builder/template-factory/contracts/page-types.corporate.v1.json`
+  - `builder/template-factory/contracts/section-taxonomy.corporate.v1.json`
+  - `builder/template-factory/contracts/index.mjs`
+- Synced template-factory page classification presets:
+  - `builder/template-factory/run-template-factory.mjs`
+- Added runtime QA middle-section checks:
+  - `builder/src/lib/agent/qa-gate.ts`
+- Verification executed:
+  - `node --check builder/template-factory/contracts/index.mjs` (pass)
+  - `node --check builder/template-factory/run-template-factory.mjs` (pass)
+  - `cd builder && npx tsc --noEmit --pretty false` (not runnable: local TypeScript CLI not installed in this worktree)
+- Synced pen-side page classifier for parity with runtime/template classification:
+  - `builder/template-factory/run-template-factory.mjs` (`inferPenPageType` now recognizes `pricing` / `faq` / `careers`)

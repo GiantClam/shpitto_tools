@@ -202,3 +202,19 @@ Add a `template_fidelity` runtime mode to the pen-first template factory so a bu
 1. Extend the creation baseline runner with per-page shape assertions so interior assembly can fail the release gate directly from `/api/creation` results.
 2. Add a dedicated cross-family fixture set for `sandvik / breton / pama / pagani` using the structured LC-CNC industrial prompt shape that exercises normalized inner pages.
 3. Wire the new fixture set into builder package scripts and docs, then verify `build`, `tsc`, and the new baseline gate on a fresh prod server.
+
+## 2026-03-26 Website Generation Refactor Plan (active)
+
+### Goal
+Raise enterprise website generation quality by improving page taxonomy, middle-section semantic coverage, and publish-time quality gates so template count is not mistaken for structural completeness.
+
+### Phases
+1. Expand runtime page type semantics and defaults. (complete)
+2. Expand enterprise required page structure and semantic matching. (complete)
+3. Expand contract taxonomy and middle-section scoring. (complete)
+4. Integrate middle-section signal into runtime QA. (complete)
+5. Run validations and prep follow-up hardening (pen->template->publish coupling). (in progress)
+
+### Current Risks
+- Full TypeScript compile is pending because `builder/node_modules` is missing in this worktree.
+- Existing dirty workspace includes many generated block directories unrelated to this change; kept untouched intentionally.

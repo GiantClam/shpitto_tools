@@ -1,5 +1,32 @@
 # Findings
 
+- 2026-03-16 preview-link instability root cause and fix:
+  - the remaining preview failures were not all layout regressions; a second root cause was global registry churn
+  - every single-template `template-fidelity` run rewrote:
+    - `builder/src/puck/config.generated.ts`
+    - `builder/src/puck/template-exclusive-runtime.generated.json`
+  - because preview links share that global registry, later single-template runs could make earlier run links render `Missing block renderer`, even when the underlying replay payload was fine
+  - code-level fix:
+    - `builder/template-factory/materialize-custom-components.mjs`
+    - `writeGeneratedConfig()` now reads the existing generated registry, preserves prior registrations/imports/runtime definitions, and merges current-run components by name instead of replacing the entire registry
+  - fresh verification after the merge fix:
+    - registry now simultaneously contains both earlier `Oerlikon` and later `PSCS` component families
+    - new preview payload siteKeys were re-seeded for:
+      - `vdm`
+      - `pscs`
+      - `jabil`
+      - `kennametal`
+      - `oerlikon`
+      - `ursamajor`
+    - waited browser screenshots confirm `home` preview pages now render for all 6 refreshed run ids without `Missing block renderer`
+    - screenshot evidence:
+      - `output/playwright/vdm-final-preview-home.png`
+      - `output/playwright/pscs-final-preview-home.png`
+      - `output/playwright/jabil-final-preview-home.png`
+      - `output/playwright/kennametal-final-preview-home.png`
+      - `output/playwright/oerlikon-final-preview-home.png`
+      - `output/playwright/ursamajor-final-preview-home-ready.png`
+
 - 2026-03-16 preview overlap root cause and fix:
   - replay overlap had two distinct causes:
     - slot replay only matched coarse field type, so long external strings were being injected into short badge/token fields
@@ -1075,3 +1102,25 @@
     - `/custom-solutions -> Navbar > HeroSplit > FeatureGrid > CardsGrid > TestimonialsGrid > LeadCaptureCTA > Footer`
     - `/about -> Navbar > HeroSplit > ContentStory > CardsGrid > TestimonialsGrid > LeadCaptureCTA > Footer`
     - `/contact -> Navbar > HeroSplit > FeatureGrid > TestimonialsGrid > LeadCaptureCTA > Footer`
+
+## 2026-03-26 Website generation refactor (enterprise coverage + middle sections)
+
+- Root cause confirmation for "26 templates but middle sections still insufficient":
+  - section taxonomy mapping in `builder/template-factory/contracts/index.mjs` had no direct mapping for `story` and relied on a narrow section type set.
+  - many templates were counted as valid pages but lost semantic middle-section classification, causing false "coverage complete" signals.
+- Refactor actions implemented:
+  - expanded runtime page-type semantics to include `pricing`, `faq`, `careers` in:
+    - `builder/src/lib/agent/section-template-registry.ts`
+    - `builder/src/lib/agent/template-resolver.ts`
+    - `builder/template-factory/run-template-factory.mjs`
+  - expanded enterprise required page structure from 8 to 12 pages in:
+    - `builder/shared/enterprise-site-structure.json`
+    - `builder/src/lib/agent/enterprise-site-structure.ts`
+  - added richer contract taxonomy and signal-based section typing in:
+    - `builder/template-factory/contracts/section-taxonomy.corporate.v1.json`
+    - `builder/template-factory/contracts/index.mjs`
+  - introduced `middleSectionCoverageScore` into asset contract scoring/gating.
+  - introduced runtime QA `middleSectionScore` and page-level `thinMiddleSectionPages` in:
+    - `builder/src/lib/agent/qa-gate.ts`
+- Compatibility strategy:
+  - kept legacy contract page types (`services_solutions`, `product_overview`, etc.) while adding newer canonical types, so old templates do not break immediately.

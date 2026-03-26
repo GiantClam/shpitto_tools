@@ -1,0 +1,1533 @@
+// @ts-nocheck
+"use client";
+
+import React from "react";
+import { usePathname, useSearchParams } from "next/navigation";
+import { TextReveal } from "@/components/magic/text-reveal";
+import { useMotionMode } from "@/components/theme/motion";
+import { useInViewReveal } from "@/lib/motion";
+import {
+  ArrowLeft,
+  ArrowRight,
+  ChevronLeft,
+  ChevronRight,
+  Menu,
+  Minus,
+  Play,
+  Plus,
+  Search,
+  Sparkles,
+  Wifi,
+  X,
+} from "lucide-react";
+
+const SECTION_KIND = "footer";
+const SECTION_TREE = {
+  "type": "frame",
+  "id": "tGMLW",
+  "name": "Footer",
+  "style": {
+    "boxSizing": "border-box",
+    "width": 1440,
+    "height": 1391,
+    "background": "#00365e",
+    "position": "relative",
+    "overflow": "hidden"
+  },
+  "children": [
+    {
+      "type": "text",
+      "id": "4QjjR",
+      "name": "flogo",
+      "style": {
+        "boxSizing": "border-box",
+        "margin": 0,
+        "whiteSpace": "pre-line",
+        "color": "#d8e3ee",
+        "fontFamily": "Inter",
+        "fontSize": 28,
+        "fontWeight": "500",
+        "position": "absolute",
+        "left": 56,
+        "top": 34
+      },
+      "children": [],
+      "textProp": "flogotext"
+    },
+    {
+      "type": "text",
+      "id": "CgSTm",
+      "name": "sub",
+      "style": {
+        "boxSizing": "border-box",
+        "margin": 0,
+        "whiteSpace": "pre-line",
+        "color": "#8fa7b8",
+        "fontFamily": "Inter",
+        "fontSize": 11,
+        "fontWeight": "normal",
+        "position": "absolute",
+        "left": 56,
+        "top": 74
+      },
+      "children": [],
+      "textProp": "subtext",
+      "hrefProp": "subhref"
+    },
+    {
+      "type": "line",
+      "id": "z4o5R",
+      "name": "l1",
+      "style": {
+        "boxSizing": "border-box"
+      },
+      "children": []
+    },
+    {
+      "type": "line",
+      "id": "18swn",
+      "name": "r1",
+      "style": {
+        "boxSizing": "border-box"
+      },
+      "children": []
+    },
+    {
+      "type": "text",
+      "id": "hkbGq",
+      "name": "lt1",
+      "style": {
+        "boxSizing": "border-box",
+        "margin": 0,
+        "whiteSpace": "pre-line",
+        "color": "#d8e3ee",
+        "fontFamily": "Inter",
+        "fontSize": 18,
+        "fontWeight": "500",
+        "position": "absolute",
+        "left": 56,
+        "top": 102
+      },
+      "children": [],
+      "textProp": "lt1text",
+      "hrefProp": "lt1href"
+    },
+    {
+      "type": "text",
+      "id": "LeASS",
+      "name": "rt1",
+      "style": {
+        "boxSizing": "border-box",
+        "margin": 0,
+        "whiteSpace": "pre-line",
+        "color": "#d8e3ee",
+        "fontFamily": "Inter",
+        "fontSize": 18,
+        "fontWeight": "500",
+        "position": "absolute",
+        "left": 764,
+        "top": 102
+      },
+      "children": [],
+      "textProp": "rt1text",
+      "hrefProp": "rt1href"
+    },
+    {
+      "type": "text",
+      "id": "qYTYG",
+      "name": "lb1",
+      "style": {
+        "boxSizing": "border-box",
+        "margin": 0,
+        "whiteSpace": "pre-line",
+        "color": "#b7cad8",
+        "fontFamily": "Inter",
+        "fontSize": 13,
+        "fontWeight": "normal",
+        "lineHeight": 1.6,
+        "width": 620,
+        "position": "absolute",
+        "left": 56,
+        "top": 144
+      },
+      "children": [],
+      "textProp": "lb1text",
+      "hrefProp": "lb1href"
+    },
+    {
+      "type": "text",
+      "id": "kpgAS",
+      "name": "rb1",
+      "style": {
+        "boxSizing": "border-box",
+        "margin": 0,
+        "whiteSpace": "pre-line",
+        "color": "#b7cad8",
+        "fontFamily": "Inter",
+        "fontSize": 13,
+        "fontWeight": "normal",
+        "lineHeight": 1.6,
+        "width": 620,
+        "position": "absolute",
+        "left": 764,
+        "top": 144
+      },
+      "children": [],
+      "textProp": "rb1text",
+      "hrefProp": "rb1href"
+    },
+    {
+      "type": "line",
+      "id": "vwbVA",
+      "name": "l2",
+      "style": {
+        "boxSizing": "border-box"
+      },
+      "children": []
+    },
+    {
+      "type": "line",
+      "id": "DSZgr",
+      "name": "r2",
+      "style": {
+        "boxSizing": "border-box"
+      },
+      "children": []
+    },
+    {
+      "type": "text",
+      "id": "Vpc7u",
+      "name": "lt2",
+      "style": {
+        "boxSizing": "border-box",
+        "margin": 0,
+        "whiteSpace": "pre-line",
+        "color": "#d8e3ee",
+        "fontFamily": "Inter",
+        "fontSize": 18,
+        "fontWeight": "500",
+        "position": "absolute",
+        "left": 56,
+        "top": 476
+      },
+      "children": [],
+      "textProp": "lt2text",
+      "hrefProp": "lt2href"
+    },
+    {
+      "type": "text",
+      "id": "7LT4k",
+      "name": "rt2",
+      "style": {
+        "boxSizing": "border-box",
+        "margin": 0,
+        "whiteSpace": "pre-line",
+        "color": "#d8e3ee",
+        "fontFamily": "Inter",
+        "fontSize": 18,
+        "fontWeight": "500",
+        "position": "absolute",
+        "left": 764,
+        "top": 476
+      },
+      "children": [],
+      "textProp": "rt2text",
+      "hrefProp": "rt2href"
+    },
+    {
+      "type": "text",
+      "id": "ivm6j",
+      "name": "lb2",
+      "style": {
+        "boxSizing": "border-box",
+        "margin": 0,
+        "whiteSpace": "pre-line",
+        "color": "#b7cad8",
+        "fontFamily": "Inter",
+        "fontSize": 13,
+        "fontWeight": "normal",
+        "lineHeight": 1.6,
+        "width": 620,
+        "position": "absolute",
+        "left": 56,
+        "top": 518
+      },
+      "children": [],
+      "textProp": "lb2text",
+      "hrefProp": "lb2href"
+    },
+    {
+      "type": "text",
+      "id": "20AxB",
+      "name": "rb2",
+      "style": {
+        "boxSizing": "border-box",
+        "margin": 0,
+        "whiteSpace": "pre-line",
+        "color": "#b7cad8",
+        "fontFamily": "Inter",
+        "fontSize": 13,
+        "fontWeight": "normal",
+        "lineHeight": 1.6,
+        "width": 620,
+        "position": "absolute",
+        "left": 764,
+        "top": 518
+      },
+      "children": [],
+      "textProp": "rb2text",
+      "hrefProp": "rb2href"
+    },
+    {
+      "type": "line",
+      "id": "rUBCF",
+      "name": "l3",
+      "style": {
+        "boxSizing": "border-box"
+      },
+      "children": []
+    },
+    {
+      "type": "line",
+      "id": "2ZYZu",
+      "name": "r3",
+      "style": {
+        "boxSizing": "border-box"
+      },
+      "children": []
+    },
+    {
+      "type": "text",
+      "id": "YqI6n",
+      "name": "lt3",
+      "style": {
+        "boxSizing": "border-box",
+        "margin": 0,
+        "whiteSpace": "pre-line",
+        "color": "#d8e3ee",
+        "fontFamily": "Inter",
+        "fontSize": 18,
+        "fontWeight": "500",
+        "position": "absolute",
+        "left": 56,
+        "top": 716
+      },
+      "children": [],
+      "textProp": "lt3text",
+      "hrefProp": "lt3href"
+    },
+    {
+      "type": "text",
+      "id": "3rgTJ",
+      "name": "rt3",
+      "style": {
+        "boxSizing": "border-box",
+        "margin": 0,
+        "whiteSpace": "pre-line",
+        "color": "#d8e3ee",
+        "fontFamily": "Inter",
+        "fontSize": 18,
+        "fontWeight": "500",
+        "position": "absolute",
+        "left": 764,
+        "top": 716
+      },
+      "children": [],
+      "textProp": "rt3text",
+      "hrefProp": "rt3href"
+    },
+    {
+      "type": "text",
+      "id": "qtuTG",
+      "name": "lb3",
+      "style": {
+        "boxSizing": "border-box",
+        "margin": 0,
+        "whiteSpace": "pre-line",
+        "color": "#b7cad8",
+        "fontFamily": "Inter",
+        "fontSize": 13,
+        "fontWeight": "normal",
+        "lineHeight": 1.6,
+        "width": 620,
+        "position": "absolute",
+        "left": 56,
+        "top": 758
+      },
+      "children": [],
+      "textProp": "lb3text",
+      "hrefProp": "lb3href"
+    },
+    {
+      "type": "text",
+      "id": "GId9i",
+      "name": "rb3",
+      "style": {
+        "boxSizing": "border-box",
+        "margin": 0,
+        "whiteSpace": "pre-line",
+        "color": "#b7cad8",
+        "fontFamily": "Inter",
+        "fontSize": 13,
+        "fontWeight": "normal",
+        "lineHeight": 1.6,
+        "width": 620,
+        "position": "absolute",
+        "left": 764,
+        "top": 758
+      },
+      "children": [],
+      "textProp": "rb3text",
+      "hrefProp": "rb3href"
+    },
+    {
+      "type": "line",
+      "id": "umBXX",
+      "name": "l4",
+      "style": {
+        "boxSizing": "border-box"
+      },
+      "children": []
+    },
+    {
+      "type": "line",
+      "id": "ni77i",
+      "name": "r4",
+      "style": {
+        "boxSizing": "border-box"
+      },
+      "children": []
+    },
+    {
+      "type": "text",
+      "id": "9dyNC",
+      "name": "lt4",
+      "style": {
+        "boxSizing": "border-box",
+        "margin": 0,
+        "whiteSpace": "pre-line",
+        "color": "#d8e3ee",
+        "fontFamily": "Inter",
+        "fontSize": 18,
+        "fontWeight": "500",
+        "position": "absolute",
+        "left": 56,
+        "top": 1006
+      },
+      "children": [],
+      "textProp": "lt4text",
+      "hrefProp": "lt4href"
+    },
+    {
+      "type": "text",
+      "id": "XHrHQ",
+      "name": "rt4",
+      "style": {
+        "boxSizing": "border-box",
+        "margin": 0,
+        "whiteSpace": "pre-line",
+        "color": "#d8e3ee",
+        "fontFamily": "Inter",
+        "fontSize": 18,
+        "fontWeight": "500",
+        "position": "absolute",
+        "left": 764,
+        "top": 1006
+      },
+      "children": [],
+      "textProp": "rt4text",
+      "hrefProp": "rt4href"
+    },
+    {
+      "type": "text",
+      "id": "tyil0",
+      "name": "lb4",
+      "style": {
+        "boxSizing": "border-box",
+        "margin": 0,
+        "whiteSpace": "pre-line",
+        "color": "#b7cad8",
+        "fontFamily": "Inter",
+        "fontSize": 13,
+        "fontWeight": "normal",
+        "lineHeight": 1.6,
+        "width": 620,
+        "position": "absolute",
+        "left": 56,
+        "top": 1048
+      },
+      "children": [],
+      "textProp": "lb4text",
+      "hrefProp": "lb4href"
+    },
+    {
+      "type": "text",
+      "id": "aiVCX",
+      "name": "prof",
+      "style": {
+        "boxSizing": "border-box",
+        "margin": 0,
+        "whiteSpace": "pre-line",
+        "color": "#d8e3ee",
+        "fontFamily": "Inter",
+        "fontSize": 16,
+        "fontWeight": "normal",
+        "position": "absolute",
+        "left": 56,
+        "top": 1132
+      },
+      "children": [],
+      "textProp": "proftext",
+      "hrefProp": "profhref"
+    },
+    {
+      "type": "text",
+      "id": "CyYmi",
+      "name": "school",
+      "style": {
+        "boxSizing": "border-box",
+        "margin": 0,
+        "whiteSpace": "pre-line",
+        "color": "#d8e3ee",
+        "fontFamily": "Inter",
+        "fontSize": 16,
+        "fontWeight": "normal",
+        "position": "absolute",
+        "left": 764,
+        "top": 1132
+      },
+      "children": [],
+      "textProp": "schooltext",
+      "hrefProp": "schoolhref"
+    },
+    {
+      "type": "text",
+      "id": "nC6ZD",
+      "name": "uni",
+      "style": {
+        "boxSizing": "border-box",
+        "margin": 0,
+        "whiteSpace": "pre-line",
+        "color": "#d8e3ee",
+        "fontFamily": "Inter",
+        "fontSize": 16,
+        "fontWeight": "normal",
+        "position": "absolute",
+        "left": 56,
+        "top": 1164
+      },
+      "children": [],
+      "textProp": "unitext",
+      "hrefProp": "unihref"
+    },
+    {
+      "type": "text",
+      "id": "qp4Bc",
+      "name": "culture",
+      "style": {
+        "boxSizing": "border-box",
+        "margin": 0,
+        "whiteSpace": "pre-line",
+        "color": "#d8e3ee",
+        "fontFamily": "Inter",
+        "fontSize": 16,
+        "fontWeight": "normal",
+        "position": "absolute",
+        "left": 764,
+        "top": 1164
+      },
+      "children": [],
+      "textProp": "culturetext",
+      "hrefProp": "culturehref"
+    },
+    {
+      "type": "text",
+      "id": "oblIy",
+      "name": "benefits",
+      "style": {
+        "boxSizing": "border-box",
+        "margin": 0,
+        "whiteSpace": "pre-line",
+        "color": "#d8e3ee",
+        "fontFamily": "Inter",
+        "fontSize": 16,
+        "fontWeight": "normal",
+        "position": "absolute",
+        "left": 56,
+        "top": 1198
+      },
+      "children": [],
+      "textProp": "benefitstext",
+      "hrefProp": "benefitshref"
+    },
+    {
+      "type": "text",
+      "id": "n0GsI",
+      "name": "contacts",
+      "style": {
+        "boxSizing": "border-box",
+        "margin": 0,
+        "whiteSpace": "pre-line",
+        "color": "#d8e3ee",
+        "fontFamily": "Inter",
+        "fontSize": 16,
+        "fontWeight": "normal",
+        "position": "absolute",
+        "left": 56,
+        "top": 1232
+      },
+      "children": [],
+      "textProp": "contactstext",
+      "hrefProp": "contactshref"
+    },
+    {
+      "type": "text",
+      "id": "0GXjH",
+      "name": "addr",
+      "style": {
+        "boxSizing": "border-box",
+        "margin": 0,
+        "whiteSpace": "pre-line",
+        "color": "#a8bfce",
+        "fontFamily": "Inter",
+        "fontSize": 11,
+        "fontWeight": "normal",
+        "position": "absolute",
+        "left": 56,
+        "top": 1262
+      },
+      "children": [],
+      "textProp": "addrtext",
+      "hrefProp": "addrhref"
+    },
+    {
+      "type": "frame",
+      "id": "uFYeM",
+      "name": "social",
+      "style": {
+        "boxSizing": "border-box",
+        "display": "flex",
+        "flexDirection": "row",
+        "gap": 10,
+        "alignItems": "center",
+        "width": 120,
+        "height": 24,
+        "position": "absolute",
+        "left": 56,
+        "top": 1298
+      },
+      "children": [
+        {
+          "type": "ellipse",
+          "id": "t1bhH",
+          "name": "s1",
+          "style": {
+            "boxSizing": "border-box"
+          },
+          "children": []
+        },
+        {
+          "type": "ellipse",
+          "id": "h3ZZn",
+          "name": "s2",
+          "style": {
+            "boxSizing": "border-box"
+          },
+          "children": []
+        },
+        {
+          "type": "ellipse",
+          "id": "1KzJu",
+          "name": "s3",
+          "style": {
+            "boxSizing": "border-box"
+          },
+          "children": []
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "XF6pQ",
+      "name": "bottom",
+      "style": {
+        "boxSizing": "border-box",
+        "width": 1440,
+        "height": 52,
+        "background": "#ffffff",
+        "position": "absolute",
+        "left": 0,
+        "top": 1339
+      },
+      "children": []
+    },
+    {
+      "type": "text",
+      "id": "RBnQl",
+      "name": "legal",
+      "style": {
+        "boxSizing": "border-box",
+        "margin": 0,
+        "whiteSpace": "pre-line",
+        "color": "#000000ff",
+        "fontFamily": "Inter",
+        "fontSize": 12,
+        "fontWeight": "normal",
+        "position": "absolute",
+        "left": 56,
+        "top": 1357
+      },
+      "children": [],
+      "textProp": "legaltext",
+      "hrefProp": "legalhref"
+    },
+    {
+      "type": "text",
+      "id": "tKtnn",
+      "name": "copy",
+      "style": {
+        "boxSizing": "border-box",
+        "margin": 0,
+        "whiteSpace": "pre-line",
+        "color": "#000000ff",
+        "fontFamily": "Inter",
+        "fontSize": 12,
+        "fontWeight": "normal",
+        "position": "absolute",
+        "left": 1186,
+        "top": 1357
+      },
+      "children": [],
+      "textProp": "copytext",
+      "hrefProp": "copyhref"
+    },
+    {
+      "type": "line",
+      "id": "LSJzL",
+      "name": "l1-1",
+      "style": {
+        "boxSizing": "border-box"
+      },
+      "children": []
+    },
+    {
+      "type": "line",
+      "id": "7R0Xs",
+      "name": "l3-1",
+      "style": {
+        "boxSizing": "border-box"
+      },
+      "children": []
+    },
+    {
+      "type": "line",
+      "id": "ow8Dp",
+      "name": "l2-1",
+      "style": {
+        "boxSizing": "border-box"
+      },
+      "children": []
+    },
+    {
+      "type": "line",
+      "id": "RlzaW",
+      "name": "l4-1",
+      "style": {
+        "boxSizing": "border-box"
+      },
+      "children": []
+    }
+  ]
+};
+const DEFAULT_PROPS = {
+  "id": "tGMLW",
+  "flogotext": "VDM Metals",
+  "subtext": "A company of ACERINOX",
+  "subhref": "/",
+  "lt1text": "Alloys and Semi-Finished Products",
+  "lt1href": "/vdm-products",
+  "rt1text": "Fields of application",
+  "rt1href": "/",
+  "lb1text": "Nickel and nickel alloys from VDM Metals\nCobalt alloys\nZirconium\nSpecial stainless steels\nAluminium and copper products\nPowder for Additive Manufacturing\nWelding consumables\nDelivery forms and dimensions\nComplete product range",
+  "lb1href": "/",
+  "rb1text": "Automotive\nOil and gas\nChemical process industry\nAerospace\nElectronics and Electrical Engineering\nEnergy, Environment, Sustainability\nMedical engineering\nMechanical engineering and hydraulics",
+  "rb1href": "/",
+  "lt2text": "Services",
+  "lt2href": "/",
+  "rt2text": "Service Centers",
+  "rt2href": "/",
+  "lb2text": "Research and development\nPowder Development\nEngineered Solutions\nTechnical customer advisory\nWelding technology center of excellence\nContract toll manufacturing\nCustomer Portal",
+  "lb2href": "/",
+  "rb2text": "Service Center Europe\nService Center China\nService Center Korea\nService Center Australia\nWebshop",
+  "rb2href": "/",
+  "lt3text": "News and Events",
+  "lt3href": "/",
+  "rt3text": "About VDM Metals",
+  "rt3href": "/vdm-about",
+  "lb3text": "Newsroom\nEvents calendar",
+  "lb3href": "/",
+  "rb3text": "Our Mission Statement\nManagement Board\nProduction capabilities\nHistory\nCorporate responsibility\nCompliance\nLocations\nIdeas Management",
+  "rb3href": "/",
+  "lt4text": "Procurement",
+  "lt4href": "/",
+  "rt4text": "current jobs at VDM Metals",
+  "rt4href": "/",
+  "lb4text": "Supplier profile requirements\nSupplier management",
+  "lb4href": "/",
+  "proftext": "professionals at VDM Metals",
+  "profhref": "/",
+  "schooltext": "school students at VDM Metals",
+  "schoolhref": "/",
+  "unitext": "university students at VDM Metals",
+  "unihref": "/",
+  "culturetext": "VDM Metals culture",
+  "culturehref": "/",
+  "benefitstext": "benefits at VDM Metals",
+  "benefitshref": "/",
+  "contactstext": "Contacts",
+  "contactshref": "/vdm-contact",
+  "addrtext": "VDM Metals GmbH, Plettenberger Straße 2, 58791 Werdohl, Germany   vd m@vdm-metals.com",
+  "addrhref": "/",
+  "legaltext": "Sitemap   Legal Information   Data Protection",
+  "legalhref": "/",
+  "copytext": "© 2026 Copyright by VDM Metals",
+  "copyhref": "/"
+};
+const DEFAULT_THEME = {
+  "mode": "light",
+  "fontHeading": "Inter",
+  "fontBody": "Inter",
+  "motion": "subtle",
+  "fontFamilies": [
+    "Inter"
+  ],
+  "palette": {
+    "bg": "#ffffff",
+    "text": "#ffffff",
+    "primary": "#00365e",
+    "accent": "#00365e",
+    "neutral": "#E5E7EB",
+    "textSecondary": "#4B5563"
+  },
+  "primaryColor": "#00365e",
+  "layoutRules": {
+    "maxWidth": "1400px",
+    "sectionPadding": "py-24",
+    "grid": "12-col"
+  },
+  "tokens": {
+    "surface": "solid",
+    "border": "soft",
+    "shadow": "dramatic",
+    "accent": "glow"
+  }
+};
+const LAYOUT_CONTEXT = {
+  "pageWidth": 1440,
+  "pagePaddingLeft": 0,
+  "pagePaddingRight": 0,
+  "pagePaddingTop": 0,
+  "pagePaddingBottom": 0,
+  "sectionGapAfter": 0
+};
+const NAV_ACTIVE_COLOR = "var(--pen-theme-text, #8fa7b8)";
+const NAV_INACTIVE_COLOR = "var(--pen-theme-text-secondary, #000000ff)";
+const ICONS = { ArrowLeft, ArrowRight, ChevronLeft, ChevronRight, Menu, Minus, Play, Plus, Search, Sparkles, Wifi, X };
+const PEN_RUNTIME_MOTION_STYLE = "@keyframes pen-media-breathe{0%,100%{transform:translate3d(0,0,0) scale(1)}50%{transform:translate3d(0,-8px,0) scale(1.035)}}.pen-product-card-hover{transform-origin:center center}.pen-product-card-hover:hover{transform:translate3d(0,-4px,0) scale(1.012);border-color:#FFFFFF!important;box-shadow:0 12px 30px rgba(0,0,0,.32)}";
+
+const assignDefined = (target, patch) => {
+  for (const [key, value] of Object.entries(patch || {})) {
+    if (typeof value !== "undefined") target[key] = value;
+  }
+  return target;
+};
+
+const resolveMotionMode = (providerMode, overrideMode) => {
+  const token = String(overrideMode || providerMode || "subtle").trim().toLowerCase();
+  if (token === "off" || token === "subtle" || token === "showcase") return token;
+  return "subtle";
+};
+
+const resolveSectionMotionProfile = (sectionKindToken = "", motionMode = "subtle") => {
+  if (motionMode === "off") {
+    return {
+      level: "off",
+      revealPreset: "fadeIn",
+      delayStep: 0,
+      textReveal: false,
+      mediaBreathe: false,
+      contentStagger: false,
+    };
+  }
+  if (sectionKindToken === "hero") {
+    return {
+      level: "showcase",
+      revealPreset: "fadeIn",
+      delayStep: motionMode === "showcase" ? 95 : 75,
+      textReveal: true,
+      mediaBreathe: false,
+      contentStagger: true,
+    };
+  }
+  if (sectionKindToken === "navigation" || sectionKindToken === "footer") {
+    return {
+      level: "off",
+      revealPreset: "fadeIn",
+      delayStep: 0,
+      textReveal: false,
+      mediaBreathe: false,
+      contentStagger: false,
+    };
+  }
+  return {
+    level: motionMode === "showcase" ? "showcase" : "stagger",
+    revealPreset: "stagger",
+    delayStep: motionMode === "showcase" ? 72 : 56,
+    textReveal: true,
+    mediaBreathe: false,
+    contentStagger: true,
+  };
+};
+
+const resolveDelayMs = (keyPath = "", sectionMotion) => {
+  const match = String(keyPath || "").match(/-(\d+)$/);
+  const index = Number(match?.[1] || 0);
+  const step = Number(sectionMotion?.delayStep || 0);
+  if (!(step > 0)) return 0;
+  return Math.min(420, index * step);
+};
+
+const resolveFontSize = (value) => {
+  if (typeof value === "number") return value;
+  if (typeof value === "string") {
+    const parsed = Number.parseFloat(value);
+    if (Number.isFinite(parsed)) return parsed;
+  }
+  return 0;
+};
+
+const resolveNumericDimension = (value) => {
+  if (typeof value === "number" && Number.isFinite(value)) return value;
+  if (typeof value === "string") {
+    const parsed = Number.parseFloat(value);
+    if (Number.isFinite(parsed)) return parsed;
+  }
+  return 0;
+};
+
+const parseThemeHexColor = (value = "") => {
+  const raw = String(value || "").trim();
+  if (!raw) return null;
+  const match = raw.match(/^#([0-9a-f]{3}|[0-9a-f]{6})$/i);
+  if (!match) return null;
+  const hex =
+    match[1].length === 3
+      ? match[1]
+          .split("")
+          .map((entry) => entry + entry)
+          .join("")
+      : match[1];
+  return {
+    r: parseInt(hex.slice(0, 2), 16),
+    g: parseInt(hex.slice(2, 4), 16),
+    b: parseInt(hex.slice(4, 6), 16),
+  };
+};
+
+const isThemeDarkColor = (value = "") => {
+  const parsed = parseThemeHexColor(value);
+  if (!parsed) return false;
+  const toLinear = (n) => {
+    const c = n / 255;
+    return c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4;
+  };
+  const lum = 0.2126 * toLinear(parsed.r) + 0.7152 * toLinear(parsed.g) + 0.0722 * toLinear(parsed.b);
+  return lum < 0.42;
+};
+
+const isThemeNeutralColor = (value = "") => {
+  const parsed = parseThemeHexColor(value);
+  if (!parsed) return false;
+  const spread = Math.max(parsed.r, parsed.g, parsed.b) - Math.min(parsed.r, parsed.g, parsed.b);
+  return spread < 18;
+};
+
+const pickThemeContrastColor = (value = "", light = "#F9F6EE", dark = "#111111") =>
+  isThemeDarkColor(value) ? light : dark;
+
+const resolveThemePalette = (themeInput = null) => {
+  const baseTheme = DEFAULT_THEME && typeof DEFAULT_THEME === "object" ? DEFAULT_THEME : {};
+  const inputTheme = themeInput && typeof themeInput === "object" ? themeInput : {};
+  const basePalette = baseTheme.palette && typeof baseTheme.palette === "object" ? baseTheme.palette : {};
+  const inputPalette = inputTheme.palette && typeof inputTheme.palette === "object" ? inputTheme.palette : {};
+  const primary = String(inputPalette.primary || inputTheme.primaryColor || basePalette.primary || "#4F77FF");
+  const accent = String(inputPalette.accent || primary || basePalette.accent || "#F46E35");
+  return {
+    ...baseTheme,
+    ...inputTheme,
+    palette: {
+      bg: String(inputPalette.bg || basePalette.bg || "#F3F3EF"),
+      text: String(inputPalette.text || basePalette.text || "#111111"),
+      primary,
+      accent,
+      neutral: String(inputPalette.neutral || basePalette.neutral || "#E5E7EB"),
+      textSecondary: String(inputPalette.textSecondary || basePalette.textSecondary || "#4B5563"),
+    },
+    fontHeading: String(inputTheme.fontHeading || baseTheme.fontHeading || "Inter"),
+    fontBody: String(inputTheme.fontBody || baseTheme.fontBody || inputTheme.fontHeading || baseTheme.fontHeading || "Inter"),
+  };
+};
+
+const buildThemeCssVars = (themeInput = null) => {
+  const resolvedTheme = resolveThemePalette(themeInput);
+  const palette = resolvedTheme.palette || {};
+  const inverseSurface = isThemeDarkColor(palette.text) ? palette.text : palette.primary;
+  return {
+    "--pen-theme-bg": palette.bg,
+    "--pen-theme-text": palette.text,
+    "--pen-theme-primary": palette.primary,
+    "--pen-theme-accent": palette.accent,
+    "--pen-theme-neutral": palette.neutral,
+    "--pen-theme-text-secondary": palette.textSecondary,
+    "--pen-theme-on-primary": pickThemeContrastColor(palette.primary),
+    "--pen-theme-on-accent": pickThemeContrastColor(palette.accent),
+    "--pen-theme-inverse-surface": inverseSurface,
+    "--pen-theme-on-inverse": pickThemeContrastColor(inverseSurface),
+    "--pen-font-heading": resolvedTheme.fontHeading,
+    "--pen-font-body": resolvedTheme.fontBody,
+  };
+};
+
+const normalizeNavPath = (value = "") => {
+  const raw = String(value || "").trim();
+  if (!raw) return "/";
+  if (/^(?:mailto:|tel:|javascript:|data:)/i.test(raw)) return "";
+  if (raw.startsWith("#")) return "/";
+  try {
+    const parsed = new URL(raw, "https://template.local");
+    let pathname = String(parsed.pathname || "/").replace(/\/+/g, "/");
+    if (pathname !== "/") pathname = pathname.replace(/\/+$/g, "");
+    return pathname || "/";
+  } catch {
+    return "/";
+  }
+};
+
+const normalizePreviewPagePath = (value = "") => {
+  const raw = String(value || "").trim();
+  if (!raw || raw === "home" || raw === "index") return "/";
+  return raw.startsWith("/") ? raw : `/${raw}`;
+};
+
+const resolveRuntimeCurrentPath = (merged, pathname, searchParams) => {
+  const explicitPath = String(merged?.currentPath || "").trim();
+  if (explicitPath) return explicitPath;
+  const pageParamRaw = String(searchParams?.get?.("page") || "").trim();
+  if (pageParamRaw) return normalizePreviewPagePath(pageParamRaw);
+  return pathname || "/";
+};
+
+const isHeadingLikeTextNode = (node) => {
+  const lowerName = String(node?.name || "").trim().toLowerCase();
+  if (/(title|headline|hero|eyebrow|heading)/.test(lowerName)) return true;
+  return resolveFontSize(node?.style?.fontSize) >= 22;
+};
+
+const getNodeNameToken = (node) => String(node?.name || "").trim().toLowerCase();
+
+const shouldApplyStoryTrackMotion = () => false;
+
+const shouldApplyStoryCardHover = (node, sectionKindToken = "") => {
+  if (sectionKindToken !== "story") return false;
+  if (String(node?.type || "").trim().toLowerCase() !== "frame") return false;
+  const name = getNodeNameToken(node);
+  const childCount = Array.isArray(node?.children) ? node.children.length : 0;
+  return /(?:card|cards|grid|tile)/.test(name) && childCount > 0;
+};
+
+const shouldApplyStoryCardFloat = () => false;
+
+const shouldApplyProductsCardHover = (node, sectionKindToken = "") => {
+  if (sectionKindToken !== "products") return false;
+  if (String(node?.type || "").trim().toLowerCase() !== "frame") return false;
+  const name = getNodeNameToken(node);
+  const childCount = Array.isArray(node?.children) ? node.children.length : 0;
+  const borderToken = String(node?.style?.border || "").trim();
+  const borderLike = /(?:^|\s)(?:\d+(?:\.\d+)?)px\s/.test(borderToken);
+  return /(?:productcard|product-card|card|tile|panel)/.test(name) && childCount > 0 && borderLike;
+};
+
+const resolveThemeColorSlot = (rawColor, propName, node, parentNode, keyPath, sectionKindToken) => {
+  const propToken = String(propName || "").trim().toLowerCase();
+  const nodeName = getNodeNameToken(node);
+  const parentName = getNodeNameToken(parentNode);
+  const isRoot = keyPath === "root";
+  const isTextProp = propToken === "color";
+  const isBackgroundProp = propToken.includes("background");
+  const isBorderProp = propToken.includes("border");
+  const buttonLike =
+    /(?:btn|button|cta|chip|pill|tag|badge)/.test(nodeName) ||
+    /(?:btn|button|cta|chip|pill|tag|badge)/.test(parentName) ||
+    /(?:quote|catalog|whatsapp|submit|send|buy|shop)/.test(nodeName);
+
+  if (isRoot && isBackgroundProp) {
+    if (sectionKindToken === "navigation" || sectionKindToken === "socialproof") return "bg";
+    if (sectionKindToken === "footer") return "inverse-surface";
+    if (sectionKindToken === "hero") return "primary";
+    if (isThemeNeutralColor(rawColor)) return "bg";
+    return isThemeDarkColor(rawColor) ? "primary" : "neutral";
+  }
+
+  if (isBackgroundProp) {
+    if (buttonLike) return "accent";
+    if (sectionKindToken === "footer") return "inverse-surface";
+    if (sectionKindToken === "navigation") return "bg";
+    if (isThemeNeutralColor(rawColor)) return "neutral";
+    return isThemeDarkColor(rawColor) ? "primary" : "accent";
+  }
+
+  if (isTextProp) {
+    if (buttonLike) return "on-accent";
+    if (sectionKindToken === "footer") return "on-inverse";
+    if (sectionKindToken === "hero" && !/label|caption|meta|legal/.test(nodeName)) return "on-primary";
+    if (sectionKindToken === "navigation") {
+      if (/logo/.test(nodeName)) return "text";
+      return "text-secondary";
+    }
+    if (isThemeDarkColor(rawColor)) return "text";
+    if (isThemeNeutralColor(rawColor)) return "text-secondary";
+    return "on-primary";
+  }
+
+  if (isBorderProp) {
+    if (buttonLike) return "accent";
+    return "neutral";
+  }
+
+  return null;
+};
+
+const applyThemeToStyleValue = (rawValue, propName, node, parentNode, keyPath, sectionKindToken) => {
+  if (typeof rawValue !== "string" || !/#(?:[0-9a-f]{3}|[0-9a-f]{6})/i.test(rawValue)) return rawValue;
+  return rawValue.replace(/#(?:[0-9a-f]{3}|[0-9a-f]{6})/gi, (match) => {
+    const slot = resolveThemeColorSlot(match, propName, node, parentNode, keyPath, sectionKindToken);
+    if (!slot) return match;
+    return `var(--pen-theme-${slot}, ${match})`;
+  });
+};
+
+const buildNodeClassName = (node, sectionMotion, sectionKindToken) => {
+  if (!sectionMotion || sectionMotion.level === "off") return "";
+  const classes = [];
+  if (node?.hrefProp) classes.push("hover-lift");
+  if (node?.type === "frame" && node?.imageProp) classes.push("will-change-transform");
+  if (shouldApplyStoryCardHover(node, sectionKindToken)) classes.push("hover-lift");
+  if (shouldApplyProductsCardHover(node, sectionKindToken)) classes.push("pen-product-card-hover");
+  if (shouldApplyStoryTrackMotion(node, sectionKindToken)) classes.push("will-change-transform", "pen-track-slide");
+  return classes.join(" ");
+};
+
+const resolveResponsiveFixedWidth = (rawWidth) => {
+  const numericWidth = resolveNumericDimension(rawWidth);
+  if (!(Number.isFinite(numericWidth) && numericWidth > 0)) return null;
+  if (numericWidth < 360) return null;
+  return `min(100%, ${Math.round(numericWidth)}px)`;
+};
+
+const shouldConvertRowFillToFlex = (parentNode, childIndex, style) => {
+  const parentDirection = String(parentNode?.style?.flexDirection || "").trim().toLowerCase();
+  if (parentDirection !== "row") return false;
+  const currentWidth = String(style?.width || "").trim();
+  if (currentWidth !== "100%") return false;
+  if (style?.flex) return false;
+  const siblings = Array.isArray(parentNode?.children) ? parentNode.children : [];
+  return siblings.some((sibling, siblingIndex) => {
+    if (siblingIndex === childIndex) return false;
+    return resolveNumericDimension(sibling?.style?.width) > 0;
+  });
+};
+
+const resolveTextLineHeightMultiplier = (value) => {
+  if (typeof value === "number" && Number.isFinite(value) && value > 0) return value;
+  if (typeof value === "string") {
+    const parsed = Number.parseFloat(value);
+    if (Number.isFinite(parsed) && parsed > 0) return parsed;
+  }
+  return 1.2;
+};
+
+const estimateAbsoluteTextNodeHeight = (node, merged) => {
+  if (String(node?.type || "").trim().toLowerCase() !== "text") return 0;
+  const textValue = String(merged?.[node?.textProp] ?? "").trim();
+  if (!textValue) return 0;
+  const width = Math.max(120, resolveNumericDimension(node?.style?.width) || 0);
+  const fontSize = Math.max(14, resolveFontSize(node?.style?.fontSize) || 0);
+  const lineHeightMultiplier = resolveTextLineHeightMultiplier(node?.style?.lineHeight);
+  const approxCharsPerLine = Math.max(6, Math.floor(width / Math.max(7, fontSize * 0.58)));
+  const countWrappedLines = (lineText) => {
+    const words = String(lineText || "").split(/s+/).filter(Boolean);
+    if (!words.length) return 1;
+    let lines = 1;
+    let current = words[0];
+    for (let index = 1; index < words.length; index += 1) {
+      const candidate = current + " " + words[index];
+      if (candidate.length > approxCharsPerLine) {
+        lines += 1;
+        current = words[index];
+      } else {
+        current = candidate;
+      }
+    }
+    const longestToken = words.reduce((max, token) => Math.max(max, token.length), 0);
+    return Math.max(lines, Math.ceil(longestToken / approxCharsPerLine));
+  };
+  const lines = String(textValue)
+    .split(/
++/)
+    .reduce((total, lineText) => total + countWrappedLines(lineText), 0);
+  return Math.max(fontSize * lineHeightMultiplier, lines * fontSize * lineHeightMultiplier);
+};
+
+const buildAbsoluteTextFlowAdjustments = (rootNode, merged, sectionKindToken) => {
+  if (sectionKindToken !== "hero") {
+    return {
+      childTops: {},
+      rootMinHeight: 0,
+    };
+  }
+  const children = Array.isArray(rootNode?.children) ? rootNode.children : [];
+  const positionedTextNodes = children
+    .map((child, index) => ({
+      child,
+      index,
+      top: resolveNumericDimension(child?.style?.top),
+      left: resolveNumericDimension(child?.style?.left),
+      width: resolveNumericDimension(child?.style?.width),
+      fontSize: resolveFontSize(child?.style?.fontSize),
+      isAbsolute: String(child?.style?.position || "").trim().toLowerCase() === "absolute",
+      isText: String(child?.type || "").trim().toLowerCase() === "text",
+    }))
+    .filter((entry) => entry.isAbsolute && entry.isText && Number.isFinite(entry.top));
+  if (positionedTextNodes.length < 2) {
+    return {
+      childTops: {},
+      rootMinHeight: 0,
+    };
+  }
+  const childTops = {};
+  const laneBottoms = new Map();
+  const baseRootHeight = resolveNumericDimension(rootNode?.style?.height);
+  let maxBottom = baseRootHeight;
+  positionedTextNodes
+    .sort((left, right) => left.top - right.top || left.left - right.left || left.index - right.index)
+    .forEach((entry) => {
+      const laneKey = String(Math.round((entry.left || 0) / 24)) + ":" + String(Math.round((entry.width || 0) / 24));
+      const previousBottom = Number(laneBottoms.get(laneKey) || entry.top);
+      const adjustedTop = Math.max(entry.top, previousBottom);
+      if (adjustedTop > entry.top && entry.child?.id) childTops[entry.child.id] = adjustedTop;
+      const estimatedHeight = estimateAbsoluteTextNodeHeight(entry.child, merged);
+      const gap = Math.max(18, Math.round((entry.fontSize || 16) * 0.45));
+      const nextBottom = adjustedTop + estimatedHeight + gap;
+      laneBottoms.set(laneKey, nextBottom);
+      maxBottom = Math.max(maxBottom, nextBottom + 24);
+    });
+  return {
+    childTops,
+    rootMinHeight: Math.max(baseRootHeight, Math.ceil(maxBottom)),
+  };
+};
+
+const buildNodeStyle = (
+  node,
+  merged,
+  sectionMotion,
+  sectionKindToken,
+  keyPath,
+  currentPathToken = "/",
+  parentNode = null,
+  childIndex = 0,
+  layoutAdjustments = null
+) => {
+  const style = { ...(node?.style || {}) };
+  for (const [styleKey, styleValue] of Object.entries(style)) {
+    if (styleKey === "fontFamily" && typeof styleValue === "string" && styleValue.trim()) {
+      style[styleKey] = isHeadingLikeTextNode(node)
+        ? "var(--pen-font-heading, " + styleValue + ")"
+        : "var(--pen-font-body, " + styleValue + ")";
+      continue;
+    }
+    style[styleKey] = applyThemeToStyleValue(styleValue, styleKey, node, parentNode, keyPath, sectionKindToken);
+  }
+  const rawHref = node?.hrefProp ? String(merged?.[node.hrefProp] || "").trim() : "";
+  if (keyPath === "root") {
+    const rawRootWidth = style?.width;
+    const shouldNormalizeRootWidth =
+      (typeof rawRootWidth === "number" && Number.isFinite(rawRootWidth) && rawRootWidth > 0) ||
+      (typeof rawRootWidth === "string" && /^\d+(?:\.\d+)?$/.test(rawRootWidth.trim()));
+    if (shouldNormalizeRootWidth) {
+      const numericRootWidth = Number(rawRootWidth);
+      style.maxWidth = style.maxWidth || numericRootWidth;
+      style.width = "100%";
+      style.marginLeft = style.marginLeft || "auto";
+      style.marginRight = style.marginRight || "auto";
+    }
+    const rootDirection = String(style?.flexDirection || "").trim().toLowerCase();
+    if (rootDirection === "row" && sectionKindToken !== "navigation" && sectionKindToken !== "footer") {
+      style.flexWrap = style.flexWrap || "wrap";
+    }
+    const rootMinHeight = Number(layoutAdjustments?.rootMinHeight || 0);
+    if (rootMinHeight > 0) {
+      const currentHeight = resolveNumericDimension(style?.height);
+      if (!(currentHeight > rootMinHeight)) {
+        style.height = rootMinHeight;
+      }
+    }
+  }
+  if (keyPath !== "root" && !style.maxWidth) {
+    const responsiveFixedWidth = resolveResponsiveFixedWidth(style?.width);
+    if (responsiveFixedWidth) {
+      style.width = responsiveFixedWidth;
+    }
+  }
+  if (shouldConvertRowFillToFlex(parentNode, childIndex, style)) {
+    style.width = "auto";
+    style.flex = style.flex || "1 1 0";
+    if (typeof style.minWidth === "undefined") style.minWidth = 0;
+  }
+  if (node?.id && Object.prototype.hasOwnProperty.call(layoutAdjustments?.childTops || {}, node.id)) {
+    style.top = Number(layoutAdjustments.childTops[node.id]);
+  }
+  if (node?.imageProp) {
+    const src = String(merged?.[node.imageProp] || "").trim();
+    if (src) {
+      style.backgroundImage = `url(${src})`;
+    }
+  }
+  if (rawHref) {
+    style.textDecoration = style.textDecoration || "none";
+    if (!style.color) style.color = "inherit";
+    if (node?.type === "frame" && !style.display) {
+      style.display = "inline-block";
+    }
+  }
+  if (sectionKindToken === "navigation" && node?.type === "text" && rawHref) {
+    const hrefPathToken = normalizeNavPath(rawHref);
+    const isActiveNavItem = Boolean(hrefPathToken) && hrefPathToken === currentPathToken;
+    style.color = isActiveNavItem ? NAV_ACTIVE_COLOR : NAV_INACTIVE_COLOR;
+    if (isActiveNavItem) {
+      style.fontWeight = style.fontWeight || "600";
+    } else if (typeof style.opacity === "undefined") {
+      style.opacity = 0.96;
+    }
+  }
+  const motionLevel = sectionMotion?.level || "off";
+  if (motionLevel !== "off") {
+    const delayMs = resolveDelayMs(keyPath, sectionMotion);
+    style.transition = style.transition || "opacity 560ms var(--ease-smooth), transform 560ms var(--ease-smooth), box-shadow 300ms var(--ease-smooth)";
+    if (delayMs > 0) style.transitionDelay = style.transitionDelay || `${delayMs}ms`;
+    if (
+      Boolean(sectionMotion?.mediaBreathe) &&
+      node?.imageProp &&
+      !style.animation &&
+      (!style.transform || String(style.transform).trim() === "")
+    ) {
+      style.animation = "pen-media-breathe 8s var(--ease-smooth, ease) infinite";
+      style.transformOrigin = style.transformOrigin || "50% 50%";
+    }
+    if (shouldApplyStoryTrackMotion(node, sectionKindToken) && !style.animation) {
+      const animationName = motionLevel === "showcase" ? "pen-track-slide-x-showcase" : "pen-track-slide-x-subtle";
+      const duration = motionLevel === "showcase" ? "10s" : "14s";
+      style.animation = `${animationName} ${duration} var(--ease-smooth, ease-in-out) infinite`;
+      style.willChange = style.willChange || "transform";
+      style.transformOrigin = style.transformOrigin || "center center";
+    }
+    if (shouldApplyStoryCardFloat(node, sectionKindToken) && !style.animation) {
+      const duration = motionLevel === "showcase" ? "4.2s" : "5.6s";
+      style.animation = `pen-card-float ${duration} var(--ease-smooth, ease-in-out) infinite`;
+      style.willChange = style.willChange || "transform";
+      style.transformOrigin = style.transformOrigin || "50% 55%";
+    }
+    if (Boolean(sectionMotion?.contentStagger)) {
+      // Keep static visual fidelity: stagger only via transition delay, not enter keyframes.
+      if (delayMs > 0) style.transitionDelay = style.transitionDelay || `${delayMs}ms`;
+    }
+  }
+  return style;
+};
+
+const renderTextContent = (node, merged, keyPath, sectionMotion) => {
+  const textValue = String(merged?.[node?.textProp] ?? "");
+  if (!textValue || !sectionMotion || sectionMotion.level === "off") return textValue;
+  if (!sectionMotion.textReveal) return textValue;
+  if (!isHeadingLikeTextNode(node)) return textValue;
+  return React.createElement(
+    TextReveal,
+    {
+      as: "span",
+      className: "inline-block",
+      delayMs: resolveDelayMs(keyPath, sectionMotion),
+    },
+    textValue
+  );
+};
+
+const renderNode = (
+  node,
+  merged,
+  sectionMotion,
+  sectionKindToken,
+  key = "root",
+  ancestorHasLink = false,
+  currentPathToken = "/",
+  parentNode = null,
+  childIndex = 0,
+  layoutAdjustments = null
+) => {
+  if (!node || typeof node !== "object") return null;
+  const style = buildNodeStyle(
+    node,
+    merged,
+    sectionMotion,
+    sectionKindToken,
+    key,
+    currentPathToken,
+    parentNode,
+    childIndex,
+    layoutAdjustments
+  );
+  const className = buildNodeClassName(node, sectionMotion, sectionKindToken) || undefined;
+  const href = node?.hrefProp ? String(merged?.[node.hrefProp] || "").trim() : "";
+  const shouldRenderLink = Boolean(href) && !ancestorHasLink;
+  if (node.type === "icon_font") {
+    const Icon = node?.iconName ? ICONS[node.iconName] : null;
+    if (Icon) {
+      return React.createElement(Icon, {
+        key,
+        className,
+        style,
+        "data-pen-node": node.id || undefined,
+      });
+    }
+    return React.createElement(
+      "span",
+      {
+        key,
+        className,
+        style,
+        "data-pen-node": node.id || undefined,
+      },
+      String(node?.iconGlyph || "")
+    );
+  }
+  if (node.type === "text") {
+    const Tag = shouldRenderLink ? "a" : "div";
+    return React.createElement(
+      Tag,
+      {
+        key,
+        href: shouldRenderLink ? href : undefined,
+        className,
+        style,
+        "data-pen-node": node.id || undefined,
+      },
+      renderTextContent(node, merged, key, sectionMotion)
+    );
+  }
+  const Tag = shouldRenderLink ? "a" : "div";
+  return React.createElement(
+    Tag,
+    {
+      key,
+      href: shouldRenderLink ? href : undefined,
+      className,
+      style,
+      "data-pen-node": node.id || undefined,
+    },
+    ...(Array.isArray(node.children)
+      ? node.children.map((child, index) =>
+          renderNode(
+            child,
+            merged,
+            sectionMotion,
+            sectionKindToken,
+            `${key}-${index}`,
+            ancestorHasLink || shouldRenderLink,
+            currentPathToken,
+            node,
+            index,
+            layoutAdjustments
+          )
+        )
+      : [])
+  );
+};
+
+export default function TemplateExclusivePenSiteVdmProductsFooterFooterpenAlt2({ id, flogotext, subtext, subhref, lt1text, lt1href, rt1text, rt1href, lb1text, lb1href, rb1text, rb1href, lt2text, lt2href, rt2text, rt2href, lb2text, lb2href, rb2text, rb2href, lt3text, lt3href, rt3text, rt3href, lb3text, lb3href, rb3text, rb3href, lt4text, lt4href, rt4text, rt4href, lb4text, lb4href, proftext, profhref, schooltext, schoolhref, unitext, unihref, culturetext, culturehref, benefitstext, benefitshref, contactstext, contactshref, addrtext, addrhref, legaltext, legalhref, copytext, copyhref, ...rest }) {
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const providerMotionMode = useMotionMode();
+  const merged = assignDefined({ ...DEFAULT_PROPS }, { id, flogotext, subtext, subhref, lt1text, lt1href, rt1text, rt1href, lb1text, lb1href, rb1text, rb1href, lt2text, lt2href, rt2text, rt2href, lb2text, lb2href, rb2text, rb2href, lt3text, lt3href, rt3text, rt3href, lb3text, lb3href, rb3text, rb3href, lt4text, lt4href, rt4text, rt4href, lb4text, lb4href, proftext, profhref, schooltext, schoolhref, unitext, unihref, culturetext, culturehref, benefitstext, benefitshref, contactstext, contactshref, addrtext, addrhref, legaltext, legalhref, copytext, copyhref });
+  assignDefined(merged, rest);
+  const runtimeCurrentPath = resolveRuntimeCurrentPath(merged, pathname, searchParams);
+  const currentPathToken = normalizeNavPath(runtimeCurrentPath || "/");
+  const effectiveMotionMode = resolveMotionMode(providerMotionMode, merged?.motionMode);
+  const sectionKindToken = String(SECTION_KIND || "").trim().toLowerCase();
+  const sectionMotion = resolveSectionMotionProfile(sectionKindToken, effectiveMotionMode);
+  const reveal = useInViewReveal({
+    preset: sectionMotion?.revealPreset === "fadeIn" ? "fadeIn" : "stagger",
+    once: true,
+    enabled: sectionMotion?.level !== "off",
+  });
+  const sectionClassName = sectionMotion?.level === "off"
+    ? "w-full"
+    : ["w-full", reveal.className].filter(Boolean).join(" ");
+  const sectionStyle = sectionMotion?.level === "off" ? undefined : reveal.style;
+  const layoutStyle: React.CSSProperties = {
+    boxSizing: "border-box",
+  };
+  const pageWidth = Number(LAYOUT_CONTEXT?.pageWidth || 0);
+  const pagePaddingLeft = Number(LAYOUT_CONTEXT?.pagePaddingLeft || 0);
+  const pagePaddingRight = Number(LAYOUT_CONTEXT?.pagePaddingRight || 0);
+  const pagePaddingTop = Number(LAYOUT_CONTEXT?.pagePaddingTop || 0);
+  const pagePaddingBottom = Number(LAYOUT_CONTEXT?.pagePaddingBottom || 0);
+  const sectionGapAfter = Number(LAYOUT_CONTEXT?.sectionGapAfter || 0);
+  if (Number.isFinite(pageWidth) && pageWidth > 0) {
+    layoutStyle.width = "100%";
+    layoutStyle.maxWidth = pageWidth;
+    layoutStyle.marginLeft = "auto";
+    layoutStyle.marginRight = "auto";
+  }
+  const responsiveEdgePadding = (value) => {
+    if (!(Number.isFinite(value) && value > 0)) return 0;
+    const safeValue = Math.round(value);
+    const safeWidth = Number.isFinite(pageWidth) && pageWidth > 0 ? pageWidth : 0;
+    if (safeWidth > 0) {
+      const ratioVw = Math.max(1.4, Math.min(6.8, (safeValue / safeWidth) * 100));
+      const minPx = Math.max(12, Math.min(24, Math.round(safeValue * 0.35)));
+      return `clamp(${minPx}px, ${ratioVw.toFixed(3)}vw, ${safeValue}px)`;
+    }
+    return safeValue;
+  };
+  if (Number.isFinite(pagePaddingLeft) && pagePaddingLeft > 0) layoutStyle.paddingLeft = responsiveEdgePadding(pagePaddingLeft);
+  if (Number.isFinite(pagePaddingRight) && pagePaddingRight > 0) layoutStyle.paddingRight = responsiveEdgePadding(pagePaddingRight);
+  if (Number.isFinite(pagePaddingTop) && pagePaddingTop > 0) layoutStyle.paddingTop = pagePaddingTop;
+  if (Number.isFinite(pagePaddingBottom) && pagePaddingBottom > 0) layoutStyle.paddingBottom = pagePaddingBottom;
+  if (Number.isFinite(sectionGapAfter) && sectionGapAfter > 0) layoutStyle.marginBottom = sectionGapAfter;
+  const themeVars = buildThemeCssVars(merged?.theme);
+  const layoutAdjustments = buildAbsoluteTextFlowAdjustments(SECTION_TREE, merged, sectionKindToken);
+  const mergedSectionStyle = sectionStyle ? { ...layoutStyle, ...themeVars, ...sectionStyle } : { ...layoutStyle, ...themeVars };
+  return React.createElement(
+    "section",
+    {
+      id: merged.id || DEFAULT_PROPS.id,
+      "data-pen-section-kind": SECTION_KIND,
+      className: sectionClassName,
+      style: mergedSectionStyle,
+      ref: sectionMotion?.level === "off" ? undefined : reveal.ref,
+    },
+    ...(sectionMotion?.level !== "off"
+      ? [React.createElement("style", { key: "pen-motion-style" }, PEN_RUNTIME_MOTION_STYLE)]
+      : []),
+    renderNode(SECTION_TREE, merged, sectionMotion, sectionKindToken, "root", false, currentPathToken, null, 0, layoutAdjustments)
+  );
+}

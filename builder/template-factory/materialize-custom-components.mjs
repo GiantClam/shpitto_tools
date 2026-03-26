@@ -122,6 +122,41 @@ const extractConstObjectLiteral = (source, constName) => {
   return null;
 };
 
+const findMatchingBracket = (input, startIndex, openChar = "{", closeChar = "}") => {
+  let depth = 0;
+  let inString = false;
+  let stringQuote = "";
+  let escaped = false;
+  for (let i = startIndex; i < String(input || "").length; i += 1) {
+    const char = input[i];
+    if (inString) {
+      if (escaped) {
+        escaped = false;
+      } else if (char === "\\") {
+        escaped = true;
+      } else if (char === stringQuote) {
+        inString = false;
+        stringQuote = "";
+      }
+      continue;
+    }
+    if (char === '"' || char === "'" || char === "`") {
+      inString = true;
+      stringQuote = char;
+      continue;
+    }
+    if (char === openChar) {
+      depth += 1;
+      continue;
+    }
+    if (char === closeChar) {
+      depth -= 1;
+      if (depth === 0) return i;
+    }
+  }
+  return -1;
+};
+
 const parseTemplateExclusiveRuntimeDefinition = async (component) => {
   const source = await fs.readFile(component.blockFile, "utf8");
   const sectionTreeLiteral = extractConstObjectLiteral(source, "SECTION_TREE");
@@ -433,26 +468,106 @@ const materializeComponent = async ({
  */
 const generateConfigFile = async (components, root = "") => {
   const { generatedConfigPath, generatedRuntimeRegistryPath } = rootPaths(root);
+  const readExistingGeneratedEntries = async () => {
+    let configSource = "";
+    try {
+      configSource = await fs.readFile(generatedConfigPath, "utf8");
+    } catch {
+      return { entries: [], runtimeDefinitions: {} };
+    }
+
+    const importByAlias = new Map();
+    for (const match of configSource.matchAll(/^(import \* as (\w+) from ["'][^"']+["'];)$/gm)) {
+      importByAlias.set(match[2], match[1]);
+    }
+
+    let runtimeDefinitions = {};
+    try {
+      runtimeDefinitions = JSON.parse(await fs.readFile(generatedRuntimeRegistryPath, "utf8"));
+    } catch {
+      runtimeDefinitions = {};
+    }
+
+    const marker = "export const generatedComponents: Record<string, any> = {";
+    const start = configSource.indexOf(marker);
+    if (start === -1) {
+      return { entries: [], runtimeDefinitions };
+    }
+
+    const objectStart = configSource.indexOf("{", start);
+    if (objectStart === -1) {
+      return { entries: [], runtimeDefinitions };
+    }
+
+    const registrations = [];
+    let index = objectStart + 1;
+    while (index < configSource.length) {
+      while (/\s/.test(configSource[index] || "")) index += 1;
+      if ((configSource[index] || "") === "}") break;
+      if ((configSource[index] || "") !== '"') {
+        index += 1;
+        continue;
+      }
+
+      const nameMatch = configSource.slice(index).match(/^"([^"]+)":\s*\{/);
+      if (!nameMatch) {
+        index += 1;
+        continue;
+      }
+      const name = nameMatch[1];
+      const objectLiteralStart = index + nameMatch[0].length - 1;
+      const objectLiteralEnd = findMatchingBracket(configSource, objectLiteralStart, "{", "}");
+      if (objectLiteralEnd === -1) break;
+      let registrationEnd = objectLiteralEnd + 1;
+      while (/\s/.test(configSource[registrationEnd] || "")) registrationEnd += 1;
+      if ((configSource[registrationEnd] || "") === ",") registrationEnd += 1;
+      const registrationSource = configSource.slice(index, registrationEnd);
+      const staticAliasMatch = registrationSource.match(/resolveBlockComponent\(\s*(\w+),/);
+      registrations.push({
+        name,
+        importSource: staticAliasMatch ? importByAlias.get(staticAliasMatch[1]) || "" : "",
+        registrationSource,
+      });
+      index = registrationEnd;
+    }
+
+    return { entries: registrations, runtimeDefinitions };
+  };
+
   const deduped = new Map();
   for (const component of components || []) {
     if (!component?.name || !component?.kebabName) continue;
     deduped.set(component.name, component);
   }
   const active = [...deduped.values()].filter((c) => c.fieldCode && c.defaultProps);
-  if (!active.length) {
+  const existing = await readExistingGeneratedEntries();
+  if (!active.length && !existing.entries.length) {
     console.log("[materialize] no new components to register");
     return;
   }
 
   const runtimeComponents = active.filter(isTemplateExclusiveRuntimeComponent);
   const staticComponents = active.filter((component) => !isTemplateExclusiveRuntimeComponent(component));
-  const runtimeDefinitions = {};
+  const hasExistingRuntimeEntries = existing.entries.some((entry) =>
+    String(entry?.registrationSource || "").includes("renderTemplateExclusiveRuntime(")
+  );
+  const needsRuntimeHelpers =
+    runtimeComponents.length > 0 ||
+    hasExistingRuntimeEntries ||
+    Object.keys(existing.runtimeDefinitions || {}).length > 0;
+  const runtimeDefinitions = {
+    ...(existing.runtimeDefinitions && typeof existing.runtimeDefinitions === "object" ? existing.runtimeDefinitions : {}),
+  };
   for (const component of runtimeComponents) {
     runtimeDefinitions[component.name] = await parseTemplateExclusiveRuntimeDefinition(component);
   }
   await fs.writeFile(generatedRuntimeRegistryPath, JSON.stringify(runtimeDefinitions, null, 2));
 
-  const usedAliases = new Set();
+  const usedAliases = new Set(
+    existing.entries
+      .map((entry) => String(entry?.importSource || "").match(/^import \* as (\w+) from /)?.[1] || "")
+      .filter(Boolean)
+  );
   const withAliases = staticComponents.map((component, index) => {
     const baseAlias = toIdentifier(`${component.name}BlockModule`, `GeneratedBlockModule${index + 1}`);
     let alias = baseAlias;
@@ -470,13 +585,17 @@ const generateConfigFile = async (components, root = "") => {
   });
 
   const imports = [
-    `import { TemplateExclusiveRuntimeBlock } from "@/components/blocks/template-exclusive-runtime/block";`,
-    runtimeComponents.length
+    needsRuntimeHelpers
+      ? `import { TemplateExclusiveRuntimeBlock } from "@/components/blocks/template-exclusive-runtime/block";`
+      : "",
+    needsRuntimeHelpers
       ? `import templateExclusiveRuntimeDefinitions from "@/puck/template-exclusive-runtime.generated.json";`
       : "",
+    ...existing.entries.map((entry) => entry.importSource).filter(Boolean),
     ...withAliases.map((c) => `import * as ${c.moduleAlias} from "@/components/blocks/${c.kebabName}/block";`),
   ]
     .filter(Boolean)
+    .filter((value, index, list) => list.indexOf(value) === index)
     .join("\n");
 
   const fieldImport = `import {\n  booleanField,\n  listField,\n  selectField,\n  textField,\n  textareaField,\n} from "@/puck/field-adapters";`;
@@ -503,7 +622,7 @@ const generateConfigFile = async (components, root = "") => {
 const renderBlock = (Block: React.ComponentType<any>) => (props: any) =>
   React.createElement(Block, props);`;
 
-  const runtimeRenderHelper = runtimeComponents.length
+  const runtimeRenderHelper = needsRuntimeHelpers
     ? `
 const renderTemplateExclusiveRuntime = (componentKey: string) => (props: any) =>
   React.createElement(TemplateExclusiveRuntimeBlock, {
@@ -548,7 +667,26 @@ ${c.fieldCode}
     },`;
     })
     .join("\n");
-  const registrations = [runtimeRegistrations, staticRegistrations].filter(Boolean).join("\n");
+  const registrationByName = new Map(
+    existing.entries.map((entry) => [entry.name, String(entry.registrationSource || "").trimEnd()])
+  );
+  for (const source of [runtimeRegistrations, staticRegistrations].filter(Boolean)) {
+    for (const match of source.matchAll(/^\s*"([^"]+)":\s*\{/gm)) {
+      const name = match[1];
+      const start = match.index ?? 0;
+      const objectStartIndex = start + match[0].lastIndexOf("{");
+      const objectEndIndex = findMatchingBracket(source, objectStartIndex, "{", "}");
+      if (objectEndIndex === -1) continue;
+      let end = objectEndIndex + 1;
+      while (/\s/.test(source[end] || "")) end += 1;
+      if ((source[end] || "") === ",") end += 1;
+      registrationByName.set(name, source.slice(start, end).trimEnd());
+    }
+  }
+  const registrations = [...registrationByName.entries()]
+    .sort(([a], [b]) => a.localeCompare(b))
+    .map(([, value]) => value)
+    .join("\n");
 
   const content = `// @ts-nocheck
 /**

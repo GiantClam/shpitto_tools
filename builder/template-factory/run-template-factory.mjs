@@ -14987,11 +14987,15 @@ const classifyTemplatePageType = (pathValue, title = "") => {
   const token = `${path} ${title}`.toLowerCase();
   if (path === "/") return "home";
   if (/privacy|terms|policy|legal|cookies?/.test(token)) return "legal";
+  if (/careers?|jobs?|hiring|join[-\s]?us|talent/.test(token)) return "careers";
+  if (/pricing|plans?|tiers?|subscription|quote|cost|套餐|报价|价格/.test(token)) return "pricing";
+  if (/faq|frequently asked|questions?|q&a|qanda|常见问题|问答/.test(token)) return "faq";
   if (/blog|journal|news|insight|article|resource|press|media/.test(token)) return "blog";
-  if (/support|help|faq|docs|documentation/.test(token)) return "support";
+  if (/support|help|docs|documentation|knowledge/.test(token)) return "support";
   if (/contact|book|booking|appointment|get[-\s]?in[-\s]?touch|inquiry|quote/.test(token)) return "contact";
   if (/case|use[-\s]?cases?|customer|review|proof|success/.test(token)) return "cases";
-  if (/product|products|shop|store|catalog|collection|pricing|plans?|portfolio|telescope|binocular|hardware|machine/.test(token)) return "products";
+  if (/product|products|shop|store|catalog|collection|portfolio|telescope|binocular|hardware|machine/.test(token))
+    return "products";
   if (/service|services|solution|capabilit|offer|program|work|technolog|industry/.test(token)) return "solutions";
   if (/about|company|team|mission|vision|story|studio|who[-\s]?we[-\s]?are/.test(token)) return "about";
   return "generic";
@@ -15008,7 +15012,9 @@ const SITE_PAGE_KIND_PRESETS = {
   about: ["navigation", "hero", "story", "approach", "socialproof", "cta", "footer"],
   services: ["navigation", "hero", "story", "approach", "products", "socialproof", "cta", "footer"],
   products: ["navigation", "hero", "products", "story", "approach", "socialproof", "cta", "footer"],
+  pricing: ["navigation", "hero", "products", "approach", "socialproof", "contact", "cta", "footer"],
   contact: ["navigation", "hero", "story", "contact", "cta", "footer"],
+  faq: ["navigation", "hero", "story", "approach", "contact", "cta", "footer"],
   blog: ["navigation", "hero", "story", "approach", "socialproof", "cta", "footer"],
   careers: ["navigation", "hero", "story", "approach", "cta", "footer"],
   legal: ["navigation", "story", "footer"],
@@ -17696,6 +17702,7 @@ const computeSiteGateMetrics = (item = {}, context = {}) => {
       score: Number(assetContractReport?.overallScore || 0),
       passed: Boolean(assetContractReport?.passed),
       issues: Array.isArray(assetContractReport?.issues) ? assetContractReport.issues.length : 0,
+      middleSectionCoverageScore: Number(assetContractReport?.scores?.middleSectionCoverageScore || 0),
     },
     similarity: summarizeSiteSimilarity({
       item,
@@ -19956,13 +19963,16 @@ const inferPenPageType = (pathValue = "/", nameValue = "") => {
   if (!pathToken || pathToken === "/") return "home";
   if (pathToken === "/" || /(^|[^a-z])home($|[^a-z])/.test(token)) return "home";
   if (/(about|company|story|mission|vision|who|team)/.test(token)) return "about";
+  if (/(careers?|jobs?|hiring|join[-\s]?us|talent)/.test(token)) return "careers";
   if (/(solution|service|capabilit|workflow|industry)/.test(token)) return "solutions";
-  if (/(product|catalog|collection|pricing|plan|store|shop)/.test(token)) return "products";
+  if (/(pricing|plans?|tiers?|subscription|quote|cost|套餐|报价|价格)/.test(token)) return "pricing";
+  if (/(faq|frequently asked|questions?|q&a|qanda|常见问题|问答)/.test(token)) return "faq";
+  if (/(product|catalog|collection|store|shop)/.test(token)) return "products";
   if (/(case|customer|testimonial|proof|review|success|portfolio)/.test(token)) return "cases";
   if (/(contact|quote|inquir|demo|consult|book)/.test(token)) return "contact";
   if (/(blog|news|journal|article|insight|press)/.test(token)) return "blog";
   if (/(legal|privacy|term|policy|cookie|gdpr)/.test(token)) return "legal";
-  if (/(support|help|faq|docs|documentation)/.test(token)) return "support";
+  if (/(support|help|docs|documentation|knowledge)/.test(token)) return "support";
   return "generic";
 };
 

@@ -67,14 +67,20 @@ const dedupe = (items = []) => Array.from(new Set(asArray(items).filter(Boolean)
 
 const SECTION_KIND_TO_TAXONOMY = Object.freeze({
   hero: "Hero",
+  story: "FeatureGrid",
   logos: "LogoWall",
   logo: "LogoWall",
   logowall: "LogoWall",
   approach: "FeatureGrid",
   features: "FeatureGrid",
   featuregrid: "FeatureGrid",
+  process: "ProcessFlow",
+  workflow: "ProcessFlow",
+  integration: "IntegrationGrid",
   products: "ProductPreview",
   productpreview: "ProductPreview",
+  pricing: "PricingTable",
+  plan: "PricingTable",
   solutions: "Solutions",
   solution: "Solutions",
   cases: "CaseStudyHighlight",
@@ -86,10 +92,15 @@ const SECTION_KIND_TO_TAXONOMY = Object.freeze({
   testimonials: "Testimonial",
   testimonial: "Testimonial",
   team: "TeamPreview",
+  timeline: "Timeline",
   faq: "FAQ",
+  resource: "ResourceFeed",
+  blog: "ResourceFeed",
+  news: "ResourceFeed",
   cta: "CTABanner",
   leadcapturecta: "CTABanner",
   contact: "ContactSection",
+  legal: "LegalContent",
 });
 
 const mapSectionKind = (kind) => {
@@ -100,27 +111,75 @@ const mapSectionKind = (kind) => {
   return SECTION_KIND_TO_TAXONOMY[normalized] || null;
 };
 
+const inferSectionTypeFromSignals = ({ kind = "", blockType = "", defaults = {}, pageType = "" } = {}) => {
+  const normalizedKind = String(kind || "")
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9_]+/g, "");
+  if (normalizedKind === "hero") return "Hero";
+  if (normalizedKind === "cta" || normalizedKind === "leadcapturecta") return "CTABanner";
+  if (normalizedKind === "contact") return "ContactSection";
+  if (normalizedKind === "products" || normalizedKind === "productpreview") return "ProductPreview";
+  if (normalizedKind === "socialproof" || normalizedKind === "testimonial") return "Testimonial";
+
+  const textSignals = [
+    kind,
+    blockType,
+    defaults?.variant,
+    defaults?.title,
+    defaults?.subtitle,
+    defaults?.eyebrow,
+    defaults?.heading,
+    defaults?.label,
+    pageType,
+  ]
+    .map((entry) => String(entry || "").trim().toLowerCase())
+    .filter(Boolean)
+    .join(" ");
+
+  if (/privacy|policy|terms?|legal|gdpr|cookie/.test(textSignals)) return "LegalContent";
+  if (/pricing|plan|tier|subscription|quote|cost|套餐|报价|价格/.test(textSignals)) return "PricingTable";
+  if (/faq|questions?|accordion|q&a|qanda|support/.test(textSignals)) return "FAQ";
+  if (/timeline|history|milestone|roadmap/.test(textSignals)) return "Timeline";
+  if (/team|leadership|founder|people|culture/.test(textSignals)) return "TeamPreview";
+  if (/case|customer|success|reference/.test(textSignals)) return "CaseStudyHighlight";
+  if (/stat|metric|kpi|number|performance/.test(textSignals)) return "Stats";
+  if (/testimonial|quote|review|voice/.test(textSignals)) return "Testimonial";
+  if (/partner|client|logo|brand wall/.test(textSignals)) return "LogoWall";
+  if (/integration|ecosystem|platform|connector/.test(textSignals)) return "IntegrationGrid";
+  if (/process|workflow|steps?|method/.test(textSignals)) return "ProcessFlow";
+  if (/resource|insight|news|blog|article|press/.test(textSignals)) return "ResourceFeed";
+  if (/product|catalog|collection|portfolio|showcase/.test(textSignals)) return "ProductPreview";
+  if (/solution|service|capability/.test(textSignals)) return "Solutions";
+  if (/feature|capability|approach/.test(textSignals)) return "FeatureGrid";
+  return null;
+};
+
 const inferPageType = ({ pagePath = "/", pageName = "", taxonomyType = "" } = {}) => {
   const normalizedPath = normalizePath(pagePath).toLowerCase();
   const token = `${normalizedPath} ${String(pageName || "").toLowerCase()}`;
   const explicit = String(taxonomyType || "").trim().toLowerCase();
   if (explicit === "home") return "home";
   if (explicit === "about") return "about";
-  if (explicit === "contact" || explicit === "help_faq") return "contact";
-  if (explicit === "product_service_list") return "product_overview";
-  if (explicit === "detail") return "product_detail";
-  if (explicit === "blog_list" || explicit === "blog_detail") return "news_blog";
+  if (explicit === "contact") return "contact";
+  if (explicit === "pricing") return "pricing";
+  if (explicit === "help_faq") return "faq";
+  if (explicit === "product_service_list") return /solution|service|capabilit|industry/.test(token) ? "solutions" : "products";
+  if (explicit === "detail") return /case|customer|story|portfolio/.test(token) ? "cases" : "product_detail";
+  if (explicit === "blog_list" || explicit === "blog_detail") return "blog";
   if (explicit === "legal") return "legal";
   if (normalizedPath === "/") return "home";
+  if (/\/careers?|\/jobs?|\/hiring/.test(token)) return "careers";
+  if (/\/pricing|\/plans?/.test(token)) return "pricing";
+  if (/\/faq|\/help[-_]?center|\/knowledge/.test(token)) return "faq";
   if (/\/about|\/company|\/team|\/mission|\/story/.test(token)) return "about";
   if (/\/contact|\/get-in-touch|\/support|\/help/.test(token)) return "contact";
-  if (/\/services?|\/solutions?/.test(token)) return "services_solutions";
+  if (/\/services?|\/solutions?/.test(token)) return "solutions";
   if (/\/products?|\/collections?|\/technology/.test(token)) {
-    return normalizedPath.split("/").filter(Boolean).length >= 2 ? "product_detail" : "product_overview";
+    return normalizedPath.split("/").filter(Boolean).length >= 2 ? "product_detail" : "products";
   }
-  if (/\/case[-_]?stud/.test(token)) return "case_study";
-  if (/\/careers?|\/jobs?/.test(token)) return "careers";
-  if (/\/news|\/blogs?|\/insights?|\/resources?/.test(token)) return "news_blog";
+  if (/\/case[-_]?stud/.test(token)) return "cases";
+  if (/\/news|\/blogs?|\/insights?|\/resources?/.test(token)) return "blog";
   if (/\/terms|\/privacy|\/policy|\/legal/.test(token)) return "legal";
   return "generic";
 };
@@ -139,24 +198,40 @@ const inferHomeSkeleton = (sections = []) => {
 const inferSkeleton = ({ pageType = "generic", sections = [] } = {}) => {
   if (pageType === "home") return inferHomeSkeleton(sections);
   if (pageType === "about") return "authority-heavy";
-  if (pageType === "contact") return "conversion-driven";
-  if (pageType === "services_solutions") return "solution-first";
-  if (pageType === "product_overview" || pageType === "product_detail") return "product-first";
+  if (pageType === "contact" || pageType === "support" || pageType === "faq" || pageType === "pricing") {
+    return "conversion-driven";
+  }
+  if (pageType === "solutions" || pageType === "services_solutions") return "solution-first";
+  if (pageType === "products" || pageType === "product_overview" || pageType === "product_detail") return "product-first";
+  if (pageType === "cases" || pageType === "case_study" || pageType === "careers") return "authority-heavy";
   return "generic";
 };
 
-const toSectionRows = (sectionSpecs = {}) => {
+const toSectionRows = (sectionSpecs = {}, context = {}) => {
   const specs = sectionSpecs && typeof sectionSpecs === "object" ? sectionSpecs : {};
   const rows = [];
   for (const [kind, entry] of Object.entries(specs)) {
-    const type = mapSectionKind(kind);
+    const blockType = String(entry?.block_type || "");
+    const defaults =
+      entry?.defaults && typeof entry.defaults === "object"
+        ? entry.defaults
+        : entry?.template_variant?.defaults && typeof entry.template_variant.defaults === "object"
+          ? entry.template_variant.defaults
+          : {};
+    const type =
+      inferSectionTypeFromSignals({
+        kind,
+        blockType,
+        defaults,
+        pageType: String(context?.pageType || ""),
+      }) || mapSectionKind(kind);
     if (!type) continue;
     rows.push({
       id: String(kind || ""),
       type,
-      variantHint: String(entry?.defaults?.variant || entry?.template_variant?.variant || "default"),
+      variantHint: String(defaults?.variant || entry?.template_variant?.variant || "default"),
       visualWeight: type === "Hero" || type === "CTABanner" ? "high" : "medium",
-      blockType: String(entry?.block_type || ""),
+      blockType,
     });
   }
   return rows;
@@ -256,12 +331,12 @@ export const buildTemplateAssetManifest = ({ site = {}, indexCard = {}, specPack
   const pageRows = pageSpecs.map((page, index) => {
     const pagePath = normalizePath(page?.path || "/");
     const sectionSpecs = page?.section_specs && typeof page.section_specs === "object" ? page.section_specs : rootSectionSpecs;
-    const sections = toSectionRows(sectionSpecs);
     const pageType = inferPageType({
       pagePath,
       pageName: String(page?.name || ""),
       taxonomyType: taxonomyTypeByPath[pagePath] || "",
     });
+    const sections = toSectionRows(sectionSpecs, { pageType, pagePath });
     const skeleton = inferSkeleton({ pageType, sections });
     return {
       templateId: `${slug(String(site?.id || "site")) || "site"}-${slug(pagePath) || "home"}-${String(index + 1)}`,
@@ -357,6 +432,13 @@ export const buildTemplateDedupFingerprints = ({ manifest = {}, specPack = {} } 
 
 const percentage = (ok, total) => (total <= 0 ? 100 : Number(((ok / total) * 100).toFixed(2)));
 
+const expectedMiddleSectionMinimum = (pageType) => {
+  const token = String(pageType || "").trim().toLowerCase();
+  if (token === "home") return 3;
+  if (token === "contact" || token === "faq" || token === "support" || token === "legal") return 1;
+  return 2;
+};
+
 export const evaluateTemplateAssetContracts = ({ manifest = {}, dedup = {}, runtime = {} } = {}) => {
   const issues = [];
   const pages = asArray(manifest?.pages);
@@ -447,6 +529,44 @@ export const evaluateTemplateAssetContracts = ({ manifest = {}, dedup = {}, runt
     });
   }
 
+  const substantiveSectionsByPage = pages.map((page) => {
+    const pageType = String(page?.pageType || "").trim().toLowerCase();
+    const sections = asArray(page?.sections);
+    const substantive = sections.filter((section) => {
+      const type = String(section?.type || "").trim();
+      if (!type || type === "Hero") return false;
+      if (pageType === "contact") return type !== "CTABanner";
+      if (pageType === "legal") return type !== "CTABanner";
+      return type !== "CTABanner" && type !== "ContactSection";
+    });
+    const minRequired = expectedMiddleSectionMinimum(pageType);
+    return {
+      pagePath: normalizePath(page?.pagePath || "/"),
+      pageType,
+      minRequired,
+      substantive,
+      ok: substantive.length >= minRequired,
+    };
+  });
+  const middleSectionPageCoverage = percentage(
+    substantiveSectionsByPage.filter((row) => row.ok).length,
+    substantiveSectionsByPage.length || 1
+  );
+  const middleTypeUniverse = dedupe(
+    substantiveSectionsByPage.flatMap((row) => row.substantive.map((section) => String(section?.type || "").trim()))
+  ).filter(Boolean);
+  const middleTypeDiversity = Number(Math.min(100, (middleTypeUniverse.length / 8) * 100).toFixed(2));
+  const middleSectionCoverageScore = Number(
+    (middleSectionPageCoverage * 0.7 + middleTypeDiversity * 0.3).toFixed(2)
+  );
+  if (middleSectionCoverageScore < 80) {
+    issues.push({
+      code: "middle_section_coverage_low",
+      severity: "warn",
+      message: `middle section coverage below 80% (${middleSectionCoverageScore})`,
+    });
+  }
+
   const metaCompletenessCount = pages.filter((page) => {
     if (!page || typeof page !== "object") return false;
     const required = ["templateId", "pagePath", "pageType", "skeleton", "sections", "visualProfile", "styleLock"];
@@ -485,10 +605,11 @@ export const evaluateTemplateAssetContracts = ({ manifest = {}, dedup = {}, runt
 
   const baseScore = Number(
     (
-      templateMetaCompleteness * 0.3 +
-      pageTypeCompliance * 0.2 +
+      templateMetaCompleteness * 0.25 +
+      pageTypeCompliance * 0.15 +
       homeSkeletonCompliance * 0.1 +
-      sectionTaxonomyCompliance * 0.2 +
+      sectionTaxonomyCompliance * 0.15 +
+      middleSectionCoverageScore * 0.15 +
       dedupFingerprintCompleteness * 0.2
     ).toFixed(2)
   );
@@ -509,12 +630,14 @@ export const evaluateTemplateAssetContracts = ({ manifest = {}, dedup = {}, runt
       pageTypeCompliance,
       homeSkeletonCompliance,
       sectionTaxonomyCompliance,
+      middleSectionCoverageScore,
       dedupFingerprintCompleteness,
       fidelitySimilarity,
     },
     observations: {
       pageCount: pages.length,
       sectionCount: sectionRows.length,
+      middleSectionTypeCount: middleTypeUniverse.length,
       fingerprintCount: fingerprints.length,
       reviewStatus,
       reviewFromStatus,

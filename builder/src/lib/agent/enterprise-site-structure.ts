@@ -9,15 +9,29 @@ export type EnterpriseSitePageKey =
   | "solutions"
   | "cases"
   | "about"
+  | "pricing"
+  | "support"
+  | "blog"
   | "contact"
-  | "privacy";
+  | "privacy"
+  | "terms";
 
 export type EnterpriseSitePageDefinition = {
   key: EnterpriseSitePageKey;
   path: string;
   name: string;
   pageType: TemplatePageType;
-  taxonomyType: "home" | "detail" | "product_service_list" | "about" | "contact" | "legal";
+  taxonomyType:
+    | "home"
+    | "detail"
+    | "product_service_list"
+    | "about"
+    | "contact"
+    | "pricing"
+    | "help_faq"
+    | "blog_list"
+    | "blog_detail"
+    | "legal";
   requiredCategories: string[];
   description: string;
 };
@@ -64,7 +78,10 @@ const STRONG_ENTERPRISE_BUSINESS_PATTERN =
 
 const ENTERPRISE_MULTI_PAGE_ROUTE_PATTERNS = [
   /(?:about(?:\s+us)?|company|team|mission|history)\s*(?:page|pages|route|routes|nav|menu|menus)|(?:关于(?:我们)?|公司简介|品牌故事)(?:页面|页|导航|栏目)/i,
-  /(?:contact|contact us|get[-\s]?in[-\s]?touch|sales|support)\s*(?:page|pages|route|routes|nav|menu|menus)|(?:联系(?:我们)?|咨询|询价)(?:页面|页|导航|栏目)/i,
+  /(?:contact|contact us|get[-\s]?in[-\s]?touch|sales)\s*(?:page|pages|route|routes|nav|menu|menus)|(?:联系(?:我们)?|咨询|询价)(?:页面|页|导航|栏目)/i,
+  /(?:support|help|faq|docs|documentation)\s*(?:page|pages|route|routes|nav|menu|menus)|(?:支持|帮助中心|常见问题|文档)(?:页面|页|导航|栏目)/i,
+  /(?:pricing|plans?|quote|cost|subscription)\s*(?:page|pages|route|routes|nav|menu|menus)|(?:定价|价格|套餐|报价)(?:页面|页|导航|栏目)/i,
+  /(?:blog|news|insights?|resources?|articles?)\s*(?:page|pages|route|routes|nav|menu|menus)|(?:博客|新闻|洞察|资讯)(?:页面|页|导航|栏目)/i,
   /(?:privacy|policy|terms?|legal|gdpr|cookie)\s*(?:page|pages|route|routes|nav|menu|menus)|(?:隐私|政策|条款)(?:页面|页|导航|栏目)/i,
   /(?:solutions?|services?|capabilities|workflow|industr(?:y|ies))\s*(?:page|pages|route|routes|nav|menu|menus)|(?:解决方案|服务|能力|行业方案)(?:页面|页|导航|栏目)/i,
   /(?:cases?|case studies|customers?|portfolio|projects?)\s*(?:page|pages|route|routes|nav|menu|menus)|(?:案例|客户案例|项目案例)(?:页面|页|导航|栏目)/i,
@@ -82,15 +99,27 @@ const pageDepth = (path: string) => normalizeEnterprisePagePath(path).split("/")
 const tokenFromPage = (page: PageLike) =>
   `${normalizeEnterprisePagePath(page?.path || "/")} ${String(page?.name || "").trim()}`.toLowerCase();
 
-const isPrivacyPage = (page: PageLike) => /(privacy|policy|legal|terms?|cookie|gdpr|隐私|政策)/.test(tokenFromPage(page));
+const isPrivacyPage = (page: PageLike) => /(privacy|policy|cookie|gdpr|隐私|政策)/.test(tokenFromPage(page));
+
+const isTermsPage = (page: PageLike) =>
+  /(terms?|legal|tos|user[-\s]?agreement|使用条款|服务条款|法律声明)/.test(tokenFromPage(page));
 
 const isContactPage = (page: PageLike) =>
-  /(contact|quote|consult|demo|get[-\s]?in[-\s]?touch|sales|support|联系|询价|咨询)/.test(tokenFromPage(page));
+  /(contact|quote|consult|demo|get[-\s]?in[-\s]?touch|sales|联系|询价|咨询)/.test(tokenFromPage(page));
 
 const isAboutPage = (page: PageLike) =>
   /(about|company|team|story|mission|vision|history|founder|leadership|culture|关于|公司|团队|历程|创始人|理念)/.test(
     tokenFromPage(page)
   );
+
+const isPricingPage = (page: PageLike) =>
+  /(pricing|plans?|tiers?|quote|cost|subscription|定价|价格|套餐|报价)/.test(tokenFromPage(page));
+
+const isSupportPage = (page: PageLike) =>
+  /(support|help|faq|docs|documentation|knowledge|guide|支持|帮助|常见问题|文档)/.test(tokenFromPage(page));
+
+const isBlogPage = (page: PageLike) =>
+  /(blog|news|journal|insight|resource|article|press|博客|新闻|洞察|资讯)/.test(tokenFromPage(page));
 
 const isCasesPage = (page: PageLike) =>
   /(case|customer|project|portfolio|success|scenario|application|案例|客户|场景)/.test(tokenFromPage(page));
@@ -129,8 +158,12 @@ const isCoreProductPage = (page: PageLike, pages: PageLike[]) => {
 const matchesEnterpriseKey = (page: PageLike, key: EnterpriseSitePageKey, pages: PageLike[]) => {
   const path = normalizeEnterprisePagePath(page?.path || "/");
   if (key === "home") return path === "/";
+  if (key === "terms") return isTermsPage(page);
   if (key === "privacy") return isPrivacyPage(page);
   if (key === "contact") return isContactPage(page);
+  if (key === "support") return isSupportPage(page);
+  if (key === "blog") return isBlogPage(page);
+  if (key === "pricing") return isPricingPage(page);
   if (key === "about") return isAboutPage(page);
   if (key === "cases") return isCasesPage(page);
   if (key === "solutions") return isSolutionsPage(page);
@@ -159,7 +192,7 @@ export const looksLikeEnterpriseWebsite = ({ prompt = "", pages = [] }: Enterpri
   const hasCoreSignals =
     matchedKeys.has("about") &&
     matchedKeys.has("contact") &&
-    (matchedKeys.has("products") || matchedKeys.has("solutions") || matchedKeys.has("cases"));
+    (matchedKeys.has("products") || matchedKeys.has("solutions") || matchedKeys.has("cases") || matchedKeys.has("pricing"));
   return hasCoreSignals;
 };
 

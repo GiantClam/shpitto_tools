@@ -24,9 +24,12 @@ export type TemplatePageType =
   | "about"
   | "solutions"
   | "products"
+  | "pricing"
   | "cases"
   | "contact"
+  | "faq"
   | "blog"
+  | "careers"
   | "legal"
   | "support"
   | "generic";
@@ -110,25 +113,29 @@ const inferSectionKind = (sectionType: string, sectionId: string): SectionKind |
   // Strong type-based routing first to avoid id keyword collisions like "project-proof".
   if (/(navigation|navbar|header|topnav)/.test(typeToken)) return "navigation";
   if (/(hero|pagehero|showcasehero)/.test(typeToken)) return "hero";
-  if (/(studiostory|story|editorial|content|philosophy|narrative|about|mission)/.test(typeToken)) return "story";
-  if (/(approach|metric|stats|feature|valueprop|process)/.test(typeToken)) return "approach";
-  if (/(product|catalog|collection|store|shop|showcase|gallery|capability|module)/.test(typeToken))
+  if (/(studiostory|story|editorial|content|philosophy|narrative|about|mission|team|history|timeline)/.test(typeToken))
+    return "story";
+  if (/(approach|metric|stats|feature|valueprop|process|workflow|integration|capability|roadmap)/.test(typeToken))
+    return "approach";
+  if (/(product|catalog|collection|store|shop|showcase|gallery|module|pricing|plan|tier|package)/.test(typeToken))
     return "products";
-  if (/(social|testimonial|trust|logo|collaborator|proof)/.test(typeToken)) return "socialproof";
-  if (/(footercta|calltoaction|cta|pricing|plan|tier)/.test(typeToken)) return "cta";
-  if (/(contact|lead|inquiry|form)/.test(typeToken)) return "contact";
+  if (/(social|testimonial|trust|logo|collaborator|proof|award|certification|badge)/.test(typeToken)) return "socialproof";
+  if (/(footercta|calltoaction|cta|book|demo|subscribe)/.test(typeToken)) return "cta";
+  if (/(contact|lead|inquiry|form|support|help)/.test(typeToken)) return "contact";
   if (/footer/.test(typeToken)) return "footer";
 
   // Fallback to combined token matching.
   if (/(navigation|navbar|header|topnav)/.test(token)) return "navigation";
   if (/(hero|pagehero|showcasehero)/.test(token)) return "hero";
-  if (/(studiostory|story|editorial|content|philosophy|narrative|about|mission)/.test(token)) return "story";
-  if (/(approach|metric|stats|feature|valueprop|process)/.test(token)) return "approach";
-  if (/(product|catalog|collection|store|shop|showcase|gallery|capability|module)/.test(token))
+  if (/(studiostory|story|editorial|content|philosophy|narrative|about|mission|team|history|timeline)/.test(token))
+    return "story";
+  if (/(approach|metric|stats|feature|valueprop|process|workflow|integration|capability|roadmap)/.test(token))
+    return "approach";
+  if (/(product|catalog|collection|store|shop|showcase|gallery|module|pricing|plan|tier|package)/.test(token))
     return "products";
-  if (/(social|proof|testimonial|trust|logo|collaborator)/.test(token)) return "socialproof";
-  if (/(footercta|calltoaction|cta|pricing|plan|tier)/.test(token)) return "cta";
-  if (/(contact|lead|inquiry|form)/.test(token)) return "contact";
+  if (/(social|proof|testimonial|trust|logo|collaborator|award|certification|badge)/.test(token)) return "socialproof";
+  if (/(footercta|calltoaction|cta|book|demo|subscribe)/.test(token)) return "cta";
+  if (/(contact|lead|inquiry|form|support|help)/.test(token)) return "contact";
   if (/footer/.test(token)) return "footer";
   return null;
 };
@@ -343,9 +350,12 @@ const pageTypeTokens: TemplatePageType[] = [
   "about",
   "solutions",
   "products",
+  "pricing",
   "cases",
   "contact",
+  "faq",
   "blog",
+  "careers",
   "legal",
   "support",
   "generic",
@@ -364,13 +374,16 @@ const inferTemplatePageType = (pathValue: unknown, nameValue: unknown): Template
   if (!token || token === "/") return "home";
   if (pathToken === "/" || /(^|[^a-z])home($|[^a-z])/.test(token)) return "home";
   if (/(about|company|story|mission|vision|who|team)/.test(token)) return "about";
+  if (/(careers?|jobs?|hiring|join[-\s]?us|talent|recruit)/.test(token)) return "careers";
   if (/(solution|service|capabilit|workflow|industry)/.test(token)) return "solutions";
-  if (/(product|catalog|collection|pricing|plan|store|shop)/.test(token)) return "products";
+  if (/(pricing|plans?|tiers?|subscription|quote|cost|套餐|报价|价格)/.test(token)) return "pricing";
+  if (/(faq|frequentlyasked|questions?|qanda|q&a|常见问题|问答)/.test(token)) return "faq";
+  if (/(support|help|docs|documentation|knowledge|guide)/.test(token)) return "support";
+  if (/(product|catalog|collection|store|shop)/.test(token)) return "products";
   if (/(case|customer|testimonial|proof|review|success|portfolio)/.test(token)) return "cases";
   if (/(contact|quote|inquir|demo|consult|book)/.test(token)) return "contact";
   if (/(blog|news|journal|article|insight|press)/.test(token)) return "blog";
   if (/(legal|privacy|term|policy|cookie|gdpr)/.test(token)) return "legal";
-  if (/(support|help|faq|docs|documentation)/.test(token)) return "support";
   return "generic";
 };
 
@@ -2206,15 +2219,21 @@ const computeIntentStructureScore = (
     promptSignals.industries.includes("travel") || countSemanticTokenMatches(prompt, TRAVEL_INTENT_TOKENS) > 0;
   const developerPrompt = countSemanticTokenMatches(prompt, DEVELOPER_INTENT_TOKENS) > 0;
   const explicitMultiPagePrompt =
-    /(?:about|contact|privacy|products?|solutions?|cases?|support|blog)\s*(?:page|pages|route|routes|menu|menus|nav)|(?:关于|联系|隐私|产品页|产品中心|解决方案页|案例页|支持页|博客页)/i.test(
+    /(?:about|contact|privacy|products?|solutions?|cases?|support|faq|pricing|blog|careers?)\s*(?:page|pages|route|routes|menu|menus|nav)|(?:关于|联系|隐私|产品页|产品中心|解决方案页|案例页|支持页|常见问题页|定价页|博客页|招聘页)/i.test(
       prompt
-    ) && /(?:about|contact|privacy|products?|solutions?|cases?|support|blog|关于|联系|隐私|产品页|产品中心|解决方案页|案例页|支持页|博客页)/i.test(prompt);
+    ) &&
+    /(?:about|contact|privacy|products?|solutions?|cases?|support|faq|pricing|blog|careers?|关于|联系|隐私|产品页|产品中心|解决方案页|案例页|支持页|常见问题页|定价页|博客页|招聘页)/i.test(
+      prompt
+    );
 
   if (explicitMultiPagePrompt) {
     if (pageTypes.has("products")) score += 2;
     if (pageTypes.has("solutions")) score += 2;
     if (pageTypes.has("about")) score += 1;
     if (pageTypes.has("contact")) score += 1;
+    if (pageTypes.has("pricing")) score += 1;
+    if (pageTypes.has("faq")) score += 1;
+    if (pageTypes.has("careers")) score += 1;
     if (pageTypes.has("blog") || pageTypes.has("support")) score += 1;
     if (pageTypes.size === 0) score -= 14;
   }
@@ -2232,6 +2251,8 @@ const computeIntentStructureScore = (
     if (pageTypes.has("products")) score += 2;
     if (pageTypes.has("solutions")) score += 2;
     if (pageTypes.has("support")) score += 1;
+    if (pageTypes.has("pricing")) score += 1;
+    if (pageTypes.has("faq")) score += 1;
     if (pageTypes.has("contact")) score += 1;
     if (pageTypes.has("about")) score += 1;
 
@@ -2252,6 +2273,7 @@ const computeIntentStructureScore = (
 
     if (pageTypes.has("support")) score += 1;
     if (pageTypes.has("blog")) score += 1;
+    if (pageTypes.has("pricing")) score += 1;
     if (pageTypes.has("products")) score += 1;
     if (pageTypes.has("contact")) score += 1;
 
@@ -2277,6 +2299,8 @@ const computeIntentStructureScore = (
     if (pageTypes.has("about")) score += 1;
     if (pageTypes.has("contact")) score += 1;
     if (pageTypes.has("blog")) score += 1;
+    if (pageTypes.has("pricing")) score += 1;
+    if (pageTypes.has("faq")) score += 1;
     if (pageTypes.has("support")) score += 1;
     if (technologyMatches >= 3 && pageTypes.has("products") && pageTypes.has("contact")) score += 4;
     if (technologyMatches >= 3 && (pageTypes.has("blog") || pageTypes.has("support"))) score += 2;
@@ -2302,6 +2326,7 @@ const computeIntentStructureScore = (
     else if (pageTypes.has("products")) score += 1;
 
     if (pageTypes.has("products")) score += 2;
+    if (pageTypes.has("pricing")) score += 2;
     if (pageTypes.has("support")) score += 1;
     if (pageTypes.has("contact")) score += 1;
     if (pageTypes.has("about")) score += 1;
@@ -2323,6 +2348,7 @@ const computeIntentStructureScore = (
     else if (technologyMatches >= 3) score += 2;
 
     if (pageTypes.has("support")) score += 2;
+    if (pageTypes.has("faq")) score += 2;
     if (pageTypes.has("blog")) score += 2;
     if (pageTypes.has("about")) score += 1;
     if (pageTypes.has("contact")) score += 1;
@@ -2384,6 +2410,7 @@ const computeIntentStructureScore = (
 
     if (pageTypes.has("support")) score += 2;
     if (pageTypes.has("blog")) score += 2;
+    if (pageTypes.has("pricing")) score += 1;
     if (pageTypes.has("products")) score += 1;
     if (pageTypes.has("contact")) score += 1;
     if (pageTypes.has("support") && pageTypes.has("blog")) score += 3;
