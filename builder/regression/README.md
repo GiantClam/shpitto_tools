@@ -70,6 +70,20 @@ Optional flags:
 node regression/run-creation-baseline.mjs --base-url http://localhost:3000 --max-cases 3
 ```
 
+Website refactor baseline (enterprise page-type coverage + required path assertions):
+
+```bash
+cd builder
+npm run regression:creation:website -- --base-url http://127.0.0.1:3110
+```
+
+Browser refactor validation (sandbox runtime rendering + theme consistency checks):
+
+```bash
+cd builder
+npm run regression:browser:refactor -- --base-url http://127.0.0.1:3110
+```
+
 Report outputs are written to `builder/regression/reports/` as JSON and Markdown.
 
 Notes:

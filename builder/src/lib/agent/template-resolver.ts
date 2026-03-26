@@ -56,7 +56,7 @@ const sectionPatterns: Record<TemplatePlanSectionKind, RegExp[]> = {
   hero: [/hero|masthead|pagehero|banner|intro/],
   story: [/story|about|narrative|philosophy|studio|editorial|mission|vision|who/],
   approach: [/approach|metric|stats|feature|value|process|capability|benefit|numbers?|technology|technical|tech(?:\s|-)?highlight|innovation|science|价值点|优势|能力|方法|指标|流程|特性|亮点|技术|科技/],
-  products: [/product|catalog|collection|pricing|plan|showcase|gallery|module|offer|package/],
+  products: [/product|catalog|collection|pricing|plan|showcase|gallery|module|offer|package|产品|目录|机型|设备|商品|套餐|报价/],
   socialproof: [/social|proof|testimonial|review|trust|logo|collaborator|partner/],
   contact: [/contact|lead|inquiry|form|quote|consult/],
   cta: [/cta|calltoaction|call-to-action|footercta|start|trial|getstarted/],
@@ -100,7 +100,9 @@ const normalizeKind = (value: unknown): TemplatePlanSectionKind | null => {
 };
 
 const inferPromptDrivenKinds = (prompt: string): TemplatePlanSectionKind[] => {
-  const raw = String(prompt || "").trim();
+  const raw = String(prompt || "")
+    .trim()
+    .toLowerCase();
   if (!raw) return [];
   return sectionOrder.filter((kind) => {
     if (kind === "navigation" || kind === "hero" || kind === "footer") return false;
@@ -355,13 +357,18 @@ const planPageSections = (input: {
       : shouldPreferDefaultKinds
         ? dedupeKinds([...defaultKinds, ...profileKinds, ...promptKinds])
         : dedupeKinds([...profileKinds, ...promptKinds, ...(input.fallbackKinds || []), ...defaultKinds]);
-  if (!pageKinds.length) return input.page;
+  const shouldSuppressHomeProducts =
+    input.pageType === "home" && promptKinds.includes("approach") && !promptKinds.includes("products");
+  const normalizedPageKinds = shouldSuppressHomeProducts
+    ? pageKinds.filter((kind) => kind !== "products")
+    : pageKinds;
+  if (!normalizedPageKinds.length) return input.page;
 
   const sourceSections = Array.isArray(input.page.sections)
     ? input.page.sections.map((section) => cloneSection(section))
     : [];
   const used = new Set<number>();
-  const planned = pageKinds.map((kind) => {
+  const planned = normalizedPageKinds.map((kind) => {
     const index = sourceSections.findIndex(
       (section, sectionIndex) => !used.has(sectionIndex) && sectionMatchesKind(section, kind)
     );

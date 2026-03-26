@@ -1,5 +1,8 @@
 import Anthropic from "@anthropic-ai/sdk";
 import { HttpsProxyAgent } from "https-proxy-agent";
+import { ensureEnvFallbackLoaded } from "@/lib/env/load-env-fallback";
+
+ensureEnvFallbackLoaded();
 
 type LlmProviderName = "aiberm" | "openrouter" | "anthropic";
 
@@ -53,7 +56,7 @@ const providerConfigs: Record<
 > = {
   aiberm: {
     apiKey: process.env.AIBERM_API_KEY ?? "",
-    baseURL: process.env.AIBERM_BASE_URL || "https://aiberm.com",
+    baseURL: process.env.AIBERM_BASE_URL || "https://aiberm.com/v1",
     timeout: Number(
       process.env.AIBERM_TIMEOUT_MS ||
         process.env.OPENROUTER_TIMEOUT_MS ||

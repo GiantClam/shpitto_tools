@@ -71,7 +71,10 @@ const ENTERPRISE_PROMPT_PATTERN =
   /(企业官网|公司官网|官方网站|企业站|官网|企业|公司|制造商|工厂|工业|设备|机械|manufacturer|manufactur|factory|industrial|machinery|equipment|b2b|corporate|enterprise|official website|company website)/i;
 
 const SINGLE_PAGE_HOMEPAGE_PATTERN =
-  /(homepage|home page|landing page|single page|one page|首页|官网首页|单页|落地页)/i;
+  /(single[-\s]?page|one[-\s]?page|strictly one page|single page only|homepage(?:\s+only)?|仅首页|只保留首页|仅保留首页|单页|(?:官网)?首页|landing page(?:\s+only)?)/i;
+
+const EXPLICIT_MULTI_PAGE_CONTRACT_PATTERN =
+  /(multi[-\s]?page|full site|full website|complete site|complete website|must include pages?|required pages?|页面结构|站点结构|网站结构|页面包含|页面包括|必须包含页面|需包含页面|完整多页|多页站点|多页面)/i;
 
 const STRONG_ENTERPRISE_BUSINESS_PATTERN =
   /(企业官网|公司官网|官方网站|制造商|工厂|工业|设备|机械|manufacturer|manufactur|factory|industrial|machinery|equipment|b2b|corporate|enterprise|official website|company website)/i;
@@ -92,6 +95,13 @@ const ENTERPRISE_MULTI_PAGE_ROUTE_PATTERNS = [
 const countExplicitMultiPageSignals = (prompt: string) => {
   const rawPrompt = String(prompt || "");
   return ENTERPRISE_MULTI_PAGE_ROUTE_PATTERNS.reduce((count, pattern) => count + (pattern.test(rawPrompt) ? 1 : 0), 0);
+};
+
+const hasExplicitMultiPageContract = (prompt: string) => {
+  const rawPrompt = String(prompt || "");
+  if (!rawPrompt.trim()) return false;
+  if (EXPLICIT_MULTI_PAGE_CONTRACT_PATTERN.test(rawPrompt)) return true;
+  return countExplicitMultiPageSignals(rawPrompt) >= 2;
 };
 
 const pageDepth = (path: string) => normalizeEnterprisePagePath(path).split("/").filter(Boolean).length;
@@ -175,7 +185,7 @@ const matchesEnterpriseKey = (page: PageLike, key: EnterpriseSitePageKey, pages:
 export const looksLikeEnterpriseWebsite = ({ prompt = "", pages = [] }: EnterpriseIntentInput) => {
   const rawPrompt = String(prompt || "");
   const singlePageHomepageIntent = SINGLE_PAGE_HOMEPAGE_PATTERN.test(rawPrompt);
-  const explicitMultiPageSignals = countExplicitMultiPageSignals(rawPrompt) >= 2;
+  const explicitMultiPageSignals = hasExplicitMultiPageContract(rawPrompt);
   if (singlePageHomepageIntent && !explicitMultiPageSignals) return false;
   if (ENTERPRISE_PROMPT_PATTERN.test(rawPrompt)) return true;
   if (explicitMultiPageSignals) {

@@ -4,6 +4,8 @@ import React from "react";
 import { cn } from "@/lib/cn";
 import { Button } from "@/components/atoms/button";
 import { Card } from "@/components/atoms/card";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import {
   BaseBlockProps,
   LinkProps,
@@ -20,6 +22,8 @@ export type LeadCaptureCTAProps = BaseBlockProps & {
   subtitle?: string;
   cta?: LinkProps | null;
   note?: string;
+  showForm?: boolean;
+  submitLabel?: string;
   titleColor?: string;
   titleClassName?: string;
   ctaBackgroundColor?: string;
@@ -46,6 +50,8 @@ export function LeadCaptureCTABlock({
   subtitle,
   cta,
   note,
+  showForm = false,
+  submitLabel = "Submit",
   titleColor,
   titleClassName,
   ctaBackgroundColor,
@@ -64,39 +70,59 @@ export function LeadCaptureCTABlock({
 
   const shouldUseGradientTitle = emphasis === "high" && !titleColor && !titleClassName;
   const content = (
-    <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-      <div>
-        <h2
-          className={cn(
-            "text-2xl font-semibold tracking-tight sm:text-3xl",
-            shouldUseGradientTitle ? "text-gradient" : "",
-            titleClassName
-          )}
-          style={titleColor ? { color: titleColor } : undefined}
+    <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+        <div>
+          <h2
+            className={cn(
+              "text-2xl font-semibold tracking-tight sm:text-3xl",
+              shouldUseGradientTitle ? "text-gradient" : "",
+              titleClassName
+            )}
+            style={titleColor ? { color: titleColor } : undefined}
+          >
+            {title}
+          </h2>
+          {subtitle ? (
+            <p className="mt-2 text-base text-muted-foreground sm:text-lg">{subtitle}</p>
+          ) : null}
+          {note ? <p className="mt-2 text-xs text-muted-foreground">{note}</p> : null}
+        </div>
+        <Button
+          asChild
+          variant={resolvedCta.variant === "secondary" ? "secondary" : "default"}
+          className={cn(emphasis === "high" ? "btn-glow" : "", ctaClassName)}
+          style={
+            ctaBackgroundColor || ctaTextColor
+              ? {
+                  backgroundColor: ctaBackgroundColor || undefined,
+                  color: ctaTextColor || undefined,
+                }
+              : undefined
+          }
+          size="lg"
         >
-          {title}
-        </h2>
-        {subtitle ? (
-          <p className="mt-2 text-base text-muted-foreground sm:text-lg">{subtitle}</p>
-        ) : null}
-        {note ? <p className="mt-2 text-xs text-muted-foreground">{note}</p> : null}
+          <a href={resolvedCta.href}>{resolvedCta.label}</a>
+        </Button>
       </div>
-      <Button
-        asChild
-        variant={resolvedCta.variant === "secondary" ? "secondary" : "default"}
-        className={cn(emphasis === "high" ? "btn-glow" : "", ctaClassName)}
-        style={
-          ctaBackgroundColor || ctaTextColor
-            ? {
-                backgroundColor: ctaBackgroundColor || undefined,
-                color: ctaTextColor || undefined,
-              }
-            : undefined
-        }
-        size="lg"
-      >
-        <a href={resolvedCta.href}>{resolvedCta.label}</a>
-      </Button>
+      {showForm ? (
+        <form className="grid gap-3 rounded-xl border border-border/70 bg-background/70 p-4 md:grid-cols-2">
+          <Input name="name" placeholder="Name" autoComplete="name" />
+          <Input name="email" type="email" placeholder="Email" autoComplete="email" />
+          <Input name="company" placeholder="Company" autoComplete="organization" />
+          <Input name="phone" placeholder="Phone / WhatsApp" autoComplete="tel" />
+          <Textarea
+            name="message"
+            placeholder="Project details"
+            className="md:col-span-2 min-h-[96px]"
+          />
+          <div className="md:col-span-2">
+            <Button type="submit" size="lg" className="w-full md:w-auto">
+              {submitLabel}
+            </Button>
+          </div>
+        </form>
+      ) : null}
     </div>
   );
 

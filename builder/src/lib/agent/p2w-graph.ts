@@ -492,7 +492,7 @@ const useCompactDesignSystemForBuilder = parseEnvBoolean(
 );
 const sectionGenerationStrategy = parseSectionGenerationStrategy(
   process.env.BUILDER_SECTION_GENERATION_STRATEGY,
-  "template_first"
+  "hybrid"
 );
 const enableMultiCandidateSelection = parseEnvBoolean(
   process.env.BUILDER_MULTI_CANDIDATE_SELECTION,
@@ -500,11 +500,11 @@ const enableMultiCandidateSelection = parseEnvBoolean(
 );
 const configuredCandidateStrategies = parseStrategyList(
   process.env.BUILDER_MULTI_CANDIDATE_STRATEGIES,
-  ["template_first", "hybrid"]
+  ["hybrid", "template_first"]
 );
 const configuredDetailedCandidateStrategies = parseStrategyList(
   process.env.BUILDER_MULTI_CANDIDATE_DETAILED_STRATEGIES,
-  ["template_first", "hybrid", "llm_first"]
+  ["hybrid", "template_first", "llm_first"]
 );
 const templateFirstSectionTokens = parseEnvCsv(
   process.env.BUILDER_TEMPLATE_SECTIONS || process.env.BUILDER_TEMPLATE_FIRST_SECTIONS,
@@ -1838,6 +1838,9 @@ const hasFooterSection = (sections: ArchitectSection[]) => sections.some((sectio
 
 const hasCtaSection = (sections: ArchitectSection[]) => sections.some((section) => isCtaLikeSection(section));
 
+const hasContactSection = (sections: ArchitectSection[]) =>
+  sections.some((section) => /(contact|inquiry|quote|leadcapture|咨询|联系|表单)/.test(normalizeSectionToken(section)));
+
 const isGlobalChromeSection = (section: { id?: string; type?: string; intent?: string } | undefined) => {
   const token = `${section?.type ?? ""} ${section?.id ?? ""} ${section?.intent ?? ""}`.toLowerCase();
   return /(navigation|navbar|header|topnav|menu|footer|legal|copyright|bottom)/.test(token);
@@ -1914,13 +1917,47 @@ const normalizePages = (blueprint: ArchitectBlueprint | Record<string, unknown>)
         },
       });
     }
+    const normalizedPath = normalizePathToken(path);
+    if (normalizedPath === "/contact" && !hasContactSection(sections)) {
+      const contactSeed = toSlug(`${name}-contact`) || `contact-${pageIndex + 1}`;
+      const contactSection = {
+        id: contactSeed,
+        type: "Contact",
+        intent: "Contact form with name, email, company, message, and clear conversion CTA.",
+        propsHints: {
+          formFields: ["name", "email", "company", "message"],
+          primaryCta: "Contact Sales",
+        },
+        layoutHint: {
+          structure: "dual" as const,
+          density: "normal" as const,
+          align: "start" as const,
+          media: "none" as const,
+          list: "rows" as const,
+          compositionPreset: "CT01",
+        },
+      };
+      const footerIndex = sections.findIndex((section) => isFooterLikeSection(section));
+      if (footerIndex > 0) {
+        sections.splice(footerIndex, 0, contactSection);
+      } else {
+        sections.push(contactSection);
+      }
+    }
     return { path, name, sections, root: page?.root };
   });
   const themeContract = (blueprint as ArchitectBlueprint)?.theme?.themeContract as ThemeContract | undefined;
   const alignedPages = applySectionAlignOverrides(pages, themeContract);
   const originalPageCount = alignedPages.length;
   const originalSectionsTotal = alignedPages.reduce((sum, page) => sum + page.sections.length, 0);
-  const maxPages = clampPositiveInt(defaultMaxPages, 6, 1, 24);
+  const configuredMaxPages = clampPositiveInt(defaultMaxPages, 6, 1, 24);
+  const enterprisePathSet = new Set(ENTERPRISE_SITE_PAGES.map((page) => normalizePathToken(page.path)));
+  const enterprisePathHits = alignedPages.reduce((count, page) => {
+    const path = normalizePathToken(page.path);
+    return count + (enterprisePathSet.has(path) ? 1 : 0);
+  }, 0);
+  const enterpriseMinPages = enterprisePathHits >= 3 ? Math.min(24, ENTERPRISE_SITE_PAGES.length) : 0;
+  const maxPages = enterpriseMinPages > 0 ? Math.max(configuredMaxPages, enterpriseMinPages) : configuredMaxPages;
   const maxSectionsPerPage = clampPositiveInt(defaultMaxSectionsPerPage, 8, 1, 20);
   const maxSectionsTotal = clampPositiveInt(defaultMaxSectionsTotal, 48, 1, 240);
   let totalSections = 0;
@@ -1958,6 +1995,8 @@ const normalizePages = (blueprint: ArchitectBlueprint | Record<string, unknown>)
       keptPages: limitedPages.length,
       originalSections: originalSectionsTotal,
       keptSections: limitedSectionsTotal,
+      configuredMaxPages,
+      enterpriseMinPages,
       maxPages,
       maxSectionsPerPage,
       maxSectionsTotal,
@@ -2022,7 +2061,7 @@ const templatePlanKindPatterns: Record<TemplatePlanSectionKind, RegExp[]> = {
   hero: [/hero|masthead|pagehero|banner|intro/],
   story: [/story|about|narrative|philosophy|studio|editorial|mission|vision|who/],
   approach: [/approach|metric|stats|feature|value|process|capability|benefit|numbers?|technology|technical|tech(?:\s|-)?highlight|innovation|science|价值点|优势|能力|方法|指标|流程|特性|亮点|技术|科技/],
-  products: [/product|catalog|collection|pricing|plan|showcase|gallery|module|offer|package/],
+  products: [/product|catalog|collection|pricing|plan|showcase|gallery|module|offer|package|产品|目录|机型|设备|商品|套餐|报价/],
   socialproof: [/social|proof|testimonial|review|trust|logo|collaborator|partner/],
   contact: [/contact|lead|inquiry|form|quote|consult/],
   cta: [/cta|calltoaction|call-to-action|footercta|start|trial|getstarted/],
@@ -2073,7 +2112,9 @@ const mergeTemplatePlanKinds = (...kindLists: TemplatePlanSectionKind[][]): Temp
 };
 
 const inferPromptDrivenTemplateKinds = (prompt: string): TemplatePlanSectionKind[] => {
-  const raw = String(prompt || "").trim();
+  const raw = String(prompt || "")
+    .trim()
+    .toLowerCase();
   if (!raw) return [];
   return templatePlanSectionOrder.filter((kind) => {
     if (kind === "navigation" || kind === "footer" || kind === "hero") return false;
@@ -6220,76 +6261,151 @@ const applyStructuredBriefOverrides = (
     mediaAlt: "LC-CNC factory workshop",
     ctas: [{ label: brief.heroCtas?.[0] || "Get Quote on WhatsApp", href: "/contact", variant: "primary" as const }],
   });
-  const buildStructuredInteriorHeroProps = (
+  const buildStructuredInteriorHeroSpec = (
     pageType: "products" | "solutions" | "cases" | "about" | "contact",
     theme: Record<string, unknown> = {}
-  ) => {
-    const definitions = {
-      products: {
-        anchor: "products-hero",
-        eyebrow: "3C machine portfolio",
-        title: "3C CNC Machine Platforms",
-        subtitle:
-          "Phone-frame, laptop-shell, camera-bezel, and keypad centers configured for stable output and short delivery windows.",
-      },
-      solutions: {
-        anchor: "solutions-hero",
-        eyebrow: "Custom solutions",
-        title: "Custom CNC Solutions for Southeast Asia",
-        subtitle:
-          "Fixture, spindle, automation, and line-integration packages built around takt time, finish quality, and deployment speed.",
-      },
-      cases: {
-        anchor: "cases-hero",
-        eyebrow: "Production case studies",
-        title: "Representative 3C machining programs",
-        subtitle:
-          "Phone frames, laptop shells, camera bezels, and keypad components delivered with repeatable cycle time and cosmetic-finish control.",
-      },
-      about: {
-        anchor: "about-hero",
-        eyebrow: brief.brand || "About LC-CNC",
-        title: "LC-CNC, Shenzhen since 2013",
-        subtitle: brief.aboutText || "ISO-certified plant, 30+ R&D engineers, 200+ installed across SEA.",
-      },
-      contact: {
+  ): { type: "HeroSplit" | "FeatureWithMedia" | "ContentStory" | "LeadCaptureCTA"; props: Record<string, unknown> } => {
+    if (pageType === "products") {
+      return {
+        type: "HeroSplit",
+        props: {
+          id: "structured-products-hero",
+          anchor: "products-hero",
+          paddingY: "lg",
+          maxWidth: "xl",
+          motionPreset: "stagger",
+          align: "left" as const,
+          background: "image" as const,
+          backgroundMedia: { kind: "image" as const, src: lcCncAssets.phone, alt: "3C CNC machine platform" },
+          backgroundOverlay: "solid" as const,
+          backgroundOverlayOpacity: 0.56,
+          emphasis: "high" as const,
+          surfaceTone: "dark" as const,
+          textPanel: true,
+          textPanelBackground: "rgba(9, 14, 26, 0.58)",
+          textPanelBorderColor: "rgba(255,255,255,0.16)",
+          textPanelPadding: "lg" as const,
+          textPanelRadius: "lg" as const,
+          textPanelMaxWidth: "md" as const,
+          headingSize: "lg" as const,
+          bodySize: "md" as const,
+          eyebrow: "3C machine portfolio",
+          title: "3C CNC Machine Platforms",
+          subtitle:
+            "Phone-frame, laptop-shell, camera-bezel, and keypad centers configured for stable output and short delivery windows.",
+          ctas: [
+            { label: brief.heroCtas?.[0] || "Get Quote on WhatsApp", href: "/contact", variant: "primary" as const },
+            { label: brief.heroCtas?.[1] || "Request Catalog", href: productsHref, variant: "secondary" as const },
+          ],
+          mediaPosition: "right" as const,
+          theme,
+        },
+      };
+    }
+    if (pageType === "solutions") {
+      return {
+        type: "FeatureWithMedia",
+        props: {
+          id: "structured-solutions-hero",
+          anchor: "solutions-hero",
+          paddingY: "lg" as const,
+          background: "gradient" as const,
+          backgroundGradient: "linear-gradient(180deg, #ece7df 0%, #d9ddd9 100%)",
+          maxWidth: "2xl" as const,
+          motionPreset: "stagger",
+          variant: "split" as const,
+          eyebrow: "Custom solutions",
+          title: "Custom CNC Solutions for Southeast Asia",
+          subtitle:
+            "Fixture, spindle, automation, and line-integration packages built around takt time, finish quality, and deployment speed.",
+          items: [
+            { title: "Line Architecture", desc: "Process, fixture, and automation planned as one deployment package." },
+            { title: "Fast Validation", desc: "Sample verification and commissioning checkpoints reduce launch risk." },
+            { title: "Regional Delivery", desc: "Commercial + technical support aligned to Southeast Asia plants." },
+          ],
+          mediaSrc: lcCncAssets.laptop,
+          mediaAlt: "Custom CNC solution line",
+          ctas: [{ label: "Discuss Solution", href: "/contact", variant: "primary" as const }],
+          theme,
+        },
+      };
+    }
+    if (pageType === "cases") {
+      return {
+        type: "FeatureWithMedia",
+        props: {
+          id: "structured-cases-hero",
+          anchor: "cases-hero",
+          paddingY: "lg" as const,
+          background: "gradient" as const,
+          backgroundGradient: "linear-gradient(180deg, #e8e7e3 0%, #d6dbde 100%)",
+          maxWidth: "lg" as const,
+          motionPreset: "stagger",
+          variant: "split" as const,
+          eyebrow: "Production case studies",
+          title: "Representative 3C machining programs",
+          subtitle:
+            "Phone frames, laptop shells, camera bezels, and keypad components delivered with repeatable cycle time and cosmetic-finish control.",
+          items: [
+            { title: "Cycle-Time Gains", desc: "Measured against baseline takt and throughput requirements." },
+            { title: "Yield Stability", desc: "Validated across production shifts and part-family changeovers." },
+            { title: "Commissioning Speed", desc: "Ramp-up milestones tracked to first stable output." },
+          ],
+          mediaSrc: lcCncAssets.camera,
+          mediaAlt: "3C machining case study",
+          ctas: [{ label: "View Case Portfolio", href: "/cases", variant: "primary" as const }],
+          theme,
+        },
+      };
+    }
+    if (pageType === "about") {
+      return {
+        type: "FeatureWithMedia",
+        props: {
+          id: "structured-about-hero",
+          anchor: "about-hero",
+          paddingY: "lg" as const,
+          background: "gradient" as const,
+          backgroundGradient: "linear-gradient(180deg, #f0efeb 0%, #dfe5e8 100%)",
+          maxWidth: "2xl" as const,
+          variant: "split" as const,
+          eyebrow: brief.brand || "About LC-CNC",
+          motionPreset: "stagger",
+          title: "LC-CNC, Shenzhen since 2013",
+          subtitle: brief.aboutText || "ISO-certified plant, 30+ R&D engineers, 200+ installed across SEA.",
+          items: [
+            { title: "ISO-Certified Plant", desc: "Documented quality process and repeatable factory execution." },
+            { title: "30+ R&D Engineers", desc: "Process, tooling, controls, and automation engineering depth." },
+            { title: "200+ SEA Installations", desc: "Regional deployment and after-sales response coverage." },
+          ],
+          mediaSrc: lcCncAssets.hero,
+          mediaAlt: "LC-CNC factory workshop",
+          ctas: [{ label: "Contact LC-CNC", href: "/contact", variant: "primary" as const }],
+          theme,
+        },
+      };
+    }
+    return {
+      type: "LeadCaptureCTA",
+      props: {
+        id: "structured-contact-hero",
         anchor: "contact-hero",
-        eyebrow: "Quick quote channel",
         title: "Talk to the LC-CNC commercial team",
         subtitle:
-          `WhatsApp ${brief.whatsapp || "+86-158-1370-3777"} • ${brief.email || "sales@lc-cnc.com"} • ${brief.address || "Bao'an, Shenzhen, China"}`.replace(/\s•\s$/, ""),
+          `WhatsApp ${brief.whatsapp || "+86-158-1370-3777"} • ${brief.email || "sales@lc-cnc.com"} • ${brief.address || "Bao'an, Shenzhen, China"}`.replace(
+            /\s•\s$/,
+            ""
+          ),
+        cta: { label: "Get Quote on WhatsApp", href: "/contact", variant: "primary" as const },
+        note: "I agree to receive follow-up via WhatsApp.",
+        variant: "card" as const,
+        maxWidth: "lg" as const,
+        paddingY: "lg" as const,
+        emphasis: "high" as const,
+        motionPreset: "stagger",
+        showForm: true,
+        submitLabel: "Submit Request",
       },
-    } as const;
-    const copy = definitions[pageType];
-    return {
-      id: `structured-${pageType}-hero`,
-      anchor: copy.anchor,
-      paddingY: "lg",
-      maxWidth: "xl",
-      align: "left" as const,
-      background: "image" as const,
-      backgroundMedia: { kind: "image" as const, src: lcCncAssets.hero, alt: "LC-CNC CNC workshop" },
-      backgroundOverlay: "solid" as const,
-      backgroundOverlayOpacity: 0.56,
-      emphasis: "high" as const,
-      surfaceTone: "dark" as const,
-      textPanel: true,
-      textPanelBackground: "rgba(9, 14, 26, 0.58)",
-      textPanelBorderColor: "rgba(255,255,255,0.16)",
-      textPanelPadding: "lg" as const,
-      textPanelRadius: "lg" as const,
-      textPanelMaxWidth: "md" as const,
-      headingSize: "lg" as const,
-      bodySize: "md" as const,
-      eyebrow: copy.eyebrow,
-      title: copy.title,
-      subtitle: copy.subtitle,
-      ctas: [
-        { label: brief.heroCtas?.[0] || "Get Quote on WhatsApp", href: "/contact", variant: "primary" as const },
-        { label: brief.heroCtas?.[1] || "Request Catalog", href: productsHref, variant: "secondary" as const },
-      ],
-      mediaPosition: "right" as const,
-      theme,
     };
   };
   const buildStructuredInteriorCardsProps = (
@@ -6339,7 +6455,7 @@ const applyStructuredBriefOverrides = (
         title: "Custom Solutions",
         subtitle: "Turnkey OEM/ODM lines, custom fixtures, spindle packages, and automation integration.",
         variant: "imageText" as const,
-        columns: "4col" as const,
+        columns: "3col" as const,
         density: "normal" as const,
         cardStyle: "solid" as const,
         imagePosition: "top" as const,
@@ -6376,7 +6492,7 @@ const applyStructuredBriefOverrides = (
         title: "Manufacturing Outcomes",
         subtitle: "Programs focused on cycle-time reduction, stable delivery, and finish consistency.",
         variant: "imageText" as const,
-        columns: "4col" as const,
+        columns: "2col" as const,
         density: "normal" as const,
         cardStyle: "solid" as const,
         imagePosition: "top" as const,
@@ -6404,7 +6520,7 @@ const applyStructuredBriefOverrides = (
       title: "Factory Capability Highlights",
       subtitle: "Engineering depth, factory discipline, and regional support for Southeast Asia.",
       variant: "imageText" as const,
-      columns: "4col" as const,
+      columns: "2col" as const,
       density: "normal" as const,
       cardStyle: "solid" as const,
       imagePosition: "top" as const,
@@ -6576,8 +6692,9 @@ const applyStructuredBriefOverrides = (
   const buildStructuredAboutStoryProps = () => ({
     id: "structured-about-story",
     anchor: "company-story",
-    title: "LC-CNC, Shenzhen since 2013",
-    subtitle: brief.aboutText || "ISO-certified plant, 30+ R&D engineers, 200+ installed across SEA.",
+    title: "Factory Capability & Regional Delivery Model",
+    subtitle:
+      "How LC-CNC translates engineering, quality systems, and after-sales response into practical output for SEA plants.",
     body:
       "LC-CNC combines plant execution, tooling know-how, and field response to support 3C manufacturing programs across Southeast Asia.",
     ctas: [{ label: "Talk to LC-CNC", href: "/contact", variant: "link" as const }],
@@ -6590,9 +6707,9 @@ const applyStructuredBriefOverrides = (
   > = {
     products: ["hero", "products", "features", "proof"],
     solutions: ["hero", "features", "products", "proof"],
-    cases: ["hero", "products", "features", "proof"],
-    about: ["hero", "story", "products", "proof"],
-    contact: ["hero", "features", "proof"],
+    cases: ["hero", "proof", "products", "features"],
+    about: ["hero", "story", "proof", "products"],
+    contact: ["hero", "proof", "features"],
   };
   const buildLcCncFooterProps = () => ({
     id: "structured-footer",
@@ -7011,6 +7128,15 @@ const applyStructuredBriefOverrides = (
         return requestedPaths.has(pagePath) || Boolean(enterprisePaths?.has(pagePath));
       })
     : pages;
+  const navDensityByPageType: Record<string, { maxWidth: "lg" | "xl" | "2xl"; paddingY: "sm" | "md" | "lg" }> = {
+    home: { maxWidth: "xl", paddingY: "sm" },
+    products: { maxWidth: "xl", paddingY: "sm" },
+    solutions: { maxWidth: "2xl", paddingY: "md" },
+    cases: { maxWidth: "lg", paddingY: "sm" },
+    about: { maxWidth: "xl", paddingY: "md" },
+    contact: { maxWidth: "lg", paddingY: "sm" },
+    generic: { maxWidth: "xl", paddingY: "sm" },
+  };
   return pagesToProcess.map((page) => {
     const pageContract = resolvePublishedPageGenerationContract({
       prompt,
@@ -7156,8 +7282,9 @@ const applyStructuredBriefOverrides = (
             ? (item.props.theme as Record<string, unknown>)
             : (page?.data?.root?.props?.theme as Record<string, unknown>) || {};
         if (slotKind === "hero" && !normalizedInteriorSlots.has(slotId)) {
-          item.type = "HeroSplit";
-          item.props = buildStructuredInteriorHeroProps(interiorPageType, existingTheme);
+          const heroSpec = buildStructuredInteriorHeroSpec(interiorPageType, existingTheme);
+          item.type = heroSpec.type;
+          item.props = heroSpec.props;
           publishedOriginalType = "";
           normalizedInteriorSlots.add(String(item.props.id || slotId));
         } else if (slotKind === "products" && !normalizedInteriorSlots.has(slotId)) {
@@ -7186,6 +7313,10 @@ const applyStructuredBriefOverrides = (
       const inferredKind = inferDisplaySectionKind(item.type, publishedOriginalType);
       if (effectiveType === "Navbar") {
         applyTemplateNavbarBusinessProps(item.props);
+        const navDensity = navDensityByPageType[pageType] || navDensityByPageType.generic;
+        item.props.maxWidth = navDensity.maxWidth;
+        item.props.paddingY = navDensity.paddingY;
+        item.props.sticky = true;
       }
       if (effectiveType === "CreationFooterFallback") {
         applyTemplateFooterBusinessProps(item.props);
@@ -7531,8 +7662,9 @@ const applyStructuredBriefOverrides = (
       if (effectiveType === "ContentStory" && matchesSectionSlot("company-story", "about.story.1")) {
         writeTextPair(item.props, {
           eyebrow: brief.brand || "About LC-CNC",
-          title: "LC-CNC, Shenzhen since 2013",
-          subtitle: brief.aboutText || String(item.props.subtitle || ""),
+          title: "Factory Capability & Regional Delivery Model",
+          subtitle:
+            "How LC-CNC translates engineering, quality systems, and after-sales response into practical output for SEA plants.",
         });
       }
       if (effectiveType === "ContentStory" && matchesSectionRole("product-context")) {
@@ -7612,6 +7744,14 @@ const applyStructuredBriefOverrides = (
         });
         item.props.note = "I agree to receive follow-up via WhatsApp.";
         item.props.cta = { label: "Get Quote on WhatsApp", href: "/contact", variant: "primary" };
+        if (pageType === "contact") {
+          item.props.showForm = true;
+          item.props.submitLabel = "Submit Request";
+        }
+      }
+      if (pageType === "contact" && effectiveType === "LeadCaptureCTA") {
+        item.props.showForm = true;
+        item.props.submitLabel = item.props.submitLabel || "Submit Request";
       }
       item.props = sanitizeGeneratedProps(item.props, {
         prompt,
@@ -7689,8 +7829,12 @@ const applyStructuredBriefOverrides = (
         const publishedOriginalType =
           typeof item?.props?.__publishedOriginalType === "string" ? String(item.props.__publishedOriginalType) : "";
         const effectiveType = inferEffectiveBlockType(item.type, publishedOriginalType);
+        const itemId = String(item?.props?.id || "");
+        const isStructuredHero = itemId === `structured-${interiorPageType}-hero`;
         const kind =
-          effectiveType === "HeroSplit"
+          isStructuredHero
+            ? "hero"
+            : effectiveType === "HeroSplit"
             ? "hero"
             : effectiveType === "CardsGrid"
               ? "products"
@@ -7702,7 +7846,6 @@ const applyStructuredBriefOverrides = (
                     ? "story"
                     : null;
         if (!kind || !targetKinds.has(kind)) return;
-        const itemId = String(item?.props?.id || "");
         const isStructuredCanonical = itemId.startsWith(`structured-${interiorPageType}-`);
         if (!preferredIndexByKind.has(kind) || isStructuredCanonical) {
           preferredIndexByKind.set(kind, index);
@@ -7712,8 +7855,12 @@ const applyStructuredBriefOverrides = (
         const publishedOriginalType =
           typeof item?.props?.__publishedOriginalType === "string" ? String(item.props.__publishedOriginalType) : "";
         const effectiveType = inferEffectiveBlockType(item.type, publishedOriginalType);
+        const itemId = String(item?.props?.id || "");
+        const isStructuredHero = itemId === `structured-${interiorPageType}-hero`;
         const kind =
-          effectiveType === "HeroSplit"
+          isStructuredHero
+            ? "hero"
+            : effectiveType === "HeroSplit"
             ? "hero"
             : effectiveType === "CardsGrid"
               ? "products"
@@ -7761,6 +7908,32 @@ const applyStructuredBriefOverrides = (
         });
       }
     }
+    const preferredContactCtaIndex =
+      pageType === "contact"
+        ? (() => {
+            const candidates = next.data.content
+              .map((item, index) => ({ item, index }))
+              .filter(({ item }) => item.type === "LeadCaptureCTA");
+            if (candidates.length <= 1) return -1;
+            const structured = candidates.find(({ item }) => String(item?.props?.id || "") === "structured-contact-hero");
+            return structured ? structured.index : candidates[0].index;
+          })()
+        : -1;
+    const seenAnchors = new Set<string>();
+    next.data.content = next.data.content.filter((item, index) => {
+      if (item.type === "Navbar" || item.type === "Footer") return true;
+      if (pageType === "contact" && item.type === "LeadCaptureCTA") {
+        if (preferredContactCtaIndex < 0) return true;
+        return index === preferredContactCtaIndex;
+      }
+      const anchor = String(item?.props?.anchor || "")
+        .trim()
+        .toLowerCase();
+      if (!anchor) return true;
+      if (seenAnchors.has(anchor)) return false;
+      seenAnchors.add(anchor);
+      return true;
+    });
     return next;
   });
 };
@@ -10914,6 +11087,77 @@ async function builderNode(state: GraphState) {
     });
   }
 
+  const dedupeComposedPageContent = (content: any[], pagePath: string) => {
+    const safeContent = Array.isArray(content) ? content.filter(Boolean) : [];
+    const navbar = safeContent.find((item) => isNavbarLikeBlock(item));
+    const footer = [...safeContent].reverse().find((item) => isFooterLikeBlock(item));
+    const body = safeContent.filter((item) => !isNavbarLikeBlock(item) && !isFooterLikeBlock(item));
+    const dedupedBody: any[] = [];
+    const anchorIndex = new Map<string, number>();
+    const dedupeKind = (item: any) => {
+      const token = `${String(item?.type || "")} ${String(item?.props?.__publishedOriginalType || "")}`.toLowerCase();
+      if (/(hero|masthead|banner)/.test(token)) return "hero";
+      if (/(feature|approach|metric|stats|capabilit|valueprop)/.test(token)) return "approach";
+      if (/(product|catalog|pricing|plan|cardsgrid|showcase|collection)/.test(token)) return "products";
+      if (/(testimonial|social|proof|logo|trust|case)/.test(token)) return "socialproof";
+      if (/(contact|lead|form|quote|consult)/.test(token)) return "contact";
+      if (/(cta|calltoaction)/.test(token)) return "cta";
+      if (/(story|about|narrative|content)/.test(token)) return "story";
+      return String(item?.type || "").toLowerCase();
+    };
+    const itemScore = (item: any, idx: number) => {
+      const id = String(item?.props?.id || "");
+      let score = 0;
+      if (id.startsWith("structured-")) score += 20;
+      if (/hero/.test(id)) score += 8;
+      score += Math.max(0, 10 - idx);
+      return score;
+    };
+
+    body.forEach((item, index) => {
+      const anchor = String(item?.props?.anchor || "")
+        .trim()
+        .toLowerCase();
+      const key = anchor ? `${anchor}::${dedupeKind(item)}` : "";
+      if (!key) {
+        dedupedBody.push(item);
+        return;
+      }
+      const existingIndex = anchorIndex.get(key);
+      if (existingIndex === undefined) {
+        anchorIndex.set(key, dedupedBody.length);
+        dedupedBody.push(item);
+        return;
+      }
+      if (itemScore(item, index) > itemScore(dedupedBody[existingIndex], existingIndex)) {
+        dedupedBody[existingIndex] = item;
+      }
+    });
+
+    if (pagePath === "/contact") {
+      const ctaIndexes = dedupedBody
+        .map((item, index) => ({ item, index }))
+        .filter(({ item }) => isContactLikeBlock(item) || isCtaLikeBlock(item))
+        .map(({ index }) => index);
+      if (ctaIndexes.length > 1) {
+        let keepIndex = ctaIndexes[0];
+        ctaIndexes.forEach((candidateIndex) => {
+          const item = dedupedBody[candidateIndex];
+          const id = String(item?.props?.id || "");
+          const anchor = String(item?.props?.anchor || "");
+          if (id === "structured-contact-hero" || anchor === "contact-hero") {
+            keepIndex = candidateIndex;
+          }
+        });
+        const removeSet = new Set(ctaIndexes.filter((index) => index !== keepIndex));
+        const filtered = dedupedBody.filter((_, index) => !removeSet.has(index));
+        dedupedBody.splice(0, dedupedBody.length, ...filtered);
+      }
+    }
+
+    return [...(navbar ? [navbar] : []), ...dedupedBody, ...(footer ? [footer] : [])];
+  };
+
   pagesOut.forEach((page, pageIndex) => {
     const sourcePage = pages[pageIndex] ?? pages[0];
     if (!sourcePage || !Array.isArray(page.data.content)) return;
@@ -11292,19 +11536,92 @@ async function builderNode(state: GraphState) {
         theme as Record<string, unknown>,
         { skipRegistry: true }
       );
-      const contactBlock =
-        themeDrivenBody[themeDrivenBody.length - 1] ??
+      const existingLeadCapture = themeDrivenBody.find((item: any) =>
+        /leadcapturecta/i.test(String(item?.type || ""))
+      );
+      const baseContactBlock =
+        existingLeadCapture ??
         {
           type: fallbackContact.type,
           props: fallbackContact.props,
           _key: `${page.path}:contact:canonical`,
         };
-      page.data.content = [preservedNavbar, ...nonThemeDrivenBody, contactBlock, preservedFooter];
+      const contactProps =
+        baseContactBlock?.props && typeof baseContactBlock.props === "object"
+          ? { ...(baseContactBlock.props as Record<string, unknown>) }
+          : {};
+      contactProps.showForm = true;
+      if (typeof contactProps.submitLabel !== "string" || !String(contactProps.submitLabel).trim()) {
+        contactProps.submitLabel = "Submit Request";
+      }
+      const contactBlock = {
+        ...baseContactBlock,
+        type: "LeadCaptureCTA",
+        props: contactProps,
+      };
+      page.data.content = dedupeComposedPageContent(
+        [preservedNavbar, ...nonThemeDrivenBody, contactBlock, preservedFooter],
+        page.path || "/"
+      );
       return;
     }
 
     const ctaBlock = themeDrivenBody.length > 0 ? themeDrivenBody[themeDrivenBody.length - 1] : null;
-    page.data.content = [preservedNavbar, ...nonThemeDrivenBody, ...(ctaBlock ? [ctaBlock] : []), preservedFooter];
+    if (nonThemeDrivenBody.length === 0) {
+      const pageToken = toSlug(page.path || `page-${pageIndex + 1}`) || `page-${pageIndex + 1}`;
+      const heroFallback = buildDeterministicFallbackBlock(
+        buildSyntheticSectionContext(pageIndex, `${pageToken}-hero`, "Hero", "Present page value proposition."),
+        state.prompt ?? "",
+        designNorthStar as Record<string, unknown>,
+        theme as Record<string, unknown>,
+        { skipRegistry: true }
+      );
+      const storyFallback = buildDeterministicFallbackBlock(
+        buildSyntheticSectionContext(pageIndex, `${pageToken}-story`, "Content", "Explain core differentiation."),
+        state.prompt ?? "",
+        designNorthStar as Record<string, unknown>,
+        theme as Record<string, unknown>,
+        { skipRegistry: true }
+      );
+      const featureFallback = buildDeterministicFallbackBlock(
+        buildSyntheticSectionContext(pageIndex, `${pageToken}-features`, "Features", "Show feature highlights."),
+        state.prompt ?? "",
+        designNorthStar as Record<string, unknown>,
+        theme as Record<string, unknown>,
+        { skipRegistry: true }
+      );
+      const ctaFallback =
+        ctaBlock ??
+        {
+          type: "LeadCaptureCTA",
+          props: {
+            id: "home-cta-recovered",
+            anchor: "footer-cta",
+            title: "Start your project",
+            subtitle: "Talk with our team and get a tailored plan.",
+            cta: { label: "Contact Sales", href: "/contact", variant: "primary" },
+            variant: "card",
+          },
+          _key: `${page.path}:cta:recovered`,
+        };
+      page.data.content = dedupeComposedPageContent(
+        [
+          preservedNavbar,
+          { type: heroFallback.type, props: heroFallback.props, _key: `${page.path}:hero:recovered` },
+          { type: storyFallback.type, props: storyFallback.props, _key: `${page.path}:story:recovered` },
+          { type: featureFallback.type, props: featureFallback.props, _key: `${page.path}:features:recovered` },
+          ctaFallback,
+          preservedFooter,
+        ],
+        page.path || "/"
+      );
+      logWarn(`${logPrefix} builder:page_body_recovered`, { pagePath: page.path, reason: "empty_non_theme_body" });
+      return;
+    }
+    page.data.content = dedupeComposedPageContent(
+      [preservedNavbar, ...nonThemeDrivenBody, ...(ctaBlock ? [ctaBlock] : []), preservedFooter],
+      page.path || "/"
+    );
   });
 
   const templateExclusiveTypes = new Set<string>();
@@ -11431,7 +11748,16 @@ async function builderNode(state: GraphState) {
     };
   });
 
-  pagesOut = applyStructuredBriefOverrides(pagesOut, state.prompt ?? "", templateResolution.profileId ?? null);
+  const shouldApplyStrictStructuredOverrides =
+    !llmProviders.length || activeSectionGenerationStrategy === "template_first";
+  if (shouldApplyStrictStructuredOverrides) {
+    pagesOut = applyStructuredBriefOverrides(pagesOut, state.prompt ?? "", templateResolution.profileId ?? null);
+  } else {
+    logInfo(`${logPrefix} builder:structured_brief_override_skipped`, {
+      reason: "llm_available_and_non_template_first",
+      selectedStrategy: activeSectionGenerationStrategy,
+    });
+  }
   pagesOut = sanitizeFinalPagesOutput(pagesOut, {
     prompt: state.prompt ?? "",
     designNorthStar: designNorthStar ?? undefined,
@@ -11550,8 +11876,7 @@ const resolveCandidateStrategiesForPrompt = (prompt: string): SectionGenerationS
     /\b(?:like|inspired by|based on|similar to|reference(?:d)? from|modeled on)\b/i.test(String(prompt || "")) ||
     /\buse\s+[A-Za-z0-9\u4e00-\u9fff][^,.;\n]{1,50}\s+as\s+(?:the\s+)?(?:(?:visual\s+style|visual\s+template|template|style|visual)\s+)?(?:reference|base)\b/i.test(
       String(prompt || "")
-    ) ||
-    Boolean(extractBrandNameFromPromptLite(prompt));
+    );
   const promptDemandsNovelArtDirection = /(?:avant[-\s]?garde|editorial|art[-\s]?direction|unexpected|surprising|highly original|experimental)/i.test(
     String(prompt || "")
   );
@@ -11669,10 +11994,7 @@ const shouldShortCircuitCandidateSelection = (
   score: ReturnType<typeof scoreGenerationCandidate>
 ) => {
   const explicitTemplatePrompt =
-    hasExplicitTemplateReference(prompt) ||
-    Boolean(extractBrandNameFromPromptLite(prompt)) ||
-    Boolean(parseStructuredBrief(prompt)?.brand) ||
-    extractSourceBrandTokens(prompt).length > 0;
+    hasExplicitTemplateReference(prompt);
   if (!score.pass) return false;
   if (score.overallScore < 0.98) return false;
   if (score.semanticScore < 0.95 || score.coverageScore < 0.95 || score.linkScore < 0.95 || score.themeScore < 0.95)

@@ -1,0 +1,41 @@
+{
+  "cases": [
+    {
+      "id": "enterprise-cinematic-cn",
+      "description": "Chinese enterprise multi-page generation with full business IA coverage",
+      "prompt": "为“凌创智能”生成企业官网，要求一次性输出完整多页站点，必须包含：首页、核心产品、产品中心、解决方案、案例、关于我们、定价、支持中心、博客、联系我们、隐私政策、服务条款。整体风格要电影级视觉质感、工业科技气质、主题统一，含清晰导航和可转化CTA。",
+      "requiresLlm": true,
+      "categoryScope": "site",
+      "requiredCategories": ["navigation", "hero", "story", "approach", "products", "cta", "footer"],
+      "minPages": 12,
+      "requiredPagePaths": [
+        "/",
+        "/core-product",
+        "/products",
+        "/solutions",
+        "/cases",
+        "/about",
+        "/pricing",
+        "/support",
+        "/blog",
+        "/contact",
+        "/privacy",
+        "/terms"
+      ],
+      "browserPages": ["/", "/products", "/solutions", "/pricing", "/contact"],
+      "minTextLengthPerPage": 180,
+      "minLinksPerPage": 3
+    },
+    {
+      "id": "single-homepage-guard-en",
+      "description": "Single-page prompt should not be force-expanded into enterprise routes",
+      "prompt": "Create a single-page cinematic homepage for a design-led startup. Keep it strictly one page with navigation, hero, feature highlights, proof, CTA, and footer only.",
+      "requiredCategories": ["navigation", "hero", "approach", "cta", "footer"],
+      "maxPages": 1,
+      "forbiddenPagePaths": ["/products", "/solutions", "/contact", "/about", "/pricing", "/support", "/blog"],
+      "browserPages": ["/"],
+      "minTextLengthPerPage": 120,
+      "minLinksPerPage": 2
+    }
+  ]
+}

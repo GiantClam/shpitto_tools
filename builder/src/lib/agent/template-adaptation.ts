@@ -61,10 +61,13 @@ export type TemplateAdaptationPageDescriptor = {
     | "about"
     | "solutions"
     | "products"
+    | "pricing"
     | "cases"
     | "contact"
+    | "faq"
     | "support"
     | "blog"
+    | "careers"
     | "legal"
     | "generic";
   blockTypes: string[];
@@ -104,7 +107,10 @@ const inferPageType = (pathValue: string, nameValue: string): TemplateAdaptation
   const token = `${pathValue} ${nameValue}`.toLowerCase();
   if (!pathValue || pathValue === "/") return "home";
   if (/(about|company|story|mission|vision|who|team)/.test(token)) return "about";
+  if (/(careers?|jobs?|hiring|join[-\s]?us|talent|recruit)/.test(token)) return "careers";
   if (/(privacy|legal|term|policy|cookie)/.test(token)) return "legal";
+  if (/(pricing|plans?|tiers?|subscription|quote|cost|套餐|报价|价格)/.test(token)) return "pricing";
+  if (/(faq|frequently asked|questions?|q&a|qanda|常见问题|问答)/.test(token)) return "faq";
   if (/(contact|quote|inquir|demo|consult|book)/.test(token)) return "contact";
   if (/(support|docs|documentation|knowledge|help|guide)/.test(token)) return "support";
   if (/(blog|news|article|journal|insight|newsroom)/.test(token)) return "blog";
@@ -275,9 +281,12 @@ const pageRuleDefinitions: Record<
   industrial_manufacturer: {
     home: { required: ["footer"], anyOf: [["hero", "story", "content"], ["products", "features", "content"], ["cta", "contact", "proof"]] },
     products: { required: ["footer"], anyOf: [["hero", "story", "content"], ["products", "features", "content"]] },
+    pricing: { required: ["footer"], anyOf: [["products", "content"], ["cta", "contact", "proof"]] },
     solutions: { required: ["footer"], anyOf: [["hero", "story", "content"], ["features", "content"], ["cta", "contact", "proof"]] },
     cases: { required: ["footer"], anyOf: [["hero", "story", "content"], ["cases", "content", "proof"]] },
     about: { required: ["footer"], anyOf: [["hero", "story", "content"], ["story", "content", "proof"]] },
+    support: { required: ["footer"], anyOf: [["content", "contact", "proof"]] },
+    blog: { required: ["hero", "footer"], anyOf: [["content", "proof"]] },
     contact: { required: ["footer"], anyOf: [["contact", "cta"]] },
   },
   luxury_editorial: {
@@ -289,22 +298,29 @@ const pageRuleDefinitions: Record<
   ai_saas: {
     home: { required: ["hero", "footer"], anyOf: [["features", "content"], ["cta", "proof"]] },
     products: { required: ["hero", "footer"], anyOf: [["features", "content"]] },
+    pricing: { required: ["hero", "footer"], anyOf: [["products", "features"], ["cta", "contact", "proof"]] },
+    faq: { required: ["footer"], anyOf: [["features", "content"], ["contact", "cta"]] },
     solutions: { required: ["hero", "footer"], anyOf: [["features", "content"], ["proof", "cta"]] },
     about: { required: ["hero", "footer"], anyOf: [["story", "proof", "content"]] },
     contact: { required: ["footer"], anyOf: [["contact", "cta"]] },
     blog: { required: ["hero", "footer"], anyOf: [["content", "proof"]] },
+    careers: { required: ["footer"], anyOf: [["story", "content"], ["proof", "cta"]] },
   },
   developer_tooling: {
     home: { required: ["hero", "footer"], anyOf: [["features", "content"], ["cta", "proof"]] },
     products: { required: ["hero", "footer"], anyOf: [["features", "content", "products"]] },
+    pricing: { required: ["hero", "footer"], anyOf: [["products", "features"], ["cta", "contact"]] },
+    faq: { required: ["footer"], anyOf: [["content", "features"], ["contact", "cta"]] },
     support: { required: ["footer"], anyOf: [["content", "contact", "proof"]] },
     about: { required: ["hero", "footer"], anyOf: [["story", "proof", "content"]] },
     contact: { required: ["footer"], anyOf: [["contact", "cta"]] },
     blog: { required: ["hero", "footer"], anyOf: [["content", "proof"]] },
+    careers: { required: ["footer"], anyOf: [["story", "content"], ["proof", "cta"]] },
   },
   design_led_ecommerce: {
     home: { required: ["hero", "footer"], anyOf: [["products", "content"], ["cta", "proof"]] },
     products: { required: ["hero", "footer"], anyOf: [["products", "content"]] },
+    pricing: { required: ["hero", "footer"], anyOf: [["products", "cta"], ["proof", "content"]] },
     about: { required: ["hero", "footer"], anyOf: [["story", "content"]] },
     contact: { required: ["footer"], anyOf: [["contact", "cta"]] },
   },

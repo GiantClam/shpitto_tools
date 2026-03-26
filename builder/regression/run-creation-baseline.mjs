@@ -4,8 +4,10 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
 import fetch from "node-fetch";
+import { buildRegressionEnv } from "./regression-env.mjs";
 
 const ROOT = process.cwd();
+const REPO_ROOT = path.resolve(ROOT, "..");
 const DEFAULT_BASE_URL = "http://localhost:3000";
 const DEFAULT_PROMPTS_FILE = path.join(ROOT, "regression", "prompts.baseline.json");
 const DEFAULT_LOG_FILE = path.join(ROOT, "logs", "creation.log");
@@ -97,8 +99,11 @@ const inferCategoriesFromPagePaths = (pages) => {
   const normalizedPaths = (Array.isArray(pages) ? pages : []).map((page) => String(page?.path || "").trim().toLowerCase());
   normalizedPaths.forEach((pathValue) => {
     if (/^\/products?(\/|$)/.test(pathValue) || /^\/core-product(\/|$)/.test(pathValue)) inferred.add("products");
+    if (/^\/pricing(\/|$)/.test(pathValue)) inferred.add("products");
     if (/^\/contact(\/|$)/.test(pathValue)) inferred.add("contact");
+    if (/^\/support(\/|$)|^\/faq(\/|$)/.test(pathValue)) inferred.add("contact");
     if (/^\/about(\/|$)/.test(pathValue)) inferred.add("story");
+    if (/^\/blog(\/|$)|^\/news(\/|$)|^\/insights?(\/|$)/.test(pathValue)) inferred.add("story");
     if (/^\/solutions?(\/|$)/.test(pathValue)) inferred.add("approach");
   });
   return inferred;
@@ -242,6 +247,34 @@ const compareExpectedPageShapes = (actualShapes, expectedShapes) => {
   return failures;
 };
 
+const compareRequiredPagePaths = (pages, requiredPaths) => {
+  const required = Array.isArray(requiredPaths)
+    ? requiredPaths.map((item) => String(item || "").trim()).filter(Boolean)
+    : [];
+  if (!required.length) return [];
+  const normalizedActual = new Set(
+    (Array.isArray(pages) ? pages : [])
+      .map((page) => String(page?.path || "").trim())
+      .filter(Boolean)
+  );
+  const missing = required.filter((pathValue) => !normalizedActual.has(pathValue));
+  return missing.map((pathValue) => `requiredPageMissing:${pathValue}`);
+};
+
+const compareForbiddenPagePaths = (pages, forbiddenPaths) => {
+  const forbidden = Array.isArray(forbiddenPaths)
+    ? forbiddenPaths.map((item) => String(item || "").trim()).filter(Boolean)
+    : [];
+  if (!forbidden.length) return [];
+  const normalizedActual = new Set(
+    (Array.isArray(pages) ? pages : [])
+      .map((page) => String(page?.path || "").trim())
+      .filter(Boolean)
+  );
+  const invalid = forbidden.filter((pathValue) => normalizedActual.has(pathValue));
+  return invalid.map((pathValue) => `forbiddenPagePresent:${pathValue}`);
+};
+
 const matchesExpectedValue = (actual, expected) => {
   const actualValue = String(actual ?? "");
   return toList(expected).some((candidate) => String(candidate) === actualValue);
@@ -258,6 +291,12 @@ const matchesExpectedPattern = (actual, expectedPattern) => {
 
 const run = async () => {
   const options = parseArgs(process.argv);
+  const regressionEnvState = await buildRegressionEnv({ builderRoot: ROOT, repoRoot: REPO_ROOT });
+  const effectiveEnv = regressionEnvState.env || process.env;
+  const hasLlmProvider =
+    Boolean(effectiveEnv.AIBERM_API_KEY) ||
+    Boolean(effectiveEnv.OPENROUTER_API_KEY) ||
+    Boolean(effectiveEnv.ANTHROPIC_API_KEY);
   const promptsRaw = await fs.readFile(options.promptsFile, "utf8");
   const promptsConfig = JSON.parse(promptsRaw);
   const rawCases = Array.isArray(promptsConfig?.cases) ? promptsConfig.cases : [];
@@ -269,12 +308,59 @@ const run = async () => {
   console.log(`[baseline] baseUrl=${options.baseUrl}`);
   console.log(`[baseline] prompts=${options.promptsFile}`);
   console.log(`[baseline] cases=${cases.length}`);
+  if (regressionEnvState.loadedFiles.length > 0) {
+    for (const item of regressionEnvState.loadedFiles) {
+      console.log(`[env] loaded ${item.filePath} keys=${item.applied}`);
+    }
+  }
 
   const results = [];
 
   for (let i = 0; i < cases.length; i += 1) {
     const c = cases[i];
     const title = `${i + 1}/${cases.length} ${c.id}`;
+    if (Boolean(c.requiresLlm) && !hasLlmProvider) {
+      const skippedRow = {
+        id: c.id,
+        description: c.description,
+        requestId: null,
+        responseId: null,
+        statusCode: null,
+        passed: true,
+        skipped: true,
+        durationMs: 0,
+        errors: [],
+        missingRequired: [],
+        blockTypes: [],
+        detectedCategories: [],
+        hasFallbackBlock: false,
+        hasSectionFallbackError: false,
+        hasTimeoutFallback: false,
+        assertionFailures: [],
+        componentsCount: 0,
+        pageCount: 0,
+        pageShapes: {},
+        templatePlanProfile: "",
+        resolutionLayer: "",
+        shortCircuited: false,
+        requestError: null,
+        logMetrics: {
+          usageInputTokens: 0,
+          usageOutputTokens: 0,
+          sectionOk: 0,
+          sectionFallback: 0,
+          parseFailed: 0,
+          layoutInvalid: 0,
+          providerFailed: 0,
+          toolMissing: 0,
+          toolEmptyPayload: 0,
+          timeoutFallback: 0,
+        },
+      };
+      results.push(skippedRow);
+      console.log(`[SKIP] ${title} requiresLlm=true but no LLM provider key detected in environment`);
+      continue;
+    }
     const before = await readLogSize(options.logFile);
     const startedAt = Date.now();
 
@@ -357,6 +443,8 @@ const run = async () => {
     if (typeof c.expectShortCircuited === "boolean" && shortCircuited !== c.expectShortCircuited) {
       assertionFailures.push(`shortCircuited:${shortCircuited}`);
     }
+    assertionFailures.push(...compareRequiredPagePaths(payload?.pages, c.requiredPagePaths));
+    assertionFailures.push(...compareForbiddenPagePaths(payload?.pages, c.forbiddenPagePaths));
     assertionFailures.push(...compareExpectedPageShapes(pageShapes, c.expectedPageShapes));
 
     const passed =
@@ -375,6 +463,7 @@ const run = async () => {
       responseId: payload?.id ?? null,
       statusCode: response?.status ?? null,
       passed,
+      skipped: false,
       durationMs,
       errors,
       missingRequired,
@@ -405,30 +494,35 @@ const run = async () => {
   }
 
   const total = results.length;
-  const passed = results.filter((item) => item.passed).length;
-  const failed = total - passed;
-  const withFallback = results.filter((item) => item.hasFallbackBlock || item.hasSectionFallbackError).length;
-  const withTimeout = results.filter((item) => item.hasTimeoutFallback).length;
-  const withAssertionFailures = results.filter((item) => item.assertionFailures.length > 0).length;
+  const skipped = results.filter((item) => item.skipped).length;
+  const executed = Math.max(0, total - skipped);
+  const passed = results.filter((item) => item.passed && !item.skipped).length;
+  const failed = Math.max(0, executed - passed);
+  const executedRows = results.filter((item) => !item.skipped);
+  const withFallback = executedRows.filter((item) => item.hasFallbackBlock || item.hasSectionFallbackError).length;
+  const withTimeout = executedRows.filter((item) => item.hasTimeoutFallback).length;
+  const withAssertionFailures = executedRows.filter((item) => item.assertionFailures.length > 0).length;
 
-  const durationList = results.map((item) => item.durationMs);
+  const durationList = executedRows.map((item) => item.durationMs);
   const summary = {
     total,
+    executed,
+    skipped,
     passed,
     failed,
-    successRate: total ? passed / total : 0,
-    fallbackRate: total ? withFallback / total : 0,
-    timeoutRate: total ? withTimeout / total : 0,
-    avgDurationMs: total ? Math.round(durationList.reduce((a, b) => a + b, 0) / total) : 0,
+    successRate: executed ? passed / executed : 1,
+    fallbackRate: executed ? withFallback / executed : 0,
+    timeoutRate: executed ? withTimeout / executed : 0,
+    avgDurationMs: executed ? Math.round(durationList.reduce((a, b) => a + b, 0) / executed) : 0,
     p95DurationMs: percentile(durationList, 95),
-    totalUsageInputTokens: results.reduce((sum, item) => sum + item.logMetrics.usageInputTokens, 0),
-    totalUsageOutputTokens: results.reduce((sum, item) => sum + item.logMetrics.usageOutputTokens, 0),
-    totalProviderFailures: results.reduce((sum, item) => sum + item.logMetrics.providerFailed, 0),
-    totalParseFailures: results.reduce((sum, item) => sum + item.logMetrics.parseFailed, 0),
-    totalLayoutInvalid: results.reduce((sum, item) => sum + item.logMetrics.layoutInvalid, 0),
-    totalToolMissing: results.reduce((sum, item) => sum + item.logMetrics.toolMissing, 0),
-    totalToolEmptyPayload: results.reduce((sum, item) => sum + item.logMetrics.toolEmptyPayload, 0),
-    assertionFailureRate: total ? withAssertionFailures / total : 0,
+    totalUsageInputTokens: executedRows.reduce((sum, item) => sum + item.logMetrics.usageInputTokens, 0),
+    totalUsageOutputTokens: executedRows.reduce((sum, item) => sum + item.logMetrics.usageOutputTokens, 0),
+    totalProviderFailures: executedRows.reduce((sum, item) => sum + item.logMetrics.providerFailed, 0),
+    totalParseFailures: executedRows.reduce((sum, item) => sum + item.logMetrics.parseFailed, 0),
+    totalLayoutInvalid: executedRows.reduce((sum, item) => sum + item.logMetrics.layoutInvalid, 0),
+    totalToolMissing: executedRows.reduce((sum, item) => sum + item.logMetrics.toolMissing, 0),
+    totalToolEmptyPayload: executedRows.reduce((sum, item) => sum + item.logMetrics.toolEmptyPayload, 0),
+    assertionFailureRate: executed ? withAssertionFailures / executed : 0,
   };
 
   await fs.mkdir(options.outDir, { recursive: true });
@@ -457,6 +551,7 @@ const run = async () => {
     `- total: ${summary.total}`,
     `- passed: ${summary.passed}`,
     `- failed: ${summary.failed}`,
+    `- skipped: ${summary.skipped}`,
     `- successRate: ${toPercent(summary.successRate)}`,
     `- fallbackRate: ${toPercent(summary.fallbackRate)}`,
     `- timeoutRate: ${toPercent(summary.timeoutRate)}`,
@@ -471,7 +566,7 @@ const run = async () => {
     "| case | status | duration | profile | pages | missingRequired | assertionFailures | inputTokens | outputTokens |",
     "|---|---|---:|---|---:|---|---|---:|---:|",
     ...results.map((item) => {
-      const status = item.passed ? "PASS" : "FAIL";
+      const status = item.skipped ? "SKIP" : item.passed ? "PASS" : "FAIL";
       const missing = item.missingRequired.length ? item.missingRequired.join(",") : "-";
       const assertions = item.assertionFailures.length ? item.assertionFailures.join(",") : "-";
       return `| ${item.id} | ${status} | ${formatMs(item.durationMs)} | ${item.templatePlanProfile || "-"} | ${item.pageCount} | ${missing} | ${assertions} | ${item.logMetrics.usageInputTokens} | ${item.logMetrics.usageOutputTokens} |`;

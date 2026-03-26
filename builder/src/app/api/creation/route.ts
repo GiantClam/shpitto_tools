@@ -5,6 +5,7 @@ import { NextRequest, NextResponse } from "next/server";
 import manifest from "@/skills/manifest.json";
 import { PlanningFiles } from "@/lib/agent/planning-files";
 import { canGenerateTemplateOnly, generateP2WProject } from "@/lib/agent/p2w-graph";
+import { ensureEnvFallbackLoaded } from "@/lib/env/load-env-fallback";
 import { logError, logInfo, logWarn } from "@/lib/logger";
 import { auditSitePayload } from "@/lib/site-payload-audit";
 
@@ -210,6 +211,7 @@ const buildTimeoutFallbackResult = (prompt: string) => {
 };
 
 export async function POST(request: NextRequest) {
+  ensureEnvFallbackLoaded();
   const requestId = `creation_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
   const startedAt = Date.now();
   try {
