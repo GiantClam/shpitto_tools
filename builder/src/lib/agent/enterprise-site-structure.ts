@@ -1,6 +1,7 @@
 import enterpriseSiteStructure from "../../../shared/enterprise-site-structure.json";
 
 import type { TemplatePageType } from "@/lib/agent/section-template-registry";
+import { resolveCanonicalRoute } from "@/lib/agent/route-contract";
 
 export type EnterpriseSitePageKey =
   | "home"
@@ -71,7 +72,7 @@ const ENTERPRISE_PROMPT_PATTERN =
   /(企业官网|公司官网|官方网站|企业站|官网|企业|公司|制造商|工厂|工业|设备|机械|manufacturer|manufactur|factory|industrial|machinery|equipment|b2b|corporate|enterprise|official website|company website)/i;
 
 const SINGLE_PAGE_HOMEPAGE_PATTERN =
-  /(single[-\s]?page|one[-\s]?page|strictly one page|single page only|homepage(?:\s+only)?|仅首页|只保留首页|仅保留首页|单页|(?:官网)?首页|landing page(?:\s+only)?)/i;
+  /(single[-\s]?page|one[-\s]?page|strictly one page|single page only|homepage(?:\s+only)?|only\s+home(?:\s*page)?|仅首页|只保留首页|仅保留首页|仅保留一个页面|单页(?:网站|站点)?|landing page(?:\s+only)?)/i;
 
 const EXPLICIT_MULTI_PAGE_CONTRACT_PATTERN =
   /(multi[-\s]?page|full site|full website|complete site|complete website|must include pages?|required pages?|页面结构|站点结构|网站结构|页面包含|页面包括|必须包含页面|需包含页面|完整多页|多页站点|多页面)/i;
@@ -97,11 +98,28 @@ const countExplicitMultiPageSignals = (prompt: string) => {
   return ENTERPRISE_MULTI_PAGE_ROUTE_PATTERNS.reduce((count, pattern) => count + (pattern.test(rawPrompt) ? 1 : 0), 0);
 };
 
+const countExplicitRouteReferences = (prompt: string) => {
+  const rawPrompt = String(prompt || "");
+  if (!rawPrompt.trim()) return 0;
+  const routeSet = new Set<string>();
+  const matches = rawPrompt.matchAll(/(?:^|[\s|,;:()[\]{}<>])\/([a-z0-9][a-z0-9-]{0,40})(?=$|[\s|,;:()[\]{}<>])/gi);
+  for (const match of matches) {
+    const slug = String(match[1] || "").trim();
+    if (!slug) continue;
+    const canonical = resolveCanonicalRoute(`/${slug}`);
+    const normalized = normalizeEnterprisePagePath(canonical);
+    if (normalized === "/") continue;
+    routeSet.add(normalized);
+  }
+  return routeSet.size;
+};
+
 const hasExplicitMultiPageContract = (prompt: string) => {
   const rawPrompt = String(prompt || "");
   if (!rawPrompt.trim()) return false;
   if (EXPLICIT_MULTI_PAGE_CONTRACT_PATTERN.test(rawPrompt)) return true;
-  return countExplicitMultiPageSignals(rawPrompt) >= 2;
+  if (countExplicitMultiPageSignals(rawPrompt) >= 2) return true;
+  return countExplicitRouteReferences(rawPrompt) >= 2;
 };
 
 const pageDepth = (path: string) => normalizeEnterprisePagePath(path).split("/").filter(Boolean).length;
@@ -208,13 +226,27 @@ export const looksLikeEnterpriseWebsite = ({ prompt = "", pages = [] }: Enterpri
 
 export const ensureEnterpriseSitePages = <T extends PageLike>(
   pages: T[],
-  createPage: (definition: EnterpriseSitePageDefinition) => T
+  createPage: (definition: EnterpriseSitePageDefinition) => T,
+  options?: { prompt?: string; allowCoreProduct?: boolean }
 ) => {
   const normalizedPages = Array.isArray(pages) ? [...pages] : [];
   const claimedIndexes = new Set<number>();
   const next = [...normalizedPages];
+  const prompt = String(options?.prompt || "");
+  const hasCoreProductPromptSignal =
+    /(?:core[-\s]?product|flagship|featured[-\s]?product|核心产品|旗舰产品|明星产品|单机详情|单机型|detail\s+page)/i.test(
+      prompt
+    );
+  const hasCoreProductPathSignal = normalizedPages.some((page) => {
+    const normalizedPath = normalizeEnterprisePagePath(page?.path || "/");
+    if (normalizedPath === "/core-product") return true;
+    return /^\/products\/[^/]+/.test(normalizedPath);
+  });
+  const includeCoreProductPage =
+    Boolean(options?.allowCoreProduct) || hasCoreProductPromptSignal || hasCoreProductPathSignal;
 
   ENTERPRISE_SITE_PAGES.forEach((definition) => {
+    if (definition.key === "core_product" && !includeCoreProductPage) return;
     const exactPathIndex = normalizedPages.findIndex(
       (page, index) =>
         !claimedIndexes.has(index) && normalizeEnterprisePagePath(page?.path || "") === definition.path

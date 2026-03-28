@@ -22,6 +22,7 @@ const parseArgs = (argv) => {
     maxCases: 0,
     delayMs: 350,
     persist: true,
+    pendingWaitMs: 420000,
   };
   for (let i = 2; i < argv.length; i += 1) {
     const arg = argv[i];
@@ -61,8 +62,13 @@ const parseArgs = (argv) => {
       i += 1;
       continue;
     }
+    if (arg === "--pending-wait-ms" && next) {
+      options.pendingWaitMs = Math.max(0, Number(next) || 0);
+      i += 1;
+      continue;
+    }
     if (arg === "--help") {
-      console.log(`Usage: node regression/run-creation-baseline.mjs [options]\n\nOptions:\n  --base-url <url>     API base URL (default: ${DEFAULT_BASE_URL})\n  --prompts <path>     Prompt cases JSON (default: regression/prompts.baseline.json)\n  --log-file <path>    creation.log path (default: logs/creation.log)\n  --out-dir <path>     Report output directory (default: regression/reports)\n  --max-cases <n>      Run first N cases only\n  --delay-ms <n>       Delay between requests in ms (default: 350)\n  --persist <bool>     Send persist=true/false to /api/creation (default: true)`);
+      console.log(`Usage: node regression/run-creation-baseline.mjs [options]\n\nOptions:\n  --base-url <url>        API base URL (default: ${DEFAULT_BASE_URL})\n  --prompts <path>        Prompt cases JSON (default: regression/prompts.baseline.json)\n  --log-file <path>       creation.log path (default: logs/creation.log)\n  --out-dir <path>        Report output directory (default: regression/reports)\n  --max-cases <n>         Run first N cases only\n  --delay-ms <n>          Delay between requests in ms (default: 350)\n  --persist <bool>        Send persist=true/false to /api/creation (default: true)\n  --pending-wait-ms <n>   Max wait for persisted result when API returns pending=true (default: 420000)`);
       process.exit(0);
     }
   }
@@ -183,6 +189,30 @@ const safeJson = async (res) => {
   } catch {
     return null;
   }
+};
+
+const loadPersistedResultWhenPending = async (repoRoot, payload, waitMs) => {
+  const pending = Boolean(payload?.pending);
+  const siteKey = String(payload?.id || "").trim();
+  if (!pending || !siteKey || waitMs <= 0) return payload;
+  const resultPath = path.join(repoRoot, "asset-factory", "out", "p2w", siteKey, "result.json");
+  const startedAt = Date.now();
+  while (Date.now() - startedAt <= waitMs) {
+    try {
+      const raw = await fs.readFile(resultPath, "utf8");
+      const parsed = JSON.parse(raw);
+      if (Array.isArray(parsed?.pages) && parsed.pages.length > 0) {
+        return {
+          ...(payload && typeof payload === "object" ? payload : {}),
+          ...parsed,
+          id: siteKey,
+          pending: false,
+        };
+      }
+    } catch {}
+    await sleep(2500);
+  }
+  return payload;
 };
 
 const timestampForFile = (date = new Date()) => {
@@ -375,6 +405,7 @@ const run = async () => {
         body: JSON.stringify({ prompt: c.prompt, persist: options.persist }),
       });
       payload = await safeJson(response);
+      payload = await loadPersistedResultWhenPending(REPO_ROOT, payload, options.pendingWaitMs);
     } catch (error) {
       requestError = error instanceof Error ? error.message : String(error);
       payload = null;
@@ -412,7 +443,15 @@ const run = async () => {
 
     const hasFallbackBlock = blockTypes.some((type) => normalizeType(type) === "creationfallbacksection");
     const hasSectionFallbackError = errors.some((item) => item.includes("builder_section_fallback"));
-    const hasTimeoutFallback = errors.includes("generation_timeout_fallback") || logMetrics.timeoutFallback > 0;
+    const pageCount = Array.isArray(payload?.pages) ? payload.pages.length : 0;
+    const recoveredFromDeferredPersist =
+      Boolean(payload && payload.pending === false) &&
+      pageCount > 0 &&
+      !errors.includes("generation_timeout_fallback") &&
+      logMetrics.timeoutFallback > 0;
+    const hasTimeoutFallback =
+      errors.includes("generation_timeout_fallback") ||
+      (logMetrics.timeoutFallback > 0 && !recoveredFromDeferredPersist);
     const resolvedByLayer =
       payload?.resolvedByLayer && typeof payload.resolvedByLayer === "object" ? payload.resolvedByLayer : {};
     const candidateSelection =
@@ -421,7 +460,6 @@ const run = async () => {
         : {};
     const templatePlanProfile = String(resolvedByLayer?.templatePlanProfile ?? "");
     const resolutionLayer = String(resolvedByLayer?.resolutionLayer ?? "");
-    const pageCount = Array.isArray(payload?.pages) ? payload.pages.length : 0;
     const shortCircuited = Boolean(candidateSelection?.shortCircuited);
 
     const assertionFailures = [];

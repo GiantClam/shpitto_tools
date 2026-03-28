@@ -246,6 +246,35 @@ const defaultKindsByPageType: Record<TemplatePageType, TemplatePlanSectionKind[]
   generic: ["navigation", "hero", "story", "approach", "cta", "footer"],
 };
 
+const pathSpecificDefaultKinds: Array<{ pattern: RegExp; kinds: TemplatePlanSectionKind[] }> = [
+  {
+    pattern: /^\/core-product(?:\/|$)/i,
+    kinds: ["navigation", "hero", "story", "approach", "socialproof", "cta", "footer"],
+  },
+  {
+    pattern: /^\/products(?:\/|$)/i,
+    kinds: ["navigation", "hero", "products", "approach", "contact", "cta", "footer"],
+  },
+  {
+    pattern: /^\/solutions(?:\/|$)/i,
+    kinds: ["navigation", "hero", "approach", "story", "contact", "cta", "footer"],
+  },
+  {
+    pattern: /^\/cases(?:\/|$)/i,
+    kinds: ["navigation", "hero", "socialproof", "products", "story", "cta", "footer"],
+  },
+];
+
+const resolveDefaultKindsForPath = (
+  path: string,
+  pageType: TemplatePageType
+): TemplatePlanSectionKind[] => {
+  const normalized = normalizePagePath(path);
+  const pathRule = pathSpecificDefaultKinds.find((entry) => entry.pattern.test(normalized));
+  if (pathRule) return [...pathRule.kinds];
+  return [...(defaultKindsByPageType[pageType] || defaultKindsByPageType.generic)];
+};
+
 const dedupeKinds = (kinds: TemplatePlanSectionKind[]) => {
   const set = new Set<TemplatePlanSectionKind>();
   const deduped: TemplatePlanSectionKind[] = [];
@@ -341,7 +370,7 @@ const planPageSections = (input: {
   promptKinds?: TemplatePlanSectionKind[];
   strategy: "llm_first" | "hybrid" | "template_first";
 }) => {
-  const defaultKinds = defaultKindsByPageType[input.pageType] || defaultKindsByPageType.generic;
+  const defaultKinds = resolveDefaultKindsForPath(String(input.page?.path || "/"), input.pageType);
   const profileKinds = input.profilePage?.kinds?.length ? input.profilePage.kinds : [];
   const promptKinds = Array.isArray(input.promptKinds) ? input.promptKinds : [];
   const preserveProfileSkeleton =

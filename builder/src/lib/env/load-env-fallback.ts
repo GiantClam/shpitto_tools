@@ -97,6 +97,5 @@ export const ensureEnvFallbackLoaded = () => {
 
   for (const candidate of candidates) {
     loadEnvFile(candidate);
-    if (hasLlmKey() && !force) break;
   }
 };

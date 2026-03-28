@@ -1,0 +1,63 @@
+export type CanonicalRoute =
+  | "/"
+  | "/core-product"
+  | "/products"
+  | "/solutions"
+  | "/cases"
+  | "/about"
+  | "/contact"
+  | "/pricing"
+  | "/support"
+  | "/blog"
+  | "/privacy"
+  | "/terms";
+
+type RouteContractEntry = {
+  canonical: CanonicalRoute;
+  aliases: string[];
+};
+
+export const ROUTE_CONTRACT: RouteContractEntry[] = [
+  { canonical: "/", aliases: ["/home", "/index"] },
+  { canonical: "/core-product", aliases: ["/coreproduct", "/flagship-products"] },
+  { canonical: "/products", aliases: ["/product", "/catalog", "/machines", "/3c-machines"] },
+  { canonical: "/solutions", aliases: ["/solution", "/custom-solutions", "/services", "/capabilities"] },
+  { canonical: "/cases", aliases: ["/case", "/case-studies", "/applications"] },
+  { canonical: "/about", aliases: ["/about-us", "/company"] },
+  { canonical: "/contact", aliases: ["/get-in-touch", "/quote"] },
+  { canonical: "/pricing", aliases: ["/price", "/plans"] },
+  { canonical: "/support", aliases: ["/help", "/faq", "/docs"] },
+  { canonical: "/blog", aliases: ["/news", "/insights"] },
+  { canonical: "/privacy", aliases: ["/privacy-policy"] },
+  { canonical: "/terms", aliases: ["/terms-of-service", "/tos"] },
+];
+
+const normalizeRoutePath = (rawPath: string) => {
+  const trimmed = String(rawPath || "").trim().toLowerCase();
+  if (!trimmed || trimmed === "home" || trimmed === "index") return "/";
+  const withSlash = trimmed.startsWith("/") ? trimmed : `/${trimmed}`;
+  return withSlash.replace(/\/{2,}/g, "/").replace(/\/+$/g, "") || "/";
+};
+
+const aliasToCanonical = ROUTE_CONTRACT.reduce((acc, entry) => {
+  const canonical = normalizeRoutePath(entry.canonical);
+  acc.set(canonical, canonical as CanonicalRoute);
+  entry.aliases.forEach((alias) => {
+    acc.set(normalizeRoutePath(alias), canonical as CanonicalRoute);
+  });
+  return acc;
+}, new Map<string, CanonicalRoute>());
+
+export const resolveCanonicalRoute = (
+  rawPath: string,
+  availableRoutes?: Iterable<string>
+): string => {
+  const normalized = normalizeRoutePath(rawPath);
+  const canonical = aliasToCanonical.get(normalized) || normalized;
+  if (!availableRoutes) return canonical;
+  const available = new Set(Array.from(availableRoutes, (item) => normalizeRoutePath(String(item || ""))));
+  if (available.has(canonical)) return canonical;
+  if (available.has(normalized)) return normalized;
+  return canonical;
+};
+

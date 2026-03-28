@@ -1,4 +1,5 @@
 import { ENTERPRISE_SITE_STRUCTURE_BRIEF } from "@/lib/agent/enterprise-site-structure";
+import { resolveOutputLanguage, type OutputLanguage } from "@/lib/agent/language";
 
 export const architectSystemPrompt = `You are a senior UI/UX information architect.
 Generate a structured multi-page website blueprint from the user request.
@@ -9,11 +10,16 @@ Prefer high-value product storytelling modules (ProductCatalog / ProductComparis
 designNorthStar must be fully inferred from the user input and must stay in-domain with the requested industry/product.
 Never hardcode unrelated industries or copy static examples.
 If the user references a template or source site, treat it only as layout and style inspiration; never inherit source-domain nouns, product categories, or brand semantics when they conflict with the requested business.
+Never carry template default copy/marketing sentences into the output. All visible copy must be regenerated from user input + structured facts.
 Theme colors must be inferred from user intent (industry/style/brand clues). Avoid default palettes and avoid default black backgrounds unless justified.
 Do not output literal RGB/HEX in theme decisions. Use paletteRef indexes and semantic tokens.
 themeContract.tokens must stay semantic (primary/accent/background/foreground etc.).
 If alignment overrides are needed, declare them in themeContract.layoutRules.sectionAlignOverrides (by section type or id).
 For enterprise/corporate official websites, default to this page coverage unless the user explicitly narrows scope: ${ENTERPRISE_SITE_STRUCTURE_BRIEF}. Keep equivalent information architecture coverage even when the exact paths or labels differ.`;
+const catalogArchitectureRule = `If the input includes structured products (especially > 12), split into dual-chain architecture:
+- Brand marketing chain: /, /about, /contact
+- Product catalog chain: /products, /products/page-{n}, /products/{slug}
+Catalog chain must include filterable categories, paginated list pages, and product detail pages.`;
 
 const compositionPresetCatalog = `# Composition Preset IDs (pick ONE per section)
 Hero: H01 (split showcase), H02 (image-led), H03 (centered)
@@ -205,7 +211,7 @@ const buildMagicImportHints = (manifest: unknown, limit = 20) => {
     .slice(0, limit);
 };
 
-const builderPromptUserMaxChars = Number(process.env.BUILDER_PROMPT_USER_MAX_CHARS || 420);
+const builderPromptUserMaxChars = Number(process.env.BUILDER_PROMPT_USER_MAX_CHARS || 1200);
 
 const summarizeUserRequest = (prompt: string, maxChars = builderPromptUserMaxChars) => {
   const lines = String(prompt || "")
@@ -251,16 +257,19 @@ const buildBrandConsistencyBrief = (prompt: string, designNorthStar: unknown, th
   };
 };
 
+const buildLanguageInstruction = (outputLanguage: OutputLanguage, scope = "标题、正文、按钮、标签") =>
+  outputLanguage === "zh-CN"
+    ? `输出语言要求：zh-CN。${scope}必须使用中文；品牌名、产品型号、技术术语可保留英文。`
+    : `输出语言要求：en-US。${scope}必须使用英文；除非用户明确要求中文或双语。`;
+
 export function buildArchitectUserPrompt(prompt: string, manifest: unknown) {
-  const normalizedPrompt = String(prompt || "");
-  const explicitChinese = /(中文|简体|繁體|繁体|chinese|mandarin)/i.test(normalizedPrompt);
-  const explicitEnglish = /(英文|english|en-us|en\b)/i.test(normalizedPrompt);
-  const outputLanguage = explicitChinese && !explicitEnglish ? "zh-CN" : "en-US";
+  const outputLanguage = resolveOutputLanguage(prompt);
   return `用户需求：${prompt}
 
 可用组件清单（精简，仅名称/导入路径）：\n${JSON.stringify(buildCompactManifest(manifest), null, 2)}\n\n${compositionPresetCatalog}\n
-输出语言要求：${outputLanguage}。除非用户明确要求中文，否则所有页面名称、标题、正文、按钮文案必须使用英文。
+${buildLanguageInstruction(outputLanguage, "所有页面名称、标题、正文、按钮文案")}
 企业官网默认页面覆盖：${ENTERPRISE_SITE_STRUCTURE_BRIEF}。如果用户请求的是企业官网、公司官网、工业制造官网或 B2B 官网，优先输出完整多页结构，并允许后续微调。
+${catalogArchitectureRule}
 
 输出必须是以下 JSON 结构：\n${architectOutputSchema}`;
 }
@@ -339,6 +348,10 @@ const buildSectionQualityRules = (section: unknown) => {
     rules.push("CTA 按钮 padding 规范：py-4 px-8（lg:px-10），不要过高纵向间距。");
     rules.push("Secondary CTA 必须具备明显描边或对比底色，确保可点击性可见。");
     rules.push("CTA 按钮必须使用 <Button size=\"lg\">，secondary 使用 variant=\"secondary\"。");
+  }
+  if (/(contact|lead|inquiry|quote|咨询|联系)/i.test(key)) {
+    rules.push("Contact/Lead 区域标题与正文禁止使用渐变文字（text-gradient/bg-clip-text/text-transparent）。");
+    rules.push("Contact/Lead 区域必须使用实色文字，必要时通过按钮/卡片阴影增强强调。");
   }
   if (/(footer)/i.test(key)) {
     rules.push("Footer 列间距 >= gap-8，标题/链接层级清晰，避免文字拥挤。");
@@ -429,10 +442,7 @@ export function buildBuilderUserPrompt(options: BuilderPromptOptions) {
   const brandBrief = buildBrandConsistencyBrief(prompt, designNorthStar, theme);
   const includeAssetPromptPack = shouldIncludeAssetPromptPack(section);
   const magicImportHints = buildMagicImportHints(manifest);
-  const normalizedPrompt = String(prompt || "");
-  const explicitChinese = /(中文|简体|繁體|繁体|chinese|mandarin)/i.test(normalizedPrompt);
-  const explicitEnglish = /(英文|english|en-us|en\b)/i.test(normalizedPrompt);
-  const outputLanguage = explicitChinese && !explicitEnglish ? "zh-CN" : "en-US";
+  const outputLanguage = resolveOutputLanguage(prompt);
   return `# Context\n品牌与一致性简报：\n${JSON.stringify(brandBrief, null, 2)}\n\n可用组件（名称）：\n${JSON.stringify(
     buildNameOnlyManifest(manifest),
     null,
@@ -477,7 +487,7 @@ export function buildBuilderUserPrompt(options: BuilderPromptOptions) {
     section,
     null,
     2
-  )}\n\n输出语言要求：${outputLanguage}。除非用户明确要求中文，否则标题、正文、按钮、标签必须为英文。\n\n${sectionRules}# Task\n只生成这个 section 的一个独立组件和对应 Puck block。\n\n# Layout Hint Mapping (必须使用)\n- structure: single | dual | triple | split\n  - single => \"grid grid-cols-1\"\n  - dual => \"grid grid-cols-1 xl:grid-cols-12\"\n  - triple => \"grid grid-cols-1 xl:grid-cols-12\"\n  - split => \"grid grid-cols-1 xl:grid-cols-12\"\n- density: compact | normal | spacious\n  - compact => \"gap-4\"\n  - normal => \"gap-6\"\n  - spacious => \"gap-8\"\n- align: start | center\n  - start => \"items-start\"\n  - center => \"items-center\"\n- list: cards | tiles | rows\n  - cards/tiles => \"grid\" + \"gap-6\" and responsive columns\n  - rows => \"space-y-4\"\n\n# Strict Constraints\n1. 必须使用 shadcn/ui 与 Magic UI 组件，不要使用原生 HTML 标签作为布局组件（允许最外层 Fragment）。\n2. 组件导出 default React 组件，并 export const config = { fields, defaultProps }。\n3. 文案、图片 URL、列表数据必须提升为 props。\n4. Hero/主标题必须使用 <TextReveal>，深色 hero 必须包含 <Particles>。\n5. Tailwind 负责布局与视觉，避免内联样式。\n6. 组件命名唯一、语义化，确保 block.type === component.name。\n7. 所有 list render（map）必须显式添加唯一 key。
+  )}\n\n${buildLanguageInstruction(outputLanguage)}\n\n${sectionRules}# Task\n只生成这个 section 的一个独立组件和对应 Puck block。\n\n# Layout Hint Mapping (必须使用)\n- structure: single | dual | triple | split\n  - single => \"grid grid-cols-1\"\n  - dual => \"grid grid-cols-1 xl:grid-cols-12\"\n  - triple => \"grid grid-cols-1 xl:grid-cols-12\"\n  - split => \"grid grid-cols-1 xl:grid-cols-12\"\n- density: compact | normal | spacious\n  - compact => \"gap-4\"\n  - normal => \"gap-6\"\n  - spacious => \"gap-8\"\n- align: start | center\n  - start => \"items-start\"\n  - center => \"items-center\"\n- list: cards | tiles | rows\n  - cards/tiles => \"grid\" + \"gap-6\" and responsive columns\n  - rows => \"space-y-4\"\n\n# Strict Constraints\n1. 必须使用 shadcn/ui 与 Magic UI 组件，不要使用原生 HTML 标签作为布局组件（允许最外层 Fragment）。\n2. 组件导出 default React 组件，并 export const config = { fields, defaultProps }。\n3. 文案、图片 URL、列表数据必须提升为 props。\n4. Hero/主标题必须使用 <TextReveal>，深色 hero 必须包含 <Particles>。\n5. Tailwind 负责布局与视觉，避免内联样式。\n6. 组件命名唯一、语义化，确保 block.type === component.name。\n7. 所有 list render（map）必须显式添加唯一 key。
 8. 默认严格遵守 themeContract（字体/颜色/布局/动效），只有在 breakoutBudget 允许的 section 才能突破。
 9. 文案风格必须匹配 themeContract.voice。
 10. 必须优先使用 Theme Class Map 与 Motion Presets；className 与动效参数来自映射，不要自创风格。
@@ -492,9 +502,10 @@ export function buildBuilderUserPrompt(options: BuilderPromptOptions) {
 19. 列表/卡片区块优先使用 useInViewReveal（从 @/lib/motion 导入）启用入场；Hero 预设（H*）优先使用 useParallaxY 作用于视觉媒体容器。
 20. 若 breakoutRequired=YES，必须在 section outer 或关键容器上使用 breakoutHero / breakoutShowcase / breakoutFullBleed 中至少一个 class。
 21. 所有 Link/links/cta/导航/页脚链接必须使用对象格式 { label: string, href: string, variant?: "primary" | "secondary" | "link" }，禁止使用 { link: "..." } 或字符串数组。
-22. 高优先级 section 必须从 Theme Class Map.effects 使用至少 1 个效果（glowButton / glassCard / gradientText / hoverLift / hoverUnderline）。
+22. 高优先级 section 必须从 Theme Class Map.effects 使用至少 1 个效果；但 Contact/Lead section 禁止 gradientText，只能使用 glowButton / glassCard / hoverLift / hoverUnderline。
 23. 若 Constraints.layoutRules.asymmetricSplit 存在，split/dual 结构必须使用 12 栅格的 5/7 或 7/5 划分。
-24. 必须通过工具输出结构化 JSON（component + block），不要输出 NDJSON 或任何解释文本。`;
+24. 必须通过工具输出结构化 JSON（component + block），不要输出 NDJSON 或任何解释文本。
+25. 禁止复用模板默认文案（例如 Your Brand / Get Started / Lorem Ipsum 等）；所有可见文案必须来自当前用户需求上下文。`;
 }
 
 export function buildBuilderCompactUserPrompt(options: BuilderPromptOptions) {
@@ -514,10 +525,7 @@ export function buildBuilderCompactUserPrompt(options: BuilderPromptOptions) {
   const sectionRules = buildSectionQualityRules(section);
   const brandBrief = buildBrandConsistencyBrief(prompt, designNorthStar, theme);
   const magicImportHints = buildMagicImportHints(manifest);
-  const normalizedPrompt = String(prompt || "");
-  const explicitChinese = /(中文|简体|繁體|繁体|chinese|mandarin)/i.test(normalizedPrompt);
-  const explicitEnglish = /(英文|english|en-us|en\b)/i.test(normalizedPrompt);
-  const outputLanguage = explicitChinese && !explicitEnglish ? "zh-CN" : "en-US";
+  const outputLanguage = resolveOutputLanguage(prompt);
   return `# Compact Tool Context
 你必须调用工具 builder_section，并返回严格 JSON（component + block）。
 
@@ -537,7 +545,7 @@ ${magicComponentApiGuide}
 
 Section（序号 ${sectionIndex + 1}）：${JSON.stringify(section, null, 2)}
 
-输出语言要求：${outputLanguage}。除非用户明确要求中文，否则标题、正文、按钮、标签必须为英文。
+${buildLanguageInstruction(outputLanguage)}
 
 Theme Shell（必须使用）：
 - sectionPadding: ${String((themeClassMap as any)?.sectionPadding ?? "")}
@@ -557,6 +565,8 @@ ${sectionRules}# Hard Requirements
 5. 必须遵守 layoutHint 与 compositionPreset.requiredClasses。
 6. 所有 map 渲染必须带 key。
 7. 只输出工具 JSON：{ component, block }，不要 Markdown，不要解释文本。
+8. Contact/Lead section 禁止渐变文字：不得使用 text-gradient / bg-clip-text / text-transparent。
+9. 禁止复用模板默认文案（例如 Your Brand / Get Started / Lorem Ipsum 等）。
 
 # Layout Hint Mapping
 - structure: single | dual | triple | split => single: grid-cols-1；其余使用 xl:grid-cols-12

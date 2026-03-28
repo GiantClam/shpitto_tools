@@ -3,6 +3,8 @@ import {
   ENTERPRISE_SITE_PAGES,
   type EnterpriseSitePageKey,
 } from "@/lib/agent/enterprise-site-structure";
+import { resolveOutputLanguage } from "@/lib/agent/language";
+import { resolveCanonicalRoute } from "@/lib/agent/route-contract";
 
 type NavVariant = "primary" | "secondary" | "link";
 
@@ -25,6 +27,94 @@ export type SiteLinkGraph = {
   defaultNavCtas: Array<{ label: string; href: string; variant: "primary" | "secondary" }>;
   footerColumns: SiteFooterColumn[];
   legalText: string;
+  locale: {
+    home: string;
+    page: string;
+    column: string;
+    link: string;
+    contact: string;
+    company: string;
+    legal: string;
+    privacy: string;
+    terms: string;
+    overview: string;
+    solutions: string;
+    pages: string;
+  };
+};
+
+const resolveLinkLocale = (prompt: string): SiteLinkGraph["locale"] => {
+  const outputLanguage = resolveOutputLanguage(prompt);
+  if (outputLanguage === "zh-CN") {
+    return {
+      home: "首页",
+      page: "页面",
+      column: "栏目",
+      link: "链接",
+      contact: "联系我们",
+      company: "公司",
+      legal: "法律",
+      privacy: "隐私政策",
+      terms: "使用条款",
+      overview: "概览",
+      solutions: "方案",
+      pages: "页面",
+    };
+  }
+  return {
+    home: "Home",
+    page: "Page",
+    column: "Column",
+    link: "Link",
+    contact: "Contact",
+    company: "Company",
+    legal: "Legal",
+    privacy: "Privacy",
+    terms: "Terms",
+    overview: "Overview",
+    solutions: "Solutions",
+    pages: "Pages",
+  };
+};
+
+const localizedPageLabelByPath = (pathValue: string, locale: SiteLinkGraph["locale"]) => {
+  const path = normalizePath(pathValue);
+  const isZh = locale.home === "首页";
+  if (path === "/") return locale.home;
+  const zhMap: Record<string, string> = {
+    "/products": "产品中心",
+    "/core-product": "核心产品",
+    "/solutions": "解决方案",
+    "/cases": "应用案例",
+    "/about": "关于我们",
+    "/contact": "联系我们",
+    "/support": "服务支持",
+    "/pricing": "价格方案",
+    "/privacy": "隐私政策",
+    "/terms": "使用条款",
+  };
+  const enMap: Record<string, string> = {
+    "/products": "Products",
+    "/core-product": "Core Product",
+    "/solutions": "Solutions",
+    "/cases": "Cases",
+    "/about": "About",
+    "/contact": "Contact",
+    "/support": "Support",
+    "/pricing": "Pricing",
+    "/privacy": "Privacy",
+    "/terms": "Terms",
+  };
+  const map = isZh ? zhMap : enMap;
+  return map[path] || "";
+};
+
+const localizeNavLabel = (label: string, href: string, locale: SiteLinkGraph["locale"]) => {
+  const raw = sanitizeLabel(label, locale.page);
+  const localizedByPath = localizedPageLabelByPath(href, locale);
+  const englishOnly = /^[A-Za-z0-9\s&+/_-]{2,40}$/.test(raw);
+  if (locale.home === "首页" && englishOnly && localizedByPath) return localizedByPath;
+  return raw;
 };
 
 const normalizePath = (value: unknown) => {
@@ -40,11 +130,11 @@ const sanitizeLabel = (value: unknown, fallback: string) => {
   return text || fallback;
 };
 
-const dedupeLinks = <T extends { label: string; href: string }>(links: T[]) => {
+const dedupeLinks = <T extends { label: string; href: string }>(links: T[], fallbackLabel: string) => {
   const seen = new Set<string>();
   const next: T[] = [];
   links.forEach((link) => {
-    const key = `${normalizePath(link.href)}::${sanitizeLabel(link.label, "Page").toLowerCase()}`;
+    const key = `${normalizePath(link.href)}::${sanitizeLabel(link.label, fallbackLabel).toLowerCase()}`;
     if (seen.has(key)) return;
     seen.add(key);
     next.push(link);
@@ -75,12 +165,47 @@ const isExternalOrAnchorHref = (href: string) => {
   );
 };
 
+const trustedExternalHosts = [
+  "wa.me",
+  "api.whatsapp.com",
+  "web.whatsapp.com",
+  "linkedin.com",
+  "x.com",
+  "twitter.com",
+  "youtube.com",
+  "facebook.com",
+  "instagram.com",
+];
+
+const isTrustedExternalHost = (host: string) => {
+  const normalized = String(host || "").toLowerCase().replace(/^www\./, "");
+  return trustedExternalHosts.some((suffix) => normalized === suffix || normalized.endsWith(`.${suffix}`));
+};
+
+const maybeCanonicalizeAbsoluteHref = (href: string, graph: SiteLinkGraph) => {
+  try {
+    const parsed = new URL(href);
+    if (isTrustedExternalHost(parsed.hostname)) return href;
+    const canonical = resolveCanonicalRoute(parsed.pathname, graph.validInternalHrefs);
+    const normalized = normalizePath(canonical);
+    if (graph.validInternalHrefs.has(normalized)) return normalized;
+    const looksInternalRoute = /^\/[a-z0-9-]{1,40}(?:\/[a-z0-9-]{1,40}){0,2}$/i.test(parsed.pathname || "");
+    if (looksInternalRoute) return graph.homeHref;
+    return href;
+  } catch {
+    return graph.homeHref;
+  }
+};
+
 const sanitizeHref = (href: unknown, graph: SiteLinkGraph) => {
   const raw = typeof href === "string" ? href.trim() : "";
   if (!raw) return graph.homeHref;
-  if (isExternalOrAnchorHref(raw)) return raw;
+  if (/^mailto:|^tel:|^#/i.test(raw)) return raw;
+  if (/^https?:\/\//i.test(raw)) return maybeCanonicalizeAbsoluteHref(raw, graph);
   const pathname = normalizePath(raw);
   if (graph.validInternalHrefs.has(pathname)) return pathname;
+  const canonical = normalizePath(resolveCanonicalRoute(pathname, graph.validInternalHrefs));
+  if (graph.validInternalHrefs.has(canonical)) return canonical;
   return graph.homeHref;
 };
 
@@ -107,7 +232,7 @@ const sanitizeHrefFields = (value: unknown, graph: SiteLinkGraph): unknown => {
 const sanitizeNavLink = (link: unknown, graph: SiteLinkGraph): SiteNavLink | null => {
   if (!link || typeof link !== "object") return null;
   const rec = link as Record<string, unknown>;
-  const label = sanitizeLabel(rec.label, "Page");
+  const label = sanitizeLabel(rec.label, graph.locale.page);
   const href = sanitizeHref(rec.href, graph);
   const variant =
     rec.variant === "primary" || rec.variant === "secondary" || rec.variant === "link"
@@ -131,8 +256,12 @@ const flattenColumnLabels = (column: SiteFooterColumn) => {
   return lines.join("\n");
 };
 
-const buildLegacyFooterSlotText = (title: string, label: string) =>
-  [sanitizeLabel(title, "Column"), sanitizeLabel(label, "Link")].filter(Boolean).join("\n");
+const buildLegacyFooterSlotText = (
+  title: string,
+  label: string,
+  fallbackColumn: string,
+  fallbackLink: string
+) => [sanitizeLabel(title, fallbackColumn), sanitizeLabel(label, fallbackLink)].filter(Boolean).join("\n");
 
 const isGlobalChromeToken = (token: string) =>
   /(navigation|navbar|header|topnav|menu|footer|legal|copyright|bottom)/.test(String(token || ""));
@@ -198,30 +327,36 @@ const sortPagesForNavigation = (pages: SiteBlueprint["pages"]) =>
     return normalizePath(a.path).localeCompare(normalizePath(b.path));
   });
 
-const buildNavigationLinks = (blueprint: SiteBlueprint): SiteNavLink[] => {
+const buildNavigationLinks = (blueprint: SiteBlueprint, locale: SiteLinkGraph["locale"]): SiteNavLink[] => {
   if (isEnterpriseBlueprint(blueprint)) {
     const links = dedupeLinks(
       matchEnterprisePages(blueprint).map((item) => ({
-        label: item.label,
+        label: localizeNavLabel(item.label, item.href, locale),
         href: item.href,
         variant: "link" as const,
-      }))
+      })),
+      locale.page
     );
     if (links.length) return links;
   }
   const contentPages = sortPagesForNavigation(getContentPages(blueprint));
   const links = dedupeLinks(
     contentPages.slice(0, 8).map((page, index) => ({
-      label: sanitizeLabel(page.name, index === 0 ? "Home" : `Page ${index + 1}`),
+      label: localizeNavLabel(
+        sanitizeLabel(page.name, index === 0 ? locale.home : `${locale.page} ${index + 1}`),
+        normalizePath(page.path),
+        locale
+      ),
       href: normalizePath(page.path),
       variant: "link" as const,
-    }))
+    })),
+    locale.page
   );
   if (links.length) return links;
-  return [{ label: "Home", href: "/", variant: "link" }];
+  return [{ label: locale.home, href: "/", variant: "link" }];
 };
 
-const buildDefaultNavCtas = (blueprint: SiteBlueprint): SiteLinkGraph["defaultNavCtas"] => {
+const buildDefaultNavCtas = (blueprint: SiteBlueprint, locale: SiteLinkGraph["locale"]): SiteLinkGraph["defaultNavCtas"] => {
   const contentPages = getContentPages(blueprint);
   const fallbackPages = blueprint.pages;
   const contactPage =
@@ -230,12 +365,12 @@ const buildDefaultNavCtas = (blueprint: SiteBlueprint): SiteLinkGraph["defaultNa
     contentPages.find((page) => /about/i.test(page.path)) ??
     fallbackPages.find((page) => /about/i.test(page.path));
   if (contactPage) {
-    return [{ label: "Contact", href: normalizePath(contactPage.path), variant: "primary" }];
+    return [{ label: locale.contact, href: normalizePath(contactPage.path), variant: "primary" }];
   }
-  return [{ label: "Home", href: "/", variant: "secondary" }];
+  return [{ label: locale.home, href: "/", variant: "secondary" }];
 };
 
-const buildFooterColumns = (blueprint: SiteBlueprint): SiteFooterColumn[] => {
+const buildFooterColumns = (blueprint: SiteBlueprint, locale: SiteLinkGraph["locale"]): SiteFooterColumn[] => {
   if (isEnterpriseBlueprint(blueprint)) {
     const enterpriseLinks = matchEnterprisePages(blueprint);
     const byKey = new Map(enterpriseLinks.map((item) => [item.key, item] as const));
@@ -246,30 +381,30 @@ const buildFooterColumns = (blueprint: SiteBlueprint): SiteFooterColumn[] => {
     });
     return [
       {
-        title: "Overview",
+        title: locale.overview,
         links: [
-          pick("home", "Home"),
+          pick("home", locale.home),
           pick("core_product", "Core Product"),
           pick("products", "Products"),
         ],
       },
       {
-        title: "Solutions",
+        title: locale.solutions,
         links: [
           pick("solutions", "Solutions"),
           pick("cases", "Cases"),
         ],
       },
       {
-        title: "Company",
+        title: locale.company,
         links: [
           pick("about", "About"),
-          pick("contact", "Contact"),
+          pick("contact", locale.contact),
         ],
       },
       {
-        title: "Legal",
-        links: [pick("privacy", "Privacy")],
+        title: locale.legal,
+        links: [pick("privacy", locale.privacy)],
       },
     ];
   }
@@ -285,12 +420,13 @@ const buildFooterColumns = (blueprint: SiteBlueprint): SiteFooterColumn[] => {
     contentPages
       .slice(0, 8)
       .map((page) => ({
-        label: sanitizeLabel(page.name, "Page"),
+        label: sanitizeLabel(page.name, locale.page),
         href: normalizePath(page.path),
         variant: "link" as const,
       }))
       .filter((link) => link.href !== aboutNormalized && link.href !== contactNormalized)
-      .slice(0, 4)
+      .slice(0, 4),
+    locale.page
   );
   const usedHrefSet = new Set<string>(pageLinks.map((link) => normalizePath(link.href)));
   usedHrefSet.add(aboutNormalized);
@@ -298,7 +434,7 @@ const buildFooterColumns = (blueprint: SiteBlueprint): SiteFooterColumn[] => {
   const fallbackHrefPool: Array<{ label: string; href: string; variant: "link" }> = dedupeLinksByHref(
     contentPages
       .map((page) => ({
-        label: sanitizeLabel(page.name, "Page"),
+        label: sanitizeLabel(page.name, locale.page),
         href: normalizePath(page.path),
         variant: "link" as const,
       }))
@@ -310,16 +446,16 @@ const buildFooterColumns = (blueprint: SiteBlueprint): SiteFooterColumn[] => {
     allPages.find((page) => /(^|\/)(terms|legal|tos)(\/|$)/i.test(normalizePath(page.path)))?.path ?? "/";
   const legalLinks = dedupeLinksByHref(
     [
-      { label: "Privacy", href: normalizePath(privacyHref), variant: "link" as const },
-      { label: "Terms", href: normalizePath(termsHref), variant: "link" as const },
+      { label: locale.privacy, href: normalizePath(privacyHref), variant: "link" as const },
+      { label: locale.terms, href: normalizePath(termsHref), variant: "link" as const },
     ].filter((link) => Boolean(link.href) && !usedHrefSet.has(normalizePath(link.href)))
   );
   if (legalLinks.length < 2) {
     const fallbackCandidates = [
       ...fallbackHrefPool.map((item) => ({ label: item.label || "More", href: item.href, variant: "link" as const })),
-      { label: "About", href: aboutNormalized, variant: "link" as const },
-      { label: "Contact", href: contactNormalized, variant: "link" as const },
-      { label: "Home", href: "/", variant: "link" as const },
+      { label: locale.company, href: aboutNormalized, variant: "link" as const },
+      { label: locale.contact, href: contactNormalized, variant: "link" as const },
+      { label: locale.home, href: "/", variant: "link" as const },
     ];
     fallbackCandidates.forEach((candidate) => {
       if (legalLinks.length >= 2) return;
@@ -331,45 +467,50 @@ const buildFooterColumns = (blueprint: SiteBlueprint): SiteFooterColumn[] => {
   }
   return [
     {
-      title: "Pages",
-      links: pageLinks.length ? pageLinks : [{ label: "Home", href: "/", variant: "link" }],
+      title: locale.pages,
+      links: pageLinks.length ? pageLinks : [{ label: locale.home, href: "/", variant: "link" }],
     },
     {
-      title: "Company",
+      title: locale.company,
       links: [
-        { label: "About", href: normalizePath(aboutHref), variant: "link" },
-        { label: "Contact", href: normalizePath(contactHref), variant: "link" },
+        { label: locale.company, href: normalizePath(aboutHref), variant: "link" },
+        { label: locale.contact, href: normalizePath(contactHref), variant: "link" },
       ],
     },
     {
-      title: "Legal",
+      title: locale.legal,
       links: legalLinks.slice(0, 2),
     },
   ];
 };
 
-export const buildSiteLinkGraph = (blueprint: SiteBlueprint): SiteLinkGraph => {
+export const buildSiteLinkGraph = (blueprint: SiteBlueprint, prompt = ""): SiteLinkGraph => {
   const validInternalHrefs = new Set<string>(blueprint.pages.map((page) => normalizePath(page.path)));
   if (!validInternalHrefs.size) validInternalHrefs.add("/");
+  const locale = resolveLinkLocale(prompt);
   const graph: SiteLinkGraph = {
     homeHref: "/",
     validInternalHrefs,
     navigationLinks: [],
     defaultNavCtas: [],
     footerColumns: [],
-    legalText: `© ${new Date().getFullYear()} All rights reserved.`,
+    legalText:
+      resolveOutputLanguage(prompt) === "zh-CN"
+        ? `© ${new Date().getFullYear()} 保留所有权利。`
+        : `© ${new Date().getFullYear()} All rights reserved.`,
+    locale,
   };
-  graph.navigationLinks = buildNavigationLinks(blueprint)
+  graph.navigationLinks = buildNavigationLinks(blueprint, locale)
     .map((item) => sanitizeNavLink(item, graph))
     .filter((item): item is SiteNavLink => Boolean(item));
-  graph.defaultNavCtas = buildDefaultNavCtas(blueprint).map((item) => ({
+  graph.defaultNavCtas = buildDefaultNavCtas(blueprint, locale).map((item) => ({
     ...item,
     href: sanitizeHref(item.href, graph),
   }));
-  graph.footerColumns = buildFooterColumns(blueprint).map((column) => ({
-    title: sanitizeLabel(column.title, "Column"),
+  graph.footerColumns = buildFooterColumns(blueprint, locale).map((column) => ({
+    title: sanitizeLabel(column.title, locale.column),
     links: column.links.map((link) => ({
-      label: sanitizeLabel(link.label, "Link"),
+      label: sanitizeLabel(link.label, locale.link),
       href: sanitizeHref(link.href, graph),
       variant: link.variant,
     })),
@@ -388,7 +529,7 @@ export const applyLinkGraphToNavbarProps = (props: Record<string, unknown>, grap
       const rec = cta as Record<string, unknown>;
       return {
         ...rec,
-        label: sanitizeLabel(rec.label, "Contact"),
+        label: sanitizeLabel(rec.label, graph.locale.contact),
         href: sanitizeHref(rec.href, graph),
         variant: rec.variant === "primary" || rec.variant === "secondary" ? rec.variant : "primary",
       };
@@ -412,7 +553,7 @@ export const applyLinkGraphToNavbarProps = (props: Record<string, unknown>, grap
     next.ctatexttext = primaryCta.label;
   } else {
     next.ctahref = graph.homeHref;
-    next.ctatexttext = "Home";
+    next.ctatexttext = graph.locale.home;
   }
   return next;
 };
@@ -449,22 +590,37 @@ export const applyLinkGraphToFooterProps = (props: Record<string, unknown>, grap
   const terms = legalColumn?.links[1];
 
   next.col1text = flattenColumnLabels(paddedColumns[0]);
-  next.col2text = buildLegacyFooterSlotText(companyColumn?.title ?? "Company", aboutLink?.label ?? "About");
+  next.col2text = buildLegacyFooterSlotText(
+    companyColumn?.title ?? graph.locale.company,
+    aboutLink?.label ?? graph.locale.company,
+    graph.locale.column,
+    graph.locale.link
+  );
   next.col2href = aboutLink?.href ?? graph.homeHref;
-  next.col3text = buildLegacyFooterSlotText(companyColumn?.title ?? "Company", contactLink?.label ?? "Contact");
+  next.col3text = buildLegacyFooterSlotText(
+    companyColumn?.title ?? graph.locale.company,
+    contactLink?.label ?? graph.locale.contact,
+    graph.locale.column,
+    graph.locale.link
+  );
   next.col3href = contactLink?.href ?? graph.homeHref;
-  next.col4text = buildLegacyFooterSlotText(legalColumn?.title ?? "Legal", privacy?.label ?? "Privacy");
+  next.col4text = buildLegacyFooterSlotText(
+    legalColumn?.title ?? graph.locale.legal,
+    privacy?.label ?? graph.locale.privacy,
+    graph.locale.column,
+    graph.locale.link
+  );
   next.col4href = privacy?.href ?? graph.homeHref;
 
-  next.policyhome1text = privacy?.label ?? "Privacy";
+  next.policyhome1text = privacy?.label ?? graph.locale.privacy;
   next.policyhome1href = privacy?.href ?? graph.homeHref;
-  next.policyhome2text = terms?.label ?? "Terms";
+  next.policyhome2text = terms?.label ?? graph.locale.terms;
   next.policyhome2href = terms?.href ?? graph.homeHref;
 
   const footerBrand =
     (typeof next.logoText === "string" && next.logoText.trim()) ||
     (typeof next.brandtext === "string" && next.brandtext.trim()) ||
-    "Company";
+    graph.locale.company;
   next.ftlogotext = footerBrand;
   if (typeof next.copytext !== "string" || !next.copytext.trim()) {
     next.copytext = typeof next.legal === "string" && next.legal.trim() ? next.legal : graph.legalText;

@@ -230,6 +230,43 @@ const normalizeCaseStudiesVariant = (count: number) => {
   return "cards";
 };
 
+const CONTACT_INTENT_PATTERN = /(contact|consult|quote|inquir|lead|get[-_\s]?in[-_\s]?touch)/i;
+const TEXT_GRADIENT_PATTERN = /\b(text-gradient|bg-clip-text|text-transparent)\b/gi;
+
+const isContactIntentProps = (blockTypeToken: string, props: BlockProps) => {
+  const token = [
+    blockTypeToken,
+    String(props.anchor || ""),
+    String(props.id || ""),
+    String(props.pageTypeContract || ""),
+    String(props.variant || ""),
+    String(props.intent || ""),
+  ]
+    .join(" ")
+    .toLowerCase();
+  return CONTACT_INTENT_PATTERN.test(token);
+};
+
+const stripTextGradientClasses = (value: unknown) => {
+  if (typeof value !== "string") return value;
+  const cleaned = value
+    .replace(TEXT_GRADIENT_PATTERN, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+  return cleaned;
+};
+
+const sanitizeContactGradientTextProps = (props: BlockProps) => {
+  const next = { ...props };
+  const classKeys = ["titleClassName", "headingClassName", "eyebrowClassName", "subtitleClassName", "labelClassName"];
+  classKeys.forEach((key) => {
+    if (typeof next[key] === "string") {
+      next[key] = stripTextGradientClasses(next[key]);
+    }
+  });
+  return next;
+};
+
 const normalizeHeroCenteredVariant = (props: BlockProps) => {
   const hasMedia = Boolean(props.media);
   const badges = Array.isArray(props.badges) ? props.badges : [];
@@ -247,6 +284,7 @@ const normalizeHeroSplitVariant = (props: BlockProps) => {
 
 const normalizeLeadCaptureVariant = (props: BlockProps) => {
   const background = typeof props.background === "string" ? props.background : "";
+  if (isContactIntentProps("leadcapturecta", props)) return "card";
   if (background === "muted" || background === "gradient" || props.emphasis === "high") return "card";
   return "banner";
 };
@@ -300,10 +338,16 @@ const normalizeBaseProps = (props: BlockProps) => {
 const seedBlockDefaults = (blockType: string, props: BlockProps) => {
   const next = { ...props };
   const type = blockType.toLowerCase();
+  const contactIntent = isContactIntentProps(type, next);
   if (next.paddingY === undefined) next.paddingY = "lg";
   if (next.motionPreset === undefined && next.motion === undefined) next.motionPreset = "stagger";
   if ((type.includes("hero") || type.includes("cta") || type.includes("leadcapture")) && !next.emphasis) {
-    next.emphasis = "high";
+    next.emphasis = type.includes("leadcapture") && contactIntent ? "normal" : "high";
+  }
+  if (contactIntent && (type.includes("contact") || type.includes("leadcapture") || type.includes("cta"))) {
+    next.emphasis = "normal";
+    next.forbidGradientText = true;
+    Object.assign(next, sanitizeContactGradientTextProps(next));
   }
   if (type.includes("footer") && !next.variant) {
     next.variant = normalizeFooterVariant(next);
@@ -442,8 +486,14 @@ export const normalizeBlockProps = (
   const seededProps = seedBlockDefaults(blockType, props ?? {});
   const base = normalizeBaseProps(normalizeObject(seededProps));
   const type = blockType.toLowerCase();
+  const contactIntent = isContactIntentProps(type, base);
   if ((type.includes("hero") || type.includes("cta") || type.includes("leadcapture")) && !base.emphasis) {
-    base.emphasis = "high";
+    base.emphasis = type.includes("leadcapture") && contactIntent ? "normal" : "high";
+  }
+  if (contactIntent && (type.includes("contact") || type.includes("leadcapture") || type.includes("cta"))) {
+    base.emphasis = "normal";
+    base.forbidGradientText = true;
+    Object.assign(base, sanitizeContactGradientTextProps(base));
   }
   if (type.includes("cardsgrid")) {
     const items = Array.isArray(base.items) ? base.items : [];

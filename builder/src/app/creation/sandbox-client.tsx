@@ -9,6 +9,7 @@ import "@measured/puck/puck.css";
 import { compileJIT } from "@/lib/runtime";
 import { MotionProvider } from "@/components/theme/motion";
 import { normalizePuckData } from "@/lib/design-system-enforcer";
+import { resolveCanonicalRoute } from "@/lib/agent/route-contract";
 import { puckConfig } from "@/puck/config";
 import type { SandboxPageSkinnable } from "@/lib/sandbox-payload";
 
@@ -631,6 +632,26 @@ const toSandboxPreviewHref = (
   if (!rawHref || !siteKey || mode !== "preview") return "";
   const href = rawHref.trim();
   if (!href || isNonNavigationalHref(href)) return "";
+  const fallbackPagePath = availablePagePaths.has("/") ? "/" : Array.from(availablePagePaths)[0] || "/";
+
+  // Many generated links are bare slugs like "cases" or "about". Treat them as root-level routes.
+  if (
+    !/^[a-z][a-z0-9+.-]*:/i.test(href) &&
+    !href.startsWith("/") &&
+    !href.startsWith("./") &&
+    !href.startsWith("../")
+  ) {
+    const slugCandidate = resolveCanonicalRoute(`/${href}`, availablePagePaths);
+    if (availablePagePaths.has(slugCandidate)) {
+      const next = new URL(currentUrl.toString());
+      next.pathname = "/creation/sandbox";
+      next.searchParams.set("mode", "preview");
+      next.searchParams.set("siteKey", siteKey);
+      next.searchParams.set("page", normalizePreviewPageParam(slugCandidate));
+      next.hash = "";
+      return next.toString();
+    }
+  }
 
   let parsed: URL;
   try {
@@ -639,7 +660,7 @@ const toSandboxPreviewHref = (
     return "";
   }
 
-  const candidatePagePath = normalizePreviewPagePath(parsed.pathname);
+  const candidatePagePath = resolveCanonicalRoute(parsed.pathname, availablePagePaths);
   const knownPage = availablePagePaths.has(candidatePagePath);
   if (parsed.origin !== currentUrl.origin && !knownPage) {
     return "";
@@ -648,7 +669,13 @@ const toSandboxPreviewHref = (
     return "";
   }
   if (!knownPage && parsed.origin === currentUrl.origin) {
-    return "";
+    const next = new URL(currentUrl.toString());
+    next.pathname = "/creation/sandbox";
+    next.searchParams.set("mode", "preview");
+    next.searchParams.set("siteKey", siteKey);
+    next.searchParams.set("page", normalizePreviewPageParam(fallbackPagePath));
+    next.hash = parsed.hash || "";
+    return next.toString();
   }
 
   const next = new URL(currentUrl.toString());

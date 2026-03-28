@@ -29,11 +29,12 @@ export type LeadCaptureCTAProps = BaseBlockProps & {
   ctaBackgroundColor?: string;
   ctaTextColor?: string;
   ctaClassName?: string;
+  forbidGradientText?: boolean;
   referenceSliceMode?: boolean;
   referenceSliceMinHeight?: number;
 };
 
-export type LeadCaptureVariant = "banner" | "card";
+export type LeadCaptureVariant = "banner" | "card" | "contact";
 
 export function LeadCaptureCTABlock({
   id,
@@ -57,6 +58,7 @@ export function LeadCaptureCTABlock({
   ctaBackgroundColor,
   ctaTextColor,
   ctaClassName,
+  forbidGradientText = false,
   referenceSliceMode = false,
   referenceSliceMinHeight,
   emphasis = "normal",
@@ -68,7 +70,12 @@ export function LeadCaptureCTABlock({
     variant: cta?.variant === "secondary" ? "secondary" : cta?.variant === "link" ? "link" : "primary",
   };
 
-  const shouldUseGradientTitle = emphasis === "high" && !titleColor && !titleClassName;
+  const contactLike =
+    /(^|[-_])contact($|[-_])/.test(String(anchor || "").toLowerCase()) ||
+    String(id || "").toLowerCase().includes("contact") ||
+    variant === "contact";
+  const shouldUseGradientTitle =
+    !forbidGradientText && !contactLike && emphasis === "high" && !titleColor && !titleClassName;
   const content = (
     <div className="flex flex-col gap-4">
       <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
@@ -183,7 +190,7 @@ export function LeadCaptureCTABlock({
           hasBackgroundVideo ? "relative z-10" : ""
         )}
       >
-        {variant === "card" ? (
+        {variant === "card" || variant === "contact" ? (
           <Card
             className={cn(
               "border-border bg-background/60 p-6",

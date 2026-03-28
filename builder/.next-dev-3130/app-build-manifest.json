@@ -1,0 +1,21 @@
+{
+  "pages": {
+    "/api/creation/route": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/api/creation/route.js"
+    ],
+    "/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/layout.css",
+      "static/chunks/app/layout.js"
+    ],
+    "/creation/sandbox/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/creation/sandbox/page.css",
+      "static/chunks/app/creation/sandbox/page.js"
+    ]
+  }
+}

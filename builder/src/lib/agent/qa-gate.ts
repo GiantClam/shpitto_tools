@@ -1,5 +1,6 @@
 import type { SiteBlueprint } from "@/lib/agent/site-planner";
 import type { SiteLinkGraph } from "@/lib/agent/link-graph";
+import { resolveOutputLanguage } from "@/lib/agent/language";
 
 export type GenerationPage = {
   path?: string;
@@ -36,7 +37,13 @@ export type QaGateReport = {
     semanticHitPages: string[];
     sourceBrandLeakPages: string[];
     genericPlaceholderPages: string[];
+    languageMismatchPages: string[];
+    templateCopyPages: string[];
+    contactGradientTextPages: string[];
     thinMiddleSectionPages: string[];
+    repetitiveSectionPages: string[];
+    repetitiveStructurePairs: string[];
+    criticalDuplicatePairs: string[];
   };
 };
 
@@ -108,6 +115,34 @@ const blockIsCtaOrContact = (item: { type?: string; props?: Record<string, unkno
   );
 };
 
+const CONTACT_TEXT_GRADIENT_PATTERN = /\b(text-gradient|bg-clip-text|text-transparent)\b/i;
+
+const collectClassLikeValues = (value: unknown, out: string[]) => {
+  if (!value) return;
+  if (Array.isArray(value)) {
+    value.forEach((item) => collectClassLikeValues(item, out));
+    return;
+  }
+  if (typeof value !== "object") return;
+  Object.entries(value as Record<string, unknown>).forEach(([key, entry]) => {
+    if (typeof entry === "string" && /class/i.test(key)) {
+      const compact = entry.trim();
+      if (compact) out.push(compact);
+      return;
+    }
+    collectClassLikeValues(entry, out);
+  });
+};
+
+const blockHasForbiddenContactGradientText = (item: { type?: string; props?: Record<string, unknown> } | undefined) => {
+  if (!blockIsCtaOrContact(item)) return false;
+  const type = String(item?.type || "").toLowerCase();
+  if (type.includes("leadcapture") && String(item?.props?.emphasis || "").toLowerCase() === "high") return true;
+  const classValues: string[] = [];
+  collectClassLikeValues(item?.props, classValues);
+  return classValues.some((entry) => CONTACT_TEXT_GRADIENT_PATTERN.test(entry));
+};
+
 const inferPageIntent = (pathValue: string, nameValue: string) => {
   const token = `${normalizePagePath(pathValue)} ${String(nameValue || "")}`.toLowerCase();
   if (/privacy|terms?|policy|legal|cookie|gdpr/.test(token)) return "legal";
@@ -121,6 +156,35 @@ const minMiddleSectionsForIntent = (intent: string) => {
   if (intent === "home") return 3;
   if (intent === "contact" || intent === "support" || intent === "legal") return 1;
   return 2;
+};
+
+const blockRoleToken = (item: { type?: string; props?: Record<string, unknown> } | undefined) => {
+  const type = String(item?.type || "").toLowerCase();
+  if (!type) return "other";
+  if (/hero|masthead|intro/.test(type)) return "hero";
+  if (/feature|approach|process|workflow|capability|faq/.test(type)) return "approach";
+  if (/product|catalog|pricing|plan|cardsgrid|showcase/.test(type)) return "products";
+  if (/testimonial|review|social|proof|logo|trust/.test(type)) return "socialproof";
+  if (/story|content|timeline|team|resource|blog|news/.test(type)) return "story";
+  if (/contact|leadcapture|cta/.test(type)) return "contact";
+  return "other";
+};
+
+const roleSequenceSimilarity = (left: string[], right: string[]) => {
+  if (!left.length && !right.length) return 1;
+  if (!left.length || !right.length) return 0;
+  const rows = left.length + 1;
+  const cols = right.length + 1;
+  const dp = Array.from({ length: rows }, () => Array(cols).fill(0));
+  for (let row = 1; row < rows; row += 1) {
+    for (let col = 1; col < cols; col += 1) {
+      dp[row][col] =
+        left[row - 1] === right[col - 1]
+          ? dp[row - 1][col - 1] + 1
+          : Math.max(dp[row - 1][col], dp[row][col - 1]);
+    }
+  }
+  return (2 * dp[left.length][right.length]) / (left.length + right.length);
 };
 
 const stableThemeFingerprint = (theme: unknown) => {
@@ -144,7 +208,9 @@ const extractPromptBrand = (prompt: string): string => {
   if (chinese) return chinese[1].trim();
   const english = prompt.match(/for\s+([A-Za-z][A-Za-z0-9\s-]{1,40})\s+(?:generate|build|create|design)/i);
   if (english) return english[1].trim();
-  const named = prompt.match(/(?:叫|called|named|品牌名?(?:为|是)?)\s*[：:]?\s*([A-Za-z\u4e00-\u9fff][\w\u4e00-\u9fff\s]{0,30})/i);
+  const named = prompt.match(
+    /(?:叫|called|named|品牌(?:名称|名)|公司(?:名称|名)|企业(?:名称|名))(?:\s*(?:为|是)\s*|[：:]\s*)([A-Za-z\u4e00-\u9fff][\w\u4e00-\u9fff\s]{0,30})/i
+  );
   if (named) return named[1].trim();
   return "";
 };
@@ -168,8 +234,52 @@ const collectTextValues = (value: unknown, out: string[]) => {
   });
 };
 
-const sourceBrandLeakRegex = /\b(?:unistellar|audeze|devialet|master\s*dynamic|arch|kef)\b/i;
 const genericPlaceholderRegex = /\b(?:story|approach|socialproof|products?|cta|contact|hero|navigation|footer)\s+section\b/i;
+const templateCopyRegex =
+  /\blorem ipsum\b|\byour brand\b|\bour (?:mission|vision|values?|services?|products?)\b|\btrusted by\b|\bbook (?:a )?demo\b|\bget started\b|\bdiscover more\b|\blearn more\b|\bthis section\b|\bplaceholder\b|\{\{[^}]+\}\}|\[\s*(?:title|subtitle|description|content|cta)\s*\]/i;
+const brandCandidateStopwords = new Set(
+  [
+    "home",
+    "products",
+    "solutions",
+    "cases",
+    "about",
+    "contact",
+    "support",
+    "blog",
+    "privacy",
+    "legal",
+    "quote",
+    "catalog",
+    "machine",
+    "machines",
+    "industrial",
+    "company",
+  ].map((item) => item.toLowerCase())
+);
+
+const normalizeBrandToken = (value: string) =>
+  String(value || "")
+    .toLowerCase()
+    .replace(/[™®]/g, "")
+    .replace(/[\s\-_]+/g, "")
+    .trim();
+
+const extractBrandCandidatesFromText = (value: string) => {
+  const text = String(value || "");
+  const matches = [
+    ...Array.from(text.matchAll(/\b[A-Z]{2,}(?:-[A-Z0-9]{2,})+\b/g)).map((m) => String(m[0] || "")),
+    ...Array.from(text.matchAll(/\b[A-Z][A-Za-z0-9]{2,}(?:\s+[A-Z][A-Za-z0-9]{2,}){0,2}\b/g)).map((m) =>
+      String(m[0] || "")
+    ),
+    ...Array.from(text.matchAll(/\b[A-Za-z][A-Za-z0-9-]{1,}[™®]\b/g)).map((m) => String(m[0] || "")),
+  ]
+    .map((token) => token.trim())
+    .filter(Boolean)
+    .filter((token) => normalizeBrandToken(token).length >= 4)
+    .filter((token) => !brandCandidateStopwords.has(normalizeBrandToken(token)));
+  return Array.from(new Set(matches));
+};
 
 export const evaluateGenerationQa = (input: {
   siteBlueprint: SiteBlueprint;
@@ -178,6 +288,9 @@ export const evaluateGenerationQa = (input: {
   prompt?: string;
   thresholds?: Partial<QaGateReport["thresholds"]>;
 }): QaGateReport => {
+  const strictRepetitionGate = !["0", "false", "off", "no"].includes(
+    String(process.env.BUILDER_QA_STRICT_REPETITION_GATE || "true").trim().toLowerCase()
+  );
   const thresholds: QaGateReport["thresholds"] = {
     coverage: clamp(Number(input.thresholds?.coverage ?? 0.85)),
     linkIntegrity: clamp(Number(input.thresholds?.linkIntegrity ?? 0.95)),
@@ -248,7 +361,9 @@ export const evaluateGenerationQa = (input: {
 
   let middleSectionPoints = 0;
   const thinMiddleSectionPages: string[] = [];
+  const repetitiveSectionPages: string[] = [];
   const middleTypeSet = new Set<string>();
+  const pageRoleSequences: Array<{ path: string; roles: string[] }> = [];
   for (const page of contentPages) {
     const pagePath = normalizePagePath(page?.path);
     const pageIntent = inferPageIntent(pagePath, String(page?.name || ""));
@@ -260,6 +375,22 @@ export const evaluateGenerationQa = (input: {
       pageIntent === "contact" || pageIntent === "support" || pageIntent === "legal"
         ? middleBlocks
         : middleBlocks.filter((block) => !blockIsCtaOrContact(block));
+    pageRoleSequences.push({
+      path: pagePath,
+      roles: substantiveBlocks.map((block) => blockRoleToken(block)),
+    });
+    const roleCounts = new Map<string, number>();
+    substantiveBlocks.forEach((block) => {
+      const role = blockRoleToken(block);
+      if (!role || role === "other") return;
+      roleCounts.set(role, (roleCounts.get(role) || 0) + 1);
+    });
+    const repetitiveRoles = Array.from(roleCounts.entries())
+      .filter(([, count]) => count >= 3)
+      .map(([role]) => role);
+    if (repetitiveRoles.length > 0) {
+      repetitiveSectionPages.push(`${pagePath}:${repetitiveRoles.join("+")}`);
+    }
     substantiveBlocks.forEach((block) => {
       const type = String(block?.type || "").toLowerCase();
       if (!type) return;
@@ -276,29 +407,113 @@ export const evaluateGenerationQa = (input: {
   }
   const middleDensityScore = clamp(contentPages.length ? middleSectionPoints / contentPages.length : 1);
   const middleDiversityScore = clamp(middleTypeSet.size / 4);
-  const middleSectionScore = clamp(middleDensityScore * 0.75 + middleDiversityScore * 0.25);
+  const repetitiveStructurePairs: string[] = [];
+  const criticalDuplicatePairs: string[] = [];
+  const totalPairs = Math.max(0, (pageRoleSequences.length * (pageRoleSequences.length - 1)) / 2);
+  for (let left = 0; left < pageRoleSequences.length; left += 1) {
+    for (let right = left + 1; right < pageRoleSequences.length; right += 1) {
+      const l = pageRoleSequences[left];
+      const r = pageRoleSequences[right];
+      if (!l || !r || !l.roles.length || !r.roles.length) continue;
+      if (l.roles.join(">") !== r.roles.join(">")) continue;
+      const similarity = roleSequenceSimilarity(l.roles, r.roles);
+      if (similarity >= 0.95) repetitiveStructurePairs.push(`${l.path}<->${r.path}`);
+    }
+  }
+  const pathSequenceMap = new Map(pageRoleSequences.map((entry) => [normalizePagePath(entry.path), entry.roles]));
+  const criticalPairs: Array<[string, string]> = [
+    ["/core-product", "/products"],
+    ["/solutions", "/cases"],
+  ];
+  for (const [leftPath, rightPath] of criticalPairs) {
+    const leftRoles = pathSequenceMap.get(leftPath) || [];
+    const rightRoles = pathSequenceMap.get(rightPath) || [];
+    if (!leftRoles.length || !rightRoles.length) continue;
+    const similarity = roleSequenceSimilarity(leftRoles, rightRoles);
+    if (similarity >= 0.92) {
+      criticalDuplicatePairs.push(`${leftPath}<->${rightPath}`);
+    }
+  }
+  const structuralDiversityScore =
+    totalPairs <= 0 ? 1 : clamp(1 - repetitiveStructurePairs.length / totalPairs);
+  const localRepetitionScore = clamp(
+    contentPages.length ? 1 - repetitiveSectionPages.length / contentPages.length : 1
+  );
+  const middleSectionScore = clamp(
+    middleDensityScore * 0.5 +
+      middleDiversityScore * 0.2 +
+      structuralDiversityScore * 0.15 +
+      localRepetitionScore * 0.15
+  );
 
   const expectedBrand = extractPromptBrand(String(input.prompt || ""));
+  const targetLanguage = resolveOutputLanguage(String(input.prompt || ""));
+  const normalizedExpectedBrand = normalizeBrandToken(expectedBrand);
   const semanticHitPages: string[] = [];
-  const sourceBrandLeakPages: string[] = [];
   const genericPlaceholderPages: string[] = [];
+  const languageMismatchPages: string[] = [];
+  const templateCopyPages: string[] = [];
+  const contactGradientTextPages: string[] = [];
+  const sourceBrandLeakPages: string[] = [];
+  const pageBrandCandidates = new Map<string, string[]>();
+  const brandCandidatePageHits = new Map<string, number>();
   for (const page of contentPages) {
     const pagePath = normalizePagePath(page?.path);
     const textValues: string[] = [];
     collectTextValues(page?.data?.content, textValues);
-    const joined = textValues.join(" ").toLowerCase();
-    if (expectedBrand && joined.includes(expectedBrand.toLowerCase())) semanticHitPages.push(pagePath);
-    if (sourceBrandLeakRegex.test(joined)) sourceBrandLeakPages.push(pagePath);
-    if (genericPlaceholderRegex.test(joined)) genericPlaceholderPages.push(pagePath);
+    const joinedRaw = textValues.join(" ");
+    const joinedLower = joinedRaw.toLowerCase();
+    if (expectedBrand && joinedLower.includes(expectedBrand.toLowerCase())) semanticHitPages.push(pagePath);
+    if (genericPlaceholderRegex.test(joinedLower)) genericPlaceholderPages.push(pagePath);
+    if (templateCopyRegex.test(joinedLower)) templateCopyPages.push(pagePath);
+    const cjkCount = (joinedLower.match(/[\u3400-\u9fff]/g) || []).length;
+    const latinCount = (joinedLower.match(/[a-z]/gi) || []).length;
+    const likelyChinese = cjkCount >= 24 || (cjkCount >= 10 && cjkCount >= latinCount * 0.45);
+    const likelyEnglish = latinCount >= 28 && latinCount >= cjkCount * 1.3;
+    if (targetLanguage === "zh-CN" && !likelyChinese) languageMismatchPages.push(pagePath);
+    if (targetLanguage === "en-US" && !likelyEnglish && latinCount + cjkCount >= 28) {
+      languageMismatchPages.push(pagePath);
+    }
+    if (inferPageIntent(pagePath, String(page?.name || "")) === "contact") {
+      const blocks = Array.isArray(page?.data?.content) ? page.data.content : [];
+      if (blocks.some((block) => blockHasForbiddenContactGradientText(block))) {
+        contactGradientTextPages.push(pagePath);
+      }
+    }
+    const candidates = extractBrandCandidatesFromText(joinedRaw)
+      .map((token) => normalizeBrandToken(token))
+      .filter(Boolean)
+      .filter((token) => {
+        if (!normalizedExpectedBrand) return true;
+        return !token.includes(normalizedExpectedBrand) && !normalizedExpectedBrand.includes(token);
+      });
+    const uniqueCandidates = Array.from(new Set(candidates));
+    pageBrandCandidates.set(pagePath, uniqueCandidates);
+    uniqueCandidates.forEach((token) => {
+      brandCandidatePageHits.set(token, (brandCandidatePageHits.get(token) || 0) + 1);
+    });
   }
+  const driftThreshold = Math.max(2, Math.ceil(contentPages.length * 0.3));
+  const driftCandidates = new Set(
+    Array.from(brandCandidatePageHits.entries())
+      .filter(([, hits]) => hits >= driftThreshold)
+      .map(([token]) => token)
+  );
+  pageBrandCandidates.forEach((tokens, pagePath) => {
+    if (tokens.some((token) => driftCandidates.has(token))) {
+      sourceBrandLeakPages.push(pagePath);
+    }
+  });
   const brandCoverage =
     !expectedBrand || contentPages.length === 0 ? 1 : semanticHitPages.length / Math.max(1, contentPages.length);
-  const leakPenalty =
-    contentPages.length === 0 ? 0 : sourceBrandLeakPages.length / Math.max(1, contentPages.length);
   const placeholderPenalty =
     contentPages.length === 0 ? 0 : genericPlaceholderPages.length / Math.max(1, contentPages.length);
+  const languageMismatchPenalty =
+    contentPages.length === 0 ? 0 : languageMismatchPages.length / Math.max(1, contentPages.length);
+  const contactGradientPenalty = contactGradientTextPages.length > 0 ? 0.2 : 0;
+  // Brand drift is a universal quality signal (for diagnosis), not a release-blocking hard gate.
   const semanticFidelityScore = clamp(
-    brandCoverage * 0.6 + (1 - leakPenalty) * 0.25 + (1 - placeholderPenalty) * 0.15
+    brandCoverage * 0.7 + (1 - placeholderPenalty) * 0.15 + (1 - languageMismatchPenalty) * 0.15 - contactGradientPenalty
   );
 
   const overallScore = clamp(
@@ -314,7 +529,11 @@ export const evaluateGenerationQa = (input: {
     themeConsistencyScore >= thresholds.themeConsistency &&
     middleSectionScore >= thresholds.middleSection &&
     semanticFidelityScore >= thresholds.semantic &&
-    overallScore >= thresholds.overall;
+    overallScore >= thresholds.overall &&
+    contactGradientTextPages.length === 0 &&
+    templateCopyPages.length === 0 &&
+    criticalDuplicatePairs.length === 0 &&
+    (!strictRepetitionGate || repetitiveSectionPages.length === 0);
 
   return {
     pass,
@@ -335,7 +554,13 @@ export const evaluateGenerationQa = (input: {
       semanticHitPages: Array.from(new Set(semanticHitPages)),
       sourceBrandLeakPages: Array.from(new Set(sourceBrandLeakPages)),
       genericPlaceholderPages: Array.from(new Set(genericPlaceholderPages)),
+      languageMismatchPages: Array.from(new Set(languageMismatchPages)),
+      templateCopyPages: Array.from(new Set(templateCopyPages)),
+      contactGradientTextPages: Array.from(new Set(contactGradientTextPages)),
       thinMiddleSectionPages: Array.from(new Set(thinMiddleSectionPages)),
+      repetitiveSectionPages: Array.from(new Set(repetitiveSectionPages)),
+      repetitiveStructurePairs: Array.from(new Set(repetitiveStructurePairs)),
+      criticalDuplicatePairs: Array.from(new Set(criticalDuplicatePairs)),
     },
   };
 };

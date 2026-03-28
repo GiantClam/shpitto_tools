@@ -27,7 +27,8 @@ export type SitePayloadAuditIssue = {
     | "high_structural_similarity"
     | "scenario_page_contract_violation"
     | "template_semantic_mismatch"
-    | "template_brand_residue";
+    | "template_brand_residue"
+    | "contact_gradient_text_forbidden";
   message: string;
   details?: Record<string, unknown>;
 };
@@ -56,6 +57,8 @@ export type SitePayloadAuditReport = {
     averageRoleSimilarity: number;
     maxRoleSimilarity: number;
     highlySimilarPageCount: number;
+    duplicateInteriorPairCount: number;
+    duplicateInteriorPairs: string[];
   };
 };
 
@@ -110,6 +113,52 @@ const normalizeBlockTypes = (page: PayloadPage) =>
   (Array.isArray(page?.data?.content) ? page.data.content : [])
     .map((block) => String(block?.type || "").trim())
     .filter(Boolean);
+
+const normalizePath = (value: string) => {
+  const raw = String(value || "").trim();
+  if (!raw) return "/";
+  const withSlash = raw.startsWith("/") ? raw : `/${raw}`;
+  return withSlash.replace(/\/{2,}/g, "/").replace(/\/+$/g, "") || "/";
+};
+
+const CONTACT_TEXT_GRADIENT_PATTERN = /\b(text-gradient|bg-clip-text|text-transparent)\b/i;
+
+const collectClassLikeValues = (value: unknown, out: string[]) => {
+  if (!value) return;
+  if (Array.isArray(value)) {
+    value.forEach((item) => collectClassLikeValues(item, out));
+    return;
+  }
+  if (typeof value !== "object") return;
+  Object.entries(value as Record<string, unknown>).forEach(([key, child]) => {
+    if (typeof child === "string" && /class/i.test(key)) {
+      const compact = child.trim();
+      if (compact) out.push(compact);
+      return;
+    }
+    collectClassLikeValues(child, out);
+  });
+};
+
+const pageHasForbiddenContactGradientText = (page: PayloadPage) => {
+  const blocks = Array.isArray(page?.data?.content) ? page.data.content : [];
+  return blocks.some((block) => {
+    const type = String(block?.type || "").toLowerCase();
+    const id = String(block?.props?.id || "").toLowerCase();
+    const anchor = String(block?.props?.anchor || "").toLowerCase();
+    const isContactLike =
+      type.includes("leadcapture") ||
+      type.includes("contact") ||
+      type.includes("cta") ||
+      id.includes("contact") ||
+      anchor.includes("contact");
+    if (!isContactLike) return false;
+    if (type.includes("leadcapture") && String(block?.props?.emphasis || "").toLowerCase() === "high") return true;
+    const classValues: string[] = [];
+    collectClassLikeValues(block?.props, classValues);
+    return classValues.some((entry) => CONTACT_TEXT_GRADIENT_PATTERN.test(entry));
+  });
+};
 
 const isExactPreviewPayload = (pageShapes: Array<{ shape: string; blockTypes: string[] }>) =>
   pageShapes.length > 0 &&
@@ -193,6 +242,14 @@ export const auditSitePayload = (payload: PayloadLike, context: SitePayloadAudit
         details: { path, type },
       });
     }
+    if (normalizePath(path) === "/contact" && pageHasForbiddenContactGradientText(page)) {
+      issues.push({
+        severity: "error",
+        code: "contact_gradient_text_forbidden",
+        message: `Contact page "${path}" uses forbidden gradient text styles`,
+        details: { path },
+      });
+    }
     const roles = blockTypes.map((type) => toRole(type)).filter((role) => role !== "nav" && role !== "footer" && role !== "utility");
     return {
       path,
@@ -218,6 +275,19 @@ export const auditSitePayload = (payload: PayloadLike, context: SitePayloadAudit
       similarities.reduce((sum, value) => sum + value, 0) / Math.max(similarities.length, 1);
     const maxRoleSimilarity = Math.max(...similarities);
     const highlySimilarPageCount = similarities.filter((value) => value >= 0.9).length;
+    const duplicateInteriorPairs: string[] = [];
+    for (let left = 1; left < pageShapes.length; left += 1) {
+      for (let right = left + 1; right < pageShapes.length; right += 1) {
+        const leftPage = pageShapes[left];
+        const rightPage = pageShapes[right];
+        if (!leftPage?.roleShape || !rightPage?.roleShape) continue;
+        if (leftPage.roleShape !== rightPage.roleShape) continue;
+        const similarity = sequenceSimilarity(leftPage.roles || [], rightPage.roles || []);
+        if (similarity >= 0.95) {
+          duplicateInteriorPairs.push(`${leftPage.path}<->${rightPage.path}`);
+        }
+      }
+    }
     structure = {
       comparedAgainstPath: pageShapes[0]?.path || "/",
       sameShapeCount: sameAsHomeCount,
@@ -225,6 +295,8 @@ export const auditSitePayload = (payload: PayloadLike, context: SitePayloadAudit
       averageRoleSimilarity,
       maxRoleSimilarity,
       highlySimilarPageCount,
+      duplicateInteriorPairCount: duplicateInteriorPairs.length,
+      duplicateInteriorPairs,
     };
     if (homeShape && reuseRatio >= 0.8) {
       issues.push({
@@ -248,6 +320,17 @@ export const auditSitePayload = (payload: PayloadLike, context: SitePayloadAudit
           roleReuseRatio,
           averageRoleSimilarity,
           maxRoleSimilarity,
+        },
+      });
+    }
+    if (duplicateInteriorPairs.length > 0) {
+      issues.push({
+        severity: "warning",
+        code: "high_structural_similarity",
+        message: `Interior pages share near-identical semantic structure (${duplicateInteriorPairs.length} pair(s))`,
+        details: {
+          duplicateInteriorPairCount: duplicateInteriorPairs.length,
+          duplicateInteriorPairs,
         },
       });
     }

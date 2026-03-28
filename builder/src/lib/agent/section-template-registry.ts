@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 
 import { logInfo, logWarn } from "@/lib/logger";
+import { shouldUseChineseContent } from "@/lib/agent/language";
 
 type SectionKind =
   | "navigation"
@@ -3201,6 +3202,7 @@ const sanitizeResidualTextProps = (
   northStar: Record<string, unknown>
 ) => {
   const forceEnglishCopy = !shouldUseChineseContent(ctx.prompt || "");
+  const isZh = !forceEnglishCopy;
   const sourceTokens = inferSourceBrandTokens(ctx, props);
   const semanticReplacements = buildSemanticReplacements(ctx.prompt || "", northStar);
   const walk = (value: unknown, keyPath: string[]): unknown => {
@@ -3227,13 +3229,6 @@ const sanitizeResidualTextProps = (
   Object.entries(props).forEach(([key, value]) => {
     props[key] = walk(value, [key]);
   });
-};
-
-const shouldUseChineseContent = (prompt: string) => {
-  const raw = String(prompt || "");
-  const explicitChinese = /(中文|简体|繁體|繁体|chinese|mandarin|zh-cn|zh-hans|zh-hant)/i.test(raw);
-  const explicitEnglish = /(英文|english|en-us|en-gb|\benglish\b)/i.test(raw);
-  return explicitChinese && !explicitEnglish;
 };
 
 const buildSectionFallbackText = (
@@ -3440,6 +3435,7 @@ const applyEditableFieldContract = (
   if (!editableFields.length) return;
   const { kind, ctx, brandName, hints, northStar, sectionFallback, cleanIntent } = input;
   const forceEnglishCopy = !shouldUseChineseContent(ctx.prompt || "");
+  const isZh = !forceEnglishCopy;
   const semanticReplacements = buildSemanticReplacements(ctx.prompt || "", northStar);
   const sourceTokens = inferSourceBrandTokens(ctx, props);
   const heroTitle =
@@ -3451,8 +3447,12 @@ const applyEditableFieldContract = (
   const heroEyebrow =
     pickHintText(hints, ["eyebrow", "tagline"]) ||
     (typeof northStar.industry === "string" && northStar.industry.trim() ? northStar.industry.trim() : brandName);
-  const primaryCta = pickHintText(hints, ["ctaPrimary", "ctaLabel", "primaryCtaLabel", "buttonLabel"]) || "Get Started";
-  const secondaryCta = pickHintText(hints, ["ctaSecondary", "secondaryCtaLabel"]) || "Learn More";
+  const primaryCta =
+    pickHintText(hints, ["ctaPrimary", "ctaLabel", "primaryCtaLabel", "buttonLabel"]) ||
+    (isZh ? "立即咨询" : "Get Started");
+  const secondaryCta =
+    pickHintText(hints, ["ctaSecondary", "secondaryCtaLabel"]) ||
+    (isZh ? "了解更多" : "Learn More");
   const productHints = normalizeProductHints(hints, northStar, brandName);
 
   editableFields.forEach((field) => {
@@ -3512,7 +3512,9 @@ const applyEditableFieldContract = (
         if (/(logo|brand|legal|copy|copyright)/.test(keyToken)) {
           rewritten =
             kind === "footer" && /(legal|copy|copyright)/.test(keyToken)
-              ? `© ${new Date().getFullYear()} ${brandName}. All rights reserved.`
+              ? isZh
+                ? `© ${new Date().getFullYear()} ${brandName} 保留所有权利。`
+                : `© ${new Date().getFullYear()} ${brandName}. All rights reserved.`
               : brandName;
         }
       }
@@ -3544,6 +3546,7 @@ const rewriteTemplateSpecificProps = (
   const cleanIntent = sanitizeSectionIntent(ctx.sectionIntent);
   const sectionFallback = buildSectionFallbackText(kind, ctx, brandName, northStar);
   const forceEnglishCopy = !shouldUseChineseContent(ctx.prompt || "");
+  const isZh = !forceEnglishCopy;
   const semanticReplacements = buildSemanticReplacements(ctx.prompt || "", northStar);
   const heroTitle =
     pickHintText(hints, ["headline", "title", "heroTitle", "h1"]) ||
@@ -3552,8 +3555,12 @@ const rewriteTemplateSpecificProps = (
   const heroEyebrow =
     pickHintText(hints, ["eyebrow", "tagline"]) ||
     (typeof northStar.industry === "string" && northStar.industry.trim() ? northStar.industry.trim() : brandName);
-  const primaryCta = pickHintText(hints, ["ctaPrimary", "ctaLabel", "primaryCtaLabel", "buttonLabel"]) || "Get Started";
-  const secondaryCta = pickHintText(hints, ["ctaSecondary", "secondaryCtaLabel"]) || "Learn More";
+  const primaryCta =
+    pickHintText(hints, ["ctaPrimary", "ctaLabel", "primaryCtaLabel", "buttonLabel"]) ||
+    (isZh ? "立即咨询" : "Get Started");
+  const secondaryCta =
+    pickHintText(hints, ["ctaSecondary", "secondaryCtaLabel"]) ||
+    (isZh ? "了解更多" : "Learn More");
   const storyTitle = pickHintText(hints, ["title", "headline"]) || cleanIntent || sectionFallback.title;
   const storyBody =
     pickHintText(hints, ["body", "description", "subheadline", "subtitle"]) ||
@@ -3579,7 +3586,9 @@ const rewriteTemplateSpecificProps = (
     props.ftlogotext = footerBrand;
     props.footerBrandtext = footerBrand;
     props.brandtext = footerBrand;
-    props.copytext = `© ${new Date().getFullYear()} ${brandName}. All rights reserved.`;
+    props.copytext = isZh
+      ? `© ${new Date().getFullYear()} ${brandName} 保留所有权利。`
+      : `© ${new Date().getFullYear()} ${brandName}. All rights reserved.`;
   }
   const rewriteString = (current: string, key: string, pathKey: string): string => {
     if (keepLiteralString(key)) return current;

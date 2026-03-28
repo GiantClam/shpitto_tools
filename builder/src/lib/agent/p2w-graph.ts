@@ -37,16 +37,37 @@ import { buildSiteBlueprint } from "@/lib/agent/site-planner";
 import { resolveTemplatePlan } from "@/lib/agent/template-resolver";
 import { evaluateGenerationQa } from "@/lib/agent/qa-gate";
 import {
+  normalizePagesBySiteContract,
+  validateGeneratedSiteContract,
+} from "@/lib/agent/contracts";
+import { orchestrateTemplateAndSectionCandidates } from "@/lib/agent/skill-orchestrator";
+import {
+  resolveEnterprisePagePathFromLabel,
+  inferEnterprisePageTypeFromPath,
+} from "@/lib/agent/page-classifier";
+import { resolveCanonicalRoute } from "@/lib/agent/route-contract";
+import {
   applyLinkGraphToFooterProps,
   applyLinkGraphToNavbarProps,
   buildSiteLinkGraph,
   sanitizeInternalHrefsInProps,
   type SiteLinkGraph,
 } from "@/lib/agent/link-graph";
+import { resolveOutputLanguage, shouldUseChineseContent } from "@/lib/agent/language";
+import { buildSerperFactPack } from "@/lib/agent/serper";
+import type {
+  StructuredFaqRecord,
+  StructuredProductRecord,
+  StructuredSiteInput,
+} from "@/lib/agent/structured-input";
 
 const State = Annotation.Root({
   prompt: Annotation<string>,
   manifest: Annotation<Record<string, unknown>>,
+  structuredInput: Annotation<StructuredSiteInput | null>({
+    value: (_left, right) => right,
+    default: () => null,
+  }),
   blueprint: Annotation<Record<string, unknown>>,
   generationStrategy: Annotation<SectionGenerationStrategy>({
     value: (_left, right) => right,
@@ -444,9 +465,16 @@ const configuredBuilderRecoveryMaxTokens = Number(process.env.BUILDER_RECOVERY_M
 const builderRecoveryMaxTokens = Number.isFinite(configuredBuilderRecoveryMaxTokens)
   ? Math.max(builderMaxTokens, Math.floor(configuredBuilderRecoveryMaxTokens))
   : Math.max(builderMaxTokens, 2200);
+const builderTimeoutMs = Number(process.env.BUILDER_TIMEOUT_MS || 30000);
+const configuredBuilderRecoveryTimeoutMs = Number(process.env.BUILDER_RECOVERY_TIMEOUT_MS || 45000);
+const builderRecoveryTimeoutMs = Number.isFinite(configuredBuilderRecoveryTimeoutMs)
+  ? Math.max(builderTimeoutMs, Math.floor(configuredBuilderRecoveryTimeoutMs))
+  : Math.max(builderTimeoutMs, 45000);
 const defaultMaxPages = Number(process.env.CREATION_MAX_PAGES || 10);
 const defaultMaxSectionsPerPage = Number(process.env.CREATION_MAX_SECTIONS_PER_PAGE || 8);
 const defaultMaxSectionsTotal = Number(process.env.CREATION_MAX_SECTIONS_TOTAL || 48);
+const defaultEnterpriseMaxSectionsPerPage = Number(process.env.CREATION_ENTERPRISE_MAX_SECTIONS_PER_PAGE || 6);
+const defaultEnterpriseMaxSectionsTotal = Number(process.env.CREATION_ENTERPRISE_MAX_SECTIONS_TOTAL || 36);
 type BuilderRetryMode = "legacy" | "network_only" | "none";
 const builderRetryMode = ((process.env.LLM_RETRY_MODE || "legacy").toLowerCase() as BuilderRetryMode) ?? "legacy";
 type SectionGenerationStrategy = "llm_first" | "hybrid" | "template_first";
@@ -467,6 +495,10 @@ const parseEnvCsv = (value: string | undefined, fallback: string[]) => {
     .filter(Boolean);
   return parsed.length ? parsed : fallback;
 };
+const forceOpenrouterFallbackOnAibermFailure = parseEnvBoolean(
+  process.env.LLM_FORCE_OPENROUTER_FALLBACK_ON_AIBERM_FAILURE,
+  true
+);
 const parseSectionGenerationStrategy = (
   value: string | undefined,
   fallback: SectionGenerationStrategy
@@ -506,6 +538,10 @@ const configuredDetailedCandidateStrategies = parseStrategyList(
   process.env.BUILDER_MULTI_CANDIDATE_DETAILED_STRATEGIES,
   ["hybrid", "template_first", "llm_first"]
 );
+const multiCandidateMaxPromptChars = Math.max(
+  0,
+  Number(process.env.BUILDER_MULTI_CANDIDATE_MAX_PROMPT_CHARS || 1400)
+);
 const templateFirstSectionTokens = parseEnvCsv(
   process.env.BUILDER_TEMPLATE_SECTIONS || process.env.BUILDER_TEMPLATE_FIRST_SECTIONS,
   ["footercta", "footer-cta", "cta", "socialproof", "social-proof", "testimonial", "trustlogo"]
@@ -538,6 +574,10 @@ const templateRefinementSkipSectionTokens = new Set(
 );
 const skipTemplateExclusiveRefinement = parseEnvBoolean(
   process.env.BUILDER_TEMPLATE_REFINEMENT_SKIP_TEMPLATE_EXCLUSIVE,
+  true
+);
+const allowTemplateSeedWithoutProfile = parseEnvBoolean(
+  process.env.BUILDER_TEMPLATE_SEED_WITHOUT_PROFILE,
   true
 );
 
@@ -658,10 +698,10 @@ export const config = {
   },
   defaultProps: {
     title: "Section",
-    subtitle: "Generated with safe fallback template.",
+    subtitle: "",
     variant: "content",
     ctaStyle: "auto",
-    ctaLabel: "Contact Sales",
+    ctaLabel: "",
     ctaHref: "#contact",
     secondaryCtaLabel: "",
     secondaryCtaHref: "",
@@ -678,7 +718,7 @@ export default function CreationFallbackSection(props) {
     variant = "content",
     ctaStyle = "auto",
     items = [],
-    ctaLabel = "Contact Sales",
+    ctaLabel = "",
     ctaHref = "#contact",
     secondaryCtaLabel = "",
     secondaryCtaHref = "",
@@ -693,14 +733,94 @@ export default function CreationFallbackSection(props) {
   const safeFooterLinks = Array.isArray(footerLinks) ? footerLinks.slice(0, 4) : [];
   const safeLogos = Array.isArray(logos) ? logos.filter(Boolean).slice(0, 8) : [];
   const safeTestimonials = Array.isArray(testimonials) ? testimonials.filter(Boolean).slice(0, 3) : [];
+  const localeSeed = [title, subtitle, ctaLabel, legal]
+    .filter((entry) => typeof entry === "string" && entry.trim())
+    .join(" ");
+  const useChinese = /[\\u3400-\\u9fff]/.test(localeSeed);
+  const localeCopy = useChinese
+    ? {
+        fallbackCatalog: [
+          { title: "高精密加工中心", desc: "适用于复杂零件的稳定高精度加工。" },
+          { title: "高速钻攻中心", desc: "面向批量生产的高节拍加工方案。" },
+          { title: "多工序复合机型", desc: "支持铣、钻、攻等工序的一体化加工。" },
+          { title: "自动化产线单元", desc: "可与上下料系统联动，提升整体产能。" },
+        ],
+        productLabel: "产品",
+        customizable: "支持按场景定制参数与配置。",
+        leadCapture: "线索收集",
+        placeholders: {
+          name: "姓名",
+          email: "邮箱",
+          company: "公司名称",
+          country: "所在地区",
+          requirement: "请描述您的加工需求...",
+        },
+        cta: "立即咨询",
+        whatsapp: "WhatsApp",
+        link: "链接",
+        socialTitle: "被严苛质量标准团队持续采用",
+        trustLabel: "行业信赖",
+        fallbackLogos: ["3C电子", "精密制造", "模具加工", "汽车零部件", "医疗零件", "复合材料"],
+        fallbackTestimonials: [
+          {
+            name: "生产负责人",
+            role: "精密制造工厂",
+            quote: "导入后产线稳定性显著提升，多班次运行仍可保持一致精度。",
+          },
+          {
+            name: "工艺经理",
+            role: "3C零部件供应商",
+            quote: "设备与工艺协同后，节拍更短，质量控制也更稳定。",
+          },
+        ],
+        brandLabel: "品牌",
+        clientLabel: "客户",
+        defaultQuote: "该模块为安全兜底内容，可在编辑器内继续替换为正式文案。",
+      }
+    : {
+        fallbackCatalog: [
+          { title: "High-Precision Machining Center", desc: "Stable accuracy for complex part machining." },
+          { title: "High-Speed Drilling Center", desc: "Fast cycle production for volume manufacturing." },
+          { title: "Multi-Process CNC Unit", desc: "Supports milling, drilling, and tapping in one flow." },
+          { title: "Automation Cell", desc: "Integrates handling systems for scalable throughput." },
+        ],
+        productLabel: "Product",
+        customizable: "Customizable specs are available for your scenario.",
+        leadCapture: "Lead Capture",
+        placeholders: {
+          name: "Name",
+          email: "Work Email",
+          company: "Company",
+          country: "Country",
+          requirement: "Tell us your product requirements...",
+        },
+        cta: "Contact Sales",
+        whatsapp: "WhatsApp",
+        link: "Link",
+        socialTitle: "Trusted by production teams with demanding quality targets",
+        trustLabel: "Industry trust",
+        fallbackLogos: ["Automotive", "3C Manufacturing", "Mold", "Aerospace", "General Machinery", "Precision Parts"],
+        fallbackTestimonials: [
+          {
+            name: "Operations Director",
+            role: "Automotive Components",
+            quote: "The line reached stable output quickly and maintained accuracy across multi-shift production.",
+          },
+          {
+            name: "Plant Manager",
+            role: "Precision Manufacturing",
+            quote: "Equipment integration and process support improved cycle time without sacrificing quality.",
+          },
+        ],
+        brandLabel: "Brand",
+        clientLabel: "Client",
+        defaultQuote: "Trusted by teams that expect premium execution and clear outcomes.",
+      };
+  const resolvedCtaLabel =
+    typeof ctaLabel === "string" && ctaLabel.trim() ? ctaLabel : localeCopy.cta;
   const catalogItems = safeItems.length
     ? safeItems.slice(0, 8)
-    : [
-        { title: "5-Axis Machining Center", desc: "Rigid structure and stable accuracy for complex parts." },
-        { title: "Drilling & Tapping Center", desc: "Fast cycle times for high-volume precision production." },
-        { title: "Horizontal Machining Center", desc: "Efficient chip evacuation for continuous heavy-duty work." },
-        { title: "Automation Cell", desc: "Integrated loading and handling for scalable throughput." },
-      ];
+    : localeCopy.fallbackCatalog;
 
   if (variant === "catalog") {
     return (
@@ -714,10 +834,10 @@ export default function CreationFallbackSection(props) {
             {catalogItems.map((item, index) => (
               <Card key={index} className="border-border/70 bg-background/70">
                 <CardHeader>
-                  <CardTitle className="text-base">{item.title || "Product"}</CardTitle>
+                  <CardTitle className="text-base">{item.title || localeCopy.productLabel}</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-sm text-muted-foreground">{item.desc || "Customizable specification available."}</p>
+                  <p className="text-sm text-muted-foreground">{item.desc || localeCopy.customizable}</p>
                 </CardContent>
               </Card>
             ))}
@@ -733,25 +853,25 @@ export default function CreationFallbackSection(props) {
         <div className="mx-auto w-full max-w-4xl px-6">
           <Card className="border-border/70 bg-background/80">
             <CardHeader>
-              <Badge variant="secondary" className="w-fit">Lead Capture</Badge>
+              <Badge variant="secondary" className="w-fit">{localeCopy.leadCapture}</Badge>
               <CardTitle className="text-2xl">{title}</CardTitle>
               {subtitle ? <p className="text-sm text-muted-foreground">{subtitle}</p> : null}
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-                <Input placeholder="Name" />
-                <Input placeholder="Work Email" />
-                <Input placeholder="Company" />
-                <Input placeholder="Country" />
+                <Input placeholder={localeCopy.placeholders.name} />
+                <Input placeholder={localeCopy.placeholders.email} />
+                <Input placeholder={localeCopy.placeholders.company} />
+                <Input placeholder={localeCopy.placeholders.country} />
               </div>
-              <Textarea placeholder="Tell us your product requirements..." rows={5} />
+              <Textarea placeholder={localeCopy.placeholders.requirement} rows={5} />
               <div className="flex flex-wrap gap-3">
                 <Button asChild size="lg">
-                  <a href={ctaHref}>{ctaLabel}</a>
+                  <a href={ctaHref}>{resolvedCtaLabel}</a>
                 </Button>
                 {whatsapp ? (
                   <Button asChild variant="secondary" size="lg">
-                    <a href={whatsapp.startsWith("http") ? whatsapp : \`https://wa.me/\${String(whatsapp).replace(/[^0-9]/g, "")}\`}>WhatsApp</a>
+                    <a href={whatsapp.startsWith("http") ? whatsapp : \`https://wa.me/\${String(whatsapp).replace(/[^0-9]/g, "")}\`}>{localeCopy.whatsapp}</a>
                   </Button>
                 ) : null}
               </div>
@@ -801,7 +921,7 @@ export default function CreationFallbackSection(props) {
           </div>
           <div className={\`flex flex-col items-center justify-center gap-3 \${hasSecondary ? "sm:flex-row" : ""}\`}>
             <Button asChild size="lg" className={primaryBtnClass}>
-              <a href={ctaHref}>{ctaLabel}</a>
+              <a href={ctaHref}>{resolvedCtaLabel}</a>
             </Button>
             {hasSecondary ? (
               <Button asChild size="lg" variant="outline" className={secondaryBtnClass}>
@@ -820,7 +940,7 @@ export default function CreationFallbackSection(props) {
                       href={item?.href || "#"}
                       className={\`transition-colors \${normalizedStyle === "contrast" ? "hover:text-background" : "hover:text-foreground"}\`}
                     >
-                      {item?.label || "Link"}
+                      {item?.label || localeCopy.link}
                     </a>
                   ))}
                 </div>
@@ -835,29 +955,16 @@ export default function CreationFallbackSection(props) {
   if (variant === "socialProof") {
     const fallbackLogos = safeLogos.length
       ? safeLogos
-      : ["Automotive", "3C Manufacturing", "Mold", "Aerospace", "General Machinery", "Precision Parts"];
+      : localeCopy.fallbackLogos;
     const fallbackTestimonials = safeTestimonials.length
       ? safeTestimonials
-      : [
-          {
-            name: "Operations Director",
-            role: "Automotive Components",
-            quote:
-              "The line reached stable output quickly and maintained accuracy across multi-shift production.",
-          },
-          {
-            name: "Plant Manager",
-            role: "Precision Manufacturing",
-            quote:
-              "Equipment integration and process support helped us improve cycle time without sacrificing quality.",
-          },
-        ];
+      : localeCopy.fallbackTestimonials;
     return (
       <section id={anchor} className="py-20 bg-muted/30">
         <div className="mx-auto w-full max-w-[1200px] px-6 space-y-10">
           <div className="text-center space-y-2">
-            <p className="text-xs uppercase tracking-[0.16em] text-muted-foreground">Industry trust</p>
-            <h2 className="font-heading text-3xl md:text-4xl tracking-tight">{title || "Trusted by production teams with demanding quality targets"}</h2>
+            <p className="text-xs uppercase tracking-[0.16em] text-muted-foreground">{localeCopy.trustLabel}</p>
+            <h2 className="font-heading text-3xl md:text-4xl tracking-tight">{title || localeCopy.socialTitle}</h2>
             {subtitle ? <p className="text-muted-foreground">{subtitle}</p> : null}
           </div>
           <div className="grid grid-cols-2 gap-4 md:grid-cols-6 md:gap-6">
@@ -866,7 +973,7 @@ export default function CreationFallbackSection(props) {
                 key={index}
                 className="flex items-center justify-center rounded-md border border-border/50 bg-background/60 px-4 py-3 text-sm text-muted-foreground"
               >
-                {typeof logo === "string" ? logo : logo?.name || "Brand"}
+                {typeof logo === "string" ? logo : logo?.name || localeCopy.brandLabel}
               </div>
             ))}
           </div>
@@ -874,12 +981,12 @@ export default function CreationFallbackSection(props) {
             {fallbackTestimonials.map((item, index) => (
               <Card key={index} className="border-border/60 bg-background/80">
                 <CardHeader className="space-y-1">
-                  <CardTitle className="text-base">{item?.name || "Client"}</CardTitle>
-                  <p className="text-xs text-muted-foreground">{item?.role || "Client"}</p>
+                  <CardTitle className="text-base">{item?.name || localeCopy.clientLabel}</CardTitle>
+                  <p className="text-xs text-muted-foreground">{item?.role || localeCopy.clientLabel}</p>
                 </CardHeader>
                 <CardContent>
                   <p className="text-sm text-muted-foreground leading-relaxed">
-                    {item?.quote || "Trusted by teams that expect premium execution and clear outcomes."}
+                    {item?.quote || localeCopy.defaultQuote}
                   </p>
                 </CardContent>
               </Card>
@@ -900,7 +1007,7 @@ export default function CreationFallbackSection(props) {
           <CardContent className="space-y-4">
             {subtitle ? <p className="text-muted-foreground">{subtitle}</p> : null}
             <Button asChild>
-              <a href={ctaHref}>{ctaLabel}</a>
+              <a href={ctaHref}>{resolvedCtaLabel}</a>
             </Button>
           </CardContent>
         </Card>
@@ -943,21 +1050,8 @@ export const config = {
   },
   defaultProps: {
     logoText: "Company",
-    legal: "© 2026 All rights reserved.",
-    columns: [
-      {
-        title: "Products",
-        links: [{ label: "Catalog", href: "#products" }, { label: "Cases", href: "#cases" }]
-      },
-      {
-        title: "Support",
-        links: [{ label: "Contact", href: "#contact" }, { label: "Request Quote", href: "#contact" }]
-      },
-      {
-        title: "Legal",
-        links: [{ label: "Privacy", href: "#privacy" }]
-      }
-    ]
+    legal: "",
+    columns: []
   }
 };
 
@@ -965,27 +1059,62 @@ export default function CreationFooterFallback(props) {
   const {
     anchor = "footer",
     logoText = "Company",
-    legal = "© 2026 All rights reserved.",
+    legal = "",
     columns = []
   } = props || {};
-  const safeColumns = Array.isArray(columns) ? columns.slice(0, 4) : [];
+  const useChinese = /[\\u3400-\\u9fff]/.test(\`\${logoText || ""} \${legal || ""}\`);
+  const fallbackColumns = useChinese
+    ? [
+        {
+          title: "产品与方案",
+          links: [{ label: "产品中心", href: "/products" }, { label: "解决方案", href: "/solutions" }]
+        },
+        {
+          title: "服务支持",
+          links: [{ label: "联系我们", href: "/contact" }, { label: "应用案例", href: "/cases" }]
+        },
+        {
+          title: "法务信息",
+          links: [{ label: "隐私政策", href: "/privacy" }]
+        }
+      ]
+    : [
+        {
+          title: "Products",
+          links: [{ label: "Catalog", href: "/products" }, { label: "Solutions", href: "/solutions" }]
+        },
+        {
+          title: "Support",
+          links: [{ label: "Contact", href: "/contact" }, { label: "Cases", href: "/cases" }]
+        },
+        {
+          title: "Legal",
+          links: [{ label: "Privacy", href: "/privacy" }]
+        }
+      ];
+  const safeColumns = (Array.isArray(columns) && columns.length ? columns : fallbackColumns).slice(0, 4);
+  const fallbackLogoText = useChinese ? "公司" : "Company";
+  const fallbackLinksTitle = useChinese ? "链接" : "Links";
+  const fallbackLinkLabel = useChinese ? "链接" : "Link";
+  const resolvedLegal =
+    typeof legal === "string" && legal.trim() ? legal : useChinese ? \`© \${new Date().getFullYear()} 保留所有权利\` : \`© \${new Date().getFullYear()} All rights reserved.\`;
 
   return (
     <footer id={anchor} className="border-t border-border bg-background py-12">
       <div className="mx-auto w-full max-w-[1200px] px-6">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-12">
           <div className="md:col-span-4">
-            <div className="text-base font-semibold">{logoText || "Company"}</div>
+            <div className="text-base font-semibold">{logoText || fallbackLogoText}</div>
           </div>
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:col-span-8 md:grid-cols-3">
             {safeColumns.map((col, index) => (
               <div key={\`${'${index}'}-\${col?.title || "col"}\`}>
-                <div className="text-sm font-medium">{col?.title || "Links"}</div>
+                <div className="text-sm font-medium">{col?.title || fallbackLinksTitle}</div>
                 <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
                   {(Array.isArray(col?.links) ? col.links : []).slice(0, 10).map((link, linkIndex) => (
                     <li key={\`${'${index}'}-\${linkIndex}\`}>
                       <a href={link?.href || "#"} className="hover:text-foreground transition-colors">
-                        {link?.label || "Link"}
+                        {link?.label || fallbackLinkLabel}
                       </a>
                     </li>
                   ))}
@@ -994,7 +1123,7 @@ export default function CreationFooterFallback(props) {
             ))}
           </div>
         </div>
-        <div className="mt-10 border-t border-border pt-6 text-xs text-muted-foreground">{legal}</div>
+        <div className="mt-10 border-t border-border pt-6 text-xs text-muted-foreground">{resolvedLegal}</div>
       </div>
     </footer>
   );
@@ -1957,9 +2086,18 @@ const normalizePages = (blueprint: ArchitectBlueprint | Record<string, unknown>)
     return count + (enterprisePathSet.has(path) ? 1 : 0);
   }, 0);
   const enterpriseMinPages = enterprisePathHits >= 3 ? Math.min(24, ENTERPRISE_SITE_PAGES.length) : 0;
+  const enterpriseMultiPageMode = enterpriseMinPages >= 5;
   const maxPages = enterpriseMinPages > 0 ? Math.max(configuredMaxPages, enterpriseMinPages) : configuredMaxPages;
-  const maxSectionsPerPage = clampPositiveInt(defaultMaxSectionsPerPage, 8, 1, 20);
-  const maxSectionsTotal = clampPositiveInt(defaultMaxSectionsTotal, 48, 1, 240);
+  const configuredSectionsPerPage = clampPositiveInt(defaultMaxSectionsPerPage, 8, 1, 20);
+  const configuredSectionsTotal = clampPositiveInt(defaultMaxSectionsTotal, 48, 1, 240);
+  const enterpriseSectionsPerPage = clampPositiveInt(defaultEnterpriseMaxSectionsPerPage, 6, 1, 20);
+  const enterpriseSectionsTotal = clampPositiveInt(defaultEnterpriseMaxSectionsTotal, 36, 1, 240);
+  const maxSectionsPerPage = enterpriseMultiPageMode
+    ? Math.min(configuredSectionsPerPage, enterpriseSectionsPerPage)
+    : configuredSectionsPerPage;
+  const maxSectionsTotal = enterpriseMultiPageMode
+    ? Math.min(configuredSectionsTotal, enterpriseSectionsTotal)
+    : configuredSectionsTotal;
   let totalSections = 0;
   const limitedPages = alignedPages.slice(0, maxPages).map((page, pageIndex) => {
     if (totalSections >= maxSectionsTotal) {
@@ -2507,28 +2645,19 @@ const applyReferenceBlueprintConstraints = (
 
 const buildFallbackBlueprint = (prompt: string): ArchitectBlueprint => {
   const normalized = String(prompt ?? "").toLowerCase();
-  const isMedical = /(medical|health|clinic|diagnostic|hospital|medtech)/i.test(normalized);
   const isIndustrial =
     /(industrial|manufactur|manufacturer|factory|machin|equipment|b2b|automation|cnc|procurement|engineering|工业|制造|制造商|工厂|设备|机械|机床|采购|工程|自动化)/i.test(
       normalized
     );
-  const industry = isMedical ? "medical-diagnostics" : isIndustrial ? "industrial-manufacturing" : "technology";
-  const styleDNA = isMedical
-    ? ["clinical", "precise", "trustworthy"]
-    : isIndustrial
-      ? ["industrial", "precise", "high-clarity"]
-      : ["clean", "modern", "high-clarity"];
-  const imageMood = isMedical
-    ? "clean laboratory and clinical scenes"
-    : isIndustrial
-      ? "precision machinery, factory-floor details, and controlled industrial photography"
-      : "clean product photography";
-  const coreProducts = isMedical
-    ? ["diagnostic tests", "lab services", "screening"]
-    : isIndustrial
-      ? ["industrial equipment", "automation systems", "technical support"]
-      : ["core service", "platform", "support"];
-  const themeVoice = isMedical ? "tech" : isIndustrial ? "industrial" : "minimal";
+  const industry = isIndustrial ? "industrial-manufacturing" : "technology";
+  const styleDNA = isIndustrial ? ["industrial", "precise", "high-clarity"] : ["clean", "modern", "high-clarity"];
+  const imageMood = isIndustrial
+    ? "precision machinery, factory-floor details, and controlled industrial photography"
+    : "clean product photography";
+  const coreProducts = isIndustrial
+    ? ["industrial equipment", "automation systems", "technical support"]
+    : ["core service", "platform", "support"];
+  const themeVoice = isIndustrial ? "industrial" : "minimal";
   const sections: ArchitectSection[] = [
     {
       id: "hero",
@@ -2635,7 +2764,9 @@ const buildTemplateSeedBlueprint = (prompt: string): ArchitectBlueprint | null =
   const genericTemplatePrompt =
     hasTemplateSeedableBuildIntent(prompt) ||
     looksLikeEnterpriseWebsite({ prompt, pages: normalizePages(fallbackBlueprint) });
-  if (!selectedProfile || (!explicitTemplatePrompt && !(hasProfileCoverage && genericTemplatePrompt))) return null;
+  const profileAllowsTemplateSeed = Boolean(selectedProfile) && hasProfileCoverage && genericTemplatePrompt;
+  const genericAllowsTemplateSeed = allowTemplateSeedWithoutProfile && genericTemplatePrompt;
+  if (!explicitTemplatePrompt && !profileAllowsTemplateSeed && !genericAllowsTemplateSeed) return null;
 
   const requestedPages = extractRequestedPagesFromPrompt(prompt);
   const seedPageMap = new Map<string, ArchitectPage>();
@@ -2657,12 +2788,17 @@ const buildTemplateSeedBlueprint = (prompt: string): ArchitectBlueprint | null =
   });
 
   let seedPages = Array.from(seedPageMap.values());
-  if (looksLikeEnterpriseWebsite({ prompt, pages: seedPages }) && requestedPages.length < 3) {
-    seedPages = ensureEnterpriseSitePages(seedPages, (definition) => ({
-      path: definition.path,
-      name: definition.name,
-      sections: [],
-    })) as ArchitectPage[];
+  const hasStructuredNavContract = (structuredBrief?.nav?.length ?? 0) >= 3;
+  if (looksLikeEnterpriseWebsite({ prompt, pages: seedPages }) && requestedPages.length < 3 && !hasStructuredNavContract) {
+    seedPages = ensureEnterpriseSitePages(
+      seedPages,
+      (definition) => ({
+        path: definition.path,
+        name: definition.name,
+        sections: [],
+      }),
+      { prompt }
+    ) as ArchitectPage[];
   }
 
   const templateResolution = resolveTemplatePlan({
@@ -3967,18 +4103,20 @@ const humanizeLabel = (value: string) => {
   return cleaned.charAt(0).toUpperCase() + cleaned.slice(1);
 };
 
-const shouldUseChineseContent = (prompt: string) => {
-  const raw = String(prompt || "");
-  const explicitChinese = /(中文|简体|繁體|繁体|chinese|mandarin|zh-cn|zh-hans|zh-hant)/i.test(raw);
-  const explicitEnglish = /(英文|english|en-us|en-gb|\benglish\b)/i.test(raw);
-  return explicitChinese && !explicitEnglish;
-};
-
 const normalizePromptPagePath = (value: string) => {
   const raw = String(value || "").trim();
   if (!raw) return "/";
   const withSlash = raw.startsWith("/") ? raw : `/${raw}`;
-  return withSlash.replace(/\/{2,}/g, "/").replace(/\/+$/g, "") || "/";
+  const compact = withSlash.replace(/\/{2,}/g, "/").replace(/\/+$/g, "") || "/";
+  return resolveCanonicalRoute(compact);
+};
+
+const stripExternalFactPackFromPrompt = (prompt: string) => {
+  const raw = String(prompt || "");
+  if (!raw.trim()) return raw;
+  const marker = raw.search(/\n#\s*External\s+Fact\s+Pack(?:\s*\(Serper\))?/i);
+  if (marker < 0) return raw;
+  return raw.slice(0, marker).trimEnd();
 };
 
 const slugifyRequestedPageLabel = (value: string) =>
@@ -3991,15 +4129,9 @@ const slugifyRequestedPageLabel = (value: string) =>
 
 const inferRequestedPagePathFromLabel = (label: string) => {
   const normalizedLabel = String(label || "").trim();
-  const token = normalizedLabel.toLowerCase();
   if (!normalizedLabel) return "/";
-  if (/^(home|homepage|home page|首页|主页|首屏)$/.test(token)) return "/";
-  if (/(about|about us|company|our story|关于|关于我们|公司简介)/.test(token)) return "/about";
-  if (/(contact|contact us|get in touch|quote|询价|联系|联系我们)/.test(token)) return "/contact";
-  if (/(privacy|privacy policy|policy|隐私|隐私政策)/.test(token)) return "/privacy";
-  if (/(case studies|case study|cases|applications|application cases|案例|应用案例|客户案例)/.test(token)) {
-    return "/cases";
-  }
+  const routed = resolveEnterprisePagePathFromLabel(normalizedLabel);
+  if (routed !== "/") return routed;
   const slug = slugifyRequestedPageLabel(normalizedLabel);
   return normalizePromptPagePath(slug ? `/${slug}` : "/");
 };
@@ -4032,11 +4164,11 @@ const splitRequestedPageLabelList = (value: string) =>
     );
 
 const collectRequestedPageLabelsFromPrompt = (prompt: string) => {
-  const raw = String(prompt || "");
+  const raw = stripExternalFactPackFromPrompt(String(prompt || ""));
   const labels: string[] = [];
   const navMatches = Array.from(
     raw.matchAll(
-      /(?:^|\n|\r)(?:nav(?:igation)?|menu)\s*[:：]\s*([^\n\r]{1,240})/gi
+      /(?:^|\n|\r)\s*(?:nav(?:igation)?|menu)\s*[:：]\s*([^\n\r]{1,240})/gi
     )
   );
   navMatches.forEach((match) => {
@@ -4056,23 +4188,32 @@ const collectRequestedPageLabelsFromPrompt = (prompt: string) => {
 };
 
 const extractRequestedPagesFromPrompt = (prompt: string) => {
-  const raw = String(prompt || "");
+  const raw = stripExternalFactPackFromPrompt(String(prompt || ""));
   const useChinese = shouldUseChineseContent(raw);
   const matches = Array.from(
     raw.matchAll(/(?:^|[\s,，、;；:：(\[（【])\/([a-zA-Z0-9\-\/]*)(?:\s*[（(]([^()（）]{1,40})[)）])?/g)
   );
-  const seen = new Set<string>();
+  const indexByPath = new Map<string, number>();
   const pages: Array<{ path: string; name: string }> = [];
   const pushPage = (pathValue: string, nameValue: string) => {
     const normalizedPath = normalizePromptPagePath(pathValue);
     if (normalizedPath.length > 80) return;
-    if (seen.has(normalizedPath)) return;
-    seen.add(normalizedPath);
-    const normalizedName = String(nameValue || "").trim();
+    const normalizedName = String(nameValue || "").trim().replace(/[：:]+$/g, "").trim();
+    const fallbackName = derivePageNameFromPath(normalizedPath);
+    const existingIndex = indexByPath.get(normalizedPath);
+    if (typeof existingIndex === "number") {
+      const existing = pages[existingIndex];
+      if (!existing) return;
+      if (normalizedName && (existing.name === fallbackName || !existing.name.trim())) {
+        existing.name = normalizedName.slice(0, 48);
+      }
+      return;
+    }
     pages.push({
       path: normalizedPath,
-      name: normalizedName || derivePageNameFromPath(normalizedPath),
+      name: (normalizedName || fallbackName).slice(0, 48),
     });
+    indexByPath.set(normalizedPath, pages.length - 1);
   };
   matches.forEach((match) => {
     const pathPart = typeof match[1] === "string" ? match[1] : "";
@@ -4092,6 +4233,22 @@ const extractRequestedPagesFromPrompt = (prompt: string) => {
         ? rawName.slice(0, 48)
         : derivePageNameFromPath(normalizedPath);
     pushPage(normalizedPath, name || derivePageNameFromPath(normalizedPath));
+  });
+  const routeListMatches = Array.from(
+    raw.matchAll(/(?:^|\n)\s*[-*]\s*\/([a-zA-Z0-9\-\/]*)\s*(?:\(([^)（）:\n]{1,30})\)|([^\n:：]{1,24}))?\s*[:：]/g)
+  );
+  routeListMatches.forEach((match) => {
+    const pathPart = typeof match[1] === "string" ? match[1] : "";
+    if (/\./.test(pathPart)) return;
+    if (/^(www|http|https|com|cn|net|org)$/i.test(pathPart)) return;
+    const normalizedPath = normalizePromptPagePath(pathPart ? `/${pathPart}` : "/");
+    const rawName = String(match[2] || match[3] || "")
+      .replace(/[()（）]/g, "")
+      .replace(/^(?:page|页面)\s*/i, "")
+      .trim();
+    const nameCandidate =
+      rawName && (useChinese || !/[\u4e00-\u9fff]/.test(rawName)) ? rawName.slice(0, 48) : derivePageNameFromPath(normalizedPath);
+    pushPage(normalizedPath, nameCandidate);
   });
   collectRequestedPageLabelsFromPrompt(raw).forEach((label) => {
     const path = inferRequestedPagePathFromLabel(label);
@@ -4128,14 +4285,20 @@ const ensureEnterpriseBlueprintPages = (
 ): ArchitectBlueprint | null | undefined => {
   if (!blueprint || typeof blueprint !== "object") return blueprint;
   const requestedPages = extractRequestedPagesFromPrompt(prompt);
+  const structuredBrief = parseStructuredBrief(prompt);
+  const hasStructuredNavContract = (structuredBrief?.nav?.length ?? 0) >= 3;
   const existingPages = Array.isArray(blueprint.pages) ? blueprint.pages : [];
   if (!looksLikeEnterpriseWebsite({ prompt, pages: existingPages })) return blueprint;
-  if (requestedPages.length >= 3) return blueprint;
-  const pages = ensureEnterpriseSitePages(existingPages, (definition) => ({
-    path: definition.path,
-    name: definition.name,
-    sections: [],
-  }));
+  if (requestedPages.length >= 3 || hasStructuredNavContract) return blueprint;
+  const pages = ensureEnterpriseSitePages(
+    existingPages,
+    (definition) => ({
+      path: definition.path,
+      name: definition.name,
+      sections: [],
+    }),
+    { prompt }
+  );
   return { ...blueprint, pages };
 };
 
@@ -4156,22 +4319,142 @@ const compactNavbarLabel = (label: string) => {
   return compacted;
 };
 
+const sanitizeBrandCandidate = (value: string): string => {
+  const cleaned = String(value || "")
+    .replace(/^[\s"'“”‘’「」『』【】《》()（）:：,，.;；]+/, "")
+    .replace(/[\s"'“”‘’「」『』【】《》()（）:：,，.;；]+$/g, "")
+    .replace(/\s{2,}/g, " ")
+    .trim();
+  if (!cleaned) return "";
+  const firstToken = cleaned.split(/[\n,，。;；|｜]/)[0]?.trim() || "";
+  if (!firstToken) return "";
+  const lowered = firstToken.toLowerCase();
+  if (
+    /^(brand|company|enterprise|website|official|官网|网站|公司|企业|品牌|品牌名|品牌名称|公司名|公司名称|名称|信息|中文|英文)$/i.test(
+      lowered
+    )
+  ) {
+    return "";
+  }
+  if (firstToken.length < 2) return "";
+  return firstToken;
+};
+
 const extractPromptBrandName = (prompt: string): string => {
-  const quoted = prompt.match(/["「]([^"」]{1,40})["」]/);
-  if (quoted) return quoted[1].trim();
-  const chinese = prompt.match(/为\s*([A-Za-z\u4e00-\u9fff][\w\u4e00-\u9fff\s-]{1,30})\s*(?:生成|制作|创建|构建|设计)/i);
-  if (chinese) return chinese[1].trim();
+  const quoted = prompt.match(/["“”「『]([^"“”」』]{1,40})["”」』]/);
+  if (quoted) {
+    const candidate = sanitizeBrandCandidate(quoted[1]);
+    if (candidate) return candidate;
+  }
+  const chinese = prompt.match(
+    /为\s*["“”「『]?\s*([A-Za-z\u4e00-\u9fff][\w\u4e00-\u9fff\s-]{1,30})\s*["”」』]?\s*(?:生成|制作|创建|构建|设计)/i
+  );
+  if (chinese) {
+    const candidate = sanitizeBrandCandidate(chinese[1]);
+    if (candidate) return candidate;
+  }
+  const labeled = prompt.match(
+    /(?:品牌(?:名称|名)?|公司(?:名称|名)?|企业(?:名称|名)?|Company(?:\s+name)?|Brand(?:\s+name)?)\s*[：:]\s*([^\n]{1,60})/i
+  );
+  if (labeled) {
+    const candidate = sanitizeBrandCandidate(labeled[1]);
+    if (candidate) return candidate;
+  }
   const english = prompt.match(/for\s+([A-Za-z][A-Za-z0-9\s-]{1,40})\s+(?:generate|build|create|design)/i);
-  if (english) return english[1].trim();
-  const named = prompt.match(/(?:叫|called|named|品牌名?(?:为|是)?)\s*[：:]?\s*([A-Za-z\u4e00-\u9fff][\w\u4e00-\u9fff\s]{0,30})/i);
-  if (named) return named[1].trim();
+  if (english) {
+    const candidate = sanitizeBrandCandidate(english[1]);
+    if (candidate) return candidate;
+  }
+  const named = prompt.match(/(?:叫|called|named|品牌名(?:为|是)?|公司名(?:为|是)?|企业名(?:为|是)?)\s*[：:]?\s*([A-Za-z\u4e00-\u9fff][\w\u4e00-\u9fff\s]{0,30})/i);
+  if (named) {
+    const candidate = sanitizeBrandCandidate(named[1]);
+    if (candidate) return candidate;
+  }
   return "";
+};
+
+const resolveLocaleDefaults = (prompt: string) => {
+  const useChinese = shouldUseChineseContent(prompt);
+  return {
+    useChinese,
+    home: useChinese ? "首页" : "Home",
+    section: useChinese ? "页面" : "Section",
+    contact: useChinese ? "联系我们" : "Contact",
+    pricing: useChinese ? "价格方案" : "Pricing",
+    startTrial: useChinese ? "开始试用" : "Start Trial",
+    getStarted: useChinese ? "立即开始" : "Get Started",
+    productsTitle: useChinese ? "产品中心" : "Products",
+    supportTitle: useChinese ? "服务支持" : "Support",
+    legalTitle: useChinese ? "法律信息" : "Legal",
+    catalog: useChinese ? "产品目录" : "Catalog",
+    cases: useChinese ? "应用案例" : "Cases",
+    requestQuote: useChinese ? "获取报价" : "Request Quote",
+    privacy: useChinese ? "隐私政策" : "Privacy",
+    company: useChinese ? "公司" : "Company",
+    utility: useChinese ? "工业数控系统" : "Industrial CNC systems",
+    languageTag: useChinese ? "中" : "EN",
+    addressFallback: useChinese ? "中国深圳市宝安区" : "Bao'an, Shenzhen, China",
+    defaultRights:
+      useChinese
+        ? (brand: string) => `© ${new Date().getFullYear()} ${brand} 版权所有`
+        : (brand: string) => `© ${new Date().getFullYear()} ${brand}. All rights reserved.`,
+  };
+};
+
+const defaultPageLabelForPath = (path: string, prompt: string) => {
+  const locale = resolveLocaleDefaults(prompt);
+  const normalizedPath = normalizePromptPagePath(String(path || "/"));
+  if (normalizedPath === "/core-product") {
+    return locale.useChinese ? "核心产品" : "Core Product";
+  }
+  const pageType = inferEnterprisePageTypeFromPath(normalizedPath);
+  const mapZh: Record<string, string> = {
+    home: "首页",
+    products: "产品中心",
+    solutions: "解决方案",
+    cases: "应用案例",
+    about: "关于我们",
+    contact: "联系我们",
+    pricing: "价格方案",
+    support: "服务支持",
+    blog: "新闻资讯",
+    legal: "法律信息",
+    generic: "页面",
+  };
+  const mapEn: Record<string, string> = {
+    home: "Home",
+    products: "Products",
+    solutions: "Solutions",
+    cases: "Cases",
+    about: "About",
+    contact: "Contact",
+    pricing: "Pricing",
+    support: "Support",
+    blog: "Blog",
+    legal: "Legal",
+    generic: "Page",
+  };
+  return locale.useChinese ? mapZh[pageType] || mapZh.generic : mapEn[pageType] || mapEn.generic;
+};
+
+const resolveLocalizedPageLabel = (rawLabel: string, path: string, prompt: string) => {
+  const fallback = defaultPageLabelForPath(path, prompt);
+  const normalizedRaw = String(rawLabel || "").trim();
+  if (!normalizedRaw) return fallback;
+  const locale = resolveLocaleDefaults(prompt);
+  if (!locale.useChinese) return normalizedRaw;
+  const hasCjk = /[\u3400-\u9fff]/.test(normalizedRaw);
+  const englishOnly = /^[A-Za-z0-9\s&+/_-]{2,40}$/.test(normalizedRaw);
+  if (!hasCjk && englishOnly) return fallback;
+  return normalizedRaw;
 };
 
 const buildNavbarLinks = (
   page: ReturnType<typeof normalizePages>[number],
-  linkGraph?: SiteLinkGraph
+  linkGraph?: SiteLinkGraph,
+  prompt?: string
 ) => {
+  const locale = resolveLocaleDefaults(String(prompt || ""));
   if (linkGraph?.navigationLinks?.length) {
     return linkGraph.navigationLinks.map((link) => ({ ...link }));
   }
@@ -4187,17 +4470,19 @@ const buildNavbarLinks = (
     })
     .slice(0, 6)
     .map((section) => {
-      const label = humanizeLabel(String(section.id || section.type || "Section"));
+      const label = humanizeLabel(String(section.id || section.type || locale.section));
       const compacted = compactNavbarLabel(label);
-      return { label: compacted || "Section", href: `#${section.id}`, variant: "link" as const };
+      return { label: compacted || locale.section, href: `#${section.id}`, variant: "link" as const };
     });
-  return links.length ? links : [{ label: "Home", href: "#top", variant: "link" as const }];
+  return links.length ? links : [{ label: locale.home, href: "#top", variant: "link" as const }];
 };
 
 const buildNavbarCtas = (
   page: ReturnType<typeof normalizePages>[number],
-  linkGraph?: SiteLinkGraph
+  linkGraph?: SiteLinkGraph,
+  prompt?: string
 ) => {
+  const locale = resolveLocaleDefaults(String(prompt || ""));
   if (linkGraph?.defaultNavCtas?.length) {
     return linkGraph.defaultNavCtas.map((cta) => ({ ...cta }));
   }
@@ -4209,12 +4494,12 @@ const buildNavbarCtas = (
   if (!target?.id) return undefined;
   const key = String(target.id).toLowerCase();
   const label = key.includes("contact")
-    ? "Contact"
+    ? locale.contact
     : key.includes("pricing")
-      ? "Pricing"
+      ? locale.pricing
       : key.includes("trial")
-        ? "Start Trial"
-        : "Get Started";
+        ? locale.startTrial
+        : locale.getStarted;
   return [{ label, href: `#${target.id}`, variant: "primary" as const }];
 };
 
@@ -4231,8 +4516,8 @@ const buildNavbarProps = (
   const promptBrand =
     extractPromptBrandName(String(prompt || "")) || extractBrandNameFromPromptLite(String(prompt || ""));
   const logoAlt = promptBrand || "Company";
-  const links = buildNavbarLinks(page, linkGraph);
-  const ctas = buildNavbarCtas(page, linkGraph) ?? [];
+  const links = buildNavbarLinks(page, linkGraph, prompt);
+  const ctas = buildNavbarCtas(page, linkGraph, prompt) ?? [];
   const hasChildren = links.some(
     (link) => Array.isArray((link as any).children) && (link as any).children.length > 0
   );
@@ -4255,8 +4540,10 @@ const buildNavbarProps = (
 
 const buildFooterColumns = (
   page: ReturnType<typeof normalizePages>[number],
-  linkGraph?: SiteLinkGraph
+  linkGraph?: SiteLinkGraph,
+  prompt?: string
 ) => {
+  const locale = resolveLocaleDefaults(String(prompt || ""));
   if (linkGraph?.footerColumns?.length) {
     return linkGraph.footerColumns.map((column) => ({
       ...column,
@@ -4282,24 +4569,24 @@ const buildFooterColumns = (
 
   return [
     {
-      title: "Products",
+      title: locale.productsTitle,
       links: sectionLinks.length
         ? sectionLinks.slice(0, 2)
         : [
-            { label: "Catalog", href: "#products", variant: "link" as const },
-            { label: "Cases", href: "#cases", variant: "link" as const },
+            { label: locale.catalog, href: "#products", variant: "link" as const },
+            { label: locale.cases, href: "#cases", variant: "link" as const },
           ],
     },
     {
-      title: "Support",
+      title: locale.supportTitle,
       links: [
-        { label: "Contact", href: "#contact", variant: "primary" as const },
-        { label: "Request Quote", href: "#contact", variant: "secondary" as const },
+        { label: locale.contact, href: "#contact", variant: "primary" as const },
+        { label: locale.requestQuote, href: "#contact", variant: "secondary" as const },
       ],
     },
     {
-      title: "Legal",
-      links: [{ label: "Privacy", href: "#privacy", variant: "link" as const }],
+      title: locale.legalTitle,
+      links: [{ label: locale.privacy, href: "#privacy", variant: "link" as const }],
     },
   ];
 };
@@ -4320,7 +4607,7 @@ const buildFooterProps = (
     id: `footer-${idSuffix}`,
     anchor: "footer",
     logoText: footerBrand,
-    columns: buildFooterColumns(page, linkGraph),
+    columns: buildFooterColumns(page, linkGraph, prompt),
     legal: `© ${new Date().getFullYear()} ${footerBrand}. All rights reserved.`,
     headingFont,
     bodyFont,
@@ -4764,6 +5051,19 @@ const inferTemplateRefinementSectionKind = (sectionType: string, sectionId: stri
   return "";
 };
 
+const localizeIndustryToken = (value: string, useChinese: boolean) => {
+  const raw = String(value || "").trim();
+  if (!raw) return useChinese ? "工业场景" : "industry";
+  if (!useChinese) return raw;
+  const normalized = raw.toLowerCase();
+  if (normalized === "industrial-manufacturing") return "工业制造";
+  if (normalized === "technology") return "科技行业";
+  if (normalized === "medical-diagnostics") return "医疗器械";
+  if (normalized === "luxury") return "高端制造";
+  if (/^[a-z0-9-]+$/.test(normalized)) return normalized.replace(/-/g, " ");
+  return raw;
+};
+
 const buildDeterministicFallbackBlock = (
   context: SectionContext,
   prompt: string,
@@ -4781,12 +5081,13 @@ const buildDeterministicFallbackBlock = (
     /(cnc|machine tool|machine-tools|machining|metal cutting|milling|lathe|spindle|five-axis|5-axis|加工中心|机床|数控|刀具|切削)/i.test(
       lowerPrompt
     );
-  const industry =
+  const rawIndustry =
     typeof designNorthStar?.industry === "string" && designNorthStar.industry.trim()
       ? designNorthStar.industry.trim()
       : isZhPrompt
         ? "行业"
         : "industry";
+  const industry = localizeIndustryToken(rawIndustry, isZhPrompt);
   const pagePath = String(context.pagePath || "/").toLowerCase();
   const pageKind = pagePath === "/" ? "home" : pagePath.replace(/^\/+/, "").split("/")[0] || "home";
   const shortPrompt = trimLine(prompt, "Industrial Automation Platform", 68);
@@ -4796,6 +5097,51 @@ const buildDeterministicFallbackBlock = (
   const safeSiteTitle = isZhPrompt
     ? `${promptBrand || "企业"} 咨询入口`
     : `${promptBrand || "Company"} Contact`;
+  const localized = {
+    home: isZhPrompt ? "首页" : "Home",
+    services: isZhPrompt ? "服务" : "Services",
+    about: isZhPrompt ? "关于" : "About",
+    contact: isZhPrompt ? "联系" : "Contact",
+    getStarted: isZhPrompt ? "立即开始" : "Get Started",
+    exploreProducts: isZhPrompt ? "查看产品" : "Explore Products",
+    contactSales: isZhPrompt ? "联系销售" : "Contact Sales",
+    heroEyebrow: isZhPrompt ? "工业智造方案" : "Industrial Solutions",
+    heroSubtitle: isZhPrompt
+      ? "面向现代工厂提供高性能设备、精密工程与数字化协同流程。"
+      : "High-performance machinery, precision engineering, and integrated digital workflows for modern factories.",
+    productLines: isZhPrompt ? "产品矩阵" : "Product Lines",
+    productSubtitle: isZhPrompt
+      ? "覆盖加工、精整与自动化搬运的模块化产线能力。"
+      : "Modular machines for cutting, finishing, and automated handling.",
+    learnMore: isZhPrompt ? "了解详情" : "Learn More",
+    latestStories: isZhPrompt ? "最新动态" : "Latest Stories",
+    customerFeedback: isZhPrompt ? "客户反馈" : "Customer Feedback",
+    collaboratorVoices: isZhPrompt ? "合作伙伴声音" : "What collaborators say",
+    trustedBy: isZhPrompt ? "受到行业团队信任" : "Trusted by leading teams",
+    ourStory: isZhPrompt ? "品牌故事" : "Our Story",
+    storySubtitle: isZhPrompt
+      ? "以精炼叙事连接品牌定位、工艺能力与客户价值。"
+      : "A concise narrative that connects brand intent, craft, and client outcomes.",
+    storyBody: isZhPrompt
+      ? "我们以策略清晰度、视觉质感与工程执行力，持续打造可长期演进的数字化体验。"
+      : "We combine strategic clarity, visual refinement, and execution discipline to create enduring digital experiences.",
+    pricingTitle: isZhPrompt ? "服务方案" : "Service Plans",
+    faqTitle: "FAQ",
+    capabilities: isZhPrompt ? "核心能力" : "Key Capabilities",
+    capabilitiesSubtitle: isZhPrompt ? "围绕稳定性、精度与规模化生产能力构建。" : "Designed for uptime, precision, and scalable production.",
+    processReliability: isZhPrompt ? "工艺稳定性" : "Process Reliability",
+    processReliabilityDesc: isZhPrompt
+      ? "在连续生产负载下保持稳定运行与可预测表现。"
+      : "Stable operation with predictable performance under continuous load.",
+    precisionControl: isZhPrompt ? "精度控制" : "Precision Control",
+    precisionControlDesc: isZhPrompt
+      ? "通过硬件与软件协同校准，稳定实现严苛公差。"
+      : "Tight tolerances through calibrated hardware and software workflows.",
+    operationVisibility: isZhPrompt ? "运营可视化" : "Operational Visibility",
+    operationVisibilityDesc: isZhPrompt
+      ? "覆盖设备状态、维护与产能节拍的可执行洞察。"
+      : "Actionable monitoring across machine states, maintenance, and throughput.",
+  };
   const idBase = `${toSlug(context.section.type || "section") || "section"}-${context.sectionIndex + 1}`;
   const anchor = context.section.id;
   const pageAwareStory =
@@ -4993,12 +5339,12 @@ const buildDeterministicFallbackBlock = (
         anchor: "top",
         logo: trimLine(context.pageName || "Brand", "Brand", 24),
         links: [
-          { label: "Home", href: "#top", variant: "link" },
-          { label: "Services", href: "#services", variant: "link" },
-          { label: "About", href: "#about", variant: "link" },
-          { label: "Contact", href: "#contact", variant: "link" },
+          { label: localized.home, href: "#top", variant: "link" },
+          { label: localized.services, href: "#services", variant: "link" },
+          { label: localized.about, href: "#about", variant: "link" },
+          { label: localized.contact, href: "#contact", variant: "link" },
         ],
-        ctas: [{ label: "Get Started", href: "#contact", variant: "primary" }],
+        ctas: [{ label: localized.getStarted, href: "#contact", variant: "primary" }],
         variant: "simple",
         sticky: true,
         paddingY: "sm",
@@ -5014,14 +5360,12 @@ const buildDeterministicFallbackBlock = (
       props: {
         id: idBase,
         anchor,
-        eyebrow: heroCopy?.eyebrow ?? "Industrial Solutions",
+        eyebrow: heroCopy?.eyebrow ?? localized.heroEyebrow,
         title: heroCopy?.title ?? safeHeroTitle,
-        subtitle:
-          heroCopy?.subtitle ??
-          "High-performance machinery, precision engineering, and integrated digital workflows for modern factories.",
+        subtitle: heroCopy?.subtitle ?? localized.heroSubtitle,
         ctas: [
-          { label: "Explore Products", href: "#products", variant: "primary" },
-          { label: "Contact Sales", href: "#contact", variant: "secondary" },
+          { label: localized.exploreProducts, href: "#products", variant: "primary" },
+          { label: localized.contactSales, href: "#contact", variant: "secondary" },
         ],
         mediaPosition: "right",
         paddingY: "lg",
@@ -5037,12 +5381,12 @@ const buildDeterministicFallbackBlock = (
       props: {
         id: idBase,
         anchor,
-        title: catalogCopy?.title ?? (cncIntent && !isZhPrompt ? "Core Product Platforms" : "Product Lines"),
+        title: catalogCopy?.title ?? (cncIntent && !isZhPrompt ? "Core Product Platforms" : localized.productLines),
         subtitle:
           catalogCopy?.subtitle ??
           (cncIntent && !isZhPrompt
             ? "Machine tools, spindle systems, and automation units configured for precision manufacturing."
-            : "Modular machines for cutting, finishing, and automated handling."),
+            : localized.productSubtitle),
         variant: "product",
         columns: "3col",
         density: "normal",
@@ -5050,23 +5394,29 @@ const buildDeterministicFallbackBlock = (
         maxWidth: "xl",
         items: (catalogCopy?.items ?? [
           {
-            title: "CNC Router Series",
-            description: "High-speed milling with repeatable accuracy for industrial workloads.",
-            cta: { label: "Details", href: "#", variant: "link" },
+            title: isZhPrompt ? "高速加工单元" : "CNC Router Series",
+            description: isZhPrompt
+              ? "面向工业连续负载提供高速加工与稳定重复精度。"
+              : "High-speed milling with repeatable accuracy for industrial workloads.",
+            cta: { label: isZhPrompt ? "查看" : "Details", href: "#", variant: "link" },
           },
           {
-            title: "Edge Processing Units",
-            description: "Stable edge finishing and profiling for continuous production lines.",
-            cta: { label: "Details", href: "#", variant: "link" },
+            title: isZhPrompt ? "边缘精整单元" : "Edge Processing Units",
+            description: isZhPrompt
+              ? "适配连续产线的稳定精整与轮廓加工。"
+              : "Stable edge finishing and profiling for continuous production lines.",
+            cta: { label: isZhPrompt ? "查看" : "Details", href: "#", variant: "link" },
           },
           {
-            title: "Automated Cells",
-            description: "Integrated robotics and software control for end-to-end throughput.",
-            cta: { label: "Details", href: "#", variant: "link" },
+            title: isZhPrompt ? "自动化工作单元" : "Automated Cells",
+            description: isZhPrompt
+              ? "融合机器人与软件控制，实现端到端节拍提升。"
+              : "Integrated robotics and software control for end-to-end throughput.",
+            cta: { label: isZhPrompt ? "查看" : "Details", href: "#", variant: "link" },
           },
         ]).map((item) => ({
           ...item,
-          cta: { label: "Learn More", href: "#", variant: "link" as const },
+          cta: { label: localized.learnMore, href: "#", variant: "link" as const },
         })),
       },
     };
@@ -5078,27 +5428,33 @@ const buildDeterministicFallbackBlock = (
       props: {
         id: idBase,
         anchor,
-        title: "Latest Stories",
+        title: localized.latestStories,
         variant: "cards",
         maxWidth: "xl",
         items: [
           {
-            title: "Factory throughput increased by 32%",
-            summary: "A production line upgrade combining motion control and predictive maintenance.",
+            title: isZhPrompt ? "产线节拍提升 32%" : "Factory throughput increased by 32%",
+            summary: isZhPrompt
+              ? "通过运动控制与预测性维护联动，完成产线升级。"
+              : "A production line upgrade combining motion control and predictive maintenance.",
             href: "#",
-            tags: ["Automation", "Manufacturing"],
+            tags: isZhPrompt ? ["自动化", "制造"] : ["Automation", "Manufacturing"],
           },
           {
-            title: "Precision finishing with lower scrap rate",
-            summary: "How calibration and tooling strategy improved output quality.",
+            title: isZhPrompt ? "精整质量提升、报废率下降" : "Precision finishing with lower scrap rate",
+            summary: isZhPrompt
+              ? "通过校准与刀具策略优化，显著提升良率。"
+              : "How calibration and tooling strategy improved output quality.",
             href: "#",
-            tags: ["Quality", "Operations"],
+            tags: isZhPrompt ? ["质量", "运营"] : ["Quality", "Operations"],
           },
           {
-            title: "Digital twin rollout in phased deployment",
-            summary: "Practical adoption path for plant-wide monitoring and diagnostics.",
+            title: isZhPrompt ? "数字孪生分阶段落地" : "Digital twin rollout in phased deployment",
+            summary: isZhPrompt
+              ? "形成可执行的全厂监控与诊断导入路径。"
+              : "Practical adoption path for plant-wide monitoring and diagnostics.",
             href: "#",
-            tags: ["Digital Twin", "IIoT"],
+            tags: isZhPrompt ? ["数字孪生", "工业物联"] : ["Digital Twin", "IIoT"],
           },
         ],
       },
@@ -5111,19 +5467,19 @@ const buildDeterministicFallbackBlock = (
       props: {
         id: idBase,
         anchor,
-        title: "Customer Feedback",
+        title: localized.customerFeedback,
         variant: "2col",
         maxWidth: "xl",
         items: [
           {
-            quote: "Deployment was fast and the stability under peak load is excellent.",
-            name: "Plant Director",
-            role: "Heavy Industry",
+            quote: isZhPrompt ? "部署周期短，在峰值负载下依然保持稳定表现。" : "Deployment was fast and the stability under peak load is excellent.",
+            name: isZhPrompt ? "工厂总监" : "Plant Director",
+            role: isZhPrompt ? "重工制造" : "Heavy Industry",
           },
           {
-            quote: "The interface is clean and operators became productive in days.",
-            name: "Production Manager",
-            role: "Advanced Manufacturing",
+            quote: isZhPrompt ? "界面清晰，上线后操作团队很快进入高效状态。" : "The interface is clean and operators became productive in days.",
+            name: isZhPrompt ? "生产经理" : "Production Manager",
+            role: isZhPrompt ? "先进制造" : "Advanced Manufacturing",
           },
         ],
       },
@@ -5136,19 +5492,23 @@ const buildDeterministicFallbackBlock = (
       props: {
         id: idBase,
         anchor,
-        title: cncIntent && !isZhPrompt ? "What manufacturing teams say" : "What collaborators say",
+        title: cncIntent && !isZhPrompt ? "What manufacturing teams say" : localized.collaboratorVoices,
         variant: "2col",
         maxWidth: "xl",
         items: [
           {
-            quote: "Execution quality and communication remained consistent from concept through delivery.",
-            name: "Partner Team",
-            role: "Enterprise Client",
+            quote: isZhPrompt
+              ? "从方案到交付，执行质量与协作沟通保持一致。"
+              : "Execution quality and communication remained consistent from concept through delivery.",
+            name: isZhPrompt ? "合作方团队" : "Partner Team",
+            role: isZhPrompt ? "企业客户" : "Enterprise Client",
           },
           {
-            quote: "The result balanced brand expression and conversion clarity with minimal iteration.",
-            name: "Design Lead",
-            role: "Product Organization",
+            quote: isZhPrompt
+              ? "在较少迭代下兼顾品牌表达与转化清晰度。"
+              : "The result balanced brand expression and conversion clarity with minimal iteration.",
+            name: isZhPrompt ? "设计负责人" : "Design Lead",
+            role: isZhPrompt ? "产品团队" : "Product Organization",
           },
         ],
       },
@@ -5161,7 +5521,7 @@ const buildDeterministicFallbackBlock = (
       props: {
         id: idBase,
         anchor,
-        title: "Trusted by leading teams",
+        title: localized.trustedBy,
         variant: "grid",
         maxWidth: "xl",
         logos: [
@@ -5181,10 +5541,10 @@ const buildDeterministicFallbackBlock = (
       props: {
         id: idBase,
         anchor,
-        title: storyCopy?.title ?? "Our Story",
-        subtitle: storyCopy?.subtitle ?? "A concise narrative that connects brand intent, craft, and client outcomes.",
-        body: storyCopy?.body ?? "We combine strategic clarity, visual refinement, and execution discipline to create enduring digital experiences.",
-        ctas: [{ label: "Explore More", href: "#", variant: "link" }],
+        title: storyCopy?.title ?? localized.ourStory,
+        subtitle: storyCopy?.subtitle ?? localized.storySubtitle,
+        body: storyCopy?.body ?? localized.storyBody,
+        ctas: [{ label: isZhPrompt ? "查看更多" : "Explore More", href: "#", variant: "link" }],
         variant: "split",
         maxWidth: "xl",
       },
@@ -5197,31 +5557,31 @@ const buildDeterministicFallbackBlock = (
       props: {
         id: idBase,
         anchor,
-        title: "Service Plans",
+        title: localized.pricingTitle,
         variant: "3up",
         maxWidth: "xl",
         plans: [
           {
-            name: "Starter",
-            price: "$299",
-            period: "mo",
-            features: ["Remote diagnostics", "Email support", "Weekly reports"],
-            cta: { label: "Choose Starter", href: "#contact", variant: "secondary" },
+            name: isZhPrompt ? "基础版" : "Starter",
+            price: isZhPrompt ? "¥2,999" : "$299",
+            period: isZhPrompt ? "月" : "mo",
+            features: isZhPrompt ? ["远程诊断", "邮件支持", "周报机制"] : ["Remote diagnostics", "Email support", "Weekly reports"],
+            cta: { label: isZhPrompt ? "选择基础版" : "Choose Starter", href: "#contact", variant: "secondary" },
           },
           {
-            name: "Pro",
-            price: "$699",
-            period: "mo",
+            name: isZhPrompt ? "专业版" : "Pro",
+            price: isZhPrompt ? "¥6,999" : "$699",
+            period: isZhPrompt ? "月" : "mo",
             highlighted: true,
-            features: ["Priority support", "On-site tuning", "Advanced analytics"],
-            cta: { label: "Choose Pro", href: "#contact", variant: "primary" },
+            features: isZhPrompt ? ["优先响应", "现场调优", "高级分析"] : ["Priority support", "On-site tuning", "Advanced analytics"],
+            cta: { label: isZhPrompt ? "选择专业版" : "Choose Pro", href: "#contact", variant: "primary" },
           },
           {
-            name: "Enterprise",
-            price: "Custom",
-            period: "mo",
-            features: ["Dedicated team", "SLA contract", "Custom integration"],
-            cta: { label: "Contact Sales", href: "#contact", variant: "link" },
+            name: isZhPrompt ? "企业版" : "Enterprise",
+            price: isZhPrompt ? "定制" : "Custom",
+            period: isZhPrompt ? "月" : "mo",
+            features: isZhPrompt ? ["专属团队", "SLA 保障", "定制集成"] : ["Dedicated team", "SLA contract", "Custom integration"],
+            cta: { label: localized.contactSales, href: "#contact", variant: "link" },
           },
         ],
       },
@@ -5234,21 +5594,23 @@ const buildDeterministicFallbackBlock = (
       props: {
         id: idBase,
         anchor,
-        title: "FAQ",
+        title: localized.faqTitle,
         variant: "singleOpen",
         maxWidth: "xl",
         items: [
           {
-            q: "How long does deployment take?",
-            a: "Typical setup takes 2 to 6 weeks based on the existing production environment.",
+            q: isZhPrompt ? "部署周期需要多久？" : "How long does deployment take?",
+            a: isZhPrompt
+              ? "通常根据现有生产环境规模，部署周期约为 2 到 6 周。"
+              : "Typical setup takes 2 to 6 weeks based on the existing production environment.",
           },
           {
-            q: "Do you support existing PLC systems?",
-            a: "Yes, we provide integration options for common PLC and MES stacks.",
+            q: isZhPrompt ? "是否支持现有 PLC 系统？" : "Do you support existing PLC systems?",
+            a: isZhPrompt ? "支持。我们提供常见 PLC 与 MES 系统的集成方案。" : "Yes, we provide integration options for common PLC and MES stacks.",
           },
           {
-            q: "Can we start with one line first?",
-            a: "Yes, phased rollout is supported to reduce risk and validate ROI early.",
+            q: isZhPrompt ? "可以先从一条产线试点吗？" : "Can we start with one line first?",
+            a: isZhPrompt ? "可以。支持分阶段上线，以降低风险并尽早验证 ROI。" : "Yes, phased rollout is supported to reduce risk and validate ROI early.",
           },
         ],
       },
@@ -5267,6 +5629,7 @@ const buildDeterministicFallbackBlock = (
         ? "Share your part requirements, output targets, and plant constraints to receive a practical machining and automation proposal."
         : `Share your ${industry} goals and receive a tailored implementation plan.`;
     const ctaLabel = isZhPrompt ? "预约咨询" : "Contact Sales";
+    const contactLikeIntent = /contact|lead|form|map/.test(token);
     return {
       type: "LeadCaptureCTA",
       props: {
@@ -5278,6 +5641,7 @@ const buildDeterministicFallbackBlock = (
         note: safeSiteTitle,
         variant: "card",
         maxWidth: "xl",
+        ...(contactLikeIntent ? { emphasis: "normal", forbidGradientText: true } : {}),
       },
     };
   }
@@ -5292,26 +5656,26 @@ const buildDeterministicFallbackBlock = (
         maxWidth: "xl",
         columns: [
           {
-            title: "Products",
+            title: isZhPrompt ? "产品" : "Products",
             links: [
-              { label: "Machines", href: "#" },
-              { label: "Automation", href: "#" },
-              { label: "Software", href: "#" },
+              { label: isZhPrompt ? "设备" : "Machines", href: "#" },
+              { label: isZhPrompt ? "自动化" : "Automation", href: "#" },
+              { label: isZhPrompt ? "软件" : "Software", href: "#" },
             ],
           },
           {
-            title: "Company",
+            title: isZhPrompt ? "公司" : "Company",
             links: [
-              { label: "About", href: "#" },
-              { label: "News", href: "#" },
-              { label: "Contact", href: "#contact" },
+              { label: isZhPrompt ? "关于我们" : "About", href: "#" },
+              { label: isZhPrompt ? "新闻" : "News", href: "#" },
+              { label: isZhPrompt ? "联系我们" : "Contact", href: "#contact" },
             ],
           },
           {
-            title: "Legal",
+            title: isZhPrompt ? "法律" : "Legal",
             links: [
-              { label: "Privacy", href: "#" },
-              { label: "Terms", href: "#" },
+              { label: isZhPrompt ? "隐私政策" : "Privacy", href: "#" },
+              { label: isZhPrompt ? "使用条款" : "Terms", href: "#" },
             ],
           },
         ],
@@ -5325,27 +5689,27 @@ const buildDeterministicFallbackBlock = (
       props: {
         id: idBase,
         anchor,
-        title: cncIntent && !isZhPrompt ? "Manufacturing Capabilities" : "Key Capabilities",
+        title: cncIntent && !isZhPrompt ? "Manufacturing Capabilities" : localized.capabilities,
         subtitle:
           cncIntent && !isZhPrompt
             ? "Built for rigid machining, predictable uptime, and scalable factory deployment."
-            : "Designed for uptime, precision, and scalable production.",
+            : localized.capabilitiesSubtitle,
         variant: "3col",
         maxWidth: "xl",
         items: [
           {
-            title: "Process Reliability",
-            desc: "Stable operation with predictable performance under continuous load.",
+            title: localized.processReliability,
+            desc: localized.processReliabilityDesc,
             icon: "shield",
           },
           {
-            title: "Precision Control",
-            desc: "Tight tolerances through calibrated hardware and software workflows.",
+            title: localized.precisionControl,
+            desc: localized.precisionControlDesc,
             icon: "target",
           },
           {
-            title: "Operational Visibility",
-            desc: "Actionable monitoring across machine states, maintenance, and throughput.",
+            title: localized.operationVisibility,
+            desc: localized.operationVisibilityDesc,
             icon: "activity",
           },
         ],
@@ -5452,6 +5816,7 @@ const buildFallbackSectionProps = (
   designNorthStar?: Record<string, unknown>,
   theme?: Record<string, unknown>
 ) => {
+  const useChinese = shouldUseChineseContent(String(prompt || ""));
   const variant = buildFallbackSectionVariant(context);
   const hints =
     context.section.propsHints && typeof context.section.propsHints === "object"
@@ -5508,21 +5873,31 @@ const buildFallbackSectionProps = (
   const intent = typeof context.section.intent === "string" ? context.section.intent.trim() : "";
   const title =
     variant === "cta"
-      ? intent || "Ready to define your space?"
-      : sectionLabel || "Section";
+      ? intent || (useChinese ? "准备开启项目？" : "Ready to define your space?")
+      : sectionLabel || (useChinese ? "页面区块" : "Section");
   const subtitle =
     intent ||
     (variant === "cta"
-      ? "Book a private consultation or browse our curated portfolio."
+      ? useChinese
+        ? "预约专属咨询或查看产品资料。"
+        : "Book a private consultation or browse our curated portfolio."
       : variant === "socialProof"
-        ? "Building trust with collaborators and client stories."
+        ? useChinese
+          ? "通过合作伙伴与客户案例建立信任。"
+          : "Building trust with collaborators and client stories."
       : "") ||
     (variant === "contact"
-      ? "Share your product requirements and we will respond quickly."
+      ? useChinese
+        ? "提交产品需求，我们将尽快回复。"
+        : "Share your product requirements and we will respond quickly."
       : variant === "catalog"
-        ? "Core product lines with customizable specifications."
-        : "This section is generated using a resilient fallback template.");
-  const ctaLabel = variant === "cta" ? "Inquire Now" : variant === "contact" ? "Send Inquiry" : "Get Started";
+        ? useChinese
+          ? "核心产品线支持按需定制。"
+          : "Core product lines with customizable specifications."
+        : useChinese
+          ? "当前区块使用稳定回退模板生成，可在编辑器继续完善。"
+          : "This section is generated using a resilient fallback template.");
+  const ctaLabel = variant === "cta" ? (useChinese ? "立即咨询" : "Inquire Now") : variant === "contact" ? (useChinese ? "提交询盘" : "Send Inquiry") : useChinese ? "立即开始" : "Get Started";
   const ctaHref = variant === "cta" ? "#contact" : variant === "contact" ? "#contact" : "#top";
   const ctaStyleHint = resolveTemplateCtaStyle(hints, theme);
 
@@ -5534,16 +5909,16 @@ const buildFallbackSectionProps = (
     variant,
     ctaStyle: variant === "cta" ? ctaStyleHint : undefined,
     items: variant === "catalog" ? buildFallbackSectionItems(context, designNorthStar) : [],
-    formFields: formFields.length ? formFields : ["name", "email", "company", "message"],
+    formFields: formFields.length ? formFields : useChinese ? ["姓名", "邮箱", "公司", "需求"] : ["name", "email", "company", "message"],
     secondaryCtaLabel,
     secondaryCtaHref,
-    legal: variant === "cta" ? legal ?? "© 2026 All rights reserved." : legal,
+    legal: variant === "cta" ? legal ?? (useChinese ? "© 2026 保留所有权利。" : "© 2026 All rights reserved.") : legal,
     footerLinks:
       variant === "cta"
         ? footerLinks ??
           [
-            { label: "Privacy", href: "#privacy" },
-            { label: "Terms", href: "#terms" },
+            { label: useChinese ? "隐私政策" : "Privacy", href: "#privacy" },
+            { label: useChinese ? "使用条款" : "Terms", href: "#terms" },
             { label: "Instagram", href: "#instagram" },
           ]
         : footerLinks,
@@ -5596,16 +5971,38 @@ const collectReferenceBrandPhrases = (prompt: string) => {
 
 const extractBrandNameFromPromptLite = (prompt: string) => {
   const text = String(prompt || "");
-  const quoted = text.match(/["「]([^"」]{1,40})["」]/);
-  if (quoted) return quoted[1].trim();
+  const quoted = text.match(/["“”「『]([^"“”」』]{1,40})["”」』]/);
+  if (quoted) {
+    const candidate = sanitizeBrandCandidate(quoted[1]);
+    if (candidate) return candidate;
+  }
   const labeled = text.match(/Company name\s*[:：]\s*([A-Za-z][A-Za-z0-9&.\s-]{1,40})/i);
-  if (labeled) return labeled[1].trim();
-  const chinese = text.match(/为\s*([A-Za-z\u4e00-\u9fff][\w\u4e00-\u9fff\s-]{1,30})\s*(?:生成|制作|创建|构建|设计)/i);
-  if (chinese) return chinese[1].trim();
+  if (labeled) {
+    const candidate = sanitizeBrandCandidate(labeled[1]);
+    if (candidate) return candidate;
+  }
+  const zhLabeled = text.match(/(?:品牌(?:名称|名)?|公司(?:名称|名)?|企业(?:名称|名)?)\s*[：:]\s*([^\n]{1,60})/i);
+  if (zhLabeled) {
+    const candidate = sanitizeBrandCandidate(zhLabeled[1]);
+    if (candidate) return candidate;
+  }
+  const chinese = text.match(
+    /为\s*["“”「『]?\s*([A-Za-z\u4e00-\u9fff][\w\u4e00-\u9fff\s-]{1,30})\s*["”」』]?\s*(?:生成|制作|创建|构建|设计)/i
+  );
+  if (chinese) {
+    const candidate = sanitizeBrandCandidate(chinese[1]);
+    if (candidate) return candidate;
+  }
   const english = text.match(/for\s+([A-Za-z][A-Za-z0-9&.\s-]{1,40})\s+(?:generate|build|create|design)/i);
-  if (english) return english[1].trim();
+  if (english) {
+    const candidate = sanitizeBrandCandidate(english[1]);
+    if (candidate) return candidate;
+  }
   const englishInline = text.match(/for\s+([A-Za-z][A-Za-z0-9&.\s-]{1,40}?)(?:\s*\(|,|\s+(?:an?|the)\b)/i);
-  if (englishInline) return englishInline[1].trim();
+  if (englishInline) {
+    const candidate = sanitizeBrandCandidate(englishInline[1]);
+    if (candidate) return candidate;
+  }
   return "";
 };
 
@@ -5697,79 +6094,10 @@ const extractSourceBrandTokens = (prompt: string) => {
 };
 
 const buildFinalSemanticReplacements = (prompt: string, designNorthStar?: Record<string, unknown>) => {
-  const raw = `${String(prompt || "")} ${String(designNorthStar?.industry || "")} ${JSON.stringify(
-    designNorthStar?.coreProducts || []
-  )}`.toLowerCase();
-  const replacements: Array<{ pattern: RegExp; value: string }> = [];
-  const cncIntent =
-    /(cnc|machine tool|machine-tools|machining|metal cutting|milling|lathe|spindle|five-axis|5-axis|加工中心|机床|数控|刀具|切削)/i.test(
-      raw
-    );
-  if (cncIntent) {
-    replacements.push(
-      { pattern: /\bsmart telescopes?\b/gi, value: "CNC platforms" },
-      { pattern: /\btelescopes?\b/gi, value: "machine tools" },
-      { pattern: /\bsmart binoculars?\b/gi, value: "automation modules" },
-      { pattern: /\bbinoculars?\b/gi, value: "automation modules" },
-      { pattern: /\bstargazing\b/gi, value: "precision manufacturing" },
-      { pattern: /\bnight sky\b/gi, value: "factory operations" },
-      { pattern: /\bnight skies\b/gi, value: "production environments" },
-      { pattern: /\buniverse\b/gi, value: "the shop floor" },
-      { pattern: /\bastronom(?:y|er|ers)\b/gi, value: "manufacturing teams" },
-      { pattern: /\bspace\b/gi, value: "manufacturing" },
-      { pattern: /\bsky\b/gi, value: "shop floor" },
-      { pattern: /\bskies\b/gi, value: "production environments" },
-      { pattern: /\bbackyard\b/gi, value: "facility" },
-      { pattern: /\bobservers?\b/gi, value: "operators" },
-      { pattern: /\bobserving\b/gi, value: "machining" },
-      { pattern: /\bobservation\b/gi, value: "production monitoring" },
-      { pattern: /\bexplorers?\b/gi, value: "manufacturing teams" },
-      { pattern: /\bdiscovery\b/gi, value: "deployment" },
-      { pattern: /\bdeep-sky\b/gi, value: "precision-process" },
-      { pattern: /\bmoon craters?\b/gi, value: "micron tolerances" },
-      { pattern: /\bnebulae\b/gi, value: "fine details" },
-      { pattern: /\bmachine vision\b/gi, value: "process automation" },
-      { pattern: /\bcomputer vision\b/gi, value: "process control" },
-      { pattern: /\bai vision\b/gi, value: "CNC automation" },
-      { pattern: /\binspection systems?\b/gi, value: "machine platforms" },
-      { pattern: /\bedge vision modules?\b/gi, value: "automation modules" },
-      { pattern: /\borion\b/gi, value: "5-axis" },
-      { pattern: /\bandromeda\b/gi, value: "adaptive control" },
-      { pattern: /\bnebula\b/gi, value: "precision" },
-      { pattern: /\bgalax(?:y|ies)\b/gi, value: "production lines" },
-      { pattern: /\bcosmos\b/gi, value: "factory operations" },
-      { pattern: /\bstellar\b/gi, value: "high-performance" },
-      { pattern: /\bfirst clear night\b/gi, value: "the first production run" },
-      { pattern: /\bfirst-time observer\b/gi, value: "first-line operator" },
-      { pattern: /\bastrophotography hobbyist\b/gi, value: "process engineer" },
-      { pattern: /\bscience educator\b/gi, value: "production trainer" },
-      { pattern: /\boutreach nights\b/gi, value: "factory trials" },
-      { pattern: /\bwonder\b/gi, value: "throughput" },
-      { pattern: /\bprivate sky rituals\b/gi, value: "single-cell machining workflows" },
-      { pattern: /\bguided group experiences\b/gi, value: "multi-line deployment workflows" },
-      { pattern: /\binstitution-grade observation workflows\b/gi, value: "plant-wide machining workflows" },
-      { pattern: /\bexplain brand narrative and positioning\b/gi, value: "Application-ready deployment frameworks" },
-      { pattern: /\balign themselves\b/gi, value: "auto-calibrate" },
-      { pattern: /\bsuppress light pollution\b/gi, value: "stabilize production noise" },
-      { pattern: /\breveal deep-sky detail live in minutes\b/gi, value: "deliver process visibility in minutes" },
-      { pattern: /\bplanetarium-grade optics\b/gi, value: "micron-level engineering" },
-      { pattern: /\bcity production environments\b/gi, value: "demanding production environments" },
-      { pattern: /\bwhat they were seeing\b/gi, value: "what the machine was doing" },
-      { pattern: /\bcommunity manufacturing teams club\b/gi, value: "manufacturing consortium" },
-      { pattern: /\bdeep-shop floor\b/gi, value: "process-level" },
-      { pattern: /\bobservatories\b/gi, value: "production teams" },
-      { pattern: /\bpublishers?\b/gi, value: "manufacturers" },
-      { pattern: /\bresearch organizations?\b/gi, value: "industrial partners" },
-      { pattern: /\bnasa\b/gi, value: "Automotive OEMs" },
-      { pattern: /\bseti\b/gi, value: "Precision Suppliers" },
-      { pattern: /\bjpl\b/gi, value: "Aerospace Manufacturers" },
-      { pattern: /\bexplore telescopes\b/gi, value: "Explore Solutions" },
-      { pattern: /\border yours\b/gi, value: "Request a Quote" },
-      { pattern: /\blive enhanced\b/gi, value: "real-time stabilized" },
-      { pattern: /\blearn more\b/gi, value: "Learn More" }
-    );
-  }
-  return replacements;
+  void prompt;
+  void designNorthStar;
+  // Keep sanitization generic: do not inject scenario- or industry-specific hardcoded phrase rewrites.
+  return [];
 };
 
 const shouldSkipGeneratedPropSanitization = (key: string) =>
@@ -5801,6 +6129,20 @@ type StructuredBrief = {
   email?: string;
   address?: string;
   copyright?: string;
+  contactTitle?: string;
+  contactFields?: string[];
+  consentText?: string;
+  productDetails?: Array<{
+    name: string;
+    model?: string;
+    category?: string;
+    summary?: string;
+    image?: string;
+    specs?: Record<string, string>;
+    ctaLabel?: string;
+  }>;
+  faqItems?: Array<{ question: string; answer: string }>;
+  catalogPageSize?: number;
   mode?: "light" | "dark";
   palette?: { primary: string; accent: string; bg: string; neutral: string; text: string; textSecondary: string };
 };
@@ -5840,11 +6182,52 @@ const parseDelimitedList = (value: string) =>
     .map((item) => item.replace(/^[\s-]+|[\s-]+$/g, "").replace(/[.。]+$/g, "").trim())
     .filter(Boolean);
 
+const parseContactFieldList = (value: string) =>
+  String(value || "")
+    .split(/[•|,，、;；]/)
+    .map((item) => item.replace(/^[\s-]+|[\s-]+$/g, "").replace(/[.。]+$/g, "").trim())
+    .filter(Boolean);
+
+const extractMarkdownHeadingSection = (value: string, labels: string[]) => {
+  const raw = String(value || "");
+  if (!raw.trim()) return "";
+  const normalizedLabels = labels.map((label) => String(label || "").trim().toLowerCase()).filter(Boolean);
+  if (!normalizedLabels.length) return "";
+  const lines = raw.split(/\r?\n/);
+  let start = -1;
+  for (let index = 0; index < lines.length; index += 1) {
+    const line = lines[index].trim();
+    if (!/^#{1,6}\s*/.test(line)) continue;
+    const heading = line
+      .replace(/^#{1,6}\s*/, "")
+      .replace(/\*+/g, "")
+      .replace(/\s+/g, " ")
+      .trim()
+      .toLowerCase();
+    if (normalizedLabels.some((label) => heading.includes(label))) {
+      start = index + 1;
+      break;
+    }
+  }
+  if (start < 0) return "";
+  let end = lines.length;
+  for (let index = start; index < lines.length; index += 1) {
+    if (/^#{1,6}\s*/.test(lines[index].trim())) {
+      end = index;
+      break;
+    }
+  }
+  return lines
+    .slice(start, end)
+    .join("\n")
+    .trim();
+};
+
 const extractLabeledBlock = (value: string, labels: string[]) => {
   for (const label of labels) {
     const escaped = label.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
     const pattern = new RegExp(
-      String.raw`(?:^|\n)\s*${escaped}\s*[:：]\s*([\s\S]*?)(?=\n\s*(?:[A-Z][A-Za-z0-9 &/+\-]{1,60}|Page-specific intent|Business details|Avoid these failure modes|Home page requirements|Home page content requirements|Routes must be exactly|Navigation must be exactly)\s*[:：]|\n\s*$|$)`,
+      String.raw`(?:^|\n)\s*(?:#{1,6}\s*)?${escaped}(?:\s*[（(][^）)\n]{0,30}[)）])?\s*[:：]\s*([\s\S]*?)(?=\n\s*(?![-*]\s)(?![A-Za-z]\)\s)(?!\d+[.)、]\s)(?![一二三四五六七八九十]+[、.)]\s)(?:#{1,6}\s*)?(?:[A-Z][A-Za-z0-9 &/+\-]{1,60}|[\u4e00-\u9fffA-Za-z][\u4e00-\u9fffA-Za-z0-9（）()、/&+\- ]{1,40}|Page-specific intent|Business details|Avoid these failure modes|Home page requirements|Home page content requirements|Routes must be exactly|Navigation must be exactly)\s*[:：]|\n\s*$|$)`,
       "i"
     );
     const match = value.match(pattern);
@@ -5854,15 +6237,144 @@ const extractLabeledBlock = (value: string, labels: string[]) => {
   return "";
 };
 
+const parseStructuredInputFromPromptPatch = (prompt: string): StructuredSiteInput | null => {
+  const rawPrompt = String(prompt || "");
+  const markerMatch = rawPrompt.match(/##\s*Structured Data\s*\(JSON\)/i);
+  if (!markerMatch) return null;
+  const markerIndex = markerMatch.index ?? -1;
+  if (markerIndex < 0) return null;
+  const afterMarker = rawPrompt.slice(markerIndex + markerMatch[0].length);
+  const firstBrace = afterMarker.indexOf("{");
+  if (firstBrace < 0) return null;
+  let depth = 0;
+  let end = -1;
+  for (let index = firstBrace; index < afterMarker.length; index += 1) {
+    const char = afterMarker[index];
+    if (char === "{") depth += 1;
+    if (char === "}") {
+      depth -= 1;
+      if (depth === 0) {
+        end = index;
+        break;
+      }
+    }
+  }
+  if (end < 0) return null;
+  const raw = afterMarker.slice(firstBrace, end + 1).trim();
+  if (!raw.startsWith("{")) return null;
+  try {
+    const parsed = JSON.parse(raw) as StructuredSiteInput;
+    if (!parsed || typeof parsed !== "object") return null;
+    return parsed;
+  } catch {
+    return null;
+  }
+};
+
+const mergeStructuredInputIntoBrief = (
+  brief: StructuredBrief,
+  structuredInput?: StructuredSiteInput | null
+): StructuredBrief => {
+  if (!structuredInput) return brief;
+  const products = (Array.isArray(structuredInput.products) ? structuredInput.products : [])
+    .map((entry) => ({
+      name: String((entry as StructuredProductRecord)?.name || "").trim(),
+      model: String((entry as StructuredProductRecord)?.model || "").trim() || undefined,
+      category: String((entry as StructuredProductRecord)?.category || "").trim() || undefined,
+      summary: String((entry as StructuredProductRecord)?.summary || "").trim() || undefined,
+      image: String((entry as StructuredProductRecord)?.image || "").trim() || undefined,
+      specs:
+        (entry as StructuredProductRecord)?.specs && typeof (entry as StructuredProductRecord).specs === "object"
+          ? ((entry as StructuredProductRecord).specs as Record<string, string>)
+          : undefined,
+      ctaLabel: String((entry as StructuredProductRecord)?.ctaLabel || "").trim() || undefined,
+    }))
+    .filter((entry) => entry.name);
+  const productItemsFromStructured = products
+    .map((entry) => {
+      const model = String(entry.model || "").trim();
+      if (!model) return entry.name;
+      if (entry.name.toLowerCase().includes(model.toLowerCase())) return entry.name;
+      return `${entry.name}（${model}）`;
+    })
+    .filter(Boolean);
+  const caseItemsFromStructured = (Array.isArray(structuredInput.cases) ? structuredInput.cases : [])
+    .map((entry) => String((entry as any)?.title || "").trim())
+    .filter(Boolean);
+  const faqItems = (Array.isArray(structuredInput.faqs) ? structuredInput.faqs : [])
+    .map((entry) => ({
+      question: String((entry as StructuredFaqRecord)?.question || "").trim(),
+      answer: String((entry as StructuredFaqRecord)?.answer || "").trim(),
+    }))
+    .filter((entry) => entry.question && entry.answer);
+  return {
+    ...brief,
+    brand: String(structuredInput.company?.name || "").trim() || brief.brand,
+    nav:
+      Array.isArray(structuredInput.nav) && structuredInput.nav.length
+        ? structuredInput.nav.map((item) => String(item || "").trim()).filter(Boolean)
+        : brief.nav,
+    productItems: productItemsFromStructured.length
+      ? Array.from(new Set([...(brief.productItems || []), ...productItemsFromStructured]))
+      : brief.productItems,
+    caseItems: caseItemsFromStructured.length
+      ? Array.from(new Set([...(brief.caseItems || []), ...caseItemsFromStructured]))
+      : brief.caseItems,
+    contactFields:
+      Array.isArray(structuredInput.contactFields) && structuredInput.contactFields.length
+        ? structuredInput.contactFields.map((item) => String(item || "").trim()).filter(Boolean)
+        : brief.contactFields,
+    productDetails: products.length ? products : brief.productDetails,
+    faqItems: faqItems.length ? faqItems : brief.faqItems,
+    catalogPageSize:
+      Number.isFinite(Number(structuredInput.catalogPageSize)) && Number(structuredInput.catalogPageSize) > 0
+        ? Math.max(6, Math.min(24, Number(structuredInput.catalogPageSize)))
+        : brief.catalogPageSize,
+    aboutText:
+      String(structuredInput.company?.summary || "").trim() ||
+      String(structuredInput.company?.website || "").trim() ||
+      brief.aboutText,
+    email: String(structuredInput.company?.email || "").trim() || brief.email,
+    address: String(structuredInput.company?.address || "").trim() || brief.address,
+    whatsapp: String(structuredInput.company?.phone || "").trim() || brief.whatsapp,
+  };
+};
+
 const parseStructuredBrief = (prompt: string): StructuredBrief | null => {
-  const header = extractPromptBriefSection(prompt, "Header");
-  const hero = extractPromptBriefSection(prompt, "Hero Section");
-  const productGrid = extractPromptBriefSection(prompt, "Product Grid");
-  const featureStrip = extractPromptBriefSection(prompt, "Features Strip");
-  const caseSlider = extractPromptBriefSection(prompt, "Case Slider");
-  const about = extractPromptBriefSection(prompt, "About");
-  const certification = extractPromptBriefSection(prompt, "Certification");
-  const footer = extractPromptBriefSection(prompt, "Footer");
+  const promptStructuredInput = parseStructuredInputFromPromptPatch(prompt);
+  const header = extractPromptBriefSection(prompt, "Header") || extractPromptBriefSection(prompt, "页眉");
+  const hero =
+    extractPromptBriefSection(prompt, "Hero Section") ||
+    extractPromptBriefSection(prompt, "Hero") ||
+    extractPromptBriefSection(prompt, "首屏");
+  const productGrid =
+    extractPromptBriefSection(prompt, "Product Grid") ||
+    extractPromptBriefSection(prompt, "产品中心") ||
+    extractPromptBriefSection(prompt, "产品模块");
+  const featureStrip =
+    extractPromptBriefSection(prompt, "Features Strip") ||
+    extractPromptBriefSection(prompt, "能力优势") ||
+    extractPromptBriefSection(prompt, "核心优势");
+  const caseSlider =
+    extractPromptBriefSection(prompt, "Case Slider") ||
+    extractPromptBriefSection(prompt, "应用案例") ||
+    extractPromptBriefSection(prompt, "案例");
+  const about = extractPromptBriefSection(prompt, "About") || extractPromptBriefSection(prompt, "关于我们");
+  const certification =
+    extractPromptBriefSection(prompt, "Certification") ||
+    extractPromptBriefSection(prompt, "资质认证") ||
+    extractPromptBriefSection(prompt, "认证");
+  const contactCapture =
+    extractPromptBriefSection(prompt, "Contact & Capture") ||
+    extractPromptBriefSection(prompt, "联系我们") ||
+    extractPromptBriefSection(prompt, "联系与留资");
+  const footer = extractPromptBriefSection(prompt, "Footer") || extractPromptBriefSection(prompt, "页脚");
+  const plainBrandSection = extractLabeledBlock(prompt, ["品牌定位", "brand"]);
+  const plainPagesSection = extractLabeledBlock(prompt, ["页面与目标", "页面清单", "pages"]);
+  const plainProductsSection = extractLabeledBlock(prompt, ["产品样板", "产品清单", "products"]);
+  const plainCasesSection = extractLabeledBlock(prompt, ["案例样板", "案例清单", "cases"]);
+  const plainContactSection = extractLabeledBlock(prompt, ["联系方式与转化", "联系方式与线索字段", "联系方式", "contact"]);
+  const plainAssetsSection = extractLabeledBlock(prompt, ["可信度资产", "SEO资产", "SEO 资产", "强烈建议"]);
   const fallbackHeader = extractLabeledBlock(prompt, ["Header", "Navigation"]);
   const fallbackProductGrid = extractLabeledBlock(prompt, [
     "Product Grid",
@@ -5876,17 +6388,112 @@ const parseStructuredBrief = (prompt: string): StructuredBrief | null => {
   ]);
   const fallbackAbout = extractLabeledBlock(prompt, ["About summary", "About"]);
   const fallbackCertification = extractLabeledBlock(prompt, ["Certification section", "Certifications", "Certification"]);
+  const fallbackContactCapture = extractLabeledBlock(prompt, ["Contact & Capture", "Contact Capture", "Contact"]);
   const fallbackBusinessDetails = extractLabeledBlock(prompt, ["Business details"]);
   const fallbackFooter = extractLabeledBlock(prompt, ["Footer"]);
+  const markdownBrandSection = extractMarkdownHeadingSection(prompt, ["brand", "品牌定位", "品牌"]) || plainBrandSection;
+  const markdownPagesSection = extractMarkdownHeadingSection(prompt, ["pages", "页面清单", "页面与目标"]) || plainPagesSection;
+  const markdownProductsSection =
+    extractMarkdownHeadingSection(prompt, ["products", "产品清单", "产品样板"]) || plainProductsSection;
+  const markdownCasesSection = extractMarkdownHeadingSection(prompt, ["cases", "案例清单", "案例样板"]) || plainCasesSection;
+  const markdownContactSection = extractMarkdownHeadingSection(prompt, [
+    "联系方式",
+    "线索字段",
+    "联系方式与转化",
+    "联系方式与线索字段",
+  ]) || plainContactSection;
+  const markdownAssetsSection =
+    extractMarkdownHeadingSection(prompt, ["强烈建议", "可信度资产", "seo 资产", "seo资产"]) || plainAssetsSection;
+  const normalizeInlineToken = (value: string) =>
+    String(value || "")
+      .replace(/\*+/g, "")
+      .replace(/^[\s-]+|[\s-]+$/g, "")
+      .replace(/[.。]+$/g, "")
+      .trim();
+  const parseRouteLabelsFromSection = (value: string) => {
+    const labels: string[] = [];
+    const matches = Array.from(
+      String(value || "").matchAll(/(?:^|\n)\s*[-*|]?\s*\/([a-zA-Z0-9\-\/]*)\s*(?:\(([^)（）:\n]{1,30})\)|([^\n:：]{1,24}))?\s*[:：]/g)
+    );
+    matches.forEach((match) => {
+      const pathPart = String(match[1] || "").trim();
+      const normalizedPath = normalizePromptPagePath(pathPart ? `/${pathPart}` : "/");
+      const fallback = defaultPageLabelForPath(normalizedPath, prompt);
+      const candidate = normalizeInlineToken(String(match[2] || match[3] || ""));
+      labels.push(candidate || fallback);
+    });
+    return labels.filter(Boolean);
+  };
+  const parseProductItemsFromSamples = (value: string) => {
+    const raw = String(value || "");
+    if (!raw.trim()) return [] as string[];
+    const blocks = raw.split(/\n(?=\s*\d+\s*[.)、])/);
+    const items = blocks
+      .map((block) => {
+        const name =
+          block.match(/(?:产品名称|名称)\s*[：:]\s*([^\n]+)/i)?.[1] ||
+          block.match(/^\s*\d+\s*[.)、]\s*(.+)$/m)?.[1] ||
+          "";
+        const model = block.match(/型号\s*[：:]\s*([A-Za-z0-9-]{2,})/i)?.[1] || "";
+        const title = normalizeInlineToken(name).replace(/\*+/g, "").trim();
+        if (!title) return "";
+        if (!model || title.toLowerCase().includes(model.toLowerCase())) return title;
+        return `${title}（${model.trim()}）`;
+      })
+      .filter(Boolean);
+    return Array.from(new Set(items)).slice(0, 8);
+  };
+  const parseCaseItemsFromSamples = (value: string) => {
+    const raw = String(value || "");
+    if (!raw.trim()) return [] as string[];
+    const enumeratedItems = raw
+      .split("\n")
+      .map((line) => line.trim())
+      .filter((line) => /^([A-Za-z]\)|\d+[.)、]|[一二三四五六七八九十]+[、.)])\s*/.test(line))
+      .map((line) => normalizeInlineToken(line.replace(/^([A-Za-z]\)|\d+[.)、]|[一二三四五六七八九十]+[、.)])\s*/, "")))
+      .filter(Boolean);
+    const headerMatches = Array.from(raw.matchAll(/案例\s*[A-Za-z0-9一二三四五六七八九十]*\s*[：:]\s*([^\n]+)/gi));
+    if (!headerMatches.length) return Array.from(new Set(enumeratedItems)).slice(0, 8);
+    const items = headerMatches.map((match, index) => {
+      const title = normalizeInlineToken(String(match[1] || ""));
+      const start = match.index ?? 0;
+      const end = index < headerMatches.length - 1 ? headerMatches[index + 1].index ?? raw.length : raw.length;
+      const block = raw.slice(start, end);
+      const outcome = normalizeInlineToken(block.match(/(?:结果|成效)\s*[：:]\s*([^\n]+)/i)?.[1] || "");
+      if (!title) return "";
+      return outcome ? `${title}（${outcome}）` : title;
+    });
+    const merged = [...enumeratedItems, ...items.filter(Boolean)];
+    const deduped = Array.from(
+      merged.reduce((acc, item) => {
+        const canonical = String(item || "")
+          .replace(/^([A-Za-z]\)|\d+[.)、]|[一二三四五六七八九十]+[、.)])\s*/, "")
+          .trim()
+          .toLowerCase();
+        if (!canonical) return acc;
+        if (!acc.has(canonical)) acc.set(canonical, item);
+        return acc;
+      }, new Map<string, string>())
+    ).map((entry) => entry[1]);
+    return deduped.slice(0, 8);
+  };
+  const brandFromMarkdown =
+    normalizeInlineToken(markdownBrandSection.match(/(?:公司|企业|品牌)\s*[：:]\s*([^\n]+)/i)?.[1] || "") ||
+    normalizeInlineToken(markdownBrandSection.match(/name\s*[：:]\s*([^\n]+)/i)?.[1] || "");
   const logo =
     header.match(/Logo\s*[:：]\s*(.+)/i)?.[1]?.trim() ||
+    header.match(/品牌\s*[:：]\s*(.+)/i)?.[1]?.trim() ||
+    brandFromMarkdown ||
     extractFirstLineMatch(prompt, [/Company name\s*[:：]\s*(.+)/i]) ||
     "";
   const nav = parsePipeList(
     header.match(/Nav\s*[:：]\s*(.+)/i)?.[1] ||
+      header.match(/导航\s*[:：]\s*(.+)/i)?.[1] ||
+      parseRouteLabelsFromSection(markdownPagesSection).join(" | ") ||
       extractFirstLineMatch(prompt, [
         /Navigation(?: must be exactly)?\s*[:：]\s*(.+)/i,
         /Nav\s*[:：]\s*(.+)/i,
+        /导航(?:必须)?\s*[:：]\s*(.+)/i,
       ])
   );
   const compactHeroLine = extractFirstLineMatch(prompt, [
@@ -5901,17 +6508,22 @@ const parseStructuredBrief = (prompt: string): StructuredBrief | null => {
   const compactHeroCtaLine = compactHeroLine.match(/\bCTAs?\s*[:：]\s*(.+)$/i)?.[1]?.trim() || "";
   const heroTitle =
     hero.match(/Title\s*[:：]\s*(.+)/i)?.[1]?.trim() ||
+    hero.match(/标题\s*[:：]\s*(.+)/i)?.[1]?.trim() ||
     extractFirstLineMatch(prompt, [/(?:^|\n)\s*Hero title\s*[:：]\s*(.+)/i, /(?:^|\n)\s*Title\s*[:：]\s*(.+)/i]) ||
     compactHeroTitle;
   const heroSubtitle =
     hero.match(/Sub\s*[:：]\s*(.+)/i)?.[1]?.trim() ||
+    hero.match(/副标题\s*[:：]\s*(.+)/i)?.[1]?.trim() ||
     extractFirstLineMatch(prompt, [
       /(?:^|\n)\s*Hero subtitle\s*[:：]\s*(.+)/i,
       /(?:^|\n)\s*Sub(?:title)?\s*[:：]\s*(.+)/i,
+      /(?:^|\n)\s*副标题\s*[:：]\s*(.+)/i,
     ]) ||
     compactHeroSubtitle;
   const ctaLine =
     hero.match(/CTA\s*[:：]\s*(.+)/i)?.[1] ||
+    hero.match(/按钮\s*[:：]\s*(.+)/i)?.[1] ||
+    markdownContactSection.match(/(?:CTA\s*文案|CTA)\s*[：:]\s*(.+)/i)?.[1] ||
     extractFirstLineMatch(prompt, [/(?:^|\n)\s*CTA\s*[:：]\s*(.+)/i, /(?:^|\n)\s*Primary CTA\s*[:：]\s*(.+)/i]) ||
     compactHeroCtaLine;
   const heroCtasFromLines = [
@@ -5926,12 +6538,13 @@ const parseStructuredBrief = (prompt: string): StructuredBrief | null => {
         const delimited = parseDelimitedList(ctaLine);
         return delimited.length ? delimited : piped;
       })();
-  const combinedProductGrid = [productGrid, fallbackProductGrid].filter(Boolean).join("\n");
-  const combinedFeatureStrip = [featureStrip, fallbackFeatureStrip].filter(Boolean).join("\n");
-  const combinedCaseSlider = [caseSlider, fallbackCaseSlider].filter(Boolean).join("\n");
-  const combinedAbout = [about, fallbackAbout].filter(Boolean).join("\n");
-  const combinedCertification = [certification, fallbackCertification].filter(Boolean).join("\n");
-  const combinedFooter = [footer, fallbackFooter, fallbackBusinessDetails].filter(Boolean).join("\n");
+  const combinedProductGrid = [productGrid, fallbackProductGrid, markdownProductsSection].filter(Boolean).join("\n");
+  const combinedFeatureStrip = [featureStrip, fallbackFeatureStrip, markdownAssetsSection].filter(Boolean).join("\n");
+  const combinedCaseSlider = [caseSlider, fallbackCaseSlider, markdownCasesSection].filter(Boolean).join("\n");
+  const combinedAbout = [about, fallbackAbout, markdownBrandSection].filter(Boolean).join("\n");
+  const combinedCertification = [certification, fallbackCertification, markdownAssetsSection].filter(Boolean).join("\n");
+  const combinedContactCapture = [contactCapture, fallbackContactCapture, markdownContactSection].filter(Boolean).join("\n");
+  const combinedFooter = [footer, fallbackFooter, fallbackBusinessDetails, markdownContactSection].filter(Boolean).join("\n");
   if (
     !header &&
     !hero &&
@@ -5939,6 +6552,7 @@ const parseStructuredBrief = (prompt: string): StructuredBrief | null => {
     !featureStrip &&
     !caseSlider &&
     !about &&
+    !contactCapture &&
     !footer &&
     !heroTitle &&
     !heroSubtitle &&
@@ -5947,7 +6561,13 @@ const parseStructuredBrief = (prompt: string): StructuredBrief | null => {
     !combinedFeatureStrip &&
     !combinedCaseSlider &&
     !combinedAbout &&
-    !combinedFooter
+    !combinedContactCapture &&
+    !combinedFooter &&
+    !markdownBrandSection &&
+    !markdownPagesSection &&
+    !markdownProductsSection &&
+    !markdownCasesSection &&
+    !markdownContactSection
   ) {
     return null;
   }
@@ -5957,29 +6577,88 @@ const parseStructuredBrief = (prompt: string): StructuredBrief | null => {
       .map((line) => line.trim())
       .find((line) => line.includes("|") && !/whatsapp|email|address|copyright/i.test(line)) || "";
   const footerLinks = parsePipeList(footerLinkLine).filter((label) => !/^sitemap$/i.test(label));
-  const whatsapp = combinedFooter.match(/WhatsApp\s*[:：]\s*([+0-9-]+)/i)?.[1]?.trim() || "";
-  const email = combinedFooter.match(/Email\s*[:：]\s*([^\s]+@[^\s]+)/i)?.[1]?.trim() || "";
-  const address = combinedFooter.match(/Address\s*[:：]\s*(.+)/i)?.[1]?.trim() || "";
-  const copyright = combinedFooter.match(/Copyright\s*©?\s*\d{4}.*$/im)?.[0]?.trim() || "";
-  return {
+  const phoneTokens = Array.from(
+    new Set(
+      Array.from(prompt.matchAll(/(?:电话|热线|联系电话|Whatsapp|WhatsApp)\s*[:：]\s*([+0-9][0-9\-+\s、,，/]{5,})/gi))
+        .flatMap((match) => String(match[1] || "").split(/[、,，/]/))
+        .map((item) => item.replace(/\s+/g, "").trim())
+        .filter((item) => /^(\+?\d[\d-]{5,})$/.test(item))
+    )
+  );
+  const footerPhoneLine =
+    combinedFooter.match(/(?:WhatsApp|电话|热线|联系电话)\s*[:：]\s*([^\n]+)/i)?.[1] || "";
+  const footerPhones = Array.from(
+    new Set(
+      String(footerPhoneLine || "")
+        .split(/[、,，/]/)
+        .map((item) => item.replace(/\s+/g, "").trim())
+        .filter((item) => /^(\+?\d[\d-]{5,})$/.test(item))
+    )
+  );
+  const whatsapp = footerPhones.slice(0, 2).join(" / ") || phoneTokens.slice(0, 2).join(" / ") || "";
+  const email =
+    combinedFooter.match(/Email\s*[:：]\s*([^\s]+@[^\s]+)/i)?.[1]?.trim() ||
+    prompt.match(/([A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,})/)?.[1]?.trim() ||
+    "";
+  const address =
+    combinedFooter.match(/Address\s*[:：]\s*(.+)/i)?.[1]?.trim() ||
+    combinedFooter.match(/地址\s*[:：]\s*(.+)/i)?.[1]?.trim() ||
+    "";
+  const copyright =
+    combinedFooter.match(/Copyright\s*©?\s*\d{4}.*$/im)?.[0]?.trim() ||
+    combinedFooter.match(/版权\s*[:：]?\s*.*$/im)?.[0]?.trim() ||
+    "";
+  const contactTitle =
+    combinedContactCapture.match(/Right\s*[:：]\s*(.+)/i)?.[1]?.trim() ||
+    combinedContactCapture.match(/右侧\s*[:：]\s*(.+)/i)?.[1]?.trim() ||
+    combinedContactCapture.match(/(?:Quick\s*Quote\s*Form|Quote\s*Form)\s*[:：]?\s*(.+)?/i)?.[1]?.trim() ||
+    combinedContactCapture.match(/(?:在线留言板|在线留言|留言表单)\s*[:：]?\s*(.+)?/i)?.[1]?.trim() ||
+    combinedContactCapture.match(/(?:询价表单|联系表单)\s*[:：]?\s*(.+)?/i)?.[1]?.trim() ||
+    "";
+  const contactFieldLine =
+    combinedContactCapture.match(/Fields\s*[:：]\s*(.+)/i)?.[1] ||
+    combinedContactCapture.match(/字段\s*[:：]\s*(.+)/i)?.[1] ||
+    combinedContactCapture.match(/表单字段\s*[:：]\s*(.+)/i)?.[1] ||
+    "";
+  const contactFields = parseContactFieldList(contactFieldLine);
+  const consentText =
+    combinedContactCapture.match(/Consent\s*[:：]\s*(.+)/i)?.[1]?.trim() ||
+    combinedContactCapture.match(/同意项\s*[:：]\s*(.+)/i)?.[1]?.trim() ||
+    "";
+  const productItems = Array.from(
+    new Set([...parseProductItemsFromSamples(markdownProductsSection), ...parseBulletList(combinedProductGrid)])
+  ).slice(0, 8);
+  const parsedCaseItems = parseCaseItemsFromSamples(markdownCasesSection || combinedCaseSlider);
+  const caseItems = (
+    parsedCaseItems.length
+      ? parsedCaseItems
+      : Array.from(new Set([...parseBulletList(combinedCaseSlider), ...parsePipeList(combinedCaseSlider)]))
+  ).slice(0, 8);
+  const certificationLine = extractFirstLineMatch(combinedCertification, [
+    /(?:证书|认证|certifications?|certification)\s*[:：]\s*(.+)/i,
+  ]);
+  const certifications = Array.from(
+    new Set([...parsePipeList(combinedCertification.replace(/\n/g, " | ")), ...parseDelimitedList(certificationLine)])
+  ).slice(0, 8);
+  const baseBrief: StructuredBrief = {
     brand: logo || extractBrandNameFromPromptLite(prompt) || "Brand",
     nav,
     heroTitle,
     heroSubtitle,
     heroCtas,
-    productItems: parseBulletList(combinedProductGrid),
+    productItems,
     featureItems: parseBulletList(combinedFeatureStrip),
-    caseItems:
-      parsePipeList(
-        combinedCaseSlider.match(/([A-Za-z0-9&+.,' -]+(?:\s*\|\s*[A-Za-z0-9&+.,' -]+)+)/)?.[1] || ""
-      ) || parseBulletList(combinedCaseSlider),
+    caseItems,
     aboutText: combinedAbout.replace(/\s+/g, " ").trim(),
-    certifications: parsePipeList(combinedCertification.replace(/\n/g, " | ")),
+    certifications,
     footerLinks,
     whatsapp,
     email,
     address,
     copyright,
+    contactTitle,
+    contactFields,
+    consentText,
     mode: /red\s*\+\s*beige|red and beige|红色.*米黄|米黄.*红色/i.test(prompt) ? "light" : undefined,
     palette: /red\s*\+\s*beige|red and beige|红色.*米黄|米黄.*红色/i.test(prompt)
       ? {
@@ -5992,1950 +6671,1144 @@ const parseStructuredBrief = (prompt: string): StructuredBrief | null => {
         }
       : undefined,
   };
+  return mergeStructuredInputIntoBrief(baseBrief, promptStructuredInput);
+};
+
+const deriveStructuredBriefFromPrompt = (prompt: string): StructuredBrief => {
+  const raw = String(prompt || "");
+  const useChinese = shouldUseChineseContent(raw);
+  const brand = extractBrandNameFromPromptLite(raw) || (useChinese ? "本公司" : "Company");
+  const factPackSection = (() => {
+    const marker = raw.search(/#\s*External\s+Fact\s+Pack(?:\s*\(Serper\))?/i);
+    if (marker < 0) return "";
+    return raw.slice(marker);
+  })();
+  const factLines = factPackSection
+    .split("\n")
+    .map((line) => line.trim())
+    .filter((line) => /^-\s+/.test(line))
+    .map((line) => line.replace(/^-+\s*/, "").replace(/\([^)]*\)/g, "").replace(/\s+/g, " ").trim())
+    .filter(Boolean);
+  const sanitizeFactToken = (value: string) => {
+    let next = String(value || "")
+      .replace(/https?:\/\/\S+/gi, " ")
+      .replace(/www\.\S+/gi, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+    next = next
+      .replace(/(?:深圳|中国|广东|有限公司|有限责任公司|官网|官方网站|首页|详情|更多|项目|信息)/g, " ")
+      .replace(/\b(?:official|website|home|details?|more|platform)\b/gi, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+    next = next.replace(/^[-:：|,，。；;]+|[-:：|,，。；;]+$/g, "").trim();
+    if (!next) return "";
+    const maxLen = /[\u4e00-\u9fff]/.test(next) ? 22 : 48;
+    if (next.length <= maxLen) return next;
+    const split = next.split(/[，。；;,:：|]/).map((item) => item.trim()).filter(Boolean);
+    const clipped = split.find((item) => item.length >= 4 && item.length <= maxLen) || next.slice(0, maxLen);
+    return clipped.trim();
+  };
+
+  const factCandidates = Array.from(
+    new Set(
+      factLines
+        .flatMap((line) => line.split(/[|｜]/))
+        .map((item) => sanitizeFactToken(item))
+        .filter((item) => item.length >= 4)
+    )
+  );
+
+  const pickClean = (pattern: RegExp, limit: number) =>
+    Array.from(new Set(factCandidates.filter((line) => pattern.test(line)))).slice(0, limit);
+
+  const explicitProducts = Array.from(
+    new Set(
+      (raw.match(
+        /(?:3C[^，。；;\n]{0,20}(?:加工中心|机床|设备|中心)|(?:手机|笔电|电脑|摄像头|按键)[^，。；;\n]{0,16}(?:加工中心|机床|设备|边框))/gi
+      ) || [])
+        .map((item) => sanitizeFactToken(item))
+        .filter(Boolean)
+    )
+  ).slice(0, 6);
+  const productItems = explicitProducts.length
+    ? explicitProducts
+    : pickClean(/(机床|加工|机型|设备|数控|cnc|machining|machine|product|center|精雕机|刀库机)/i, 6);
+
+  const explicitCases = Array.from(
+    new Set(
+      (raw.match(/(?:手机中框|笔电外壳|摄像头边框|按键)[^，。；;\n]{0,12}(?:加工|案例)?/gi) || [])
+        .map((item) => sanitizeFactToken(item))
+        .filter(Boolean)
+    )
+  ).slice(0, 6);
+  const caseItems = explicitCases.length
+    ? explicitCases
+    : pickClean(/(案例|应用|项目|客户|交付|case|application|project|customer)/i, 6);
+
+  const featureItems = pickClean(/(交付|支持|定制|样机|服务|lead[-\s]?time|prototype|shipment|support|custom|打样)/i, 6);
+  const certifications = Array.from(
+    new Set(
+      [
+        ...pickClean(/(iso[\s-]*9001|iso|ce|sgs|认证|certification|certified)/i, 4),
+        ...(raw.match(/\bISO\s*9001\b|\bCE\b|\bSGS\b/gi) || []),
+      ]
+        .map((item) => sanitizeFactToken(item))
+        .filter(Boolean)
+    )
+  ).slice(0, 4);
+
+  const industryLike = /(数控|机床|3c|加工|cnc|machining|industrial|factory|manufactur)/i.test(raw);
+  const fallbackProducts =
+    industryLike
+      ? (() => {
+          const defaults = useChinese
+            ? ["高精密数控加工中心", "自动换刀加工设备", "多主轴批量加工设备", "复合材料精密加工设备"]
+            : [
+                "High-Precision CNC Machining Center",
+                "Automatic Tool-Change CNC System",
+                "Multi-Spindle Batch Processing Machine",
+                "Composite Material Precision Machining Equipment",
+              ];
+          const merged = Array.from(new Set([...productItems, ...defaults])).filter(Boolean);
+          return merged.slice(0, 6);
+        })()
+      : productItems;
+  const fallbackCases =
+    industryLike
+      ? (() => {
+          const defaults = useChinese
+            ? ["金属结构件高精度加工案例", "复合材料面板加工案例", "批量精密零件自动化加工案例", "复杂工艺一体化交付案例"]
+            : [
+                "High-Precision Metal Part Machining Case",
+                "Composite Panel Processing Case",
+                "Automated Batch Precision-Part Production Case",
+                "Complex Process One-Pass Delivery Case",
+              ];
+          const merged = Array.from(new Set([...caseItems, ...defaults])).filter(Boolean);
+          return merged.slice(0, 6);
+        })()
+      : caseItems;
+  const fallbackFeatures =
+    industryLike
+      ? (() => {
+          const defaults = useChinese
+            ? ["快速定制与打样", "短交期批量交付", "本地化技术支持"]
+            : ["Fast customization & sampling", "Short lead-time delivery", "Localized technical support"];
+          const merged = Array.from(new Set([...featureItems, ...defaults])).filter(Boolean);
+          return merged.slice(0, 6);
+        })()
+      : featureItems;
+  const fallbackCertifications =
+    certifications.length > 0 ? certifications : /(iso|ce|sgs|认证)/i.test(raw) ? ["ISO 9001", "CE", "SGS"] : [];
+
+  const aboutTextMatch =
+    raw.match(/(?:关于|简介|about)[\s:：-]*([^\n]{12,220})/i)?.[1]?.trim() ||
+    raw.match(/(?:since|成立于)\s*[0-9]{4}[^\n]{0,120}/i)?.[0]?.trim() ||
+    "";
+  const aboutText =
+    aboutTextMatch ||
+    (useChinese
+      ? `${brand}专注高端数控机床与精密加工场景，提供从打样、量产到售后支持的一体化能力。`
+      : `${brand} focuses on high-end CNC and precision machining scenarios with integrated support from prototyping to mass production.`);
+
+  return {
+    brand,
+    productItems: fallbackProducts,
+    caseItems: fallbackCases,
+    featureItems: fallbackFeatures,
+    certifications: fallbackCertifications,
+    aboutText,
+  };
+};
+
+const applyGenericStructuredBriefOverrides = (
+  pages: GeneratedPage[],
+  brief: StructuredBrief,
+  prompt: string
+): GeneratedPage[] => {
+  const isChinesePrompt = shouldUseChineseContent(prompt);
+  const fallbackBrand = String(brief.brand || (isChinesePrompt ? "本公司" : "Company")).trim();
+  const pagePathSet = new Set(pages.map((page) => normalizePromptPagePath(String(page.path || "/"))));
+
+  const navLinks = (() => {
+    const source = Array.isArray(brief.nav) ? brief.nav : [];
+    const links = source
+      .map((label) => String(label || "").trim())
+      .filter(Boolean)
+      .map((label) => {
+        const preferred = resolveEnterprisePagePathFromLabel(label);
+        const href =
+          preferred !== "/"
+            ? preferred
+            : /^home|首页$/i.test(label)
+              ? "/"
+              : null;
+        if (!href) return null;
+        return { label, href, variant: "link" as const };
+      })
+      .filter((item): item is { label: string; href: string; variant: "link" } => Boolean(item));
+    const deduped = Array.from(
+      links.reduce((acc, item) => {
+        if (!acc.has(item.href)) acc.set(item.href, item);
+        return acc;
+      }, new Map<string, { label: string; href: string; variant: "link" }>())
+    ).map((entry) => entry[1]);
+    if (deduped.length > 0) return deduped;
+    const fallback = pages
+      .map((page) => {
+        const href = normalizePromptPagePath(String(page.path || "/"));
+        const rawLabel = String(page.name || "").trim();
+        const label = resolveLocalizedPageLabel(rawLabel, href, prompt);
+        return { label, href, variant: "link" as const };
+      })
+      .filter((item) => item.href === "/" || pagePathSet.has(item.href));
+    return fallback.slice(0, 8);
+  })();
+
+  const navText = navLinks.map((item) => item.label).join(" | ");
+  const primaryCta = String(brief.heroCtas?.[0] || (isChinesePrompt ? "立即咨询" : "Contact")).trim();
+  const secondaryCta = String(brief.heroCtas?.[1] || (isChinesePrompt ? "获取资料" : "Request Catalog")).trim();
+  const footerColumns = (() => {
+    if (Array.isArray(brief.footerLinks) && brief.footerLinks.length > 0) {
+      return [
+        {
+          title: isChinesePrompt ? "快速入口" : "Quick Links",
+          links: brief.footerLinks
+            .map((label) => String(label || "").trim())
+            .filter(Boolean)
+            .map((label) => ({ label, href: resolveEnterprisePagePathFromLabel(label) || "/" })),
+        },
+      ];
+    }
+    const nonHome = navLinks.filter((item) => item.href !== "/");
+    return [
+      {
+        title: isChinesePrompt ? "产品与方案" : "Products & Solutions",
+        links: nonHome
+          .filter((item) => {
+            const type = inferEnterprisePageTypeFromPath(item.href);
+            return type === "products" || type === "solutions" || type === "cases";
+          })
+          .slice(0, 4),
+      },
+      {
+        title: isChinesePrompt ? "公司信息" : "Company",
+        links: nonHome
+          .filter((item) => {
+            const type = inferEnterprisePageTypeFromPath(item.href);
+            return type === "about" || type === "contact" || type === "support";
+          })
+          .slice(0, 4),
+      },
+      {
+        title: isChinesePrompt ? "法务" : "Legal",
+        links: [
+          {
+            label: isChinesePrompt ? "隐私政策" : "Privacy",
+            href: pagePathSet.has("/privacy") ? "/privacy" : "/",
+          },
+        ],
+      },
+    ].filter((column) => column.links.length > 0);
+  })();
+  const navLabelByPath = new Map(navLinks.map((item) => [item.href, item.label] as const));
+
+  const replaceLeakText = (value: string) => {
+    let next = String(value || "");
+    if (!next.trim()) return next;
+    const brandLikeHyphenPattern = /\b[A-Z]{2,}(?:-[A-Z0-9]{2,})+\b/g;
+    next = next.replace(brandLikeHyphenPattern, (token) => {
+      if (fallbackBrand && token.toLowerCase() === fallbackBrand.toLowerCase()) return token;
+      return fallbackBrand;
+    });
+    const markedBrandPattern = /\b([A-Za-z][A-Za-z0-9-]{1,})(?:\s+[A-Za-z0-9-]{1,}){0,2}[™®]/g;
+    next = next.replace(markedBrandPattern, fallbackBrand);
+    next = next.replace(/\b(Contact|Talk to)\s+[A-Z][A-Za-z0-9-]{2,}(?:\s+[A-Z][A-Za-z0-9-]{2,})?\b/g, (_m, verb) => {
+      return `${verb} ${fallbackBrand}`;
+    });
+    if (isChinesePrompt) {
+      next = next.replace(/\bHome\b/g, "首页");
+      next = next.replace(/\bProducts\b/g, "产品中心");
+      next = next.replace(/\bSolutions\b/g, "解决方案");
+      next = next.replace(/\bCases\b/g, "应用案例");
+      next = next.replace(/\bAbout\b/g, "关于我们");
+      next = next.replace(/\bContact\b/g, "联系我们");
+    }
+    return next;
+  };
+
+  const deepRewrite = (value: unknown): unknown => {
+    if (typeof value === "string") return replaceLeakText(value);
+    if (Array.isArray(value)) return value.map((entry) => deepRewrite(entry));
+    if (!value || typeof value !== "object") return value;
+    const next: Record<string, unknown> = {};
+    Object.entries(value as Record<string, unknown>).forEach(([key, entry]) => {
+      next[key] = deepRewrite(entry);
+    });
+    return next;
+  };
+
+  return pages.map((page) => {
+    const pagePath = normalizePromptPagePath(String(page.path || "/"));
+    const existingRoot =
+      page?.data?.root && typeof page.data.root === "object"
+        ? page.data.root
+        : ({
+            props: {
+              title: String(page?.name || "Page"),
+              theme: {},
+            },
+          } as any);
+    const nextPage: GeneratedPage = {
+      ...page,
+      name: navLabelByPath.get(pagePath) || page.name,
+      data: {
+        ...((page.data || {}) as Record<string, unknown>),
+        root: existingRoot,
+        content: Array.isArray(page?.data?.content)
+          ? page.data.content.map((item) => {
+              const props = (deepRewrite(item?.props || {}) as Record<string, unknown>) || {};
+              const token = `${String(item?.type || "")} ${String(props?.id || "")}`.toLowerCase();
+              if (isNavbarLikeBlock(item as any)) {
+                props.logoText = fallbackBrand;
+                props.logotext = fallbackBrand;
+                props.logotexttext = fallbackBrand;
+                props.brandtext = fallbackBrand.toUpperCase();
+                props.links = navLinks;
+                props.navtext = navText;
+                props.toplinkstext = navText;
+                props.actionstext = primaryCta;
+                props.ctahtxttext = primaryCta;
+                props.logintxttext = isChinesePrompt ? "联系我们" : "Contact";
+              }
+              if (isFooterLikeBlock(item as any)) {
+                props.logoText = fallbackBrand;
+                props.columns = footerColumns;
+                if (brief.copyright) props.legal = brief.copyright;
+                if (brief.copyright) props.copytext = brief.copyright;
+                if (brief.address) props.footeraddresstext = brief.address;
+                if (brief.address) props.footercompanytext = brief.address;
+                if (brief.whatsapp || brief.email) props.footercontacttext = brief.whatsapp || brief.email;
+              }
+              if (pagePath === "/" && /(hero|masthead|banner|intro)/.test(token)) {
+                if (brief.heroTitle) {
+                  props.title = brief.heroTitle;
+                  props.titletext = brief.heroTitle;
+                  props.herotitletext = brief.heroTitle;
+                  props.heroTitletext = brief.heroTitle;
+                }
+                if (brief.heroSubtitle) {
+                  props.subtitle = brief.heroSubtitle;
+                  props.desctext = brief.heroSubtitle;
+                  props.herodesctext = brief.heroSubtitle;
+                  props.heroSubtext = brief.heroSubtitle;
+                }
+                if (brief.heroCtas?.[0]) {
+                  props.heroPrimaryTexttext = brief.heroCtas[0];
+                  props.herobtntexttext = brief.heroCtas[0];
+                  props.ctatexttext = brief.heroCtas[0];
+                }
+                if (brief.heroCtas?.[1]) {
+                  props.heroSecondaryTexttext = brief.heroCtas[1];
+                  props.herobtntxttext = brief.heroCtas[1];
+                }
+              }
+              if (pagePath === "/contact" && /(contact|lead|quote|form|cta)/.test(token)) {
+                if (brief.contactTitle) props.title = brief.contactTitle;
+                if (brief.consentText) props.note = brief.consentText;
+                if (!props.submitLabel) props.submitLabel = isChinesePrompt ? "提交询盘" : "Submit Request";
+                if (brief.contactFields?.length) {
+                  props.formFields = brief.contactFields.map((field) => ({ label: field, key: normalizeKey(field) }));
+                }
+              }
+              return { ...item, props };
+            })
+          : [],
+      },
+    };
+    return nextPage;
+  });
+};
+
+const applyStructuredBriefContentEnrichment = (
+  pages: GeneratedPage[],
+  brief: StructuredBrief,
+  prompt: string
+): GeneratedPage[] => {
+  const useChinese = shouldUseChineseContent(prompt);
+  const detailNames = Array.isArray(brief.productDetails)
+    ? brief.productDetails.map((entry) => String(entry?.name || "").trim()).filter(Boolean)
+    : [];
+  const productItems = Array.from(
+    new Set([...(brief.productItems || []).map((item) => String(item || "").trim()).filter(Boolean), ...detailNames])
+  ).slice(0, Math.max(12, Number(process.env.BUILDER_ENRICHMENT_PRODUCT_LIMIT || 36)));
+  const featureItems = Array.from(new Set((brief.featureItems || []).map((item) => String(item || "").trim()).filter(Boolean))).slice(
+    0,
+    Math.max(8, Number(process.env.BUILDER_ENRICHMENT_FEATURE_LIMIT || 18))
+  );
+  const caseItems = Array.from(new Set((brief.caseItems || []).map((item) => String(item || "").trim()).filter(Boolean))).slice(
+    0,
+    Math.max(8, Number(process.env.BUILDER_ENRICHMENT_CASE_LIMIT || 18))
+  );
+  const certifications = Array.from(
+    new Set((brief.certifications || []).map((item) => String(item || "").trim()).filter(Boolean))
+  ).slice(0, 8);
+  const aboutText = String(brief.aboutText || "").trim();
+
+  const toCards = (items: string[], href: string) =>
+    items.map((item) => ({
+      title: item,
+      description: useChinese ? `${item}，支持参数定制与工艺验证。` : `${item} with configurable specs and process validation.`,
+      cta: {
+        label: useChinese ? "了解详情" : "Learn more",
+        href,
+        variant: "link",
+      },
+    }));
+
+  const toFeatures = (items: string[]) =>
+    items.map((item) => ({
+      title: item,
+      desc: useChinese ? `${item}，确保项目交付与产线稳定运行。` : `${item} to ensure delivery and production stability.`,
+      icon: "shield",
+    }));
+
+  const dedupeLocalContent = (content: any[]) => {
+    const seen = new Set<string>();
+    const deduped: any[] = [];
+    content.forEach((item) => {
+      const type = String(item?.type || "");
+      const id = String(item?.props?.id || item?._key || "");
+      const key = `${type}::${id}`;
+      if (seen.has(key)) return;
+      seen.add(key);
+      deduped.push(item);
+    });
+    return deduped;
+  };
+
+  return pages.map((page) => {
+    const pagePath = normalizePromptPagePath(String(page.path || "/"));
+    const content = Array.isArray(page?.data?.content) ? [...page.data.content] : [];
+    if (!content.length) return page;
+
+    const findIndex = (pattern: RegExp) => content.findIndex((item: any) => pattern.test(String(item?.type || "")));
+    const hasType = (pattern: RegExp) => findIndex(pattern) >= 0;
+    const ctaIndex = findIndex(/leadcapture|contact|cta/i);
+
+    const upsertCardsBlock = (
+      title: string,
+      subtitle: string,
+      items: string[],
+      href: string,
+      keySeed: string,
+      replaceExisting = true
+    ) => {
+      if (!items.length) return;
+      const block = {
+        type: "CardsGrid",
+        props: {
+          id: `${keySeed}-cards`,
+          anchor: keySeed,
+          title,
+          subtitle,
+          variant: "product",
+          columns: "3col",
+          density: "normal",
+          cardStyle: "solid",
+          maxWidth: "xl",
+          items: toCards(items, href),
+          paddingY: "lg",
+          motionPreset: "stagger",
+        },
+        _key: `${pagePath}:${keySeed}:enriched`,
+      };
+      const cardsIndex = findIndex(/cardsgrid|productcatalog/i);
+      if (cardsIndex >= 0 && replaceExisting) {
+        content[cardsIndex] = block;
+      } else {
+        content.splice(ctaIndex >= 0 ? ctaIndex : content.length, 0, block);
+      }
+    };
+
+    const upsertFeatureBlock = (title: string, subtitle: string, items: string[], keySeed: string) => {
+      if (!items.length) return;
+      const block = {
+        type: "FeatureGrid",
+        props: {
+          id: `${keySeed}-features`,
+          anchor: keySeed,
+          title,
+          subtitle,
+          variant: "3col",
+          maxWidth: "xl",
+          items: toFeatures(items),
+          paddingY: "lg",
+          motionPreset: "stagger",
+        },
+        _key: `${pagePath}:${keySeed}:enriched`,
+      };
+      const featureIndex = findIndex(/featuregrid|features/i);
+      if (featureIndex >= 0) {
+        content[featureIndex] = block;
+      } else {
+        content.splice(ctaIndex >= 0 ? ctaIndex : content.length, 0, block);
+      }
+    };
+
+    if (pagePath === "/") {
+      upsertCardsBlock(
+        useChinese ? "产品中心" : "Product Center",
+        useChinese ? "核心机型与加工场景概览。" : "Overview of core machine models and machining scenarios.",
+        productItems,
+        "/products",
+        "home-products"
+      );
+      upsertFeatureBlock(
+        useChinese ? "能力优势" : "Key Advantages",
+        useChinese ? "围绕样机速度、交付效率与本地支持构建。" : "Built around prototyping speed, delivery efficiency, and local support.",
+        featureItems,
+        "home-features"
+      );
+      if (caseItems.length) {
+        upsertCardsBlock(
+          useChinese ? "应用案例" : "Application Cases",
+          useChinese ? "典型行业应用与交付实践。" : "Representative industry applications and delivery practice.",
+          caseItems,
+          "/cases",
+          "home-cases",
+          false
+        );
+      }
+      if (certifications.length) {
+        upsertFeatureBlock(
+          useChinese ? "资质认证" : "Certifications",
+          useChinese ? "质量与合规体系认证。" : "Quality and compliance certifications.",
+          certifications,
+          "home-certifications"
+        );
+      }
+    } else if (pagePath === "/products") {
+      upsertCardsBlock(
+        useChinese ? "产品中心" : "Products",
+        useChinese ? "按加工对象划分的完整机型列表。" : "Complete machine lineup by machining target.",
+        productItems,
+        "/products",
+        "products"
+      );
+      const featureIndex = findIndex(/featuregrid|features/i);
+      if (featureIndex >= 0) {
+        content[featureIndex] = {
+          type: "ContentStory",
+          props: {
+            id: "products-selection-guide",
+            anchor: "selection-guide",
+            title: useChinese ? "选型指南" : "Selection Guide",
+            subtitle: useChinese
+              ? "按工件类型、节拍与精度要求匹配机型。"
+              : "Match machine models by part type, takt time, and precision target.",
+            body: useChinese
+              ? "围绕中框、外壳、边框与按键等典型工件，提供参数区间与交付建议。"
+              : "Provide parameter ranges and delivery recommendations for typical parts.",
+            variant: "split",
+            maxWidth: "xl",
+            paddingY: "lg",
+          },
+        };
+      }
+    } else if (pagePath === "/core-product") {
+      const focusedProducts = productItems.length > 1 ? productItems.slice(0, Math.min(4, productItems.length)) : productItems;
+      upsertCardsBlock(
+        useChinese ? "核心产品" : "Core Products",
+        useChinese ? "聚焦旗舰机型与关键参数能力。" : "Focus on flagship models and key specification capability.",
+        focusedProducts,
+        "/core-product",
+        "core-products"
+      );
+      const featureIndex = findIndex(/featuregrid|features/i);
+      if (featureIndex >= 0) {
+        content[featureIndex] = {
+          type: "ContentStory",
+          props: {
+            id: "core-product-parameters",
+            anchor: "core-parameters",
+            title: useChinese ? "关键参数" : "Key Specs",
+            subtitle: useChinese
+              ? "覆盖主轴、行程、重复定位精度与节拍能力。"
+              : "Cover spindle, travel, repeatability, and cycle-time capability.",
+            body: useChinese
+              ? "该页面用于展示单机维度参数与工艺适配，不与产品中心的目录能力重复。"
+              : "This page focuses on model-level specs and process fit, distinct from the catalog page.",
+            variant: "split",
+            maxWidth: "xl",
+            paddingY: "lg",
+          },
+        };
+      }
+    } else if (pagePath === "/solutions") {
+      upsertFeatureBlock(
+        useChinese ? "定制方案" : "Custom Solutions",
+        useChinese ? "围绕客户工艺节拍提供方案配置。" : "Solution configuration aligned to customer process cadence.",
+        featureItems,
+        "solutions"
+      );
+    } else if (pagePath === "/cases") {
+      upsertCardsBlock(
+        useChinese ? "应用案例" : "Cases",
+        useChinese ? "真实项目加工案例与落地结果。" : "Real machining projects and delivery outcomes.",
+        caseItems,
+        "/cases",
+        "cases"
+      );
+    } else if (pagePath === "/about") {
+      if (aboutText) {
+        const storyIndex = findIndex(/contentstory|story|about/i);
+        if (storyIndex >= 0) {
+          const current = content[storyIndex];
+          const currentProps = current?.props && typeof current.props === "object" ? current.props : {};
+          content[storyIndex] = {
+            ...current,
+            type: "ContentStory",
+            props: {
+              ...currentProps,
+              title: useChinese ? "关于我们" : "About Us",
+              subtitle: useChinese ? "企业简介与发展历程" : "Company profile and development",
+              body: aboutText,
+              variant: "split",
+            },
+          };
+        }
+      }
+      if (certifications.length) {
+        upsertFeatureBlock(
+          useChinese ? "资质认证" : "Certifications",
+          useChinese ? "质量与合规体系认证。" : "Quality and compliance certifications.",
+          certifications,
+          "about-certifications"
+        );
+      }
+    }
+
+    const nextData = {
+      ...(page.data as Record<string, unknown>),
+      root: (page.data as any)?.root,
+      content: dedupeLocalContent(content),
+    };
+    return {
+      ...(page as any),
+      data: nextData,
+    } as GeneratedPage;
+  });
+};
+
+const chunkBy = <T,>(items: T[], chunkSize: number): T[][] => {
+  if (!Array.isArray(items) || items.length === 0) return [];
+  const safeSize = Math.max(1, Math.floor(chunkSize));
+  const chunks: T[][] = [];
+  for (let index = 0; index < items.length; index += safeSize) {
+    chunks.push(items.slice(index, index + safeSize));
+  }
+  return chunks;
+};
+
+const cloneBlock = <T,>(value: T): T => JSON.parse(JSON.stringify(value));
+
+const expandCatalogPagesFromBrief = (
+  pages: GeneratedPage[],
+  brief: StructuredBrief,
+  prompt: string
+): GeneratedPage[] => {
+  type CatalogDetail = {
+    name: string;
+    model?: string;
+    category?: string;
+    summary?: string;
+    image?: string;
+    specs?: Record<string, string>;
+    ctaLabel?: string;
+    detailPath?: string;
+  };
+  const useChinese = shouldUseChineseContent(prompt);
+  const pageSize = clampPositiveInt(
+    Number(brief.catalogPageSize || process.env.BUILDER_CATALOG_PAGE_SIZE || 12),
+    12,
+    6,
+    24
+  );
+  const maxDetailPages = clampPositiveInt(
+    Number(process.env.BUILDER_CATALOG_MAX_DETAIL_PAGES || 120),
+    120,
+    1,
+    240
+  );
+  const sourceDetails: CatalogDetail[] =
+    Array.isArray(brief.productDetails) && brief.productDetails.length
+      ? brief.productDetails.map((entry) => ({
+          name: String(entry?.name || "").trim(),
+          model: String(entry?.model || "").trim() || undefined,
+          category: String(entry?.category || "").trim() || undefined,
+          summary: String(entry?.summary || "").trim() || undefined,
+          image: String(entry?.image || "").trim() || undefined,
+          specs: entry?.specs && typeof entry.specs === "object" ? (entry.specs as Record<string, string>) : undefined,
+          ctaLabel: String(entry?.ctaLabel || "").trim() || undefined,
+        }))
+      : Array.from(new Set((brief.productItems || []).map((item) => String(item || "").trim()).filter(Boolean))).map((item) => ({
+          name: item,
+          summary: useChinese ? `${item} 参数可定制，支持打样与批量交付。` : `${item} with configurable specs and pilot-to-mass delivery.`,
+        }));
+  const normalizedDetails = Array.from(
+    sourceDetails.reduce((acc, item) => {
+      const name = String(item?.name || "").trim();
+      if (!name) return acc;
+      const key = `${name.toLowerCase()}::${String(item?.model || "").trim().toLowerCase()}`;
+      if (acc.has(key)) return acc;
+      acc.set(key, {
+        name,
+        model: String(item?.model || "").trim() || undefined,
+        category: String(item?.category || "").trim() || undefined,
+        summary: String(item?.summary || "").trim() || undefined,
+        image: String(item?.image || "").trim() || undefined,
+        specs:
+          item?.specs && typeof item.specs === "object"
+            ? Object.entries(item.specs as Record<string, string>).reduce<Record<string, string>>((specs, [k, v]) => {
+                const keyText = String(k || "").trim();
+                const valueText = String(v || "").trim();
+                if (!keyText || !valueText) return specs;
+                specs[keyText] = valueText;
+                return specs;
+              }, {})
+            : undefined,
+        ctaLabel: String(item?.ctaLabel || "").trim() || undefined,
+      });
+      return acc;
+    }, new Map<string, CatalogDetail>())
+  ).map((entry) => entry[1]);
+
+  if (!normalizedDetails.length) return pages;
+
+  const normalizedPages = Array.isArray(pages) ? [...pages] : [];
+  const normalizedPathSet = new Set(
+    normalizedPages.map((page) => normalizePromptPagePath(String(page.path || "/")))
+  );
+  const allPageLinks = normalizedPages.map((page) => ({
+    href: normalizePromptPagePath(String(page.path || "/")),
+    label: resolveLocalizedPageLabel(String(page.name || ""), normalizePromptPagePath(String(page.path || "/")), prompt),
+  }));
+  const navLinks = Array.from(
+    allPageLinks.reduce((acc, item) => {
+      if (!item.href) return acc;
+      if (!acc.has(item.href)) {
+        acc.set(item.href, { label: item.label || defaultPageLabelForPath(item.href, prompt), href: item.href, variant: "link" as const });
+      }
+      return acc;
+    }, new Map<string, { label: string; href: string; variant: "link" }>())
+  )
+    .map((entry) => entry[1])
+    .slice(0, 8);
+
+  const fallbackNavbar =
+    normalizedPages
+      .flatMap((page) => (Array.isArray(page?.data?.content) ? page.data.content : []))
+      .find((block: any) => isNavbarLikeBlock(block)) || null;
+  const fallbackFooter =
+    [...normalizedPages]
+      .reverse()
+      .flatMap((page) => (Array.isArray(page?.data?.content) ? page.data.content : []).slice().reverse())
+      .find((block: any) => isFooterLikeBlock(block)) || null;
+
+  const createNavbarBlock = (pagePath: string, pageLabel: string) =>
+    fallbackNavbar
+      ? (() => {
+          const cloned = cloneBlock(fallbackNavbar);
+          const props =
+            cloned?.props && typeof cloned.props === "object"
+              ? ({ ...(cloned.props as Record<string, unknown>) } as Record<string, unknown>)
+              : {};
+          props.links = navLinks.length ? navLinks : props.links;
+          props.ctas = [{ label: useChinese ? "获取报价" : "Get Quote", href: "/contact", variant: "primary" }];
+          props.id = props.id || `navbar-${toSlug(pageLabel) || "page"}`;
+          return { ...cloned, props };
+        })()
+      : {
+          type: "Navbar",
+          props: {
+            id: `navbar-${toSlug(pageLabel) || "page"}`,
+            links: navLinks.length ? navLinks : [{ label: useChinese ? "首页" : "Home", href: "/", variant: "link" }],
+            ctas: [{ label: useChinese ? "获取报价" : "Get Quote", href: "/contact", variant: "primary" }],
+            sticky: true,
+            paddingY: "sm",
+            maxWidth: "xl",
+          },
+        };
+
+  const createFooterBlock = (pageLabel: string) =>
+    fallbackFooter
+      ? cloneBlock(fallbackFooter)
+      : {
+          type: "Footer",
+          props: {
+            id: `footer-${toSlug(pageLabel) || "page"}`,
+            columns: [
+              {
+                title: useChinese ? "产品" : "Products",
+                links: navLinks.filter((item) => /\/products|\/solutions|\/cases/.test(item.href)).slice(0, 5),
+              },
+              {
+                title: useChinese ? "公司" : "Company",
+                links: navLinks.filter((item) => /\/about|\/contact/.test(item.href)).slice(0, 4),
+              },
+            ],
+            variant: "multiColumn",
+            paddingY: "md",
+            maxWidth: "xl",
+            legal: useChinese ? "版权所有" : "All rights reserved.",
+          },
+        };
+
+  const buildCardsFromDetails = (
+    items: Array<{
+      name: string;
+      model?: string;
+      category?: string;
+      summary?: string;
+      image?: string;
+      specs?: Record<string, string>;
+      ctaLabel?: string;
+      detailPath?: string;
+    }>
+  ) =>
+    items.map((item) => ({
+      title: item.model ? `${item.name} · ${item.model}` : item.name,
+      subtitle: item.category || "",
+      description:
+        item.summary ||
+        (useChinese ? `${item.name} 支持参数定制与加工工艺验证。` : `${item.name} supports configurable specs and process validation.`),
+      image: item.image ? { src: item.image, alt: item.name } : undefined,
+      cta: {
+        label: item.ctaLabel || (useChinese ? "查看详情" : "View details"),
+        href: item.detailPath || "/products",
+        variant: "link" as const,
+      },
+    }));
+
+  const detailPathSet = new Set<string>();
+  const detailRecords = normalizedDetails.slice(0, maxDetailPages).map((item, index) => {
+    const seed = `${item.name}-${item.model || index}`;
+    let slug = toSlug(seed);
+    if (!slug) slug = `product-${index + 1}`;
+    let path = `/products/${slug}`;
+    let counter = 2;
+    while (normalizedPathSet.has(path) || detailPathSet.has(path)) {
+      path = `/products/${slug}-${counter}`;
+      counter += 1;
+    }
+    detailPathSet.add(path);
+    return { ...item, detailPath: path };
+  });
+
+  const productChunks = chunkBy(detailRecords, pageSize);
+  const categories = Array.from(new Set(detailRecords.map((item) => String(item.category || "").trim()).filter(Boolean)));
+
+  const createCatalogPage = (params: {
+    path: string;
+    name: string;
+    chunk: typeof detailRecords;
+    chunkIndex: number;
+    totalChunks: number;
+  }): GeneratedPage => {
+    const paginationLabel = useChinese
+      ? `第 ${params.chunkIndex + 1} / ${params.totalChunks} 页`
+      : `Page ${params.chunkIndex + 1} of ${params.totalChunks}`;
+    const paginationLinks = productChunks.map((_, index) => ({
+      label: useChinese ? `第${index + 1}页` : `Page ${index + 1}`,
+      href: index === 0 ? "/products" : `/products/page-${index + 1}`,
+      variant: "link" as const,
+    }));
+    const contentBlocks: Array<{ type: string; props: Record<string, unknown> }> = [
+      createNavbarBlock(params.path, params.name) as any,
+      {
+        type: "HeroCentered",
+        props: {
+          id: `catalog-hero-${params.chunkIndex + 1}`,
+          title: useChinese ? "产品目录" : "Product Catalog",
+          subtitle: useChinese
+            ? `按分类浏览机型与参数，支持分页查看。${paginationLabel}`
+            : `Browse machine models and specs by category with pagination. ${paginationLabel}`,
+          ctas: [
+            { label: useChinese ? "联系销售" : "Contact Sales", href: "/contact", variant: "primary" as const },
+            { label: useChinese ? "案例中心" : "View Cases", href: "/cases", variant: "secondary" as const },
+          ],
+          align: "start",
+          paddingY: "lg",
+          maxWidth: "xl",
+        },
+      },
+    ];
+    if (categories.length > 1 && params.chunkIndex === 0) {
+      contentBlocks.push({
+        type: "FeatureGrid",
+        props: {
+          id: "products-filters",
+          title: useChinese ? "分类筛选" : "Category Filters",
+          subtitle: useChinese ? "按设备分类快速定位目标机型。" : "Quickly locate models by category.",
+          variant: "4col",
+          maxWidth: "xl",
+          paddingY: "md",
+          items: categories.slice(0, 12).map((category) => ({
+            title: category,
+            desc: useChinese ? `查看 ${category} 相关机型` : `Explore models under ${category}`,
+            icon: "filter",
+          })),
+        },
+      });
+    }
+    contentBlocks.push({
+      type: "CardsGrid",
+      props: {
+        id: `products-grid-${params.chunkIndex + 1}`,
+        anchor: `products-page-${params.chunkIndex + 1}`,
+        title: useChinese ? "机型列表" : "Models",
+        subtitle: useChinese ? "支持目录分页与详情页跳转。" : "Catalog pagination with detail-page navigation.",
+        variant: "imageText",
+        columns: "3col",
+        density: "normal",
+        cardStyle: "solid",
+        maxWidth: "xl",
+        items: buildCardsFromDetails(params.chunk),
+        paddingY: "lg",
+        motionPreset: "stagger",
+      },
+    });
+    if (params.totalChunks > 1) {
+      contentBlocks.push({
+        type: "ContentStory",
+        props: {
+          id: `products-pagination-${params.chunkIndex + 1}`,
+          title: useChinese ? "目录分页" : "Catalog Pagination",
+          subtitle: useChinese ? "快速跳转到其他目录页。" : "Jump between catalog pages.",
+          body: paginationLinks.map((item) => `${item.label} → ${item.href}`).join(" | "),
+          ctas: paginationLinks,
+          variant: "simple",
+          maxWidth: "xl",
+          paddingY: "md",
+        },
+      });
+    }
+    if (Array.isArray(brief.faqItems) && brief.faqItems.length > 0 && params.chunkIndex === 0) {
+      contentBlocks.push({
+        type: "FAQAccordion",
+        props: {
+          id: "products-faq",
+          title: useChinese ? "常见问题" : "FAQ",
+          variant: "singleOpen",
+          maxWidth: "xl",
+          paddingY: "lg",
+          items: brief.faqItems.slice(0, 12).map((item) => ({ q: item.question, a: item.answer })),
+        },
+      });
+    }
+    contentBlocks.push({
+      type: "LeadCaptureCTA",
+      props: {
+        id: `products-cta-${params.chunkIndex + 1}`,
+        title: useChinese ? "获取定制方案与报价" : "Get a tailored proposal and quote",
+        subtitle: useChinese ? "提交需求后 24 小时内响应。" : "Submit requirements and get a response within 24 hours.",
+        cta: { label: useChinese ? "提交询盘" : "Submit Inquiry", href: "/contact", variant: "primary" as const },
+        maxWidth: "xl",
+        paddingY: "md",
+      },
+    });
+    contentBlocks.push(createFooterBlock(params.name) as any);
+    return {
+      path: params.path,
+      name: params.name,
+      data: {
+        content: contentBlocks,
+        root: {
+          props: {
+            title: params.name,
+            theme: {},
+          },
+        },
+      },
+    };
+  };
+
+  const expandedPages = [...normalizedPages];
+  const productsPageName = useChinese ? "产品中心" : "Products";
+  const firstCatalog = createCatalogPage({
+    path: "/products",
+    name: productsPageName,
+    chunk: productChunks[0] || detailRecords.slice(0, pageSize),
+    chunkIndex: 0,
+    totalChunks: Math.max(1, productChunks.length),
+  });
+  const productsIndex = expandedPages.findIndex((page) => normalizePromptPagePath(String(page.path || "/")) === "/products");
+  if (productsIndex >= 0) expandedPages[productsIndex] = firstCatalog;
+  else expandedPages.push(firstCatalog);
+
+  if (productChunks.length > 1) {
+    productChunks.slice(1).forEach((chunk, idx) => {
+      const pageIndex = idx + 2;
+      const path = `/products/page-${pageIndex}`;
+      if (normalizedPathSet.has(path)) return;
+      expandedPages.push(
+        createCatalogPage({
+          path,
+          name: useChinese ? `产品目录第${pageIndex}页` : `Products Page ${pageIndex}`,
+          chunk,
+          chunkIndex: idx + 1,
+          totalChunks: productChunks.length,
+        })
+      );
+      normalizedPathSet.add(path);
+    });
+  }
+
+  detailRecords.forEach((item, index) => {
+    const path = item.detailPath;
+    if (!path || normalizedPathSet.has(path)) return;
+    const specItems = Object.entries(item.specs || {}).slice(0, 12);
+    const specText = specItems.map(([key, value]) => `${key}: ${value}`).join(" | ");
+    const detailPage: GeneratedPage = {
+      path,
+      name: item.model ? `${item.name} ${item.model}` : item.name,
+      data: {
+        content: [
+          createNavbarBlock(path, item.name) as any,
+          {
+            type: "HeroCentered",
+            props: {
+              id: `product-detail-hero-${index + 1}`,
+              title: item.model ? `${item.name} · ${item.model}` : item.name,
+              subtitle:
+                item.summary ||
+                (useChinese
+                  ? "单机详情页：用于展示核心参数、应用场景与交付建议。"
+                  : "Product detail page for key specs, use cases, and delivery guidance."),
+              ctas: [
+                { label: useChinese ? "获取报价" : "Get Quote", href: "/contact", variant: "primary" as const },
+                { label: useChinese ? "返回目录" : "Back to Catalog", href: "/products", variant: "secondary" as const },
+              ],
+              align: "start",
+              paddingY: "lg",
+              maxWidth: "xl",
+            },
+          },
+          {
+            type: "FeatureGrid",
+            props: {
+              id: `product-detail-specs-${index + 1}`,
+              title: useChinese ? "核心参数" : "Key Specs",
+              subtitle: useChinese ? "覆盖行程、精度、主轴与节拍等关键指标。" : "Travel, precision, spindle, cycle-time and more.",
+              variant: "3col",
+              maxWidth: "xl",
+              paddingY: "md",
+              items:
+                specItems.length > 0
+                  ? specItems.map(([key, value]) => ({
+                      title: key,
+                      desc: value,
+                      icon: "settings",
+                    }))
+                  : [
+                      {
+                        title: useChinese ? "参数待确认" : "Specs Pending",
+                        desc:
+                          specText ||
+                          (useChinese
+                            ? "请联系销售获取完整参数表。"
+                            : "Contact sales for the complete specification sheet."),
+                        icon: "file-text",
+                      },
+                    ],
+            },
+          },
+          {
+            type: "ContentStory",
+            props: {
+              id: `product-detail-story-${index + 1}`,
+              title: useChinese ? "应用与工艺建议" : "Applications & Process Guidance",
+              subtitle: item.category
+                ? useChinese
+                  ? `分类：${item.category}`
+                  : `Category: ${item.category}`
+                : undefined,
+              body:
+                item.summary ||
+                (useChinese
+                  ? "该机型适用于高精密加工场景，可按工艺需求进行参数与夹治具定制。"
+                  : "This model serves high-precision machining with configurable process parameters and fixtures."),
+              ctas: [
+                { label: useChinese ? "预约看厂" : "Schedule a Factory Visit", href: "/contact", variant: "link" as const },
+              ],
+              variant: "split",
+              maxWidth: "xl",
+              paddingY: "md",
+            },
+          },
+          {
+            type: "LeadCaptureCTA",
+            props: {
+              id: `product-detail-cta-${index + 1}`,
+              title: useChinese ? "提交需求，获取定制配置" : "Share requirements for a tailored configuration",
+              subtitle: useChinese ? "支持样机打样、节拍评估与产线导入。" : "Supports prototyping, takt assessment, and line onboarding.",
+              cta: { label: useChinese ? "立即咨询" : "Talk to Sales", href: "/contact", variant: "primary" as const },
+              maxWidth: "xl",
+              paddingY: "md",
+            },
+          },
+          createFooterBlock(item.name) as any,
+        ],
+        root: {
+          props: {
+            title: item.name,
+            theme: {},
+          },
+        },
+      },
+    };
+    expandedPages.push(detailPage);
+    normalizedPathSet.add(path);
+  });
+  return expandedPages;
 };
 
 const applyStructuredBriefOverrides = (
   pages: GeneratedPage[],
   prompt: string,
-  profileIdHint?: string | null
+  _profileIdHint?: string | null,
+  structuredInput?: StructuredSiteInput | null
 ): GeneratedPage[] => {
-  const brief = parseStructuredBrief(prompt);
-  if (!brief) return pages;
-  const templateFamilyHint = inferTemplateFamily(
-    profileIdHint ||
-      pages
-        .flatMap((page) =>
-          Array.isArray(page?.data?.content)
-            ? page.data.content.map((item) => `${String(item?.type || "")} ${String(item?.props?.__publishedOriginalType || "")}`)
-            : []
-        )
-        .join(" ")
+  const parsed = parseStructuredBrief(prompt) || {};
+  const derived = deriveStructuredBriefFromPrompt(prompt);
+  const merged: StructuredBrief = {
+    ...derived,
+    ...parsed,
+    nav: Array.isArray(parsed.nav) && parsed.nav.length ? parsed.nav : derived.nav,
+    heroCtas: Array.isArray(parsed.heroCtas) && parsed.heroCtas.length ? parsed.heroCtas : derived.heroCtas,
+    productItems:
+      Array.isArray(parsed.productItems) && parsed.productItems.length ? parsed.productItems : derived.productItems,
+    featureItems:
+      Array.isArray(parsed.featureItems) && parsed.featureItems.length ? parsed.featureItems : derived.featureItems,
+    caseItems: Array.isArray(parsed.caseItems) && parsed.caseItems.length ? parsed.caseItems : derived.caseItems,
+    certifications:
+      Array.isArray(parsed.certifications) && parsed.certifications.length
+        ? parsed.certifications
+        : derived.certifications,
+  };
+  const mergedWithInput = mergeStructuredInputIntoBrief(merged, structuredInput);
+  const hasSignal = Boolean(
+    mergedWithInput.brand ||
+      (mergedWithInput.productItems && mergedWithInput.productItems.length) ||
+      (mergedWithInput.featureItems && mergedWithInput.featureItems.length) ||
+      (mergedWithInput.caseItems && mergedWithInput.caseItems.length) ||
+      (mergedWithInput.aboutText && mergedWithInput.aboutText.trim())
   );
-  const scenarioHint = inferKnownSiteScenario(prompt, []);
-  const explicitlyRequestedPages = extractRequestedPagesFromPrompt(prompt);
-  const hasExplicitPageContract = explicitlyRequestedPages.length >= 3 || Boolean(brief.nav?.length);
-  const hasKnownFamily = templateFamilyHint !== "unknown";
-  const shellTone =
-    scenarioHint === "design_led_ecommerce" || scenarioHint === "luxury_editorial" ? "light" : "dark";
-  const assemblyPolicy = {
-    normalizeHeader: hasKnownFamily,
-    normalizeFooter: hasKnownFamily,
-    ensureContactChannels: hasKnownFamily,
-    normalizeHomeHero: hasKnownFamily && scenarioHint === "industrial_manufacturer",
-    normalizeHomeProducts:
-      hasKnownFamily && (scenarioHint === "industrial_manufacturer" || scenarioHint === "design_led_ecommerce"),
-    normalizeHomeFeatures: hasKnownFamily && scenarioHint === "industrial_manufacturer",
-    normalizeInteriorPages: hasKnownFamily && scenarioHint === "industrial_manufacturer",
-  };
-  const preserveEnterpriseCoverage = looksLikeEnterpriseWebsite({
-    prompt,
-    pages: pages.map((page) => ({ path: page.path, name: page.name })),
-  });
-  const enterprisePagesByPath = new Map(
-    pages.map((page) => [String(page.path || "/").trim() || "/", { path: String(page.path || "/").trim() || "/", name: String(page.name || "").trim() }] as const)
-  );
-  const enterpriseNavLinks =
-    preserveEnterpriseCoverage && !hasExplicitPageContract
-      ? ENTERPRISE_SITE_PAGES.map((definition) => {
-          const page = enterprisePagesByPath.get(definition.path);
-          if (!page) return null;
-          return {
-            label: page.name || definition.name,
-            href: definition.path,
-            variant: "link" as const,
-          };
-        }).filter((item): item is { label: string; href: string; variant: "link" } => Boolean(item))
-    : [];
-  const enterpriseFooterCols = preserveEnterpriseCoverage
-    && !hasExplicitPageContract
-    ? (() => {
-        const pick = (key: string, fallbackLabel: string, fallbackHref = "/") => {
-          const definition = ENTERPRISE_SITE_PAGES.find((page) => page.key === key);
-          const href = definition?.path || fallbackHref;
-          const page = enterprisePagesByPath.get(href);
-          if (!page) return null;
-          return {
-            label: page.name || fallbackLabel,
-            href,
-          };
-        };
-        const overviewLinks = [pick("home", "Home"), pick("core_product", "Core Product"), pick("products", "Products")].filter(
-          (item): item is { label: string; href: string } => Boolean(item)
-        );
-        const solutionLinks = [pick("solutions", "Solutions"), pick("cases", "Cases")].filter(
-          (item): item is { label: string; href: string } => Boolean(item)
-        );
-        const companyLinks = [pick("about", "About"), pick("contact", "Contact")].filter(
-          (item): item is { label: string; href: string } => Boolean(item)
-        );
-        const legalLinks = [pick("privacy", "Privacy")].filter(
-          (item): item is { label: string; href: string } => Boolean(item)
-        );
-        return [
-          {
-            title: "Overview",
-            links: overviewLinks,
-          },
-          {
-            title: "Solutions",
-            links: solutionLinks,
-          },
-          {
-            title: "Company",
-            links: companyLinks,
-          },
-          {
-            title: "Legal",
-            links: legalLinks,
-          },
-        ].filter((column) => column.links.length > 0);
-      })()
-    : [];
-  const inferEffectiveBlockType = (type: string, originalType = "") => {
-    const token = `${String(type || "").trim()} ${String(originalType || "").trim()}`.trim();
-    if (!token) return "";
-    if (token === "Navbar") return "Navbar";
-    if (/(^|[^a-z])(header|navigation|topnav|menu)([^a-z]|$)/i.test(token)) return "Navbar";
-    if (token === "CreationFooterFallback" || token === "Footer") return "CreationFooterFallback";
-    if (/Hero/i.test(token)) return "HeroSplit";
-    if (/Story|Mission|Narrative|About/i.test(token)) return "ContentStory";
-    if (/Feature|Approach|Capability|Metric/i.test(token)) return "FeatureGrid";
-    if (/Product|Catalog|Collection|Gallery|Showcase/i.test(token)) return "CardsGrid";
-    if (/Testimonial|Review|Trust|Logo|Partner|Proof/i.test(token)) return "TestimonialsGrid";
-    if (/Contact|Quote|Lead|Cta|CTA/i.test(token)) return "LeadCaptureCTA";
-    return String(type || "").trim();
-  };
-  const inferDisplaySectionKind = (type: string, originalType = "") => {
-    const token = inferEffectiveBlockType(type, originalType);
-    if (!token) return "";
-    if (token === "Navbar") return "navigation";
-    if (token === "CreationFooterFallback" || token === "Footer") return "footer";
-    if (/Hero/i.test(token)) return "hero";
-    if (token === "ContentStory") return "story";
-    if (token === "FeatureGrid") return "approach";
-    if (token === "CardsGrid" || token === "ProductShowcase") return "products";
-    if (token === "TestimonialsGrid" || token === "LogoCloud") return "socialproof";
-    if (token === "LeadCaptureCTA") return "cta";
-    return "";
-  };
-  const inferPageTypeFromPath = (pagePath: string) => {
-    const normalized = String(pagePath || "/").trim() || "/";
-    if (normalized === "/") return "home";
-    if (normalized.startsWith("/products") || normalized.startsWith("/3c-machines")) return "products";
-    if (
-      normalized.startsWith("/solutions") ||
-      normalized.startsWith("/custom-solutions") ||
-      normalized.startsWith("/industries")
-    ) {
-      return "solutions";
-    }
-    if (normalized.startsWith("/cases")) return "cases";
-    if (normalized.startsWith("/about")) return "about";
-    if (normalized.startsWith("/contact")) return "contact";
-    return "generic";
-  };
-  const navHrefForLabel = (label: string) => {
-    const normalized = String(label || "").trim().toLowerCase();
-    if (normalized === "home") return "/";
-    if (/3c|machine/.test(normalized)) return "/3c-machines";
-    if (/custom|solution/.test(normalized)) return "/custom-solutions";
-    if (/case/.test(normalized)) return "/cases";
-    if (/industr/.test(normalized)) return "/industries";
-    if (/about/.test(normalized)) return "/about";
-    if (/contact/.test(normalized)) return "/contact";
-    return "/";
-  };
-  const productsHref = navHrefForLabel("3C Machines");
-  const solutionsHref = navHrefForLabel("Custom Solutions");
-  const lcCncAssetBase = "/assets/lc-cnc";
-  const lcCncAssets = {
-    hero: `${lcCncAssetBase}/factory-workshop.jpg`,
-    phone: `${lcCncAssetBase}/cnc-closeup-1.jpg`,
-    laptop: `${lcCncAssetBase}/cnc-closeup-2.jpg`,
-    camera: `${lcCncAssetBase}/cnc-closeup-3.jpg`,
-    keypad: `${lcCncAssetBase}/cnc-closeup-4.jpg`,
-  };
-  const buildLcCncSandvikHeroProps = (theme: Record<string, unknown> = {}) => ({
-    id: "structured-home-hero",
-    anchor: "hero",
-    paddingY: "lg",
-    maxWidth: "xl",
-    align: "left" as const,
-    background: "image" as const,
-    backgroundMedia: { kind: "image" as const, src: lcCncAssets.hero, alt: "LC-CNC CNC workshop" },
-    backgroundOverlay: "solid" as const,
-    backgroundOverlayOpacity: 0.58,
-    emphasis: "high" as const,
-    surfaceTone: "dark" as const,
-    textPanel: true,
-    textPanelBackground: "rgba(9, 14, 26, 0.58)",
-    textPanelBorderColor: "rgba(255,255,255,0.16)",
-    textPanelPadding: "lg" as const,
-    textPanelRadius: "lg" as const,
-    textPanelMaxWidth: "md" as const,
-    headingSize: "lg" as const,
-    bodySize: "md" as const,
-    eyebrow: "LC-CNC Shenzhen Factory Since 2013",
-    title: "Precision 3C CNC Centers for Southeast Asia",
-    subtitle:
-      brief.heroSubtitle || "10-Day Prototype • 15-Day Delivery • 24/7 WhatsApp Support.",
-    ctas: [
-      { label: brief.heroCtas?.[0] || "Get Quote on WhatsApp", href: "/contact", variant: "primary" as const },
-      { label: brief.heroCtas?.[1] || "Request Catalog", href: "/3c-machines", variant: "secondary" as const },
-    ],
-    mediaPosition: "right" as const,
-    theme,
-  });
-  const buildLcCncNavbarProps = () => ({
-    id: "structured-navbar",
-    anchor: "top",
-    paddingY: "sm" as const,
-    maxWidth: "xl" as const,
-    background: shellTone === "dark" ? ("gradient" as const) : ("none" as const),
-    backgroundGradient:
-      shellTone === "dark" ? "linear-gradient(180deg, #0d1623 0%, #111b2a 100%)" : undefined,
-    surfaceTone: shellTone === "dark" ? ("dark" as const) : ("default" as const),
-    sticky: true,
-    logo: brief.brand || "LC-CNC",
-    links: navLinks,
-    ctas: [{ label: brief.heroCtas?.[0] || "Get Quote on WhatsApp", href: "/contact", variant: "primary" as const }],
-    variant: "withCTA" as const,
-  });
-  const buildLcCncSandvikHomeCardsProps = (theme: Record<string, unknown> = {}) => {
-    const products = brief.productItems?.length
-      ? brief.productItems
-      : ["3C Phone-Frame Center", "3C Laptop-Shell Center", "3C Camera-Bezel Center", "3C Keypad Center"];
-    const productImages = [lcCncAssets.phone, lcCncAssets.laptop, lcCncAssets.camera, lcCncAssets.keypad];
-    const productDescriptions = [
-      "Phone display frame machining with stable tolerance control and fast fixture setup.",
-      "Laptop shell machining centers tuned for cosmetic-finish panels and repeatable output.",
-      "Camera bezel machining programs optimized for precision edges and reliable throughput.",
-      "Compact keypad centers configured for high-mix small-part production lines.",
-    ];
-    return {
-      id: "structured-home-products",
-      anchor: "products",
-      paddingY: "lg" as const,
-      background: "gradient" as const,
-      backgroundGradient: "linear-gradient(180deg, #f3f3f2 0%, #e7e2d9 100%)",
-      maxWidth: "xl" as const,
-      title: "3C CNC Machine Lineup",
-      subtitle:
-        "Phone-frame, laptop-shell, camera-bezel, and keypad centers configured for stable output, fast sampling, and inquiry-ready support.",
-      variant: "imageText" as const,
-      columns: "4col" as const,
-      density: "normal" as const,
-      cardStyle: "solid" as const,
-      imagePosition: "top" as const,
-      imageShape: "rounded" as const,
-      headingSize: "lg" as const,
-      bodySize: "sm" as const,
-      items: products.slice(0, 4).map((name, index) => ({
-        title: name,
-        eyebrow: ["Phone Frames", "Laptop Shells", "Camera Bezels", "Keypads"][index] || "3C Machines",
-        description: productDescriptions[index] || "Configured for stable output and one-click quotation via WhatsApp.",
-        imageSrc: productImages[index] || lcCncAssets.hero,
-        imageAlt: name,
-        cta: { label: "Get Quote on WhatsApp", href: "/contact", variant: "primary" as const },
-      })),
-      theme,
-    };
-  };
-  const buildLcCncFeatureWithMediaProps = () => ({
-    id: "structured-home-features",
-    anchor: "features",
-    paddingY: "lg" as const,
-    background: "gradient" as const,
-    backgroundGradient: "linear-gradient(180deg, #f3f3f2 0%, #ece6dc 100%)",
-    maxWidth: "xl" as const,
-    variant: "split" as const,
-    eyebrow: "Execution differentiators",
-    title: "Fast customization, short lead-time, and local support",
-    subtitle: "Built for Southeast Asia buyers who need machine decisions to move from quote to shipment without delay.",
-    items: [
-      { title: "Fast Customization", desc: "10-day sample turnaround with fixture strategy aligned to the part family." },
-      { title: "Short Lead-Time", desc: "15-day shipment discipline for pilot and ramp-up schedules." },
-      { title: "Local Support", desc: "WhatsApp-first communication plus regional agent coordination." },
-    ],
-    mediaSrc: lcCncAssets.hero,
-    mediaAlt: "LC-CNC factory workshop",
-    ctas: [{ label: brief.heroCtas?.[0] || "Get Quote on WhatsApp", href: "/contact", variant: "primary" as const }],
-  });
-  const buildStructuredInteriorHeroSpec = (
-    pageType: "products" | "solutions" | "cases" | "about" | "contact",
-    theme: Record<string, unknown> = {}
-  ): { type: "HeroSplit" | "FeatureWithMedia" | "ContentStory" | "LeadCaptureCTA"; props: Record<string, unknown> } => {
-    if (pageType === "products") {
-      return {
-        type: "HeroSplit",
-        props: {
-          id: "structured-products-hero",
-          anchor: "products-hero",
-          paddingY: "lg",
-          maxWidth: "xl",
-          motionPreset: "stagger",
-          align: "left" as const,
-          background: "image" as const,
-          backgroundMedia: { kind: "image" as const, src: lcCncAssets.phone, alt: "3C CNC machine platform" },
-          backgroundOverlay: "solid" as const,
-          backgroundOverlayOpacity: 0.56,
-          emphasis: "high" as const,
-          surfaceTone: "dark" as const,
-          textPanel: true,
-          textPanelBackground: "rgba(9, 14, 26, 0.58)",
-          textPanelBorderColor: "rgba(255,255,255,0.16)",
-          textPanelPadding: "lg" as const,
-          textPanelRadius: "lg" as const,
-          textPanelMaxWidth: "md" as const,
-          headingSize: "lg" as const,
-          bodySize: "md" as const,
-          eyebrow: "3C machine portfolio",
-          title: "3C CNC Machine Platforms",
-          subtitle:
-            "Phone-frame, laptop-shell, camera-bezel, and keypad centers configured for stable output and short delivery windows.",
-          ctas: [
-            { label: brief.heroCtas?.[0] || "Get Quote on WhatsApp", href: "/contact", variant: "primary" as const },
-            { label: brief.heroCtas?.[1] || "Request Catalog", href: productsHref, variant: "secondary" as const },
-          ],
-          mediaPosition: "right" as const,
-          theme,
-        },
-      };
-    }
-    if (pageType === "solutions") {
-      return {
-        type: "FeatureWithMedia",
-        props: {
-          id: "structured-solutions-hero",
-          anchor: "solutions-hero",
-          paddingY: "lg" as const,
-          background: "gradient" as const,
-          backgroundGradient: "linear-gradient(180deg, #ece7df 0%, #d9ddd9 100%)",
-          maxWidth: "2xl" as const,
-          motionPreset: "stagger",
-          variant: "split" as const,
-          eyebrow: "Custom solutions",
-          title: "Custom CNC Solutions for Southeast Asia",
-          subtitle:
-            "Fixture, spindle, automation, and line-integration packages built around takt time, finish quality, and deployment speed.",
-          items: [
-            { title: "Line Architecture", desc: "Process, fixture, and automation planned as one deployment package." },
-            { title: "Fast Validation", desc: "Sample verification and commissioning checkpoints reduce launch risk." },
-            { title: "Regional Delivery", desc: "Commercial + technical support aligned to Southeast Asia plants." },
-          ],
-          mediaSrc: lcCncAssets.laptop,
-          mediaAlt: "Custom CNC solution line",
-          ctas: [{ label: "Discuss Solution", href: "/contact", variant: "primary" as const }],
-          theme,
-        },
-      };
-    }
-    if (pageType === "cases") {
-      return {
-        type: "FeatureWithMedia",
-        props: {
-          id: "structured-cases-hero",
-          anchor: "cases-hero",
-          paddingY: "lg" as const,
-          background: "gradient" as const,
-          backgroundGradient: "linear-gradient(180deg, #e8e7e3 0%, #d6dbde 100%)",
-          maxWidth: "lg" as const,
-          motionPreset: "stagger",
-          variant: "split" as const,
-          eyebrow: "Production case studies",
-          title: "Representative 3C machining programs",
-          subtitle:
-            "Phone frames, laptop shells, camera bezels, and keypad components delivered with repeatable cycle time and cosmetic-finish control.",
-          items: [
-            { title: "Cycle-Time Gains", desc: "Measured against baseline takt and throughput requirements." },
-            { title: "Yield Stability", desc: "Validated across production shifts and part-family changeovers." },
-            { title: "Commissioning Speed", desc: "Ramp-up milestones tracked to first stable output." },
-          ],
-          mediaSrc: lcCncAssets.camera,
-          mediaAlt: "3C machining case study",
-          ctas: [{ label: "View Case Portfolio", href: "/cases", variant: "primary" as const }],
-          theme,
-        },
-      };
-    }
-    if (pageType === "about") {
-      return {
-        type: "FeatureWithMedia",
-        props: {
-          id: "structured-about-hero",
-          anchor: "about-hero",
-          paddingY: "lg" as const,
-          background: "gradient" as const,
-          backgroundGradient: "linear-gradient(180deg, #f0efeb 0%, #dfe5e8 100%)",
-          maxWidth: "2xl" as const,
-          variant: "split" as const,
-          eyebrow: brief.brand || "About LC-CNC",
-          motionPreset: "stagger",
-          title: "LC-CNC, Shenzhen since 2013",
-          subtitle: brief.aboutText || "ISO-certified plant, 30+ R&D engineers, 200+ installed across SEA.",
-          items: [
-            { title: "ISO-Certified Plant", desc: "Documented quality process and repeatable factory execution." },
-            { title: "30+ R&D Engineers", desc: "Process, tooling, controls, and automation engineering depth." },
-            { title: "200+ SEA Installations", desc: "Regional deployment and after-sales response coverage." },
-          ],
-          mediaSrc: lcCncAssets.hero,
-          mediaAlt: "LC-CNC factory workshop",
-          ctas: [{ label: "Contact LC-CNC", href: "/contact", variant: "primary" as const }],
-          theme,
-        },
-      };
-    }
-    return {
-      type: "LeadCaptureCTA",
-      props: {
-        id: "structured-contact-hero",
-        anchor: "contact-hero",
-        title: "Talk to the LC-CNC commercial team",
-        subtitle:
-          `WhatsApp ${brief.whatsapp || "+86-158-1370-3777"} • ${brief.email || "sales@lc-cnc.com"} • ${brief.address || "Bao'an, Shenzhen, China"}`.replace(
-            /\s•\s$/,
-            ""
-          ),
-        cta: { label: "Get Quote on WhatsApp", href: "/contact", variant: "primary" as const },
-        note: "I agree to receive follow-up via WhatsApp.",
-        variant: "card" as const,
-        maxWidth: "lg" as const,
-        paddingY: "lg" as const,
-        emphasis: "high" as const,
-        motionPreset: "stagger",
-        showForm: true,
-        submitLabel: "Submit Request",
-      },
-    };
-  };
-  const buildStructuredInteriorCardsProps = (
-    pageType: "products" | "solutions" | "cases" | "about",
-    theme: Record<string, unknown> = {}
-  ) => {
-    if (pageType === "products") {
-      const products = brief.productItems?.length
-        ? brief.productItems
-        : ["3C Phone-Frame Center", "3C Laptop-Shell Center", "3C Camera-Bezel Center", "3C Keypad Center"];
-      return {
-        id: "structured-products-catalog",
-        anchor: "product-catalog",
-        paddingY: "lg" as const,
-        background: "gradient" as const,
-        backgroundGradient: "linear-gradient(180deg, #f3f3f2 0%, #e7e2d9 100%)",
-        maxWidth: "xl" as const,
-        title: "3C Machine Catalog",
-        subtitle: "Machine families for phone frames, laptop shells, camera bezels, and keypad components.",
-        variant: "imageText" as const,
-        columns: "4col" as const,
-        density: "normal" as const,
-        cardStyle: "solid" as const,
-        imagePosition: "top" as const,
-        imageShape: "rounded" as const,
-        headingSize: "lg" as const,
-        bodySize: "sm" as const,
-        items: products.slice(0, 4).map((name, index) => ({
-          title: name,
-          eyebrow: ["Phone Frames", "Laptop Shells", "Camera Bezels", "Keypads"][index] || "3C Machines",
-          description: "Core spindle, stroke, and throughput parameters for 3C machining lines.",
-          imageSrc: [lcCncAssets.phone, lcCncAssets.laptop, lcCncAssets.camera, lcCncAssets.keypad][index] || lcCncAssets.hero,
-          imageAlt: name,
-          cta: { label: "Request Catalog", href: "/contact", variant: "primary" as const },
-        })),
-        theme,
-      };
-    }
-    if (pageType === "solutions") {
-      return {
-        id: "structured-solutions-cards",
-        anchor: "solution-offers",
-        paddingY: "lg" as const,
-        background: "gradient" as const,
-        backgroundGradient: "linear-gradient(180deg, #f3f3f2 0%, #ebe6dd 100%)",
-        maxWidth: "xl" as const,
-        title: "Custom Solutions",
-        subtitle: "Turnkey OEM/ODM lines, custom fixtures, spindle packages, and automation integration.",
-        variant: "imageText" as const,
-        columns: "3col" as const,
-        density: "normal" as const,
-        cardStyle: "solid" as const,
-        imagePosition: "top" as const,
-        imageShape: "rounded" as const,
-        headingSize: "lg" as const,
-        bodySize: "sm" as const,
-        items: [
-          "Turnkey 3C production line",
-          "Custom fixture engineering",
-          "OEM/ODM machine adaptation",
-          "Automation integration cell",
-        ].map((name, index) => ({
-          title: name,
-          eyebrow: ["Line design", "Fixture packages", "OEM/ODM", "Automation"][index] || "Custom",
-          description: "Configured around takt time, part geometry, and local commissioning needs.",
-          imageSrc: [lcCncAssets.hero, lcCncAssets.phone, lcCncAssets.laptop, lcCncAssets.camera][index] || lcCncAssets.hero,
-          imageAlt: name,
-          cta: { label: "Discuss Solution", href: "/contact", variant: "primary" as const },
-        })),
-        theme,
-      };
-    }
-    if (pageType === "cases") {
-      const cases = brief.caseItems?.length
-        ? brief.caseItems
-        : ["Phone Display Frame Machining", "Laptop Shell Machining", "Camera Bezel Machining", "Phone Keypad Machining"];
-      return {
-        id: "structured-cases-gallery",
-        anchor: "case-gallery",
-        paddingY: "lg" as const,
-        background: "gradient" as const,
-        backgroundGradient: "linear-gradient(180deg, #f3f3f2 0%, #e7e2d9 100%)",
-        maxWidth: "xl" as const,
-        title: "Manufacturing Outcomes",
-        subtitle: "Programs focused on cycle-time reduction, stable delivery, and finish consistency.",
-        variant: "imageText" as const,
-        columns: "2col" as const,
-        density: "normal" as const,
-        cardStyle: "solid" as const,
-        imagePosition: "top" as const,
-        imageShape: "rounded" as const,
-        headingSize: "lg" as const,
-        bodySize: "sm" as const,
-        items: cases.slice(0, 4).map((name, index) => ({
-          title: name,
-          eyebrow: "Application Case",
-          description: "Application-focused production outcome with controlled tolerance and repeatable output.",
-          imageSrc: [lcCncAssets.phone, lcCncAssets.laptop, lcCncAssets.camera, lcCncAssets.keypad][index] || lcCncAssets.hero,
-          imageAlt: name,
-          cta: { label: "View Case", href: "/cases", variant: "primary" as const },
-        })),
-        theme,
-      };
-    }
-    return {
-      id: "structured-about-capabilities",
-      anchor: "capability-cards",
-      paddingY: "lg" as const,
-      background: "gradient" as const,
-      backgroundGradient: "linear-gradient(180deg, #f3f3f2 0%, #ebe6dd 100%)",
-      maxWidth: "xl" as const,
-      title: "Factory Capability Highlights",
-      subtitle: "Engineering depth, factory discipline, and regional support for Southeast Asia.",
-      variant: "imageText" as const,
-      columns: "2col" as const,
-      density: "normal" as const,
-      cardStyle: "solid" as const,
-      imagePosition: "top" as const,
-      imageShape: "rounded" as const,
-      headingSize: "lg" as const,
-      bodySize: "sm" as const,
-      items: [
-        "Process engineering and tooling support",
-        "Factory commissioning and training",
-        "Quality documentation and inspection flow",
-        "Regional after-sales response",
-      ].map((name, index) => ({
-        title: name,
-        eyebrow: "Capability",
-        description: "Operational capability aligned to multi-site 3C production programs.",
-        imageSrc: [lcCncAssets.hero, lcCncAssets.phone, lcCncAssets.laptop, lcCncAssets.camera][index] || lcCncAssets.hero,
-        imageAlt: name,
-        cta: { label: "Talk to LC-CNC", href: "/contact", variant: "primary" as const },
-      })),
-      theme,
-    };
-  };
-  const buildStructuredInteriorFeatureProps = (
-    pageType: "products" | "solutions" | "cases" | "contact"
-  ) => {
-    if (pageType === "products") {
-      return {
-        id: "structured-products-features",
-        anchor: "specification-summary",
-        paddingY: "md" as const,
-        background: "gradient" as const,
-        backgroundGradient: "linear-gradient(180deg, #f3f3f2 0%, #ebe6dd 100%)",
-        maxWidth: "xl" as const,
-        title: "Core Machine Specifications",
-        subtitle: "Rigid structure, repeatable accuracy, and deployment-ready configuration options.",
-        variant: "3col" as const,
-        items: [
-          { title: "High-Rigidity Frame", desc: "Stable machining performance for aluminum and magnesium 3C parts." },
-          { title: "Flexible Spindle Packages", desc: "Configured for roughing, finishing, and compact-feature processing." },
-          { title: "Automation Ready", desc: "Supports loaders, conveyors, and inline inspection expansion." },
-        ],
-      };
-    }
-    if (pageType === "solutions") {
-      return {
-        id: "structured-solutions-features",
-        anchor: "solution-categories",
-        paddingY: "md" as const,
-        background: "gradient" as const,
-        backgroundGradient: "linear-gradient(180deg, #f3f3f2 0%, #ebe6dd 100%)",
-        maxWidth: "xl" as const,
-        title: "Solution Categories",
-        subtitle: "Structured offers for OEM/ODM production planning and line adaptation.",
-        variant: "3col" as const,
-        items: [
-          { title: "Turnkey Line Design", desc: "Machine layout, process logic, and ramp-up support for new 3C programs." },
-          { title: "Fixture & Tooling Packages", desc: "Custom workholding and cutting strategy matched to the part family." },
-          { title: "Automation Integration", desc: "Loading, unloading, transfer, and inspection interfaces for scale." },
-        ],
-      };
-    }
-    if (pageType === "cases") {
-      return {
-        id: "structured-cases-metrics",
-        anchor: "case-metrics",
-        paddingY: "md" as const,
-        background: "gradient" as const,
-        backgroundGradient: "linear-gradient(180deg, #f3f3f2 0%, #ebe6dd 100%)",
-        maxWidth: "xl" as const,
-        title: "Case Performance Signals",
-        subtitle: "How factory programs are evaluated after deployment.",
-        variant: "3col" as const,
-        items: [
-          { title: "Cycle Time Reduction", desc: "Measured against the original process baseline and takt target." },
-          { title: "Yield Stability", desc: "Tracked across production shifts, changeovers, and operator variation." },
-          { title: "Ramp-up Speed", desc: "Focused on time-to-output after installation and process verification." },
-        ],
-      };
-    }
-    return {
-      id: "structured-contact-channels",
-      anchor: "contact-channels",
-      paddingY: "md" as const,
-      background: "gradient" as const,
-      backgroundGradient: "linear-gradient(180deg, #f3f3f2 0%, #ebe6dd 100%)",
-      maxWidth: "xl" as const,
-      title: "Contact Channels",
-      subtitle: "Commercial response routed for Southeast Asia machine procurement.",
-      variant: "3col" as const,
-      items: [
-        { title: "WhatsApp", desc: brief.whatsapp || "+86-158-1370-3777" },
-        { title: "Email", desc: brief.email || "sales@lc-cnc.com" },
-        { title: "Factory Base", desc: brief.address || "Bao’an, Shenzhen, China" },
-      ],
-    };
-  };
-  const buildStructuredInteriorTestimonialsProps = (
-    pageType: "products" | "solutions" | "cases" | "about" | "contact"
-  ) => {
-    if (pageType === "products") {
-      return {
-        id: "structured-products-proof",
-        anchor: "buyer-proof",
-        title: "Why Buyers Choose LC-CNC",
-        subtitle: "Catalog decisions driven by throughput, uptime, and support responsiveness.",
-        variant: "2col" as const,
-        maxWidth: "xl" as const,
-        items: [
-          { name: "Procurement Team", role: "Vietnam", quote: "Machine selection was tied to real part geometry and lead-time targets, not generic specs." },
-          { name: "Production Manager", role: "Thailand", quote: "The catalog clearly mapped each platform to cycle time, fixture strategy, and line scalability." },
-        ],
-      };
-    }
-    if (pageType === "solutions") {
-      return {
-        id: "structured-solutions-proof",
-        anchor: "implementation-proof",
-        title: "Implementation Confidence",
-        subtitle: "Programs that need adaptation, not off-the-shelf machine selection.",
-        variant: "2col" as const,
-        maxWidth: "xl" as const,
-        items: [
-          { name: "Operations Lead", role: "OEM Program", quote: "The proposed line matched both the part flow and the regional staffing reality." },
-          { name: "Engineering Manager", role: "ODM Factory", quote: "Fixture, spindle, and automation decisions were resolved as one system instead of separate vendors." },
-        ],
-      };
-    }
-    if (pageType === "cases") {
-      return {
-        id: "structured-cases-proof",
-        anchor: "customer-feedback",
-        title: "Customer Feedback",
-        subtitle: "Application-specific outcomes from Southeast Asia programs.",
-        variant: "2col" as const,
-        maxWidth: "xl" as const,
-        items: [
-          { name: "Phone Display Frame Machining", role: "Vietnam", quote: "The line stabilized output quickly while maintaining the cosmetic finish required for premium devices." },
-          { name: "Laptop Shell Machining", role: "Malaysia", quote: "Fixture and process tuning reduced rework and improved delivery confidence across multiple batches." },
-        ],
-      };
-    }
-    if (pageType === "about") {
-      return {
-        id: "structured-about-proof",
-        anchor: "certification-proof",
-        title: "Certifications",
-        subtitle: "Compliance and credibility for export-ready machine programs.",
-        variant: "2col" as const,
-        maxWidth: "xl" as const,
-        items: [
-          { name: "ISO 9001", role: "Quality Management", quote: "Documented factory quality control and repeatable process oversight." },
-          { name: "CE / SGS", role: "Export Confidence", quote: "Certification support aligned to international shipment and customer review requirements." },
-        ],
-      };
-    }
-    return {
-      id: "structured-contact-proof",
-      anchor: "quote-requirements",
-      title: "Quote Preparation",
-      subtitle: "The fastest path to an accurate recommendation and lead-time commitment.",
-      variant: "2col" as const,
-      maxWidth: "xl" as const,
-      items: [
-        { name: "What to send", role: "Inputs", quote: "Share machine model interest, quantity target, deadline, and part/process context to speed the first response." },
-        { name: "How we reply", role: "Commercial flow", quote: "LC-CNC routes inquiry review through WhatsApp and email for faster Southeast Asia quoting cycles." },
-      ],
-    };
-  };
-  const buildStructuredAboutStoryProps = () => ({
-    id: "structured-about-story",
-    anchor: "company-story",
-    title: "Factory Capability & Regional Delivery Model",
-    subtitle:
-      "How LC-CNC translates engineering, quality systems, and after-sales response into practical output for SEA plants.",
-    body:
-      "LC-CNC combines plant execution, tooling know-how, and field response to support 3C manufacturing programs across Southeast Asia.",
-    ctas: [{ label: "Talk to LC-CNC", href: "/contact", variant: "link" as const }],
-    variant: "split" as const,
-    maxWidth: "xl" as const,
-  });
-  const interiorAssemblySlots: Record<
-    "products" | "solutions" | "cases" | "about" | "contact",
-    Array<"hero" | "products" | "features" | "proof" | "story">
-  > = {
-    products: ["hero", "products", "features", "proof"],
-    solutions: ["hero", "features", "products", "proof"],
-    cases: ["hero", "proof", "products", "features"],
-    about: ["hero", "story", "proof", "products"],
-    contact: ["hero", "proof", "features"],
-  };
-  const buildLcCncFooterProps = () => ({
-    id: "structured-footer",
-    anchor: "footer",
-    paddingY: "md" as const,
-    background: "gradient" as const,
-    backgroundGradient:
-      shellTone === "dark"
-        ? "linear-gradient(180deg, #394049 0%, #2c3238 100%)"
-        : "linear-gradient(180deg, #f3f3f2 0%, #e6dfd3 100%)",
-    maxWidth: "xl" as const,
-    surfaceTone: shellTone === "dark" ? ("dark" as const) : ("default" as const),
-    logoText: brief.brand || "LC-CNC",
-    columns: footerCols,
-    legal: brief.copyright || `Copyright © 2024 ${brief.brand || "LC-CNC"}. All rights reserved.`,
-  });
-  const navLinks =
-    enterpriseNavLinks.length
-      ? enterpriseNavLinks
-      : brief.nav?.length
-      ? brief.nav.map((label) => ({ label, href: navHrefForLabel(label), variant: "link" }))
-      : [
-          { label: "Home", href: "/", variant: "link" },
-          { label: "3C Machines", href: productsHref, variant: "link" },
-          { label: "Custom Solutions", href: solutionsHref, variant: "link" },
-          { label: "Cases", href: "/cases", variant: "link" },
-          { label: "About", href: "/about", variant: "link" },
-          { label: "Contact", href: "/contact", variant: "link" },
-        ];
-  const footerCols =
-    enterpriseFooterCols.length
-      ? enterpriseFooterCols
-      : [
-          {
-            title: "Products",
-            links: [
-              { label: "3C Machines", href: productsHref },
-              { label: "Custom Solutions", href: solutionsHref },
-              { label: "Cases", href: "/cases" },
-            ],
-          },
-          {
-            title: "Support",
-            links: [
-              { label: "Contact", href: "/contact" },
-              { label: "Request Catalog", href: "/contact" },
-            ],
-          },
-          {
-            title: "Company",
-            links: [
-              { label: "About", href: "/about" },
-              { label: "Privacy", href: "/privacy" },
-            ],
-          },
-        ];
-  const applyTemplateNavbarBusinessProps = (props: Record<string, unknown>) => {
-    const compactNavText = navLinks.map((link) => String(link.label || "")).filter(Boolean).join(" | ");
-    props.logo = { alt: brief.brand || "Brand" };
-    props.logoText = brief.brand || "Brand";
-    props.logotext = brief.brand || "Brand";
-    props.logotexttext = brief.brand || "Brand";
-    props.brandtext = String(brief.brand || "Brand").toUpperCase();
-    props.links = navLinks;
-    props.ctas = [];
-    props.navtext = compactNavText;
-    props.navhref = "/";
-    props.toplinkstext = compactNavText;
-    props.toplinkshref = "/";
-    props.actionstext = brief.heroCtas?.[0] || "Get Quote on WhatsApp";
-    props.actionshref = "/contact";
-    props.ctahtxttext = brief.heroCtas?.[0] || "Get Quote on WhatsApp";
-    props.ctahtxthref = "/contact";
-    props.logintxttext = "Contact";
-    props.logintxthref = "/contact";
-    props.searchtxttext = "";
-    props.searchtxthref = "/";
-    props.langtxttext = "EN";
-    props.langtxthref = "/";
-    props.utilitytext = "Industrial CNC systems";
-    props.utilityhref = "/";
-    return props;
-  };
-  const applyTemplateFooterBusinessProps = (props: Record<string, unknown>) => {
-    const footerBrand = brief.brand || "Brand";
-    const uppercaseFooterBrand = footerBrand.toUpperCase();
-    const flattenedFooterLinks = footerCols.flatMap((column) => column.links || []);
-    const copyrightText = brief.copyright || `© 2024 ${brief.brand || "Brand"}. All rights reserved.`;
-    props.logoText = footerBrand;
-    props.flogotext = footerBrand;
-    props.ftlogotext = footerBrand;
-    props.footerBrandtext = uppercaseFooterBrand;
-    props.brandtext = uppercaseFooterBrand;
-    props.columns = footerCols;
-    props.legal = copyrightText;
-    props.copytext = copyrightText;
-    props.fcopytext = copyrightText;
-    props.fcopyhref = "/privacy";
-    footerCols.slice(0, 4).forEach((column, index) => {
-      const slot = index + 1;
-      const firstLink = (column.links || [])[0];
-      props[`fcol${slot}text`] = column.title;
-      props[`fcol${slot}href`] = firstLink?.href || "/";
-      props[`col${slot}titletext`] = column.title;
-      props[`col${slot}titlehref`] = firstLink?.href || "/";
-      props[`col${slot}texttext`] = (column.links || []).map((link) => link.label).filter(Boolean).join(" | ");
-      props[`col${slot}texthref`] = firstLink?.href || "/";
-    });
-    props.footercompanytext = brief.address || "Bao'an, Shenzhen, China";
-    props.footercompanyhref = "/about";
-    props.footeraddresstext = brief.address || "Bao'an, Shenzhen, China";
-    props.footeraddresshref = "/about";
-    props.footercontacttext = brief.whatsapp || brief.email || "Contact";
-    props.footercontacthref = "/contact";
-    props.fdesctext = flattenedFooterLinks.map((link) => link.label).filter(Boolean).join(" • ");
-    props.fdeschref = "/contact";
-    return props;
-  };
-  const requestedPaths: Set<string> | null =
-    brief.nav?.length
-      ? new Set(
-          brief.nav
-            .map((label) => navHrefForLabel(label))
-            .filter(Boolean)
-            .concat(["/"])
-        )
-      : null;
-  const writeTextPair = (
-    props: Record<string, unknown>,
-    fields: { title?: string; subtitle?: string; eyebrow?: string }
-  ) => {
-    if (fields.eyebrow) {
-      props.eyebrow = fields.eyebrow;
-      props.eyetext = fields.eyebrow;
-      props.eyebrowtext = fields.eyebrow;
-      props.heroeyebrowtext = fields.eyebrow;
-      props.missioneyebrowtext = fields.eyebrow;
-      props.ctaeyebrowtext = fields.eyebrow;
-      props.tagtext = fields.eyebrow;
-      props.h1tagtext = fields.eyebrow;
-      props.exptagtext = fields.eyebrow;
-      props.audlabeltext = fields.eyebrow;
-      props.heroKickertext = fields.eyebrow;
-      props.headerBrandtext = fields.eyebrow;
-      props.storyEyebrowtext = fields.eyebrow;
-      props.solutionEyebrowtext = fields.eyebrow;
-      props.productsEyebrowtext = fields.eyebrow;
-      props.herotagtext = fields.eyebrow;
-      props.righttagtext = fields.eyebrow;
-    }
-    if (fields.title) {
-      props.title = fields.title;
-      props.titletext = fields.title;
-      props.hedtext = fields.title;
-      props.h1text = fields.title;
-      props.herotitletext = fields.title;
-      props.heroTitletext = fields.title;
-      props.maintitletext = fields.title;
-      props.usetitletext = fields.title;
-      props.missionheadlinetext = fields.title;
-      props.ctaheadtext = fields.title;
-      props.httext = fields.title;
-      props.exptitletext = fields.title;
-      props.audtitletext = fields.title;
-      props.storyTitletext = fields.title;
-      props.solutionTitletext = fields.title;
-      props.productsTitletext = fields.title;
-      props.findTitletext = fields.title;
-      props.reviewstitletext = fields.title;
-      props.catstitletext = fields.title;
-      props.righttitletext = fields.title;
-    }
-    if (fields.subtitle) {
-      props.subtitle = fields.subtitle;
-      props.desctext = fields.subtitle;
-      props.subtext = fields.subtitle;
-      props.h1desctext = fields.subtitle;
-      props.herobodytext = fields.subtitle;
-      props.herodesctext = fields.subtitle;
-      props.heroSubtitletext = fields.subtitle;
-      props.usecard1bodytext = fields.subtitle;
-      props.usesubtext = fields.subtitle;
-      props.missionsupporttext = fields.subtitle;
-      props.ctabodytext = fields.subtitle;
-      props.hstext = fields.subtitle;
-      props.expbodytext = fields.subtitle;
-      props.storyCopytext = fields.subtitle;
-      props.solutionCopytext = fields.subtitle;
-      props.productsCopytext = fields.subtitle;
-      props.findCopytext = fields.subtitle;
-      props.reviewssubtitletext = fields.subtitle;
-    }
-  };
-  const isLikelyFontFamilyToken = (value: unknown) => {
-    if (typeof value !== "string") return false;
-    const trimmed = value.trim();
-    if (!trimmed || trimmed.length > 80) return false;
-    if (/[.!?]/.test(trimmed)) return false;
-    if (/https?:\/\//i.test(trimmed)) return false;
-    if (/\b(and|with|for|from|that|this|built|pilot|scale|show|present|brand)\b/i.test(trimmed)) return false;
-    return /^[A-Za-z0-9 ,'"-]+$/.test(trimmed);
-  };
-  const sanitizeThemeTypography = (value: unknown, fallbackFont = "Inter") => {
-    if (!value || typeof value !== "object") return value;
-    const theme = { ...(value as Record<string, unknown>) };
-    if (!isLikelyFontFamilyToken(theme.fontHeading)) theme.fontHeading = fallbackFont;
-    if (!isLikelyFontFamilyToken(theme.fontBody)) theme.fontBody = fallbackFont;
-    if (Array.isArray(theme.fontFamilies)) {
-      const normalizedFamilies = theme.fontFamilies.filter((entry) => isLikelyFontFamilyToken(entry));
-      theme.fontFamilies = normalizedFamilies.length ? normalizedFamilies : [fallbackFont];
-    } else {
-      theme.fontFamilies = [fallbackFont];
-    }
-    return theme;
-  };
-  const applyProductCardSeries = (props: Record<string, unknown>, items: string[], brand: string) => {
-    items.slice(0, 4).forEach((name, idx) => {
-      props[`storyCard${idx}Titletext`] = name;
-      props[`storyCard${idx}Bodytext`] = "Core specs, stable output, and one-click quotation via WhatsApp.";
-      props[`storyCard${idx}Eyebrowtext`] = brand;
-      const slot = idx + 1;
-      props[`productCard${slot}Titletext`] = name;
-      props[`productCard${slot}Bodytext`] = "Core specs, stable output, and one-click quotation via WhatsApp.";
-      props[`productCard${slot}Eyebrowtext`] = brand;
-      props[`findCardLabel${idx}text`] = name;
-      props[`indT${idx}text`] = name;
-      props[`q${slot}text`] = name;
-    });
-  };
-  const applyFeatureSeries = (props: Record<string, unknown>, items: string[]) => {
-    items.slice(0, 4).forEach((entry, idx) => {
-      const [title, desc] = String(entry || "")
-        .split("→")
-        .map((part) => part.trim());
-      const resolvedTitle = title || entry;
-      const resolvedDesc = desc || "";
-      props[`findCardLabel${idx}text`] = resolvedTitle;
-      const slot = idx + 1;
-      props[`a${slot}text`] = resolvedDesc || resolvedTitle;
-      props[`t${slot}text`] = resolvedTitle;
-      props[`d${slot}text`] = resolvedDesc;
-    });
-  };
-  const sanitizeTemplateExclusiveProps = (
-    props: Record<string, unknown>,
-    meta: { pageType: string; publishedOriginalType: string }
-  ) => {
-    const productNames = brief.productItems?.length
-      ? brief.productItems
-      : ["3C Phone-Frame Center", "3C Laptop-Shell Center", "3C Camera-Bezel Center", "3C Keypad Center"];
-    const featureItems = brief.featureItems?.length
-      ? brief.featureItems
-      : ["Fast Customization → 10-Day Sample", "Short Lead-Time → 15-Day Shipment", "Local Support → WhatsApp + Regional Agent"];
-    const navLabels = (brief.nav?.length
-      ? brief.nav
-      : ["Home", "3C Machines", "Custom Solutions", "Cases", "About", "Contact"]
-    ).filter(Boolean);
-    const visibleNav = navLabels.filter((label) => !/^home$/i.test(label));
-    const aboutSummary =
-      brief.aboutText || "ISO-certified plant, 30+ R&D engineers, and 200+ installed systems across Southeast Asia.";
-    const featureSummary = featureItems
-      .slice(0, 3)
-      .map((entry) => entry.split("→").map((part) => part.trim()).filter(Boolean).join(" - "))
-      .join(" • ");
-    const productFamilies = [
-      "Phone Frames",
-      "Laptop Shells",
-      "Camera Bezels",
-      "Keypads",
-      "Custom Cells",
-    ];
-    const placeholders = new Map<string, string>([
-      ["Present the core value proposition with a clear headline and primary CTA.", ""],
-      ["Present the core value proposition", ""],
-      ["Show key differentiators with concise cards.", "Execution differentiators"],
-      ["From pilot to scale with measurable outcomes.", "Built around sampling speed, shipment discipline, and local support."],
-      ["Display the main product/service catalog with compact cards.", "Request Catalog"],
-    ]);
-    const walk = (entry: unknown, keyPath: string[]): unknown => {
-      if (typeof entry === "string") {
-        const trimmed = entry.trim();
-        let next = entry;
-        if (placeholders.has(trimmed)) next = placeholders.get(trimmed) || "";
-        if (/^brand(?:[-\s].*)?$/i.test(trimmed)) next = brief.brand || "LC-CNC™";
-        if (/^brand[-\s]/i.test(trimmed)) next = `${brief.brand || "LC-CNC™"} industrial systems`;
-        if (/Brand\s+Brand/i.test(trimmed)) next = "3C CNC Machine Lineup";
-        if (/Explain Brand narrative/i.test(trimmed)) next = "3C CNC Machine Lineup";
-        if (/structured clone pen/i.test(trimmed)) next = aboutSummary;
-        if (/^SECTORS$/i.test(trimmed)) next = visibleNav[0] || "3C Machines";
-        if (/^HIGH LIFETIME COSTS$/i.test(trimmed)) next = "Laptop Shells";
-        if (/^AUTOMATION$/i.test(trimmed)) next = "Camera Bezels";
-        const leafKey = String(keyPath[keyPath.length - 1] || "");
-        if (/^footerCol1text$/i.test(leafKey)) next = "3C Machines\nCustom Solutions\nCases";
-        if (/^footerCol2text$/i.test(leafKey)) next = "About\nContact\nPrivacy";
-        if (/^footerCopytext$/i.test(leafKey) || /^copytext$/i.test(leafKey)) next = brief.copyright || aboutSummary;
-        if (/^solutionInnerTitletext$/i.test(leafKey)) next = "Execution differentiators";
-        if (/^solutionInnerBodytext$/i.test(leafKey)) next = featureSummary || aboutSummary;
-        if (/^prodTab1Texttext$/i.test(leafKey)) next = "Phone Frames";
-        if (/^prodTab2Texttext$/i.test(leafKey)) next = "Laptop Shells";
-        if (/^prodTab3Texttext$/i.test(leafKey)) next = "Camera Bezels";
-        if (/^productsCtaTexttext$/i.test(leafKey)) next = brief.heroCtas?.[1] || "Request Catalog";
-        if (/^heroCta1Texttext$/i.test(leafKey)) next = brief.heroCtas?.[0] || "Get Quote on WhatsApp";
-        if (/^heroCta2Texttext$/i.test(leafKey)) next = brief.heroCtas?.[1] || "Request Catalog";
-        if (/^heroSubtext$/i.test(leafKey)) next = brief.heroSubtitle || next;
-        if (/^headerMenutext$/i.test(leafKey) || /^homeNavbarMenutext$/i.test(leafKey)) next = "Menu";
-        if (/^homeNavbarLangtext$/i.test(leafKey)) next = "EN";
-        if (/^homeNavbarSearchtext$/i.test(leafKey)) next = "";
-        if (/^chatLabeltext$/i.test(leafKey)) next = "WhatsApp";
-        if (/^heroCatLabeltext$/i.test(leafKey)) next = "SEA";
-        if (/^heroCatTexttext$/i.test(leafKey)) next = "3C CNC";
-        if (/^heroBannerTexttext$/i.test(leafKey)) next = "10-Day Sample • 15-Day Shipment";
-        if (/^scrollIndicatorLabeltext$/i.test(leafKey)) next = "Explore";
-        if (/^heroCardLeftLabeltext$/i.test(leafKey)) next = "10-Day Sample";
-        if (/^heroCardRightLabeltext$/i.test(leafKey)) next = "24/7 WhatsApp";
-        if (/^productCard0Titletext$/i.test(leafKey)) next = productNames[3] || productNames[0] || "";
-        if (/^productCard0Eyebrowtext$/i.test(leafKey)) next = brief.brand || "LC-CNC™";
-        if (/^productCard0Bodytext$/i.test(leafKey)) next = "Core specs, stable output, and one-click quotation via WhatsApp.";
-        if (/^productCard0Arrowtext$/i.test(leafKey)) next = "›";
-        return next;
-      }
-      if (Array.isArray(entry)) return entry.map((child, index) => walk(child, [...keyPath, String(index)]));
-      if (!entry || typeof entry !== "object") return entry;
-      const next: Record<string, unknown> = {};
-      Object.entries(entry as Record<string, unknown>).forEach(([key, child]) => {
-        next[key] = walk(child, [...keyPath, key]);
-      });
-      return next;
-    };
-    const next = walk(props, []) as Record<string, unknown>;
-    if (next.theme && typeof next.theme === "object") {
-      next.theme = sanitizeThemeTypography(next.theme, "Inter");
-    }
-    if (/Heropen/i.test(meta.publishedOriginalType)) {
-      const fittedSandvikHeroTitle =
-        meta.pageType === "home" && templateFamilyHint === "sandvik"
-          ? "Precision 3C CNC\nCenters for\nSoutheast Asia"
-          : brief.heroTitle || "Precision 3C CNC Machines for Southeast Asia";
-      next.homeNavbarSectorstext = visibleNav[0] || "3C Machines";
-      next.homeNavbarProductstext = visibleNav[1] || "Custom Solutions";
-      next.homeNavbarSupporttext = visibleNav[2] || "Cases";
-      next.homeNavbarAbouttext = visibleNav[3] || "About";
-      next.homeNavbarContactTexttext = visibleNav[4] || "Contact";
-      next.headerBrandtext = brief.brand || "LC-CNC™";
-      next.heroKickertext = `${brief.brand || "LC-CNC™"} 3C CNC`;
-      next.herotagtext = `${brief.brand || "LC-CNC™"} 3C CNC`;
-      next.herotitletext = fittedSandvikHeroTitle;
-      next.herodesctext = brief.heroSubtitle || "10-Day Prototype • 15-Day Delivery • 24/7 WhatsApp Support";
-      next.herobtntexttext = brief.heroCtas?.[0] || "Get Quote on WhatsApp";
-      next.herobtntxttext = brief.heroCtas?.[1] || "Request Catalog";
-      next.herobtnhref = "/contact";
-      next.herobtntexthref = "/contact";
-    }
-    if (/StoryCategoriespen/i.test(meta.publishedOriginalType)) {
-      next.catstitletext = "3C CNC Machine Lineup";
-      next.chip1ttext = productFamilies[0];
-      next.chip2ttext = productFamilies[1];
-      next.chip3ttext = productFamilies[2];
-      next.chip4ttext = productFamilies[3];
-      next.chip5ttext = productFamilies[4];
-      next.catcard1ttext = productNames[0] || productFamilies[0];
-      next.catcard1stext = "Phone display frame machining with stable tolerance control.";
-      next.catcard2ttext = productNames[1] || productFamilies[1];
-      next.catcard2stext = "Laptop shell centers tuned for cosmetic-finish output.";
-      next.catcard3ttext = productNames[2] || productFamilies[2];
-      next.catcard3stext = "Camera bezel programs optimized for repeatable throughput.";
-      next.card4ttext = productNames[3] || productFamilies[3];
-      next.card5ttext = "Custom cells & fixtures";
-    }
-    if (/Approach|Solutionsection|Findyoursolution/i.test(meta.publishedOriginalType)) {
-      next.righttagtext = "Execution differentiators";
-      next.righttitletext = "Fast customization, short lead-time, and local support";
-      next.solutionInnerTitletext = "Execution differentiators";
-      next.solutionInnerBodytext = featureSummary || aboutSummary;
-    }
-    if (/SandvikProducts.*Productsmainpen/i.test(meta.publishedOriginalType) || /Productssection|ProductsGrid/i.test(meta.publishedOriginalType)) {
-      next.titletext = "3C CNC Machine Lineup";
-      next.desctext =
-        "Phone-frame, laptop-shell, camera-bezel, and keypad centers configured for stable output, fast sampling, and inquiry-ready support.";
-      next.alllinktext = `${brief.heroCtas?.[1] || "Request Catalog"} ›`;
-      next.g1text = productFamilies[0];
-      next.g2text = productFamilies[1];
-      next.g3text = productFamilies[2];
-      next.g4text = productFamilies[3];
-      next.gqtfctext = `${productNames[0] || productFamilies[0]} ›`;
-      next.fcyb2text = `${productNames[1] || productFamilies[1]} ›`;
-      next.vg0ctext = `${productNames[2] || productFamilies[2]} ›`;
-      next.p8bfftext = `${productNames[3] || productFamilies[3]} ›`;
-      next.kgejmtext = "10-Day Sample ›";
-      next.rgfxktext = "15-Day Shipment ›";
-      next.sdttstext = "24/7 WhatsApp Support ›";
-      next.ot6wjtext = "Regional Agent Support ›";
-      next.ayobqtext = "Fixture customization ›";
-      next.lnpyvtext = "Tolerance control ›";
-      next.cmttvtext = "Custom line integration ›";
-      next.uwtwqtext = `${productFamilies[0]} ›`;
-      next.rlhiktext = `${productFamilies[1]} ›`;
-      next.k8x22text = `${productFamilies[2]} ›`;
-      next.aq6y3text = `${productFamilies[3]} ›`;
-      next.kbqwtext = "Custom Solutions ›";
-      next.qnibtext = `${brief.heroCtas?.[0] || "Get Quote on WhatsApp"} ›`;
-      next.o1z3dtext = `${brief.heroCtas?.[1] || "Request Catalog"} ›`;
-      next.cat1imagesrc = lcCncAssets.phone;
-      next.cat2imagesrc = lcCncAssets.laptop;
-      next.cat3imagesrc = lcCncAssets.camera;
-      next.cat4imagesrc = lcCncAssets.keypad;
-      next.cat5imagesrc = lcCncAssets.hero;
-    }
-    return next;
-  };
-  const enterprisePaths = preserveEnterpriseCoverage
-    ? new Set(ENTERPRISE_SITE_PAGES.map((page) => page.path))
-    : null;
-  const pagesToProcess = requestedPaths
-    ? pages.filter((page) => {
-        const pagePath = String(page.path || "/");
-        return requestedPaths.has(pagePath) || Boolean(enterprisePaths?.has(pagePath));
-      })
-    : pages;
-  const navDensityByPageType: Record<string, { maxWidth: "lg" | "xl" | "2xl"; paddingY: "sm" | "md" | "lg" }> = {
-    home: { maxWidth: "xl", paddingY: "sm" },
-    products: { maxWidth: "xl", paddingY: "sm" },
-    solutions: { maxWidth: "2xl", paddingY: "md" },
-    cases: { maxWidth: "lg", paddingY: "sm" },
-    about: { maxWidth: "xl", paddingY: "md" },
-    contact: { maxWidth: "lg", paddingY: "sm" },
-    generic: { maxWidth: "xl", paddingY: "sm" },
-  };
-  return pagesToProcess.map((page) => {
-    const pageContract = resolvePublishedPageGenerationContract({
-      prompt,
-      pagePath: page.path,
-      pageName: page.name,
-    });
-    const inferredPageType = inferPageTypeFromPath(page.path);
-    const pageType = inferredPageType !== "generic" ? inferredPageType : pageContract?.page?.pageType || inferredPageType;
-    const kindCounters = new Map<string, number>();
-    const contractQueues = new Map<string, Array<{ slotId?: string; role?: string; imageIntent?: string }>>();
-    for (const section of Array.isArray(pageContract?.page?.sections) ? pageContract.page.sections : []) {
-      const key = String(section?.kind || "").trim();
-      if (!key) continue;
-      const queue = contractQueues.get(key) || [];
-      queue.push({ slotId: section.slotId, role: section.role, imageIntent: section.imageIntent });
-      contractQueues.set(key, queue);
-    }
-    const rootTheme =
-      page?.data?.root?.props?.theme && typeof page.data.root.props.theme === "object"
-        ? (page.data.root.props.theme as Record<string, unknown>)
-        : {};
-    const rootPalette =
-      rootTheme.palette && typeof rootTheme.palette === "object"
-        ? (rootTheme.palette as Record<string, unknown>)
-        : {};
-    const next = {
-      ...page,
-      data: {
-        ...page.data,
-        root: {
-          ...page.data.root,
-          props: {
-            ...page.data.root.props,
-            theme: {
-              ...rootTheme,
-              palette: brief.palette ? { ...rootPalette, ...brief.palette } : rootTheme.palette,
-              primaryColor: brief.palette?.primary || rootTheme.primaryColor,
-            },
-          },
-        },
-        content: page.data.content.map((item) => ({ ...item, props: { ...(item.props || {}) } })),
-      },
-    };
-    let normalizedHomeHero = next.data.content.some(
-      (item) => item.type === "HeroSplit" && String(item?.props?.id || "") === "structured-home-hero"
-    );
-    let normalizedHomeProducts = next.data.content.some(
-      (item) => item.type === "CardsGrid" && String(item?.props?.id || "") === "structured-home-products"
-    );
-    let normalizedHomeFeatures = next.data.content.some(
-      (item) => item.type === "FeatureWithMedia" && String(item?.props?.id || "") === "structured-home-features"
-    );
-    const interiorPageType =
-      pageType === "products" || pageType === "solutions" || pageType === "cases" || pageType === "about" || pageType === "contact"
-        ? pageType
-        : null;
-    const normalizedInteriorSlots = new Set(
-      next.data.content
-        .map((item) => String(item?.props?.id || ""))
-        .filter((value) => /^structured-(products|solutions|cases|about|contact)-/.test(value))
-    );
-    let homeStructuralIndex = 0;
-    let interiorStructuralIndex = 0;
-    next.data.content.forEach((item) => {
-      let publishedOriginalType =
-        typeof item?.props?.__publishedOriginalType === "string" ? String(item.props.__publishedOriginalType) : "";
-      const rawEffectiveType = inferEffectiveBlockType(item.type, publishedOriginalType);
-      const rawInferredKind = inferDisplaySectionKind(item.type, publishedOriginalType);
-      const rawKindOrdinal = rawInferredKind ? Number(kindCounters.get(rawInferredKind) || 0) + 1 : 0;
-      if (rawInferredKind) kindCounters.set(rawInferredKind, rawKindOrdinal);
-      const contractMatch = rawInferredKind ? (contractQueues.get(rawInferredKind) || [])[rawKindOrdinal - 1] || null : null;
-      const sectionSlotId =
-        contractMatch?.slotId ||
-        (rawInferredKind ? `${String(pageType || "generic")}.${rawInferredKind}.${rawKindOrdinal}` : "");
-      const sectionRole = contractMatch?.role || "";
-      const sectionImageIntent = String(contractMatch?.imageIntent || "").trim();
-      const matchesSectionSlot = (...candidates: string[]) =>
-        candidates.filter(Boolean).includes(sectionRole) || candidates.filter(Boolean).includes(sectionSlotId);
-      const matchesSectionRole = (...roles: string[]) => roles.filter(Boolean).includes(sectionRole);
-      const isHomeBodyCandidate =
-        pageType === "home" &&
-        !["navigation", "footer", "cta"].includes(rawInferredKind) &&
-        rawEffectiveType !== "LeadCaptureCTA";
-      if (isHomeBodyCandidate) homeStructuralIndex += 1;
-      const homeBodySlot = isHomeBodyCandidate ? homeStructuralIndex : 0;
-      const isInteriorBodyCandidate =
-        interiorPageType !== null &&
-        !["navigation", "footer", "cta"].includes(rawInferredKind) &&
-        rawEffectiveType !== "LeadCaptureCTA";
-      if (isInteriorBodyCandidate) interiorStructuralIndex += 1;
-      const interiorBodySlot = isInteriorBodyCandidate ? interiorStructuralIndex : 0;
-      if (
-        pageType === "home" &&
-        assemblyPolicy.normalizeHomeHero &&
-        !normalizedHomeHero &&
-        (matchesSectionSlot("primary-hero", "page-hero", "home.hero.1") || homeBodySlot === 1)
-      ) {
-        const existingTheme =
-          item?.props?.theme && typeof item.props.theme === "object"
-            ? (item.props.theme as Record<string, unknown>)
-            : (page?.data?.root?.props?.theme as Record<string, unknown>) || {};
-        item.type = "HeroSplit";
-        item.props = buildLcCncSandvikHeroProps(existingTheme);
-        publishedOriginalType = "";
-        normalizedHomeHero = true;
-      } else if (assemblyPolicy.normalizeHeader && /Navigation|Headerpen/i.test(publishedOriginalType || String(item.type))) {
-        item.type = "Navbar";
-        item.props = buildLcCncNavbarProps();
-        publishedOriginalType = "";
-      } else if (
-        pageType === "home" &&
-        assemblyPolicy.normalizeHomeProducts &&
-        !normalizedHomeProducts &&
-        (matchesSectionSlot("featured-products", "home.products.1") || homeBodySlot === 2)
-      ) {
-        const existingTheme =
-          item?.props?.theme && typeof item.props.theme === "object"
-            ? (item.props.theme as Record<string, unknown>)
-            : (page?.data?.root?.props?.theme as Record<string, unknown>) || {};
-        item.type = "CardsGrid";
-        item.props = buildLcCncSandvikHomeCardsProps(existingTheme);
-        publishedOriginalType = "";
-        normalizedHomeProducts = true;
-      } else if (
-        pageType === "home" &&
-        assemblyPolicy.normalizeHomeFeatures &&
-        !normalizedHomeFeatures &&
-        (matchesSectionSlot("capability-strip", "process-proof", "home.approach.1", "home.approach.2") || homeBodySlot === 3)
-      ) {
-        item.type = "FeatureWithMedia";
-        item.props = buildLcCncFeatureWithMediaProps();
-        publishedOriginalType = "";
-        normalizedHomeFeatures = true;
-      } else if (assemblyPolicy.normalizeFooter && /Footer/i.test(publishedOriginalType || String(item.type))) {
-        item.type = "Footer";
-        item.props = buildLcCncFooterProps();
-        publishedOriginalType = "";
-      } else if (interiorPageType && assemblyPolicy.normalizeInteriorPages && interiorBodySlot > 0) {
-        const slotKind = interiorAssemblySlots[interiorPageType]?.[interiorBodySlot - 1];
-        const slotId = slotKind ? `structured-${interiorPageType}-${slotKind === "products" ? (interiorPageType === "products" ? "catalog" : interiorPageType === "cases" ? "gallery" : interiorPageType === "about" ? "capabilities" : "cards") : slotKind}` : "";
-        const existingTheme =
-          item?.props?.theme && typeof item.props.theme === "object"
-            ? (item.props.theme as Record<string, unknown>)
-            : (page?.data?.root?.props?.theme as Record<string, unknown>) || {};
-        if (slotKind === "hero" && !normalizedInteriorSlots.has(slotId)) {
-          const heroSpec = buildStructuredInteriorHeroSpec(interiorPageType, existingTheme);
-          item.type = heroSpec.type;
-          item.props = heroSpec.props;
-          publishedOriginalType = "";
-          normalizedInteriorSlots.add(String(item.props.id || slotId));
-        } else if (slotKind === "products" && !normalizedInteriorSlots.has(slotId)) {
-          item.type = "CardsGrid";
-          item.props = buildStructuredInteriorCardsProps(interiorPageType as "products" | "solutions" | "cases" | "about", existingTheme);
-          publishedOriginalType = "";
-          normalizedInteriorSlots.add(String(item.props.id || slotId));
-        } else if (slotKind === "features" && !normalizedInteriorSlots.has(slotId)) {
-          item.type = "FeatureGrid";
-          item.props = buildStructuredInteriorFeatureProps(interiorPageType as "products" | "solutions" | "cases" | "contact");
-          publishedOriginalType = "";
-          normalizedInteriorSlots.add(String(item.props.id || slotId));
-        } else if (slotKind === "proof" && !normalizedInteriorSlots.has(slotId)) {
-          item.type = "TestimonialsGrid";
-          item.props = buildStructuredInteriorTestimonialsProps(interiorPageType);
-          publishedOriginalType = "";
-          normalizedInteriorSlots.add(String(item.props.id || slotId));
-        } else if (slotKind === "story" && !normalizedInteriorSlots.has(slotId)) {
-          item.type = "ContentStory";
-          item.props = buildStructuredAboutStoryProps();
-          publishedOriginalType = "";
-          normalizedInteriorSlots.add(String(item.props.id || slotId));
-        }
-      }
-      const effectiveType = inferEffectiveBlockType(item.type, publishedOriginalType);
-      const inferredKind = inferDisplaySectionKind(item.type, publishedOriginalType);
-      if (effectiveType === "Navbar") {
-        applyTemplateNavbarBusinessProps(item.props);
-        const navDensity = navDensityByPageType[pageType] || navDensityByPageType.generic;
-        item.props.maxWidth = navDensity.maxWidth;
-        item.props.paddingY = navDensity.paddingY;
-        item.props.sticky = true;
-      }
-      if (effectiveType === "CreationFooterFallback") {
-        applyTemplateFooterBusinessProps(item.props);
-      }
-      if (effectiveType === "HeroSplit" && matchesSectionSlot("primary-hero", "page-hero", "home.hero.1")) {
-        writeTextPair(item.props, {
-          eyebrow: brief.brand ? `${brief.brand} 3C CNC` : undefined,
-          title: brief.heroTitle || String(item.props.title || ""),
-          subtitle: brief.heroSubtitle || String(item.props.subtitle || ""),
-        });
-        item.props.ctas = [
-          { label: brief.heroCtas?.[0] || "Get Quote", href: "/contact", variant: "primary" },
-          { label: brief.heroCtas?.[1] || "Request Catalog", href: productsHref, variant: "secondary" },
-        ];
-        item.props.heroPrimaryTexttext = brief.heroCtas?.[0] || "Get Quote on WhatsApp";
-        item.props.heroSecondaryTexttext = brief.heroCtas?.[1] || "Request Catalog";
-      }
-      if (effectiveType === "HeroSplit" && matchesSectionSlot("about.hero.1", "page-hero") && pageType === "about") {
-        writeTextPair(item.props, {
-          eyebrow: brief.brand || "About LC-CNC",
-          title: "LC-CNC, Shenzhen since 2013",
-          subtitle: brief.aboutText || "ISO-certified plant, 30+ R&D engineers, 200+ installed across SEA.",
-        });
-      }
-      if (pageType === "products" && effectiveType === "HeroSplit" && inferredKind === "hero") {
-        writeTextPair(item.props, {
-          eyebrow: "3C machine portfolio",
-          title: "3C CNC Machine Platforms",
-          subtitle:
-            "Phone-frame, laptop-shell, camera-bezel, and keypad centers configured for stable output and short delivery windows.",
-        });
-      }
-      if (pageType === "solutions" && effectiveType === "HeroSplit" && inferredKind === "hero") {
-        writeTextPair(item.props, {
-          eyebrow: "Custom solutions",
-          title: "Custom CNC Solutions for Southeast Asia",
-          subtitle:
-            "Fixture, spindle, automation, and line-integration packages built around takt time, finish quality, and deployment speed.",
-        });
-      }
-      if (pageType === "cases" && effectiveType === "HeroSplit" && inferredKind === "hero") {
-        writeTextPair(item.props, {
-          eyebrow: "Production case studies",
-          title: "Representative 3C machining programs",
-          subtitle:
-            "Phone frames, laptop shells, camera bezels, and keypad components delivered with repeatable cycle time and cosmetic-finish control.",
-        });
-      }
-      if (effectiveType === "FeatureGrid" && matchesSectionSlot("capability-strip", "home.approach.1")) {
-        item.props.variant = "4col";
-        item.props.title = "LC-CNC, Shenzhen since 2013";
-        item.props.subtitle = brief.aboutText || "ISO-certified plant, 30+ R&D engineers, 200+ installed across SEA.";
-        item.props.items = [
-          { title: "ISO-Certified Plant", desc: "Documented quality control and repeatable factory execution." },
-          { title: "30+ R&D Engineers", desc: "Mechanical, tooling, controls, and automation line expertise." },
-          { title: "200+ Installed Across SEA", desc: "Regional machine delivery, service, and process support." },
-          { title: "Certifications", desc: (brief.certifications || ["ISO 9001", "CE", "SGS"]).join(" • ") },
-        ];
-      }
-      if (effectiveType === "FeatureGrid" && matchesSectionSlot("process-proof", "home.approach.2")) {
-        const features = brief.featureItems?.length
-          ? brief.featureItems
-          : ["Fast Customization → 10-Day Sample", "Short Lead-Time → 15-Day Shipment", "Local Support → WhatsApp + Regional Agent"];
-        item.props.title = "Fast Customization, Lead Time, and Local Support";
-        item.props.subtitle = "Execution signals that matter to regional buyers.";
-        item.props.items = features.slice(0, 3).map((entry) => {
-          const [title, desc] = entry.split("→").map((part) => part.trim());
-          return { title: title || entry, desc: desc || "" };
-        });
-      }
-      if (effectiveType === "CardsGrid" && matchesSectionSlot("featured-products", "home.products.1")) {
-        const products = brief.productItems?.length
-          ? brief.productItems
-          : ["3C Phone-Frame Center", "3C Laptop-Shell Center", "3C Camera-Bezel Center", "3C Keypad Center"];
-        item.props.title = "3C CNC Machine Portfolio";
-        item.props.subtitle = "Industrial-grade machine platforms optimized for Southeast Asia 3C manufacturing.";
-        item.props.items = products.slice(0, 4).map((name) => ({
-          title: name,
-          tag: brief.brand || "LC-CNC",
-          description: "Core specs, stable output, and one-click quotation via WhatsApp.",
-          cta: { label: "WhatsApp Quote", href: "/contact", variant: "primary" },
-        }));
-      }
-      if (effectiveType === "TestimonialsGrid" && matchesSectionSlot("customer-proof", "home.socialproof.1")) {
-        const cases = brief.caseItems?.length
-          ? brief.caseItems
-          : ["Phone Display Frame Machining", "Laptop Shell Machining", "Camera Bezel Machining", "Phone Keypad Machining"];
-        item.props.title = "Application Cases";
-        item.props.subtitle = "Representative 3C machining applications with stable throughput and finish quality.";
-        item.props.items = cases.slice(0, 4).map((name) => ({
-          name,
-          role: "Application Case",
-          quote: "Stable process design, repeatable output, and delivery discipline adapted to the part family.",
-        }));
-      }
-      if (effectiveType === "LeadCaptureCTA" && matchesSectionRole("primary-cta")) {
-        item.props.title = "Quick Quote & WhatsApp Contact";
-        item.props.subtitle = `WhatsApp ${brief.whatsapp || ""} • ${brief.email || ""} • ${brief.address || ""}`.replace(/\s•\s$/, "");
-        item.props.note = "I agree to receive follow-up via WhatsApp.";
-        item.props.cta = { label: "Get Quote on WhatsApp", href: "/contact", variant: "primary" };
-      }
-      if (pageType === "home" && /Heropen/i.test(publishedOriginalType)) {
-        const compactHeroTitle =
-          /LC-CNC|3C CNC|CNC machine/i.test(brief.brand || "")
-            ? "Precision 3C CNC Centers for Southeast Asia"
-            : brief.heroTitle || "Precision 3C CNC Machines for Southeast Asia";
-        writeTextPair(item.props, {
-          eyebrow: brief.brand ? `${brief.brand} Shenzhen Factory Since 2013` : "Shenzhen Factory Since 2013",
-          title: compactHeroTitle,
-          subtitle: brief.heroSubtitle || "10-Day Prototype • 15-Day Delivery • 24/7 WhatsApp Support",
-        });
-        item.props.heroPrimaryTexttext = brief.heroCtas?.[0] || "Get Quote on WhatsApp";
-        item.props.heroSecondaryTexttext = brief.heroCtas?.[1] || "Request Catalog";
-        item.props.headerBrandtext = brief.brand || "LC-CNC™";
-        item.props.heroimgimagesrc = lcCncAssets.hero;
-      }
-      if (pageType === "home" && /Story/i.test(publishedOriginalType)) {
-        const products = brief.productItems?.length
-          ? brief.productItems
-          : ["3C Phone-Frame Center", "3C Laptop-Shell Center", "3C Camera-Bezel Center", "3C Keypad Center"];
-        writeTextPair(item.props, {
-          eyebrow: "Machine lineup",
-          title: "3C CNC Machine Lineup",
-          subtitle: "Phone-frame, laptop-shell, camera-bezel, and keypad machining centers built for fast quoting and export-ready delivery.",
-        });
-        applyProductCardSeries(item.props, products, brief.brand || "LC-CNC");
-        item.props.card1imagesrc = lcCncAssets.phone;
-        item.props.card2imagesrc = lcCncAssets.laptop;
-        item.props.card3imagesrc = lcCncAssets.camera;
-        item.props.card4imagesrc = lcCncAssets.keypad;
-        item.props.card5imagesrc = lcCncAssets.hero;
-        item.props.card6imagesrc = lcCncAssets.phone;
-        item.props.catcard1stext = "Phone-frame machining center with stable tolerance control and quick fixture setup.";
-        item.props.catcard2stext = "Laptop-shell center tuned for cosmetic-finish panels and repeatable cycle time.";
-        item.props.catcard3stext = "Camera-bezel machining programs optimized for precision edges and steady throughput.";
-        item.props.card4ttext = "3C Keypad Center";
-        item.props.productCard1Bodytext = "Phone-frame machining center with stable tolerance control and quick fixture setup.";
-        item.props.productCard2Bodytext = "Laptop-shell center tuned for cosmetic-finish panels and repeatable cycle time.";
-        item.props.productCard3Bodytext = "Camera-bezel machining programs optimized for precision edges and steady throughput.";
-        item.props.productCard4Bodytext = "Compact keypad machining center for high-mix small-part output.";
-      }
-      if (pageType === "home" && /Approach|Solutionsection|Findyoursolution/i.test(publishedOriginalType)) {
-        const features = brief.featureItems?.length
-          ? brief.featureItems
-          : ["Fast Customization → 10-Day Sample", "Short Lead-Time → 15-Day Shipment", "Local Support → WhatsApp + Regional Agent"];
-        writeTextPair(item.props, {
-          eyebrow: "Why buyers choose LC-CNC",
-          title: "Fast sample turnaround, shorter lead-time, and WhatsApp-first support",
-          subtitle: "Built for Southeast Asia buyers who need machine decisions to move from quote to shipment without delay.",
-        });
-        applyFeatureSeries(item.props, features);
-        item.props.splitimgimagesrc = lcCncAssets.hero;
-      }
-      if (pageType === "home" && /Productssection|ProductsGrid/i.test(publishedOriginalType)) {
-        const products = brief.productItems?.length
-          ? brief.productItems
-          : ["3C Phone-Frame Center", "3C Laptop-Shell Center", "3C Camera-Bezel Center", "3C Keypad Center"];
-        writeTextPair(item.props, {
-          eyebrow: "Industrial equipment",
-          title: "3C CNC Machine Portfolio",
-          subtitle: "Core specs, stable output, and one-click quotation via WhatsApp.",
-        });
-        applyProductCardSeries(item.props, products, brief.brand || "LC-CNC");
-      }
-      if (pageType === "home" && effectiveType === "LeadCaptureCTA") {
-        item.props.title = "Quick Quote & WhatsApp Contact";
-        item.props.subtitle = `WhatsApp ${brief.whatsapp || "+86-158-1370-3777"} • ${brief.email || "sales@lc-cnc.com"} • ${brief.address || "Bao’an, Shenzhen, China"}`;
-        item.props.note = "I agree to receive follow-up via WhatsApp.";
-        item.props.cta = { label: brief.heroCtas?.[0] || "Get Quote on WhatsApp", href: "/contact", variant: "primary" };
-        item.props.variant = "banner";
-        item.props.paddingY = "xl";
-        item.props.maxWidth = "2xl";
-      }
-      if (pageType === "home" && assemblyPolicy.normalizeHomeHero && item.type === "HeroSplit" && item.props.id === "structured-home-hero") {
-        const existingTheme =
-          item?.props?.theme && typeof item.props.theme === "object"
-            ? (item.props.theme as Record<string, unknown>)
-            : (page?.data?.root?.props?.theme as Record<string, unknown>) || {};
-        item.props = {
-          ...buildLcCncSandvikHeroProps(existingTheme),
-          theme: existingTheme,
-        };
-      }
-      if (pageType === "home" && assemblyPolicy.normalizeHomeProducts && item.type === "CardsGrid" && item.props.id === "structured-home-products") {
-        const existingTheme =
-          item?.props?.theme && typeof item.props.theme === "object"
-            ? (item.props.theme as Record<string, unknown>)
-            : (page?.data?.root?.props?.theme as Record<string, unknown>) || {};
-        item.props = {
-          ...buildLcCncSandvikHomeCardsProps(existingTheme),
-          theme: existingTheme,
-        };
-      }
-      if (effectiveType === "CardsGrid" && matchesSectionSlot("product-catalog", "products.products.1")) {
-        item.props.title = "3C Machine Catalog";
-        item.props.subtitle = "Machine families for phone frames, laptop shells, camera bezels, and keypad components.";
-        item.props.items = (brief.productItems?.length ? brief.productItems : ["3C Phone-Frame Center", "3C Laptop-Shell Center", "3C Camera-Bezel Center", "3C Keypad Center"]).map((name) => ({
-          title: name,
-          description: "Core spindle, stroke, and throughput parameters for 3C machining lines.",
-          cta: { label: "Request Catalog", href: "/contact", variant: "primary" },
-        }));
-      }
-      if (pageType === "products" && effectiveType === "ContentStory") {
-        writeTextPair(item.props, {
-          title: "Configured for high-mix 3C machining lines",
-          subtitle:
-            "Each machine family is matched to part geometry, spindle demand, fixture strategy, and output rhythm instead of generic spec-sheet positioning.",
-        });
-      }
-      if (effectiveType === "FeatureGrid" && matchesSectionSlot("specification-summary", "products.approach.1")) {
-        item.props.title = "Core Machine Specifications";
-        item.props.subtitle = "Rigid structure, repeatable accuracy, and deployment-ready configuration options.";
-        item.props.items = [
-          { title: "High-Rigidity Frame", desc: "Stable machining performance for aluminum and magnesium 3C parts." },
-          { title: "Flexible Spindle Packages", desc: "Configured for roughing, finishing, and compact-feature processing." },
-          { title: "Automation Ready", desc: "Supports loaders, conveyors, and inline inspection expansion." },
-        ];
-      }
-      if (pageType === "products" && effectiveType === "FeatureGrid") {
-        item.props.title = "Core Machine Specifications";
-        item.props.subtitle = "Rigidity, spindle flexibility, and automation readiness for Southeast Asia 3C production.";
-      }
-      if (effectiveType === "TestimonialsGrid" && matchesSectionSlot("buyer-proof", "products.socialproof.1")) {
-        item.props.title = "Why Buyers Choose LC-CNC";
-        item.props.subtitle = "Catalog decisions driven by throughput, uptime, and support responsiveness.";
-        item.props.items = [
-          { name: "Procurement Team", role: "Vietnam", quote: "Machine selection was tied to real part geometry and lead-time targets, not generic specs." },
-          { name: "Production Manager", role: "Thailand", quote: "The catalog clearly mapped each platform to cycle time, fixture strategy, and line scalability." },
-        ];
-      }
-      if (effectiveType === "CardsGrid" && matchesSectionSlot("solution-offers", "solutions.products.1")) {
-        item.props.title = "Custom Solutions";
-        item.props.subtitle = "Turnkey OEM/ODM lines, custom fixtures, spindle packages, and automation integration.";
-        item.props.items = [
-          "Turnkey 3C production line",
-          "Custom fixture engineering",
-          "OEM/ODM machine adaptation",
-          "Automation integration cell",
-        ].map((name) => ({
-          title: name,
-          description: "Configured around takt time, part geometry, and local commissioning needs.",
-          cta: { label: "Discuss Solution", href: "/contact", variant: "primary" },
-        }));
-      }
-      if (effectiveType === "FeatureGrid" && matchesSectionSlot("solution-categories", "solutions.approach.1")) {
-        item.props.title = "Solution Categories";
-        item.props.subtitle = "Structured offers for OEM/ODM production planning and line adaptation.";
-        item.props.items = [
-          { title: "Turnkey Line Design", desc: "Machine layout, process logic, and ramp-up support for new 3C programs." },
-          { title: "Fixture & Tooling Packages", desc: "Custom workholding and cutting strategy matched to the part family." },
-          { title: "Automation Integration", desc: "Loading, unloading, transfer, and inspection interfaces for scale." },
-        ];
-      }
-      if (effectiveType === "FeatureGrid" && matchesSectionSlot("delivery-workflow", "solutions.approach.2")) {
-        item.props.title = "Delivery Workflow";
-        item.props.subtitle = "From inquiry to commissioning with clear checkpoints.";
-        item.props.items = [
-          { title: "Requirement Review", desc: "Part drawing, takt time, and finish constraints are translated into an equipment concept." },
-          { title: "Sample & Validation", desc: "Pilot setup and sample verification de-risk the handoff before shipment." },
-          { title: "Shipment & Start-up", desc: "Regional delivery coordination, installation, and production launch support." },
-        ];
-      }
-      if (effectiveType === "TestimonialsGrid" && matchesSectionSlot("implementation-proof", "solutions.socialproof.1")) {
-        item.props.title = "Implementation Confidence";
-        item.props.subtitle = "Programs that need adaptation, not off-the-shelf machine selection.";
-        item.props.items = [
-          { name: "Operations Lead", role: "OEM Program", quote: "The proposed line matched both the part flow and the regional staffing reality." },
-          { name: "Engineering Manager", role: "ODM Factory", quote: "Fixture, spindle, and automation decisions were resolved as one system instead of separate vendors." },
-        ];
-      }
-      if (pageType === "solutions" && effectiveType === "ContentStory") {
-        writeTextPair(item.props, {
-          title: "Solutions engineered around output constraints",
-          subtitle:
-            "We translate part drawings, takt targets, and staffing reality into machine, tooling, and automation decisions that can be commissioned quickly.",
-        });
-      }
-      if (effectiveType === "CardsGrid" && matchesSectionSlot("case-gallery", "cases.products.1")) {
-        item.props.title = "Manufacturing Outcomes";
-        item.props.subtitle = "Programs focused on cycle-time reduction, stable delivery, and finish consistency.";
-        item.props.items = (brief.caseItems?.length ? brief.caseItems : ["Phone Display Frame Machining", "Laptop Shell Machining", "Camera Bezel Machining", "Phone Keypad Machining"]).map((name) => ({
-          title: name,
-          description: "Application-focused production outcome with controlled tolerance and repeatable output.",
-          cta: { label: "View Case", href: "/cases", variant: "primary" },
-        }));
-      }
-      if (effectiveType === "FeatureGrid" && matchesSectionSlot("case-metrics", "cases.approach.1")) {
-        item.props.title = "Case Performance Signals";
-        item.props.subtitle = "How factory programs are evaluated after deployment.";
-        item.props.items = [
-          { title: "Cycle Time Reduction", desc: "Measured against the original process baseline and takt target." },
-          { title: "Yield Stability", desc: "Tracked across production shifts, changeovers, and operator variation." },
-          { title: "Ramp-up Speed", desc: "Focused on time-to-output after installation and process verification." },
-        ];
-      }
-      if (pageType === "cases" && /UseCasesStoryAudienceSegments/i.test(publishedOriginalType)) {
-        item.props.audlabeltext = "Case portfolio";
-        item.props.audtitletext = "Machining programs delivered across Southeast Asia";
-        const caseItems = (brief.caseItems?.length
-          ? brief.caseItems
-          : ["Phone Display Frame Machining", "Laptop Shell Machining", "Camera Bezel Machining"]) as string[];
-        caseItems.slice(0, 3).forEach((name, idx) => {
-          const slot = idx + 1;
-          item.props[`audcard${slot}tagtext`] = "Case study";
-          item.props[`audcard${slot}titletext`] = name;
-          item.props[`audcard${slot}bodytext`] =
-            "Validated around cycle time, finish quality, and delivery stability after ramp-up.";
-          item.props[`audcard${slot}metatext`] = "SEA deployment";
-        });
-      }
-      if (pageType === "cases" && /ReviewsProductsGrid/i.test(publishedOriginalType)) {
-        const caseItems = (brief.caseItems?.length
-          ? brief.caseItems
-          : ["Phone Display Frame Machining", "Laptop Shell Machining", "Camera Bezel Machining", "Phone Keypad Machining"]) as string[];
-        caseItems.slice(0, 4).forEach((name, idx) => {
-          const slot = idx + 1;
-          item.props[`q${slot}text`] = name;
-          item.props[`a${slot}text`] = "Cycle time, yield, and finish consistency improved after deployment.";
-          item.props[`card${slot}href`] = "/cases";
-        });
-      }
-      if (effectiveType === "TestimonialsGrid" && matchesSectionSlot("customer-feedback", "cases.socialproof.1")) {
-        item.props.title = "Customer Feedback";
-        item.props.subtitle = "Application-specific outcomes from Southeast Asia programs.";
-        item.props.items = [
-          { name: "Phone Display Frame Machining", role: "Vietnam", quote: "The line stabilized output quickly while maintaining the cosmetic finish required for premium devices." },
-          { name: "Laptop Shell Machining", role: "Malaysia", quote: "Fixture and process tuning reduced rework and improved delivery confidence across multiple batches." },
-        ];
-      }
-      if (pageType === "about" && /AboutHero/i.test(publishedOriginalType)) {
-        item.props.heroeyebrowtext = brief.brand || "About LC-CNC";
-        item.props.herotitletext = "LC-CNC, Shenzhen since 2013";
-        item.props.herobodytext =
-          brief.aboutText || "ISO-certified plant, 30+ R&D engineers, and 200+ installed systems across Southeast Asia.";
-      }
-      if (pageType === "about" && /Missionband/i.test(publishedOriginalType)) {
-        item.props.missioneyebrowtext = "Factory capability";
-        item.props.missiontagtext = "Factory capability";
-        item.props.missionheadlinetext = "Quality discipline, process engineering, and regional support";
-        item.props.missionsupporttext =
-          "LC-CNC combines plant execution, tooling know-how, and field response to support 3C manufacturing programs across Southeast Asia.";
-      }
-      if (effectiveType === "ContentStory" && matchesSectionSlot("company-story", "about.story.1")) {
-        writeTextPair(item.props, {
-          eyebrow: brief.brand || "About LC-CNC",
-          title: "Factory Capability & Regional Delivery Model",
-          subtitle:
-            "How LC-CNC translates engineering, quality systems, and after-sales response into practical output for SEA plants.",
-        });
-      }
-      if (effectiveType === "ContentStory" && matchesSectionRole("product-context")) {
-        writeTextPair(item.props, {
-          title: "Machine platforms for precise, scalable 3C production",
-          subtitle:
-            "Configured around part geometry, fixture strategy, spindle selection, and line-side automation requirements.",
-        });
-      }
-      if (effectiveType === "ContentStory" && matchesSectionRole("solution-context")) {
-        writeTextPair(item.props, {
-          title: "Solutions engineered around process, takt time, and deployment constraints",
-          subtitle:
-            "From requirement review to validation and ramp-up, each solution package is planned around production outcomes.",
-        });
-      }
-      if (effectiveType === "ContentStory" && matchesSectionRole("case-narrative")) {
-        writeTextPair(item.props, {
-          title: "Representative machining programs across Southeast Asia",
-          subtitle:
-            "Programs are evaluated by cycle time, yield stability, commissioning speed, and long-run delivery confidence.",
-        });
-      }
-      if (effectiveType === "CardsGrid" && matchesSectionSlot("capability-cards", "about.products.1")) {
-        item.props.title = "Factory Capability Highlights";
-        item.props.subtitle = "Engineering depth, factory discipline, and regional support for Southeast Asia.";
-        item.props.items = [
-          "Process engineering and tooling support",
-          "Factory commissioning and training",
-          "Quality documentation and inspection flow",
-          "Regional after-sales response",
-        ].map((name) => ({
-          title: name,
-          description: "Operational capability aligned to multi-site 3C production programs.",
-          cta: { label: "Talk to LC-CNC", href: "/contact", variant: "primary" },
-        }));
-      }
-      if (effectiveType === "TestimonialsGrid" && matchesSectionSlot("certification-proof", "about.socialproof.1")) {
-        item.props.title = "Certifications";
-        item.props.subtitle = (brief.certifications || ["ISO 9001", "CE", "SGS"]).join(" • ");
-        item.props.items = (brief.certifications || ["ISO 9001", "CE", "SGS"]).map((name) => ({
-          name,
-          role: "Certification",
-          quote: "Verified manufacturing and quality management standard.",
-        }));
-      }
-      if (pageType === "about" && effectiveType === "TestimonialsGrid") {
-        item.props.title = "Certifications";
-        item.props.subtitle = (brief.certifications || ["ISO 9001", "CE", "SGS"]).join(" • ");
-        item.props.items = (brief.certifications || ["ISO 9001", "CE", "SGS"]).map((name) => ({
-          name,
-          role: "Certification",
-          quote: "Verified manufacturing and quality management standard.",
-        }));
-      }
-      if (effectiveType === "FeatureGrid" && matchesSectionSlot("contact-channels", "contact.approach.1")) {
-        item.props.title = "Contact Channels";
-        item.props.subtitle = "Commercial response routed for Southeast Asia machine procurement.";
-        item.props.items = [
-          { title: "WhatsApp", desc: brief.whatsapp || "+86-158-1370-3777" },
-          { title: "Email", desc: brief.email || "sales@lc-cnc.com" },
-          { title: "Factory Base", desc: brief.address || "Bao’an, Shenzhen, China" },
-        ];
-      }
-      if (effectiveType === "TestimonialsGrid" && matchesSectionSlot("quote-requirements", "contact.socialproof.1")) {
-        item.props.title = "Quote Requirements";
-        item.props.subtitle = "Prepare these details for a faster response.";
-        item.props.items = [
-          { name: "Required Fields", role: "Form", quote: "Name, Company, Email, WhatsApp, Machine Model, Quantity, Deadline." },
-          { name: "Consent", role: "Follow-up", quote: "I agree to receive follow-up via WhatsApp." },
-        ];
-      }
-      if (effectiveType === "LeadCaptureCTA" && matchesSectionSlot("quote-cta", "contact.cta.1", "catalog-cta", "consultation-cta", "case-cta", "about-cta", "support-cta")) {
-        writeTextPair(item.props, {
-          title: "Quick Quote Form",
-          subtitle: `WhatsApp ${brief.whatsapp || "+86-158-1370-3777"} • ${brief.email || "sales@lc-cnc.com"} • ${brief.address || "Bao’an, Shenzhen, China"}`,
-        });
-        item.props.note = "I agree to receive follow-up via WhatsApp.";
-        item.props.cta = { label: "Get Quote on WhatsApp", href: "/contact", variant: "primary" };
-        if (pageType === "contact") {
-          item.props.showForm = true;
-          item.props.submitLabel = "Submit Request";
-        }
-      }
-      if (pageType === "contact" && effectiveType === "LeadCaptureCTA") {
-        item.props.showForm = true;
-        item.props.submitLabel = item.props.submitLabel || "Submit Request";
-      }
-      item.props = sanitizeGeneratedProps(item.props, {
-        prompt,
-        pagePath: page.path,
-        imageIntent: sectionImageIntent,
-        profileId: publishedOriginalType,
-      }) as Record<string, unknown>;
-      item.props = sanitizeTemplateExclusiveProps(item.props, {
-        pageType,
-        publishedOriginalType,
-      });
-      if (effectiveType === "Navbar") {
-        item.props.logo = { alt: brief.brand || "Brand" };
-        item.props.logoText = brief.brand || "Brand";
-        item.props.links = navLinks;
-        item.props.ctas = [];
-      }
-      if (effectiveType === "CreationFooterFallback") {
-        item.props.logoText = brief.brand || "Brand";
-        item.props.ftlogotext = brief.brand || "Brand";
-        item.props.columns = footerCols;
-        item.props.legal = brief.copyright || `© 2024 ${brief.brand || "Brand"}. All rights reserved.`;
-        item.props.copytext = brief.copyright || `© 2024 ${brief.brand || "Brand"}. All rights reserved.`;
-      }
-      if (pageType === "cases" && /ReviewsHero/i.test(publishedOriginalType)) {
-        item.props.tagtext = "Production case studies";
-        item.props.httext = "Representative 3C machining programs";
-        item.props.hstext =
-          "Phone frames, laptop shells, camera bezels, and keypad components delivered with stable cycle time and cosmetic-finish control.";
-      }
-      if (pageType === "cases" && /UseCasesStoryAudienceSegments/i.test(publishedOriginalType)) {
-        const caseItems = (brief.caseItems?.length
-          ? brief.caseItems
-          : ["Phone Display Frame Machining", "Laptop Shell Machining", "Camera Bezel Machining"]) as string[];
-        item.props.audlabeltext = "Case portfolio";
-        item.props.audtitletext = "Machining programs delivered across Southeast Asia";
-        caseItems.slice(0, 3).forEach((name, idx) => {
-          const slot = idx + 1;
-          item.props[`audcard${slot}tagtext`] = "Case study";
-          item.props[`audcard${slot}titletext`] = name;
-          item.props[`audcard${slot}bodytext`] =
-            "Validated around cycle time, finish quality, and delivery stability after ramp-up.";
-          item.props[`audcard${slot}metatext`] = "SEA deployment";
-        });
-      }
-      if (pageType === "cases" && /ReviewsProductsGrid/i.test(publishedOriginalType)) {
-        const caseItems = (brief.caseItems?.length
-          ? brief.caseItems
-          : ["Phone Display Frame Machining", "Laptop Shell Machining", "Camera Bezel Machining", "Phone Keypad Machining"]) as string[];
-        caseItems.slice(0, 4).forEach((name, idx) => {
-          const slot = idx + 1;
-          item.props[`q${slot}text`] = name;
-          item.props[`a${slot}text`] = "Cycle time, yield, and finish consistency improved after deployment.";
-          item.props[`card${slot}href`] = "/cases";
-        });
-      }
-      if (pageType === "about" && /AboutHero/i.test(publishedOriginalType)) {
-        item.props.heroeyebrowtext = brief.brand || "About LC-CNC";
-        item.props.herotitletext = "LC-CNC, Shenzhen since 2013";
-        item.props.herobodytext =
-          brief.aboutText || "ISO-certified plant, 30+ R&D engineers, and 200+ installed systems across Southeast Asia.";
-      }
-      if (pageType === "about" && /Missionband/i.test(publishedOriginalType)) {
-        item.props.missioneyebrowtext = "Factory capability";
-        item.props.missiontagtext = "Factory capability";
-        item.props.missionheadlinetext = "Quality discipline, process engineering, and regional support";
-        item.props.missionsupporttext =
-          "LC-CNC combines plant execution, tooling know-how, and field response to support 3C manufacturing programs across Southeast Asia.";
-      }
-    });
-    if (interiorPageType && assemblyPolicy.normalizeInteriorPages) {
-      const targetKinds = new Set(interiorAssemblySlots[interiorPageType]);
-      const preferredIndexByKind = new Map<"hero" | "products" | "features" | "proof" | "story", number>();
-      next.data.content.forEach((item, index) => {
-        const publishedOriginalType =
-          typeof item?.props?.__publishedOriginalType === "string" ? String(item.props.__publishedOriginalType) : "";
-        const effectiveType = inferEffectiveBlockType(item.type, publishedOriginalType);
-        const itemId = String(item?.props?.id || "");
-        const isStructuredHero = itemId === `structured-${interiorPageType}-hero`;
-        const kind =
-          isStructuredHero
-            ? "hero"
-            : effectiveType === "HeroSplit"
-            ? "hero"
-            : effectiveType === "CardsGrid"
-              ? "products"
-              : effectiveType === "FeatureGrid"
-                ? "features"
-                : effectiveType === "TestimonialsGrid"
-                  ? "proof"
-                  : effectiveType === "ContentStory"
-                    ? "story"
-                    : null;
-        if (!kind || !targetKinds.has(kind)) return;
-        const isStructuredCanonical = itemId.startsWith(`structured-${interiorPageType}-`);
-        if (!preferredIndexByKind.has(kind) || isStructuredCanonical) {
-          preferredIndexByKind.set(kind, index);
-        }
-      });
-      next.data.content = next.data.content.filter((item, index) => {
-        const publishedOriginalType =
-          typeof item?.props?.__publishedOriginalType === "string" ? String(item.props.__publishedOriginalType) : "";
-        const effectiveType = inferEffectiveBlockType(item.type, publishedOriginalType);
-        const itemId = String(item?.props?.id || "");
-        const isStructuredHero = itemId === `structured-${interiorPageType}-hero`;
-        const kind =
-          isStructuredHero
-            ? "hero"
-            : effectiveType === "HeroSplit"
-            ? "hero"
-            : effectiveType === "CardsGrid"
-              ? "products"
-              : effectiveType === "FeatureGrid"
-                ? "features"
-                : effectiveType === "TestimonialsGrid"
-                  ? "proof"
-                  : effectiveType === "ContentStory"
-                    ? "story"
-                    : null;
-        if (!kind) return true;
-        if (!targetKinds.has(kind)) return true;
-        const preferredIndex = preferredIndexByKind.get(kind);
-        return preferredIndex === index;
-      });
-    }
-    if (pageType === "contact" && assemblyPolicy.ensureContactChannels) {
-      const hasContactChannels = next.data.content.some(
-        (item) =>
-          item.type === "FeatureGrid" &&
-          (item.props.id === "structured-contact-channels" || item.props.anchor === "contact-channels")
-      );
-      if (!hasContactChannels) {
-        const footerIndex = next.data.content.findIndex(
-          (item) => item.type === "Footer" || /Footer/i.test(String(item.props?.__publishedOriginalType || item.type))
-        );
-        const insertIndex = footerIndex >= 0 ? footerIndex : next.data.content.length;
-        next.data.content.splice(insertIndex, 0, {
-          type: "FeatureGrid",
-          props: {
-            id: "structured-contact-channels",
-            anchor: "contact-channels",
-            paddingY: "md",
-            background: "gradient",
-            backgroundGradient: "linear-gradient(180deg, #f3f3f2 0%, #ebe6dd 100%)",
-            maxWidth: "xl",
-            title: "Contact Channels",
-            subtitle: "Commercial response routed for Southeast Asia machine procurement.",
-            items: [
-              { title: "WhatsApp", desc: brief.whatsapp || "+86-158-1370-3777" },
-              { title: "Email", desc: brief.email || "sales@lc-cnc.com" },
-              { title: "Factory Base", desc: brief.address || "Bao’an, Shenzhen, China" },
-            ],
-          },
-        });
-      }
-    }
-    const preferredContactCtaIndex =
-      pageType === "contact"
-        ? (() => {
-            const candidates = next.data.content
-              .map((item, index) => ({ item, index }))
-              .filter(({ item }) => item.type === "LeadCaptureCTA");
-            if (candidates.length <= 1) return -1;
-            const structured = candidates.find(({ item }) => String(item?.props?.id || "") === "structured-contact-hero");
-            return structured ? structured.index : candidates[0].index;
-          })()
-        : -1;
-    const seenAnchors = new Set<string>();
-    next.data.content = next.data.content.filter((item, index) => {
-      if (item.type === "Navbar" || item.type === "Footer") return true;
-      if (pageType === "contact" && item.type === "LeadCaptureCTA") {
-        if (preferredContactCtaIndex < 0) return true;
-        return index === preferredContactCtaIndex;
-      }
-      const anchor = String(item?.props?.anchor || "")
-        .trim()
-        .toLowerCase();
-      if (!anchor) return true;
-      if (seenAnchors.has(anchor)) return false;
-      seenAnchors.add(anchor);
-      return true;
-    });
-    return next;
-  });
+  if (!hasSignal) return pages;
+  const genericOverridden = applyGenericStructuredBriefOverrides(pages, mergedWithInput, prompt);
+  const enriched = applyStructuredBriefContentEnrichment(genericOverridden, mergedWithInput, prompt);
+  return expandCatalogPagesFromBrief(enriched, mergedWithInput, prompt);
 };
 
 const hashSemanticImageSeed = (value: string) => {
@@ -7946,37 +7819,119 @@ const hashSemanticImageSeed = (value: string) => {
   return hash % 997;
 };
 
-const finalSemanticImageGallery: Record<string, string[]> = {
-  cncHero: [
-    "https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?auto=format&fit=crop&w=1600&q=80",
-    "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1600&q=80",
-    "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1600&q=80",
+const semanticImageKeywordPools: Record<string, string[]> = {
+  hero: [
+    "cnc machine factory",
+    "precision manufacturing workshop",
+    "industrial machinery closeup",
+    "automated production line",
   ],
-  cncProduct: [
-    "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1600&q=80",
-    "https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?auto=format&fit=crop&w=1600&q=80",
-    "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1600&q=80",
+  products: [
+    "cnc machining center",
+    "machine tool spindle",
+    "industrial equipment showcase",
+    "precision metal processing",
   ],
-  cncCase: [
-    "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1600&q=80",
-    "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1600&q=80",
-    "https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?auto=format&fit=crop&w=1600&q=80",
+  cases: [
+    "machined metal components",
+    "precision parts quality control",
+    "factory production result",
+    "industrial case study manufacturing",
   ],
-  cncIndustry: [
-    "https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?auto=format&fit=crop&w=1600&q=80",
-    "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1600&q=80",
-    "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1600&q=80",
+  industry: [
+    "industrial factory floor",
+    "advanced manufacturing plant",
+    "smart factory automation",
+    "machine workshop interior",
   ],
-  industrial: [
-    "https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?auto=format&fit=crop&w=1600&q=80",
-    "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1600&q=80",
-    "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1600&q=80",
-  ],
-  neutral: [
-    "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=80",
-    "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1600&q=80",
-    "https://images.unsplash.com/photo-1497366412874-3415097a27e7?auto=format&fit=crop&w=1600&q=80",
-  ],
+  neutral: ["industrial design studio", "engineering workspace", "technical office environment"],
+};
+
+const isCncLikePrompt = (value: string) =>
+  /(cnc|machine tool|machine-tools|machining|metal cutting|milling|lathe|spindle|5-axis|加工中心|机床|数控|切削|精雕机|刀库机|3c)/i.test(
+    value
+  );
+
+const semanticKeywordStopwords = new Set([
+  "home",
+  "about",
+  "contact",
+  "products",
+  "solutions",
+  "cases",
+  "privacy",
+  "terms",
+  "page",
+  "section",
+  "website",
+  "company",
+  "企业",
+  "官网",
+  "页面",
+  "网站",
+]);
+
+const extractSemanticPromptKeywords = (prompt: string, max = 6) =>
+  Array.from(
+    new Set(
+      String(prompt || "")
+        .toLowerCase()
+        .replace(/https?:\/\/\S+/g, " ")
+        .split(/[^a-z0-9\u4e00-\u9fff]+/)
+        .map((token) => token.trim())
+        .filter((token) => token.length >= 2)
+        .filter((token) => !semanticKeywordStopwords.has(token))
+        .slice(0, max)
+    )
+  );
+
+const resolveSemanticImageBucket = (input: {
+  prompt: string;
+  pagePath: string;
+  blockType?: string;
+  token?: string;
+  imageIntent?: string;
+}) => {
+  const pagePath = String(input.pagePath || "/").toLowerCase();
+  const blockToken = `${String(input.blockType || "").toLowerCase()} ${String(input.token || "").toLowerCase()}`;
+  const forced = String(input.imageIntent || "").trim().toLowerCase();
+  if (forced === "none") return "none";
+  if (forced === "cnc-case" || forced === "case") return "cases";
+  if (forced === "cnc-industry" || forced === "industry") return "industry";
+  if (forced === "cnc-product" || forced === "product") return "products";
+  if (forced === "cnc-hero" || forced === "hero") return "hero";
+  if (/\/cases\b/.test(pagePath) || /case|study|capture/.test(blockToken)) return "cases";
+  if (/\/industries\b/.test(pagePath) || /industry|segment|application/.test(blockToken)) return "industry";
+  if (/\/products\b|\/core-product\b|\/3c-machines\b/.test(pagePath) || /product|catalog|machine/.test(blockToken))
+    return "products";
+  if (pagePath === "/" || /hero|masthead|banner/.test(blockToken)) return "hero";
+  return "neutral";
+};
+
+const buildSemanticUnsplashUrl = (input: {
+  prompt: string;
+  pagePath: string;
+  blockType?: string;
+  token?: string;
+  index?: number;
+  imageIntent?: string;
+}) => {
+  const prompt = String(input.prompt || "");
+  const bucket = resolveSemanticImageBucket(input);
+  if (bucket === "none") return "";
+  const pool = semanticImageKeywordPools[bucket] ?? semanticImageKeywordPools.neutral;
+  const seed = hashSemanticImageSeed(
+    `${input.pagePath}:${String(input.blockType || "")}:${String(input.token || "")}:${Number(input.index || 0)}:${prompt.slice(0, 120)}`
+  );
+  const baseKeyword = pool[seed % pool.length] || semanticImageKeywordPools.neutral[0];
+  const promptKeywords = extractSemanticPromptKeywords(prompt, 4);
+  const cjkKeywords = promptKeywords.filter((token) => /[\u4e00-\u9fff]/.test(token)).slice(0, 2);
+  const latinKeywords = promptKeywords.filter((token) => !/[\u4e00-\u9fff]/.test(token)).slice(0, 2);
+  const querySegments = [baseKeyword, ...latinKeywords];
+  if (isCncLikePrompt(prompt)) querySegments.push("precision cnc");
+  if (cjkKeywords.length) querySegments.push(cjkKeywords.join(" "));
+  const query = querySegments.filter(Boolean).join(", ");
+  return `https://source.unsplash.com/1600x900/?${encodeURIComponent(query)}&sig=${seed}`;
 };
 
 const looksLikeFinalImageField = (keyPath: string[]) => {
@@ -8006,42 +7961,242 @@ const buildFinalSemanticImageUrl = (
   const current = String(currentValue || "").trim();
   if (!/^https?:\/\//i.test(current)) return "";
   if (/^data:image\//i.test(current) || /\/generated-pen-assets\//i.test(current)) return "";
-  const raw = `${String(input.prompt || "")} ${String(input.designNorthStar?.industry || "")} ${JSON.stringify(
-    input.designNorthStar?.coreProducts || []
-  )}`.toLowerCase();
-  const cncIntent =
-    /(cnc|machine tool|machine-tools|machining|metal cutting|milling|lathe|spindle|five-axis|5-axis|加工中心|机床|数控|刀具|切削|3c)/i.test(
-      raw
-    );
-  const token = `${pagePath} ${keyPath.join(".")}`.toLowerCase();
-  const normalizedIntent = String(input.imageIntent || "").trim().toLowerCase();
-  const forcedBucket =
-    normalizedIntent === "cnc-hero"
-      ? "cncHero"
-      : normalizedIntent === "cnc-product"
-        ? "cncProduct"
-        : normalizedIntent === "cnc-case"
-          ? "cncCase"
-          : normalizedIntent === "cnc-industry"
-            ? "cncIndustry"
-            : normalizedIntent === "industrial"
-              ? "industrial"
-              : normalizedIntent === "neutral"
-                ? "neutral"
-                : normalizedIntent === "none"
-                  ? "none"
-                  : "";
-  if (forcedBucket === "none") return "";
-  let bucket = forcedBucket || (cncIntent ? "cncProduct" : "industrial");
-  if (!forcedBucket && cncIntent && (pagePath === "/" || /hero|masthead|banner/.test(token))) bucket = "cncHero";
-  else if (!forcedBucket && cncIntent && (/\/cases\b/.test(pagePath) || /case|study|capture/.test(token))) bucket = "cncCase";
-  else if (!forcedBucket && cncIntent && (/\/industries\b/.test(pagePath) || /industry|segment|application/.test(token))) bucket = "cncIndustry";
-  else if (!forcedBucket && cncIntent && (/\/products\b/.test(pagePath) || /product|catalog|showcase/.test(token))) bucket = "cncProduct";
-  const choices = finalSemanticImageGallery[bucket] ?? finalSemanticImageGallery.industrial;
-  if (!choices.length) return "";
-  const seed = hashSemanticImageSeed(`${pagePath}:${keyPath.join(".")}:${current}`);
-  return choices[seed % choices.length];
+  const token = `${pagePath}:${keyPath.join(".")}:${current.slice(0, 48)}`;
+  return buildSemanticUnsplashUrl({
+    prompt: `${String(input.prompt || "")} ${String(input.designNorthStar?.industry || "")}`,
+    pagePath,
+    blockType: keyPath[keyPath.length - 2] || "",
+    token,
+    imageIntent: input.imageIntent,
+  });
 };
+
+const pickSemanticGalleryImage = (input: {
+  prompt: string;
+  pagePath: string;
+  blockType: string;
+  token?: string;
+  index?: number;
+  imageIntent?: string;
+}) => {
+  return buildSemanticUnsplashUrl(input);
+};
+
+const hasAbsoluteMediaSrc = (value: unknown) => {
+  if (!value || typeof value !== "object") return false;
+  const src = typeof (value as Record<string, unknown>).src === "string" ? String((value as Record<string, unknown>).src).trim() : "";
+  return /^https?:\/\//i.test(src);
+};
+
+const blockContainsAbsoluteMedia = (block: { type?: string; props?: Record<string, unknown> } | null | undefined) => {
+  if (!block || typeof block !== "object") return false;
+  const props = block.props && typeof block.props === "object" ? (block.props as Record<string, unknown>) : {};
+  const hasViaKnownKeys = (() => {
+    if (hasAbsoluteMediaSrc(props.media)) return true;
+    if (hasAbsoluteMediaSrc(props.backgroundMedia)) return true;
+    if (Array.isArray(props.heroSlides)) {
+      return props.heroSlides.some((slide) => hasAbsoluteMediaSrc(slide));
+    }
+    if (Array.isArray(props.items)) {
+      return props.items.some((item) => {
+        if (!item || typeof item !== "object") return false;
+        const rec = item as Record<string, unknown>;
+        if (hasAbsoluteMediaSrc(rec.image)) return true;
+        if (hasAbsoluteMediaSrc(rec.cover)) return true;
+        if (hasAbsoluteMediaSrc(rec.avatar)) return true;
+        const imageSrc = typeof rec.imageSrc === "string" ? rec.imageSrc : "";
+        if (/^https?:\/\//i.test(imageSrc.trim())) return true;
+        return false;
+      });
+    }
+    return false;
+  })();
+  if (hasViaKnownKeys) return true;
+  const visit = (entry: unknown): boolean => {
+    if (typeof entry === "string") return /^https?:\/\//i.test(entry.trim());
+    if (Array.isArray(entry)) return entry.some((item) => visit(item));
+    if (!entry || typeof entry !== "object") return false;
+    return Object.values(entry as Record<string, unknown>).some((child) => visit(child));
+  };
+  return visit(props);
+};
+
+const pageIntentForMedia = (pagePath: string) => {
+  const normalized = String(pagePath || "/").toLowerCase();
+  if (normalized === "/" || /home/.test(normalized)) return "cnc-hero";
+  if (/\/cases\b/.test(normalized)) return "cnc-case";
+  if (/\/products\b|\/core-product\b|\/3c-machines\b/.test(normalized)) return "cnc-product";
+  if (/\/industries\b/.test(normalized)) return "cnc-industry";
+  return "industrial";
+};
+
+const applyVisualMediaCoverage = (pages: GeneratedPage[], prompt: string): GeneratedPage[] =>
+  pages.map((page) => {
+    const pagePath = String(page.path || "/");
+    const defaultIntent = pageIntentForMedia(pagePath);
+    const content = Array.isArray(page?.data?.content) ? [...page.data.content] : [];
+    if (!content.length) return page;
+
+    const nextContent = content.map((entry, entryIndex) => {
+      if (!entry || typeof entry !== "object") return entry;
+      const item = entry as Record<string, unknown>;
+      const type = String(item.type || "");
+      const props =
+        item.props && typeof item.props === "object" ? ({ ...(item.props as Record<string, unknown>) } as Record<string, unknown>) : {};
+      const lowerType = type.toLowerCase();
+      const blockToken = `${pagePath}:${lowerType}:${entryIndex}`;
+      const mediaIntent =
+        /case|study/.test(lowerType) ? "cnc-case" : /hero/.test(lowerType) ? "cnc-hero" : defaultIntent;
+      const pickImage = (token: string, index = 0) =>
+        pickSemanticGalleryImage({
+          prompt,
+          pagePath,
+          blockType: lowerType,
+          token,
+          index,
+          imageIntent: mediaIntent,
+        });
+
+      if (/herosplit/.test(lowerType)) {
+        const hasMedia = hasAbsoluteMediaSrc(props.media);
+        const hasBackgroundMedia = hasAbsoluteMediaSrc(props.backgroundMedia);
+        const hasSlides =
+          Array.isArray(props.heroSlides) &&
+          props.heroSlides.some((slide) => {
+            if (!slide || typeof slide !== "object") return false;
+            const src = typeof (slide as Record<string, unknown>).src === "string" ? String((slide as Record<string, unknown>).src).trim() : "";
+            return /^https?:\/\//i.test(src);
+          });
+        if (!hasMedia && !hasBackgroundMedia && !hasSlides) {
+          const src = pickImage("hero", 0);
+          if (src) {
+            props.media = {
+              kind: "image",
+              src,
+              alt: typeof props.title === "string" && props.title.trim() ? props.title : "Hero visual",
+            };
+          }
+        }
+        if (typeof props.mediaPosition !== "string" || !props.mediaPosition.trim()) {
+          props.mediaPosition = /\/products\b|\/core-product\b|\/cases\b/.test(pagePath) ? "left" : "right";
+        }
+      } else if (/cardsgrid|productcatalog/.test(lowerType)) {
+        const items = Array.isArray(props.items) ? [...(props.items as unknown[])] : [];
+        if (items.length) {
+          const withImages = items.map((rawItem, index) => {
+            if (!rawItem || typeof rawItem !== "object") return rawItem;
+            const card = { ...(rawItem as Record<string, unknown>) } as Record<string, unknown>;
+            const hasImageObject = hasAbsoluteMediaSrc(card.image);
+            const imageSrc = typeof card.imageSrc === "string" ? String(card.imageSrc).trim() : "";
+            const hasImageSrc = /^https?:\/\//i.test(imageSrc);
+            if (!hasImageObject && !hasImageSrc) {
+              const title = typeof card.title === "string" ? card.title : `item-${index + 1}`;
+              const src = pickImage(title, index);
+              if (src) {
+                card.image = { src, alt: title };
+              }
+            }
+            return card;
+          });
+          props.items = withImages;
+          const anyImage = withImages.some((rawItem) => {
+            if (!rawItem || typeof rawItem !== "object") return false;
+            const card = rawItem as Record<string, unknown>;
+            if (hasAbsoluteMediaSrc(card.image)) return true;
+            const imageSrc = typeof card.imageSrc === "string" ? String(card.imageSrc).trim() : "";
+            return /^https?:\/\//i.test(imageSrc);
+          });
+          if (anyImage) {
+            if (typeof props.variant !== "string" || props.variant === "product") props.variant = "imageText";
+            if (typeof props.imagePosition !== "string" || !props.imagePosition.trim()) {
+              props.imagePosition = /\/core-product\b/.test(pagePath) ? "left" : "top";
+            }
+            if (pagePath === "/" && typeof props.featureFirst !== "boolean") props.featureFirst = true;
+          }
+        }
+      } else if (/casestudies/.test(lowerType)) {
+        const items = Array.isArray(props.items) ? [...(props.items as unknown[])] : [];
+        if (items.length) {
+          props.items = items.map((rawItem, index) => {
+            if (!rawItem || typeof rawItem !== "object") return rawItem;
+            const itemRecord = { ...(rawItem as Record<string, unknown>) } as Record<string, unknown>;
+            if (!hasAbsoluteMediaSrc(itemRecord.cover)) {
+              const title = typeof itemRecord.title === "string" ? itemRecord.title : `case-${index + 1}`;
+              const src = pickImage(title, index);
+              if (src) {
+                itemRecord.cover = { src, alt: title };
+              }
+            }
+            return itemRecord;
+          });
+        }
+      } else if (/featurewithmedia/.test(lowerType)) {
+        const hasMediaObject = hasAbsoluteMediaSrc(props.media);
+        const mediaSrc = typeof props.mediaSrc === "string" ? String(props.mediaSrc).trim() : "";
+        const hasMediaSrc = /^https?:\/\//i.test(mediaSrc);
+        if (!hasMediaObject && !hasMediaSrc) {
+          const src = pickImage("feature", 0);
+          if (src) {
+            props.media = {
+              kind: "image",
+              src,
+              alt: typeof props.title === "string" && props.title.trim() ? props.title : "Feature visual",
+            };
+          }
+        }
+      }
+      return {
+        ...item,
+        props,
+      };
+    });
+
+    const bodyVisualCount = nextContent
+      .filter((item) => !/(navbar|navigation|footer|creationfooterfallback)/i.test(String((item as any)?.type || "")))
+      .filter((item) => blockContainsAbsoluteMedia(item as any)).length;
+    if (bodyVisualCount === 0) {
+      const fallbackIndex = nextContent.findIndex((item) =>
+        /(herosplit|featurewithmedia|cardsgrid|casestudies|featuregrid|contentstory|leadcapturecta)/i.test(
+          String((item as any)?.type || "")
+        )
+      );
+      if (fallbackIndex >= 0) {
+        const target = nextContent[fallbackIndex] as Record<string, unknown>;
+        const targetProps =
+          target?.props && typeof target.props === "object"
+            ? ({ ...(target.props as Record<string, unknown>) } as Record<string, unknown>)
+            : {};
+        const src = pickSemanticGalleryImage({
+          prompt,
+          pagePath,
+          blockType: String(target?.type || "").toLowerCase(),
+          token: "page-fallback-visual",
+          imageIntent: defaultIntent,
+        });
+        if (src) {
+          targetProps.background = "image";
+          targetProps.backgroundMedia = { kind: "image", src };
+          if (typeof targetProps.backgroundOverlay !== "string" || !targetProps.backgroundOverlay.trim()) {
+            targetProps.backgroundOverlay = "linear-gradient(180deg, rgba(3,8,12,0.22) 0%, rgba(3,8,12,0.48) 100%)";
+          }
+          if (typeof targetProps.backgroundOverlayOpacity !== "number") targetProps.backgroundOverlayOpacity = 0.38;
+          nextContent[fallbackIndex] = {
+            ...target,
+            props: targetProps,
+          };
+        }
+      }
+    }
+
+    return {
+      ...page,
+      data: {
+        ...(page.data as Record<string, unknown>),
+        root: (page.data as any)?.root,
+        content: nextContent as Array<{ type: string; props: Record<string, unknown> }>,
+      },
+    };
+  });
 
 const sanitizeGeneratedProps = (
   value: unknown,
@@ -8053,6 +8208,83 @@ const sanitizeGeneratedProps = (
     profileId?: unknown;
   }
 ): unknown => {
+  const outputLanguage = resolveOutputLanguage(input.prompt);
+  const pageType = inferEnterprisePageTypeFromPath(String(input.pagePath || "/"));
+  const templateCopyPatterns = [
+    /\blorem ipsum\b/i,
+    /\byour brand\b/i,
+    /\bour (?:company|mission|vision|services?|products?)\b/i,
+    /\btrusted by\b/i,
+    /\bbook (?:a )?demo\b/i,
+    /\bget started\b/i,
+    /\bdiscover more\b/i,
+    /\blearn more\b/i,
+    /\bcontact us today\b/i,
+    /\bthis section\b/i,
+    /\bplaceholder\b/i,
+    /\{\{[^}]+\}\}/,
+    /\[\s*(?:title|subtitle|description|content|cta)\s*\]/i,
+  ];
+  const textFallbacks =
+    outputLanguage === "zh-CN"
+      ? {
+          home: "聚焦核心产品与交付能力，支持按需定制与快速落地。",
+          products: "提供多型号设备与参数配置，可按场景扩展工艺能力。",
+          solutions: "围绕真实产线需求提供工艺路线、设备组合与交付节奏建议。",
+          cases: "基于客户场景沉淀可复用经验，覆盖打样、量产与质量稳定性。",
+          about: "持续投入研发与制造体系建设，提供稳定交付与长期服务支持。",
+          contact: "欢迎提交需求信息，我们将安排工程团队尽快联系。",
+          generic: "基于业务目标提供清晰的信息结构与可执行内容。",
+        }
+      : {
+          home: "Focused on core offerings and reliable delivery, with configurable implementation paths.",
+          products: "Multiple equipment models and spec options are available for different production scenarios.",
+          solutions: "Process routes, machine combinations, and delivery plans are tailored to real factory needs.",
+          cases: "Case insights cover prototyping, mass production, and quality stability outcomes.",
+          about: "Continuous investment in R&D and manufacturing systems ensures dependable delivery.",
+          contact: "Share your requirements and our engineering team will follow up shortly.",
+          generic: "Content is organized for business clarity and execution-ready communication.",
+        };
+  const titleFallbacks =
+    outputLanguage === "zh-CN"
+      ? {
+          home: "核心能力与产品价值",
+          products: "产品与参数总览",
+          solutions: "行业解决方案",
+          cases: "应用案例",
+          about: "公司概况",
+          contact: "联系我们",
+          generic: "业务信息",
+        }
+      : {
+          home: "Core Capability & Product Value",
+          products: "Product & Specification Overview",
+          solutions: "Industry Solutions",
+          cases: "Application Cases",
+          about: "Company Overview",
+          contact: "Contact",
+          generic: "Business Information",
+        };
+  const ctaFallback = outputLanguage === "zh-CN" ? "立即咨询" : "Contact";
+  const isLikelyTemplateCopy = (text: string, keyPath: string[]) => {
+    const compact = String(text || "").replace(/\s+/g, " ").trim();
+    if (!compact) return false;
+    if (templateCopyPatterns.some((pattern) => pattern.test(compact))) return true;
+    const cjkCount = (compact.match(/[\u3400-\u9fff]/g) || []).length;
+    const latinCount = (compact.match(/[A-Za-z]/g) || []).length;
+    const leaf = String(keyPath[keyPath.length - 1] || "").toLowerCase();
+    const textLikeLeaf = /(title|subtitle|headline|desc|description|body|content|copy|text|label|cta|button)/.test(leaf);
+    if (outputLanguage === "zh-CN" && textLikeLeaf && cjkCount <= 2 && latinCount >= 20) return true;
+    return false;
+  };
+  const rewriteTemplateCopy = (text: string, keyPath: string[]) => {
+    const leaf = String(keyPath[keyPath.length - 1] || "").toLowerCase();
+    if (/(cta|button|label)/.test(leaf)) return ctaFallback;
+    if (/(title|headline)/.test(leaf)) return titleFallbacks[pageType] || titleFallbacks.generic;
+    if (/(subtitle|desc|description|body|content|copy|text)/.test(leaf))
+      return textFallbacks[pageType] || textFallbacks.generic;
+    return textFallbacks[pageType] || textFallbacks.generic;
+  };
   const brandName = extractBrandNameFromPromptLite(input.prompt);
   const templateFamily = inferTemplateFamily(input.profileId);
   const structuredBrief = parseStructuredBrief(input.prompt);
@@ -8091,6 +8323,9 @@ const sanitizeGeneratedProps = (
       replacements.forEach((item) => {
         next = next.replace(item.pattern, item.value);
       });
+      if (isLikelyTemplateCopy(next, keyPath)) {
+        next = rewriteTemplateCopy(next, keyPath);
+      }
       return normalizeSanitizedText(next);
     }
     if (Array.isArray(entry)) return entry.map((item, index) => walk(item, [...keyPath, String(index)]));
@@ -8129,6 +8364,7 @@ const contextualFallbackHref = (
   graph: SiteLinkGraph,
   pagePath: string
 ) => {
+  const normalizedPagePath = normalizePromptPagePath(pagePath);
   const key = keyPath.join(".").toLowerCase();
   const leafKey = String(keyPath[keyPath.length - 1] || "").toLowerCase();
   const raw = currentValue.trim();
@@ -8141,30 +8377,24 @@ const contextualFallbackHref = (
   if (isNavbarHomeLink || isFooterHomeLink) return graph.homeHref;
   const prefersProducts =
     /(product|catalog|machine|equipment|sku|shop|prod(btn|uct)?|learnbtn|discoverbtn|explorebtn)/.test(key) ||
-    ((pagePath === "/products" || pagePath === "/3c-machines") && /(href|cta|button|btn|card\d+href)/.test(key));
+    (normalizedPagePath === "/products" && /(href|cta|button|btn|card\d+href)/.test(key));
   const prefersSolutions =
     /(solution|service|capability|workflow|process|automation)/.test(key) ||
-    ((pagePath === "/solutions" || pagePath === "/custom-solutions") && /(href|cta|button|btn|card\d+href)/.test(key));
+    (normalizedPagePath === "/solutions" && /(href|cta|button|btn|card\d+href)/.test(key));
   const prefersIndustries =
     /(industry|application|market|usecard|sector)/.test(key) ||
-    (pagePath === "/industries" && /(href|cta|button|btn|card\d+href)/.test(key));
+    (normalizedPagePath === "/industries" && /(href|cta|button|btn|card\d+href)/.test(key));
   const prefersCases =
     /(case|study|customer|project|proof|result|card\d+href)/.test(key) ||
-    (pagePath === "/cases" && /(href|cta|button|btn)/.test(key));
+    (normalizedPagePath === "/cases" && /(href|cta|button|btn)/.test(key));
   const prefersAbout =
     /(about|company|team|story|mission|vision|history)/.test(key) ||
-    (pagePath === "/about" && /(href|cta|button|btn)/.test(key));
+    (normalizedPagePath === "/about" && /(href|cta|button|btn)/.test(key));
   const prefersContact =
     /(contact|quote|sales|consult|orderbtn|request|inquire|book|demo)/.test(key) ||
-    (pagePath === "/contact" && /(href|cta|button|btn)/.test(key));
-  if (prefersProducts && graph.validInternalHrefs.has("/3c-machines")) {
-    return "/3c-machines";
-  }
+    (normalizedPagePath === "/contact" && /(href|cta|button|btn)/.test(key));
   if (prefersProducts && graph.validInternalHrefs.has("/products")) {
     return "/products";
-  }
-  if (prefersSolutions && graph.validInternalHrefs.has("/custom-solutions")) {
-    return "/custom-solutions";
   }
   if (prefersSolutions && graph.validInternalHrefs.has("/solutions")) {
     return "/solutions";
@@ -8181,10 +8411,10 @@ const contextualFallbackHref = (
   if (prefersContact && graph.validInternalHrefs.has("/contact")) {
     return "/contact";
   }
-  if (leafKey === "href" && pagePath !== "/" && graph.validInternalHrefs.has(pagePath)) {
-    return pagePath;
+  if (leafKey === "href" && normalizedPagePath !== "/" && graph.validInternalHrefs.has(normalizedPagePath)) {
+    return normalizedPagePath;
   }
-  if (pagePath === "/contact" && graph.validInternalHrefs.has("/contact")) {
+  if (normalizedPagePath === "/contact" && graph.validInternalHrefs.has("/contact")) {
     return "/contact";
   }
   return graph.homeHref;
@@ -8230,6 +8460,28 @@ const isContactLikeBlock = (item: { type?: string; props?: Record<string, unknow
     return variant === "contact" || anchor.includes("contact") || id.includes("contact");
   }
   return type.includes("contact") || type.includes("lead") || anchor.includes("contact") || id.includes("contact");
+};
+
+const CONTACT_TEXT_GRADIENT_CLASS_PATTERN = /\b(text-gradient|bg-clip-text|text-transparent)\b/gi;
+
+const stripContactGradientTextClasses = (value: unknown) => {
+  if (typeof value !== "string") return value;
+  return value
+    .replace(CONTACT_TEXT_GRADIENT_CLASS_PATTERN, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+};
+
+const enforceContactTextStyleProps = (props: Record<string, unknown>) => {
+  const next: Record<string, unknown> = { ...props, emphasis: "normal", forbidGradientText: true };
+  ["titleClassName", "headingClassName", "eyebrowClassName", "subtitleClassName", "labelClassName"].forEach(
+    (key) => {
+      if (typeof next[key] === "string") {
+        next[key] = stripContactGradientTextClasses(next[key]);
+      }
+    }
+  );
+  return next;
 };
 
 const mergeThemeDrivenBlockProps = (
@@ -8320,6 +8572,7 @@ const mergeThemeDrivenBlockProps = (
   if (Array.isArray(existingProps.footerLinks)) next.footerLinks = existingProps.footerLinks;
   if (typeof existingProps.legal === "string" && existingProps.legal.trim()) next.legal = existingProps.legal;
   if (typeof existingProps.whatsapp === "string" && existingProps.whatsapp.trim()) next.whatsapp = existingProps.whatsapp;
+  if (variant === "contact") return enforceContactTextStyleProps(next);
   return next;
 };
 
@@ -8649,7 +8902,7 @@ Rules:
 3. Do not add or remove fields
 4. Copy must stay aligned with the requested industry/brand/product
 5. Keep original tone and approximate text length
-6. Default output language is English unless the user explicitly requests Chinese
+6. Use the user's dominant language; Chinese-heavy requests must stay in Chinese
 7. Return JSON props only, no explanations`;
 
 const buildTemplateRefinementPrompt = (
@@ -9402,7 +9655,15 @@ async function callLlm({
           code: (error as any)?.code,
         });
         const hasNextProvider = index < llmProviders.length - 1;
-        const canFallbackToNextProvider = allowProviderFallbackOnAnyError || shouldFallbackToNextProvider(error);
+        const shouldForceOpenrouterFallback =
+          forceOpenrouterFallbackOnAibermFailure &&
+          provider.name === "aiberm" &&
+          llmProviders.some((item) => item.name === "openrouter") &&
+          isNetworkOrRetryableProviderError(error);
+        const canFallbackToNextProvider =
+          shouldForceOpenrouterFallback ||
+          allowProviderFallbackOnAnyError ||
+          shouldFallbackToNextProvider(error);
         if (hasNextProvider && !canFallbackToNextProvider) {
           logInfo(`${logPrefix} request:provider_fallback_skipped`, {
             provider: provider.name,
@@ -9521,14 +9782,36 @@ async function architectNode(state: GraphState) {
       return { blueprint: existingBlueprint };
     }
   }
-  const templateSeedBlueprint = buildTemplateSeedBlueprint(state.prompt ?? "");
-  if (templateSeedBlueprint) {
-    let seededBlueprint = applyUserThemeIntent(templateSeedBlueprint, state.prompt ?? "");
+  const finalizeSeededBlueprint = async (
+    seed: ArchitectBlueprint,
+    stage: "template_seed" | "enterprise_seed"
+  ) => {
+    let seededBlueprint = applyUserThemeIntent(seed, state.prompt ?? "");
     seededBlueprint = applyReferenceBlueprintConstraints(seededBlueprint, state.prompt ?? "");
     seededBlueprint = ensurePromptRequestedPages(seededBlueprint, state.prompt ?? "") as ArchitectBlueprint;
     seededBlueprint = ensureEnterpriseBlueprintPages(seededBlueprint, state.prompt ?? "") as ArchitectBlueprint;
-    const seededPages = normalizePages(seededBlueprint);
-    logInfo(`${logPrefix} architect:template_seed`, {
+    const seededPagesContract = normalizePagesBySiteContract(normalizePages(seededBlueprint) as any[], {
+      prompt: state.prompt ?? "",
+    });
+    seededPagesContract.issues.forEach((issue) =>
+      logInfo(`${logPrefix} architect:contract_normalization`, {
+        stage,
+        severity: issue.severity,
+        code: issue.code,
+        message: issue.message,
+      })
+    );
+    const seededPages = normalizePages({ pages: seededPagesContract.pages as any });
+    seededBlueprint = {
+      ...seededBlueprint,
+      pages: seededPages.map((page) => ({
+        path: page.path,
+        name: page.name,
+        sections: page.sections,
+        root: page.root,
+      })),
+    };
+    logInfo(`${logPrefix} architect:${stage}`, {
       profileId: selectStyleProfile(state.prompt ?? "")?.id ?? null,
       pages: seededPages.length,
       sections: seededPages.reduce((total, page) => total + page.sections.length, 0),
@@ -9537,6 +9820,20 @@ async function architectNode(state: GraphState) {
       await planning.markArchitectComplete(seededBlueprint as Record<string, unknown>, seededPages);
     }
     return { blueprint: seededBlueprint };
+  };
+
+  const templateSeedBlueprint = buildTemplateSeedBlueprint(state.prompt ?? "");
+  if (templateSeedBlueprint) {
+    return finalizeSeededBlueprint(templateSeedBlueprint, "template_seed");
+  }
+  const enterpriseFallbackBlueprint = buildFallbackBlueprint(state.prompt ?? "");
+  if (
+    looksLikeEnterpriseWebsite({
+      prompt: state.prompt ?? "",
+      pages: normalizePages(enterpriseFallbackBlueprint),
+    })
+  ) {
+    return finalizeSeededBlueprint(enterpriseFallbackBlueprint, "enterprise_seed");
   }
   const designSystemPrompt = buildDesignSystemPromptContext(state.designSystemContext);
   const basePrompt = buildArchitectUserPrompt(state.prompt ?? "", state.manifest ?? {});
@@ -9592,13 +9889,17 @@ async function architectNode(state: GraphState) {
       hasTheme,
       pages: initialPages.length,
     });
-    const fallbackRaw = await callLlm({
-      system,
-      prompt: retryPrompt,
-      temperature: 0.35,
-      maxTokens: architectMaxTokens,
-      allowProviderFallbackOnAnyError: true,
-    });
+    const fallbackRaw = await callLlmWithLocalTimeout(
+      {
+        system,
+        prompt: retryPrompt,
+        temperature: 0.35,
+        maxTokens: architectMaxTokens,
+        allowProviderFallbackOnAnyError: true,
+      },
+      architectTimeoutMs,
+      "architect_fallback_timeout"
+    );
     blueprint = parseArchitectBlueprint(fallbackRaw);
     const fallbackPages = normalizePages(blueprint ?? {});
     const fallbackHasTheme =
@@ -9613,13 +9914,17 @@ async function architectNode(state: GraphState) {
         hasTheme: fallbackHasTheme,
         pages: fallbackPages.length,
       });
-      const compactRaw = await callLlm({
-        system,
-        prompt: compactPrompt,
-        temperature: 0.2,
-        maxTokens: architectMaxTokens,
-        allowProviderFallbackOnAnyError: true,
-      });
+      const compactRaw = await callLlmWithLocalTimeout(
+        {
+          system,
+          prompt: compactPrompt,
+          temperature: 0.2,
+          maxTokens: architectMaxTokens,
+          allowProviderFallbackOnAnyError: true,
+        },
+        architectTimeoutMs,
+        "architect_compact_timeout"
+      );
       blueprint = parseArchitectBlueprint(compactRaw);
     }
     if (!blueprint || normalizePages(blueprint).length === 0) {
@@ -9642,7 +9947,27 @@ async function architectNode(state: GraphState) {
   blueprint = applyReferenceBlueprintConstraints(blueprint, state.prompt ?? "");
   blueprint = ensurePromptRequestedPages(blueprint, state.prompt ?? "") as ArchitectBlueprint;
   blueprint = ensureEnterpriseBlueprintPages(blueprint, state.prompt ?? "") as ArchitectBlueprint;
-  const pages = normalizePages(blueprint);
+  const architectContractPages = normalizePagesBySiteContract(normalizePages(blueprint) as any[], {
+    prompt: state.prompt ?? "",
+  });
+  architectContractPages.issues.forEach((issue) =>
+    logInfo(`${logPrefix} architect:contract_normalization`, {
+      stage: "architect_output",
+      severity: issue.severity,
+      code: issue.code,
+      message: issue.message,
+    })
+  );
+  const pages = normalizePages({ pages: architectContractPages.pages as any });
+  blueprint = {
+    ...blueprint,
+    pages: pages.map((page) => ({
+      path: page.path,
+      name: page.name,
+      sections: page.sections,
+      root: page.root,
+    })),
+  };
   const sectionCount = pages.reduce((total, page) => total + page.sections.length, 0);
   logInfo(`${logPrefix} architect:ok`, {
     keys: Object.keys(blueprint),
@@ -9656,10 +9981,17 @@ async function architectNode(state: GraphState) {
 }
 
 async function builderNode(state: GraphState) {
-  const activeSectionGenerationStrategy = state.generationStrategy ?? sectionGenerationStrategy;
+  const requestedSectionGenerationStrategy = state.generationStrategy ?? sectionGenerationStrategy;
+  let activeSectionGenerationStrategy = requestedSectionGenerationStrategy;
   const blueprint = (state.blueprint ?? {}) as ArchitectBlueprint;
+  const contractNormalizationIssues: Array<Record<string, unknown>> = [];
+  let skillOrchestrationDiagnostics: Record<string, unknown> = {};
+  let skillOrchestrationSuggestion: SectionGenerationStrategy | null = null;
+  let skillOrchestrationApplied = false;
   let pages = normalizePages(blueprint);
   const requestedPages = extractRequestedPagesFromPrompt(state.prompt ?? "");
+  const structuredBrief = parseStructuredBrief(state.prompt ?? "");
+  const hasStructuredNavContract = (structuredBrief?.nav?.length ?? 0) >= 3;
   if (requestedPages.length) {
     const byPath = new Map(pages.map((page) => [normalizePromptPagePath(String(page.path || "/")), page] as const));
     requestedPages.forEach((requested) => {
@@ -9672,13 +10004,117 @@ async function builderNode(state: GraphState) {
     });
     pages = normalizePages({ pages: Array.from(byPath.values()) });
   }
-  if (looksLikeEnterpriseWebsite({ prompt: state.prompt ?? "", pages }) && requestedPages.length < 3) {
+  if (requestedPages.length >= 3 || hasStructuredNavContract) {
+    const explicitPathSet = new Set<string>(["/"]);
+    requestedPages.forEach((requested) => explicitPathSet.add(normalizePromptPagePath(String(requested.path || "/"))));
+    if (Array.isArray(structuredBrief?.nav)) {
+      structuredBrief.nav.forEach((label) => explicitPathSet.add(inferRequestedPagePathFromLabel(label)));
+    }
+    if (Array.isArray(structuredBrief?.footerLinks)) {
+      structuredBrief.footerLinks.forEach((label) => explicitPathSet.add(inferRequestedPagePathFromLabel(label)));
+    }
+    // Keep legal pages stable for enterprise sites even when user nav is partial.
+    explicitPathSet.add("/privacy");
+    if (/(terms?|条款|服务条款|legal|tos)/i.test(String(state.prompt || ""))) {
+      explicitPathSet.add("/terms");
+    }
     pages = normalizePages({
-      pages: ensureEnterpriseSitePages(pages, (definition) => ({
-        path: definition.path,
-        name: definition.name,
-        sections: [],
-      })),
+      pages: pages.filter((page) => explicitPathSet.has(normalizePromptPagePath(String(page.path || "/")))),
+    });
+  }
+  if (looksLikeEnterpriseWebsite({ prompt: state.prompt ?? "", pages })) {
+    const pageByPath = new Map(
+      pages.map((page) => [normalizePromptPagePath(String(page.path || "/")), page] as const)
+    );
+    const useChinese = shouldUseChineseContent(state.prompt ?? "");
+    if (!pageByPath.has("/privacy")) {
+      pages = normalizePages({
+        pages: [
+          ...pages,
+          {
+            path: "/privacy",
+            name: useChinese ? "隐私政策" : "Privacy",
+            sections: [],
+          } as any,
+        ],
+      });
+    }
+  }
+  if (looksLikeEnterpriseWebsite({ prompt: state.prompt ?? "", pages }) && requestedPages.length < 3 && !hasStructuredNavContract) {
+    pages = normalizePages({
+      pages: ensureEnterpriseSitePages(
+        pages,
+        (definition) => ({
+          path: definition.path,
+          name: definition.name,
+          sections: [],
+        }),
+        { prompt: state.prompt ?? "" }
+      ),
+    });
+  }
+  const preTemplateContractNormalization = normalizePagesBySiteContract(pages as any[], {
+    prompt: state.prompt ?? "",
+  });
+  preTemplateContractNormalization.issues.forEach((issue) => {
+    contractNormalizationIssues.push({ stage: "pre_template", ...issue });
+    const payload = { stage: "pre_template", code: issue.code, message: issue.message, details: issue.details };
+    if (issue.severity === "error") {
+      logWarn(`${logPrefix} builder:contract_normalization_error`, payload);
+    } else {
+      logInfo(`${logPrefix} builder:contract_normalization_warning`, payload);
+    }
+  });
+  pages = normalizePages({ pages: preTemplateContractNormalization.pages as any });
+  const skillOrchestration = orchestrateTemplateAndSectionCandidates({
+    prompt: state.prompt ?? "",
+    pages,
+    strategy: activeSectionGenerationStrategy,
+  });
+  pages = normalizePages({ pages: skillOrchestration.pages as any });
+  skillOrchestrationSuggestion = skillOrchestration.strategySuggestion;
+  skillOrchestrationDiagnostics = {
+    ...skillOrchestration.diagnostics,
+    strategySuggestion: skillOrchestrationSuggestion,
+  };
+  if ((skillOrchestration.diagnostics.sectionReorderedPages ?? []).length > 0) {
+    logInfo(`${logPrefix} builder:skill_orchestration_reorder`, {
+      reorderedPages: skillOrchestration.diagnostics.sectionReorderedPages,
+      count: skillOrchestration.diagnostics.sectionReorderedPages.length,
+    });
+  }
+  if (skillOrchestrationSuggestion && skillOrchestrationSuggestion !== activeSectionGenerationStrategy) {
+    const canOverrideStrategy =
+      activeSectionGenerationStrategy === "hybrid" ||
+      (activeSectionGenerationStrategy === "template_first" &&
+        (skillOrchestrationSuggestion === "hybrid" || skillOrchestrationSuggestion === "llm_first"));
+    if (!canOverrideStrategy) {
+      logInfo(`${logPrefix} builder:skill_orchestration_strategy_override_skipped`, {
+        from: activeSectionGenerationStrategy,
+        to: skillOrchestrationSuggestion,
+      });
+    } else {
+    activeSectionGenerationStrategy = skillOrchestrationSuggestion;
+    skillOrchestrationApplied = true;
+    logInfo(`${logPrefix} builder:skill_orchestration_strategy_override`, {
+      from: requestedSectionGenerationStrategy,
+      to: activeSectionGenerationStrategy,
+      reason: "structured_signal_and_page_type_match",
+    });
+    }
+  }
+  const outputLanguage = resolveOutputLanguage(state.prompt ?? "");
+  if (
+    outputLanguage === "zh-CN" &&
+    activeSectionGenerationStrategy === "template_first" &&
+    looksLikeEnterpriseWebsite({ prompt: state.prompt ?? "", pages })
+  ) {
+    activeSectionGenerationStrategy = "hybrid";
+    skillOrchestrationApplied = true;
+    logInfo(`${logPrefix} builder:strategy_language_override`, {
+      from: requestedSectionGenerationStrategy,
+      to: activeSectionGenerationStrategy,
+      reason: "zh_enterprise_avoids_template_lock",
     });
   }
   const templateResolution = resolveTemplatePlan({
@@ -9687,12 +10123,25 @@ async function builderNode(state: GraphState) {
     strategy: activeSectionGenerationStrategy,
   });
   pages = normalizePages({ pages: templateResolution.pages as any });
+  const postTemplateContractNormalization = normalizePagesBySiteContract(pages as any[], {
+    prompt: state.prompt ?? "",
+  });
+  postTemplateContractNormalization.issues.forEach((issue) => {
+    contractNormalizationIssues.push({ stage: "post_template", ...issue });
+    const payload = { stage: "post_template", code: issue.code, message: issue.message, details: issue.details };
+    if (issue.severity === "error") {
+      logWarn(`${logPrefix} builder:contract_normalization_error`, payload);
+    } else {
+      logInfo(`${logPrefix} builder:contract_normalization_warning`, payload);
+    }
+  });
+  pages = normalizePages({ pages: postTemplateContractNormalization.pages as any });
   const siteBlueprint = buildSiteBlueprint({
     profileId: templateResolution.profileId,
     prompt: state.prompt ?? "",
     pages,
   });
-  const linkGraph = buildSiteLinkGraph(siteBlueprint);
+  const linkGraph = buildSiteLinkGraph(siteBlueprint, state.prompt ?? "");
   const allSections = flattenSections(pages);
   const contentSections = allSections.filter((context) => !isGlobalChromeSection(context.section));
   let theme =
@@ -9747,7 +10196,7 @@ async function builderNode(state: GraphState) {
   const errors = [...(state.errors ?? [])];
   const system = applySkillContext(builderSystemPrompt, state.skillContext?.builder ?? "");
 
-    logInfo(`${logPrefix} builder:start`, {
+  logInfo(`${logPrefix} builder:start`, {
     hasBlueprint: Boolean(state.blueprint),
     pages: pages.length,
     sections: allSections.length,
@@ -9758,6 +10207,12 @@ async function builderNode(state: GraphState) {
     templateFirstSections: templateFirstSectionTokens.join(","),
     llmFirstSections: llmFirstSectionTokens.join(","),
     templateFirstVariants: Array.from(templateFirstVariantTokens).join(","),
+    requestedSectionGenerationStrategy,
+    skillOrchestrationApplied,
+    skillOrchestrationSuggestion: skillOrchestrationSuggestion ?? "",
+    skillOrchestrationReorderedPageCount: Array.isArray(skillOrchestrationDiagnostics.sectionReorderedPages)
+      ? (skillOrchestrationDiagnostics.sectionReorderedPages as unknown[]).length
+      : 0,
     retryMode: builderRetryMode,
     sectionMaxAttempts: effectiveSectionMaxAttempts,
     networkRetryAttempts: configuredNetworkRetryAttempts,
@@ -9814,17 +10269,22 @@ async function builderNode(state: GraphState) {
       temp: number;
       maxTokens?: number;
       modelOverride?: string;
+      timeoutMs?: number;
     }) => {
       try {
-        return await callLlm({
-          system,
-          prompt: options.prompt,
-          temperature: options.temp,
-          maxTokens: options.maxTokens ?? builderMaxTokens,
-          tools: [builderTool],
-          toolChoice: { type: "tool", name: builderTool.name },
-          modelOverride: options.modelOverride,
-        });
+        return await callLlmWithLocalTimeout(
+          {
+            system,
+            prompt: options.prompt,
+            temperature: options.temp,
+            maxTokens: options.maxTokens ?? builderMaxTokens,
+            tools: [builderTool],
+            toolChoice: { type: "tool", name: builderTool.name },
+            modelOverride: options.modelOverride,
+          },
+          options.timeoutMs ?? builderTimeoutMs,
+          "builder_section_timeout"
+        );
       } catch (error) {
         if (!isToolProtocolError(error)) throw error;
         logWarn(`${logPrefix} builder:section:tool_protocol_error`, {
@@ -9855,6 +10315,7 @@ async function builderNode(state: GraphState) {
           prompt: compactRetryPrompt,
           temp: Math.max(0.15, temperature - 0.25),
           maxTokens: builderRecoveryMaxTokens,
+          timeoutMs: builderRecoveryTimeoutMs,
         });
         if (!isEmptyResponse(compactRaw)) return compactRaw;
         if (fallbackModelDefault && fallbackModelDefault !== primaryModelDefault) {
@@ -9863,6 +10324,7 @@ async function builderNode(state: GraphState) {
             temp: Math.max(0.1, temperature - 0.3),
             maxTokens: builderRecoveryMaxTokens,
             modelOverride: fallbackModelDefault,
+            timeoutMs: builderRecoveryTimeoutMs,
           });
           if (!isEmptyResponse(compactFallbackRaw)) return compactFallbackRaw;
         }
@@ -9873,21 +10335,29 @@ async function builderNode(state: GraphState) {
         promptLength: emergencyNoToolPrompt.length,
         maxTokens: builderRecoveryMaxTokens,
       });
-      const emergencyTextRaw = await callLlm({
-        system,
-        prompt: emergencyNoToolPrompt,
-        temperature: Math.max(0.1, temperature - 0.3),
-        maxTokens: builderRecoveryMaxTokens,
-      });
-      if (!isEmptyResponse(emergencyTextRaw)) return emergencyTextRaw;
-      if (fallbackModelDefault && fallbackModelDefault !== primaryModelDefault) {
-        const emergencyTextFallbackRaw = await callLlm({
+      const emergencyTextRaw = await callLlmWithLocalTimeout(
+        {
           system,
           prompt: emergencyNoToolPrompt,
           temperature: Math.max(0.1, temperature - 0.3),
           maxTokens: builderRecoveryMaxTokens,
-          modelOverride: fallbackModelDefault,
-        });
+        },
+        builderRecoveryTimeoutMs,
+        "builder_section_emergency_timeout"
+      );
+      if (!isEmptyResponse(emergencyTextRaw)) return emergencyTextRaw;
+      if (fallbackModelDefault && fallbackModelDefault !== primaryModelDefault) {
+        const emergencyTextFallbackRaw = await callLlmWithLocalTimeout(
+          {
+            system,
+            prompt: emergencyNoToolPrompt,
+            temperature: Math.max(0.1, temperature - 0.3),
+            maxTokens: builderRecoveryMaxTokens,
+            modelOverride: fallbackModelDefault,
+          },
+          builderRecoveryTimeoutMs,
+          "builder_section_emergency_fallback_timeout"
+        );
         if (!isEmptyResponse(emergencyTextFallbackRaw)) return emergencyTextFallbackRaw;
       }
       throw Object.assign(new Error("builder_section_empty"), { code: "parse" });
@@ -9898,6 +10368,7 @@ async function builderNode(state: GraphState) {
       prompt: retryPrompt,
       temp: Math.max(0.2, temperature - 0.2),
       maxTokens: builderMaxTokens,
+      timeoutMs: builderTimeoutMs,
     });
     if (!isEmptyResponse(retryRaw)) return retryRaw;
     if (compactPromptText) {
@@ -9909,6 +10380,7 @@ async function builderNode(state: GraphState) {
         prompt: compactRetryPrompt,
         temp: Math.max(0.15, temperature - 0.25),
         maxTokens: builderRecoveryMaxTokens,
+        timeoutMs: builderRecoveryTimeoutMs,
       });
       if (!isEmptyResponse(compactRaw)) return compactRaw;
       if (fallbackModelDefault && fallbackModelDefault !== primaryModelDefault) {
@@ -9917,6 +10389,7 @@ async function builderNode(state: GraphState) {
           temp: Math.max(0.1, temperature - 0.3),
           maxTokens: builderRecoveryMaxTokens,
           modelOverride: fallbackModelDefault,
+          timeoutMs: builderRecoveryTimeoutMs,
         });
         if (!isEmptyResponse(compactFallbackRaw)) return compactFallbackRaw;
       }
@@ -9927,25 +10400,34 @@ async function builderNode(state: GraphState) {
         temp: Math.max(0.1, temperature - 0.3),
         maxTokens: builderRecoveryMaxTokens,
         modelOverride: fallbackModelDefault,
+        timeoutMs: builderRecoveryTimeoutMs,
       });
       if (!isEmptyResponse(fallbackRaw)) return fallbackRaw;
     }
     const noToolPrompt = `${retryPrompt}\n\n如果工具调用不可用，直接输出严格 JSON（component + block），不要 Markdown 或解释文本。`;
-    const textRaw = await callLlm({
-      system,
-      prompt: noToolPrompt,
-      temperature: Math.max(0.1, temperature - 0.3),
-      maxTokens: builderRecoveryMaxTokens,
-    });
-    if (!isEmptyResponse(textRaw)) return textRaw;
-    if (fallbackModelDefault && fallbackModelDefault !== primaryModelDefault) {
-      const textFallbackRaw = await callLlm({
+    const textRaw = await callLlmWithLocalTimeout(
+      {
         system,
         prompt: noToolPrompt,
         temperature: Math.max(0.1, temperature - 0.3),
         maxTokens: builderRecoveryMaxTokens,
-        modelOverride: fallbackModelDefault,
-      });
+      },
+      builderRecoveryTimeoutMs,
+      "builder_section_notool_timeout"
+    );
+    if (!isEmptyResponse(textRaw)) return textRaw;
+    if (fallbackModelDefault && fallbackModelDefault !== primaryModelDefault) {
+      const textFallbackRaw = await callLlmWithLocalTimeout(
+        {
+          system,
+          prompt: noToolPrompt,
+          temperature: Math.max(0.1, temperature - 0.3),
+          maxTokens: builderRecoveryMaxTokens,
+          modelOverride: fallbackModelDefault,
+        },
+        builderRecoveryTimeoutMs,
+        "builder_section_notool_fallback_timeout"
+      );
       if (!isEmptyResponse(textFallbackRaw)) return textFallbackRaw;
     }
     throw Object.assign(new Error("builder_section_empty"), { code: "parse" });
@@ -9954,6 +10436,14 @@ async function builderNode(state: GraphState) {
   const maxConcurrency = Number.isFinite(defaultSectionConcurrency)
     ? Math.max(1, defaultSectionConcurrency)
     : 3;
+  const skipTemplateRefinementForLargeSite = pages.length >= 5 || sections.length >= 30;
+  if (skipTemplateRefinementForLargeSite && enableTemplateRefinement) {
+    logInfo(`${logPrefix} builder:template_refinement_skipped`, {
+      reason: "large_structured_site",
+      pages: pages.length,
+      sections: sections.length,
+    });
+  }
 
   const preferLlmForDesignFidelity = isDetailedDesignBrief(state.prompt ?? "");
     if (preferLlmForDesignFidelity) {
@@ -10004,7 +10494,8 @@ async function builderNode(state: GraphState) {
       }
       // LLM lightweight refinement: refine text content while keeping structure
       if (enableTemplateRefinement && baseResult.status === "ok") {
-        const allowRefinementForLayer = templateResolution.layer === "section";
+        const allowRefinementForLayer =
+          templateResolution.layer === "section" && !skipTemplateRefinementForLargeSite;
         if (!allowRefinementForLayer) {
           return baseResult;
         }
@@ -10789,6 +11280,26 @@ async function builderNode(state: GraphState) {
   }
 
   let injectedCtaBlocks = 0;
+  const localeDefaults = resolveLocaleDefaults(state.prompt ?? "");
+  const pageNameByPath = new Map(
+    (Array.isArray((siteBlueprint as any)?.pages) ? (siteBlueprint as any).pages : [])
+      .map((entry: any) => [normalizePromptPagePath(String(entry?.path || "/")), String(entry?.name || "").trim()] as const)
+      .filter((entry) => Boolean(entry[0]))
+  );
+  const navTypeRank = new Map<string, number>([
+    ["home", 0],
+    ["products", 1],
+    ["solutions", 2],
+    ["cases", 3],
+    ["about", 4],
+    ["contact", 5],
+    ["pricing", 6],
+    ["support", 7],
+    ["blog", 8],
+    ["legal", 9],
+    ["generic", 10],
+  ]);
+
   pagesOut.forEach((page, pageIndex) => {
     const content = Array.isArray(page.data.content) ? page.data.content : [];
     if (pageHasCtaBlock(content as any)) return;
@@ -11041,8 +11552,14 @@ async function builderNode(state: GraphState) {
         const syntheticContext = buildSyntheticSectionContext(
           pageIndex,
           variant === "contact" ? "contact" : "footer-cta",
-          variant === "contact" ? "Contact" : "CTA",
-          variant === "contact" ? "Provide contact and consultation pathways." : "Prompt the visitor to take the next step."
+          variant === "contact" ? (localeDefaults.useChinese ? "联系" : "Contact") : "CTA",
+          variant === "contact"
+            ? localeDefaults.useChinese
+              ? "提供咨询与线索收集入口。"
+              : "Provide contact and consultation pathways."
+            : localeDefaults.useChinese
+              ? "引导访客完成下一步转化。"
+              : "Prompt the visitor to take the next step."
         );
         const fallback = buildDeterministicFallbackBlock(
           syntheticContext,
@@ -11198,8 +11715,14 @@ async function builderNode(state: GraphState) {
         const syntheticContext = buildSyntheticSectionContext(
           pageIndex,
           variant === "contact" ? "contact" : "footer-cta",
-          variant === "contact" ? "Contact" : "CTA",
-          variant === "contact" ? "Provide contact and consultation pathways." : "Prompt the visitor to take the next step."
+          variant === "contact" ? (localeDefaults.useChinese ? "联系" : "Contact") : "CTA",
+          variant === "contact"
+            ? localeDefaults.useChinese
+              ? "提供咨询与线索收集入口。"
+              : "Provide contact and consultation pathways."
+            : localeDefaults.useChinese
+              ? "引导访客完成下一步转化。"
+              : "Prompt the visitor to take the next step."
         );
         const fallback = buildDeterministicFallbackBlock(
           syntheticContext,
@@ -11242,6 +11765,88 @@ async function builderNode(state: GraphState) {
             ensurePropsId(normalizedProps, fallbackId),
             variant === "contact" ? "contact" : "footer-cta"
           ),
+        };
+      }
+      if (localeDefaults.useChinese && isTemplateExclusiveBlock(item)) {
+        const typeToken = String(item.type || "");
+        const idToken = String(sanitizedExistingProps.id || "");
+        const inferredKind = inferTemplateRefinementSectionKind(typeToken, idToken);
+        const sectionLabelMap: Record<string, string> = {
+          navigation: "导航",
+          hero: "首屏",
+          story: "内容",
+          approach: "能力",
+          products: "产品",
+          socialproof: "案例",
+          cta: "转化",
+          footer: "页脚",
+        };
+        const sectionIntentMap: Record<string, string> = {
+          navigation: "提供全局导航入口。",
+          hero: "呈现页面核心价值。",
+          story: "说明品牌与方案要点。",
+          approach: "展示能力优势与实施路径。",
+          products: "展示核心产品与参数亮点。",
+          socialproof: "展示案例与客户背书。",
+          cta: "引导访客完成下一步转化。",
+          footer: "提供页脚信息与法务链接。",
+        };
+        const fallbackKind =
+          inferredKind ||
+          (/social|proof|testimonial|logo|case/i.test(typeToken)
+            ? "socialproof"
+            : /product|catalog|pricing|plan|cards/i.test(typeToken)
+              ? "products"
+              : /feature|approach|metric|capabilit|process/i.test(typeToken)
+                ? "approach"
+                : /hero|masthead|banner/i.test(typeToken)
+                  ? "hero"
+                  : /story|content|about|editorial/i.test(typeToken)
+                    ? "story"
+                    : "story");
+        const syntheticContext = buildSyntheticSectionContext(
+          pageIndex,
+          String(sanitizedExistingProps.anchor || sanitizedExistingProps.id || `${page.path}:${itemIndex}`),
+          sectionLabelMap[fallbackKind] || "内容",
+          sectionIntentMap[fallbackKind] || "说明页面核心信息。"
+        );
+        const fallback = buildDeterministicFallbackBlock(
+          syntheticContext,
+          state.prompt ?? "",
+          designNorthStar as Record<string, unknown>,
+          theme as Record<string, unknown>,
+          { skipRegistry: true }
+        );
+        const themedProps = harmonizeBlockThemeProps(
+          fallback.type,
+          fallback.props as Record<string, unknown>,
+          theme as Record<string, unknown>,
+          itemIndex,
+          state.prompt ?? ""
+        );
+        const normalizedProps = normalizeBlockProps(
+          fallback.type,
+          sanitizeSemanticProps(sanitizeInternalHrefsInProps(themedProps, linkGraph), linkGraph, page.path || "/") as Record<
+            string,
+            unknown
+          >,
+          {
+            logChanges: true,
+            summary: normalizationSummary,
+          }
+        );
+        const fallbackId =
+          typeof sanitizedExistingProps.id === "string" && String(sanitizedExistingProps.id).trim()
+            ? String(sanitizedExistingProps.id)
+            : `${fallbackKind}:${page.path ?? pageIndex}:${itemIndex}`;
+        const anchor =
+          typeof sanitizedExistingProps.anchor === "string" && String(sanitizedExistingProps.anchor).trim()
+            ? String(sanitizedExistingProps.anchor)
+            : String((fallback.props as Record<string, unknown>).anchor || "section");
+        return {
+          ...item,
+          type: fallback.type,
+          props: ensureAnchor(ensurePropsId(normalizedProps, fallbackId), anchor),
         };
       }
       const themedProps = harmonizeBlockThemeProps(
@@ -11305,37 +11910,49 @@ async function builderNode(state: GraphState) {
       ),
       _key: `footer:${page.path ?? pageIndex}:canonical`,
     };
+    const hrefRank = (href: string) => {
+      const normalized = normalizePromptPagePath(String(href || "/"));
+      return navTypeRank.get(inferEnterprisePageTypeFromPath(normalized)) ?? 99;
+    };
+    const buildOrderedNavLinks = () => {
+      const graphLinks = Array.isArray(linkGraph.navigationLinks) ? linkGraph.navigationLinks : [];
+      const normalizedLinks = graphLinks
+        .map((link: any) => {
+          const rawHref = String(link?.href || "").trim();
+          const href = rawHref.startsWith("/") ? normalizePromptPagePath(rawHref) : rawHref;
+          if (!href || /^#/.test(href)) return null;
+          if (href === "/privacy" || href === "/terms") return null;
+          const rawLabel =
+            String(link?.label || "").trim() ||
+            String(pageNameByPath.get(href) || "").trim() ||
+            defaultPageLabelForPath(href, state.prompt ?? "");
+          const label = resolveLocalizedPageLabel(rawLabel, href, state.prompt ?? "");
+          return {
+            ...link,
+            href,
+            label,
+            variant: String(link?.variant || "link"),
+          };
+        })
+        .filter((link): link is { label: string; href: string; variant: string } => Boolean(link));
+      const deduped = Array.from(
+        normalizedLinks.reduce((acc, link) => {
+          if (!acc.has(link.href)) acc.set(link.href, link);
+          return acc;
+        }, new Map<string, { label: string; href: string; variant: string }>())
+      ).map((entry) => entry[1]);
+      return deduped
+        .sort((left, right) => {
+          const rankDiff = hrefRank(left.href) - hrefRank(right.href);
+          if (rankDiff !== 0) return rankDiff;
+          if (left.href === "/" || right.href === "/") return left.href === "/" ? -1 : 1;
+          return left.href.localeCompare(right.href);
+        })
+        .map((link) => ({ ...link, variant: "link" as const }));
+    };
     const finalizeTemplateNavbarProps = (props: Record<string, unknown>) => {
       const fallbackNav = { ...(fallbackNavbarProps as Record<string, unknown>) };
-      const navOrder = new Map([
-        ["/", 0],
-        ["/3c-machines", 1],
-        ["/custom-solutions", 2],
-        ["/cases", 3],
-        ["/about", 4],
-        ["/contact", 5],
-        ["/privacy", 6],
-      ]);
-      const navLabelByHref = new Map([
-        ["/", "Home"],
-        ["/3c-machines", "3C Machines"],
-        ["/custom-solutions", "Custom Solutions"],
-        ["/cases", "Cases"],
-        ["/about", "About"],
-        ["/contact", "Contact"],
-      ]);
-      const fallbackLinks = Array.isArray((fallbackNav as any).links) ? (fallbackNav as any).links : [];
-      const orderedLinks = fallbackLinks
-        .filter((link: any) => String(link?.href || "") !== "/privacy")
-        .sort((a: any, b: any) => {
-          const aRank = navOrder.get(String(a?.href || "")) ?? 999;
-          const bRank = navOrder.get(String(b?.href || "")) ?? 999;
-          return aRank - bRank;
-        })
-        .map((link: any) => ({
-          ...link,
-          label: navLabelByHref.get(String(link?.href || "")) || String(link?.label || ""),
-        }));
+      const orderedLinks = buildOrderedNavLinks();
       const compactNavText = orderedLinks.map((link: any) => String(link?.label || "")).filter(Boolean).join(" | ");
       const brandText = String(
         ((designNorthStar as any)?.brand as string) ||
@@ -11344,9 +11961,10 @@ async function builderNode(state: GraphState) {
           props.logoText ||
           "Brand"
       );
-      const primaryCta = /Get Quote on WhatsApp/i.test(state.prompt ?? "")
-        ? "Get Quote on WhatsApp"
-        : String((fallbackNav as any).ctatexttext || "Contact");
+      const primaryCta =
+        String(structuredBrief?.heroCtas?.[0] || "").trim() ||
+        String((fallbackNav as any).ctatexttext || "").trim() ||
+        localeDefaults.contact;
       props.logo = (fallbackNav as any).logo || { alt: brandText };
       props.logoText = brandText;
       props.logotext = brandText;
@@ -11362,13 +11980,13 @@ async function builderNode(state: GraphState) {
       props.actionshref = "/contact";
       props.ctahtxttext = primaryCta;
       props.ctahtxthref = "/contact";
-      props.logintxttext = "Contact";
+      props.logintxttext = localeDefaults.contact;
       props.logintxthref = "/contact";
       props.searchtxttext = "";
       props.searchtxthref = "/";
-      props.langtxttext = "EN";
+      props.langtxttext = localeDefaults.languageTag;
       props.langtxthref = "/";
-      props.utilitytext = "Industrial CNC systems";
+      props.utilitytext = localeDefaults.utility;
       props.utilityhref = "/";
       return props;
     };
@@ -11381,36 +11999,59 @@ async function builderNode(state: GraphState) {
           "Brand"
       );
       const uppercaseFooterBrand = footerBrand.toUpperCase();
-      const footerColumns = [
-        {
-          title: "Products",
-          links: [
-            { label: "3C Machines", href: "/3c-machines" },
-            { label: "Custom Solutions", href: "/custom-solutions" },
-            { label: "Cases", href: "/cases" },
-          ],
-        },
-        {
-          title: "Support",
-          links: [
-            { label: "Contact", href: "/contact" },
-            { label: "Request Catalog", href: "/contact" },
-          ],
-        },
-        {
-          title: "Company",
-          links: [
-            { label: "About", href: "/about" },
-            { label: "Privacy", href: "/privacy" },
-          ],
-        },
-      ];
+      const existingColumns = Array.isArray((fallbackFooter as any).columns) ? (fallbackFooter as any).columns : [];
+      const footerColumns =
+        Array.isArray(linkGraph.footerColumns) && linkGraph.footerColumns.length > 0
+          ? linkGraph.footerColumns.map((column) => ({
+              title: String(column?.title || ""),
+              links: Array.isArray(column?.links)
+                ? column.links.map((link) => ({
+                    label: String(link?.label || ""),
+                    href: String(link?.href || "/"),
+                    variant: (link?.variant as any) || "link",
+                  }))
+                : [],
+            }))
+          : existingColumns.length > 0
+          ? existingColumns
+          : (() => {
+              const orderedLinks = buildOrderedNavLinks();
+              const productLinks = orderedLinks.filter((link) => {
+                const pageType = inferEnterprisePageTypeFromPath(link.href);
+                return pageType === "products" || pageType === "solutions" || pageType === "cases";
+              });
+              const companyLinks = orderedLinks.filter((link) => {
+                const pageType = inferEnterprisePageTypeFromPath(link.href);
+                return pageType === "about" || pageType === "contact" || pageType === "support";
+              });
+              const legalLinks = orderedLinks.filter((link) => {
+                const pageType = inferEnterprisePageTypeFromPath(link.href);
+                return pageType === "legal";
+              });
+              return [
+                {
+                  title: localeDefaults.productsTitle,
+                  links: productLinks.slice(0, 3),
+                },
+                {
+                  title: localeDefaults.company,
+                  links: companyLinks.slice(0, 3),
+                },
+                {
+                  title: localeDefaults.legalTitle,
+                  links: legalLinks.length
+                    ? legalLinks.slice(0, 2)
+                    : [{ label: localeDefaults.privacy, href: "/privacy", variant: "link" }],
+                },
+              ].filter((column) => Array.isArray(column.links) && column.links.length > 0);
+            })();
       const flattenedFooterLinks = footerColumns.flatMap((column: any) => column.links || []);
       const copyrightText = String(
+        structuredBrief?.copyright ||
         (state.prompt ?? "").match(/Copyright\s*(?:©|&copy;)?\s*\d{4}[^\n]*/i)?.[0] ||
           (fallbackFooter as any).copytext ||
           (fallbackFooter as any).legal ||
-          `© 2024 ${footerBrand}. All rights reserved.`
+          localeDefaults.defaultRights(footerBrand)
       );
       props.logoText = footerBrand;
       props.flogotext = footerBrand;
@@ -11432,11 +12073,25 @@ async function builderNode(state: GraphState) {
         props[`col${slot}texttext`] = (column.links || []).map((link) => link.label).filter(Boolean).join(" | ");
         props[`col${slot}texthref`] = firstLink?.href || "/";
       });
-      props.footercompanytext = String((fallbackFooter as any).footercompanytext || (fallbackFooter as any).footeraddresstext || "Bao'an, Shenzhen, China");
+      props.footercompanytext = String(
+        structuredBrief?.address ||
+          (fallbackFooter as any).footercompanytext ||
+          (fallbackFooter as any).footeraddresstext ||
+          localeDefaults.addressFallback
+      );
       props.footercompanyhref = "/about";
-      props.footeraddresstext = String((fallbackFooter as any).footeraddresstext || "Bao'an, Shenzhen, China");
+      props.footeraddresstext = String(
+        structuredBrief?.address ||
+          (fallbackFooter as any).footeraddresstext ||
+          localeDefaults.addressFallback
+      );
       props.footeraddresshref = "/about";
-      props.footercontacttext = String((fallbackFooter as any).footercontacttext || "Contact");
+      props.footercontacttext = String(
+        structuredBrief?.whatsapp ||
+          structuredBrief?.email ||
+          (fallbackFooter as any).footercontacttext ||
+          localeDefaults.contact
+      );
       props.footercontacthref = "/contact";
       props.fdesctext = flattenedFooterLinks.map((link) => link.label).filter(Boolean).join(" • ");
       props.fdeschref = "/contact";
@@ -11526,8 +12181,8 @@ async function builderNode(state: GraphState) {
       const contactContext = buildSyntheticSectionContext(
         pageIndex,
         "contact",
-        "Contact",
-        "Provide contact and consultation pathways."
+        localeDefaults.useChinese ? "联系" : "Contact",
+        localeDefaults.useChinese ? "提供咨询与线索收集入口。" : "Provide contact and consultation pathways."
       );
       const fallbackContact = buildDeterministicFallbackBlock(
         contactContext,
@@ -11550,10 +12205,17 @@ async function builderNode(state: GraphState) {
         baseContactBlock?.props && typeof baseContactBlock.props === "object"
           ? { ...(baseContactBlock.props as Record<string, unknown>) }
           : {};
+      if (typeof structuredBrief?.contactTitle === "string" && structuredBrief.contactTitle.trim()) {
+        contactProps.title = structuredBrief.contactTitle.trim();
+      }
+      if (typeof structuredBrief?.consentText === "string" && structuredBrief.consentText.trim()) {
+        contactProps.note = structuredBrief.consentText.trim();
+      }
       contactProps.showForm = true;
       if (typeof contactProps.submitLabel !== "string" || !String(contactProps.submitLabel).trim()) {
-        contactProps.submitLabel = "Submit Request";
+        contactProps.submitLabel = localeDefaults.useChinese ? "提交询盘" : "Submit Request";
       }
+      Object.assign(contactProps, enforceContactTextStyleProps(contactProps));
       const contactBlock = {
         ...baseContactBlock,
         type: "LeadCaptureCTA",
@@ -11570,21 +12232,36 @@ async function builderNode(state: GraphState) {
     if (nonThemeDrivenBody.length === 0) {
       const pageToken = toSlug(page.path || `page-${pageIndex + 1}`) || `page-${pageIndex + 1}`;
       const heroFallback = buildDeterministicFallbackBlock(
-        buildSyntheticSectionContext(pageIndex, `${pageToken}-hero`, "Hero", "Present page value proposition."),
+        buildSyntheticSectionContext(
+          pageIndex,
+          `${pageToken}-hero`,
+          "Hero",
+          localeDefaults.useChinese ? "呈现页面核心价值。" : "Present page value proposition."
+        ),
         state.prompt ?? "",
         designNorthStar as Record<string, unknown>,
         theme as Record<string, unknown>,
         { skipRegistry: true }
       );
       const storyFallback = buildDeterministicFallbackBlock(
-        buildSyntheticSectionContext(pageIndex, `${pageToken}-story`, "Content", "Explain core differentiation."),
+        buildSyntheticSectionContext(
+          pageIndex,
+          `${pageToken}-story`,
+          "Content",
+          localeDefaults.useChinese ? "说明核心差异化能力。" : "Explain core differentiation."
+        ),
         state.prompt ?? "",
         designNorthStar as Record<string, unknown>,
         theme as Record<string, unknown>,
         { skipRegistry: true }
       );
       const featureFallback = buildDeterministicFallbackBlock(
-        buildSyntheticSectionContext(pageIndex, `${pageToken}-features`, "Features", "Show feature highlights."),
+        buildSyntheticSectionContext(
+          pageIndex,
+          `${pageToken}-features`,
+          "Features",
+          localeDefaults.useChinese ? "展示核心能力亮点。" : "Show feature highlights."
+        ),
         state.prompt ?? "",
         designNorthStar as Record<string, unknown>,
         theme as Record<string, unknown>,
@@ -11597,9 +12274,15 @@ async function builderNode(state: GraphState) {
           props: {
             id: "home-cta-recovered",
             anchor: "footer-cta",
-            title: "Start your project",
-            subtitle: "Talk with our team and get a tailored plan.",
-            cta: { label: "Contact Sales", href: "/contact", variant: "primary" },
+            title: localeDefaults.useChinese ? "立即开启项目" : "Start your project",
+            subtitle: localeDefaults.useChinese
+              ? "与团队沟通，获取匹配业务场景的方案。"
+              : "Talk with our team and get a tailored plan.",
+            cta: {
+              label: localeDefaults.useChinese ? "联系销售" : "Contact Sales",
+              href: "/contact",
+              variant: "primary",
+            },
             variant: "card",
           },
           _key: `${page.path}:cta:recovered`,
@@ -11714,7 +12397,6 @@ async function builderNode(state: GraphState) {
         theme && typeof theme === "object" ? (theme as Record<string, unknown>) : {},
         state.prompt ?? ""
       );
-  const structuredBrief = parseStructuredBrief(state.prompt ?? "");
   if (structuredBrief?.palette) {
     const currentPalette =
       lockedTheme?.palette && typeof lockedTheme.palette === "object"
@@ -11749,20 +12431,133 @@ async function builderNode(state: GraphState) {
   });
 
   const shouldApplyStrictStructuredOverrides =
-    !llmProviders.length || activeSectionGenerationStrategy === "template_first";
+    Boolean(structuredBrief) ||
+    looksLikeEnterpriseWebsite({ prompt: state.prompt ?? "", pages: pagesOut as any[] }) ||
+    !llmProviders.length ||
+    activeSectionGenerationStrategy === "template_first";
   if (shouldApplyStrictStructuredOverrides) {
-    pagesOut = applyStructuredBriefOverrides(pagesOut, state.prompt ?? "", templateResolution.profileId ?? null);
+    pagesOut = applyStructuredBriefOverrides(
+      pagesOut,
+      state.prompt ?? "",
+      templateResolution.profileId ?? null,
+      state.structuredInput ?? null
+    );
   } else {
     logInfo(`${logPrefix} builder:structured_brief_override_skipped`, {
       reason: "llm_available_and_non_template_first",
       selectedStrategy: activeSectionGenerationStrategy,
     });
   }
+  pagesOut = applyVisualMediaCoverage(pagesOut, state.prompt ?? "");
   pagesOut = sanitizeFinalPagesOutput(pagesOut, {
     prompt: state.prompt ?? "",
     designNorthStar: designNorthStar ?? undefined,
     profileId: templateResolution.profileId ?? null,
   });
+  const normalizePairPath = (value: unknown) => {
+    const raw = String(value || "").trim();
+    if (!raw) return "/";
+    const withSlash = raw.startsWith("/") ? raw : `/${raw}`;
+    return withSlash.replace(/\/{2,}/g, "/").replace(/\/+$/g, "") || "/";
+  };
+  const pageStructureSignature = (page: any) =>
+    String(
+      (Array.isArray(page?.data?.content) ? page.data.content : [])
+        .map((item: any) => String(item?.type || ""))
+        .filter((type: string) => !/navbar|navigation|footer/i.test(type))
+        .join(">")
+    );
+  const byPath = new Map<string, any>(
+    pagesOut.map((page: any) => [normalizePairPath(page?.path || "/"), page] as const)
+  );
+  const coreProductPage = byPath.get("/core-product");
+  const productsPage = byPath.get("/products");
+  if (
+    coreProductPage &&
+    productsPage &&
+    pageStructureSignature(coreProductPage) &&
+    pageStructureSignature(coreProductPage) === pageStructureSignature(productsPage)
+  ) {
+    const coreContent = Array.isArray(coreProductPage?.data?.content) ? [...coreProductPage.data.content] : [];
+    const replacementProps = {
+      id: "core-product-story-differentiated",
+      anchor: "core-story",
+      title: localeDefaults.useChinese ? "核心工艺能力" : "Core Capability",
+      subtitle: localeDefaults.useChinese
+        ? "围绕旗舰机型的结构刚性、精度稳定性与工艺窗口展开。"
+        : "Highlight structural rigidity, precision stability, and process windows for flagship models.",
+      body: localeDefaults.useChinese
+        ? "该页面聚焦单机能力与关键加工参数说明，用于与产品中心形成明确分工。"
+        : "This page focuses on single-model capability and key machining parameters to differentiate from the product center.",
+      variant: "split",
+      maxWidth: "xl",
+      paddingY: "lg",
+    };
+    const cardsIndex = coreContent.findIndex((item: any) => /cardsgrid|productcatalog/i.test(String(item?.type || "")));
+    if (cardsIndex >= 0) {
+      const cardBlock = coreContent[cardsIndex];
+      const existingProps =
+        cardBlock?.props && typeof cardBlock.props === "object"
+          ? ({ ...(cardBlock.props as Record<string, unknown>) } as Record<string, unknown>)
+          : {};
+      coreContent[cardsIndex] = {
+        ...cardBlock,
+        props: {
+          ...existingProps,
+          variant: "poster",
+          columns: "2col",
+          imagePosition: "left",
+          featureFirst: false,
+        },
+      };
+    }
+    const hasCoreStory = coreContent.some(
+      (item: any) =>
+        /contentstory/i.test(String(item?.type || "")) &&
+        /core-product-story-differentiated|core-story/i.test(
+          String((item?.props as Record<string, unknown> | undefined)?.id || "") +
+            String((item?.props as Record<string, unknown> | undefined)?.anchor || "")
+        )
+    );
+    if (!hasCoreStory) {
+      const insertIndex = coreContent.findIndex((item: any) => /leadcapture|contact|cta/i.test(String(item?.type || "")));
+      coreContent.splice(insertIndex >= 0 ? insertIndex : coreContent.length, 0, {
+        type: "ContentStory",
+        props: replacementProps,
+        _key: "/core-product:story:dedupe",
+      });
+    }
+    coreProductPage.data.content = dedupeComposedPageContent(coreContent, "/core-product");
+    logWarn(`${logPrefix} builder:critical_pair_diversified`, {
+      pair: "/core-product<->/products",
+      strategy: "post_generation_patch",
+    });
+  }
+  const contractValidation = validateGeneratedSiteContract({
+    prompt: state.prompt ?? "",
+    pages: pagesOut as any[],
+  });
+  logInfo(`${logPrefix} builder:contract_gate`, {
+    pass: contractValidation.pass,
+    issueCount: contractValidation.issues.length,
+    errors: contractValidation.issues.filter((issue) => issue.severity === "error").length,
+    warnings: contractValidation.issues.filter((issue) => issue.severity === "warning").length,
+  });
+  if (!contractValidation.pass) {
+    errors.push(
+      `contract_gate_failed:errors=${contractValidation.issues.filter((issue) => issue.severity === "error").length}:warnings=${contractValidation.issues.filter((issue) => issue.severity === "warning").length}`
+    );
+  }
+  const contractWarnings = contractValidation.issues.filter((issue) => issue.severity === "warning");
+  if (contractWarnings.length > 0) {
+    contractWarnings.slice(0, 12).forEach((issue) => {
+      logWarn(`${logPrefix} builder:contract_warning`, {
+        code: issue.code,
+        message: issue.message,
+        details: issue.details,
+      });
+    });
+  }
 
   const qaReport = evaluateGenerationQa({
     siteBlueprint,
@@ -11789,6 +12584,8 @@ async function builderNode(state: GraphState) {
     inconsistentThemePages: qaReport.details.inconsistentThemePages.join(","),
     semanticHitPages: qaReport.details.semanticHitPages.join(","),
     sourceBrandLeakPages: qaReport.details.sourceBrandLeakPages.join(","),
+    templateCopyPages: (qaReport.details as any).templateCopyPages?.join(",") || "",
+    criticalDuplicatePairs: (qaReport.details as any).criticalDuplicatePairs?.join(",") || "",
   });
   if (!qaReport.pass) {
     errors.push(
@@ -11820,6 +12617,7 @@ async function builderNode(state: GraphState) {
     qaReport,
     resolvedByLayer: {
       strategy: sectionGenerationStrategy,
+      requestedStrategy: requestedSectionGenerationStrategy,
       selectedStrategy: activeSectionGenerationStrategy,
       templatePlanProfile: templateResolution.profileId ?? null,
       skeleton: siteBlueprint.skeleton,
@@ -11850,6 +12648,18 @@ async function builderNode(state: GraphState) {
         semanticFidelityScore: qaReport.semanticFidelityScore,
         overallScore: qaReport.overallScore,
       },
+      contract: {
+        pass: contractValidation.pass,
+        normalizationIssueCount: contractNormalizationIssues.length,
+        validationIssueCount: contractValidation.issues.length,
+        normalizationIssues: contractNormalizationIssues,
+        validationIssues: contractValidation.issues,
+      },
+      skillOrchestration: {
+        applied: skillOrchestrationApplied,
+        suggestion: skillOrchestrationSuggestion,
+        diagnostics: skillOrchestrationDiagnostics,
+      },
     },
     errors,
   };
@@ -11868,6 +12678,10 @@ type GenerationCandidateResult = {
 
 const resolveCandidateStrategiesForPrompt = (prompt: string): SectionGenerationStrategy[] => {
   if (!enableMultiCandidateSelection) return [sectionGenerationStrategy];
+  const rawPrompt = String(prompt || "");
+  if (multiCandidateMaxPromptChars > 0 && rawPrompt.length > multiCandidateMaxPromptChars) {
+    return ["template_first"];
+  }
   const requestedPages = extractRequestedPagesFromPrompt(prompt);
   const brief = parseStructuredBrief(prompt);
   const detailed = isDetailedDesignBrief(prompt);
@@ -11888,6 +12702,10 @@ const resolveCandidateStrategiesForPrompt = (prompt: string): SectionGenerationS
       brief?.featureItems?.length ||
       brief?.caseItems?.length
   );
+  const hasRichStructuredMultiPageDemand = promptHasStructuredContentDemand && requestedPages.length >= 5;
+  if (hasRichStructuredMultiPageDemand) {
+    return ["template_first"];
+  }
 
   let preferred: SectionGenerationStrategy[] = configuredCandidateStrategies;
   if (detailed) {
@@ -12031,8 +12849,20 @@ const shouldShortCircuitCandidateSelection = (
 export async function generateP2WProject(input: {
   prompt: string;
   manifest: Record<string, unknown>;
+  structuredInput?: StructuredSiteInput;
   planning?: { dir: string; requestId?: string; batchSize?: number };
 }) {
+  const serperFactPack = await buildSerperFactPack(input.prompt, { structuredInput: input.structuredInput });
+  const effectivePrompt = `${input.prompt}${serperFactPack.context || ""}`;
+  if (serperFactPack.enabled) {
+    logInfo(`${logPrefix} serper:fact_pack`, {
+      used: serperFactPack.used,
+      queryCount: serperFactPack.queryCount,
+      sourceCount: serperFactPack.sourceCount,
+      coveredFields: serperFactPack.coveredFields,
+      missingFields: serperFactPack.missingFields,
+    });
+  }
   const [skillContext, designSystemContext] = await Promise.all([
     loadSkillContext(),
     loadDesignSystemContext(),
@@ -12046,18 +12876,19 @@ export async function generateP2WProject(input: {
     .compile();
 
   const planning = input.planning?.dir
-    ? await PlanningFiles.init({
+      ? await PlanningFiles.init({
         rootDir: input.planning.dir,
-        prompt: input.prompt,
+        prompt: effectivePrompt,
         requestId: input.planning.requestId,
         batchSize: input.planning.batchSize,
       })
     : null;
-  const candidateStrategies = resolveCandidateStrategiesForPrompt(input.prompt);
+  const candidateStrategies = resolveCandidateStrategiesForPrompt(effectivePrompt);
   const runPlanning = candidateStrategies.length > 1 ? null : planning;
   const baseInput = {
-    prompt: input.prompt,
+    prompt: effectivePrompt,
     manifest: input.manifest,
+    structuredInput: input.structuredInput ?? null,
     planning: runPlanning,
     skillContext,
     designSystemContext,
@@ -12082,7 +12913,7 @@ export async function generateP2WProject(input: {
   ];
   const shortCircuitSelection =
     candidateStrategies.length > 1 &&
-    shouldShortCircuitCandidateSelection(input.prompt, primaryResult, candidates[0].score);
+    shouldShortCircuitCandidateSelection(effectivePrompt, primaryResult, candidates[0].score);
 
   const reusableBlueprint =
     primaryResult?.blueprint && typeof primaryResult.blueprint === "object"
@@ -12106,8 +12937,8 @@ export async function generateP2WProject(input: {
   }
 
   candidates.sort((left, right) => {
-    if (right.score.score !== left.score.score) return right.score.score - left.score.score;
     if (Number(right.score.pass) !== Number(left.score.pass)) return Number(right.score.pass) - Number(left.score.pass);
+    if (right.score.score !== left.score.score) return right.score.score - left.score.score;
     if (right.score.errorCount !== left.score.errorCount) return left.score.errorCount - right.score.errorCount;
     return candidateStrategies.indexOf(left.strategy) - candidateStrategies.indexOf(right.strategy);
   });

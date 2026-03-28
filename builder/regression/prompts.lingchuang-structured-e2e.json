@@ -1,0 +1,45 @@
+{
+  "cases": [
+    {
+      "id": "lingchuang-structured-cn-e2e",
+      "description": "Structured CN enterprise website generation with page-level richness assertions",
+      "requiresLlm": true,
+      "skipBrowser": false,
+      "prompt": "为深圳灵创智能科技有限公司（LCZN）生成中文企业官网（可在 Puck Editor 编辑），基于以下结构化信息：\n\n品牌定位：\n- 公司：深圳灵创智能有限公司（LCZN）\n- 定位：专注高精密数控精雕机研发制造，为3C电子及复合材料提供高效率加工方案\n- 受众：3C零组件加工厂、玻璃/亚克力面板加工商、汽车内饰件供应商、医疗器械零件生产商\n\n页面与目标：\n- / 首页：品牌建立+全品类转化，含轮播Banner、核心产品分类导航、公司实力、核心价值观、最新动态、底部留单\n- /about 公司概况：企业发展历程、企业文化、厂房实景、经营理念\n- /products 产品展示：分类导航、高清图、参数表、在线询价\n- /cases 应用案例：按材质分类、成品展示、工艺难点\n- /solutions 解决方案：按场景提供工艺路线、设备配置、交付与ROI说明\n- /contact 联系我们：地图导航、热线、邮箱、在线留言\n\n产品样板（必须写入文案）：\n1) 六头精雕机，型号 LC-S1160，行程 X1100/Y600/Z120，重复定位精度 ±0.005mm，六头同步加工，适用于手机背板/PCB分板/小型金属件去毛刺\n2) 自动换刀精雕机（刀库机），型号 S-1050，换刀时间≤1.5s，主轴24000-40000rpm，12-16把刀库，适用复杂模具多工序一次成型\n\n案例样板（必须写入文案）：\nA) 亚克力面板精加工：良率从85%提升至98%\nB) 笔记本电脑金属壳料：单件加工成本降低20%，人力成本缩减50%\n\n联系方式与转化：\n- 电话：158-1370-3777，0755-23426677\n- CTA：获取定制方案、索取最新报价单、预约看厂\n- 表单字段：姓名、公司名称、联系电话（必填）、加工材质、预计采购量\n\n可信度资产：高新技术企业认证、ISO9001、累计交付5000+台、珠三角2小时响应、辐射东南亚\nSEO关键词：深圳精雕机厂家、多主轴CNC、刀库精雕机、亚克力加工设备、玻璃扫光机\n\n硬约束：\n1) 全站中文（型号可英文）；\n2) 首页、产品页支持双语切换入口，但默认中文；\n3) /solutions 与 / 首页结构和首屏不可同构；\n4) 每个核心页面必须有真实内容块与图片，不可空泛模板文案。",
+      "categoryScope": "site",
+      "minPages": 6,
+      "requiredPagePaths": ["/", "/about", "/products", "/cases", "/solutions", "/contact", "/privacy"],
+      "forbiddenPagePaths": ["/core-product"],
+      "forbiddenIdenticalRolePairs": [["/", "/solutions"], ["/products", "/cases"]],
+      "browserPages": ["/", "/products", "/solutions", "/cases", "/contact"],
+      "minTextLengthPerPage": 220,
+      "minLinksPerPage": 3,
+      "requiredBlockTypesByPage": {
+        "/": ["HeroSplit", "CardsGrid", "FeatureGrid", "LeadCaptureCTA"],
+        "/products": ["CardsGrid", "LeadCaptureCTA"],
+        "/solutions": ["HeroSplit", "FeatureGrid", "LeadCaptureCTA"],
+        "/cases": ["CardsGrid", "LeadCaptureCTA"],
+        "/contact": ["LeadCaptureCTA"]
+      },
+      "minCardsGridItemsByPage": {
+        "/": 4,
+        "/products": 2,
+        "/cases": 2
+      },
+      "minImageUrlsByPage": {
+        "/": 6,
+        "/products": 2,
+        "/solutions": 1,
+        "/cases": 2,
+        "/about": 1
+      },
+      "expectedKeywordsByPage": {
+        "/": ["灵创智能", "产品展示", "应用案例"],
+        "/products": ["六头精雕机", "自动换刀精雕机", "LC-S1160", "S-1050"],
+        "/cases": ["亚克力面板精加工", "笔记本电脑金属壳料", "85%", "98%"],
+        "/contact": ["158-1370-3777", "0755-23426677"],
+        "/solutions": ["解决方案", "定制方案"]
+      }
+    }
+  ]
+}
