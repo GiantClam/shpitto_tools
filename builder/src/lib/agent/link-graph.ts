@@ -83,7 +83,6 @@ const localizedPageLabelByPath = (pathValue: string, locale: SiteLinkGraph["loca
   if (path === "/") return locale.home;
   const zhMap: Record<string, string> = {
     "/products": "产品中心",
-    "/core-product": "核心产品",
     "/solutions": "解决方案",
     "/cases": "应用案例",
     "/about": "关于我们",
@@ -95,7 +94,6 @@ const localizedPageLabelByPath = (pathValue: string, locale: SiteLinkGraph["loca
   };
   const enMap: Record<string, string> = {
     "/products": "Products",
-    "/core-product": "Core Product",
     "/solutions": "Solutions",
     "/cases": "Cases",
     "/about": "About",
@@ -165,6 +163,33 @@ const isExternalOrAnchorHref = (href: string) => {
   );
 };
 
+const canonicalizeAnchorHref = (href: string, graph: SiteLinkGraph): string | null => {
+  const raw = String(href || "").trim();
+  if (!raw.startsWith("#")) return null;
+  const anchorToken = raw
+    .replace(/^#+/, "")
+    .trim()
+    .toLowerCase();
+  if (!anchorToken) return graph.homeHref;
+  if (anchorToken === "top" || anchorToken === "home" || anchorToken === "index") return graph.homeHref;
+
+  const normalizedAnchor = anchorToken
+    .replace(/[_\s]+/g, "-")
+    .replace(/[^a-z0-9/-]+/g, "")
+    .replace(/-+/g, "-")
+    .replace(/\/{2,}/g, "/")
+    .replace(/\/+$/g, "");
+  if (!normalizedAnchor) return graph.homeHref;
+
+  const candidatePath = normalizePath(
+    normalizedAnchor.startsWith("/") ? normalizedAnchor : `/${normalizedAnchor}`
+  );
+  const canonical = normalizePath(resolveCanonicalRoute(candidatePath, graph.validInternalHrefs));
+  if (graph.validInternalHrefs.has(canonical)) return canonical;
+  if (graph.validInternalHrefs.has(candidatePath)) return candidatePath;
+  return null;
+};
+
 const trustedExternalHosts = [
   "wa.me",
   "api.whatsapp.com",
@@ -200,7 +225,12 @@ const maybeCanonicalizeAbsoluteHref = (href: string, graph: SiteLinkGraph) => {
 const sanitizeHref = (href: unknown, graph: SiteLinkGraph) => {
   const raw = typeof href === "string" ? href.trim() : "";
   if (!raw) return graph.homeHref;
-  if (/^mailto:|^tel:|^#/i.test(raw)) return raw;
+  if (/^mailto:|^tel:/i.test(raw)) return raw;
+  if (raw.startsWith("#")) {
+    const canonical = canonicalizeAnchorHref(raw, graph);
+    if (canonical) return canonical;
+    return raw;
+  }
   if (/^https?:\/\//i.test(raw)) return maybeCanonicalizeAbsoluteHref(raw, graph);
   const pathname = normalizePath(raw);
   if (graph.validInternalHrefs.has(pathname)) return pathname;
@@ -384,7 +414,6 @@ const buildFooterColumns = (blueprint: SiteBlueprint, locale: SiteLinkGraph["loc
         title: locale.overview,
         links: [
           pick("home", locale.home),
-          pick("core_product", "Core Product"),
           pick("products", "Products"),
         ],
       },

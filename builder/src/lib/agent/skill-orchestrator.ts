@@ -185,10 +185,7 @@ const countStructuredSignals = (prompt: string) =>
 
 const hasCriticalPagePairs = (paths: string[]) => {
   const set = new Set(paths.map((item) => normalizeSitePath(item)));
-  return (
-    (set.has("/core-product") && set.has("/products")) ||
-    (set.has("/solutions") && set.has("/cases"))
-  );
+  return set.has("/solutions") && set.has("/cases");
 };
 
 const maybeSuggestStrategy = (input: {

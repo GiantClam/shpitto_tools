@@ -116,7 +116,7 @@ const inferPageType = (pathValue: string, nameValue: string): TemplateAdaptation
   if (/(blog|news|article|journal|insight|newsroom)/.test(token)) return "blog";
   if (/(case|portfolio|reference|success|use-case|usecase)/.test(token)) return "cases";
   if (/(solution|service|workflow|custom|capabilit|integration)/.test(token)) return "solutions";
-  if (/(product|catalog|collection|machine|machines|device|hardware|core-product)/.test(token)) return "products";
+  if (/(product|catalog|collection|machine|machines|device|hardware)/.test(token)) return "products";
   return "generic";
 };
 

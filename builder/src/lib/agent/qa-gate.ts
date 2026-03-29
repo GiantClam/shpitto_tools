@@ -422,7 +422,6 @@ export const evaluateGenerationQa = (input: {
   }
   const pathSequenceMap = new Map(pageRoleSequences.map((entry) => [normalizePagePath(entry.path), entry.roles]));
   const criticalPairs: Array<[string, string]> = [
-    ["/core-product", "/products"],
     ["/solutions", "/cases"],
   ];
   for (const [leftPath, rightPath] of criticalPairs) {

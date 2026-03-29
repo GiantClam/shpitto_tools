@@ -36,8 +36,8 @@ const enterpriseRequestTimeoutMs = parseTimeoutMs(
   300000
 );
 const deferredPersistMaxMs = parseTimeoutMs(
-  Number(process.env.CREATION_DEFERRED_PERSIST_MAX_MS || 240000),
-  240000
+  Number(process.env.CREATION_DEFERRED_PERSIST_MAX_MS || 390000),
+  390000
 );
 
 type GenerationResult = Awaited<ReturnType<typeof generateP2WProject>>;
@@ -231,7 +231,7 @@ const mapLabelToTimeoutPath = (label: string) => {
   const token = String(label || "").toLowerCase().replace(/\s+/g, "");
   if (!token) return "/";
   if (/^(home|homepage|首页|主页|首屏)$/.test(token)) return "/";
-  if (/(coreproduct|核心产品)/.test(token)) return "/core-product";
+  if (/(coreproduct|核心产品)/.test(token)) return "/products";
   if (/(products?|3cmachines?|machine|产品中心)/.test(token)) return "/products";
   if (/(customsolutions?|solutions?|解决方案|定制方案)/.test(token)) return "/solutions";
   if (/(cases?|casestudy|应用案例|案例)/.test(token)) return "/cases";
@@ -250,7 +250,7 @@ const inferTimeoutSitePaths = (prompt: string, navLabels: string[]) => {
   const explicitPaths = Array.from(raw.matchAll(/\/[a-z0-9-]{2,}/gi)).map((m) => m[0].toLowerCase());
   const fromNav = navLabels.map(mapLabelToTimeoutPath).filter(Boolean);
   const fromPrompt = [
-    /核心产品|core product/i.test(raw) ? "/core-product" : "",
+    /核心产品|core product/i.test(raw) ? "/products" : "",
     /产品中心|products?/i.test(raw) ? "/products" : "",
     /解决方案|solutions?/i.test(raw) ? "/solutions" : "",
     /应用案例|cases?/i.test(raw) ? "/cases" : "",
@@ -280,7 +280,6 @@ const timeoutPageName = (pathValue: string, locale: TimeoutLocale) => {
   const path = String(pathValue || "/").toLowerCase();
   const zh: Record<string, string> = {
     "/": "首页",
-    "/core-product": "核心产品",
     "/products": "产品中心",
     "/solutions": "解决方案",
     "/cases": "应用案例",
@@ -294,7 +293,6 @@ const timeoutPageName = (pathValue: string, locale: TimeoutLocale) => {
   };
   const en: Record<string, string> = {
     "/": "Home",
-    "/core-product": "Core Product",
     "/products": "Products",
     "/solutions": "Solutions",
     "/cases": "Cases",
@@ -406,6 +404,89 @@ const buildTimeoutFallbackResult = (prompt: string) => {
             maxWidth: "xl" as const,
           },
         };
+    const storyBlock =
+      legalPage || isContact
+        ? null
+        : {
+            type: "ContentStory",
+            props: {
+              id: `story-${pageName}`,
+              title: locale === "zh-CN" ? `${pageName} 业务简介` : `${pageName} Overview`,
+              body:
+                locale === "zh-CN"
+                  ? `${brand} 该页面当前为超时保护版本，已预置可编辑内容结构，可直接替换为真实业务文案。`
+                  : `This ${pageName.toLowerCase()} page is timeout-safe fallback content with an editable structure for real business copy.`,
+              mediaPosition: "right" as const,
+              maxWidth: "xl" as const,
+              paddingY: "lg" as const,
+            },
+          };
+    const productsBlock =
+      legalPage || isContact
+        ? null
+        : {
+            type: "CardsGrid",
+            props: {
+              id: `products-${pageName}`,
+              title: locale === "zh-CN" ? "核心产品与能力" : "Core Products & Capabilities",
+              subtitle:
+                locale === "zh-CN"
+                  ? "可在编辑器中替换为真实产品目录与参数。"
+                  : "Replace these entries with your actual product catalog and specs in the editor.",
+              variant: "product" as const,
+              columns: "3col" as const,
+              items: [
+                {
+                  title: locale === "zh-CN" ? "产品系列 A" : "Product Line A",
+                  description: locale === "zh-CN" ? "高精度方案" : "High-precision solution",
+                  cta: { label: locale === "zh-CN" ? "查看详情" : "Learn More", href: "/products", variant: "link" as const },
+                },
+                {
+                  title: locale === "zh-CN" ? "产品系列 B" : "Product Line B",
+                  description: locale === "zh-CN" ? "高效率方案" : "High-efficiency solution",
+                  cta: { label: locale === "zh-CN" ? "查看详情" : "Learn More", href: "/products", variant: "link" as const },
+                },
+                {
+                  title: locale === "zh-CN" ? "定制化方案" : "Custom Solution",
+                  description: locale === "zh-CN" ? "按行业场景配置" : "Configured for your industry use case",
+                  cta: { label: locale === "zh-CN" ? "查看详情" : "Learn More", href: "/solutions", variant: "link" as const },
+                },
+              ],
+              paddingY: "lg" as const,
+              maxWidth: "xl" as const,
+            },
+          };
+    const socialProofBlock =
+      legalPage
+        ? null
+        : {
+            type: "TestimonialsGrid",
+            props: {
+              id: `socialproof-${pageName}`,
+              title: locale === "zh-CN" ? "客户反馈与背书" : "Customer Proof",
+              variant: "2col" as const,
+              items: [
+                {
+                  quote:
+                    locale === "zh-CN"
+                      ? "上线后转化路径更清晰，线索质量有明显提升。"
+                      : "After launch, conversion paths were clearer and lead quality improved.",
+                  name: locale === "zh-CN" ? "客户 A" : "Client A",
+                  role: locale === "zh-CN" ? "采购负责人" : "Procurement Lead",
+                },
+                {
+                  quote:
+                    locale === "zh-CN"
+                      ? "页面结构完整，销售团队可快速用于投放与转化。"
+                      : "The full page structure helped our sales team launch campaigns quickly.",
+                  name: locale === "zh-CN" ? "客户 B" : "Client B",
+                  role: locale === "zh-CN" ? "市场负责人" : "Marketing Lead",
+                },
+              ],
+              paddingY: "lg" as const,
+              maxWidth: "xl" as const,
+            },
+          };
     const ctaBlock =
       isContact || legalPage
         ? null
@@ -423,7 +504,7 @@ const buildTimeoutFallbackResult = (prompt: string) => {
     const footerColumns = [
       {
         title: locale === "zh-CN" ? "产品" : "Product",
-        links: navLinks.filter((item) => ["/core-product", "/products", "/solutions", "/cases"].includes(item.href)),
+        links: navLinks.filter((item) => ["/products", "/solutions", "/cases"].includes(item.href)),
       },
       {
         title: locale === "zh-CN" ? "公司" : "Company",
@@ -449,7 +530,10 @@ const buildTimeoutFallbackResult = (prompt: string) => {
         },
       },
       heroBlock,
+      ...(storyBlock ? [storyBlock] : []),
       middleBlock,
+      ...(productsBlock ? [productsBlock] : []),
+      ...(socialProofBlock ? [socialProofBlock] : []),
       ...(ctaBlock ? [ctaBlock] : []),
       {
         type: "Footer",

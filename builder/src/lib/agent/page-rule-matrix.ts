@@ -81,7 +81,7 @@ export const PAGE_PATH_SCORING_RULES: PageScoringRule[] = [
     pageType: "products",
     weight: 1.5,
     signal: "path:products",
-    pattern: /\/(?:core-product|3c-machines|products?|catalog|machines?|equipment|models?|lineup)(?:\/|$)/,
+    pattern: /\/(?:3c-machines|products?|catalog|machines?|equipment|models?|lineup)(?:\/|$)/,
   },
   {
     pageType: "solutions",
@@ -158,10 +158,9 @@ export const PAGE_TOKEN_SCORING_RULES: PageScoringRule[] = [
 export const LABEL_HOME_PATTERN = /^(home|homepage|home page|首页|主页|首屏)$/;
 
 export const LABEL_PATH_RULES: LabelPathRule[] = [
-  { path: "/core-product", pattern: /(core[-\s]?product|flagship|featured[-\s]?product|核心产品|旗舰产品|明星产品)/ },
   {
     path: "/products",
-    pattern: /(3c|machine|machines|machining|cnc|catalog|products?|product center|产品中心|产品展示|机床|设备|机型)/,
+    pattern: /(core[-\s]?product|flagship|featured[-\s]?product|核心产品|旗舰产品|明星产品|3c|machine|machines|machining|cnc|catalog|products?|product center|产品中心|产品展示|机床|设备|机型)/,
   },
   { path: "/solutions", pattern: /(custom[-\s]?solutions?|solutions?|解决方案|应用方案|方案中心)/ },
   { path: "/cases", pattern: /(case studies|case study|cases|applications|application cases|案例|应用案例|客户案例)/ },

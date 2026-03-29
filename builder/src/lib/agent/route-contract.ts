@@ -1,6 +1,5 @@
 export type CanonicalRoute =
   | "/"
-  | "/core-product"
   | "/products"
   | "/solutions"
   | "/cases"
@@ -19,8 +18,7 @@ type RouteContractEntry = {
 
 export const ROUTE_CONTRACT: RouteContractEntry[] = [
   { canonical: "/", aliases: ["/home", "/index"] },
-  { canonical: "/core-product", aliases: ["/coreproduct", "/flagship-products"] },
-  { canonical: "/products", aliases: ["/product", "/catalog", "/machines", "/3c-machines"] },
+  { canonical: "/products", aliases: ["/product", "/catalog", "/machines", "/3c-machines", "/core-product", "/coreproduct", "/flagship-products"] },
   { canonical: "/solutions", aliases: ["/solution", "/custom-solutions", "/services", "/capabilities"] },
   { canonical: "/cases", aliases: ["/case", "/case-studies", "/applications"] },
   { canonical: "/about", aliases: ["/about-us", "/company"] },
@@ -60,4 +58,3 @@ export const resolveCanonicalRoute = (
   if (available.has(normalized)) return normalized;
   return canonical;
 };
-

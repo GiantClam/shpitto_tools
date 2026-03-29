@@ -15,7 +15,6 @@ export type SiteContractIssue = {
     | "duplicate_path_removed"
     | "route_alias_canonicalized"
     | "domain_like_path_removed"
-    | "overlapping_product_page_removed"
     | "missing_home_page"
     | "missing_required_page"
     | "missing_global_chrome"
@@ -41,7 +40,6 @@ export type SiteContractNormalizationResult<T extends PageLike> = {
 
 type SiteContractNormalizationOptions = {
   prompt?: string;
-  preservePaths?: string[];
 };
 
 const looksLikeDomainPath = (path: string) =>
@@ -170,21 +168,13 @@ const hasTemplateCopy = (page: PageLike) => {
   return TEMPLATE_COPY_PATTERN.test(corpus);
 };
 
-const hasCoreProductIntent = (prompt: string) =>
-  /(?:core[-\s]?product|flagship|featured[-\s]?product|核心产品|旗舰产品|明星产品|单机详情|单机型|detail\s+page)/i.test(
-    String(prompt || "")
-  );
-
 export const normalizePagesBySiteContract = <T extends PageLike>(
   pages: T[],
-  options?: SiteContractNormalizationOptions
+  _options?: SiteContractNormalizationOptions
 ): SiteContractNormalizationResult<T> => {
   const issues: SiteContractIssue[] = [];
   const result: T[] = [];
   const seenPaths = new Set<string>();
-  const preservePathSet = new Set(
-    (Array.isArray(options?.preservePaths) ? options?.preservePaths : []).map((item) => normalizeSitePath(item))
-  );
 
   (Array.isArray(pages) ? pages : []).forEach((page, index) => {
     const normalizedPath = normalizeSitePath(page?.path || (index === 0 ? "/" : `/page-${index + 1}`));
@@ -218,20 +208,6 @@ export const normalizePagesBySiteContract = <T extends PageLike>(
     seenPaths.add(canonicalPath);
     result.push({ ...(page as T), path: canonicalPath });
   });
-
-  const hasProductsPage = result.some((page) => normalizeSitePath(page?.path) === "/products");
-  const coreProductIndex = result.findIndex((page) => normalizeSitePath(page?.path) === "/core-product");
-  const keepCoreProductPage =
-    hasCoreProductIntent(String(options?.prompt || "")) || preservePathSet.has("/core-product");
-  if (hasProductsPage && coreProductIndex >= 0 && !keepCoreProductPage) {
-    result.splice(coreProductIndex, 1);
-    issues.push({
-      severity: "warning",
-      code: "overlapping_product_page_removed",
-      message: 'Removed "/core-product" because "/products" already exists and no explicit core-product intent found',
-      details: { removed: "/core-product", kept: "/products" },
-    });
-  }
 
   if (!result.some((page) => normalizeSitePath(page?.path) === "/")) {
     issues.push({

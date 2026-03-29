@@ -85,17 +85,20 @@ const normalizeType = (value) =>
 const categorizeBlock = (block) => {
   const type = normalizeType(block?.type);
   const variant = normalizeType(block?.props?.variant);
+  const id = normalizeType(block?.props?.id);
+  const anchor = normalizeType(block?.props?.anchor);
+  const token = `${type} ${variant} ${id} ${anchor}`;
   const categories = new Set();
   if (!type) return categories;
   if (/(navigation|navbar|header)/.test(type)) categories.add("navigation");
   if (/hero/.test(type)) categories.add("hero");
   if (/(studiostory|story|content|editorial|philosophy|narrative)/.test(type)) categories.add("story");
   if (/(approach|metric|stats|stat|feature|valueprop)/.test(type)) categories.add("approach");
-  if (/(social|trust|testimonial|logo|collaborator)/.test(type)) categories.add("socialproof");
+  if (/(social|trust|testimonial|logo|collaborator|case|casestud|customerstory)/.test(token)) categories.add("socialproof");
   if (/(footercta|leadcapture|contactcta|cta)/.test(type)) categories.add("cta");
   if (/footer/.test(type)) categories.add("footer");
-  if (/(product|catalog|pricing|shop|store)/.test(type)) categories.add("products");
-  if (/cardsgrid/.test(type) && /(product|catalog|shop|store)/.test(variant)) categories.add("products");
+  if (/(product|catalog|pricing|shop|store)/.test(token)) categories.add("products");
+  if (/cardsgrid/.test(type) && /(product|catalog|shop|store|products)/.test(`${variant} ${id} ${anchor}`)) categories.add("products");
   if (/(contact|inquiry|form)/.test(type)) categories.add("contact");
   return categories;
 };

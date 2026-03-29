@@ -999,6 +999,14 @@ export default function CreationSandboxClient({ initialPayload }: CreationSandbo
           ? "h-screen w-screen overflow-hidden bg-background text-foreground"
           : "min-h-screen w-full bg-background text-foreground"
       }
+      style={
+        isEdit
+          ? undefined
+          : {
+              backgroundImage:
+                "linear-gradient(180deg, color-mix(in oklab, hsl(var(--primary)) 10%, transparent) 0%, transparent 240px)",
+            }
+      }
     >
       <Script id="tailwind-runtime-config" strategy="beforeInteractive">
         {tailwindRuntimeConfigScript}

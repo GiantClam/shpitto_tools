@@ -55,6 +55,9 @@ import {
 } from "@/lib/agent/link-graph";
 import { resolveOutputLanguage, shouldUseChineseContent } from "@/lib/agent/language";
 import { buildSerperFactPack } from "@/lib/agent/serper";
+import { buildScopedRagContextByPage } from "@/lib/agent/scoped-rag";
+import { evaluateGeneratedPageContract } from "@/lib/agent/page-contract";
+import { createKnowledgeBaseClientFromEnv } from "@/lib/agent/knowledge-base";
 import type {
   StructuredFaqRecord,
   StructuredProductRecord,
@@ -438,6 +441,28 @@ const providerFallbackModelOverrides: Partial<Record<ProviderModelName, string>>
   openrouter: process.env.LLM_MODEL_FALLBACK_OPENROUTER || process.env.OPENROUTER_MODEL_FALLBACK || "",
   anthropic: process.env.LLM_MODEL_FALLBACK_ANTHROPIC || process.env.ANTHROPIC_MODEL_FALLBACK || "",
 };
+const openrouterSafeFallbackModel =
+  process.env.OPENROUTER_MODEL_SAFE ||
+  process.env.OPENROUTER_NON_ANTHROPIC_MODEL ||
+  process.env.OPENROUTER_MODEL_FALLBACK_SAFE ||
+  "openai/gpt-4o-mini";
+const parseModelCandidateCsv = (value: string | undefined, fallback: string[]) => {
+  if (typeof value !== "string" || !value.trim()) return fallback;
+  const parsed = value
+    .split(",")
+    .map((item) => String(item || "").trim())
+    .filter(Boolean);
+  return parsed.length ? parsed : fallback;
+};
+const openrouterFallbackModelCandidates = parseModelCandidateCsv(
+  process.env.OPENROUTER_MODEL_CANDIDATES || process.env.LLM_MODEL_CANDIDATES_OPENROUTER,
+  [
+    openrouterSafeFallbackModel,
+    "google/gemini-2.0-flash-001",
+    "qwen/qwen-2.5-72b-instruct",
+    "meta-llama/llama-3.3-70b-instruct",
+  ]
+);
 const resolveProviderModel = (provider: ProviderModelName, requestedModel: string) => {
   const providerPrimary = providerPrimaryModelOverrides[provider];
   const providerFallback = providerFallbackModelOverrides[provider];
@@ -448,6 +473,26 @@ const resolveProviderModel = (provider: ProviderModelName, requestedModel: strin
     return providerPrimary || requestedModel;
   }
   return requestedModel;
+};
+const dedupeModelCandidates = (models: string[]) =>
+  Array.from(
+    new Set(
+      models
+        .map((model) => String(model || "").trim())
+        .filter(Boolean)
+    )
+  );
+const looksLikeAnthropicModel = (model: string) => {
+  const token = String(model || "").trim().toLowerCase();
+  return /(^claude[-/])|(^anthropic\/)|(^anthropic:)|\banthropic\b/.test(token);
+};
+const resolveProviderModelCandidates = (provider: ProviderModelName, requestedModel: string) => {
+  const resolved = resolveProviderModel(provider, requestedModel);
+  if (provider !== "openrouter") return [resolved];
+  const candidates = [resolved];
+  if (looksLikeAnthropicModel(resolved)) candidates.push(openrouterSafeFallbackModel);
+  candidates.push(...openrouterFallbackModelCandidates);
+  return dedupeModelCandidates(candidates);
 };
 const defaultMaxTokens = Number(process.env.LLM_MAX_TOKENS || process.env.OPENROUTER_MAX_TOKENS || 4096);
 const logPrefix = "[creation:agent]";
@@ -526,6 +571,8 @@ const sectionGenerationStrategy = parseSectionGenerationStrategy(
   process.env.BUILDER_SECTION_GENERATION_STRATEGY,
   "hybrid"
 );
+const enableScopedRag = parseEnvBoolean(process.env.BUILDER_SCOPED_RAG_ENABLED, true);
+const scopedRagConcurrency = Math.max(1, Number(process.env.BUILDER_SCOPED_RAG_CONCURRENCY || 2));
 const enableMultiCandidateSelection = parseEnvBoolean(
   process.env.BUILDER_MULTI_CANDIDATE_SELECTION,
   true
@@ -580,6 +627,7 @@ const allowTemplateSeedWithoutProfile = parseEnvBoolean(
   process.env.BUILDER_TEMPLATE_SEED_WITHOUT_PROFILE,
   true
 );
+const knowledgeBaseClient = createKnowledgeBaseClientFromEnv();
 
 const configuredSectionMaxAttempts = Math.max(1, Number(process.env.LLM_SECTION_MAX_ATTEMPTS || 3));
 const configuredNetworkRetryAttempts = Math.max(0, Number(process.env.LLM_NETWORK_RETRY_ATTEMPTS || 1));
@@ -614,8 +662,16 @@ const isAuthOrQuotaProviderError = (error: unknown) => {
   const message = String((error as any)?.message ?? "");
   const code = String((error as any)?.code ?? "");
   const status = Number((error as any)?.status);
-  if (Number.isFinite(status) && (status === 401 || status === 402 || status === 403)) {
+  if (Number.isFinite(status) && (status === 401 || status === 402)) {
     return true;
+  }
+  if (Number.isFinite(status) && status === 403) {
+    // 403 may be model-policy denial (e.g. anthropic author banned on OpenRouter),
+    // which should be handled by model fallback instead of disabling the provider.
+    if (/author\s+anthropic\s+is\s+banned/i.test(message)) return false;
+    if (/forbidden|unauthorized|invalid[_\s-]?api[_\s-]?key|quota|credit|insufficient/i.test(message)) {
+      return true;
+    }
   }
   if (/tokenstatusexhausted|insufficient|quota|credit|exhausted|unauthorized|invalid[_\s-]?api[_\s-]?key/i.test(message)) {
     return true;
@@ -4393,7 +4449,7 @@ const resolveLocaleDefaults = (prompt: string) => {
     company: useChinese ? "公司" : "Company",
     utility: useChinese ? "工业数控系统" : "Industrial CNC systems",
     languageTag: useChinese ? "中" : "EN",
-    addressFallback: useChinese ? "中国深圳市宝安区" : "Bao'an, Shenzhen, China",
+    addressFallback: useChinese ? "中国" : "Global",
     defaultRights:
       useChinese
         ? (brand: string) => `© ${new Date().getFullYear()} ${brand} 版权所有`
@@ -4404,9 +4460,6 @@ const resolveLocaleDefaults = (prompt: string) => {
 const defaultPageLabelForPath = (path: string, prompt: string) => {
   const locale = resolveLocaleDefaults(prompt);
   const normalizedPath = normalizePromptPagePath(String(path || "/"));
-  if (normalizedPath === "/core-product") {
-    return locale.useChinese ? "核心产品" : "Core Product";
-  }
   const pageType = inferEnterprisePageTypeFromPath(normalizedPath);
   const mapZh: Record<string, string> = {
     home: "首页",
@@ -5071,11 +5124,13 @@ const buildDeterministicFallbackBlock = (
   theme?: Record<string, unknown>,
   options?: {
     skipRegistry?: boolean;
+    outputLanguage?: "zh-CN" | "en-US";
   }
 ): SectionBlock => {
   const token = sectionToken(context);
   const promptBrand = extractPromptBrandName(String(prompt || ""));
-  const isZhPrompt = shouldUseChineseContent(String(prompt || ""));
+  const outputLanguage = options?.outputLanguage ?? resolveOutputLanguage(String(prompt || ""));
+  const isZhPrompt = outputLanguage === "zh-CN";
   const lowerPrompt = String(prompt || "").toLowerCase();
   const cncIntent =
     /(cnc|machine tool|machine-tools|machining|metal cutting|milling|lathe|spindle|five-axis|5-axis|加工中心|机床|数控|刀具|切削)/i.test(
@@ -5150,7 +5205,7 @@ const buildDeterministicFallbackBlock = (
           home: {
             title: "Built for precision machining",
             subtitle: "From rigid machine structures to automated cells, every system is designed for repeatable output.",
-            body: "灵创智能 combines process engineering, spindle know-how, and production-line integration to help factories increase accuracy, stability, and throughput.",
+            body: `${promptBrand || "This team"} combines process engineering, spindle know-how, and production-line integration to help factories increase accuracy, stability, and throughput.`,
           },
           solutions: {
             title: "Solutions engineered around real production constraints",
@@ -5175,7 +5230,7 @@ const buildDeterministicFallbackBlock = (
           about: {
             title: "Engineering discipline behind the brand",
             subtitle: "A manufacturing partner built around precision, response speed, and long-term service capability.",
-            body: "灵创智能 brings together mechanical design, controls integration, and production support to help manufacturers build robust machining capacity.",
+            body: `${promptBrand || "The company"} brings together mechanical design, controls integration, and production support to help manufacturers build robust machining capacity.`,
           },
           contact: {
             title: "Start with your part, process, and capacity goals",
@@ -5189,7 +5244,7 @@ const buildDeterministicFallbackBlock = (
       ? {
           home: {
             eyebrow: "Precision CNC manufacturing",
-            title: `${promptBrand || "Lingchuang"} machine tools for high-performance production`,
+            title: `${promptBrand || "Company"} machine tools for high-performance production`,
             subtitle:
               "Five-axis machining centers, drilling and tapping platforms, horizontal machining centers, and automation-ready production cells for modern factories.",
           },
@@ -5218,13 +5273,13 @@ const buildDeterministicFallbackBlock = (
               "See how equipment upgrades, automation integration, and process optimization delivered measurable gains in throughput, consistency, and flexibility.",
           },
           about: {
-            eyebrow: "About Lingchuang",
+            eyebrow: `About ${promptBrand || "Company"}`,
             title: "Engineering-first manufacturing support from planning to delivery",
             subtitle:
               "A team focused on machine reliability, process fit, and service responsiveness across the full lifecycle of precision production equipment.",
           },
           contact: {
-            eyebrow: "Contact Lingchuang",
+            eyebrow: `Contact ${promptBrand || "Company"}`,
             title: "Discuss your machining requirements with our engineering team",
             subtitle:
               "Get guidance on machine selection, line planning, automation configuration, spindle systems, and rollout strategy.",
@@ -7216,35 +7271,6 @@ const applyStructuredBriefContentEnrichment = (
           },
         };
       }
-    } else if (pagePath === "/core-product") {
-      const focusedProducts = productItems.length > 1 ? productItems.slice(0, Math.min(4, productItems.length)) : productItems;
-      upsertCardsBlock(
-        useChinese ? "核心产品" : "Core Products",
-        useChinese ? "聚焦旗舰机型与关键参数能力。" : "Focus on flagship models and key specification capability.",
-        focusedProducts,
-        "/core-product",
-        "core-products"
-      );
-      const featureIndex = findIndex(/featuregrid|features/i);
-      if (featureIndex >= 0) {
-        content[featureIndex] = {
-          type: "ContentStory",
-          props: {
-            id: "core-product-parameters",
-            anchor: "core-parameters",
-            title: useChinese ? "关键参数" : "Key Specs",
-            subtitle: useChinese
-              ? "覆盖主轴、行程、重复定位精度与节拍能力。"
-              : "Cover spindle, travel, repeatability, and cycle-time capability.",
-            body: useChinese
-              ? "该页面用于展示单机维度参数与工艺适配，不与产品中心的目录能力重复。"
-              : "This page focuses on model-level specs and process fit, distinct from the catalog page.",
-            variant: "split",
-            maxWidth: "xl",
-            paddingY: "lg",
-          },
-        };
-      }
     } else if (pagePath === "/solutions") {
       upsertFeatureBlock(
         useChinese ? "定制方案" : "Custom Solutions",
@@ -7902,7 +7928,7 @@ const resolveSemanticImageBucket = (input: {
   if (forced === "cnc-hero" || forced === "hero") return "hero";
   if (/\/cases\b/.test(pagePath) || /case|study|capture/.test(blockToken)) return "cases";
   if (/\/industries\b/.test(pagePath) || /industry|segment|application/.test(blockToken)) return "industry";
-  if (/\/products\b|\/core-product\b|\/3c-machines\b/.test(pagePath) || /product|catalog|machine/.test(blockToken))
+  if (/\/products\b|\/3c-machines\b/.test(pagePath) || /product|catalog|machine/.test(blockToken))
     return "products";
   if (pagePath === "/" || /hero|masthead|banner/.test(blockToken)) return "hero";
   return "neutral";
@@ -8025,7 +8051,7 @@ const pageIntentForMedia = (pagePath: string) => {
   const normalized = String(pagePath || "/").toLowerCase();
   if (normalized === "/" || /home/.test(normalized)) return "cnc-hero";
   if (/\/cases\b/.test(normalized)) return "cnc-case";
-  if (/\/products\b|\/core-product\b|\/3c-machines\b/.test(normalized)) return "cnc-product";
+  if (/\/products\b|\/3c-machines\b/.test(normalized)) return "cnc-product";
   if (/\/industries\b/.test(normalized)) return "cnc-industry";
   return "industrial";
 };
@@ -8078,7 +8104,7 @@ const applyVisualMediaCoverage = (pages: GeneratedPage[], prompt: string): Gener
           }
         }
         if (typeof props.mediaPosition !== "string" || !props.mediaPosition.trim()) {
-          props.mediaPosition = /\/products\b|\/core-product\b|\/cases\b/.test(pagePath) ? "left" : "right";
+          props.mediaPosition = /\/products\b|\/cases\b/.test(pagePath) ? "left" : "right";
         }
       } else if (/cardsgrid|productcatalog/.test(lowerType)) {
         const items = Array.isArray(props.items) ? [...(props.items as unknown[])] : [];
@@ -8109,7 +8135,7 @@ const applyVisualMediaCoverage = (pages: GeneratedPage[], prompt: string): Gener
           if (anyImage) {
             if (typeof props.variant !== "string" || props.variant === "product") props.variant = "imageText";
             if (typeof props.imagePosition !== "string" || !props.imagePosition.trim()) {
-              props.imagePosition = /\/core-product\b/.test(pagePath) ? "left" : "top";
+              props.imagePosition = /\/products\b/.test(pagePath) ? "left" : "top";
             }
             if (pagePath === "/" && typeof props.featureFirst !== "boolean") props.featureFirst = true;
           }
@@ -8143,6 +8169,12 @@ const applyVisualMediaCoverage = (pages: GeneratedPage[], prompt: string): Gener
               alt: typeof props.title === "string" && props.title.trim() ? props.title : "Feature visual",
             };
           }
+        }
+      }
+      if (pagePath === "/" && /hero|masthead|banner/.test(lowerType)) {
+        const background = typeof props.background === "string" ? props.background.toLowerCase() : "";
+        if (!background || background === "none") {
+          props.background = "gradient";
         }
       }
       return {
@@ -9629,51 +9661,101 @@ async function callLlm({
         });
         continue;
       }
-      const providerModelName = resolveProviderModel(provider.name, modelName);
-      try {
-        return await callWithProvider(provider, modelName, providerModelName, tokenBudget);
-      } catch (error) {
-        if (isAbortLikeError(error)) {
-          throw error;
-        }
-        lastError = error;
-        if (providerDisableMs > 0 && isAuthOrQuotaProviderError(error) && llmProviders.length > 1) {
-          providerDisabledUntil.set(provider.name, Date.now() + providerDisableMs);
-          logWarn(`${logPrefix} request:provider_disabled`, {
-            provider: provider.name,
-            requestedModel: modelName,
-            disableMs: providerDisableMs,
-            reason: "auth_or_quota",
-          });
-        }
-        logWarn(`${logPrefix} request:provider_failed`, {
-          provider: provider.name,
-          model: providerModelName,
-          requestedModel: modelName,
-          message: (error as any)?.message ?? String(error),
-          status: (error as any)?.status,
-          code: (error as any)?.code,
-        });
-        const hasNextProvider = index < llmProviders.length - 1;
-        const shouldForceOpenrouterFallback =
-          forceOpenrouterFallbackOnAibermFailure &&
-          provider.name === "aiberm" &&
-          llmProviders.some((item) => item.name === "openrouter") &&
-          isNetworkOrRetryableProviderError(error);
-        const canFallbackToNextProvider =
-          shouldForceOpenrouterFallback ||
-          allowProviderFallbackOnAnyError ||
-          shouldFallbackToNextProvider(error);
-        if (hasNextProvider && !canFallbackToNextProvider) {
-          logInfo(`${logPrefix} request:provider_fallback_skipped`, {
+      const providerModelCandidates = resolveProviderModelCandidates(provider.name, modelName);
+      let shouldStopProviderLoop = false;
+      for (let candidateIndex = 0; candidateIndex < providerModelCandidates.length; candidateIndex += 1) {
+        const providerModelName = providerModelCandidates[candidateIndex];
+        try {
+          return await callWithProvider(provider, modelName, providerModelName, tokenBudget);
+        } catch (error) {
+          if (isAbortLikeError(error)) {
+            throw error;
+          }
+          const hasMoreCandidateModels = candidateIndex < providerModelCandidates.length - 1;
+          const message = String((error as any)?.message ?? "").toLowerCase();
+          const status = Number((error as any)?.status ?? NaN);
+          const authorBanned =
+            provider.name === "openrouter" &&
+            Number.isFinite(status) &&
+            status === 403 &&
+            /author\s+[a-z0-9._-]+\s+is\s+banned/i.test(message);
+          const anthropicBanned =
+            provider.name === "openrouter" &&
+            looksLikeAnthropicModel(providerModelName) &&
+            (status === 403 ||
+              message.includes("author anthropic is banned") ||
+              message.includes("anthropic is banned"));
+          if (hasMoreCandidateModels && authorBanned) {
+            logWarn(`${logPrefix} request:provider_model_fallback`, {
+              provider: provider.name,
+              requestedModel: modelName,
+              failedModel: providerModelName,
+              nextModel: providerModelCandidates[candidateIndex + 1],
+              reason: "openrouter_author_banned",
+            });
+            continue;
+          }
+          if (hasMoreCandidateModels && anthropicBanned) {
+            logWarn(`${logPrefix} request:provider_model_fallback`, {
+              provider: provider.name,
+              requestedModel: modelName,
+              failedModel: providerModelName,
+              nextModel: providerModelCandidates[candidateIndex + 1],
+              reason: "openrouter_anthropic_banned",
+            });
+            continue;
+          }
+          if (hasMoreCandidateModels && isAuthOrQuotaProviderError(error)) {
+            logWarn(`${logPrefix} request:provider_model_fallback`, {
+              provider: provider.name,
+              requestedModel: modelName,
+              failedModel: providerModelName,
+              nextModel: providerModelCandidates[candidateIndex + 1],
+              reason: "auth_or_quota",
+            });
+            continue;
+          }
+          lastError = error;
+          if (providerDisableMs > 0 && isAuthOrQuotaProviderError(error) && llmProviders.length > 1) {
+            providerDisabledUntil.set(provider.name, Date.now() + providerDisableMs);
+            logWarn(`${logPrefix} request:provider_disabled`, {
+              provider: provider.name,
+              requestedModel: modelName,
+              disableMs: providerDisableMs,
+              reason: "auth_or_quota",
+            });
+          }
+          logWarn(`${logPrefix} request:provider_failed`, {
             provider: provider.name,
             model: providerModelName,
             requestedModel: modelName,
-            mode: crossProviderFallbackMode,
+            message: (error as any)?.message ?? String(error),
+            status: (error as any)?.status,
+            code: (error as any)?.code,
           });
+          const hasNextProvider = index < llmProviders.length - 1;
+          const shouldForceOpenrouterFallback =
+            forceOpenrouterFallbackOnAibermFailure &&
+            provider.name === "aiberm" &&
+            llmProviders.some((item) => item.name === "openrouter") &&
+            isNetworkOrRetryableProviderError(error);
+          const canFallbackToNextProvider =
+            shouldForceOpenrouterFallback ||
+            allowProviderFallbackOnAnyError ||
+            shouldFallbackToNextProvider(error);
+          if (hasNextProvider && !canFallbackToNextProvider) {
+            logInfo(`${logPrefix} request:provider_fallback_skipped`, {
+              provider: provider.name,
+              model: providerModelName,
+              requestedModel: modelName,
+              mode: crossProviderFallbackMode,
+            });
+            shouldStopProviderLoop = true;
+          }
           break;
         }
       }
+      if (shouldStopProviderLoop) break;
     }
     throw lastError ?? new Error("llm_provider_unavailable");
   };
@@ -9988,6 +10070,14 @@ async function builderNode(state: GraphState) {
   let skillOrchestrationDiagnostics: Record<string, unknown> = {};
   let skillOrchestrationSuggestion: SectionGenerationStrategy | null = null;
   let skillOrchestrationApplied = false;
+  let scopedRagDiagnostics: Record<string, unknown> = {
+    enabled: enableScopedRag,
+    knowledgeBaseEnabled: Boolean(knowledgeBaseClient?.isAvailable?.()),
+    pageCount: 0,
+    usedPageCount: 0,
+    queryCount: 0,
+    sourceCount: 0,
+  };
   let pages = normalizePages(blueprint);
   const requestedPages = extractRequestedPagesFromPrompt(state.prompt ?? "");
   const structuredBrief = parseStructuredBrief(state.prompt ?? "");
@@ -10142,6 +10232,39 @@ async function builderNode(state: GraphState) {
     pages,
   });
   const linkGraph = buildSiteLinkGraph(siteBlueprint, state.prompt ?? "");
+  const scopedRag = await buildScopedRagContextByPage({
+    prompt: state.prompt ?? "",
+    pages: pages.map((page) => ({ path: page.path, name: page.name })),
+    structuredInput: state.structuredInput ?? null,
+    knowledgeBaseClient,
+    enabled: enableScopedRag,
+    concurrency: scopedRagConcurrency,
+  });
+  scopedRagDiagnostics = {
+    ...scopedRag.summary,
+    pages: Object.values(scopedRag.byPath).map((item) => ({
+      path: item.path,
+      pageType: item.pageType,
+      requiredFields: item.requiredFields,
+      coveredFields: item.coveredFields,
+      missingFields: item.missingFields,
+      used: item.used,
+      queryCount: item.queryCount,
+      sourceCount: item.sourceCount,
+      queries: item.queries,
+    })),
+  };
+  logInfo(`${logPrefix} builder:scoped_rag`, scopedRagDiagnostics);
+  const scopedPromptByPath = new Map<string, string>(
+    Object.values(scopedRag.byPath).map((item) => {
+      const scopedPrompt = item.context
+        ? `${String(state.prompt ?? "").trim()}\n\n# Page Scoped Fact Pack\n${item.context}`
+        : String(state.prompt ?? "");
+      return [item.path, scopedPrompt] as const;
+    })
+  );
+  const resolvePromptForPagePath = (pagePath: string) =>
+    scopedPromptByPath.get(pagePath) ?? String(state.prompt ?? "");
   const allSections = flattenSections(pages);
   const contentSections = allSections.filter((context) => !isGlobalChromeSection(context.section));
   let theme =
@@ -10225,6 +10348,10 @@ async function builderNode(state: GraphState) {
     navLinks: linkGraph.navigationLinks.length,
       resolutionLayer: templateResolution.layer,
       matchedPageCoverage: templateResolution.diagnostics.matchedPageCoverage,
+      scopedRagEnabled: scopedRag.summary.enabled,
+      scopedRagUsedPages: scopedRag.summary.usedPageCount,
+      scopedRagQueryCount: scopedRag.summary.queryCount,
+      scopedRagSourceCount: scopedRag.summary.sourceCount,
     });
   if (templateResolution.profileId) {
     logInfo(`${logPrefix} builder:template_plan_applied`, {
@@ -10454,7 +10581,11 @@ async function builderNode(state: GraphState) {
     });
   }
 
-  const results = await runWithConcurrency(sections, maxConcurrency, async (context): Promise<BuilderSectionResult> => {
+  const pageBuildConcurrency = Math.max(
+    1,
+    Number(process.env.BUILDER_PAGE_MAX_CONCURRENCY || process.env.LLM_PAGE_MAX_CONCURRENCY || 3)
+  );
+  const sectionWorker = async (context: SectionContext): Promise<BuilderSectionResult> => {
     const baseInfo = {
       pagePath: context.pagePath,
       sectionId: context.section.id,
@@ -10474,7 +10605,7 @@ async function builderNode(state: GraphState) {
         });
       const baseResult = createTemplateSectionResult(
         context,
-        state.prompt ?? "",
+        resolvePromptForPagePath(context.pagePath),
         designNorthStar as Record<string, unknown>,
         theme as Record<string, unknown>
       );
@@ -10501,7 +10632,7 @@ async function builderNode(state: GraphState) {
         }
         const refinedBlock = await refineTemplateWithLlm(
           context,
-          state.prompt ?? "",
+          resolvePromptForPagePath(context.pagePath),
           baseResult.block,
           designNorthStar as Record<string, unknown>
         );
@@ -10540,7 +10671,7 @@ async function builderNode(state: GraphState) {
         type: context.section.type,
       });
       const promptOptions = {
-        prompt: state.prompt ?? "",
+        prompt: resolvePromptForPagePath(context.pagePath),
         manifest: manifestForPrompt,
         theme,
         designNorthStar,
@@ -10633,7 +10764,7 @@ async function builderNode(state: GraphState) {
           });
           return createTemplateSectionResult(
             context,
-            state.prompt ?? "",
+            resolvePromptForPagePath(context.pagePath),
             designNorthStar as Record<string, unknown>,
             theme as Record<string, unknown>
           );
@@ -10712,7 +10843,7 @@ async function builderNode(state: GraphState) {
             });
             return createTemplateSectionResult(
               context,
-              state.prompt ?? "",
+              resolvePromptForPagePath(context.pagePath),
               designNorthStar as Record<string, unknown>,
               theme as Record<string, unknown>
             );
@@ -10726,7 +10857,7 @@ async function builderNode(state: GraphState) {
             });
             return createTemplateSectionResult(
               context,
-              state.prompt ?? "",
+              resolvePromptForPagePath(context.pagePath),
               designNorthStar as Record<string, unknown>,
               theme as Record<string, unknown>
             );
@@ -10748,6 +10879,52 @@ async function builderNode(state: GraphState) {
       ),
       error: "builder_section_failed",
       failureType: "unknown",
+    };
+  };
+
+  const pageBatches = pages
+    .map((page, pageIndex) => ({
+      pagePath: page.path || "/",
+      pageIndex,
+      sections: sections.filter((context) => context.pageIndex === pageIndex),
+    }))
+    .filter((batch) => batch.sections.length > 0);
+
+  const sectionResultByKey = new Map<string, BuilderSectionResult>();
+  await runWithConcurrency(pageBatches, pageBuildConcurrency, async (batch) => {
+    logInfo(`${logPrefix} builder:page_builder:start`, {
+      pagePath: batch.pagePath,
+      pageIndex: batch.pageIndex,
+      sections: batch.sections.length,
+      pageConcurrency: pageBuildConcurrency,
+      sectionConcurrency: maxConcurrency,
+    });
+    const pageResults = await runWithConcurrency(batch.sections, maxConcurrency, async (context) => sectionWorker(context));
+    pageResults.forEach((result, index) => {
+      const context = batch.sections[index];
+      if (!context) return;
+      sectionResultByKey.set(buildSectionKey(context), result);
+    });
+    logInfo(`${logPrefix} builder:page_builder:ok`, {
+      pagePath: batch.pagePath,
+      pageIndex: batch.pageIndex,
+      generatedSections: pageResults.length,
+    });
+  });
+
+  const results = sections.map((context) => {
+    const result = sectionResultByKey.get(buildSectionKey(context));
+    if (result) return result;
+    return {
+      status: "fallback" as const,
+      block: buildDeterministicFallbackBlock(
+        context,
+        state.prompt ?? "",
+        designNorthStar as Record<string, unknown>,
+        theme as Record<string, unknown>
+      ),
+      error: "builder_section_missing_after_page_batch",
+      failureType: "unknown" as FailureType,
     };
   });
 
@@ -10830,7 +11007,7 @@ async function builderNode(state: GraphState) {
     if (!context) return null;
     const result = createTemplateSectionResult(
       context,
-      state.prompt ?? "",
+      resolvePromptForPagePath(context.pagePath),
       designNorthStar as Record<string, unknown>,
       theme as Record<string, unknown>
     );
@@ -11109,7 +11286,7 @@ async function builderNode(state: GraphState) {
             type: context.section.type,
           });
           const promptOptions = {
-            prompt: state.prompt ?? "",
+            prompt: resolvePromptForPagePath(context.pagePath),
             manifest: manifestForPrompt,
             theme,
             designNorthStar,
@@ -12454,84 +12631,304 @@ async function builderNode(state: GraphState) {
     designNorthStar: designNorthStar ?? undefined,
     profileId: templateResolution.profileId ?? null,
   });
+  const promptTokenForCoverage = String(state.prompt || "").toLowerCase();
+  const promptRequestsProductsCoverage =
+    /(?:\bproducts?\b|\bcatalog\b|\bportfolio\b|\bsku\b|\bmachine\b|产品|机床|设备|机型|目录)/.test(
+      promptTokenForCoverage
+    );
+  const promptRequestsSocialProofCoverage =
+    /(?:\bcases?\b|\bcase\s*stud(?:y|ies)\b|\btestimonial(?:s)?\b|\breview(?:s)?\b|\bproof\b|\bcertification(?:s)?\b|案例|客户|口碑|资质|认证)/.test(
+      promptTokenForCoverage
+    );
+  const promptRequestsCtaCoverage =
+    /(?:\bcta\b|\bcall[\s-]?to[\s-]?action\b|\bget[\s-]?quote\b|\bbook\b|\bcontact(?:\s+sales)?\b|\brequest\b|行动召唤|立即咨询|立即联系|获取报价|预约|提交线索|联系我们)/.test(
+      promptTokenForCoverage
+    );
+  const shouldEnforceEnterpriseHomeCoverage = looksLikeEnterpriseWebsite({
+    prompt: state.prompt ?? "",
+    pages: pagesOut as any[],
+  });
+  logInfo(`${logPrefix} builder:coverage_flags`, {
+    products: promptRequestsProductsCoverage,
+    socialproof: promptRequestsSocialProofCoverage,
+    cta: promptRequestsCtaCoverage,
+    enterprise: shouldEnforceEnterpriseHomeCoverage,
+    pageCount: pagesOut.length,
+  });
+  const inferGeneratedSectionKind = (item: any): string => {
+    const token = `${String(item?.type || "")} ${String(item?.props?.id || "")} ${String(item?.props?.anchor || "")}`.toLowerCase();
+    if (/navigation|navbar|header|topnav|menu/.test(token)) return "navigation";
+    if (/hero|masthead|banner|intro/.test(token)) return "hero";
+    if (/story|content|timeline|about|mission/.test(token)) return "story";
+    if (/approach|feature|process|workflow|capability|faq/.test(token)) return "approach";
+    if (/product|catalog|showcase|pricing|plan/.test(token)) return "products";
+    if (/social|proof|testimonial|logo|certification|case/.test(token)) return "socialproof";
+    if (/contact|lead|form|quote/.test(token)) return "contact";
+    if (/cta|calltoaction|call-to-action/.test(token)) return "cta";
+    if (/footer|legal|copyright/.test(token)) return "footer";
+    return "other";
+  };
+  const hasCoverageKindOnPage = (
+    blocks: Array<{ type?: string; props?: Record<string, unknown> }>,
+    kind: "products" | "socialproof" | "cta"
+  ) => {
+    return blocks.some((item) => {
+      const typeToken = String(item?.type || "").toLowerCase();
+      const idToken = String(item?.props?.id || "").toLowerCase();
+      const anchorToken = String(item?.props?.anchor || "").toLowerCase();
+      const variantToken = String(item?.props?.variant || "").toLowerCase();
+      const token = `${typeToken} ${idToken} ${anchorToken} ${variantToken}`;
+      if (kind === "products") {
+        return /(product|catalog|showcase|pricing|plan|machine|sku)/.test(token);
+      }
+      if (kind === "cta") {
+        const ctaToken = `${typeToken} ${idToken} ${anchorToken}`;
+        if (/(navigation|navbar|header|menu|footer|copyright)/.test(typeToken)) return false;
+        return /(cta|calltoaction|footercta|leadcapture|contactcta|quote)/.test(ctaToken);
+      }
+      return /(social|proof|testimonial|review|logo|trust|partner|certification)/.test(token);
+    });
+  };
+  const ensurePromptCoverageKind = (
+    inputPages: typeof pagesOut,
+    kind: "products" | "socialproof" | "cta"
+  ) => {
+    const homeIndex = inputPages.findIndex((page) => normalizePromptPagePath(String(page?.path || "/")) === "/");
+    const targetPageIndex = homeIndex >= 0 ? homeIndex : 0;
+    const targetPage = inputPages[targetPageIndex];
+    if (!targetPage) return inputPages;
+    const targetContent = Array.isArray(targetPage?.data?.content) ? targetPage.data.content : [];
+    const hasKindOnTargetPage =
+      hasCoverageKindOnPage(targetContent as any[], kind) ||
+      targetContent.some((item: any) => inferGeneratedSectionKind(item) === kind);
+    if (hasKindOnTargetPage) return inputPages;
+    const syntheticContext = buildSyntheticSectionContext(
+      targetPageIndex,
+      kind === "products" ? "products-coverage" : kind === "socialproof" ? "socialproof-coverage" : "cta-coverage",
+      kind === "products" ? "Products" : kind === "socialproof" ? "Testimonials" : "FooterCTA",
+      kind === "products"
+        ? "Provide product coverage required by prompt."
+        : kind === "socialproof"
+          ? "Provide social proof coverage required by prompt."
+          : "Provide a conversion CTA section required by prompt."
+    );
+    if (!syntheticContext) return inputPages;
+    const fallback = buildDeterministicFallbackBlock(
+      syntheticContext,
+      state.prompt ?? "",
+      designNorthStar as Record<string, unknown>,
+      theme as Record<string, unknown>,
+      { skipRegistry: true }
+    );
+    const coverageKey = `coverage:${kind}:${targetPage.path || targetPageIndex}`;
+    const coverageBlock = {
+      type: fallback.type,
+      props: ensureAnchor(
+        ensurePropsId(
+          normalizeBlockProps(fallback.type, (fallback.props ?? {}) as Record<string, unknown>, {
+            logChanges: true,
+            summary: normalizationSummary,
+          }),
+          `${kind}-coverage`
+        ),
+        kind === "products" ? "products" : kind === "socialproof" ? "social-proof" : "cta"
+      ),
+      _key: coverageKey,
+    } as any;
+    if (fallback.type === fallbackComponentName && !componentsMap.has(fallbackComponentName)) {
+      componentsMap.set(fallbackComponentName, { name: fallbackComponentName, code: fallbackComponentCode });
+    }
+    const content = Array.isArray(targetPage?.data?.content) ? [...targetPage.data.content] : [];
+    const insertIndex = content.findIndex((item: any) => isCtaLikeBlock(item) || isFooterLikeBlock(item));
+    if (insertIndex >= 0) {
+      content.splice(insertIndex, 0, coverageBlock);
+    } else {
+      content.push(coverageBlock);
+    }
+    const nextPages = [...inputPages];
+    nextPages[targetPageIndex] = {
+      ...targetPage,
+      data: {
+        ...targetPage.data,
+        content: dedupeComposedPageContent(content, targetPage.path || "/"),
+      },
+    };
+    logWarn(`${logPrefix} builder:coverage_injected`, {
+      pagePath: targetPage.path,
+      kind,
+      blockType: fallback.type,
+    });
+    return nextPages;
+  };
+  if (promptRequestsProductsCoverage || shouldEnforceEnterpriseHomeCoverage) {
+    pagesOut = ensurePromptCoverageKind(pagesOut, "products");
+  }
+  if (promptRequestsSocialProofCoverage || shouldEnforceEnterpriseHomeCoverage) {
+    pagesOut = ensurePromptCoverageKind(pagesOut, "socialproof");
+  }
+  if (promptRequestsCtaCoverage || shouldEnforceEnterpriseHomeCoverage) {
+    pagesOut = ensurePromptCoverageKind(pagesOut, "cta");
+  }
+  const inferPlannedSectionKind = (section: { type?: string; id?: string }) => {
+    const token = `${String(section?.type || "")} ${String(section?.id || "")}`.toLowerCase();
+    if (/navigation|navbar|header|topnav|menu/.test(token)) return "navigation";
+    if (/hero|masthead|banner|intro/.test(token)) return "hero";
+    if (/story|content|timeline|about|mission/.test(token)) return "story";
+    if (/approach|feature|process|workflow|capability|faq/.test(token)) return "approach";
+    if (/product|catalog|showcase|pricing|plan/.test(token)) return "products";
+    if (/social|proof|testimonial|logo|certification/.test(token)) return "socialproof";
+    if (/contact|lead|form|quote/.test(token)) return "contact";
+    if (/cta|calltoaction|call-to-action/.test(token)) return "cta";
+    if (/footer|legal|copyright/.test(token)) return "footer";
+    return "other";
+  };
   const normalizePairPath = (value: unknown) => {
     const raw = String(value || "").trim();
     if (!raw) return "/";
     const withSlash = raw.startsWith("/") ? raw : `/${raw}`;
     return withSlash.replace(/\/{2,}/g, "/").replace(/\/+$/g, "") || "/";
   };
-  const pageStructureSignature = (page: any) =>
-    String(
-      (Array.isArray(page?.data?.content) ? page.data.content : [])
-        .map((item: any) => String(item?.type || ""))
-        .filter((type: string) => !/navbar|navigation|footer/i.test(type))
-        .join(">")
+  const plannedRequiredKindsByPath = new Map<string, string[]>();
+  pages.forEach((page) => {
+    const path = normalizePairPath(page?.path || "/");
+    const kinds = Array.from(
+      new Set(
+        (Array.isArray(page?.sections) ? page.sections : [])
+          .map((section) => inferPlannedSectionKind({ type: section?.type, id: section?.id }))
+          .filter((kind) => kind !== "other")
+      )
     );
-  const byPath = new Map<string, any>(
-    pagesOut.map((page: any) => [normalizePairPath(page?.path || "/"), page] as const)
-  );
-  const coreProductPage = byPath.get("/core-product");
-  const productsPage = byPath.get("/products");
-  if (
-    coreProductPage &&
-    productsPage &&
-    pageStructureSignature(coreProductPage) &&
-    pageStructureSignature(coreProductPage) === pageStructureSignature(productsPage)
-  ) {
-    const coreContent = Array.isArray(coreProductPage?.data?.content) ? [...coreProductPage.data.content] : [];
-    const replacementProps = {
-      id: "core-product-story-differentiated",
-      anchor: "core-story",
-      title: localeDefaults.useChinese ? "核心工艺能力" : "Core Capability",
-      subtitle: localeDefaults.useChinese
-        ? "围绕旗舰机型的结构刚性、精度稳定性与工艺窗口展开。"
-        : "Highlight structural rigidity, precision stability, and process windows for flagship models.",
-      body: localeDefaults.useChinese
-        ? "该页面聚焦单机能力与关键加工参数说明，用于与产品中心形成明确分工。"
-        : "This page focuses on single-model capability and key machining parameters to differentiate from the product center.",
-      variant: "split",
-      maxWidth: "xl",
-      paddingY: "lg",
-    };
-    const cardsIndex = coreContent.findIndex((item: any) => /cardsgrid|productcatalog/i.test(String(item?.type || "")));
-    if (cardsIndex >= 0) {
-      const cardBlock = coreContent[cardsIndex];
-      const existingProps =
-        cardBlock?.props && typeof cardBlock.props === "object"
-          ? ({ ...(cardBlock.props as Record<string, unknown>) } as Record<string, unknown>)
-          : {};
-      coreContent[cardsIndex] = {
-        ...cardBlock,
-        props: {
-          ...existingProps,
-          variant: "poster",
-          columns: "2col",
-          imagePosition: "left",
-          featureFirst: false,
-        },
-      };
-    }
-    const hasCoreStory = coreContent.some(
-      (item: any) =>
-        /contentstory/i.test(String(item?.type || "")) &&
-        /core-product-story-differentiated|core-story/i.test(
-          String((item?.props as Record<string, unknown> | undefined)?.id || "") +
-            String((item?.props as Record<string, unknown> | undefined)?.anchor || "")
-        )
-    );
-    if (!hasCoreStory) {
-      const insertIndex = coreContent.findIndex((item: any) => /leadcapture|contact|cta/i.test(String(item?.type || "")));
-      coreContent.splice(insertIndex >= 0 ? insertIndex : coreContent.length, 0, {
-        type: "ContentStory",
-        props: replacementProps,
-        _key: "/core-product:story:dedupe",
-      });
-    }
-    coreProductPage.data.content = dedupeComposedPageContent(coreContent, "/core-product");
-    logWarn(`${logPrefix} builder:critical_pair_diversified`, {
-      pair: "/core-product<->/products",
-      strategy: "post_generation_patch",
+    plannedRequiredKindsByPath.set(path, kinds);
+  });
+  const outputLanguageForPageContract = resolveOutputLanguage(state.prompt ?? "");
+  const pageContractReports: Array<{
+    path: string;
+    pageType: string;
+    pass: boolean;
+    issueCount: number;
+    errorCount: number;
+    warningCount: number;
+  }> = [];
+  pagesOut = pagesOut.map((page, pageIndex) => {
+    const pagePath = normalizePairPath(page?.path || "/");
+    const requiredSectionKinds = plannedRequiredKindsByPath.get(pagePath) || [];
+    const pageContract = evaluateGeneratedPageContract({
+      page,
+      requiredSectionKinds,
+      outputLanguage: outputLanguageForPageContract,
     });
+    const pageErrors = pageContract.issues.filter((issue) => issue.severity === "error");
+    const pageWarnings = pageContract.issues.filter((issue) => issue.severity === "warning");
+    pageContractReports.push({
+      path: pagePath,
+      pageType: pageContract.pageType,
+      pass: pageContract.pass,
+      issueCount: pageContract.issues.length,
+      errorCount: pageErrors.length,
+      warningCount: pageWarnings.length,
+    });
+    pageWarnings.forEach((issue) => {
+      logWarn(`${logPrefix} builder:page_contract_warning`, {
+        path: pagePath,
+        pageType: pageContract.pageType,
+        code: issue.code,
+        message: issue.message,
+        details: issue.details,
+      });
+    });
+    if (pageErrors.length === 0) return page;
+
+    pageErrors.forEach((issue) => {
+      logWarn(`${logPrefix} builder:page_contract_error`, {
+        path: pagePath,
+        pageType: pageContract.pageType,
+        code: issue.code,
+        message: issue.message,
+        details: issue.details,
+      });
+    });
+    errors.push(
+      `page_contract_failed:${pagePath}:${pageErrors.map((issue) => issue.code).join("|") || "unknown"}`
+    );
+
+    const sourceContexts = contentSections.filter((context) => normalizePairPath(context.pagePath) === pagePath);
+    if (!sourceContexts.length) return page;
+
+    const existingContent = Array.isArray(page?.data?.content) ? page.data.content : [];
+    const chromeBlocks = existingContent.filter((item: any) => isNavbarLikeBlock(item) || isFooterLikeBlock(item));
+    const fallbackBlocks = sourceContexts.map((context) => {
+      const fallback = buildDeterministicFallbackBlock(
+        context,
+        resolvePromptForPagePath(context.pagePath),
+        designNorthStar as Record<string, unknown>,
+        theme as Record<string, unknown>
+      );
+      if (fallback.type === fallbackComponentName) {
+        const existing = componentsMap.get(fallbackComponentName);
+        if (!existing) {
+          componentsMap.set(fallbackComponentName, { name: fallbackComponentName, code: fallbackComponentCode });
+        }
+      }
+      return {
+        type: fallback.type,
+        props: ensureAnchor(
+          ensurePropsId(
+            normalizeBlockProps(fallback.type, (fallback.props ?? {}) as Record<string, unknown>, {
+              logChanges: true,
+              summary: normalizationSummary,
+            }),
+            buildSectionKey(context)
+          ),
+          context.section.id
+        ),
+        _key: `${buildSectionKey(context)}:page-contract-recovery`,
+      } as any;
+    });
+
+    const recoveredContent = dedupeComposedPageContent(
+      [...chromeBlocks, ...fallbackBlocks],
+      pagePath
+    );
+    logWarn(`${logPrefix} builder:page_contract_recovered`, {
+      path: pagePath,
+      pageType: pageContract.pageType,
+      errors: pageErrors.map((issue) => issue.code),
+      recoveredBlocks: recoveredContent.length,
+    });
+    return {
+      ...page,
+      data: {
+        root:
+          page?.data?.root && typeof page.data.root === "object"
+            ? page.data.root
+            : { props: { title: page.name, theme } },
+        content: recoveredContent,
+      },
+    };
+  });
+  const pageContractFailedCount = pageContractReports.filter((item) => !item.pass).length;
+  if (pageContractFailedCount > 0) {
+    logWarn(`${logPrefix} builder:page_contract_gate`, {
+      failedPages: pageContractFailedCount,
+      totalPages: pageContractReports.length,
+      failedPaths: pageContractReports.filter((item) => !item.pass).map((item) => item.path),
+    });
+  } else {
+    logInfo(`${logPrefix} builder:page_contract_gate`, {
+      failedPages: 0,
+      totalPages: pageContractReports.length,
+    });
+  }
+  // Re-enforce homepage semantic coverage after page-level recovery,
+  // because recovery may replace generated content with deterministic blocks.
+  if (promptRequestsProductsCoverage || shouldEnforceEnterpriseHomeCoverage) {
+    pagesOut = ensurePromptCoverageKind(pagesOut, "products");
+  }
+  if (promptRequestsSocialProofCoverage || shouldEnforceEnterpriseHomeCoverage) {
+    pagesOut = ensurePromptCoverageKind(pagesOut, "socialproof");
+  }
+  if (promptRequestsCtaCoverage || shouldEnforceEnterpriseHomeCoverage) {
+    pagesOut = ensurePromptCoverageKind(pagesOut, "cta");
   }
   const contractValidation = validateGeneratedSiteContract({
     prompt: state.prompt ?? "",
@@ -12652,9 +13049,13 @@ async function builderNode(state: GraphState) {
         pass: contractValidation.pass,
         normalizationIssueCount: contractNormalizationIssues.length,
         validationIssueCount: contractValidation.issues.length,
+        pageIssueCount: pageContractReports.reduce((sum, item) => sum + item.issueCount, 0),
+        pageFailedCount: pageContractReports.filter((item) => !item.pass).length,
+        pageReports: pageContractReports,
         normalizationIssues: contractNormalizationIssues,
         validationIssues: contractValidation.issues,
       },
+      scopedRag: scopedRagDiagnostics,
       skillOrchestration: {
         applied: skillOrchestrationApplied,
         suggestion: skillOrchestrationSuggestion,
@@ -12852,15 +13253,33 @@ export async function generateP2WProject(input: {
   structuredInput?: StructuredSiteInput;
   planning?: { dir: string; requestId?: string; batchSize?: number };
 }) {
-  const serperFactPack = await buildSerperFactPack(input.prompt, { structuredInput: input.structuredInput });
+  const useGlobalFactPack = !enableScopedRag;
+  const serperFactPack = useGlobalFactPack
+    ? await buildSerperFactPack(input.prompt, { structuredInput: input.structuredInput })
+    : {
+        enabled: false,
+        used: false,
+        queryCount: 0,
+        sourceCount: 0,
+        context: "",
+        coveredFields: [],
+        missingFields: [],
+      };
   const effectivePrompt = `${input.prompt}${serperFactPack.context || ""}`;
-  if (serperFactPack.enabled) {
+  if (useGlobalFactPack && serperFactPack.enabled) {
     logInfo(`${logPrefix} serper:fact_pack`, {
+      mode: "global",
       used: serperFactPack.used,
       queryCount: serperFactPack.queryCount,
       sourceCount: serperFactPack.sourceCount,
       coveredFields: serperFactPack.coveredFields,
       missingFields: serperFactPack.missingFields,
+    });
+  } else if (enableScopedRag) {
+    logInfo(`${logPrefix} serper:fact_pack`, {
+      mode: "scoped",
+      enabled: true,
+      note: "Global fact pack disabled; page-scoped retrieval runs in builder stage.",
     });
   }
   const [skillContext, designSystemContext] = await Promise.all([

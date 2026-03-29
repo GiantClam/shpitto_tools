@@ -20,13 +20,17 @@ export const resolveOutputLanguage = (prompt: string): OutputLanguage => {
 
   const cjkCount = countMatches(raw, /[\u3400-\u9fff]/g);
   const latinCount = countMatches(raw, /[A-Za-z]/g);
+  const hasCjk = cjkCount > 0;
 
   // Chinese-heavy prompts should default to Chinese output even without explicit "中文" tokens.
   if (cjkCount >= 24) return "zh-CN";
   if (cjkCount >= 10 && cjkCount >= latinCount * 0.6) return "zh-CN";
+  // Mixed-language prompts (URL + Chinese business brief) should still stay Chinese.
+  if (!explicitEnglish && hasCjk && (cjkCount >= 6 || cjkCount >= latinCount * 0.15)) return "zh-CN";
+  // Short Chinese briefs should not be flipped to English by a few Latin tokens.
+  if (!explicitEnglish && cjkCount >= 3 && latinCount <= 18) return "zh-CN";
 
   return "en-US";
 };
 
 export const shouldUseChineseContent = (prompt: string) => resolveOutputLanguage(prompt) === "zh-CN";
-

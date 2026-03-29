@@ -237,13 +237,14 @@ export const ensureEnterpriseSitePages = <T extends PageLike>(
     /(?:core[-\s]?product|flagship|featured[-\s]?product|核心产品|旗舰产品|明星产品|单机详情|单机型|detail\s+page)/i.test(
       prompt
     );
+  const hasProductsListingPage = normalizedPages.some((page) => isProductsListingPage(page));
   const hasCoreProductPathSignal = normalizedPages.some((page) => {
     const normalizedPath = normalizeEnterprisePagePath(page?.path || "/");
-    if (normalizedPath === "/core-product") return true;
     return /^\/products\/[^/]+/.test(normalizedPath);
   });
   const includeCoreProductPage =
-    Boolean(options?.allowCoreProduct) || hasCoreProductPromptSignal || hasCoreProductPathSignal;
+    Boolean(options?.allowCoreProduct) ||
+    (!hasProductsListingPage && (hasCoreProductPromptSignal || hasCoreProductPathSignal));
 
   ENTERPRISE_SITE_PAGES.forEach((definition) => {
     if (definition.key === "core_product" && !includeCoreProductPage) return;

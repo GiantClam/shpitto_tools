@@ -248,10 +248,6 @@ const defaultKindsByPageType: Record<TemplatePageType, TemplatePlanSectionKind[]
 
 const pathSpecificDefaultKinds: Array<{ pattern: RegExp; kinds: TemplatePlanSectionKind[] }> = [
   {
-    pattern: /^\/core-product(?:\/|$)/i,
-    kinds: ["navigation", "hero", "story", "approach", "socialproof", "cta", "footer"],
-  },
-  {
     pattern: /^\/products(?:\/|$)/i,
     kinds: ["navigation", "hero", "products", "approach", "contact", "cta", "footer"],
   },
