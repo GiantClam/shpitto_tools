@@ -24,6 +24,12 @@ const parseArgs = (argv) => {
     pendingWaitMs: 420000,
     requestTimeoutMs: 180000,
     requestRetries: 1,
+    creationTimeoutMs: 0,
+    caseIds: [],
+    screenshotMode: "always", // always | on-fail | none
+    reuseReportFile: "",
+    enforcePublishReady: true,
+    enforceNoGateIssues: true,
   };
   for (let i = 2; i < argv.length; i += 1) {
     const arg = argv[i];
@@ -73,7 +79,72 @@ const parseArgs = (argv) => {
       i += 1;
       continue;
     }
+    if (arg === "--creation-timeout-ms" && next) {
+      options.creationTimeoutMs = Math.max(0, Number(next) || 0);
+      i += 1;
+      continue;
+    }
+    if (arg === "--case-id" && next) {
+      options.caseIds.push(String(next).trim());
+      i += 1;
+      continue;
+    }
+    if (arg === "--case-ids" && next) {
+      options.caseIds.push(
+        ...String(next)
+          .split(",")
+          .map((item) => item.trim())
+          .filter(Boolean)
+      );
+      i += 1;
+      continue;
+    }
+    if (arg === "--screenshot-mode" && next) {
+      const mode = String(next).trim().toLowerCase();
+      if (["always", "on-fail", "none"].includes(mode)) options.screenshotMode = mode;
+      i += 1;
+      continue;
+    }
+    if (arg === "--reuse-report" && next) {
+      options.reuseReportFile = path.resolve(ROOT, next);
+      i += 1;
+      continue;
+    }
+    if (arg === "--enforce-publish-ready" && next) {
+      options.enforcePublishReady = ["1", "true", "yes", "on"].includes(String(next).toLowerCase());
+      i += 1;
+      continue;
+    }
+    if (arg === "--enforce-no-gate-issues" && next) {
+      options.enforceNoGateIssues = ["1", "true", "yes", "on"].includes(String(next).toLowerCase());
+      i += 1;
+      continue;
+    }
+    if (arg === "--help") {
+      console.log(`Usage: node regression/run-browser-refactor-validation.mjs [options]
+
+Options:
+  --base-url <url>            Builder base URL (default: ${DEFAULT_BASE_URL})
+  --prompts <path>            Prompt cases JSON (default: regression/prompts.website-refactor.json)
+  --out-dir <path>            Report output directory (default: regression/reports)
+  --max-cases <n>             Run first N cases only
+  --case-id <id>              Run only one case id (repeatable)
+  --case-ids <a,b,c>          Run only listed case ids (comma-separated)
+  --persist <bool>            Send persist=true/false to /api/creation (default: true)
+  --wait-ms <n>               Extra wait after navigation (default: 1400)
+  --pending-wait-ms <n>       Wait for pending persisted result (default: 420000)
+  --request-timeout-ms <n>    /api/creation request timeout (default: 180000)
+  --request-retries <n>       Retry count for network failures (default: 1)
+  --creation-timeout-ms <n>   Backend generation timeout override for /api/creation body
+  --screenshot-mode <mode>    always | on-fail | none (default: always)
+  --reuse-report <path>       Reuse siteKey by case id from an old regression report
+  --enforce-publish-ready <bool> Require publishStatus=ready to pass (default: true)
+  --enforce-no-gate-issues <bool> Require generationGateIssues empty to pass (default: true)
+`);
+      process.exit(0);
+    }
   }
+  options.caseIds = Array.from(new Set(options.caseIds.filter(Boolean)));
   return options;
 };
 
@@ -108,6 +179,24 @@ const timestampForFile = (date = new Date()) => {
   )}${pad(date.getSeconds())}`;
 };
 
+const deriveWorkspaceRootFromEnvFile = (filePath) => {
+  const resolved = path.resolve(String(filePath || ""));
+  const parent = path.dirname(resolved);
+  if (path.basename(parent) === "builder") return path.dirname(parent);
+  return parent;
+};
+
+const buildResultSearchRoots = ({ primaryRoot, loadedFiles }) => {
+  const roots = new Set();
+  if (primaryRoot) roots.add(path.resolve(primaryRoot));
+  (Array.isArray(loadedFiles) ? loadedFiles : []).forEach((item) => {
+    const fp = item?.filePath;
+    if (!fp) return;
+    roots.add(deriveWorkspaceRootFromEnvFile(fp));
+  });
+  return [...roots];
+};
+
 const compareRequiredPagePaths = (pages, requiredPaths) => {
   const required = toList(requiredPaths).map((item) => normalizePath(item)).filter(Boolean);
   if (!required.length) return [];
@@ -125,6 +214,49 @@ const compareForbiddenPagePaths = (pages, forbiddenPaths) => {
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const toRecord = (value) => (value && typeof value === "object" && !Array.isArray(value) ? value : {});
+
+const readReuseCaseMap = async (reportPath) => {
+  if (!reportPath) return new Map();
+  try {
+    const raw = await fs.readFile(reportPath, "utf8");
+    const parsed = JSON.parse(raw);
+    const rows = Array.isArray(parsed?.results) ? parsed.results : [];
+    const map = new Map();
+    for (const row of rows) {
+      const caseId = String(row?.id || "").trim();
+      const siteKey = String(row?.responseId || row?.id || "").trim();
+      if (caseId && siteKey) map.set(caseId, siteKey);
+    }
+    return map;
+  } catch (error) {
+    console.warn(
+      `[browser-refactor] warning: failed to parse reuse report ${reportPath}: ${
+        error instanceof Error ? error.message : String(error)
+      }`
+    );
+    return new Map();
+  }
+};
+
+const readPersistedResultBySiteKey = async (resultSearchRoots, siteKey) => {
+  const key = String(siteKey || "").trim();
+  if (!key) return null;
+  const roots = Array.isArray(resultSearchRoots) && resultSearchRoots.length ? resultSearchRoots : [REPO_ROOT];
+  for (const root of roots) {
+    const resultPath = path.join(root, "asset-factory", "out", "p2w", key, "result.json");
+    try {
+      const raw = await fs.readFile(resultPath, "utf8");
+      const parsed = JSON.parse(raw);
+      if (!Array.isArray(parsed?.pages) || parsed.pages.length === 0) continue;
+      return {
+        ...(parsed && typeof parsed === "object" ? parsed : {}),
+        id: key,
+        pending: false,
+      };
+    } catch {}
+  }
+  return null;
+};
 
 const getPageByPath = (pages, pagePath) => {
   const normalized = normalizePath(String(pagePath || "/"));
@@ -280,25 +412,28 @@ const compareForbiddenIdenticalRolePairs = (pages, forbiddenPairs) => {
   return failures;
 };
 
-const loadPersistedResultWhenPending = async (repoRoot, payload, waitMs) => {
+const loadPersistedResultWhenPending = async (resultSearchRoots, payload, waitMs) => {
   const pending = Boolean(payload?.pending);
   const siteKey = String(payload?.id || "").trim();
   if (!pending || !siteKey || waitMs <= 0) return payload;
-  const resultPath = path.join(repoRoot, "asset-factory", "out", "p2w", siteKey, "result.json");
+  const roots = Array.isArray(resultSearchRoots) && resultSearchRoots.length ? resultSearchRoots : [REPO_ROOT];
   const startedAt = Date.now();
   while (Date.now() - startedAt <= waitMs) {
-    try {
-      const raw = await fs.readFile(resultPath, "utf8");
-      const parsed = JSON.parse(raw);
-      if (Array.isArray(parsed?.pages) && parsed.pages.length > 0) {
-        return {
-          ...(payload && typeof payload === "object" ? payload : {}),
-          ...parsed,
-          id: siteKey,
-          pending: false,
-        };
-      }
-    } catch {}
+    for (const root of roots) {
+      const resultPath = path.join(root, "asset-factory", "out", "p2w", siteKey, "result.json");
+      try {
+        const raw = await fs.readFile(resultPath, "utf8");
+        const parsed = JSON.parse(raw);
+        if (Array.isArray(parsed?.pages) && parsed.pages.length > 0) {
+          return {
+            ...(payload && typeof payload === "object" ? payload : {}),
+            ...parsed,
+            id: siteKey,
+            pending: false,
+          };
+        }
+      } catch {}
+    }
     await sleep(2500);
   }
   return payload;
@@ -311,7 +446,14 @@ const isRetryableRequestError = (error) => {
   );
 };
 
-const requestCreation = async ({ baseUrl, prompt, persist, requestTimeoutMs, requestRetries }) => {
+const requestCreation = async ({
+  baseUrl,
+  prompt,
+  persist,
+  requestTimeoutMs,
+  requestRetries,
+  creationTimeoutMs,
+}) => {
   const attempts = Math.max(1, Number(requestRetries || 0) + 1);
   let lastError = null;
   for (let i = 0; i < attempts; i += 1) {
@@ -321,7 +463,11 @@ const requestCreation = async ({ baseUrl, prompt, persist, requestTimeoutMs, req
       const res = await fetch(`${baseUrl}/api/creation`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ prompt, persist }),
+        body: JSON.stringify({
+          prompt,
+          persist,
+          ...(creationTimeoutMs > 0 ? { requestTimeoutMs: creationTimeoutMs } : {}),
+        }),
         signal: controller.signal,
       });
       clearTimeout(timer);
@@ -375,8 +521,23 @@ const run = async () => {
   const promptsRaw = await fs.readFile(options.promptsFile, "utf8");
   const promptsConfig = JSON.parse(promptsRaw);
   const allCases = Array.isArray(promptsConfig?.cases) ? promptsConfig.cases : [];
-  const cases = options.maxCases > 0 ? allCases.slice(0, options.maxCases) : allCases;
+  const caseFilterSet = new Set(options.caseIds);
+  const filteredCases = caseFilterSet.size
+    ? allCases.filter((item) => caseFilterSet.has(String(item?.id || "").trim()))
+    : allCases;
+  const missingCaseIds = caseFilterSet.size
+    ? [...caseFilterSet].filter((id) => !filteredCases.some((item) => String(item?.id || "").trim() === id))
+    : [];
+  if (missingCaseIds.length > 0) {
+    console.warn(`[browser-refactor] warning: case ids not found: ${missingCaseIds.join(", ")}`);
+  }
+  const cases = options.maxCases > 0 ? filteredCases.slice(0, options.maxCases) : filteredCases;
   if (!cases.length) throw new Error(`No cases found in ${options.promptsFile}`);
+  const reuseCaseMap = await readReuseCaseMap(options.reuseReportFile);
+  const resultSearchRoots = buildResultSearchRoots({
+    primaryRoot: REPO_ROOT,
+    loadedFiles: regressionEnvState.loadedFiles,
+  });
 
   await fs.mkdir(options.outDir, { recursive: true });
   const runStamp = timestampForFile();
@@ -397,12 +558,17 @@ const run = async () => {
       const startedAt = Date.now();
       const row = {
         id: String(c?.id || `case-${index + 1}`),
+        responseId: null,
+        reusedSiteKey: null,
         statusCode: null,
         passed: false,
         skipped: false,
         durationMs: 0,
         requestError: null,
         assertionFailures: [],
+        publishStatus: "",
+        gateIssueCount: 0,
+        generationGateIssues: [],
         pageMetrics: [],
         screenshots: [],
       };
@@ -416,19 +582,36 @@ const run = async () => {
 
       let payload = null;
       let requestError = null;
-      try {
-        const { res, payload: rawPayload } = await requestCreation({
-          baseUrl: options.baseUrl,
-          prompt: c.prompt,
-          persist: options.persist,
-          requestTimeoutMs: options.requestTimeoutMs,
-          requestRetries: options.requestRetries,
-        });
-        row.statusCode = res.status;
-        payload = rawPayload;
-        payload = await loadPersistedResultWhenPending(REPO_ROOT, payload, options.pendingWaitMs);
-      } catch (error) {
-        requestError = error instanceof Error ? error.message : String(error);
+      const caseId = String(c?.id || "").trim();
+      const reusedSiteKey = caseId ? String(reuseCaseMap.get(caseId) || "").trim() : "";
+      if (reusedSiteKey) {
+        const reusedPayload = await readPersistedResultBySiteKey(resultSearchRoots, reusedSiteKey);
+        if (reusedPayload) {
+          payload = reusedPayload;
+          row.statusCode = 200;
+          row.responseId = reusedSiteKey;
+          row.reusedSiteKey = reusedSiteKey;
+        } else {
+          console.warn(`[browser-refactor] reuse miss: case=${row.id} siteKey=${reusedSiteKey} (fallback to /api/creation)`);
+        }
+      }
+      if (!payload) {
+        try {
+          const { res, payload: rawPayload } = await requestCreation({
+            baseUrl: options.baseUrl,
+            prompt: c.prompt,
+            persist: options.persist,
+            requestTimeoutMs: options.requestTimeoutMs,
+            requestRetries: options.requestRetries,
+            creationTimeoutMs: options.creationTimeoutMs,
+          });
+          row.statusCode = res.status;
+          payload = rawPayload;
+          payload = await loadPersistedResultWhenPending(resultSearchRoots, payload, options.pendingWaitMs);
+          row.responseId = String(payload?.id || "").trim() || null;
+        } catch (error) {
+          requestError = error instanceof Error ? error.message : String(error);
+        }
       }
       row.requestError = requestError;
       if (requestError) {
@@ -439,6 +622,19 @@ const run = async () => {
       }
 
       const pages = toList(payload?.pages);
+      const publishStatus = String(payload?.publishStatus || "").trim();
+      const generationGateIssues = toList(payload?.generationGateIssues)
+        .map((item) => String(item || "").trim())
+        .filter(Boolean);
+      row.publishStatus = publishStatus;
+      row.gateIssueCount = generationGateIssues.length;
+      row.generationGateIssues = generationGateIssues;
+      if (options.enforcePublishReady && publishStatus && publishStatus !== "ready") {
+        row.assertionFailures.push(`publishStatus:${publishStatus}`);
+      }
+      if (options.enforceNoGateIssues && generationGateIssues.length > 0) {
+        row.assertionFailures.push(`gateIssues:${generationGateIssues.length}`);
+      }
       row.assertionFailures.push(...compareRequiredPagePaths(pages, c.requiredPagePaths));
       row.assertionFailures.push(...compareForbiddenPagePaths(pages, c.forbiddenPagePaths));
       row.assertionFailures.push(...compareRequiredBlockTypesByPage(pages, c.requiredBlockTypesByPage));
@@ -454,6 +650,7 @@ const run = async () => {
       }
 
       const siteKey = String(payload?.id || "").trim();
+      if (!row.responseId && siteKey) row.responseId = siteKey;
       if (!siteKey) {
         row.assertionFailures.push("missingSiteKey");
       }
@@ -516,33 +713,41 @@ const run = async () => {
                 nonSandboxInternalSample: nonSandboxInternal.slice(0, 8),
               };
             });
-            const screenshotName = `${slug(row.id)}-${slug(pagePath.replaceAll("/", "-") || "home")}.png`;
-            const screenshotPath = path.join(screenshotDir, screenshotName);
-            await tab.screenshot({ path: screenshotPath, fullPage: true });
-            row.screenshots.push(screenshotPath);
+            const pageFailures = [];
+            const minTextLength = Math.max(60, Number(c.minTextLengthPerPage || 120));
+            const minLinks = Math.max(1, Number(c.minLinksPerPage || 2));
+            if (metrics.textLength < minTextLength) pageFailures.push(`textTooShort:${pagePath}:${metrics.textLength}`);
+            if (metrics.linkCount < minLinks) pageFailures.push(`linksTooFew:${pagePath}:${metrics.linkCount}`);
+            if (pagePath === "/" && metrics.headingCount < 1) pageFailures.push(`missingHeading:${pagePath}`);
+            if (pagePath === "/contact" && metrics.inputCount < 1) pageFailures.push(`missingFormField:${pagePath}`);
+            if (metrics.sectionCount < 1) pageFailures.push(`missingSections:${pagePath}`);
+            if (metrics.gradientCount < 1 && pagePath === "/") pageFailures.push(`missingVisualLayer:${pagePath}`);
+            if (sandboxNavMetrics.nonSandboxInternalCount > 0) {
+              pageFailures.push(
+                `nonSandboxHref:${pagePath}:${sandboxNavMetrics.nonSandboxInternalSample.join("|")}`
+              );
+            }
+            if (consoleErrors.length > 0) pageFailures.push(`consoleError:${pagePath}:${consoleErrors[0]}`);
+            if (pageErrors.length > 0) pageFailures.push(`pageError:${pagePath}:${pageErrors[0]}`);
+
+            const shouldCaptureScreenshot =
+              options.screenshotMode === "always" || (options.screenshotMode === "on-fail" && pageFailures.length > 0);
+            let screenshotPath = "";
+            if (shouldCaptureScreenshot) {
+              const screenshotName = `${slug(row.id)}-${slug(pagePath.replaceAll("/", "-") || "home")}.png`;
+              screenshotPath = path.join(screenshotDir, screenshotName);
+              await tab.screenshot({ path: screenshotPath, fullPage: true });
+              row.screenshots.push(screenshotPath);
+            }
             row.pageMetrics.push({
               pagePath,
               ...metrics,
               sandboxNavMetrics,
               consoleErrors,
               pageErrors,
+              screenshotPath,
             });
-
-            const minTextLength = Math.max(60, Number(c.minTextLengthPerPage || 120));
-            const minLinks = Math.max(1, Number(c.minLinksPerPage || 2));
-            if (metrics.textLength < minTextLength) row.assertionFailures.push(`textTooShort:${pagePath}:${metrics.textLength}`);
-            if (metrics.linkCount < minLinks) row.assertionFailures.push(`linksTooFew:${pagePath}:${metrics.linkCount}`);
-            if (pagePath === "/" && metrics.headingCount < 1) row.assertionFailures.push(`missingHeading:${pagePath}`);
-            if (pagePath === "/contact" && metrics.inputCount < 1) row.assertionFailures.push(`missingFormField:${pagePath}`);
-            if (metrics.sectionCount < 1) row.assertionFailures.push(`missingSections:${pagePath}`);
-            if (metrics.gradientCount < 1 && pagePath === "/") row.assertionFailures.push(`missingVisualLayer:${pagePath}`);
-            if (sandboxNavMetrics.nonSandboxInternalCount > 0) {
-              row.assertionFailures.push(
-                `nonSandboxHref:${pagePath}:${sandboxNavMetrics.nonSandboxInternalSample.join("|")}`
-              );
-            }
-            if (consoleErrors.length > 0) row.assertionFailures.push(`consoleError:${pagePath}:${consoleErrors[0]}`);
-            if (pageErrors.length > 0) row.assertionFailures.push(`pageError:${pagePath}:${pageErrors[0]}`);
+            row.assertionFailures.push(...pageFailures);
 
             themeTokens.push({
               pagePath,
@@ -554,6 +759,14 @@ const run = async () => {
           } catch (error) {
             const message = error instanceof Error ? error.message : String(error);
             row.assertionFailures.push(`sandboxRenderFailed:${pagePath}:${message}`);
+            if (options.screenshotMode !== "none") {
+              try {
+                const screenshotName = `${slug(row.id)}-${slug(pagePath.replaceAll("/", "-") || "home")}-error.png`;
+                const screenshotPath = path.join(screenshotDir, screenshotName);
+                await tab.screenshot({ path: screenshotPath, fullPage: true });
+                row.screenshots.push(screenshotPath);
+              } catch {}
+            }
           } finally {
             await tab.close();
           }
@@ -633,12 +846,14 @@ const run = async () => {
     "",
     "## Cases",
     "",
-    "| case | status | durationMs | failures |",
-    "|---|---|---:|---|",
+    "| case | status | durationMs | publishStatus | gateIssues | failures |",
+    "|---|---|---:|---|---:|---|",
     ...results.map((item) => {
       const status = item.skipped ? "SKIP" : item.passed ? "PASS" : "FAIL";
       const failures = item.assertionFailures.length ? item.assertionFailures.join(", ") : "-";
-      return `| ${item.id} | ${status} | ${item.durationMs} | ${failures} |`;
+      return `| ${item.id} | ${status} | ${item.durationMs} | ${item.publishStatus || "-"} | ${
+        item.gateIssueCount || 0
+      } | ${failures} |`;
     }),
     "",
   ].join("\n");

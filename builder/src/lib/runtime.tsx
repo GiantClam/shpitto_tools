@@ -476,6 +476,7 @@ const normalizeImportPath = (value: string) => {
   if (!value) return value;
   return value
     .trim()
+    .replace(/\/components\/atoms\//g, "/components/ui/")
     .replace(/\/components\/magicui\//g, "/components/magic/")
     .replace(/\/components\/magic-ui\//g, "/components/magic/")
     .replace(

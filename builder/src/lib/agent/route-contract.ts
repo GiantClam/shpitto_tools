@@ -51,7 +51,19 @@ export const resolveCanonicalRoute = (
   availableRoutes?: Iterable<string>
 ): string => {
   const normalized = normalizeRoutePath(rawPath);
-  const canonical = aliasToCanonical.get(normalized) || normalized;
+  let canonical = aliasToCanonical.get(normalized) || normalized;
+  if (canonical === normalized && normalized !== "/") {
+    const segments = normalized.split("/").filter(Boolean);
+    if (segments.length > 1) {
+      const topLevel = normalizeRoutePath(`/${segments[0]}`);
+      const topLevelCanonical = aliasToCanonical.get(topLevel) || topLevel;
+      // Preserve nested routes (e.g. /products/page-2, /products/{slug}) and only
+      // canonicalize the head segment when it's an alias (e.g. /product/{slug} -> /products/{slug}).
+      if (topLevelCanonical && topLevelCanonical !== topLevel) {
+        canonical = `${topLevelCanonical}/${segments.slice(1).join("/")}`.replace(/\/{2,}/g, "/");
+      }
+    }
+  }
   if (!availableRoutes) return canonical;
   const available = new Set(Array.from(availableRoutes, (item) => normalizeRoutePath(String(item || ""))));
   if (available.has(canonical)) return canonical;

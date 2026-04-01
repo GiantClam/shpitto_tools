@@ -1,3 +1,8 @@
+import {
+  extractBrandNameFromPrompt as extractBrandNameFromPromptShared,
+  sanitizeBrandCandidate as sanitizeBrandCandidateShared,
+} from "@/lib/agent/brand-utils";
+
 type SerperOrganicItem = {
   title?: string;
   link?: string;
@@ -21,6 +26,7 @@ export type SerperFactPack = {
   enabled: boolean;
   used: boolean;
   queryCount: number;
+  queries: string[];
   sourceCount: number;
   context: string;
   requiredFields: FactField[];
@@ -55,12 +61,41 @@ const extractDomain = (value: string) => {
   }
 };
 
+const BRAND_NOISE_PATTERN =
+  /\b(navigation|nav|header|footer|menu|section|layout|template|hero|cta|page|pages|route|path|type|contract|retrieval|scoped|scope|required|field|fields|current|content)\b/i;
+
+const cleanBrandCandidate = (value: string) => {
+  const normalized = sanitizeBrandCandidateShared(value);
+  if (!normalized) return "";
+  if (normalized.length < 2 || normalized.length > 64) return "";
+  if (BRAND_NOISE_PATTERN.test(normalized)) return "";
+  if (/^(home|about|contact|products?|solutions?|cases?|support|privacy|terms?)$/i.test(normalized)) return "";
+  return normalized;
+};
+
 const extractBrandNameFromPrompt = (prompt: string) => {
+  const shared = cleanBrandCandidate(extractBrandNameFromPromptShared(prompt));
+  if (shared) return shared;
   const text = String(prompt || "");
-  const quoted = text.match(/["“”「『]([^"“”」』]{1,40})["“”」』]/);
-  if (quoted?.[1]) return normalizeWhitespace(quoted[1]);
-  const cn = text.match(/为\s*([A-Za-z\u4e00-\u9fff][\w\u4e00-\u9fff\s-]{1,30})\s*(?:生成|制作|创建|构建|设计)/i);
-  if (cn?.[1]) return normalizeWhitespace(cn[1]);
+  const cn = text.match(
+    /为\s*([A-Za-z\u4e00-\u9fff][\w\u4e00-\u9fff\s·&().\-]{1,48})\s*(?:生成|制作|创建|构建|设计)/i
+  );
+  if (cn?.[1]) {
+    const cleaned = cleanBrandCandidate(cn[1]);
+    if (cleaned) return cleaned;
+  }
+  const quotedMatches = Array.from(text.matchAll(/["“”「『]([^"“”」』]{1,64})["“”」』]/g));
+  for (const match of quotedMatches) {
+    const cleaned = cleanBrandCandidate(String(match[1] || ""));
+    if (cleaned) return cleaned;
+  }
+  const englishFor = text.match(
+    /\bfor\s+([A-Za-z][A-Za-z0-9&().\-\s]{1,48})\s+(?:company|brand|website|site|factory)\b/i
+  );
+  if (englishFor?.[1]) {
+    const cleaned = cleanBrandCandidate(englishFor[1]);
+    if (cleaned) return cleaned;
+  }
   return "";
 };
 
@@ -75,21 +110,82 @@ const extractPromptSignals = (prompt: string) => {
   };
 };
 
-const buildQueries = (
-  prompt: string,
-  missingFields: FactField[],
-  queryBudget: number
-) => {
+const resolveSearchKeywordsFromPrompt = (prompt: string, limit: number) => {
+  const raw = String(prompt || "");
+  const pieces = raw
+    .replace(/[^\p{L}\p{N}\u4e00-\u9fff\s]/gu, " ")
+    .split(/\s+/)
+    .map((item) => item.trim())
+    .filter(Boolean)
+    .filter((token) => token.length >= 2 && token.length <= 28)
+    .filter((token) => !BRAND_NOISE_PATTERN.test(token))
+    .filter((token) => !/^(home|about|contact|products?|solutions?|cases?|support|privacy|terms?)$/i.test(token));
+  return Array.from(new Set(pieces)).slice(0, Math.max(1, limit));
+};
+
+const buildQueries = (input: {
+  prompt: string;
+  missingFields: FactField[];
+  queryBudget: number;
+  brandHint?: string;
+  domainHint?: string;
+  pageTypeHint?: string;
+  pagePathHint?: string;
+}) => {
+  const prompt = input.prompt;
+  const missingFields = input.missingFields;
+  const queryBudget = input.queryBudget;
   const url = extractFirstUrlFromPrompt(prompt);
-  const domain = extractDomain(url);
-  const brand = extractBrandNameFromPrompt(prompt);
+  const domainFromHint =
+    extractDomain(input.domainHint || "") ||
+    normalizeWhitespace(input.domainHint || "")
+      .replace(/^https?:\/\//i, "")
+      .replace(/^www\./i, "")
+      .split(/[/?#]/)[0]
+      .trim()
+      .toLowerCase();
+  const domain = domainFromHint || extractDomain(url);
+  const hintBrand = cleanBrandCandidate(input.brandHint || "");
+  const brand = hintBrand || extractBrandNameFromPrompt(prompt);
+  const pageType = normalizeWhitespace(input.pageTypeHint || "");
+  const pagePath = normalizeWhitespace(input.pagePathHint || "");
   const queries: string[] = [];
   if (domain) {
-    queries.push(`site:${domain} about products applications specs faq contact`);
+    queries.push(`site:${domain} ${brand || ""} company profile products cases specs faq`.trim());
   }
   if (brand) {
-    queries.push(`${brand} company profile products applications contact`);
+    queries.push(`${brand} company profile products applications cases contact`);
   }
+  const fieldQueriesEn: Record<FactField, string> = {
+    company: "company profile history certifications location contact",
+    products: "product catalog models machines lineup",
+    specs: "product specifications parameters precision rpm travel",
+    cases: "case studies applications customer outcomes",
+    faq: "faq support service maintenance",
+  };
+  const fieldQueriesZh: Record<FactField, string> = {
+    company: "公司简介 发展历程 资质认证 联系方式",
+    products: "产品中心 机型 设备 型号",
+    specs: "技术参数 精度 行程 主轴 转速",
+    cases: "应用案例 客户案例 成果",
+    faq: "常见问题 售后 技术支持",
+  };
+  const pageScopeSuffix = [pageType, pagePath]
+    .filter(Boolean)
+    .join(" ")
+    .replace(/[^\p{L}\p{N}\u4e00-\u9fff\s/-]/gu, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+  missingFields.forEach((field) => {
+    if (domain) {
+      queries.push(`site:${domain} ${fieldQueriesEn[field]} ${pageScopeSuffix}`.trim());
+      queries.push(`site:${domain} ${fieldQueriesZh[field]} ${pageScopeSuffix}`.trim());
+    }
+    if (brand) {
+      queries.push(`${brand} ${fieldQueriesEn[field]} ${pageScopeSuffix}`.trim());
+      queries.push(`${brand} ${fieldQueriesZh[field]} ${pageScopeSuffix}`.trim());
+    }
+  });
   const fieldQueries: Record<FactField, string[]> = {
     company: [
       `${brand || domain || "company"} company profile history certifications`,
@@ -112,12 +208,14 @@ const buildQueries = (
       `${brand || domain || "company"} 常见问题 售后 技术支持`,
     ],
   };
-  missingFields.forEach((field) => {
-    queries.push(...fieldQueries[field]);
-  });
+  missingFields.forEach((field) => queries.push(...fieldQueries[field]));
   if (!queries.length) {
-    const fallback = normalizeWhitespace(prompt).slice(0, 80);
-    if (fallback) queries.push(`${fallback} company profile products specs cases faq`);
+    const fallbackKeywords = resolveSearchKeywordsFromPrompt(prompt, 6).join(" ");
+    const fallbackBase = brand || domain || fallbackKeywords;
+    if (fallbackBase) {
+      queries.push(`${fallbackBase} company profile products specs cases faq`);
+      queries.push(`${fallbackBase} 公司简介 产品中心 技术参数 应用案例`);
+    }
   }
   return Array.from(new Set(queries)).slice(0, Math.max(2, queryBudget));
 };
@@ -167,6 +265,17 @@ type BuildSerperFactPackOptions = {
     cases?: Array<{ title?: string }>;
     faqs?: Array<{ question?: string; answer?: string }>;
   };
+  retrievalContext?: {
+    companyName?: string;
+    companyWebsite?: string;
+    pageType?: string;
+    pagePath?: string;
+  };
+  queryHints?: string[];
+  queryMode?: "prepend" | "append" | "replace";
+  maxQueries?: number;
+  timeoutMs?: number;
+  maxDurationMs?: number;
 };
 
 export const buildSerperFactPack = async (
@@ -217,6 +326,7 @@ export const buildSerperFactPackWithOptions = async (
       enabled,
       used: false,
       queryCount: 0,
+      queries: [],
       sourceCount: 0,
       context: "",
       requiredFields,
@@ -225,17 +335,59 @@ export const buildSerperFactPackWithOptions = async (
     };
   }
 
-  const timeoutMs = Math.max(1000, Number(process.env.SERPER_TIMEOUT_MS || 8000));
+  const timeoutMs = Math.max(1000, Number(options.timeoutMs ?? process.env.SERPER_TIMEOUT_MS ?? 8000));
   const queryBudgetSeed = Number(process.env.SERPER_QUERY_BUDGET);
-  const queryBudget = Number.isFinite(queryBudgetSeed)
+  const queryBudgetBase = Number.isFinite(queryBudgetSeed)
     ? Math.max(2, Math.min(12, Math.floor(queryBudgetSeed)))
     : Math.min(8, Math.max(4, missingFields.length * 2));
-  const queries = buildQueries(prompt, missingFields, queryBudget);
+  const queryBudget =
+    Number.isFinite(Number(options.maxQueries)) && Number(options.maxQueries) > 0
+      ? Math.max(1, Math.min(queryBudgetBase, Math.floor(Number(options.maxQueries))))
+      : queryBudgetBase;
+  const normalizeQueryHints = (items: string[] | undefined) =>
+    Array.from(
+      new Set(
+        (Array.isArray(items) ? items : [])
+          .map((item) => normalizeWhitespace(item))
+          .filter(Boolean)
+      )
+    );
+  const mergeQueriesWithHints = (baseQueries: string[]) => {
+    const hints = normalizeQueryHints(options.queryHints);
+    if (!hints.length) return baseQueries.slice(0, queryBudget);
+    const mode = options.queryMode || "prepend";
+    const merged =
+      mode === "replace"
+        ? hints
+        : mode === "append"
+          ? [...baseQueries, ...hints]
+          : [...hints, ...baseQueries];
+    return Array.from(new Set(merged)).slice(0, queryBudget);
+  };
+  const structuredBrandHint = normalizeWhitespace(structured?.company?.name || "");
+  const structuredWebsiteHint = normalizeWhitespace(
+    options.retrievalContext?.companyWebsite || ""
+  );
+  const queries = mergeQueriesWithHints(
+    buildQueries({
+      prompt,
+      missingFields,
+      queryBudget,
+      brandHint: options.retrievalContext?.companyName || structuredBrandHint,
+      domainHint: structuredWebsiteHint || extractFirstUrlFromPrompt(prompt),
+      pageTypeHint: options.retrievalContext?.pageType,
+      pagePathHint: options.retrievalContext?.pagePath,
+    })
+  );
   const lines: string[] = [];
   let sourceCount = 0;
   const coveredFields = new Set<FactField>();
+  const startedAt = Date.now();
+  const maxDurationMs = Math.max(0, Number(options.maxDurationMs || process.env.SERPER_MAX_DURATION_MS || 0));
 
   for (const query of queries) {
+    if (maxDurationMs > 0 && Date.now() - startedAt >= maxDurationMs) break;
+    if (requiredFields.every((field) => coveredFields.has(field))) break;
     try {
       const payload = await callSerperSearch(apiKey, query, timeoutMs);
       const knowledgeTitle = normalizeWhitespace(payload?.knowledgeGraph?.title);
@@ -266,6 +418,7 @@ export const buildSerperFactPackWithOptions = async (
       enabled,
       used: false,
       queryCount: queries.length,
+      queries,
       sourceCount: 0,
       context: "",
       requiredFields,
@@ -280,6 +433,7 @@ export const buildSerperFactPackWithOptions = async (
     enabled,
     used: true,
     queryCount: queries.length,
+    queries,
     sourceCount,
     requiredFields,
     coveredFields: Array.from(coveredFields),

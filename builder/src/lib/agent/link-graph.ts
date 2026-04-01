@@ -236,7 +236,18 @@ const sanitizeHref = (href: unknown, graph: SiteLinkGraph) => {
   if (graph.validInternalHrefs.has(pathname)) return pathname;
   const canonical = normalizePath(resolveCanonicalRoute(pathname, graph.validInternalHrefs));
   if (graph.validInternalHrefs.has(canonical)) return canonical;
-  return graph.homeHref;
+  const pathSegments = pathname.split("/").filter(Boolean);
+  const head = pathSegments.length ? normalizePath(`/${pathSegments[0]}`) : graph.homeHref;
+  if (graph.validInternalHrefs.has(head)) return head;
+  if (/[0-9]/.test(pathname) && graph.validInternalHrefs.has("/products")) return "/products";
+  if (/(case|study|project|proof|result)/i.test(pathname) && graph.validInternalHrefs.has("/cases")) return "/cases";
+  if (/(service|solution|workflow|process|capability)/i.test(pathname) && graph.validInternalHrefs.has("/solutions")) {
+    return "/solutions";
+  }
+  if (/(quote|contact|consult|sales|inquiry)/i.test(pathname) && graph.validInternalHrefs.has("/contact")) {
+    return "/contact";
+  }
+  return pathname;
 };
 
 const sanitizeHrefFields = (value: unknown, graph: SiteLinkGraph): unknown => {

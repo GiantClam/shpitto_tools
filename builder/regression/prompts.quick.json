@@ -1,0 +1,26 @@
+{
+  "cases": [
+    {
+      "id": "quick-singlepage-smoke",
+      "description": "Fast single-page smoke gate",
+      "prompt": "Create a single-page startup homepage with hero, feature highlights, trust proof, CTA, and footer.",
+      "categoryScope": "home",
+      "requiredCategories": ["navigation", "hero", "approach", "cta", "footer"],
+      "browserPages": ["/"],
+      "minTextLengthPerPage": 80,
+      "minLinksPerPage": 2
+    },
+    {
+      "id": "quick-multipage-smoke",
+      "description": "Fast multi-page smoke with lightweight assertions",
+      "prompt": "为一家工业设备企业生成官网，包含首页、产品中心、联系我们、隐私政策，主题统一并带 CTA。",
+      "categoryScope": "site",
+      "requiredCategories": ["navigation", "hero", "products", "cta", "footer"],
+      "minPages": 4,
+      "requiredPagePaths": ["/", "/products", "/contact", "/privacy"],
+      "browserPages": ["/", "/products", "/contact"],
+      "minTextLengthPerPage": 100,
+      "minLinksPerPage": 2
+    }
+  ]
+}

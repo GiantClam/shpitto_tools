@@ -323,7 +323,12 @@ export const auditSitePayload = (payload: PayloadLike, context: SitePayloadAudit
         },
       });
     }
-    if (duplicateInteriorPairs.length > 0) {
+    const interiorPageCount = Math.max(pageShapes.length - 1, 0);
+    const possibleInteriorPairs =
+      interiorPageCount >= 2 ? (interiorPageCount * (interiorPageCount - 1)) / 2 : 0;
+    const duplicateInteriorPairRatio =
+      possibleInteriorPairs > 0 ? duplicateInteriorPairs.length / possibleInteriorPairs : 0;
+    if (duplicateInteriorPairs.length >= 2 && duplicateInteriorPairRatio >= 0.35) {
       issues.push({
         severity: "warning",
         code: "high_structural_similarity",
@@ -331,6 +336,8 @@ export const auditSitePayload = (payload: PayloadLike, context: SitePayloadAudit
         details: {
           duplicateInteriorPairCount: duplicateInteriorPairs.length,
           duplicateInteriorPairs,
+          duplicateInteriorPairRatio,
+          possibleInteriorPairs,
         },
       });
     }

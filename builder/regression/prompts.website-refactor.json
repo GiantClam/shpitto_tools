@@ -21,6 +21,9 @@
         "/privacy",
         "/terms"
       ],
+      "expectedResolutionLayer": "page",
+      "expectedFanOutMode": "send_fanout",
+      "expectPageBuilderSubgraph": true,
       "browserPages": ["/", "/products", "/solutions", "/pricing", "/contact"],
       "minTextLengthPerPage": 180,
       "minLinksPerPage": 3
@@ -32,6 +35,9 @@
       "requiredCategories": ["navigation", "hero", "approach", "cta", "footer"],
       "maxPages": 1,
       "forbiddenPagePaths": ["/products", "/solutions", "/contact", "/about", "/pricing", "/support", "/blog"],
+      "expectedResolutionLayer": "page",
+      "expectedFanOutMode": "send_fanout",
+      "expectPageBuilderSubgraph": true,
       "browserPages": ["/"],
       "minTextLengthPerPage": 120,
       "minLinksPerPage": 2

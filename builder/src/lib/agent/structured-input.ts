@@ -1,3 +1,5 @@
+import { promises as fs } from "fs";
+
 export type StructuredProductRecord = {
   id?: string;
   name: string;
@@ -46,10 +48,11 @@ export type StructuredSiteInput = {
 type ParseResult = {
   input: StructuredSiteInput | null;
   diagnostics: {
-    source: Array<"json" | "csv">;
+    source: string[];
     productCount: number;
     caseCount: number;
     faqCount: number;
+    warnings: string[];
   };
 };
 
@@ -67,6 +70,12 @@ const normalizeLanguage = (value: unknown): StructuredSiteInput["targetLanguage"
 };
 
 const clamp = (value: number, min: number, max: number) => Math.min(max, Math.max(min, value));
+
+const structuredProductsMaxRecords = clamp(
+  Number(process.env.STRUCTURED_PRODUCTS_MAX_RECORDS || 2000),
+  50,
+  10000
+);
 
 const normalizeProduct = (raw: Record<string, unknown>): StructuredProductRecord | null => {
   const name =
@@ -158,11 +167,31 @@ const normalizeFaq = (raw: Record<string, unknown>): StructuredFaqRecord | null 
   return { question, answer };
 };
 
+const hasStructuredKeys = (value: Record<string, unknown> | null | undefined) => {
+  if (!value || typeof value !== "object") return false;
+  return [
+    "company",
+    "products",
+    "cases",
+    "faqs",
+    "nav",
+    "pages",
+    "contactFields",
+    "targetLanguage",
+    "catalogPageSize",
+    "brand",
+    "website",
+    "summary",
+  ].some((key) => key in value);
+};
+
 const parseJsonInput = (body: Record<string, unknown>): StructuredSiteInput | null => {
-  const candidate =
+  const nestedCandidate =
     (body.structuredInput && typeof body.structuredInput === "object" ? body.structuredInput : null) ||
     (body.data && typeof body.data === "object" ? body.data : null) ||
     (body.structured && typeof body.structured === "object" ? body.structured : null);
+  const directCandidate = hasStructuredKeys(body) ? body : null;
+  const candidate = nestedCandidate || directCandidate;
   if (!candidate) return null;
   const source = candidate as Record<string, unknown>;
   const productsSource = Array.isArray(source.products) ? source.products : [];
@@ -204,12 +233,18 @@ const parseJsonInput = (body: Record<string, unknown>): StructuredSiteInput | nu
         ? clamp(Number(source.catalogPageSize), 6, 24)
         : undefined,
   };
+  const hasControlOverrides =
+    Boolean(normalized.catalogPageSize) ||
+    Boolean(normalized.targetLanguage) ||
+    Boolean(normalized.pages?.length) ||
+    Boolean(normalized.contactFields?.length);
   if (
     !normalized.company?.name &&
     !normalized.products?.length &&
     !normalized.cases?.length &&
     !normalized.faqs?.length &&
-    !normalized.nav?.length
+    !normalized.nav?.length &&
+    !hasControlOverrides
   ) {
     return null;
   }
@@ -300,22 +335,131 @@ const parseCsvProducts = (rawCsv: string): StructuredProductRecord[] => {
   return records;
 };
 
-export const parseStructuredSiteInput = (body: Record<string, unknown>): ParseResult => {
-  const jsonInput = parseJsonInput(body);
-  const readRawCsv = (value: unknown) =>
-    typeof value === "string" && value.trim().length > 0 ? value : "";
-  const csvRaw = readRawCsv(body.productsCsv) || readRawCsv(body.catalogCsv) || readRawCsv(body.csvProducts) || "";
-  const csvProducts = csvRaw ? parseCsvProducts(csvRaw) : [];
+const parseJsonProducts = (rawJson: string): StructuredProductRecord[] => {
+  const normalized = String(rawJson || "").trim();
+  if (!normalized) return [];
+  let parsed: unknown;
+  try {
+    parsed = JSON.parse(normalized);
+  } catch {
+    return [];
+  }
+  const list = Array.isArray(parsed)
+    ? parsed
+    : parsed && typeof parsed === "object"
+      ? Array.isArray((parsed as Record<string, unknown>).products)
+        ? ((parsed as Record<string, unknown>).products as unknown[])
+        : []
+      : [];
+  return list
+    .map((item) => (item && typeof item === "object" ? normalizeProduct(item as Record<string, unknown>) : null))
+    .filter((item): item is StructuredProductRecord => Boolean(item));
+};
 
-  const source: Array<"json" | "csv"> = [];
+const readFirstBodyString = (body: Record<string, unknown>, keys: string[]) => {
+  for (const key of keys) {
+    const value = body[key];
+    if (typeof value === "string" && value.trim().length > 0) return value.trim();
+  }
+  return "";
+};
+
+const readTextFromFile = async (filePath: string): Promise<string> => {
+  try {
+    const data = await fs.readFile(filePath, "utf8");
+    return String(data || "");
+  } catch {
+    return "";
+  }
+};
+
+const readTextFromUrl = async (url: string): Promise<string> => {
+  if (!/^https?:\/\//i.test(url)) return "";
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 15000);
+  try {
+    const response = await fetch(url, { signal: controller.signal });
+    if (!response.ok) return "";
+    return await response.text();
+  } catch {
+    return "";
+  } finally {
+    clearTimeout(timeout);
+  }
+};
+
+export const parseStructuredSiteInput = async (body: Record<string, unknown>): Promise<ParseResult> => {
+  const jsonInput = parseJsonInput(body);
+  const csvRaw =
+    readFirstBodyString(body, ["productsCsv", "catalogCsv", "csvProducts"]) || "";
+  const jsonProductsRaw =
+    readFirstBodyString(body, ["productsJson", "catalogJson"]) || "";
+  const csvPath = readFirstBodyString(body, ["productsCsvPath", "catalogCsvPath"]);
+  const csvUrl = readFirstBodyString(body, ["productsCsvUrl", "catalogCsvUrl"]);
+  const jsonPath = readFirstBodyString(body, ["productsJsonPath", "catalogJsonPath"]);
+  const jsonUrl = readFirstBodyString(body, ["productsJsonUrl", "catalogJsonUrl"]);
+  const genericProductsUrl = readFirstBodyString(body, ["productsUrl", "catalogUrl"]);
+  const genericProductsPath = readFirstBodyString(body, ["productsPath", "catalogPath"]);
+
+  const warnings: string[] = [];
+  const source: string[] = [];
   if (jsonInput) source.push("json");
-  if (csvProducts.length) source.push("csv");
+
+  const csvProductsInline = csvRaw ? parseCsvProducts(csvRaw) : [];
+  if (csvProductsInline.length) source.push("csv:inline");
+
+  const jsonProductsInline = jsonProductsRaw ? parseJsonProducts(jsonProductsRaw) : [];
+  if (jsonProductsInline.length) source.push("json:inline");
+
+  const csvProductsFromPathRaw = csvPath ? await readTextFromFile(csvPath) : "";
+  const csvProductsFromPath = csvProductsFromPathRaw ? parseCsvProducts(csvProductsFromPathRaw) : [];
+  if (csvPath && !csvProductsFromPathRaw) warnings.push(`csv_path_unreadable:${csvPath}`);
+  if (csvProductsFromPath.length) source.push("csv:path");
+
+  const jsonProductsFromPathRaw = jsonPath ? await readTextFromFile(jsonPath) : "";
+  const jsonProductsFromPath = jsonProductsFromPathRaw ? parseJsonProducts(jsonProductsFromPathRaw) : [];
+  if (jsonPath && !jsonProductsFromPathRaw) warnings.push(`json_path_unreadable:${jsonPath}`);
+  if (jsonProductsFromPath.length) source.push("json:path");
+
+  const csvProductsFromUrlRaw = csvUrl ? await readTextFromUrl(csvUrl) : "";
+  const csvProductsFromUrl = csvProductsFromUrlRaw ? parseCsvProducts(csvProductsFromUrlRaw) : [];
+  if (csvUrl && !csvProductsFromUrlRaw) warnings.push(`csv_url_unreadable:${csvUrl}`);
+  if (csvProductsFromUrl.length) source.push("csv:url");
+
+  const jsonProductsFromUrlRaw = jsonUrl ? await readTextFromUrl(jsonUrl) : "";
+  const jsonProductsFromUrl = jsonProductsFromUrlRaw ? parseJsonProducts(jsonProductsFromUrlRaw) : [];
+  if (jsonUrl && !jsonProductsFromUrlRaw) warnings.push(`json_url_unreadable:${jsonUrl}`);
+  if (jsonProductsFromUrl.length) source.push("json:url");
+
+  const genericPathRaw = genericProductsPath ? await readTextFromFile(genericProductsPath) : "";
+  const genericUrlRaw = genericProductsUrl ? await readTextFromUrl(genericProductsUrl) : "";
+  const genericPathProducts = genericPathRaw
+    ? genericProductsPath.toLowerCase().endsWith(".csv")
+      ? parseCsvProducts(genericPathRaw)
+      : parseJsonProducts(genericPathRaw)
+    : [];
+  const genericUrlProducts = genericUrlRaw
+    ? /\.csv(?:\?.*)?$/i.test(genericProductsUrl)
+      ? parseCsvProducts(genericUrlRaw)
+      : parseJsonProducts(genericUrlRaw)
+    : [];
+  if (genericProductsPath && !genericPathRaw) warnings.push(`products_path_unreadable:${genericProductsPath}`);
+  if (genericProductsUrl && !genericUrlRaw) warnings.push(`products_url_unreadable:${genericProductsUrl}`);
+  if (genericPathProducts.length) source.push("products:path");
+  if (genericUrlProducts.length) source.push("products:url");
 
   const merged: StructuredSiteInput = {
     ...(jsonInput || {}),
     products: [
       ...((jsonInput?.products || []) as StructuredProductRecord[]),
-      ...csvProducts,
+      ...jsonProductsInline,
+      ...csvProductsInline,
+      ...csvProductsFromPath,
+      ...jsonProductsFromPath,
+      ...csvProductsFromUrl,
+      ...jsonProductsFromUrl,
+      ...genericPathProducts,
+      ...genericUrlProducts,
     ],
   };
 
@@ -328,7 +472,10 @@ export const parseStructuredSiteInput = (body: Record<string, unknown>): ParseRe
     }, new Map<string, StructuredProductRecord>())
   ).map((entry) => entry[1]);
 
-  merged.products = dedupedProducts;
+  merged.products = dedupedProducts.slice(0, structuredProductsMaxRecords);
+  if (dedupedProducts.length > structuredProductsMaxRecords) {
+    warnings.push(`products_truncated:${structuredProductsMaxRecords}/${dedupedProducts.length}`);
+  }
   if (
     !merged.company?.name &&
     !merged.products?.length &&
@@ -343,6 +490,7 @@ export const parseStructuredSiteInput = (body: Record<string, unknown>): ParseRe
         productCount: 0,
         caseCount: 0,
         faqCount: 0,
+        warnings,
       },
     };
   }
@@ -353,6 +501,7 @@ export const parseStructuredSiteInput = (body: Record<string, unknown>): ParseRe
       productCount: merged.products?.length || 0,
       caseCount: merged.cases?.length || 0,
       faqCount: merged.faqs?.length || 0,
+      warnings,
     },
   };
 };

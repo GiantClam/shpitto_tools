@@ -47,7 +47,26 @@ const looksLikeDomainPath = (path: string) =>
 
 type RequiredPageToken = EnterprisePageType | "privacy";
 
-const detectMissingRequiredPageTypes = (pages: PageLike[]): RequiredPageToken[] => {
+const extractExplicitRequiredPageTypesFromPrompt = (prompt: string): Set<RequiredPageToken> => {
+  const raw = String(prompt || "").trim();
+  if (!raw) return new Set<RequiredPageToken>();
+  const hasExplicitPageScope =
+    /(?:\binclude(?:d|s|ing)?\b|\bwith\b|\bpages?\b|\broutes?\b|\bsitemap\b|\bnavigation\b|包含|包括|页面|路由|导航|栏目|清单)/i.test(
+      raw
+    );
+  if (!hasExplicitPageScope) return new Set<RequiredPageToken>();
+  const required = new Set<RequiredPageToken>();
+  if (/(?:首页|主页|\bhome(?:\s*page)?\b)/i.test(raw)) required.add("home");
+  if (/(?:关于我们|关于|公司概况|公司简介|\babout(?:\s*us)?\b)/i.test(raw)) required.add("about");
+  if (/(?:联系我们|联系(?:我们)?|\bcontact\b)/i.test(raw)) required.add("contact");
+  if (/(?:隐私(?:政策)?|\bprivacy\b)/i.test(raw)) required.add("privacy");
+  if (/(?:产品中心|产品|\bproducts?\b)/i.test(raw)) required.add("products");
+  if (/(?:解决方案|方案|\bsolutions?\b)/i.test(raw)) required.add("solutions");
+  if (/(?:应用案例|案例|\bcases?\b|\bcase\s*stud(?:y|ies)\b)/i.test(raw)) required.add("cases");
+  return required;
+};
+
+const detectMissingRequiredPageTypes = (pages: PageLike[], prompt: string): RequiredPageToken[] => {
   const detected = new Set<EnterprisePageType>();
   let hasPrivacyPage = false;
   pages.forEach((page) => {
@@ -55,6 +74,18 @@ const detectMissingRequiredPageTypes = (pages: PageLike[]): RequiredPageToken[] 
     detected.add(type);
     if (normalizeSitePath(page?.path) === "/privacy") hasPrivacyPage = true;
   });
+  const explicitRequired = extractExplicitRequiredPageTypesFromPrompt(prompt);
+  if (explicitRequired.size > 0) {
+    const missing: RequiredPageToken[] = [];
+    explicitRequired.forEach((pageType) => {
+      if (pageType === "privacy") {
+        if (!hasPrivacyPage) missing.push("privacy");
+        return;
+      }
+      if (!detected.has(pageType)) missing.push(pageType);
+    });
+    return missing;
+  }
   const missing: RequiredPageToken[] = [];
   if (!detected.has("home")) missing.push("home");
   if (!detected.has("about")) missing.push("about");
@@ -157,7 +188,7 @@ const isLanguageMismatch = (page: PageLike, outputLanguage: "zh-CN" | "en-US") =
 };
 
 const TEMPLATE_COPY_PATTERN =
-  /\blorem ipsum\b|\byour brand\b|\bour (?:mission|vision|values?|services?|products?)\b|\btrusted by\b|\bbook (?:a )?demo\b|\bget started\b|\bdiscover more\b|\blearn more\b|\bthis section\b|\bplaceholder\b|\{\{[^}]+\}\}|\[\s*(?:title|subtitle|description|content|cta)\s*\]/i;
+  /\blorem ipsum\b|\byour brand\b|\bthis section\b|\bplaceholder(?:\s+(?:text|copy))?\b|\{\{[^}]+\}\}|\[\s*(?:title|subtitle|description|content|cta)\s*\]/i;
 
 const hasTemplateCopy = (page: PageLike) => {
   const blocks = Array.isArray(page?.data?.content) ? page.data.content : [];
@@ -268,7 +299,7 @@ export const validateGeneratedSiteContract = (input: {
   });
 
   if (enterpriseLike) {
-    const missing = detectMissingRequiredPageTypes(pages);
+    const missing = detectMissingRequiredPageTypes(pages, prompt);
     missing.forEach((pageType) => {
       issues.push({
         severity: "error",

@@ -23,6 +23,13 @@ const parseArgs = (argv) => {
     delayMs: 350,
     persist: true,
     pendingWaitMs: 420000,
+    requestTimeoutMs: 0,
+    allowTimeoutFallback: false,
+    enforcePublishReady: true,
+    enforceNoGateIssues: true,
+    streamProgress: true,
+    enforceProgressStages: true,
+    caseIds: [],
   };
   for (let i = 2; i < argv.length; i += 1) {
     const arg = argv[i];
@@ -67,11 +74,57 @@ const parseArgs = (argv) => {
       i += 1;
       continue;
     }
+    if (arg === "--request-timeout-ms" && next) {
+      options.requestTimeoutMs = Math.max(0, Number(next) || 0);
+      i += 1;
+      continue;
+    }
+    if (arg === "--allow-timeout-fallback" && next) {
+      options.allowTimeoutFallback = ["1", "true", "yes", "on"].includes(String(next).toLowerCase());
+      i += 1;
+      continue;
+    }
+    if (arg === "--enforce-publish-ready" && next) {
+      options.enforcePublishReady = ["1", "true", "yes", "on"].includes(String(next).toLowerCase());
+      i += 1;
+      continue;
+    }
+    if (arg === "--enforce-no-gate-issues" && next) {
+      options.enforceNoGateIssues = ["1", "true", "yes", "on"].includes(String(next).toLowerCase());
+      i += 1;
+      continue;
+    }
+    if (arg === "--stream-progress" && next) {
+      options.streamProgress = ["1", "true", "yes", "on"].includes(String(next).toLowerCase());
+      i += 1;
+      continue;
+    }
+    if (arg === "--enforce-progress-stages" && next) {
+      options.enforceProgressStages = ["1", "true", "yes", "on"].includes(String(next).toLowerCase());
+      i += 1;
+      continue;
+    }
+    if (arg === "--case-id" && next) {
+      options.caseIds.push(String(next).trim());
+      i += 1;
+      continue;
+    }
+    if (arg === "--case-ids" && next) {
+      options.caseIds.push(
+        ...String(next)
+          .split(",")
+          .map((item) => item.trim())
+          .filter(Boolean)
+      );
+      i += 1;
+      continue;
+    }
     if (arg === "--help") {
-      console.log(`Usage: node regression/run-creation-baseline.mjs [options]\n\nOptions:\n  --base-url <url>        API base URL (default: ${DEFAULT_BASE_URL})\n  --prompts <path>        Prompt cases JSON (default: regression/prompts.baseline.json)\n  --log-file <path>       creation.log path (default: logs/creation.log)\n  --out-dir <path>        Report output directory (default: regression/reports)\n  --max-cases <n>         Run first N cases only\n  --delay-ms <n>          Delay between requests in ms (default: 350)\n  --persist <bool>        Send persist=true/false to /api/creation (default: true)\n  --pending-wait-ms <n>   Max wait for persisted result when API returns pending=true (default: 420000)`);
+      console.log(`Usage: node regression/run-creation-baseline.mjs [options]\n\nOptions:\n  --base-url <url>        API base URL (default: ${DEFAULT_BASE_URL})\n  --prompts <path>        Prompt cases JSON (default: regression/prompts.baseline.json)\n  --log-file <path>       creation.log path (default: logs/creation.log)\n  --out-dir <path>        Report output directory (default: regression/reports)\n  --max-cases <n>         Run first N cases only\n  --case-id <id>          Run only one case id (repeatable)\n  --case-ids <a,b,c>      Run only listed case ids (comma-separated)\n  --delay-ms <n>          Delay between requests in ms (default: 350)\n  --persist <bool>        Send persist=true/false to /api/creation (default: true)\n  --pending-wait-ms <n>   Max wait for persisted result when API returns pending=true (default: 420000)\n  --request-timeout-ms <n> Override backend request timeout for this run (sent in request body)\n  --allow-timeout-fallback <bool> Treat generation_timeout_fallback as non-fatal\n  --stream-progress <bool> Send stream=true and parse SSE progress (default: true)\n  --enforce-progress-stages <bool> Require critical progress stages in SSE (default: true)\n  --enforce-publish-ready <bool> Require publishStatus=ready to pass (default: true)\n  --enforce-no-gate-issues <bool> Require generationGateIssues empty to pass (default: true)`);
       process.exit(0);
     }
   }
+  options.caseIds = Array.from(new Set(options.caseIds.filter(Boolean)));
   return options;
 };
 
@@ -116,6 +169,24 @@ const inferCategoriesFromPagePaths = (pages) => {
     if (/^\/solutions?(\/|$)/.test(pathValue)) inferred.add("approach");
   });
   return inferred;
+};
+
+const deriveWorkspaceRootFromEnvFile = (filePath) => {
+  const resolved = path.resolve(String(filePath || ""));
+  const parent = path.dirname(resolved);
+  if (path.basename(parent) === "builder") return path.dirname(parent);
+  return parent;
+};
+
+const buildResultSearchRoots = ({ primaryRoot, loadedFiles }) => {
+  const roots = new Set();
+  if (primaryRoot) roots.add(path.resolve(primaryRoot));
+  (Array.isArray(loadedFiles) ? loadedFiles : []).forEach((item) => {
+    const fp = item?.filePath;
+    if (!fp) return;
+    roots.add(deriveWorkspaceRootFromEnvFile(fp));
+  });
+  return [...roots];
 };
 
 const toPercent = (value) => `${(value * 100).toFixed(1)}%`;
@@ -194,25 +265,130 @@ const safeJson = async (res) => {
   }
 };
 
-const loadPersistedResultWhenPending = async (repoRoot, payload, waitMs) => {
+const parseSseEvents = (rawText) => {
+  const text = String(rawText || "");
+  if (!text.trim()) return [];
+  const events = [];
+  const chunks = text.split(/\r?\n\r?\n/).filter((chunk) => chunk.trim().length > 0);
+  for (const chunk of chunks) {
+    const lines = chunk.split(/\r?\n/);
+    let event = "message";
+    const dataLines = [];
+    for (const line of lines) {
+      if (!line || line.startsWith(":")) continue;
+      if (line.startsWith("event:")) {
+        event = line.slice("event:".length).trim() || "message";
+        continue;
+      }
+      if (line.startsWith("data:")) {
+        dataLines.push(line.slice("data:".length).trimStart());
+      }
+    }
+    if (!dataLines.length) continue;
+    const dataRaw = dataLines.join("\n");
+    let data = dataRaw;
+    try {
+      data = JSON.parse(dataRaw);
+    } catch {}
+    events.push({ event, data });
+  }
+  return events;
+};
+
+const readStreamResponse = async (res) => {
+  const text = await res.text();
+  const events = parseSseEvents(text);
+  const progressStages = [];
+  const progressDetails = [];
+  let terminalEvent = null;
+  let payload = null;
+  for (const entry of events) {
+    if (entry.event === "progress") {
+      const stage = String(entry?.data?.stage || "").trim();
+      if (stage) progressStages.push(stage);
+      if (entry?.data && typeof entry.data === "object") {
+        progressDetails.push(entry.data);
+      }
+      continue;
+    }
+    if (entry.event === "complete" || entry.event === "pending" || entry.event === "timeout" || entry.event === "error") {
+      terminalEvent = entry.event;
+      payload = entry.data;
+    }
+  }
+  return {
+    payload,
+    terminalEvent,
+    progressStages,
+    progressDetails,
+    progressEventCount: progressStages.length,
+    eventCount: events.length,
+  };
+};
+
+const parseOptionalBoolean = (value) => {
+  if (typeof value === "boolean") return value;
+  if (typeof value !== "string") return undefined;
+  const normalized = value.trim().toLowerCase();
+  if (["1", "true", "yes", "on"].includes(normalized)) return true;
+  if (["0", "false", "no", "off"].includes(normalized)) return false;
+  return undefined;
+};
+
+const collectGenerationGateIssues = (payload) => {
+  const value = payload && typeof payload === "object" ? payload : {};
+  const issues = new Set();
+  const errors = Array.isArray(value.errors) ? value.errors.map((entry) => String(entry || "").trim()).filter(Boolean) : [];
+  for (const entry of errors) {
+    if (/^contract_gate_failed/i.test(entry)) issues.add(entry);
+    if (/^qa_gate_failed/i.test(entry)) issues.add(entry);
+    if (/^page_builder_error:.*page_contract_failed/i.test(entry)) issues.add(entry);
+    if (/^hitl_site_plan_not_approved/i.test(entry)) issues.add(entry);
+  }
+  const resolvedByLayer =
+    value.resolvedByLayer && typeof value.resolvedByLayer === "object" ? value.resolvedByLayer : null;
+  const contract =
+    resolvedByLayer?.contract && typeof resolvedByLayer.contract === "object" ? resolvedByLayer.contract : null;
+  const qa = resolvedByLayer?.qa && typeof resolvedByLayer.qa === "object" ? resolvedByLayer.qa : null;
+  if (contract?.pass === false) issues.add("contract_gate_failed:resolved.contract.pass=false");
+  if (qa?.pass === false) issues.add("qa_gate_failed:resolved.qa.pass=false");
+  return Array.from(issues);
+};
+
+const loadPersistedResultWhenPending = async (resultSearchRoots, payload, waitMs) => {
   const pending = Boolean(payload?.pending);
   const siteKey = String(payload?.id || "").trim();
   if (!pending || !siteKey || waitMs <= 0) return payload;
-  const resultPath = path.join(repoRoot, "asset-factory", "out", "p2w", siteKey, "result.json");
+  const roots = Array.isArray(resultSearchRoots) && resultSearchRoots.length ? resultSearchRoots : [REPO_ROOT];
   const startedAt = Date.now();
   while (Date.now() - startedAt <= waitMs) {
-    try {
-      const raw = await fs.readFile(resultPath, "utf8");
-      const parsed = JSON.parse(raw);
-      if (Array.isArray(parsed?.pages) && parsed.pages.length > 0) {
-        return {
-          ...(payload && typeof payload === "object" ? payload : {}),
-          ...parsed,
-          id: siteKey,
-          pending: false,
-        };
-      }
-    } catch {}
+    for (const root of roots) {
+      const resultPath = path.join(root, "asset-factory", "out", "p2w", siteKey, "result.json");
+      try {
+        const raw = await fs.readFile(resultPath, "utf8");
+        const parsed = JSON.parse(raw);
+        if (Array.isArray(parsed?.pages) && parsed.pages.length > 0) {
+          let auditOk = null;
+          const auditPath = path.join(root, "asset-factory", "out", "p2w", siteKey, "audit.json");
+          try {
+            const auditRaw = await fs.readFile(auditPath, "utf8");
+            const audit = JSON.parse(auditRaw);
+            auditOk = Boolean(audit?.ok);
+          } catch {}
+          const gateIssues = collectGenerationGateIssues(parsed);
+          const publishStatus =
+            auditOk === null ? (gateIssues.length === 0 ? "ready" : "blocked") : auditOk && gateIssues.length === 0 ? "ready" : "blocked";
+          return {
+            ...(payload && typeof payload === "object" ? payload : {}),
+            ...parsed,
+            id: siteKey,
+            pending: false,
+            publishStatus,
+            generationGateIssues: gateIssues,
+          };
+        }
+      } catch {}
+    }
     await sleep(2500);
   }
   return payload;
@@ -324,6 +500,7 @@ const matchesExpectedPattern = (actual, expectedPattern) => {
 
 const run = async () => {
   const options = parseArgs(process.argv);
+  const pageTypeSkillsEnabledOverride = parseOptionalBoolean(process.env.BUILDER_PAGE_TYPE_SKILLS_ENABLED);
   const regressionEnvState = await buildRegressionEnv({ builderRoot: ROOT, repoRoot: REPO_ROOT });
   const effectiveEnv = regressionEnvState.env || process.env;
   const hasLlmProvider =
@@ -333,7 +510,17 @@ const run = async () => {
   const promptsRaw = await fs.readFile(options.promptsFile, "utf8");
   const promptsConfig = JSON.parse(promptsRaw);
   const rawCases = Array.isArray(promptsConfig?.cases) ? promptsConfig.cases : [];
-  const cases = options.maxCases > 0 ? rawCases.slice(0, options.maxCases) : rawCases;
+  const caseFilterSet = new Set(options.caseIds);
+  const filteredCases = caseFilterSet.size
+    ? rawCases.filter((item) => caseFilterSet.has(String(item?.id || "").trim()))
+    : rawCases;
+  const missingCaseIds = caseFilterSet.size
+    ? [...caseFilterSet].filter((id) => !filteredCases.some((item) => String(item?.id || "").trim() === id))
+    : [];
+  if (missingCaseIds.length > 0) {
+    console.warn(`[baseline] warning: case ids not found: ${missingCaseIds.join(", ")}`);
+  }
+  const cases = options.maxCases > 0 ? filteredCases.slice(0, options.maxCases) : filteredCases;
   if (!cases.length) {
     throw new Error(`No prompt cases found in ${options.promptsFile}`);
   }
@@ -346,6 +533,10 @@ const run = async () => {
       console.log(`[env] loaded ${item.filePath} keys=${item.applied}`);
     }
   }
+  const resultSearchRoots = buildResultSearchRoots({
+    primaryRoot: REPO_ROOT,
+    loadedFiles: regressionEnvState.loadedFiles,
+  });
 
   const results = [];
 
@@ -376,6 +567,9 @@ const run = async () => {
         templatePlanProfile: "",
         resolutionLayer: "",
         shortCircuited: false,
+        publishStatus: "",
+        gateIssueCount: 0,
+        generationGateIssues: [],
         requestError: null,
         logMetrics: {
           usageInputTokens: 0,
@@ -400,15 +594,46 @@ const run = async () => {
     let response;
     let payload;
     let requestError = null;
+    let progressTerminalEvent = "";
+    let progressStages = [];
+    let progressEventCount = 0;
+    let progressRawEventCount = 0;
 
     try {
+      const caseRequestBody =
+        c.requestBody && typeof c.requestBody === "object" && !Array.isArray(c.requestBody)
+          ? c.requestBody
+          : {};
+      const requestBody = {
+        prompt: c.prompt,
+        persist: options.persist,
+        ...(options.streamProgress ? { stream: true } : {}),
+        ...caseRequestBody,
+        ...(options.requestTimeoutMs > 0 ? { requestTimeoutMs: options.requestTimeoutMs } : {}),
+        ...(typeof pageTypeSkillsEnabledOverride === "boolean"
+          ? { pageTypeSkillsEnabled: pageTypeSkillsEnabledOverride }
+          : {}),
+      };
       response = await fetch(`${options.baseUrl}/api/creation`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ prompt: c.prompt, persist: options.persist }),
+        body: JSON.stringify(requestBody),
       });
-      payload = await safeJson(response);
-      payload = await loadPersistedResultWhenPending(REPO_ROOT, payload, options.pendingWaitMs);
+      if (options.streamProgress) {
+        const streamResult = await readStreamResponse(response);
+        payload = streamResult.payload;
+        progressTerminalEvent = String(streamResult.terminalEvent || "");
+        progressStages = Array.isArray(streamResult.progressStages) ? streamResult.progressStages : [];
+        progressEventCount = Number(streamResult.progressEventCount || 0);
+        progressRawEventCount = Number(streamResult.eventCount || 0);
+        if (progressTerminalEvent === "error") {
+          const streamError = String(streamResult?.payload?.error || "generation_failed");
+          requestError = requestError || `streamError:${streamError}`;
+        }
+      } else {
+        payload = await safeJson(response);
+      }
+      payload = await loadPersistedResultWhenPending(resultSearchRoots, payload, options.pendingWaitMs);
     } catch (error) {
       requestError = error instanceof Error ? error.message : String(error);
       payload = null;
@@ -463,7 +688,19 @@ const run = async () => {
         : {};
     const templatePlanProfile = String(resolvedByLayer?.templatePlanProfile ?? "");
     const resolutionLayer = String(resolvedByLayer?.resolutionLayer ?? "");
+    const fanOutMode = String(resolvedByLayer?.skillOrchestration?.diagnostics?.mode ?? "");
+    const pageBuilderSubgraph = Boolean(resolvedByLayer?.skillOrchestration?.diagnostics?.pageBuilderSubgraph);
     const shortCircuited = Boolean(candidateSelection?.shortCircuited);
+    const publishStatus = String(payload?.publishStatus || "");
+    const generationGateIssues = Array.isArray(payload?.generationGateIssues)
+      ? payload.generationGateIssues.map((entry) => String(entry)).filter(Boolean)
+      : [];
+    const qaOverallFromReport = Number(payload?.qaReport?.overallScore);
+    const qaOverallFromResolved = Number(resolvedByLayer?.qa?.overallScore);
+    const qaOverallRaw = Number.isFinite(qaOverallFromReport) ? qaOverallFromReport : qaOverallFromResolved;
+    const qaOverallScore = Number.isFinite(qaOverallRaw) && qaOverallRaw > 0 ? qaOverallRaw : null;
+    const publishReady = publishStatus ? publishStatus === "ready" : true;
+    const noGateIssues = generationGateIssues.length === 0;
 
     const assertionFailures = [];
     if (c.expectedProfileId && !matchesExpectedValue(templatePlanProfile, c.expectedProfileId)) {
@@ -474,6 +711,24 @@ const run = async () => {
     }
     if (c.expectedResolutionLayer && !matchesExpectedValue(resolutionLayer, c.expectedResolutionLayer)) {
       assertionFailures.push(`layer:${resolutionLayer || "-"}`);
+    }
+    if (c.expectedFanOutMode && !matchesExpectedValue(fanOutMode, c.expectedFanOutMode)) {
+      assertionFailures.push(`fanOutMode:${fanOutMode || "-"}`);
+    }
+    if (typeof c.expectPageBuilderSubgraph === "boolean" && pageBuilderSubgraph !== c.expectPageBuilderSubgraph) {
+      assertionFailures.push(`pageBuilderSubgraph:${pageBuilderSubgraph}`);
+    }
+    const expectedProgressTerminalEvents = toList(c.expectedProgressTerminalEvents)
+      .map((entry) => String(entry || "").trim())
+      .filter(Boolean);
+    if (
+      options.streamProgress &&
+      expectedProgressTerminalEvents.length > 0 &&
+      !expectedProgressTerminalEvents.includes(progressTerminalEvent)
+    ) {
+      assertionFailures.push(
+        `progressTerminalEvent:${progressTerminalEvent || "-"}!=${expectedProgressTerminalEvents.join("|")}`
+      );
     }
     if (typeof c.minPages === "number" && pageCount < c.minPages) {
       assertionFailures.push(`minPages:${pageCount}<${c.minPages}`);
@@ -487,14 +742,54 @@ const run = async () => {
     assertionFailures.push(...compareRequiredPagePaths(payload?.pages, c.requiredPagePaths));
     assertionFailures.push(...compareForbiddenPagePaths(payload?.pages, c.forbiddenPagePaths));
     assertionFailures.push(...compareExpectedPageShapes(pageShapes, c.expectedPageShapes));
+    if (options.streamProgress && options.enforceProgressStages && !requestError) {
+      const normalizedProgressStages = new Set(progressStages.map((entry) => String(entry || "").trim()).filter(Boolean));
+      const requireStage = (stage) => {
+        if (!normalizedProgressStages.has(stage)) {
+          assertionFailures.push(`progressStageMissing:${stage}`);
+        }
+      };
+      const requireAnyStage = (stages, label) => {
+        const hasAny = stages.some((stage) => normalizedProgressStages.has(stage));
+        if (!hasAny) assertionFailures.push(`progressStageMissingAny:${label}`);
+      };
+      requireStage("request_received");
+      requireStage("prompt_parsed");
+      requireStage("structured_input_parsed");
+      requireStage("generation_started");
+      requireStage("planner_started");
+      requireStage("planner_completed");
+      requireStage("page_builder_started");
+      if (options.persist) {
+        requireStage("persist_started");
+      }
+      if (progressTerminalEvent === "complete") {
+        requireStage("generation_completed");
+        requireStage("assembler_started");
+        requireStage("assembler_completed");
+        if (options.persist) requireStage("persist_completed");
+      } else if (progressTerminalEvent === "pending" || progressTerminalEvent === "timeout") {
+        requireAnyStage(["generation_timeout", "generation_completed_after_timeout"], "timeout_or_grace_complete");
+        if (options.persist) requireAnyStage(["persist_completed", "pending_returned"], "persist_completed_or_pending");
+      } else {
+        assertionFailures.push(`progressTerminalEvent:${progressTerminalEvent || "-"}`);
+      }
+    }
 
+    const timeoutFallbackFailed = options.allowTimeoutFallback ? false : hasTimeoutFallback;
+    if (options.enforcePublishReady && !publishReady) {
+      assertionFailures.push(`publishStatus:${publishStatus || "-"}`);
+    }
+    if (options.enforceNoGateIssues && !noGateIssues) {
+      assertionFailures.push(`gateIssues:${generationGateIssues.length}`);
+    }
     const passed =
       !requestError &&
       Boolean(response?.ok) &&
       missingRequired.length === 0 &&
       !hasFallbackBlock &&
       !hasSectionFallbackError &&
-      !hasTimeoutFallback &&
+      !timeoutFallbackFailed &&
       assertionFailures.length === 0;
 
     const row = {
@@ -519,7 +814,17 @@ const run = async () => {
       pageShapes,
       templatePlanProfile,
       resolutionLayer,
+      fanOutMode,
+      pageBuilderSubgraph,
       shortCircuited,
+      publishStatus,
+      gateIssueCount: generationGateIssues.length,
+      generationGateIssues,
+      qaOverallScore,
+      progressTerminalEvent,
+      progressEventCount,
+      progressRawEventCount,
+      progressStages: Array.from(new Set(progressStages)),
       requestError,
       logMetrics,
     };
@@ -529,7 +834,7 @@ const run = async () => {
     const statusTag = passed ? "PASS" : "FAIL";
     console.log(
       `[${statusTag}] ${title} duration=${formatMs(durationMs)} ` +
-        `types=${blockTypes.length} missing=[${missingRequired.join(",")}] asserts=[${assertionFailures.join(",")}] ` +
+        `types=${blockTypes.length} missing=[${missingRequired.join(",")}] gates=${generationGateIssues.length} asserts=[${assertionFailures.join(",")}] ` +
         `inTok=${logMetrics.usageInputTokens} outTok=${logMetrics.usageOutputTokens}`
     );
   }
@@ -545,6 +850,9 @@ const run = async () => {
   const withAssertionFailures = executedRows.filter((item) => item.assertionFailures.length > 0).length;
 
   const durationList = executedRows.map((item) => item.durationMs);
+  const qaScoreList = executedRows
+    .map((item) => (Number.isFinite(Number(item.qaOverallScore)) ? Number(item.qaOverallScore) : null))
+    .filter((item) => item !== null);
   const summary = {
     total,
     executed,
@@ -564,6 +872,9 @@ const run = async () => {
     totalToolMissing: executedRows.reduce((sum, item) => sum + item.logMetrics.toolMissing, 0),
     totalToolEmptyPayload: executedRows.reduce((sum, item) => sum + item.logMetrics.toolEmptyPayload, 0),
     assertionFailureRate: executed ? withAssertionFailures / executed : 0,
+    avgQaOverallScore: qaScoreList.length
+      ? Number((qaScoreList.reduce((sum, score) => sum + score, 0) / qaScoreList.length).toFixed(4))
+      : null,
   };
 
   await fs.mkdir(options.outDir, { recursive: true });
@@ -599,18 +910,19 @@ const run = async () => {
     `- assertionFailureRate: ${toPercent(summary.assertionFailureRate)}`,
     `- avgDuration: ${formatMs(summary.avgDurationMs)}`,
     `- p95Duration: ${formatMs(summary.p95DurationMs)}`,
+    `- avgQaOverallScore: ${summary.avgQaOverallScore ?? "-"}`,
     `- inputTokens(sum): ${summary.totalUsageInputTokens}`,
     `- outputTokens(sum): ${summary.totalUsageOutputTokens}`,
     "",
     "## Cases",
     "",
-    "| case | status | duration | profile | pages | missingRequired | assertionFailures | inputTokens | outputTokens |",
-    "|---|---|---:|---|---:|---|---|---:|---:|",
+    "| case | status | duration | profile | pages | publishStatus | gateIssues | qaOverall | missingRequired | assertionFailures | inputTokens | outputTokens |",
+    "|---|---|---:|---|---:|---|---:|---:|---|---|---:|---:|",
     ...results.map((item) => {
       const status = item.skipped ? "SKIP" : item.passed ? "PASS" : "FAIL";
       const missing = item.missingRequired.length ? item.missingRequired.join(",") : "-";
       const assertions = item.assertionFailures.length ? item.assertionFailures.join(",") : "-";
-      return `| ${item.id} | ${status} | ${formatMs(item.durationMs)} | ${item.templatePlanProfile || "-"} | ${item.pageCount} | ${missing} | ${assertions} | ${item.logMetrics.usageInputTokens} | ${item.logMetrics.usageOutputTokens} |`;
+      return `| ${item.id} | ${status} | ${formatMs(item.durationMs)} | ${item.templatePlanProfile || "-"} | ${item.pageCount} | ${item.publishStatus || "-"} | ${item.gateIssueCount || 0} | ${item.qaOverallScore ?? "-"} | ${missing} | ${assertions} | ${item.logMetrics.usageInputTokens} | ${item.logMetrics.usageOutputTokens} |`;
     }),
     "",
   ];

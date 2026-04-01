@@ -27,18 +27,6 @@ export type SiteBlueprint = {
   pages: SiteBlueprintPage[];
 };
 
-const extractBrandNameFromPrompt = (prompt: string): string => {
-  const quoted = prompt.match(/["「]([^"」]{1,40})["」]/);
-  if (quoted) return quoted[1].trim();
-  const chinese = prompt.match(/为\s*([A-Za-z\u4e00-\u9fff][\w\u4e00-\u9fff\s-]{1,30})\s*(?:生成|制作|创建|构建|设计)/i);
-  if (chinese) return chinese[1].trim();
-  const english = prompt.match(/for\s+([A-Za-z][A-Za-z0-9\s-]{1,40})\s+(?:generate|build|create|design)/i);
-  if (english) return english[1].trim();
-  const named = prompt.match(/(?:叫|called|named|品牌名?(?:为|是)?)\s*[：:]?\s*([A-Za-z\u4e00-\u9fff][\w\u4e00-\u9fff\s]{0,30})/i);
-  if (named) return named[1].trim();
-  return "";
-};
-
 const normalizePagePath = (value: unknown) => {
   const raw = typeof value === "string" ? value.trim() : "";
   if (!raw || raw === "home" || raw === "index") return "/";
@@ -104,3 +92,4 @@ export const buildSiteBlueprint = (input: {
     pages,
   };
 };
+import { extractBrandNameFromPrompt } from "@/lib/agent/brand-utils";

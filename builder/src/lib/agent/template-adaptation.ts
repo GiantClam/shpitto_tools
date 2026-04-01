@@ -327,61 +327,90 @@ const pageRuleDefinitions: Record<
   generic: {},
 };
 
-const familyBrandTerms: Record<KnownTemplateFamily, string[]> = {
-  breton: ["Breton", "Hydra", "Kappa G", "BIT", "Breton S.p.A."],
-  pamamachinetools: ["PAMA", "Pama"],
-  sandvik: ["Sandvik"],
-  fptindustrie: ["FPT", "FPT Industrie"],
-  carbon3d: ["Carbon", "Carbon3D", "Carbon 3D", "M3", "L1", "AO Polishing"],
-  plexus: ["Plexus"],
-  ridecake: ["Ridecake"],
-  framework_new: ["Framework"],
-  kymeta: ["Kymeta"],
-  ionq: ["IonQ", "IonQ, Inc.", "IonQ Forte", "IonQ Aria", "IonQ Harmony", "IonQ Tempo"],
-  sixtine: ["Sixtine"],
-  transpa_rent: ["Transparent", "Transparent Speaker", "Transparent Turntable"],
-  pagani: ["Pagani", "Utopia", "Utopia Roadster", "Huayra", "Zonda"],
-  nothing_tech: ["Nothing", "CMF", "Nothing Phone", "Phone (3a)", "CMF Phone"],
-  vanmoof: ["VanMoof", "VanMoof A5", "VanMoof S5"],
-  analogue: ["Analogue", "Analogue Pocket"],
-  teenage_engineering: ["Teenage Engineering", "OP-1", "Field System"],
-  siemens: ["Siemens", "Xcelerator", "Industrial Metaverse"],
-  audeze: ["Audeze", "LCD-5", "Maxwell", "MM-100"],
-  devialet: ["Devialet", "Phantom", "Mania", "Dione"],
-  unistellar: ["Unistellar", "eVscope", "Odyssey", "Equinox"],
-  masterdynamic: ["Master & Dynamic", "Master &amp; Dynamic", "MW75", "MH40", "MG20"],
-  unknown: [],
+const normalizeComparableToken = (value: string) => normalizeText(value).replace(/[^a-z0-9\u4e00-\u9fff]+/g, "");
+
+const referenceStopWords = new Set([
+  "template",
+  "style",
+  "visual",
+  "website",
+  "landing",
+  "page",
+  "site",
+  "brand",
+  "company",
+  "official",
+  "web",
+  "design",
+  "like",
+  "similar",
+  "inspired",
+  "reference",
+  "based",
+  "using",
+  "new",
+  "tech",
+  "auto",
+  "home",
+  "desktop",
+]);
+
+const tokenizeReferencePhrase = (value: string) =>
+  String(value || "")
+    .split(/[^A-Za-z0-9\u4e00-\u9fff]+/)
+    .map((item) => item.trim())
+    .filter((item) => item.length >= 3 && !referenceStopWords.has(normalizeText(item)));
+
+const extractReferenceTermsFromPrompt = (prompt: string): string[] => {
+  const text = String(prompt || "");
+  const phrases = new Set<string>();
+  const regex =
+    /(?:like|inspired by|reference(?:d)? from|similar to|based on|using|with|视觉模板|风格参考|类似|参考|对标)\s+([A-Za-z\u4e00-\u9fff][A-Za-z0-9\u4e00-\u9fff&.'’\-\s]{1,64})/gi;
+  Array.from(text.matchAll(regex)).forEach((match) => {
+    const raw = String(match[1] || "")
+      .trim()
+      .split(/[.!?。！]/)[0]
+      .replace(/[,:;，；：]+$/g, "")
+      .trim();
+    if (raw) phrases.add(raw);
+  });
+  const direct = Array.from(phrases).flatMap((phrase) => [phrase, ...tokenizeReferencePhrase(phrase)]);
+  return Array.from(
+    new Set(
+      direct
+        .map((item) => item.trim())
+        .filter((item) => item.length >= 3 && !referenceStopWords.has(normalizeText(item)))
+    )
+  ).slice(0, 24);
 };
 
-export const getTemplateFamilyBrandTerms = (family: KnownTemplateFamily) => familyBrandTerms[family] ?? [];
-
-const familyForbiddenBlockPatterns: Partial<Record<KnownTemplateFamily, RegExp[]>> = {
-  breton: [/Newsfrombretonworld/i, /Bretondeal/i, /Worldpen/i, /BretonHydra/i, /BretonKappa/i, /\bBIT\b/i],
-  pamamachinetools: [/PamaWorldwide/i, /ResourcesCtaNewssec/i],
-  sandvik: [/SandvikNews/i, /Sandvik.*Footer/i],
-  fptindustrie: [/FptLandingHero/i, /FptIndustrie/i],
-  carbon3d: [/DesignEngine/i, /Dental/i, /Retainer/i, /SmartPartWasher/i, /AO[ _-]?Polishing/i],
-  kymeta: [/KymetaSatelliteDemo/i, /KymetaHawk/i, /SatelliteDemo/i],
-  plexus: [/ThoughtLeadership/i, /SustainabilityReport/i, /Aerospace/i, /Healthcare/i],
-  ridecake: [/Merch/i, /CampaignLookbook/i, /LaunchGallery/i, /Ridecake[^/]*Collection/i],
-  framework_new: [/Supportmainpen/i, /HfpenAlt9/i, /Newsletter/i],
-  ionq: [/Topannouncementpen/i, /QuantumWorldCongress/i, /BlogFooter/i],
-  sixtine: [/SixtineCaseStrip/i, /SixtineResidence/i, /SixtineEditorial/i],
-  transpa_rent: [/TransparentSpeakerBlackWiFi/i, /TransparentTurntable/i, /AromaDiffuser/i, /LightSpeakerWhite/i],
-  pagani: [/Pagani/i, /UtopiaRoadster/i, /Huayra/i, /Zonda/i],
-  nothing_tech: [/Nothing/i, /\bCMF\b/i],
-  vanmoof: [/VanMoof/i],
-  analogue: [/Analogue/i],
-  teenage_engineering: [/TeenageEngineering/i, /\bOP1\b/i, /FieldSystem/i],
-  siemens: [/IndustrialMetaverse/i, /Xcelerator/i, /NVIDIA/i, /InsightsHub/i],
-  audeze: [/LCD[-_]?5/i, /Maxwell/i, /MM[-_]?100/i, /AudezeHQ/i],
-  devialet: [/Phantom/i, /Mania/i, /Dione/i, /Opera/i],
-  unistellar: [/Odyssey/i, /eVscope/i, /Equinox/i, /CitizenScience/i],
-  masterdynamic: [/MW75/i, /MH40/i, /MG20/i, /LouisVuitton/i],
+export const getTemplateFamilyBrandTerms = (family: KnownTemplateFamily) => {
+  if (!family || family === "unknown") return [];
+  const plain = family.replace(/_/g, " ").trim();
+  const compact = family.replace(/_/g, "").trim();
+  const splitTokens = tokenizeReferencePhrase(plain);
+  const alphaOnly = compact.replace(/[0-9]+/g, "").trim();
+  return Array.from(new Set([plain, compact, alphaOnly, ...splitTokens]))
+    .map((item) => item.trim())
+    .filter((item) => item.length >= 3 && !referenceStopWords.has(normalizeText(item)));
 };
 
-const includesTerm = (snippets: string[], term: string) =>
-  snippets.some((snippet) => normalizeText(snippet).includes(normalizeText(term)));
+const includesTerm = (snippets: string[], term: string) => {
+  const normalizedTerm = normalizeText(term);
+  if (!normalizedTerm) return false;
+  return snippets.some((snippet) => normalizeText(snippet).includes(normalizedTerm));
+};
+
+const blockContainsReference = (blockType: string, term: string) => {
+  const normalizedType = normalizeComparableToken(blockType);
+  const normalizedTerm = normalizeComparableToken(term);
+  if (!normalizedType || !normalizedTerm) return false;
+  const normalizedAlphaTerm = normalizedTerm.replace(/[0-9]+/g, "");
+  return (
+    normalizedType.includes(normalizedTerm) ||
+    (normalizedAlphaTerm.length >= 3 && normalizedType.includes(normalizedAlphaTerm))
+  );
+};
 
 export const buildTemplateAdaptationSummary = (input: {
   prompt?: string;
@@ -394,6 +423,12 @@ export const buildTemplateAdaptationSummary = (input: {
   const referenceMode = isReferenceMode(String(input.prompt || ""), templateFamily);
   const enforceSemanticMismatch =
     referenceMode || (templateFamily !== "unknown" && scenario !== "generic");
+  const referenceTerms = Array.from(
+    new Set([
+      ...extractReferenceTermsFromPrompt(String(input.prompt || "")),
+      ...(referenceMode ? getTemplateFamilyBrandTerms(templateFamily) : []),
+    ])
+  );
   const findings: TemplateAdaptationFinding[] = [];
   const pageContracts = descriptors
     .map((page) => {
@@ -430,25 +465,25 @@ export const buildTemplateAdaptationSummary = (input: {
     .filter(Boolean) as TemplateAdaptationSummary["pageContracts"];
 
   if (referenceMode || enforceSemanticMismatch) {
-    const terms = familyBrandTerms[templateFamily] ?? [];
-    const forbiddenPatterns = familyForbiddenBlockPatterns[templateFamily] ?? [];
     descriptors.forEach((page) => {
-      const residueTerms = referenceMode ? terms.filter((term) => includesTerm(page.textSnippets, term)) : [];
+      const residueTerms = referenceMode ? referenceTerms.filter((term) => includesTerm(page.textSnippets, term)) : [];
       if (referenceMode && residueTerms.length) {
         findings.push({
           severity: "error",
           code: "template_brand_residue",
-          message: `Page ${page.path} still contains source-template brand terms: ${residueTerms.join(", ")}`,
+          message: `Page ${page.path} still contains source-reference terms: ${residueTerms.join(", ")}`,
           details: { path: page.path, family: templateFamily, residueTerms },
         });
       }
-      const forbiddenBlocks = page.blockTypes.filter((type) => forbiddenPatterns.some((pattern) => pattern.test(type)));
+      const forbiddenBlocks = page.blockTypes.filter((type) =>
+        referenceTerms.some((term) => blockContainsReference(type, term))
+      );
       if (forbiddenBlocks.length) {
         findings.push({
           severity: "error",
           code: "template_semantic_mismatch",
-          message: `Page ${page.path} uses template blocks that are semantically wrong for a referenced ${templateFamily} adaptation`,
-          details: { path: page.path, family: templateFamily, forbiddenBlocks },
+          message: `Page ${page.path} still carries reference-specific block identities`,
+          details: { path: page.path, family: templateFamily, forbiddenBlocks, referenceTerms },
         });
       }
     });

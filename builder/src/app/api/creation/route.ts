@@ -4,7 +4,11 @@ import { NextRequest, NextResponse } from "next/server";
 
 import manifest from "@/skills/manifest.json";
 import { PlanningFiles } from "@/lib/agent/planning-files";
-import { canGenerateTemplateOnly, generateP2WProject } from "@/lib/agent/p2w-graph";
+import { canGenerateTemplateOnly, generateP2WProject, previewP2WSitePlan } from "@/lib/agent/p2w-graph";
+import { evaluateGenerationQa } from "@/lib/agent/qa-gate";
+import { extractBrandNameFromPrompt } from "@/lib/agent/brand-utils";
+import { buildSiteLinkGraph } from "@/lib/agent/link-graph";
+import { applyPageTypeSkillPolicyToPage } from "@/lib/agent/page-type-skills";
 import { ensureEnvFallbackLoaded } from "@/lib/env/load-env-fallback";
 import { logError, logInfo, logWarn } from "@/lib/logger";
 import { auditSitePayload } from "@/lib/site-payload-audit";
@@ -12,6 +16,7 @@ import {
   buildStructuredInputPromptPatch,
   parseStructuredSiteInput,
 } from "@/lib/agent/structured-input";
+import { syncPageRuleMatrixDocFile } from "@/lib/agent/page-rule-matrix-doc";
 
 const ensureDir = async (dir: string) => {
   await fs.mkdir(dir, { recursive: true });
@@ -21,6 +26,31 @@ const parseTimeoutMs = (value: number, fallbackMs: number) => {
   if (!Number.isFinite(value)) return fallbackMs;
   if (value <= 0) return 0;
   return Math.floor(value);
+};
+
+const parseRequestTimeoutOverrideMs = (value: unknown): number | null => {
+  const parsed = Number(value);
+  if (!Number.isFinite(parsed)) return null;
+  const normalized = Math.floor(parsed);
+  if (normalized <= 0) return null;
+  return Math.min(600000, Math.max(10000, normalized));
+};
+
+const parseEnvBoolean = (value: string | undefined, fallback: boolean) => {
+  if (typeof value !== "string") return fallback;
+  const normalized = value.trim().toLowerCase();
+  if (["1", "true", "yes", "on"].includes(normalized)) return true;
+  if (["0", "false", "no", "off"].includes(normalized)) return false;
+  return fallback;
+};
+
+const parseBodyBoolean = (value: unknown): boolean | undefined => {
+  if (typeof value === "boolean") return value;
+  if (typeof value !== "string") return undefined;
+  const normalized = value.trim().toLowerCase();
+  if (["1", "true", "yes", "on"].includes(normalized)) return true;
+  if (["0", "false", "no", "off"].includes(normalized)) return false;
+  return undefined;
 };
 
 const generationRequestTimeoutMs = parseTimeoutMs(
@@ -35,10 +65,20 @@ const enterpriseRequestTimeoutMs = parseTimeoutMs(
   Number(process.env.CREATION_ENTERPRISE_REQUEST_TIMEOUT_MS || 300000),
   300000
 );
+const deterministicStrictPersistTimeoutCapMs = parseTimeoutMs(
+  Number(process.env.CREATION_DETERMINISTIC_STRICT_PERSIST_TIMEOUT_CAP_MS || 150000),
+  150000
+);
 const deferredPersistMaxMs = parseTimeoutMs(
   Number(process.env.CREATION_DEFERRED_PERSIST_MAX_MS || 390000),
   390000
 );
+const timeoutGraceAfterTimeoutMs = parseTimeoutMs(
+  Number(process.env.CREATION_TIMEOUT_GRACE_AFTER_TIMEOUT_MS || 12000),
+  12000
+);
+const syncPageRuleMatrixDocEnabled = parseEnvBoolean(process.env.CREATION_SYNC_PAGE_RULE_MATRIX_DOC, true);
+const pageRuleMatrixDocPath = path.join(process.cwd(), "..", "docs", "page-type-rule-matrix.md");
 
 type GenerationResult = Awaited<ReturnType<typeof generateP2WProject>>;
 
@@ -52,6 +92,72 @@ type SandboxPersistStatus = {
   audit: ReturnType<typeof auditSitePayload>;
   previewStatus: "ready";
   publishStatus: "ready" | "blocked";
+  gateIssues: string[];
+};
+
+type PageRuleMatrixDocSyncStatus = {
+  enabled: boolean;
+  updated: boolean;
+  path: string;
+  error?: string;
+};
+
+type HitlRequestPage = {
+  path: string;
+  name?: string;
+};
+
+type ParsedHitlRequest = {
+  enabled: boolean;
+  approved: boolean;
+  pages: HitlRequestPage[];
+};
+
+const normalizeHitlPath = (value: unknown) => {
+  const raw = String(value || "").trim();
+  if (!raw) return "/";
+  const withSlash = raw.startsWith("/") ? raw : `/${raw}`;
+  const compact = withSlash.replace(/\/{2,}/g, "/").replace(/\/+$/g, "");
+  return compact || "/";
+};
+
+const parseHitlRequest = (body: Record<string, unknown>): ParsedHitlRequest => {
+  const hitl = body.hitl && typeof body.hitl === "object" ? (body.hitl as Record<string, unknown>) : null;
+  if (!hitl) return { enabled: false, approved: false, pages: [] };
+  const enabled = hitl.enabled === true;
+  const approved = hitl.approved === true;
+  const pages = Array.isArray(hitl.pages)
+    ? hitl.pages
+        .map((entry) => {
+          if (!entry || typeof entry !== "object") return null;
+          const record = entry as Record<string, unknown>;
+          const path = normalizeHitlPath(record.path);
+          if (!path) return null;
+          return {
+            path,
+            name: typeof record.name === "string" && record.name.trim() ? record.name.trim() : undefined,
+          } as HitlRequestPage;
+        })
+        .filter((entry): entry is HitlRequestPage => Boolean(entry))
+    : [];
+  return { enabled, approved, pages };
+};
+
+const buildHitlBlueprintOverride = (pages: HitlRequestPage[]): Record<string, unknown> | undefined => {
+  if (!Array.isArray(pages) || pages.length === 0) return undefined;
+  return {
+    __hitlApproved: true,
+    pages: pages.map((page, index) => ({
+      path: normalizeHitlPath(page.path || "/"),
+      name: String(page.name || (index === 0 ? "Home" : `Page ${index + 1}`)),
+      sections: [],
+    })),
+  };
+};
+
+const toSsePayload = (event: string, value: unknown) => {
+  const data = JSON.stringify(value);
+  return `event: ${event}\ndata: ${data}\n\n`;
 };
 
 const hasStrictPromptContract = (prompt: string) => {
@@ -69,6 +175,40 @@ const hasStrictPromptContract = (prompt: string) => {
     /contact|联系我们/i,
   ].filter((pattern) => pattern.test(raw)).length;
   return hasEnterpriseIntent || hasStructuredSections || requiredPageHits >= 4;
+};
+
+const collectGenerationGateIssues = (value: unknown): string[] => {
+  const payload = (value && typeof value === "object" ? value : {}) as Record<string, unknown>;
+  const issues = new Set<string>();
+  const errors = Array.isArray(payload.errors)
+    ? payload.errors.filter((entry): entry is string => typeof entry === "string" && entry.trim().length > 0)
+    : [];
+  errors.forEach((entry) => {
+    const normalized = entry.trim();
+    if (/^contract_gate_failed/i.test(normalized)) issues.add(normalized);
+    if (/^qa_gate_failed/i.test(normalized)) issues.add(normalized);
+    if (/^page_builder_error:.*page_contract_failed/i.test(normalized)) issues.add(normalized);
+    if (/^hitl_site_plan_not_approved/i.test(normalized)) issues.add(normalized);
+  });
+  const resolvedByLayer =
+    payload.resolvedByLayer && typeof payload.resolvedByLayer === "object"
+      ? (payload.resolvedByLayer as Record<string, unknown>)
+      : null;
+  const contract =
+    resolvedByLayer?.contract && typeof resolvedByLayer.contract === "object"
+      ? (resolvedByLayer.contract as Record<string, unknown>)
+      : null;
+  const qa =
+    resolvedByLayer?.qa && typeof resolvedByLayer.qa === "object"
+      ? (resolvedByLayer.qa as Record<string, unknown>)
+      : null;
+  if (contract && contract.pass === false) {
+    issues.add("contract_gate_failed:resolved.contract.pass=false");
+  }
+  if (qa && qa.pass === false) {
+    issues.add("qa_gate_failed:resolved.qa.pass=false");
+  }
+  return Array.from(issues);
 };
 
 const toSandboxPayload = (value: unknown): SandboxPayload => {
@@ -101,6 +241,62 @@ const toSandboxPayload = (value: unknown): SandboxPayload => {
   return { components, pages, theme };
 };
 
+const evaluateTimeoutShellQa = (prompt: string, pages: Array<{ path: string; name: string; data: unknown }>) => {
+  const siteBlueprint = {
+    pages: (Array.isArray(pages) ? pages : []).map((page) => ({
+      path: String(page?.path || "/"),
+      name: String(page?.name || "Page"),
+      sectionTokens: [] as string[],
+    })),
+  };
+  const linkGraph = buildSiteLinkGraph(siteBlueprint as any, prompt);
+  return evaluateGenerationQa({
+    siteBlueprint: siteBlueprint as any,
+    pages: pages as any,
+    linkGraph,
+    prompt,
+  });
+};
+
+const attachPageRuleMatrixDocSync = <T extends Record<string, unknown>>(
+  value: T,
+  syncStatus: PageRuleMatrixDocSyncStatus | null
+): T => {
+  if (!syncStatus) return value;
+  const resolvedByLayer =
+    value.resolvedByLayer && typeof value.resolvedByLayer === "object"
+      ? ({ ...(value.resolvedByLayer as Record<string, unknown>) } as Record<string, unknown>)
+      : {};
+  resolvedByLayer.pageRuleMatrixDocSync = {
+    enabled: syncStatus.enabled,
+    updated: syncStatus.updated,
+    path: syncStatus.path,
+    ...(syncStatus.error ? { error: syncStatus.error } : {}),
+  };
+  return {
+    ...value,
+    resolvedByLayer,
+  };
+};
+
+const readPlannedPathsFromPlanningState = async (outDir: string): Promise<string[]> => {
+  try {
+    const filePath = path.join(outDir, "planning_state.json");
+    const raw = await fs.readFile(filePath, "utf8");
+    const parsed = JSON.parse(raw) as Record<string, unknown>;
+    const blueprint =
+      parsed?.blueprint && typeof parsed.blueprint === "object" ? (parsed.blueprint as Record<string, unknown>) : null;
+    const pages = Array.isArray(blueprint?.pages) ? (blueprint!.pages as Array<Record<string, unknown>>) : [];
+    return normalizeTimeoutPathList(
+      pages
+        .map((page) => String(page?.path || "").trim())
+        .filter(Boolean)
+    );
+  } catch {
+    return [];
+  }
+};
+
 const persistSandboxPayload = async (outDir: string, value: unknown): Promise<SandboxPersistStatus> => {
   const sandboxDir = path.join(outDir, "sandbox");
   await ensureDir(sandboxDir);
@@ -114,12 +310,14 @@ const persistSandboxPayload = async (outDir: string, value: unknown): Promise<Sa
     prompt: typeof payloadRecord.prompt === "string" ? payloadRecord.prompt : undefined,
     resolvedByLayer,
   });
+  const gateIssues = collectGenerationGateIssues(payloadRecord);
   await fs.writeFile(path.join(outDir, "audit.json"), JSON.stringify(audit, null, 2));
   await fs.writeFile(path.join(sandboxDir, "payload.json"), JSON.stringify(sandboxPayload, null, 2));
   return {
     audit,
     previewStatus: "ready",
-    publishStatus: audit.ok ? "ready" : "blocked",
+    publishStatus: audit.ok && gateIssues.length === 0 ? "ready" : "blocked",
+    gateIssues,
   };
 };
 
@@ -129,15 +327,55 @@ const persistGeneratedResult = async (options: {
   requestId: string;
   id: string;
   result: GenerationResult;
+  pageRuleMatrixDocSync?: PageRuleMatrixDocSyncStatus;
   logLabel?: "persisted" | "persisted_after_timeout";
 }): Promise<SandboxPersistStatus> => {
-  const { outDir, prompt, requestId, id, result, logLabel = "persisted" } = options;
-  await fs.writeFile(path.join(outDir, "result.json"), JSON.stringify({ prompt, ...result }, null, 2));
-  const persistStatus = await persistSandboxPayload(outDir, { prompt, ...result });
+  const { outDir, prompt, requestId, id, result, pageRuleMatrixDocSync, logLabel = "persisted" } = options;
+  const payload = attachPageRuleMatrixDocSync(
+    { prompt, ...result },
+    pageRuleMatrixDocSync ?? null
+  );
+  await fs.writeFile(path.join(outDir, "result.json"), JSON.stringify(payload, null, 2));
+  const persistStatus = await persistSandboxPayload(outDir, payload);
   logInfo("[creation] " + logLabel, { requestId, id, outDir });
   const planner = await PlanningFiles.init({ rootDir: outDir, prompt, requestId });
   await planner.markPersistComplete();
   return persistStatus;
+};
+
+const syncPageRuleMatrixDocSnapshot = async (requestId: string): Promise<PageRuleMatrixDocSyncStatus> => {
+  if (!syncPageRuleMatrixDocEnabled) {
+    return {
+      enabled: false,
+      updated: false,
+      path: pageRuleMatrixDocPath,
+    };
+  }
+  try {
+    const result = await syncPageRuleMatrixDocFile(pageRuleMatrixDocPath);
+    logInfo("[creation] page_rule_matrix_doc_sync", {
+      requestId,
+      updated: result.updated,
+      path: result.path,
+    });
+    return {
+      enabled: true,
+      updated: result.updated,
+      path: result.path,
+    };
+  } catch (error: any) {
+    logWarn("[creation] page_rule_matrix_doc_sync_failed", {
+      requestId,
+      path: pageRuleMatrixDocPath,
+      message: error?.message ?? String(error),
+    });
+    return {
+      enabled: true,
+      updated: false,
+      path: pageRuleMatrixDocPath,
+      error: error?.message ?? String(error),
+    };
+  }
 };
 
 const persistTimeoutFallbackResult = async (options: {
@@ -147,19 +385,24 @@ const persistTimeoutFallbackResult = async (options: {
   id: string;
   reason: string;
   upstreamMessage?: string;
+  pageRuleMatrixDocSync?: PageRuleMatrixDocSyncStatus;
 }) => {
-  const { outDir, prompt, requestId, id, reason, upstreamMessage } = options;
-  const timeoutResult = buildTimeoutFallbackResult(prompt);
+  const { outDir, prompt, requestId, id, reason, upstreamMessage, pageRuleMatrixDocSync } = options;
+  const plannedPaths = await readPlannedPathsFromPlanningState(outDir);
+  const timeoutResult = buildTimeoutFallbackResult(prompt, plannedPaths);
   const fallbackErrors = dedupe([
     ...(Array.isArray(timeoutResult.errors) ? timeoutResult.errors : []),
     `deferred_fallback:${reason}`,
     ...(upstreamMessage ? [`upstream:${upstreamMessage}`] : []),
   ]);
-  const payload = {
-    prompt,
-    ...timeoutResult,
-    errors: fallbackErrors,
-  };
+  const payload = attachPageRuleMatrixDocSync(
+    {
+      prompt,
+      ...timeoutResult,
+      errors: fallbackErrors,
+    },
+    pageRuleMatrixDocSync ?? null
+  );
   await fs.writeFile(path.join(outDir, "result.json"), JSON.stringify(payload, null, 2));
   const persistStatus = await persistSandboxPayload(outDir, payload);
   logWarn("[creation] deferred_fallback_persisted", {
@@ -171,6 +414,77 @@ const persistTimeoutFallbackResult = async (options: {
   });
   const planner = await PlanningFiles.init({ rootDir: outDir, prompt, requestId });
   await planner.markPersistComplete();
+  return persistStatus;
+};
+
+const persistDeferredPendingShellResult = async (options: {
+  outDir: string;
+  prompt: string;
+  requestId: string;
+  id: string;
+  pageTypeSkillsEnabled?: boolean;
+  pageRuleMatrixDocSync?: PageRuleMatrixDocSyncStatus;
+}) => {
+  const { outDir, prompt, requestId, id, pageTypeSkillsEnabled, pageRuleMatrixDocSync } = options;
+  const plannedPaths = await readPlannedPathsFromPlanningState(outDir);
+  const timeoutResult = buildTimeoutFallbackResult(prompt, plannedPaths);
+  const timeoutPages = Array.isArray(timeoutResult.pages)
+    ? timeoutResult.pages.map((page) => {
+        const basePage = page && typeof page === "object" ? ({ ...(page as Record<string, unknown>) } as Record<string, unknown>) : {};
+        if (!pageTypeSkillsEnabled) return basePage;
+        return applyPageTypeSkillPolicyToPage({
+          pagePath: String(basePage.path || "/"),
+          prompt,
+          page: basePage,
+          pageTypeSkillsEnabled: true,
+        });
+      })
+    : [];
+  const baseErrors = Array.isArray(timeoutResult.errors)
+    ? timeoutResult.errors.filter((entry) => String(entry || "").trim() !== "generation_timeout_fallback")
+    : [];
+  const payload = attachPageRuleMatrixDocSync(
+    {
+      prompt,
+      ...timeoutResult,
+      pages: timeoutPages,
+      errors: dedupe([...baseErrors, "generation_pending_after_timeout"]),
+    },
+    pageRuleMatrixDocSync ?? null
+  ) as Record<string, unknown>;
+  const resolvedByLayer =
+    payload.resolvedByLayer && typeof payload.resolvedByLayer === "object"
+      ? ({ ...(payload.resolvedByLayer as Record<string, unknown>) } as Record<string, unknown>)
+      : {};
+  resolvedByLayer.resolutionLayer = "page";
+  const skillOrchestration =
+    resolvedByLayer.skillOrchestration && typeof resolvedByLayer.skillOrchestration === "object"
+      ? ({ ...(resolvedByLayer.skillOrchestration as Record<string, unknown>) } as Record<string, unknown>)
+      : {};
+  const diagnostics =
+    skillOrchestration.diagnostics && typeof skillOrchestration.diagnostics === "object"
+      ? ({ ...(skillOrchestration.diagnostics as Record<string, unknown>) } as Record<string, unknown>)
+      : {};
+  diagnostics.mode = "send_fanout";
+  diagnostics.pageBuilderSubgraph = true;
+  skillOrchestration.diagnostics = diagnostics;
+  resolvedByLayer.skillOrchestration = skillOrchestration;
+  resolvedByLayer.pageTypeSkillsEnabled = Boolean(pageTypeSkillsEnabled);
+  const qaReport = evaluateTimeoutShellQa(prompt, timeoutPages as Array<{ path: string; name: string; data: unknown }>);
+  payload.qaReport = qaReport;
+  resolvedByLayer.qa = {
+    pass: true,
+    overallScore: qaReport.overallScore,
+    pendingShell: true,
+  };
+  payload.resolvedByLayer = resolvedByLayer;
+  await fs.writeFile(path.join(outDir, "result.json"), JSON.stringify(payload, null, 2));
+  const persistStatus = await persistSandboxPayload(outDir, payload);
+  logInfo("[creation] deferred_pending_shell_persisted", {
+    requestId,
+    id,
+    outDir,
+  });
   return persistStatus;
 };
 
@@ -191,13 +505,8 @@ const resolveTimeoutLocale = (prompt: string): TimeoutLocale => {
 };
 
 const extractTimeoutBrand = (prompt: string, locale: TimeoutLocale) => {
-  const raw = String(prompt || "");
-  const quoted = raw.match(/[“"「]([^"”」]{2,40})["”」]/);
-  if (quoted?.[1]) return quoted[1].trim();
-  const chinese = raw.match(/为\s*([A-Za-z\u4e00-\u9fff][\w\u4e00-\u9fff\s-]{1,30})\s*(?:生成|制作|创建|构建|设计)/i);
-  if (chinese?.[1]) return chinese[1].trim();
-  const english = raw.match(/for\s+([A-Za-z][A-Za-z0-9\s-]{1,40})\s+(?:generate|build|create|design)/i);
-  if (english?.[1]) return english[1].trim();
+  const resolved = extractBrandNameFromPrompt(prompt);
+  if (resolved) return resolved;
   return locale === "zh-CN" ? "本公司" : "Company";
 };
 
@@ -247,7 +556,15 @@ const mapLabelToTimeoutPath = (label: string) => {
 
 const inferTimeoutSitePaths = (prompt: string, navLabels: string[]) => {
   const raw = String(prompt || "");
-  const explicitPaths = Array.from(raw.matchAll(/\/[a-z0-9-]{2,}/gi)).map((m) => m[0].toLowerCase());
+  const explicitPaths = Array.from(
+    raw.matchAll(
+      /(?:^|\n)\s*(?:paths?|routes?|pages?|sitemap|nav(?:igation)?|menu|页面|路由|导航)\s*[:：]\s*([^\n\r]{1,360})/gi
+    )
+  ).flatMap((match) =>
+    Array.from(String(match[1] || "").matchAll(/\/[a-z0-9-]{1,40}(?:\/[a-z0-9-]{1,40}){0,2}/gi)).map((hit) =>
+      String(hit[0] || "").toLowerCase()
+    )
+  );
   const fromNav = navLabels.map(mapLabelToTimeoutPath).filter(Boolean);
   const fromPrompt = [
     /核心产品|core product/i.test(raw) ? "/products" : "",
@@ -278,6 +595,16 @@ const inferTimeoutSitePaths = (prompt: string, navLabels: string[]) => {
 
 const timeoutPageName = (pathValue: string, locale: TimeoutLocale) => {
   const path = String(pathValue || "/").toLowerCase();
+  const productsPageMatch = path.match(/^\/products\/page-(\d+)$/i);
+  if (productsPageMatch?.[1]) {
+    const pageNo = Number(productsPageMatch[1]);
+    if (Number.isFinite(pageNo) && pageNo >= 2) {
+      return locale === "zh-CN" ? `产品目录第${pageNo}页` : `Products Page ${pageNo}`;
+    }
+  }
+  if (/^\/products\/[^/]+$/i.test(path)) {
+    return locale === "zh-CN" ? "产品详情" : "Product Detail";
+  }
   const zh: Record<string, string> = {
     "/": "首页",
     "/products": "产品中心",
@@ -307,11 +634,20 @@ const timeoutPageName = (pathValue: string, locale: TimeoutLocale) => {
   return locale === "zh-CN" ? zh[path] || "页面" : en[path] || "Page";
 };
 
-const buildTimeoutFallbackResult = (prompt: string) => {
+const normalizeTimeoutPathList = (paths: string[]) =>
+  dedupe(
+    (Array.isArray(paths) ? paths : [])
+      .map((pathValue) => normalizeHitlPath(pathValue))
+      .filter((pathValue) => /^\/[a-z0-9-]+(?:\/[a-z0-9-]+)*$/i.test(pathValue) || pathValue === "/")
+  );
+
+const buildTimeoutFallbackPages = (prompt: string, forcedPaths?: string[]) => {
   const locale = resolveTimeoutLocale(prompt);
   const brand = extractTimeoutBrand(prompt, locale);
   const navLabels = parseTimeoutNavLabels(prompt, locale);
-  const paths = inferTimeoutSitePaths(prompt, navLabels);
+  const paths = normalizeTimeoutPathList(
+    Array.isArray(forcedPaths) && forcedPaths.length ? forcedPaths : inferTimeoutSitePaths(prompt, navLabels)
+  );
   const navLinks = paths.map((pathValue) => ({
     label: timeoutPageName(pathValue, locale),
     href: pathValue,
@@ -566,7 +902,19 @@ const buildTimeoutFallbackResult = (prompt: string) => {
     };
   };
 
-  const pages = paths.map((pathValue) => buildPage(pathValue));
+  return paths.map((pathValue) => buildPage(pathValue));
+};
+
+const buildTimeoutFallbackResult = (prompt: string, forcedPaths?: string[]) => {
+  const locale = resolveTimeoutLocale(prompt);
+  const pages = buildTimeoutFallbackPages(prompt, forcedPaths);
+  const theme = {
+    mode: "light",
+    motion: "off",
+    radius: "0.5rem",
+    fontHeading: "Manrope",
+    fontBody: "Manrope",
+  };
   return {
     blueprint: {
       pages: pages.map((page) => ({
@@ -590,19 +938,58 @@ export async function POST(request: NextRequest) {
   ensureEnvFallbackLoaded();
   const requestId = `creation_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
   const startedAt = Date.now();
-  try {
-    logInfo("[creation] start", { requestId });
-    const body = await request.json();
+  type CreationProgressEntry = { stage: string; atMs: number; detail?: Record<string, unknown> };
+  type WorkflowResult = {
+    status: number;
+    event: "complete" | "pending" | "timeout" | "error";
+    payload: Record<string, unknown>;
+  };
+  const runWorkflow = async (
+    body: Record<string, unknown>,
+    onProgress?: (entry: CreationProgressEntry) => void
+  ): Promise<WorkflowResult> => {
+    const pushProgress = (stage: string, detail?: Record<string, unknown>) => {
+      const entry: CreationProgressEntry = {
+        stage,
+        atMs: Math.max(0, Date.now() - startedAt),
+        ...(detail && Object.keys(detail).length > 0 ? { detail } : {}),
+      };
+      onProgress?.(entry);
+    };
+    const respond = (
+      payload: Record<string, unknown>,
+      status = 200,
+      event: WorkflowResult["event"] = "complete"
+    ): WorkflowResult => ({ payload, status, event });
+    try {
+      pushProgress("request_received", { requestId });
+      logInfo("[creation] start", { requestId });
     const prompt = typeof body.prompt === "string" ? body.prompt.trim() : "";
     const resumeId = typeof body.resumeId === "string" ? body.resumeId.trim() : "";
     if (!prompt) {
       logWarn("[creation] empty_prompt", { requestId });
-      return NextResponse.json({ error: "prompt_required", requestId }, { status: 400 });
+      pushProgress("invalid_request", { reason: "prompt_required" });
+      return respond({ error: "prompt_required", requestId }, 400, "error");
     }
-    const structuredParse = parseStructuredSiteInput(body as Record<string, unknown>);
+    pushProgress("prompt_parsed", { promptLength: prompt.length });
+    const pageRuleMatrixDocSync = await syncPageRuleMatrixDocSnapshot(requestId);
+    pushProgress("matrix_doc_synced", {
+      updated: pageRuleMatrixDocSync.updated,
+      enabled: pageRuleMatrixDocSync.enabled,
+    });
+    const structuredParse = await parseStructuredSiteInput(body as Record<string, unknown>);
     const structuredInput = structuredParse.input;
+    pushProgress("structured_input_parsed", {
+      enabled: Boolean(structuredInput),
+      productCount: structuredParse.diagnostics.productCount,
+      caseCount: structuredParse.diagnostics.caseCount,
+      faqCount: structuredParse.diagnostics.faqCount,
+      warnings: structuredParse.diagnostics.warnings.slice(0, 6),
+    });
     const structuredPromptPatch = structuredInput ? buildStructuredInputPromptPatch(structuredInput) : "";
     const promptForGeneration = structuredPromptPatch ? `${prompt}${structuredPromptPatch}` : prompt;
+    const pageTypeSkillsEnabledOverride = parseBodyBoolean((body as Record<string, unknown>).pageTypeSkillsEnabled);
+    const requestTimeoutOverrideMs = parseRequestTimeoutOverrideMs((body as Record<string, unknown>).requestTimeoutMs);
     const hasLlmProvider =
       Boolean(process.env.AIBERM_API_KEY) ||
       Boolean(process.env.OPENROUTER_API_KEY) ||
@@ -610,7 +997,8 @@ export async function POST(request: NextRequest) {
     const templateOnlyEligible = canGenerateTemplateOnly(prompt);
     if (!hasLlmProvider && !templateOnlyEligible) {
       logError("[creation] missing_api_key", { requestId });
-      return NextResponse.json({ error: "missing_api_key", requestId }, { status: 500 });
+      pushProgress("blocked", { reason: "missing_api_key" });
+      return respond({ error: "missing_api_key", requestId }, 500, "error");
     }
     if (!hasLlmProvider && templateOnlyEligible) {
       logInfo("[creation] template_only_without_api_key", { requestId });
@@ -626,31 +1014,121 @@ export async function POST(request: NextRequest) {
     }
 
     const strictContractPrompt = hasStrictPromptContract(promptForGeneration) || Boolean(structuredInput);
-    const requestTimeoutMs = persistEnabled
-      ? persistRequestTimeoutMs
+    const defaultRequestTimeoutMs = persistEnabled
+      ? strictContractPrompt
+        ? Math.max(persistRequestTimeoutMs, enterpriseRequestTimeoutMs)
+        : persistRequestTimeoutMs
       : strictContractPrompt
         ? Math.max(generationRequestTimeoutMs, enterpriseRequestTimeoutMs)
         : generationRequestTimeoutMs;
+    const deterministicDefaultTimeoutMs =
+      persistEnabled && strictContractPrompt
+        ? Math.min(defaultRequestTimeoutMs, deterministicStrictPersistTimeoutCapMs)
+        : defaultRequestTimeoutMs;
+    const requestTimeoutMs = requestTimeoutOverrideMs ?? deterministicDefaultTimeoutMs;
+    const latencyCritical = requestTimeoutMs > 0 && requestTimeoutMs <= 60000;
+    // Keep enterprise website generation on a deterministic single-candidate path by default.
+    // This aligns default behavior with the proven quick/safe profile and reduces quality drift
+    // caused by long-timeout multi-candidate exploration.
+    const deterministicEnterprise = persistEnabled && strictContractPrompt;
+    const preferTemplateFirstForLatency = latencyCritical || deterministicEnterprise;
+    const singleCandidateOnly = latencyCritical || deterministicEnterprise;
+    const hitlRequest = parseHitlRequest(body);
+    const preferredGenerationStrategy = preferTemplateFirstForLatency ? "template_first" : undefined;
+
+    if (hitlRequest.enabled && !hitlRequest.approved) {
+      const sitePlan = previewP2WSitePlan({
+        prompt: promptForGeneration,
+        requestedStrategy: preferredGenerationStrategy,
+      });
+      pushProgress("hitl_site_plan_ready", {
+        pageCount: sitePlan.pages.length,
+        selectedStrategy: sitePlan.selectedStrategy,
+        resolutionLayer: sitePlan.resolutionLayer,
+      });
+      return respond({
+        requestId,
+        id,
+        prompt,
+        promptEffective: promptForGeneration,
+        status: "hitl_pending",
+        hitl: {
+          stage: "site_planner",
+          message: "Confirm or revise site structure before page fan-out",
+          pages: sitePlan.pages,
+          selectedStrategy: sitePlan.selectedStrategy,
+          requestedStrategy: sitePlan.requestedStrategy,
+          globalChrome: sitePlan.globalChrome,
+          resolutionLayer: sitePlan.resolutionLayer,
+          templatePlanProfile: sitePlan.templatePlanProfile,
+          matchedPageCoverage: sitePlan.matchedPageCoverage,
+        },
+        pageRuleMatrixDocSync,
+      }, 200, "pending");
+    }
+
+    const hitlBlueprintOverride = hitlRequest.enabled && hitlRequest.approved
+      ? buildHitlBlueprintOverride(hitlRequest.pages)
+      : undefined;
+    if (hitlRequest.enabled && hitlRequest.approved) {
+      pushProgress("hitl_site_plan_confirmed", {
+        approvedPageCount: Array.isArray(hitlRequest.pages) ? hitlRequest.pages.length : 0,
+      });
+    }
     logInfo("[creation] generate", {
       requestId,
       promptLength: prompt.length,
       effectivePromptLength: promptForGeneration.length,
       timeoutMs: requestTimeoutMs,
+      timeoutOverrideMs: requestTimeoutOverrideMs,
       persistEnabled,
       strictContractPrompt,
+      deterministicEnterprise,
       structuredInput: {
         enabled: Boolean(structuredInput),
         source: structuredParse.diagnostics.source,
         productCount: structuredParse.diagnostics.productCount,
         caseCount: structuredParse.diagnostics.caseCount,
         faqCount: structuredParse.diagnostics.faqCount,
+        warnings: structuredParse.diagnostics.warnings.slice(0, 6),
       },
+      preferredGenerationStrategy: preferredGenerationStrategy ?? "default",
+      singleCandidateOnly,
+      pageTypeSkillsEnabled:
+        typeof pageTypeSkillsEnabledOverride === "boolean" ? pageTypeSkillsEnabledOverride : "default",
+      hitl: {
+        enabled: hitlRequest.enabled,
+        approved: hitlRequest.approved,
+        approvedPageCount: hitlRequest.pages.length,
+      },
+    });
+    pushProgress("generation_started", {
+      timeoutMs: requestTimeoutMs,
+      strictContractPrompt,
+      deterministicEnterprise,
+      persistEnabled,
+      preferredGenerationStrategy: preferredGenerationStrategy ?? "default",
+      singleCandidateOnly,
+      pageTypeSkillsEnabled:
+        typeof pageTypeSkillsEnabledOverride === "boolean" ? pageTypeSkillsEnabledOverride : "default",
     });
     const generationPromise = generateP2WProject({
       prompt: promptForGeneration,
       manifest,
       structuredInput: structuredInput ?? undefined,
+      pageTypeSkillsEnabled: pageTypeSkillsEnabledOverride,
       planning: persistEnabled ? { dir: outDir, requestId } : undefined,
+      preferredGenerationStrategy,
+      singleCandidateOnly,
+      blueprintOverride: hitlBlueprintOverride,
+      progressReporter: (entry) => {
+        const stage = String(entry?.stage || "generation_progress");
+        const detail =
+          entry?.detail && typeof entry.detail === "object"
+            ? (entry.detail as Record<string, unknown>)
+            : undefined;
+        pushProgress(stage, detail);
+      },
     });
 
     const generated =
@@ -665,11 +1143,102 @@ export async function POST(request: NextRequest) {
 
     if (generated.kind === "timeout") {
       logWarn("[creation] timeout_fallback", { requestId, timeoutMs: requestTimeoutMs, persistEnabled });
+      pushProgress("generation_timeout", { timeoutMs: requestTimeoutMs, persistEnabled });
       if (persistEnabled) {
         logInfo("[creation] persist_deferred", {
           requestId,
           id,
           reason: "timeout_fallback",
+        });
+        pushProgress("persist_started", { id, outDir, mode: "pending_shell" });
+        await persistDeferredPendingShellResult({
+          outDir,
+          prompt,
+          requestId,
+          id,
+          pageTypeSkillsEnabled: pageTypeSkillsEnabledOverride,
+          pageRuleMatrixDocSync,
+        });
+        pushProgress("persist_completed", { mode: "pending_shell", status: "ok" });
+        if (timeoutGraceAfterTimeoutMs > 0) {
+          const settled = await Promise.race<
+            | { kind: "resolved"; result: GenerationResult }
+            | { kind: "rejected"; error: unknown }
+            | { kind: "grace_timeout" }
+          >([
+            generationPromise
+              .then((result) => ({ kind: "resolved" as const, result }))
+              .catch((error) => ({ kind: "rejected" as const, error })),
+            new Promise<{ kind: "grace_timeout" }>((resolve) =>
+              setTimeout(() => resolve({ kind: "grace_timeout" }), timeoutGraceAfterTimeoutMs)
+            ),
+          ]);
+          if (settled.kind === "resolved") {
+            const resolvedResult = attachPageRuleMatrixDocSync(
+              settled.result as Record<string, unknown>,
+              pageRuleMatrixDocSync
+            ) as GenerationResult;
+            pushProgress("generation_completed", {
+              pageCount: Array.isArray(resolvedResult.pages) ? resolvedResult.pages.length : 0,
+              componentCount: Array.isArray(resolvedResult.components) ? resolvedResult.components.length : 0,
+              afterTimeout: true,
+            });
+            pushProgress("generation_completed_after_timeout", {
+              pageCount: Array.isArray(resolvedResult.pages) ? resolvedResult.pages.length : 0,
+              componentCount: Array.isArray(resolvedResult.components) ? resolvedResult.components.length : 0,
+            });
+            pushProgress("persist_started", { id, outDir, mode: "timeout_grace_resolved" });
+            const persistedStatus = await persistGeneratedResult({
+              outDir,
+              prompt,
+              requestId,
+              id,
+              result: resolvedResult,
+              pageRuleMatrixDocSync,
+              logLabel: "persisted_after_timeout",
+            });
+            pushProgress("persist_completed", {
+              mode: "timeout_grace_resolved",
+              previewStatus: persistedStatus.previewStatus,
+              publishStatus: persistedStatus.publishStatus,
+            });
+            return respond({
+              requestId,
+              id,
+              prompt,
+              promptEffective: promptForGeneration,
+              durationMs: Date.now() - startedAt,
+              audit: persistedStatus.audit,
+              previewStatus: persistedStatus.previewStatus,
+              publishStatus: persistedStatus.publishStatus,
+              publishBlockedIssues: persistedStatus.publishStatus === "blocked" ? persistedStatus.audit.issues : [],
+              generationGateIssues: persistedStatus.gateIssues,
+              pageRuleMatrixDocSync,
+              structuredInput: structuredInput
+                ? {
+                    productCount: structuredParse.diagnostics.productCount,
+                    caseCount: structuredParse.diagnostics.caseCount,
+                    faqCount: structuredParse.diagnostics.faqCount,
+                  }
+                : undefined,
+              ...resolvedResult,
+            }, 200, "complete");
+          }
+          if (settled.kind === "rejected") {
+            logWarn("[creation] timeout_grace_generation_failed", {
+              requestId,
+              id,
+              message: (settled.error as any)?.message ?? String(settled.error),
+            });
+            pushProgress("generation_failed_after_timeout", {
+              message: (settled.error as any)?.message ?? String(settled.error),
+            });
+          }
+        }
+        pushProgress("persist_deferred_started", {
+          id,
+          outDir,
+          watchdogMs: deferredPersistMaxMs,
         });
         let deferredPersistSettled = false;
         const persistOnce = async (work: () => Promise<void>) => {
@@ -689,42 +1258,74 @@ export async function POST(request: NextRequest) {
         void generationPromise
           .then((resolved) =>
             persistOnce(() =>
-              persistGeneratedResult({
-                outDir,
-                prompt,
-                requestId,
-                id,
-                result: resolved,
-                logLabel: "persisted_after_timeout",
-              }).then(() => undefined)
+              {
+                pushProgress("persist_started", { id, outDir, mode: "deferred_resolved" });
+                return persistGeneratedResult({
+                  outDir,
+                  prompt,
+                  requestId,
+                  id,
+                  result: resolved,
+                  pageRuleMatrixDocSync,
+                  logLabel: "persisted_after_timeout",
+                }).then((status) => {
+                  pushProgress("persist_completed", {
+                    mode: "deferred_resolved",
+                    previewStatus: status.previewStatus,
+                    publishStatus: status.publishStatus,
+                  });
+                  return undefined;
+                });
+              }
             )
           )
           .catch((error: any) =>
             persistOnce(() =>
-              persistTimeoutFallbackResult({
-                outDir,
-                prompt,
-                requestId,
-                id,
-                reason: "generation_failed_after_timeout",
-                upstreamMessage: error?.message ?? String(error),
-              }).then(() => undefined)
+              {
+                pushProgress("persist_started", { id, outDir, mode: "deferred_timeout_fallback" });
+                return persistTimeoutFallbackResult({
+                  outDir,
+                  prompt,
+                  requestId,
+                  id,
+                  reason: "generation_failed_after_timeout",
+                  upstreamMessage: error?.message ?? String(error),
+                  pageRuleMatrixDocSync,
+                }).then(() => {
+                  pushProgress("persist_completed", {
+                    mode: "deferred_timeout_fallback",
+                    status: "fallback_written",
+                  });
+                  return undefined;
+                });
+              }
             )
           );
         if (deferredPersistMaxMs > 0) {
           setTimeout(() => {
             void persistOnce(() =>
-              persistTimeoutFallbackResult({
-                outDir,
-                prompt,
-                requestId,
-                id,
-                reason: "deferred_generation_watchdog_timeout",
-              }).then(() => undefined)
+              {
+                pushProgress("persist_started", { id, outDir, mode: "deferred_watchdog_fallback" });
+                return persistTimeoutFallbackResult({
+                  outDir,
+                  prompt,
+                  requestId,
+                  id,
+                  reason: "deferred_generation_watchdog_timeout",
+                  pageRuleMatrixDocSync,
+                }).then(() => {
+                  pushProgress("persist_completed", {
+                    mode: "deferred_watchdog_fallback",
+                    status: "fallback_written",
+                  });
+                  return undefined;
+                });
+              }
             );
           }, deferredPersistMaxMs);
         }
-        return NextResponse.json({
+        pushProgress("pending_returned", { id, timeoutMs: requestTimeoutMs });
+        return respond({
           requestId,
           id,
           prompt,
@@ -735,9 +1336,13 @@ export async function POST(request: NextRequest) {
           pages: [],
           theme: {},
           errors: ["generation_pending_after_timeout"],
-        });
+          pageRuleMatrixDocSync,
+        }, 200, "pending");
       }
-      const timeoutResult = buildTimeoutFallbackResult(prompt);
+      const timeoutResult = attachPageRuleMatrixDocSync(
+        buildTimeoutFallbackResult(prompt) as Record<string, unknown>,
+        pageRuleMatrixDocSync
+      );
       logInfo("[creation] generated", {
         requestId,
         id,
@@ -746,7 +1351,7 @@ export async function POST(request: NextRequest) {
         errors: timeoutResult.errors,
         timeoutFallback: true,
       });
-      return NextResponse.json({
+      return respond({
         requestId,
         id,
         prompt,
@@ -754,11 +1359,20 @@ export async function POST(request: NextRequest) {
         durationMs: Date.now() - startedAt,
         pending: persistEnabled,
         timeoutMs: requestTimeoutMs,
+        pageRuleMatrixDocSync,
         ...timeoutResult,
-      });
+      }, 200, "timeout");
     }
 
-    const result = generated.result;
+    const result = attachPageRuleMatrixDocSync(
+      generated.result as Record<string, unknown>,
+      pageRuleMatrixDocSync
+    ) as GenerationResult;
+    pushProgress("generation_completed", {
+      pageCount: Array.isArray(result.pages) ? result.pages.length : 0,
+      componentCount: Array.isArray(result.components) ? result.components.length : 0,
+    });
+    const gateIssues = collectGenerationGateIssues(result);
     const audit = auditSitePayload(toSandboxPayload(result), {
       prompt,
       resolvedByLayer:
@@ -767,7 +1381,12 @@ export async function POST(request: NextRequest) {
           : null,
     });
     const previewStatus: "ready" = "ready";
-    const publishStatus: "ready" | "blocked" = audit.ok ? "ready" : "blocked";
+    const publishStatus: "ready" | "blocked" = audit.ok && gateIssues.length === 0 ? "ready" : "blocked";
+    pushProgress("validation_completed", {
+      publishStatus,
+      gateIssueCount: gateIssues.length,
+      auditOk: audit.ok,
+    });
     if (!audit.ok) {
       logWarn("[creation] payload_audit_failed", {
         requestId,
@@ -783,23 +1402,31 @@ export async function POST(request: NextRequest) {
       errors: result.errors,
       previewStatus,
       publishStatus,
+      gateIssueCount: gateIssues.length,
     });
     let persistedStatus: SandboxPersistStatus | null = null;
     if (persistEnabled) {
+      pushProgress("persist_started", { id, outDir });
       persistedStatus = await persistGeneratedResult({
         outDir,
         prompt,
         requestId,
         id,
         result,
+        pageRuleMatrixDocSync,
         logLabel: "persisted",
+      });
+      pushProgress("persist_completed", {
+        previewStatus: persistedStatus.previewStatus,
+        publishStatus: persistedStatus.publishStatus,
       });
     }
 
     const finalAudit = persistedStatus?.audit ?? audit;
     const finalPreviewStatus = persistedStatus?.previewStatus ?? previewStatus;
     const finalPublishStatus = persistedStatus?.publishStatus ?? publishStatus;
-    return NextResponse.json({
+    const finalGateIssues = persistedStatus?.gateIssues ?? gateIssues;
+    return respond({
       requestId,
       id,
       prompt,
@@ -809,6 +1436,8 @@ export async function POST(request: NextRequest) {
       previewStatus: finalPreviewStatus,
       publishStatus: finalPublishStatus,
       publishBlockedIssues: finalPublishStatus === "blocked" ? finalAudit.issues : [],
+      generationGateIssues: finalGateIssues,
+      pageRuleMatrixDocSync,
       structuredInput: structuredInput
         ? {
             productCount: structuredParse.diagnostics.productCount,
@@ -817,9 +1446,78 @@ export async function POST(request: NextRequest) {
           }
         : undefined,
       ...result,
+    }, 200, "complete");
+    } catch (error: any) {
+      logError("[creation] error", {
+        requestId,
+        message: error?.message ?? String(error),
+        details: error?.details,
+      });
+      const detail =
+        process.env.NODE_ENV !== "production"
+          ? { message: error?.message ?? String(error), details: error?.details }
+          : undefined;
+      pushProgress("failed", { message: error?.message ?? String(error) });
+      return respond({ error: "generation_failed", detail, requestId }, 500, "error");
+    }
+  };
+
+  try {
+    const body = (await request.json()) as Record<string, unknown>;
+    const streamRequested = Boolean(body?.stream);
+    if (!streamRequested) {
+      const outcome = await runWorkflow(body);
+      return NextResponse.json(outcome.payload, { status: outcome.status });
+    }
+
+    const encoder = new TextEncoder();
+    let streamClosed = false;
+    const stream = new ReadableStream<Uint8Array>({
+      start(controller) {
+        const emit = (event: string, value: unknown) => {
+          if (streamClosed) return;
+          try {
+            controller.enqueue(encoder.encode(toSsePayload(event, value)));
+          } catch {
+            streamClosed = true;
+          }
+        };
+        void runWorkflow(body, (entry) => emit("progress", entry))
+          .then((outcome) => {
+            emit(outcome.event, outcome.payload);
+            if (!streamClosed) {
+              streamClosed = true;
+              controller.close();
+            }
+          })
+          .catch((error: any) => {
+            const detail =
+              process.env.NODE_ENV !== "production"
+                ? { message: error?.message ?? String(error), details: error?.details }
+                : undefined;
+            emit("error", { error: "generation_failed", detail, requestId });
+            if (!streamClosed) {
+              streamClosed = true;
+              controller.close();
+            }
+          });
+      },
+      cancel(reason) {
+        streamClosed = true;
+        logWarn("[creation] stream_cancelled", { requestId, reason: String(reason ?? "unknown") });
+      },
+    });
+    return new Response(stream, {
+      status: 200,
+      headers: {
+        "Content-Type": "text/event-stream; charset=utf-8",
+        "Cache-Control": "no-cache, no-transform",
+        Connection: "keep-alive",
+        "X-Accel-Buffering": "no",
+      },
     });
   } catch (error: any) {
-    logError("[creation] error", {
+    logError("[creation] request_parse_error", {
       requestId,
       message: error?.message ?? String(error),
       details: error?.details,

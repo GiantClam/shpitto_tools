@@ -1,0 +1,111 @@
+{
+  "generatedAt": "2026-03-31T00:55:39.820Z",
+  "baseUrl": "http://127.0.0.1:3000",
+  "siteKey": "p2w_1774918145075",
+  "summary": {
+    "pageCount": 7,
+    "allStatus200": true,
+    "allReady": true,
+    "allFinalUrlMatchExpected": true,
+    "navSignatureConsistent": true,
+    "distinctNavSignatures": 1,
+    "hasNonSandboxInternalHref": false,
+    "errors": []
+  },
+  "navSignatures": [
+    "首页::/creation/sandbox?mode=preview&siteKey=p2w_1774918145075&page=home|产品中心::/creation/sandbox?mode=preview&siteKey=p2w_1774918145075&page=%2Fproducts|解决方案::/creation/sandbox?mode=preview&siteKey=p2w_1774918145075&page=%2Fsolutions|应用案例::/creation/sandbox?mode=preview&siteKey=p2w_1774918145075&page=%2Fcases|公司概况::/creation/sandbox?mode=preview&siteKey=p2w_1774918145075&page=%2Fabout|联系我们::/creation/sandbox?mode=preview&siteKey=p2w_1774918145075&page=%2Fcontact"
+  ],
+  "results": [
+    {
+      "path": "/",
+      "pageParam": "home",
+      "expectedUrl": "http://127.0.0.1:3000/creation/sandbox?mode=preview&siteKey=p2w_1774918145075&page=home",
+      "status": 200,
+      "ready": true,
+      "finalUrl": "http://127.0.0.1:3000/creation/sandbox?mode=preview&siteKey=p2w_1774918145075&page=home",
+      "finalUrlMatchExpected": true,
+      "navCount": 6,
+      "navSignature": "首页::/creation/sandbox?mode=preview&siteKey=p2w_1774918145075&page=home|产品中心::/creation/sandbox?mode=preview&siteKey=p2w_1774918145075&page=%2Fproducts|解决方案::/creation/sandbox?mode=preview&siteKey=p2w_1774918145075&page=%2Fsolutions|应用案例::/creation/sandbox?mode=preview&siteKey=p2w_1774918145075&page=%2Fcases|公司概况::/creation/sandbox?mode=preview&siteKey=p2w_1774918145075&page=%2Fabout|联系我们::/creation/sandbox?mode=preview&siteKey=p2w_1774918145075&page=%2Fcontact",
+      "nonSandboxInternal": [],
+      "error": ""
+    },
+    {
+      "path": "/about",
+      "pageParam": "%2Fabout",
+      "expectedUrl": "http://127.0.0.1:3000/creation/sandbox?mode=preview&siteKey=p2w_1774918145075&page=%2Fabout",
+      "status": 200,
+      "ready": true,
+      "finalUrl": "http://127.0.0.1:3000/creation/sandbox?mode=preview&siteKey=p2w_1774918145075&page=%2Fabout",
+      "finalUrlMatchExpected": true,
+      "navCount": 6,
+      "navSignature": "首页::/creation/sandbox?mode=preview&siteKey=p2w_1774918145075&page=home|产品中心::/creation/sandbox?mode=preview&siteKey=p2w_1774918145075&page=%2Fproducts|解决方案::/creation/sandbox?mode=preview&siteKey=p2w_1774918145075&page=%2Fsolutions|应用案例::/creation/sandbox?mode=preview&siteKey=p2w_1774918145075&page=%2Fcases|公司概况::/creation/sandbox?mode=preview&siteKey=p2w_1774918145075&page=%2Fabout|联系我们::/creation/sandbox?mode=preview&siteKey=p2w_1774918145075&page=%2Fcontact",
+      "nonSandboxInternal": [],
+      "error": ""
+    },
+    {
+      "path": "/products",
+      "pageParam": "%2Fproducts",
+      "expectedUrl": "http://127.0.0.1:3000/creation/sandbox?mode=preview&siteKey=p2w_1774918145075&page=%2Fproducts",
+      "status": 200,
+      "ready": true,
+      "finalUrl": "http://127.0.0.1:3000/creation/sandbox?mode=preview&siteKey=p2w_1774918145075&page=%2Fproducts",
+      "finalUrlMatchExpected": true,
+      "navCount": 6,
+      "navSignature": "首页::/creation/sandbox?mode=preview&siteKey=p2w_1774918145075&page=home|产品中心::/creation/sandbox?mode=preview&siteKey=p2w_1774918145075&page=%2Fproducts|解决方案::/creation/sandbox?mode=preview&siteKey=p2w_1774918145075&page=%2Fsolutions|应用案例::/creation/sandbox?mode=preview&siteKey=p2w_1774918145075&page=%2Fcases|公司概况::/creation/sandbox?mode=preview&siteKey=p2w_1774918145075&page=%2Fabout|联系我们::/creation/sandbox?mode=preview&siteKey=p2w_1774918145075&page=%2Fcontact",
+      "nonSandboxInternal": [],
+      "error": ""
+    },
+    {
+      "path": "/cases",
+      "pageParam": "%2Fcases",
+      "expectedUrl": "http://127.0.0.1:3000/creation/sandbox?mode=preview&siteKey=p2w_1774918145075&page=%2Fcases",
+      "status": 200,
+      "ready": true,
+      "finalUrl": "http://127.0.0.1:3000/creation/sandbox?mode=preview&siteKey=p2w_1774918145075&page=%2Fcases",
+      "finalUrlMatchExpected": true,
+      "navCount": 6,
+      "navSignature": "首页::/creation/sandbox?mode=preview&siteKey=p2w_1774918145075&page=home|产品中心::/creation/sandbox?mode=preview&siteKey=p2w_1774918145075&page=%2Fproducts|解决方案::/creation/sandbox?mode=preview&siteKey=p2w_1774918145075&page=%2Fsolutions|应用案例::/creation/sandbox?mode=preview&siteKey=p2w_1774918145075&page=%2Fcases|公司概况::/creation/sandbox?mode=preview&siteKey=p2w_1774918145075&page=%2Fabout|联系我们::/creation/sandbox?mode=preview&siteKey=p2w_1774918145075&page=%2Fcontact",
+      "nonSandboxInternal": [],
+      "error": ""
+    },
+    {
+      "path": "/solutions",
+      "pageParam": "%2Fsolutions",
+      "expectedUrl": "http://127.0.0.1:3000/creation/sandbox?mode=preview&siteKey=p2w_1774918145075&page=%2Fsolutions",
+      "status": 200,
+      "ready": true,
+      "finalUrl": "http://127.0.0.1:3000/creation/sandbox?mode=preview&siteKey=p2w_1774918145075&page=%2Fsolutions",
+      "finalUrlMatchExpected": true,
+      "navCount": 6,
+      "navSignature": "首页::/creation/sandbox?mode=preview&siteKey=p2w_1774918145075&page=home|产品中心::/creation/sandbox?mode=preview&siteKey=p2w_1774918145075&page=%2Fproducts|解决方案::/creation/sandbox?mode=preview&siteKey=p2w_1774918145075&page=%2Fsolutions|应用案例::/creation/sandbox?mode=preview&siteKey=p2w_1774918145075&page=%2Fcases|公司概况::/creation/sandbox?mode=preview&siteKey=p2w_1774918145075&page=%2Fabout|联系我们::/creation/sandbox?mode=preview&siteKey=p2w_1774918145075&page=%2Fcontact",
+      "nonSandboxInternal": [],
+      "error": ""
+    },
+    {
+      "path": "/contact",
+      "pageParam": "%2Fcontact",
+      "expectedUrl": "http://127.0.0.1:3000/creation/sandbox?mode=preview&siteKey=p2w_1774918145075&page=%2Fcontact",
+      "status": 200,
+      "ready": true,
+      "finalUrl": "http://127.0.0.1:3000/creation/sandbox?mode=preview&siteKey=p2w_1774918145075&page=%2Fcontact",
+      "finalUrlMatchExpected": true,
+      "navCount": 6,
+      "navSignature": "首页::/creation/sandbox?mode=preview&siteKey=p2w_1774918145075&page=home|产品中心::/creation/sandbox?mode=preview&siteKey=p2w_1774918145075&page=%2Fproducts|解决方案::/creation/sandbox?mode=preview&siteKey=p2w_1774918145075&page=%2Fsolutions|应用案例::/creation/sandbox?mode=preview&siteKey=p2w_1774918145075&page=%2Fcases|公司概况::/creation/sandbox?mode=preview&siteKey=p2w_1774918145075&page=%2Fabout|联系我们::/creation/sandbox?mode=preview&siteKey=p2w_1774918145075&page=%2Fcontact",
+      "nonSandboxInternal": [],
+      "error": ""
+    },
+    {
+      "path": "/privacy",
+      "pageParam": "%2Fprivacy",
+      "expectedUrl": "http://127.0.0.1:3000/creation/sandbox?mode=preview&siteKey=p2w_1774918145075&page=%2Fprivacy",
+      "status": 200,
+      "ready": true,
+      "finalUrl": "http://127.0.0.1:3000/creation/sandbox?mode=preview&siteKey=p2w_1774918145075&page=%2Fprivacy",
+      "finalUrlMatchExpected": true,
+      "navCount": 6,
+      "navSignature": "首页::/creation/sandbox?mode=preview&siteKey=p2w_1774918145075&page=home|产品中心::/creation/sandbox?mode=preview&siteKey=p2w_1774918145075&page=%2Fproducts|解决方案::/creation/sandbox?mode=preview&siteKey=p2w_1774918145075&page=%2Fsolutions|应用案例::/creation/sandbox?mode=preview&siteKey=p2w_1774918145075&page=%2Fcases|公司概况::/creation/sandbox?mode=preview&siteKey=p2w_1774918145075&page=%2Fabout|联系我们::/creation/sandbox?mode=preview&siteKey=p2w_1774918145075&page=%2Fcontact",
+      "nonSandboxInternal": [],
+      "error": ""
+    }
+  ]
+}

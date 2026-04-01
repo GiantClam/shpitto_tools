@@ -1,0 +1,40 @@
+{
+  "cases": [
+    {
+      "id": "timeout-catalog-pagination-preserved",
+      "description": "Force timeout pending shell and assert persisted catalog pagination routes are preserved",
+      "prompt": "为一家工业设备公司生成中文企业官网，包含首页、产品中心、解决方案、应用案例、关于我们、联系我们、隐私政策；产品中心需要分页展示。",
+      "categoryScope": "site",
+      "requiredCategories": ["navigation", "products", "footer"],
+      "requiredPagePaths": ["/", "/products", "/products/page-2", "/contact", "/privacy"],
+      "expectedProgressTerminalEvents": ["pending", "timeout"],
+      "requestBody": {
+        "requestTimeoutMs": 10000,
+        "structuredInput": {
+          "company": {
+            "name": "测试智能制造有限公司"
+          },
+          "targetLanguage": "zh-CN",
+          "catalogPageSize": 6,
+          "pages": ["/", "/products", "/solutions", "/cases", "/about", "/contact", "/privacy"],
+          "products": [
+            { "name": "高速精雕机 A1", "model": "A1", "specs": ["主轴 24000rpm", "重复定位 ±0.005mm"] },
+            { "name": "高速精雕机 A2", "model": "A2", "specs": ["主轴 24000rpm", "重复定位 ±0.005mm"] },
+            { "name": "高速精雕机 A3", "model": "A3", "specs": ["主轴 24000rpm", "重复定位 ±0.005mm"] },
+            { "name": "高速精雕机 A4", "model": "A4", "specs": ["主轴 24000rpm", "重复定位 ±0.005mm"] },
+            { "name": "高速精雕机 A5", "model": "A5", "specs": ["主轴 24000rpm", "重复定位 ±0.005mm"] },
+            { "name": "高速精雕机 A6", "model": "A6", "specs": ["主轴 24000rpm", "重复定位 ±0.005mm"] },
+            { "name": "多头精雕机 B1", "model": "B1", "specs": ["六头同步", "批量加工"] },
+            { "name": "多头精雕机 B2", "model": "B2", "specs": ["六头同步", "批量加工"] },
+            { "name": "多头精雕机 B3", "model": "B3", "specs": ["六头同步", "批量加工"] },
+            { "name": "多头精雕机 B4", "model": "B4", "specs": ["六头同步", "批量加工"] },
+            { "name": "刀库精雕机 C1", "model": "C1", "specs": ["12 把刀库", "换刀 ≤1.5s"] },
+            { "name": "刀库精雕机 C2", "model": "C2", "specs": ["12 把刀库", "换刀 ≤1.5s"] },
+            { "name": "刀库精雕机 C3", "model": "C3", "specs": ["16 把刀库", "复杂件一体加工"] },
+            { "name": "刀库精雕机 C4", "model": "C4", "specs": ["16 把刀库", "复杂件一体加工"] }
+          ]
+        }
+      }
+    }
+  ]
+}

@@ -263,7 +263,7 @@ export class PlanningFiles {
     return Object.values(this.state.sectionOutputs);
   }
 
-  async markArchitectComplete(blueprint: Record<string, unknown>, pages: PlanningPage[]) {
+  async markBlueprintComplete(blueprint: Record<string, unknown>, pages: PlanningPage[]) {
     return this.enqueue(async () => {
       this.state.blueprint = blueprint;
       const basePhases = buildBasePhases();
@@ -280,11 +280,15 @@ export class PlanningFiles {
       await this.writeBlueprintFile(blueprint);
       this.appendProgress({
         phaseId: 1,
-        action: "Architect completed",
+        action: "Site planner completed",
         status: "success",
       });
       await this.persistAll();
     });
+  }
+
+  async markArchitectComplete(blueprint: Record<string, unknown>, pages: PlanningPage[]) {
+    return this.markBlueprintComplete(blueprint, pages);
   }
 
   async recordSectionOutput(output: PlanningSectionOutput, status: "success" | "failed") {

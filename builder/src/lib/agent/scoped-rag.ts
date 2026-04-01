@@ -8,6 +8,7 @@ type FactField = "company" | "products" | "specs" | "cases" | "faq";
 type PageLike = {
   path?: string;
   name?: string;
+  queryHints?: string[];
 };
 
 type ScopedRagPageResult = {
@@ -30,6 +31,7 @@ type BuildScopedRagInput = {
   knowledgeBaseClient?: KnowledgeBaseClient | null;
   enabled: boolean;
   concurrency?: number;
+  fastMode?: boolean;
 };
 
 export type BuildScopedRagOutput = {
@@ -111,6 +113,31 @@ Current page type: ${pageType}
 Required enrichment fields for this page: ${fields.join(", ") || "none"}
 Return only concise facts for this page scope.`;
 
+const buildScopedQueryHints = (input: {
+  pageType: EnterprisePageType;
+  pagePath: string;
+  requiredFields: FactField[];
+  structuredInput?: StructuredSiteInput | null;
+}) => {
+  const hints: string[] = [];
+  const companyName = String(input.structuredInput?.company?.name || "").trim();
+  const website = String(input.structuredInput?.company?.website || "").trim();
+  if (companyName) hints.push(`${companyName} ${input.pageType}`);
+  if (companyName && website) hints.push(`${companyName} site:${website.replace(/^https?:\/\//i, "").replace(/^www\./i, "").split(/[/?#]/)[0]}`);
+  const fieldHintByName: Record<FactField, string> = {
+    company: "company profile history certifications 联系方式",
+    products: "product catalog models 产品 机型",
+    specs: "specifications parameters 精度 行程 主轴",
+    cases: "case studies applications 应用案例",
+    faq: "faq support service 常见问题",
+  };
+  input.requiredFields.forEach((field) => {
+    hints.push(`${companyName || "company"} ${fieldHintByName[field]} ${input.pageType}`);
+  });
+  if (input.pagePath) hints.push(`${companyName || "company"} ${input.pagePath}`);
+  return dedupe(hints.map((item) => item.trim()).filter(Boolean)).slice(0, 8);
+};
+
 const extractQueriesFromFactPackContext = (context: string): string[] => {
   const lines = String(context || "")
     .split(/\r?\n/)
@@ -150,6 +177,7 @@ export const buildScopedRagContextByPage = async (input: BuildScopedRagInput): P
   const coveredByStructured = detectCoveredFieldsFromStructuredInput(structuredInput);
   const concurrency = Math.max(1, Number(input.concurrency || 2));
   const enabled = Boolean(input.enabled);
+  const fastMode = Boolean(input.fastMode);
 
   const results = await runWithConcurrency(
     pages,
@@ -157,6 +185,7 @@ export const buildScopedRagContextByPage = async (input: BuildScopedRagInput): P
     async (page): Promise<ScopedRagPageResult> => {
       const path = normalizeSitePath(page?.path || "/");
       const pageName = String(page?.name || "").trim();
+      const pageQueryHints = Array.isArray(page?.queryHints) ? page.queryHints : [];
       const pageType = inferEnterprisePageTypeFromPath(path);
       const requiredFields = normalizeFieldList(requiredFieldsByPageType(pageType));
       const coveredFields = requiredFields.filter((field) => coveredByStructured.has(field));
@@ -182,7 +211,7 @@ export const buildScopedRagContextByPage = async (input: BuildScopedRagInput): P
       let knowledgeBaseContext = "";
       let knowledgeBaseQueryCount = 0;
       let knowledgeBaseSourceCount = 0;
-      if (knowledgeBaseClient?.isAvailable()) {
+      if (!fastMode && knowledgeBaseClient?.isAvailable()) {
         try {
           const knowledgeResult = await knowledgeBaseClient.retrieve({
             prompt: input.prompt,
@@ -210,17 +239,41 @@ export const buildScopedRagContextByPage = async (input: BuildScopedRagInput): P
         }
       }
       const scopedPrompt = buildScopedPrompt(input.prompt, path, pageName, pageType, missingAfterKnowledgeBase);
+      const scopedQueryHints = dedupe([
+        ...pageQueryHints,
+        ...buildScopedQueryHints({
+          pageType,
+          pagePath: path,
+          requiredFields: missingAfterKnowledgeBase,
+          structuredInput,
+        }),
+      ]).slice(0, fastMode ? 5 : 10);
       const factPack =
         missingAfterKnowledgeBase.length > 0
-          ? await buildSerperFactPack(scopedPrompt, { structuredInput })
+          ? await buildSerperFactPack(scopedPrompt, {
+              structuredInput,
+              retrievalContext: {
+                companyName: String(structuredInput?.company?.name || "").trim(),
+                companyWebsite: String(structuredInput?.company?.website || "").trim(),
+                pageType,
+                pagePath: path,
+              },
+              queryHints: scopedQueryHints,
+              queryMode: "prepend",
+              maxQueries: fastMode ? 3 : undefined,
+              timeoutMs: fastMode ? 5000 : undefined,
+              maxDurationMs: fastMode ? 9000 : undefined,
+            })
           : {
               enabled: false,
               used: false,
               queryCount: 0,
+              queries: [] as string[],
               sourceCount: 0,
               context: "",
-              coveredFields: [] as string[],
-              missingFields: [] as string[],
+              requiredFields: requiredFields as FactField[],
+              coveredFields: [] as FactField[],
+              missingFields: requiredFields as FactField[],
             };
       const context = [knowledgeBaseContext, factPack.context].filter(Boolean).join("\n");
       const coveredBySearch: FactField[] = factPack.coveredFields
@@ -242,7 +295,7 @@ export const buildScopedRagContextByPage = async (input: BuildScopedRagInput): P
         sourceCount: Number(factPack.sourceCount || 0) + knowledgeBaseSourceCount,
         used: Boolean(knowledgeBaseContext) || factPack.used,
         context,
-        queries: extractQueriesFromFactPackContext(context),
+        queries: dedupe([...(factPack.queries || []), ...extractQueriesFromFactPackContext(context)]).slice(0, 8),
       };
     }
   );

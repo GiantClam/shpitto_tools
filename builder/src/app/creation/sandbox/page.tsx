@@ -24,8 +24,13 @@ export default async function CreationSandboxPage({ searchParams }: PageProps) {
   const requestedMotion = parseMotionMode(
     typeof params?.motion === "string" ? params.motion.trim() : undefined
   );
+  const modeRaw = typeof params?.mode === "string" ? params.mode.trim().toLowerCase() : "preview";
+  const mode = modeRaw === "edit" ? "edit" : "preview";
   const payload = siteKey ? await loadSandboxPayload(siteKey) : null;
-  const initialPayload = buildSandboxInitialPayload(payload, requestedPage, requestedMotion);
+  const initialPayload = buildSandboxInitialPayload(payload, requestedPage, requestedMotion, {
+    siteKey,
+    mode,
+  });
 
   return <CreationSandboxClient initialPayload={initialPayload} />;
 }

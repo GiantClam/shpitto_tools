@@ -65,6 +65,11 @@ export type SandboxInitialPayload = {
   pageIndex: number;
 };
 
+type SandboxBuildOptions = {
+  siteKey?: string;
+  mode?: string;
+};
+
 const injectThemeIntoPageContent = (
   page: { path: string; name: string; data: any },
   theme?: Record<string, unknown>
@@ -110,6 +115,62 @@ export const normalizeSiteKey = (value: string, fallback = "") => {
 export const parseMotionMode = (value?: string): MotionMode | undefined => {
   if (value === "off" || value === "subtle" || value === "showcase") return value;
   return undefined;
+};
+
+const isExternalOrAnchorHref = (href: string) => {
+  const normalized = String(href || "").trim().toLowerCase();
+  return (
+    !normalized ||
+    normalized.startsWith("#") ||
+    normalized.startsWith("mailto:") ||
+    normalized.startsWith("tel:") ||
+    normalized.startsWith("javascript:") ||
+    normalized.startsWith("data:") ||
+    normalized.startsWith("http://") ||
+    normalized.startsWith("https://")
+  );
+};
+
+const normalizePreviewPageParam = (pathValue: string) => {
+  const normalized = normalizePagePath(pathValue);
+  return normalized === "/" ? "home" : normalized;
+};
+
+const toSandboxPreviewHref = (href: string, siteKey: string, availablePagePaths: Set<string>) => {
+  const raw = String(href || "").trim();
+  if (!raw || isExternalOrAnchorHref(raw)) return raw;
+
+  const barePath = raw.split("?")[0]?.split("#")[0] || raw;
+  const candidate = normalizePagePath(
+    barePath.startsWith("/") || barePath.startsWith("home") || barePath.startsWith("index")
+      ? barePath
+      : `/${barePath}`
+  );
+  if (!availablePagePaths.has(candidate)) return raw;
+
+  const pageParam = encodeURIComponent(normalizePreviewPageParam(candidate));
+  const encodedSiteKey = encodeURIComponent(siteKey);
+  return `/creation/sandbox?mode=preview&siteKey=${encodedSiteKey}&page=${pageParam}`;
+};
+
+const rewritePreviewInternalHrefs = (
+  value: unknown,
+  input: { siteKey: string; availablePagePaths: Set<string> }
+): unknown => {
+  if (Array.isArray(value)) {
+    return value.map((item) => rewritePreviewInternalHrefs(item, input));
+  }
+  if (!value || typeof value !== "object") return value;
+  const record = value as Record<string, unknown>;
+  const next: Record<string, unknown> = {};
+  Object.entries(record).forEach(([key, entry]) => {
+    if (typeof entry === "string" && /(href|url|path)$/i.test(key)) {
+      next[key] = toSandboxPreviewHref(entry, input.siteKey, input.availablePagePaths);
+      return;
+    }
+    next[key] = rewritePreviewInternalHrefs(entry, input);
+  });
+  return next;
 };
 
 const toString = (value: unknown) => (typeof value === "string" ? value : "");
@@ -279,7 +340,8 @@ export async function loadSandboxPayload(siteKey: string): Promise<SandboxPayloa
 export const buildSandboxInitialPayload = (
   payload: SandboxPayload | null,
   requestedPage: string,
-  requestedMotion?: MotionMode
+  requestedMotion?: MotionMode,
+  options?: SandboxBuildOptions
 ): SandboxInitialPayload | undefined => {
   const components = Array.isArray(payload?.components)
     ? payload.components
@@ -340,8 +402,25 @@ export const buildSandboxInitialPayload = (
       }),
     },
   };
+  const shouldRewritePreviewLinks =
+    String(options?.mode || "preview").toLowerCase() === "preview" &&
+    typeof options?.siteKey === "string" &&
+    options.siteKey.trim().length > 0;
+  const availablePagePathSet = new Set(availablePagePaths);
+  const normalizedPageData =
+    shouldRewritePreviewLinks && pageWithCurrentPath?.data
+      ? (rewritePreviewInternalHrefs(pageWithCurrentPath.data, {
+          siteKey: String(options?.siteKey || ""),
+          availablePagePaths: availablePagePathSet,
+        }) as Record<string, unknown>)
+      : pageWithCurrentPath.data;
+
+  const pageWithPreviewSafeLinks = {
+    ...pageWithCurrentPath,
+    data: normalizedPageData,
+  };
   const requiredTypes = new Set(
-    (Array.isArray(pageWithCurrentPath?.data?.content) ? pageWithCurrentPath.data.content : [])
+    (Array.isArray(pageWithPreviewSafeLinks?.data?.content) ? pageWithPreviewSafeLinks.data.content : [])
       .map((item: any) => (typeof item?.type === "string" ? item.type.trim() : ""))
       .filter(Boolean)
   );
@@ -352,7 +431,7 @@ export const buildSandboxInitialPayload = (
 
   return {
     components: resolvedComponents,
-    page: injectThemeIntoPageContent(pageWithCurrentPath, theme),
+    page: injectThemeIntoPageContent(pageWithPreviewSafeLinks, theme),
     availablePagePaths,
     theme,
     pageIndex,

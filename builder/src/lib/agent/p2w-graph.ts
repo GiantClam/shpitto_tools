@@ -1,6 +1,6 @@
 import { promises as fs } from "fs";
 import path from "path";
-import { Annotation, END, START, StateGraph } from "@langchain/langgraph";
+import { Annotation, END, START, Send, StateGraph, interrupt } from "@langchain/langgraph";
 import type { Tool, ToolChoice } from "@anthropic-ai/sdk/resources/messages/messages";
 
 import { llmProviders, type LlmProviderClient } from "@/lib/agent/graph";
@@ -34,7 +34,7 @@ import {
   looksLikeEnterpriseWebsite,
 } from "@/lib/agent/enterprise-site-structure";
 import { buildSiteBlueprint } from "@/lib/agent/site-planner";
-import { resolveTemplatePlan } from "@/lib/agent/template-resolver";
+import { resolveTemplatePlan, type LayeredTemplateResolution } from "@/lib/agent/template-resolver";
 import { evaluateGenerationQa } from "@/lib/agent/qa-gate";
 import {
   normalizePagesBySiteContract,
@@ -54,11 +54,20 @@ import {
   type SiteLinkGraph,
 } from "@/lib/agent/link-graph";
 import { resolveOutputLanguage, shouldUseChineseContent } from "@/lib/agent/language";
-import { buildSerperFactPack } from "@/lib/agent/serper";
+import { applyPageTypeSkillPolicyToPage, buildPageTypeSkillDirective } from "@/lib/agent/page-type-skills";
 import { buildScopedRagContextByPage } from "@/lib/agent/scoped-rag";
-import { evaluateGeneratedPageContract } from "@/lib/agent/page-contract";
+import {
+  evaluateGeneratedPageContract,
+  resolveRequiredSectionKindsByPageType,
+} from "@/lib/agent/page-contract";
 import { createKnowledgeBaseClientFromEnv } from "@/lib/agent/knowledge-base";
+import {
+  extractBrandNameFromPrompt as extractBrandNameFromPromptShared,
+  sanitizeBrandCandidate as sanitizeBrandCandidateShared,
+} from "@/lib/agent/brand-utils";
+import { PAGE_HARDNESS_RULES_BY_TYPE, type PageHardnessRule } from "@/lib/agent/page-rule-matrix";
 import type {
+  StructuredCaseRecord,
   StructuredFaqRecord,
   StructuredProductRecord,
   StructuredSiteInput,
@@ -70,6 +79,14 @@ const State = Annotation.Root({
   structuredInput: Annotation<StructuredSiteInput | null>({
     value: (_left, right) => right,
     default: () => null,
+  }),
+  pageTypeSkillsEnabled: Annotation<boolean | null>({
+    value: (_left, right) => right,
+    default: () => null,
+  }),
+  singleCandidateOnly: Annotation<boolean>({
+    value: (_left, right) => Boolean(right),
+    default: () => false,
   }),
   blueprint: Annotation<Record<string, unknown>>,
   generationStrategy: Annotation<SectionGenerationStrategy>({
@@ -100,10 +117,41 @@ const State = Annotation.Root({
     value: (_left, right) => right,
     default: () => ({}),
   }),
+  globalChrome: Annotation<GlobalChromeContract>({
+    value: (_left, right) => right,
+    default: () => ({
+      navigationBlockType: "Navbar",
+      footerBlockType: "CreationFooterFallback",
+      motionProfile: "subtle",
+    }),
+  }),
+  pageBuildJobs: Annotation<PageBuildJob[]>({
+    value: (_left, right) => right,
+    default: () => [],
+  }),
+  currentPageJob: Annotation<PageBuildJob | null>({
+    value: (_left, right) => right,
+    default: () => null,
+  }),
+  pageBuildResults: Annotation<PageBuildResult[]>({
+    value: (left, right) => [...(left ?? []), ...(right ?? [])],
+    default: () => [],
+  }),
+  pageBuildMode: Annotation<{ enabled: boolean; path?: string } | null>({
+    value: (_left, right) => right,
+    default: () => null,
+  }),
   errors: Annotation<string[]>({ value: (_left, right) => right, default: () => [] }),
 });
 
 type GraphState = typeof State.State;
+
+type GenerationProgressEntry = {
+  stage: string;
+  detail?: Record<string, unknown>;
+};
+
+type GenerationProgressReporter = (entry: GenerationProgressEntry) => void;
 
 type LlmOptions = {
   system: string;
@@ -272,6 +320,57 @@ type BuilderSectionResult =
     }
   | { status: "fallback"; block: SectionBlock; error: string; failureType: FailureType }
   | { status: "error"; error: string; failureType: FailureType };
+
+type PageBuildJob = {
+  pageIndex: number;
+  pagePath: string;
+  pageName: string;
+  pageType: ReturnType<typeof inferEnterprisePageTypeFromPath>;
+  requiredSectionKinds: string[];
+  ragQueries: string[];
+  hardness: PageHardnessRule;
+  page: ArchitectPage;
+  strategy: SectionGenerationStrategy;
+};
+
+type PageBuildResult = {
+  pageIndex: number;
+  pagePath: string;
+  pageName: string;
+  page: Record<string, unknown>;
+  components: Array<{ name: string; code: string }>;
+  errors: string[];
+  resolvedByLayer?: Record<string, unknown>;
+  qaReport?: Record<string, unknown>;
+  theme?: Record<string, unknown>;
+};
+
+type GlobalChromeContract = {
+  navigationBlockType: string;
+  footerBlockType: string;
+  motionProfile: "none" | "subtle" | "showcase" | "immersive";
+};
+
+type PlannerPreparationMetadata = {
+  prepared: true;
+  requestedStrategy: SectionGenerationStrategy;
+  selectedStrategy: SectionGenerationStrategy;
+  templatePlanProfile: string | null;
+  resolutionLayer: LayeredTemplateResolution["layer"];
+  matchedPagePaths: string[];
+  matchedPageCoverage: number;
+  templateKinds: string[];
+  styleFamily: string | null;
+  motionProfile: string | null;
+  globalChrome: GlobalChromeContract;
+  contractNormalizationIssues: Array<Record<string, unknown>>;
+  skillOrchestration: {
+    applied: boolean;
+    suggestion: SectionGenerationStrategy | null;
+    diagnostics: Record<string, unknown>;
+  };
+  pages: ArchitectPage[];
+};
 
 type NdjsonLinePayload = {
   component?: SectionComponent;
@@ -571,7 +670,9 @@ const sectionGenerationStrategy = parseSectionGenerationStrategy(
   process.env.BUILDER_SECTION_GENERATION_STRATEGY,
   "hybrid"
 );
-const enableScopedRag = parseEnvBoolean(process.env.BUILDER_SCOPED_RAG_ENABLED, true);
+// Scoped RAG is mandatory in the current architecture. Keep the env key for backwards compatibility,
+// but do not allow global fact-pack fallback mode.
+const enableScopedRag = true;
 const scopedRagConcurrency = Math.max(1, Number(process.env.BUILDER_SCOPED_RAG_CONCURRENCY || 2));
 const enableMultiCandidateSelection = parseEnvBoolean(
   process.env.BUILDER_MULTI_CANDIDATE_SELECTION,
@@ -622,6 +723,14 @@ const templateRefinementSkipSectionTokens = new Set(
 const skipTemplateExclusiveRefinement = parseEnvBoolean(
   process.env.BUILDER_TEMPLATE_REFINEMENT_SKIP_TEMPLATE_EXCLUSIVE,
   true
+);
+const allowTemplateFirstUpshift = parseEnvBoolean(
+  process.env.BUILDER_ALLOW_TEMPLATE_FIRST_UPSHIFT,
+  false
+);
+const forceHybridForZhEnterpriseWhenTemplateFirst = parseEnvBoolean(
+  process.env.BUILDER_ZH_TEMPLATE_FORCE_HYBRID,
+  false
 );
 const allowTemplateSeedWithoutProfile = parseEnvBoolean(
   process.env.BUILDER_TEMPLATE_SEED_WITHOUT_PROFILE,
@@ -794,39 +903,39 @@ export default function CreationFallbackSection(props) {
     .join(" ");
   const useChinese = /[\\u3400-\\u9fff]/.test(localeSeed);
   const localeCopy = useChinese
-    ? {
+      ? {
         fallbackCatalog: [
-          { title: "高精密加工中心", desc: "适用于复杂零件的稳定高精度加工。" },
-          { title: "高速钻攻中心", desc: "面向批量生产的高节拍加工方案。" },
-          { title: "多工序复合机型", desc: "支持铣、钻、攻等工序的一体化加工。" },
-          { title: "自动化产线单元", desc: "可与上下料系统联动，提升整体产能。" },
+          { title: "核心产品线 A", desc: "面向重点场景提供稳定能力与可扩展配置。" },
+          { title: "核心产品线 B", desc: "支持参数化选型与标准化快速交付。" },
+          { title: "核心产品线 C", desc: "强化效率、稳定性与持续迭代空间。" },
+          { title: "定制化解决方案", desc: "可按业务目标组合能力与实施节奏。" },
         ],
         productLabel: "产品",
-        customizable: "支持按场景定制参数与配置。",
+        customizable: "支持按业务场景定制参数与配置。",
         leadCapture: "线索收集",
         placeholders: {
           name: "姓名",
           email: "邮箱",
           company: "公司名称",
           country: "所在地区",
-          requirement: "请描述您的加工需求...",
+          requirement: "请描述您的业务需求...",
         },
         cta: "立即咨询",
         whatsapp: "WhatsApp",
         link: "链接",
-        socialTitle: "被严苛质量标准团队持续采用",
+        socialTitle: "被重视交付质量与效率的团队持续采用",
         trustLabel: "行业信赖",
-        fallbackLogos: ["3C电子", "精密制造", "模具加工", "汽车零部件", "医疗零件", "复合材料"],
+        fallbackLogos: ["消费电子", "企业服务", "工业应用", "医疗健康", "新能源", "智能硬件"],
         fallbackTestimonials: [
           {
             name: "生产负责人",
-            role: "精密制造工厂",
-            quote: "导入后产线稳定性显著提升，多班次运行仍可保持一致精度。",
+            role: "项目负责人",
+            quote: "上线后交付节奏明显更稳，跨团队协作效率也同步提升。",
           },
           {
-            name: "工艺经理",
-            role: "3C零部件供应商",
-            quote: "设备与工艺协同后，节拍更短，质量控制也更稳定。",
+            name: "运营经理",
+            role: "企业客户",
+            quote: "方案落地后周期缩短，关键节点可视化让决策更快。",
           },
         ],
         brandLabel: "品牌",
@@ -835,37 +944,37 @@ export default function CreationFallbackSection(props) {
       }
     : {
         fallbackCatalog: [
-          { title: "High-Precision Machining Center", desc: "Stable accuracy for complex part machining." },
-          { title: "High-Speed Drilling Center", desc: "Fast cycle production for volume manufacturing." },
-          { title: "Multi-Process CNC Unit", desc: "Supports milling, drilling, and tapping in one flow." },
-          { title: "Automation Cell", desc: "Integrates handling systems for scalable throughput." },
+          { title: "Core Product Line A", desc: "Reliable capability and scalable configuration for key scenarios." },
+          { title: "Core Product Line B", desc: "Supports parameterized selection and fast standardized rollout." },
+          { title: "Core Product Line C", desc: "Built for efficiency, stability, and iterative optimization." },
+          { title: "Custom Solution Program", desc: "Combines capabilities around business goals and milestones." },
         ],
         productLabel: "Product",
-        customizable: "Customizable specs are available for your scenario.",
+        customizable: "Customizable specs are available for your business scenario.",
         leadCapture: "Lead Capture",
         placeholders: {
           name: "Name",
           email: "Work Email",
           company: "Company",
           country: "Country",
-          requirement: "Tell us your product requirements...",
+          requirement: "Tell us your business requirements...",
         },
         cta: "Contact Sales",
         whatsapp: "WhatsApp",
         link: "Link",
-        socialTitle: "Trusted by production teams with demanding quality targets",
+        socialTitle: "Trusted by teams that care about delivery quality and speed",
         trustLabel: "Industry trust",
-        fallbackLogos: ["Automotive", "3C Manufacturing", "Mold", "Aerospace", "General Machinery", "Precision Parts"],
+        fallbackLogos: ["Consumer Tech", "Enterprise SaaS", "Industrial", "Healthcare", "Energy", "Smart Devices"],
         fallbackTestimonials: [
           {
-            name: "Operations Director",
-            role: "Automotive Components",
-            quote: "The line reached stable output quickly and maintained accuracy across multi-shift production.",
+            name: "Program Director",
+            role: "Enterprise Client",
+            quote: "The rollout became more predictable and cross-team delivery improved quickly.",
           },
           {
             name: "Plant Manager",
-            role: "Precision Manufacturing",
-            quote: "Equipment integration and process support improved cycle time without sacrificing quality.",
+            role: "Operations Team",
+            quote: "Implementation support reduced cycle time while keeping quality standards consistent.",
           },
         ],
         brandLabel: "Brand",
@@ -2845,16 +2954,22 @@ const buildTemplateSeedBlueprint = (prompt: string): ArchitectBlueprint | null =
 
   let seedPages = Array.from(seedPageMap.values());
   const hasStructuredNavContract = (structuredBrief?.nav?.length ?? 0) >= 3;
-  if (looksLikeEnterpriseWebsite({ prompt, pages: seedPages }) && requestedPages.length < 3 && !hasStructuredNavContract) {
-    seedPages = ensureEnterpriseSitePages(
-      seedPages,
-      (definition) => ({
-        path: definition.path,
-        name: definition.name,
-        sections: [],
-      }),
-      { prompt }
-    ) as ArchitectPage[];
+  const hasStructuredCatalogContract =
+    hasStructuredCatalogContractSignal(structuredBrief) || hasStructuredCatalogContractSignalFromPrompt(prompt);
+  if (looksLikeEnterpriseWebsite({ prompt, pages: seedPages })) {
+    if (hasStructuredCatalogContract) {
+      seedPages = ensureStructuredDualChainPages(seedPages as any[], prompt, structuredBrief) as ArchitectPage[];
+    } else if (requestedPages.length < 3 && !hasStructuredNavContract) {
+      seedPages = ensureEnterpriseSitePages(
+        seedPages,
+        (definition) => ({
+          path: definition.path,
+          name: definition.name,
+          sections: [],
+        }),
+        { prompt }
+      ) as ArchitectPage[];
+    }
   }
 
   const templateResolution = resolveTemplatePlan({
@@ -2884,7 +2999,7 @@ const buildTemplateSeedBlueprint = (prompt: string): ArchitectBlueprint | null =
         : {}) as Record<string, unknown>),
     },
   };
-  const brand = structuredBrief?.brand || extractBrandNameFromPromptLite(prompt) || "";
+  const brand = sanitizeBrandCandidate(String(structuredBrief?.brand || extractBrandNameFromPromptLite(prompt) || ""));
 
   return {
     ...fallbackBlueprint,
@@ -2893,7 +3008,7 @@ const buildTemplateSeedBlueprint = (prompt: string): ArchitectBlueprint | null =
         ? fallbackBlueprint.designNorthStar
         : {}),
       ...(brand ? { brand } : {}),
-      ...(selectedProfile.sourceDomain ? { referenceDomain: selectedProfile.sourceDomain } : {}),
+      ...(selectedProfile?.sourceDomain ? { referenceDomain: selectedProfile.sourceDomain } : {}),
     },
     theme: nextTheme,
     pages: resolvedPages,
@@ -4167,12 +4282,15 @@ const normalizePromptPagePath = (value: string) => {
   return resolveCanonicalRoute(compact);
 };
 
-const stripExternalFactPackFromPrompt = (prompt: string) => {
+const stripSyntheticPromptAugmentations = (prompt: string) => {
   const raw = String(prompt || "");
   if (!raw.trim()) return raw;
-  const marker = raw.search(/\n#\s*External\s+Fact\s+Pack(?:\s*\(Serper\))?/i);
-  if (marker < 0) return raw;
-  return raw.slice(0, marker).trimEnd();
+  const markers = [
+    raw.search(/\n#\s*Structured\s+Input\s+Contract\b/i),
+    raw.search(/\n#\s*External\s+Fact\s+Pack(?:\s*\(Serper\))?/i),
+  ].filter((index) => index >= 0);
+  if (!markers.length) return raw;
+  return raw.slice(0, Math.min(...markers)).trimEnd();
 };
 
 const slugifyRequestedPageLabel = (value: string) =>
@@ -4186,6 +4304,7 @@ const slugifyRequestedPageLabel = (value: string) =>
 const inferRequestedPagePathFromLabel = (label: string) => {
   const normalizedLabel = String(label || "").trim();
   if (!normalizedLabel) return "/";
+  if (/^(?:home|homepage|home page|index|首页|主页|首屏)$/i.test(normalizedLabel)) return "/";
   const routed = resolveEnterprisePagePathFromLabel(normalizedLabel);
   if (routed !== "/") return routed;
   const slug = slugifyRequestedPageLabel(normalizedLabel);
@@ -4197,6 +4316,46 @@ const derivePageNameFromPath = (path: string) => {
   if (normalized === "/") return "Home";
   const token = normalized.split("/").filter(Boolean).pop() || "Page";
   return humanizeLabel(token);
+};
+
+const canonicalPromptRouteHeads = new Set([
+  "about",
+  "contact",
+  "products",
+  "product",
+  "catalog",
+  "solutions",
+  "solution",
+  "cases",
+  "case",
+  "support",
+  "services",
+  "service",
+  "privacy",
+  "terms",
+  "blog",
+  "news",
+  "faq",
+  "company",
+  "team",
+  "careers",
+  "jobs",
+]);
+
+const looksLikeMeasurementToken = (segment: string) =>
+  /^(?:[xyz]\d{2,6}(?:mm|cm|m)?|[a-z]\d{2,6}|\d{2,6}(?:mm|cm|m|rpm)?)$/i.test(segment);
+
+const canUseGenericPromptPathMatch = (rawPrompt: string, matchIndex: number, pathValue: string) => {
+  const normalized = normalizePromptPagePath(pathValue);
+  if (!normalized || normalized.length > 80) return false;
+  if (normalized === "/") return true;
+  const segments = normalized.split("/").filter(Boolean);
+  if (!segments.length || segments.some((segment) => segment.length > 40)) return false;
+  if (segments.some((segment) => looksLikeMeasurementToken(segment))) return false;
+  const head = String(segments[0] || "").toLowerCase();
+  if (canonicalPromptRouteHeads.has(head)) return true;
+  const context = rawPrompt.slice(Math.max(0, matchIndex - 48), matchIndex).toLowerCase();
+  return /(route|routes|path|paths|page|pages|nav|navigation|menu|sitemap|路由|页面|导航)/i.test(context);
 };
 
 const splitRequestedPageLabelList = (value: string) =>
@@ -4219,16 +4378,65 @@ const splitRequestedPageLabelList = (value: string) =>
         )
     );
 
+const REQUESTED_PAGE_HINT_PATTERN =
+  /(home|about|contact|products?|solutions?|cases?|support|blog|privacy|terms|pages?|routes?|导航|菜单|页面|栏目|首页|主页|产品|方案|案例|关于|联系|支持|博客|隐私|条款|公司|团队)/i;
+
+const looksLikeRequestedPageLabel = (value: string) => {
+  const label = String(value || "").trim();
+  if (!label || label.length < 2 || label.length > 32) return false;
+  if (/^https?:\/\//i.test(label)) return false;
+  if (/^\d+(?:\.\d+)?(?:mm|cm|m|rpm|%|x)$/i.test(label)) return false;
+  if (resolveEnterprisePagePathFromLabel(label) !== "/") return true;
+  if (/^(?:home|homepage|home page|首页|主页|首屏)$/i.test(label)) return true;
+  if (/^\/[a-z0-9\-\/]{1,32}$/i.test(label)) return true;
+  if (
+    /^[\u4e00-\u9fff]{2,10}$/u.test(label) &&
+    /(首页|主页|关于|联系|产品|方案|案例|概况|服务|支持|资讯|招聘|团队|新闻|博客|隐私|条款|中心|页面?|页)$/u.test(label) &&
+    !/(补充|完善|要求|需要|并|以及|参数|数据|资质|faq|FAQ|sandbox|站内|链接)/iu.test(label)
+  ) {
+    return true;
+  }
+  if (/^[A-Za-z][A-Za-z\s&/-]{1,26}$/.test(label) && REQUESTED_PAGE_HINT_PATTERN.test(label)) {
+    return true;
+  }
+  return false;
+};
+
+const looksLikeRequestedPageListClause = (value: string) => {
+  const raw = String(value || "").trim();
+  if (!raw || raw.length < 6 || raw.length > 260) return false;
+  if (!/[|｜、,，;；]/.test(raw)) return false;
+  const hintMatches = raw.match(new RegExp(REQUESTED_PAGE_HINT_PATTERN.source, "gi"));
+  return (hintMatches?.length ?? 0) >= 2;
+};
+
 const collectRequestedPageLabelsFromPrompt = (prompt: string) => {
-  const raw = stripExternalFactPackFromPrompt(String(prompt || ""));
+  const raw = stripSyntheticPromptAugmentations(String(prompt || ""));
   const labels: string[] = [];
+  const pushLabels = (value: string) => {
+    const firstSentence = String(value || "").split(/[。.!?！？]/)[0] || "";
+    splitRequestedPageLabelList(firstSentence).forEach((candidate) => {
+      if (!looksLikeRequestedPageLabel(candidate)) return;
+      labels.push(candidate);
+    });
+  };
+
   const navMatches = Array.from(
     raw.matchAll(
-      /(?:^|\n|\r)\s*(?:nav(?:igation)?|menu)\s*[:：]\s*([^\n\r]{1,240})/gi
+      /(?:^|[\n\r。；;])\s*(?:nav(?:igation)?|menu)\s*[:：]\s*([^\n\r]{1,240})/gi
     )
   );
   navMatches.forEach((match) => {
-    labels.push(...splitRequestedPageLabelList(match[1] || ""));
+    pushLabels(match[1] || "");
+  });
+
+  const zhNavMatches = Array.from(
+    raw.matchAll(
+      /(?:^|[\n\r。；;])\s*(?:导航(?:栏)?|菜单|页面清单|栏目(?:清单)?|导航菜单)\s*[:：]\s*([^\n\r]{1,260})/gim
+    )
+  );
+  zhNavMatches.forEach((match) => {
+    pushLabels(match[1] || "");
   });
 
   const explicitPageListMatches = Array.from(
@@ -4237,17 +4445,36 @@ const collectRequestedPageLabelsFromPrompt = (prompt: string) => {
     )
   );
   explicitPageListMatches.forEach((match) => {
-    labels.push(...splitRequestedPageLabelList(match[1] || ""));
+    pushLabels(match[1] || "");
   });
 
-  return labels;
+  const zhExplicitPageListMatches = Array.from(
+    raw.matchAll(
+      /(?:包含|包括|涵盖|含有|需(?:要)?包含|网站包含|页面包含)\s*[:：]?\s*([^\n\r。；;]{2,260})(?=[。；;\n\r]|$)/gim
+    )
+  );
+  zhExplicitPageListMatches.forEach((match) => {
+    const candidate = String(match[1] || "");
+    if (!looksLikeRequestedPageListClause(candidate)) return;
+    pushLabels(candidate);
+  });
+
+  const deduped: string[] = [];
+  const seen = new Set<string>();
+  labels.forEach((label) => {
+    const key = label.toLowerCase();
+    if (seen.has(key)) return;
+    seen.add(key);
+    deduped.push(label);
+  });
+  return deduped;
 };
 
 const extractRequestedPagesFromPrompt = (prompt: string) => {
-  const raw = stripExternalFactPackFromPrompt(String(prompt || ""));
+  const raw = stripSyntheticPromptAugmentations(String(prompt || ""));
   const useChinese = shouldUseChineseContent(raw);
   const matches = Array.from(
-    raw.matchAll(/(?:^|[\s,，、;；:：(\[（【])\/([a-zA-Z0-9\-\/]*)(?:\s*[（(]([^()（）]{1,40})[)）])?/g)
+    raw.matchAll(/(?:^|[\s,，、;；:：(\[（【])\/([a-zA-Z0-9\-\/{}]*)(?:\s*[（(]([^()（）]{1,40})[)）])?/g)
   );
   const indexByPath = new Map<string, number>();
   const pages: Array<{ path: string; name: string }> = [];
@@ -4273,16 +4500,19 @@ const extractRequestedPagesFromPrompt = (prompt: string) => {
   };
   matches.forEach((match) => {
     const pathPart = typeof match[1] === "string" ? match[1] : "";
+    const cursor = match.index ?? -1;
     if (!pathPart && /https?:\/\//i.test(raw)) {
-      const cursor = match.index ?? -1;
       if (cursor >= 0) {
         const neighborhood = raw.slice(Math.max(0, cursor - 12), cursor + 12).toLowerCase();
         if (neighborhood.includes("http://") || neighborhood.includes("https://")) return;
       }
     }
     if (/\./.test(pathPart)) return;
+    if (/[{}:*]/.test(pathPart)) return;
     if (/^(www|http|https|com|cn|net|org)$/i.test(pathPart)) return;
     const normalizedPath = normalizePromptPagePath(pathPart ? `/${pathPart}` : "/");
+    if (/\/page-$/.test(normalizedPath)) return;
+    if (cursor >= 0 && !canUseGenericPromptPathMatch(raw, cursor, normalizedPath)) return;
     const rawName = typeof match[2] === "string" ? match[2].trim() : "";
     const name =
       rawName && (useChinese || !/[\u4e00-\u9fff]/.test(rawName))
@@ -4291,13 +4521,15 @@ const extractRequestedPagesFromPrompt = (prompt: string) => {
     pushPage(normalizedPath, name || derivePageNameFromPath(normalizedPath));
   });
   const routeListMatches = Array.from(
-    raw.matchAll(/(?:^|\n)\s*[-*]\s*\/([a-zA-Z0-9\-\/]*)\s*(?:\(([^)（）:\n]{1,30})\)|([^\n:：]{1,24}))?\s*[:：]/g)
+    raw.matchAll(/(?:^|\n)\s*[-*]\s*\/([a-zA-Z0-9\-\/{}]*)\s*(?:\(([^)（）:\n]{1,30})\)|([^\n:：]{1,24}))?\s*[:：]/g)
   );
   routeListMatches.forEach((match) => {
     const pathPart = typeof match[1] === "string" ? match[1] : "";
     if (/\./.test(pathPart)) return;
+    if (/[{}:*]/.test(pathPart)) return;
     if (/^(www|http|https|com|cn|net|org)$/i.test(pathPart)) return;
     const normalizedPath = normalizePromptPagePath(pathPart ? `/${pathPart}` : "/");
+    if (/\/page-$/.test(normalizedPath)) return;
     const rawName = String(match[2] || match[3] || "")
       .replace(/[()（）]/g, "")
       .replace(/^(?:page|页面)\s*/i, "")
@@ -4335,6 +4567,138 @@ const ensurePromptRequestedPages = (
   return { ...blueprint, pages: existingPages };
 };
 
+const ensureEnterpriseLegalBlueprintPages = (pages: any[], prompt: string) => {
+  const existingPages = Array.isArray(pages) ? [...pages] : [];
+  const byPath = new Set(
+    existingPages.map((page, index) =>
+      normalizePromptPagePath(String(page?.path || (index === 0 ? "/" : `/page-${index + 1}`)))
+    )
+  );
+  const useChinese = shouldUseChineseContent(prompt);
+  if (!byPath.has("/privacy")) {
+    existingPages.push({
+      path: "/privacy",
+      name: useChinese ? "隐私政策" : "Privacy",
+      sections: [],
+    });
+    byPath.add("/privacy");
+  }
+  const hasTermsSignal = /(?:terms?|条款|服务条款|legal|tos|user[-\s]?agreement|法律声明)/i.test(String(prompt || ""));
+  if (hasTermsSignal && !byPath.has("/terms")) {
+    existingPages.push({
+      path: "/terms",
+      name: useChinese ? "服务条款" : "Terms",
+      sections: [],
+    });
+    byPath.add("/terms");
+  }
+  return existingPages;
+};
+
+const hasStructuredCatalogContractSignal = (brief: StructuredBrief | null | undefined) =>
+  (Array.isArray(brief?.productDetails) && brief!.productDetails!.length > 0) ||
+  (Array.isArray(brief?.productItems) && brief!.productItems!.length > 0);
+
+const hasStructuredCatalogContractSignalFromPrompt = (prompt: string) => {
+  const raw = String(prompt || "");
+  if (!/#\s*Structured\s+Input\s+Contract\b/i.test(raw)) return false;
+  if (/"productCount"\s*:\s*[1-9]\d*/i.test(raw)) return true;
+  return /"products"\s*:\s*\[[\s\S]*\{[\s\S]*\}/i.test(raw);
+};
+
+const extractStructuredProductCountFromPrompt = (prompt: string) => {
+  const raw = String(prompt || "");
+  const productCountMatch = raw.match(/"productCount"\s*:\s*(\d+)/i);
+  if (productCountMatch?.[1]) return Math.max(0, Number(productCountMatch[1]));
+  const productsArrayMatch = raw.match(/"products"\s*:\s*\[([\s\S]*?)\]\s*(?:,|\n|$)/i);
+  if (!productsArrayMatch?.[1]) return 0;
+  const objectCount = (productsArrayMatch[1].match(/\{/g) || []).length;
+  return Math.max(0, objectCount);
+};
+
+const extractStructuredCatalogPageSizeFromPrompt = (prompt: string) => {
+  const raw = String(prompt || "");
+  const match = raw.match(/"catalogPageSize"\s*:\s*(\d+)/i);
+  if (!match?.[1]) return 0;
+  return Math.max(0, Number(match[1]));
+};
+
+const ensureStructuredDualChainPages = (
+  pages: any[],
+  prompt: string,
+  structuredBrief: StructuredBrief | null | undefined
+) => {
+  if (!hasStructuredCatalogContractSignal(structuredBrief) && !hasStructuredCatalogContractSignalFromPrompt(prompt)) {
+    return Array.isArray(pages) ? pages : [];
+  }
+  const useChinese = shouldUseChineseContent(prompt);
+  const includeCases = Array.isArray(structuredBrief?.caseItems) && structuredBrief!.caseItems!.length > 0;
+  const includeSolutions = Array.isArray(structuredBrief?.featureItems) && structuredBrief!.featureItems!.length > 0;
+  const includeTerms = /(?:terms?|条款|服务条款|legal|tos|user[-\s]?agreement|法律声明)/i.test(String(prompt || ""));
+  const totalProducts = (() => {
+    if (Array.isArray(structuredBrief?.productDetails) && structuredBrief!.productDetails!.length > 0) {
+      return structuredBrief!.productDetails!.length;
+    }
+    if (Array.isArray(structuredBrief?.productItems) && structuredBrief!.productItems!.length > 0) {
+      return structuredBrief!.productItems!.length;
+    }
+    return extractStructuredProductCountFromPrompt(prompt);
+  })();
+  const catalogPageSizeFromPrompt = extractStructuredCatalogPageSizeFromPrompt(prompt);
+  const catalogPageSize = clampPositiveInt(
+    Number(structuredBrief?.catalogPageSize || catalogPageSizeFromPrompt || process.env.BUILDER_CATALOG_PAGE_SIZE || 12),
+    12,
+    6,
+    24
+  );
+  const catalogPageCount = totalProducts > 0 ? Math.ceil(totalProducts / Math.max(1, catalogPageSize)) : 1;
+  const minimalPages: Array<{ path: string; name: string }> = [
+    { path: "/", name: useChinese ? "首页" : "Home" },
+    { path: "/about", name: useChinese ? "关于我们" : "About" },
+    { path: "/contact", name: useChinese ? "联系我们" : "Contact" },
+    { path: "/products", name: useChinese ? "产品中心" : "Products" },
+    ...Array.from({ length: Math.max(0, catalogPageCount - 1) }, (_, index) => ({
+      path: `/products/page-${index + 2}`,
+      name: useChinese ? `产品目录第${index + 2}页` : `Products Page ${index + 2}`,
+    })),
+    ...(includeSolutions ? [{ path: "/solutions", name: useChinese ? "解决方案" : "Solutions" }] : []),
+    ...(includeCases ? [{ path: "/cases", name: useChinese ? "应用案例" : "Cases" }] : []),
+    { path: "/privacy", name: useChinese ? "隐私政策" : "Privacy" },
+    ...(includeTerms ? [{ path: "/terms", name: useChinese ? "服务条款" : "Terms" }] : []),
+  ];
+  const existingByPath = new Map<string, Record<string, unknown>>();
+  (Array.isArray(pages) ? pages : []).forEach((page, index) => {
+    const normalizedPath = normalizePromptPagePath(String(page?.path || (index === 0 ? "/" : `/page-${index + 1}`)));
+    if (!normalizedPath) return;
+    if (!existingByPath.has(normalizedPath) && page && typeof page === "object") {
+      existingByPath.set(normalizedPath, page as Record<string, unknown>);
+    }
+  });
+  const requiredList = minimalPages.map((requiredPage) => {
+    const existing = existingByPath.get(requiredPage.path);
+    if (existing) {
+      return {
+        ...existing,
+        path: requiredPage.path,
+        name:
+          typeof existing.name === "string" && String(existing.name).trim()
+            ? String(existing.name).trim()
+            : requiredPage.name,
+      };
+    }
+    return {
+      path: requiredPage.path,
+      name: requiredPage.name,
+      sections: [],
+    };
+  });
+  const preservedCatalogChildren = Array.from(existingByPath.entries())
+    .filter(([pathValue]) => /^\/products\/(?:page-\d+|[^/]+)$/i.test(pathValue))
+    .filter(([pathValue]) => !/\/products\/page-$/.test(pathValue))
+    .map(([, page]) => page);
+  return [...requiredList, ...preservedCatalogChildren];
+};
+
 const ensureEnterpriseBlueprintPages = (
   blueprint: ArchitectBlueprint | null | undefined,
   prompt: string
@@ -4343,18 +4707,24 @@ const ensureEnterpriseBlueprintPages = (
   const requestedPages = extractRequestedPagesFromPrompt(prompt);
   const structuredBrief = parseStructuredBrief(prompt);
   const hasStructuredNavContract = (structuredBrief?.nav?.length ?? 0) >= 3;
+  const hasStructuredCatalogContract =
+    hasStructuredCatalogContractSignal(structuredBrief) || hasStructuredCatalogContractSignalFromPrompt(prompt);
   const existingPages = Array.isArray(blueprint.pages) ? blueprint.pages : [];
   if (!looksLikeEnterpriseWebsite({ prompt, pages: existingPages })) return blueprint;
-  if (requestedPages.length >= 3 || hasStructuredNavContract) return blueprint;
-  const pages = ensureEnterpriseSitePages(
-    existingPages,
-    (definition) => ({
-      path: definition.path,
-      name: definition.name,
-      sections: [],
-    }),
-    { prompt }
-  );
+  let pages = ensureEnterpriseLegalBlueprintPages(existingPages, prompt);
+  if (hasStructuredCatalogContract) {
+    pages = ensureStructuredDualChainPages(pages, prompt, structuredBrief);
+  } else if (requestedPages.length < 3 && !hasStructuredNavContract) {
+    pages = ensureEnterpriseSitePages(
+      pages,
+      (definition) => ({
+        path: definition.path,
+        name: definition.name,
+        sections: [],
+      }),
+      { prompt }
+    );
+  }
   return { ...blueprint, pages };
 };
 
@@ -4375,59 +4745,9 @@ const compactNavbarLabel = (label: string) => {
   return compacted;
 };
 
-const sanitizeBrandCandidate = (value: string): string => {
-  const cleaned = String(value || "")
-    .replace(/^[\s"'“”‘’「」『』【】《》()（）:：,，.;；]+/, "")
-    .replace(/[\s"'“”‘’「」『』【】《》()（）:：,，.;；]+$/g, "")
-    .replace(/\s{2,}/g, " ")
-    .trim();
-  if (!cleaned) return "";
-  const firstToken = cleaned.split(/[\n,，。;；|｜]/)[0]?.trim() || "";
-  if (!firstToken) return "";
-  const lowered = firstToken.toLowerCase();
-  if (
-    /^(brand|company|enterprise|website|official|官网|网站|公司|企业|品牌|品牌名|品牌名称|公司名|公司名称|名称|信息|中文|英文)$/i.test(
-      lowered
-    )
-  ) {
-    return "";
-  }
-  if (firstToken.length < 2) return "";
-  return firstToken;
-};
+const sanitizeBrandCandidate = (value: string): string => sanitizeBrandCandidateShared(value);
 
-const extractPromptBrandName = (prompt: string): string => {
-  const quoted = prompt.match(/["“”「『]([^"“”」』]{1,40})["”」』]/);
-  if (quoted) {
-    const candidate = sanitizeBrandCandidate(quoted[1]);
-    if (candidate) return candidate;
-  }
-  const chinese = prompt.match(
-    /为\s*["“”「『]?\s*([A-Za-z\u4e00-\u9fff][\w\u4e00-\u9fff\s-]{1,30})\s*["”」』]?\s*(?:生成|制作|创建|构建|设计)/i
-  );
-  if (chinese) {
-    const candidate = sanitizeBrandCandidate(chinese[1]);
-    if (candidate) return candidate;
-  }
-  const labeled = prompt.match(
-    /(?:品牌(?:名称|名)?|公司(?:名称|名)?|企业(?:名称|名)?|Company(?:\s+name)?|Brand(?:\s+name)?)\s*[：:]\s*([^\n]{1,60})/i
-  );
-  if (labeled) {
-    const candidate = sanitizeBrandCandidate(labeled[1]);
-    if (candidate) return candidate;
-  }
-  const english = prompt.match(/for\s+([A-Za-z][A-Za-z0-9\s-]{1,40})\s+(?:generate|build|create|design)/i);
-  if (english) {
-    const candidate = sanitizeBrandCandidate(english[1]);
-    if (candidate) return candidate;
-  }
-  const named = prompt.match(/(?:叫|called|named|品牌名(?:为|是)?|公司名(?:为|是)?|企业名(?:为|是)?)\s*[：:]?\s*([A-Za-z\u4e00-\u9fff][\w\u4e00-\u9fff\s]{0,30})/i);
-  if (named) {
-    const candidate = sanitizeBrandCandidate(named[1]);
-    if (candidate) return candidate;
-  }
-  return "";
-};
+const extractPromptBrandName = (prompt: string): string => extractBrandNameFromPromptShared(prompt);
 
 const resolveLocaleDefaults = (prompt: string) => {
   const useChinese = shouldUseChineseContent(prompt);
@@ -4447,7 +4767,7 @@ const resolveLocaleDefaults = (prompt: string) => {
     requestQuote: useChinese ? "获取报价" : "Request Quote",
     privacy: useChinese ? "隐私政策" : "Privacy",
     company: useChinese ? "公司" : "Company",
-    utility: useChinese ? "工业数控系统" : "Industrial CNC systems",
+    utility: useChinese ? "企业官网系统" : "Corporate website system",
     languageTag: useChinese ? "中" : "EN",
     addressFallback: useChinese ? "中国" : "Global",
     defaultRights:
@@ -4650,6 +4970,7 @@ const buildFooterProps = (
   linkGraph?: SiteLinkGraph,
   prompt?: string
 ) => {
+  const locale = resolveLocaleDefaults(String(prompt || ""));
   const headingFont = typeof (theme as any)?.fontHeading === "string" ? (theme as any).fontHeading : undefined;
   const bodyFont = typeof (theme as any)?.fontBody === "string" ? (theme as any).fontBody : undefined;
   const nameSeed = typeof page.name === "string" ? page.name : page.path || "home";
@@ -4661,7 +4982,7 @@ const buildFooterProps = (
     anchor: "footer",
     logoText: footerBrand,
     columns: buildFooterColumns(page, linkGraph, prompt),
-    legal: `© ${new Date().getFullYear()} ${footerBrand}. All rights reserved.`,
+    legal: locale.defaultRights(footerBrand),
     headingFont,
     bodyFont,
     variant: "multiColumn" as const,
@@ -5131,11 +5452,6 @@ const buildDeterministicFallbackBlock = (
   const promptBrand = extractPromptBrandName(String(prompt || ""));
   const outputLanguage = options?.outputLanguage ?? resolveOutputLanguage(String(prompt || ""));
   const isZhPrompt = outputLanguage === "zh-CN";
-  const lowerPrompt = String(prompt || "").toLowerCase();
-  const cncIntent =
-    /(cnc|machine tool|machine-tools|machining|metal cutting|milling|lathe|spindle|five-axis|5-axis|加工中心|机床|数控|刀具|切削)/i.test(
-      lowerPrompt
-    );
   const rawIndustry =
     typeof designNorthStar?.industry === "string" && designNorthStar.industry.trim()
       ? designNorthStar.industry.trim()
@@ -5143,9 +5459,7 @@ const buildDeterministicFallbackBlock = (
         ? "行业"
         : "industry";
   const industry = localizeIndustryToken(rawIndustry, isZhPrompt);
-  const pagePath = String(context.pagePath || "/").toLowerCase();
-  const pageKind = pagePath === "/" ? "home" : pagePath.replace(/^\/+/, "").split("/")[0] || "home";
-  const shortPrompt = trimLine(prompt, "Industrial Automation Platform", 68);
+  const shortPrompt = trimLine(prompt, "Business Website", 68);
   const safeHeroTitle = isZhPrompt
     ? `${promptBrand || "企业"}${industry}解决方案`
     : `${promptBrand || "Company"} ${industry} Solutions`;
@@ -5160,14 +5474,14 @@ const buildDeterministicFallbackBlock = (
     getStarted: isZhPrompt ? "立即开始" : "Get Started",
     exploreProducts: isZhPrompt ? "查看产品" : "Explore Products",
     contactSales: isZhPrompt ? "联系销售" : "Contact Sales",
-    heroEyebrow: isZhPrompt ? "工业智造方案" : "Industrial Solutions",
+    heroEyebrow: isZhPrompt ? "品牌与增长" : "Brand & Growth",
     heroSubtitle: isZhPrompt
-      ? "面向现代工厂提供高性能设备、精密工程与数字化协同流程。"
-      : "High-performance machinery, precision engineering, and integrated digital workflows for modern factories.",
+      ? "围绕品牌定位、产品表达与转化目标，构建高完成度网站体验。"
+      : "High-fidelity website experiences built around brand positioning, product clarity, and conversion goals.",
     productLines: isZhPrompt ? "产品矩阵" : "Product Lines",
     productSubtitle: isZhPrompt
-      ? "覆盖加工、精整与自动化搬运的模块化产线能力。"
-      : "Modular machines for cutting, finishing, and automated handling.",
+      ? "支持清晰分类、参数展示与场景化说明的产品编排。"
+      : "Structured product presentation with clear categories, specs, and use cases.",
     learnMore: isZhPrompt ? "了解详情" : "Learn More",
     latestStories: isZhPrompt ? "最新动态" : "Latest Stories",
     customerFeedback: isZhPrompt ? "客户反馈" : "Customer Feedback",
@@ -5182,187 +5496,25 @@ const buildDeterministicFallbackBlock = (
       : "We combine strategic clarity, visual refinement, and execution discipline to create enduring digital experiences.",
     pricingTitle: isZhPrompt ? "服务方案" : "Service Plans",
     faqTitle: "FAQ",
-    capabilities: isZhPrompt ? "核心能力" : "Key Capabilities",
-    capabilitiesSubtitle: isZhPrompt ? "围绕稳定性、精度与规模化生产能力构建。" : "Designed for uptime, precision, and scalable production.",
-    processReliability: isZhPrompt ? "工艺稳定性" : "Process Reliability",
+    capabilities: isZhPrompt ? "核心能力" : "Key Strengths",
+    capabilitiesSubtitle: isZhPrompt
+      ? "围绕交付稳定性、可扩展性与业务转化构建。"
+      : "Designed for reliable delivery, scalability, and measurable conversion.",
+    processReliability: isZhPrompt ? "交付稳定性" : "Delivery Reliability",
     processReliabilityDesc: isZhPrompt
-      ? "在连续生产负载下保持稳定运行与可预测表现。"
-      : "Stable operation with predictable performance under continuous load.",
-    precisionControl: isZhPrompt ? "精度控制" : "Precision Control",
+      ? "在持续迭代中保持可预期的体验质量与输出节奏。"
+      : "Consistent quality and predictable output through iterative execution.",
+    precisionControl: isZhPrompt ? "体验精细化" : "Experience Precision",
     precisionControlDesc: isZhPrompt
-      ? "通过硬件与软件协同校准，稳定实现严苛公差。"
-      : "Tight tolerances through calibrated hardware and software workflows.",
+      ? "通过信息层级、文案与视觉细节提升表达准确度。"
+      : "Sharper communication through information hierarchy, copy, and visual details.",
     operationVisibility: isZhPrompt ? "运营可视化" : "Operational Visibility",
     operationVisibilityDesc: isZhPrompt
-      ? "覆盖设备状态、维护与产能节拍的可执行洞察。"
-      : "Actionable monitoring across machine states, maintenance, and throughput.",
+      ? "通过清晰指标与反馈回路支持持续优化。"
+      : "Actionable signals and feedback loops for continuous improvement.",
   };
   const idBase = `${toSlug(context.section.type || "section") || "section"}-${context.sectionIndex + 1}`;
   const anchor = context.section.id;
-  const pageAwareStory =
-    cncIntent && !isZhPrompt
-      ? {
-          home: {
-            title: "Built for precision machining",
-            subtitle: "From rigid machine structures to automated cells, every system is designed for repeatable output.",
-            body: `${promptBrand || "This team"} combines process engineering, spindle know-how, and production-line integration to help factories increase accuracy, stability, and throughput.`,
-          },
-          solutions: {
-            title: "Solutions engineered around real production constraints",
-            subtitle: "Application-ready machining workflows for complex parts, multi-shift uptime, and scalable automation.",
-            body: "We structure each solution around part geometry, takt time, tooling, and downstream quality requirements so each line can ramp with fewer compromises.",
-          },
-          products: {
-            title: "Machine platforms for high-mix precision manufacturing",
-            subtitle: "A focused portfolio covering core machining scenarios across drilling, milling, tapping, and flexible automation.",
-            body: "Each platform is configured to balance rigidity, cycle time, maintainability, and integration with loaders, robots, spindle systems, and tool magazines.",
-          },
-          industries: {
-            title: "Production scenarios we support",
-            subtitle: "Field-proven manufacturing layouts tailored to automotive, 3C, mold, aerospace, and general machinery factories.",
-            body: "Our team aligns machine architecture, automation rhythm, and quality checkpoints with each industry's tolerance window and throughput target.",
-          },
-          cases: {
-            title: "Measured outcomes from factory deployments",
-            subtitle: "Examples focused on cycle time reduction, yield improvement, and stable multi-line delivery.",
-            body: "Case studies show how process tuning, equipment integration, and automation planning improve productivity without compromising part quality.",
-          },
-          about: {
-            title: "Engineering discipline behind the brand",
-            subtitle: "A manufacturing partner built around precision, response speed, and long-term service capability.",
-            body: `${promptBrand || "The company"} brings together mechanical design, controls integration, and production support to help manufacturers build robust machining capacity.`,
-          },
-          contact: {
-            title: "Start with your part, process, and capacity goals",
-            subtitle: "We translate machining requirements into practical equipment and automation proposals.",
-            body: "Share your part family, takt target, and plant constraints, and our team will outline a deployment path that fits your production environment.",
-          },
-        }
-      : null;
-  const pageAwareHero =
-    cncIntent && !isZhPrompt
-      ? {
-          home: {
-            eyebrow: "Precision CNC manufacturing",
-            title: `${promptBrand || "Company"} machine tools for high-performance production`,
-            subtitle:
-              "Five-axis machining centers, drilling and tapping platforms, horizontal machining centers, and automation-ready production cells for modern factories.",
-          },
-          solutions: {
-            eyebrow: "Manufacturing solutions",
-            title: "Solutions built around parts, takt time, and uptime",
-            subtitle:
-              "Integrated machining and automation strategies for automotive, 3C precision manufacturing, mold production, aerospace, and general industrial parts.",
-          },
-          products: {
-            eyebrow: "Product portfolio",
-            title: "Machine platforms for precise, stable, scalable output",
-            subtitle:
-              "Explore machining centers, drilling and tapping systems, automation units, and spindle-tool magazine packages configured for demanding production lines.",
-          },
-          industries: {
-            eyebrow: "Industry applications",
-            title: "Configured for the industries that demand repeatable precision",
-            subtitle:
-              "Production-ready equipment and process layouts tailored to automotive components, consumer electronics, mold making, aerospace, and general machinery.",
-          },
-          cases: {
-            eyebrow: "Customer results",
-            title: "Factory deployments that improved cycle time and output quality",
-            subtitle:
-              "See how equipment upgrades, automation integration, and process optimization delivered measurable gains in throughput, consistency, and flexibility.",
-          },
-          about: {
-            eyebrow: `About ${promptBrand || "Company"}`,
-            title: "Engineering-first manufacturing support from planning to delivery",
-            subtitle:
-              "A team focused on machine reliability, process fit, and service responsiveness across the full lifecycle of precision production equipment.",
-          },
-          contact: {
-            eyebrow: `Contact ${promptBrand || "Company"}`,
-            title: "Discuss your machining requirements with our engineering team",
-            subtitle:
-              "Get guidance on machine selection, line planning, automation configuration, spindle systems, and rollout strategy.",
-          },
-        }
-      : null;
-  const pageAwareCatalog =
-    cncIntent && !isZhPrompt
-      ? {
-          products: {
-            title: "Core Product Platforms",
-            subtitle: "Production-ready CNC platforms tuned for 3C machining, precision enclosures, and repeatable factory output.",
-            items: [
-              {
-                title: "5-Axis Machining Center",
-                description: "Rigid multi-axis machining for complex aluminum and magnesium parts with stable precision.",
-              },
-              {
-                title: "High-Speed Drilling & Tapping Center",
-                description: "Short-cycle drilling, tapping, and finishing for high-volume 3C components and shells.",
-              },
-              {
-                title: "Horizontal Machining Center",
-                description: "Reliable chip evacuation and spindle stability for continuous production workloads.",
-              },
-            ],
-          },
-          solutions: {
-            title: "Custom Solution Packages",
-            subtitle: "Integrated machine + tooling + automation packages built around takt time, fixture strategy, and downstream quality.",
-            items: [
-              {
-                title: "Phone Frame Machining Cell",
-                description: "Fixtures, spindle tuning, and loader integration configured for thin-wall aluminum frames.",
-              },
-              {
-                title: "Laptop Shell Production Line",
-                description: "High-speed drilling, tapping, deburring, and transfer automation for multi-process shell manufacturing.",
-              },
-              {
-                title: "Camera Bezel Finishing Package",
-                description: "Precision cutting and polishing-ready workflows for tight-tolerance cosmetic components.",
-              },
-            ],
-          },
-          industries: {
-            title: "Industries We Serve",
-            subtitle: "Factory-ready machine platforms tailored to the tolerance windows, materials, and throughput needs of each segment.",
-            items: [
-              {
-                title: "3C Electronics",
-                description: "High-speed machining for phone frames, laptop shells, camera bezels, and keypad components.",
-              },
-              {
-                title: "Automotive Components",
-                description: "Stable machining for housings, brackets, and precision structural parts under demanding cycle-time targets.",
-              },
-              {
-                title: "Aerospace & Precision Parts",
-                description: "Repeatable machining strategies for complex parts requiring high rigidity and process control.",
-              },
-            ],
-          },
-          cases: {
-            title: "Deployment Highlights",
-            subtitle: "Representative programs showing cycle-time gains, faster ramp-up, and consistent output quality.",
-            items: [
-              {
-                title: "Phone Display Frame Program",
-                description: "Reduced changeover friction while maintaining stable precision across high-mix frame variants.",
-              },
-              {
-                title: "Laptop Shell Production Upgrade",
-                description: "Improved takt-time consistency with integrated loading and optimized drilling/tapping sequences.",
-              },
-              {
-                title: "Camera Bezel Cell Retrofit",
-                description: "Lifted finish quality and throughput through spindle, fixture, and process refinements.",
-              },
-            ],
-          },
-        }
-      : null;
   const propsHints =
     context.section.propsHints && typeof context.section.propsHints === "object"
       ? (context.section.propsHints as Record<string, unknown>)
@@ -5409,15 +5561,14 @@ const buildDeterministicFallbackBlock = (
   }
 
   if (/hero|pagehero|pageheader/.test(token)) {
-    const heroCopy = pageAwareHero?.[pageKind as keyof typeof pageAwareHero];
     return {
       type: "HeroSplit",
       props: {
         id: idBase,
         anchor,
-        eyebrow: heroCopy?.eyebrow ?? localized.heroEyebrow,
-        title: heroCopy?.title ?? safeHeroTitle,
-        subtitle: heroCopy?.subtitle ?? localized.heroSubtitle,
+        eyebrow: localized.heroEyebrow,
+        title: safeHeroTitle,
+        subtitle: localized.heroSubtitle,
         ctas: [
           { label: localized.exploreProducts, href: "#products", variant: "primary" },
           { label: localized.contactSales, href: "#contact", variant: "secondary" },
@@ -5430,46 +5581,41 @@ const buildDeterministicFallbackBlock = (
   }
 
   if (/product|catalog|bundle|comparison/.test(token)) {
-    const catalogCopy = pageAwareCatalog?.[pageKind as keyof typeof pageAwareCatalog];
     return {
       type: "CardsGrid",
       props: {
         id: idBase,
         anchor,
-        title: catalogCopy?.title ?? (cncIntent && !isZhPrompt ? "Core Product Platforms" : localized.productLines),
-        subtitle:
-          catalogCopy?.subtitle ??
-          (cncIntent && !isZhPrompt
-            ? "Machine tools, spindle systems, and automation units configured for precision manufacturing."
-            : localized.productSubtitle),
+        title: localized.productLines,
+        subtitle: localized.productSubtitle,
         variant: "product",
         columns: "3col",
         density: "normal",
         cardStyle: "solid",
         maxWidth: "xl",
-        items: (catalogCopy?.items ?? [
+        items: [
           {
-            title: isZhPrompt ? "高速加工单元" : "CNC Router Series",
+            title: isZhPrompt ? "核心产品线 A" : "Core Product Line A",
             description: isZhPrompt
-              ? "面向工业连续负载提供高速加工与稳定重复精度。"
-              : "High-speed milling with repeatable accuracy for industrial workloads.",
+              ? "面向重点场景提供稳定能力与可扩展配置。"
+              : "Reliable capability and scalable configuration for priority scenarios.",
             cta: { label: isZhPrompt ? "查看" : "Details", href: "#", variant: "link" },
           },
           {
-            title: isZhPrompt ? "边缘精整单元" : "Edge Processing Units",
+            title: isZhPrompt ? "核心产品线 B" : "Core Product Line B",
             description: isZhPrompt
-              ? "适配连续产线的稳定精整与轮廓加工。"
-              : "Stable edge finishing and profiling for continuous production lines.",
+              ? "支持参数化选型与多场景组合交付。"
+              : "Supports parameterized selection and multi-scenario packaging.",
             cta: { label: isZhPrompt ? "查看" : "Details", href: "#", variant: "link" },
           },
           {
-            title: isZhPrompt ? "自动化工作单元" : "Automated Cells",
+            title: isZhPrompt ? "核心产品线 C" : "Core Product Line C",
             description: isZhPrompt
-              ? "融合机器人与软件控制，实现端到端节拍提升。"
-              : "Integrated robotics and software control for end-to-end throughput.",
+              ? "强调效率、稳定性与后续迭代空间。"
+              : "Focused on efficiency, stability, and future iteration room.",
             cta: { label: isZhPrompt ? "查看" : "Details", href: "#", variant: "link" },
           },
-        ]).map((item) => ({
+        ].map((item) => ({
           ...item,
           cta: { label: localized.learnMore, href: "#", variant: "link" as const },
         })),
@@ -5547,7 +5693,7 @@ const buildDeterministicFallbackBlock = (
       props: {
         id: idBase,
         anchor,
-        title: cncIntent && !isZhPrompt ? "What manufacturing teams say" : localized.collaboratorVoices,
+        title: localized.collaboratorVoices,
         variant: "2col",
         maxWidth: "xl",
         items: [
@@ -5590,15 +5736,14 @@ const buildDeterministicFallbackBlock = (
   }
 
   if (/story|editorial|narrative|philosophy|studio/.test(token)) {
-    const storyCopy = pageAwareStory?.[pageKind as keyof typeof pageAwareStory];
     return {
       type: "ContentStory",
       props: {
         id: idBase,
         anchor,
-        title: storyCopy?.title ?? localized.ourStory,
-        subtitle: storyCopy?.subtitle ?? localized.storySubtitle,
-        body: storyCopy?.body ?? localized.storyBody,
+        title: localized.ourStory,
+        subtitle: localized.storySubtitle,
+        body: localized.storyBody,
         ctas: [{ label: isZhPrompt ? "查看更多" : "Explore More", href: "#", variant: "link" }],
         variant: "split",
         maxWidth: "xl",
@@ -5680,9 +5825,7 @@ const buildDeterministicFallbackBlock = (
         : "Talk to our team";
     const subtitle = isZhPrompt
       ? `围绕${industry}场景提供需求评估、方案设计与落地建议。`
-      : cncIntent
-        ? "Share your part requirements, output targets, and plant constraints to receive a practical machining and automation proposal."
-        : `Share your ${industry} goals and receive a tailored implementation plan.`;
+      : `Share your ${industry} goals, constraints, and timeline to receive a tailored implementation plan.`;
     const ctaLabel = isZhPrompt ? "预约咨询" : "Contact Sales";
     const contactLikeIntent = /contact|lead|form|map/.test(token);
     return {
@@ -5744,11 +5887,8 @@ const buildDeterministicFallbackBlock = (
       props: {
         id: idBase,
         anchor,
-        title: cncIntent && !isZhPrompt ? "Manufacturing Capabilities" : localized.capabilities,
-        subtitle:
-          cncIntent && !isZhPrompt
-            ? "Built for rigid machining, predictable uptime, and scalable factory deployment."
-            : localized.capabilitiesSubtitle,
+        title: localized.capabilities,
+        subtitle: localized.capabilitiesSubtitle,
         variant: "3col",
         maxWidth: "xl",
         items: [
@@ -5785,7 +5925,7 @@ const buildDeterministicFallbackBlock = (
             : `${promptBrand || "Company"} Capability Overview`,
       subtitle: isZhPrompt
         ? `围绕${industry}场景，构建可复制、可扩展的落地方案。`
-        : `Built for ${industry} scenarios with a scalable implementation approach.`,
+        : `Designed around ${industry} priorities with a scalable implementation approach.`,
       body: isZhPrompt
         ? "当前区块为稳定回退版本，可在编辑器中继续增强文案、媒体与交互细节。"
         : "This section uses a stable fallback layout and can be refined in the editor.",
@@ -6025,35 +6165,10 @@ const collectReferenceBrandPhrases = (prompt: string) => {
 };
 
 const extractBrandNameFromPromptLite = (prompt: string) => {
+  const shared = extractBrandNameFromPromptShared(prompt);
+  if (shared) return shared;
   const text = String(prompt || "");
-  const quoted = text.match(/["“”「『]([^"“”」』]{1,40})["”」』]/);
-  if (quoted) {
-    const candidate = sanitizeBrandCandidate(quoted[1]);
-    if (candidate) return candidate;
-  }
-  const labeled = text.match(/Company name\s*[:：]\s*([A-Za-z][A-Za-z0-9&.\s-]{1,40})/i);
-  if (labeled) {
-    const candidate = sanitizeBrandCandidate(labeled[1]);
-    if (candidate) return candidate;
-  }
-  const zhLabeled = text.match(/(?:品牌(?:名称|名)?|公司(?:名称|名)?|企业(?:名称|名)?)\s*[：:]\s*([^\n]{1,60})/i);
-  if (zhLabeled) {
-    const candidate = sanitizeBrandCandidate(zhLabeled[1]);
-    if (candidate) return candidate;
-  }
-  const chinese = text.match(
-    /为\s*["“”「『]?\s*([A-Za-z\u4e00-\u9fff][\w\u4e00-\u9fff\s-]{1,30})\s*["”」』]?\s*(?:生成|制作|创建|构建|设计)/i
-  );
-  if (chinese) {
-    const candidate = sanitizeBrandCandidate(chinese[1]);
-    if (candidate) return candidate;
-  }
-  const english = text.match(/for\s+([A-Za-z][A-Za-z0-9&.\s-]{1,40})\s+(?:generate|build|create|design)/i);
-  if (english) {
-    const candidate = sanitizeBrandCandidate(english[1]);
-    if (candidate) return candidate;
-  }
-  const englishInline = text.match(/for\s+([A-Za-z][A-Za-z0-9&.\s-]{1,40}?)(?:\s*\(|,|\s+(?:an?|the)\b)/i);
+  const englishInline = text.match(/for\s+([A-Za-z][A-Za-z0-9&.\s-]{1,48}?)(?:\s*\(|,|\s+(?:an?|the)\b)/i);
   if (englishInline) {
     const candidate = sanitizeBrandCandidate(englishInline[1]);
     if (candidate) return candidate;
@@ -6195,6 +6310,13 @@ type StructuredBrief = {
     image?: string;
     specs?: Record<string, string>;
     ctaLabel?: string;
+  }>;
+  caseDetails?: Array<{
+    title: string;
+    customerType?: string;
+    problem?: string;
+    solution?: string;
+    result?: string;
   }>;
   faqItems?: Array<{ question: string; answer: string }>;
   catalogPageSize?: number;
@@ -6353,9 +6475,16 @@ const mergeStructuredInputIntoBrief = (
       return `${entry.name}（${model}）`;
     })
     .filter(Boolean);
-  const caseItemsFromStructured = (Array.isArray(structuredInput.cases) ? structuredInput.cases : [])
-    .map((entry) => String((entry as any)?.title || "").trim())
-    .filter(Boolean);
+  const caseDetails = (Array.isArray(structuredInput.cases) ? structuredInput.cases : [])
+    .map((entry) => ({
+      title: String((entry as StructuredCaseRecord)?.title || "").trim(),
+      customerType: String((entry as StructuredCaseRecord)?.customerType || "").trim() || undefined,
+      problem: String((entry as StructuredCaseRecord)?.problem || "").trim() || undefined,
+      solution: String((entry as StructuredCaseRecord)?.solution || "").trim() || undefined,
+      result: String((entry as StructuredCaseRecord)?.result || "").trim() || undefined,
+    }))
+    .filter((entry) => entry.title);
+  const caseItemsFromStructured = caseDetails.map((entry) => entry.title).filter(Boolean);
   const faqItems = (Array.isArray(structuredInput.faqs) ? structuredInput.faqs : [])
     .map((entry) => ({
       question: String((entry as StructuredFaqRecord)?.question || "").trim(),
@@ -6364,7 +6493,7 @@ const mergeStructuredInputIntoBrief = (
     .filter((entry) => entry.question && entry.answer);
   return {
     ...brief,
-    brand: String(structuredInput.company?.name || "").trim() || brief.brand,
+    brand: sanitizeBrandCandidate(String(structuredInput.company?.name || "").trim()) || brief.brand,
     nav:
       Array.isArray(structuredInput.nav) && structuredInput.nav.length
         ? structuredInput.nav.map((item) => String(item || "").trim()).filter(Boolean)
@@ -6380,6 +6509,7 @@ const mergeStructuredInputIntoBrief = (
         ? structuredInput.contactFields.map((item) => String(item || "").trim()).filter(Boolean)
         : brief.contactFields,
     productDetails: products.length ? products : brief.productDetails,
+    caseDetails: caseDetails.length ? caseDetails : brief.caseDetails,
     faqItems: faqItems.length ? faqItems : brief.faqItems,
     catalogPageSize:
       Number.isFinite(Number(structuredInput.catalogPageSize)) && Number(structuredInput.catalogPageSize) > 0
@@ -6459,11 +6589,17 @@ const parseStructuredBrief = (prompt: string): StructuredBrief | null => {
   ]) || plainContactSection;
   const markdownAssetsSection =
     extractMarkdownHeadingSection(prompt, ["强烈建议", "可信度资产", "seo 资产", "seo资产"]) || plainAssetsSection;
+  const STRUCTURAL_NOISE_TOKEN_PATTERN =
+    /\b(navigation|nav|header|footer|menu|section|layout|breadcrumb|topnav|sidebar)\b/gi;
+  const STRUCTURAL_NOISE_TOKEN_PATTERN_ZH = /(导航栏?|页眉|页脚|菜单栏?|布局|面包屑|侧边栏)/g;
   const normalizeInlineToken = (value: string) =>
     String(value || "")
       .replace(/\*+/g, "")
+      .replace(STRUCTURAL_NOISE_TOKEN_PATTERN, " ")
+      .replace(STRUCTURAL_NOISE_TOKEN_PATTERN_ZH, " ")
       .replace(/^[\s-]+|[\s-]+$/g, "")
       .replace(/[.。]+$/g, "")
+      .replace(/\s+/g, " ")
       .trim();
   const parseRouteLabelsFromSection = (value: string) => {
     const labels: string[] = [];
@@ -6696,7 +6832,7 @@ const parseStructuredBrief = (prompt: string): StructuredBrief | null => {
     new Set([...parsePipeList(combinedCertification.replace(/\n/g, " | ")), ...parseDelimitedList(certificationLine)])
   ).slice(0, 8);
   const baseBrief: StructuredBrief = {
-    brand: logo || extractBrandNameFromPromptLite(prompt) || "Brand",
+    brand: sanitizeBrandCandidate(logo) || extractBrandNameFromPromptLite(prompt) || "Brand",
     nav,
     heroTitle,
     heroSubtitle,
@@ -6732,7 +6868,7 @@ const parseStructuredBrief = (prompt: string): StructuredBrief | null => {
 const deriveStructuredBriefFromPrompt = (prompt: string): StructuredBrief => {
   const raw = String(prompt || "");
   const useChinese = shouldUseChineseContent(raw);
-  const brand = extractBrandNameFromPromptLite(raw) || (useChinese ? "本公司" : "Company");
+  const brand = sanitizeBrandCandidate(extractBrandNameFromPromptLite(raw)) || (useChinese ? "本公司" : "Company");
   const factPackSection = (() => {
     const marker = raw.search(/#\s*External\s+Fact\s+Pack(?:\s*\(Serper\))?/i);
     if (marker < 0) return "";
@@ -6812,47 +6948,23 @@ const deriveStructuredBriefFromPrompt = (prompt: string): StructuredBrief => {
     )
   ).slice(0, 4);
 
-  const industryLike = /(数控|机床|3c|加工|cnc|machining|industrial|factory|manufactur)/i.test(raw);
-  const fallbackProducts =
-    industryLike
-      ? (() => {
-          const defaults = useChinese
-            ? ["高精密数控加工中心", "自动换刀加工设备", "多主轴批量加工设备", "复合材料精密加工设备"]
-            : [
-                "High-Precision CNC Machining Center",
-                "Automatic Tool-Change CNC System",
-                "Multi-Spindle Batch Processing Machine",
-                "Composite Material Precision Machining Equipment",
-              ];
-          const merged = Array.from(new Set([...productItems, ...defaults])).filter(Boolean);
-          return merged.slice(0, 6);
-        })()
-      : productItems;
-  const fallbackCases =
-    industryLike
-      ? (() => {
-          const defaults = useChinese
-            ? ["金属结构件高精度加工案例", "复合材料面板加工案例", "批量精密零件自动化加工案例", "复杂工艺一体化交付案例"]
-            : [
-                "High-Precision Metal Part Machining Case",
-                "Composite Panel Processing Case",
-                "Automated Batch Precision-Part Production Case",
-                "Complex Process One-Pass Delivery Case",
-              ];
-          const merged = Array.from(new Set([...caseItems, ...defaults])).filter(Boolean);
-          return merged.slice(0, 6);
-        })()
-      : caseItems;
-  const fallbackFeatures =
-    industryLike
-      ? (() => {
-          const defaults = useChinese
-            ? ["快速定制与打样", "短交期批量交付", "本地化技术支持"]
-            : ["Fast customization & sampling", "Short lead-time delivery", "Localized technical support"];
-          const merged = Array.from(new Set([...featureItems, ...defaults])).filter(Boolean);
-          return merged.slice(0, 6);
-        })()
-      : featureItems;
+  const genericProductDefaults = useChinese
+    ? ["核心产品线 A", "核心产品线 B", "核心产品线 C", "定制化产品方案"]
+    : ["Core Product Line A", "Core Product Line B", "Core Product Line C", "Custom Product Program"];
+  const genericCaseDefaults = useChinese
+    ? ["典型客户落地案例", "跨场景方案交付案例", "效率优化项目案例", "质量提升项目案例"]
+    : [
+        "Representative Customer Delivery Case",
+        "Cross-Scenario Solution Case",
+        "Efficiency Optimization Case",
+        "Quality Improvement Case",
+      ];
+  const genericFeatureDefaults = useChinese
+    ? ["快速方案评估", "分阶段交付", "本地化服务支持"]
+    : ["Fast solution assessment", "Phased delivery", "Localized service support"];
+  const fallbackProducts = Array.from(new Set([...productItems, ...genericProductDefaults])).filter(Boolean).slice(0, 6);
+  const fallbackCases = Array.from(new Set([...caseItems, ...genericCaseDefaults])).filter(Boolean).slice(0, 6);
+  const fallbackFeatures = Array.from(new Set([...featureItems, ...genericFeatureDefaults])).filter(Boolean).slice(0, 6);
   const fallbackCertifications =
     certifications.length > 0 ? certifications : /(iso|ce|sgs|认证)/i.test(raw) ? ["ISO 9001", "CE", "SGS"] : [];
 
@@ -6863,8 +6975,8 @@ const deriveStructuredBriefFromPrompt = (prompt: string): StructuredBrief => {
   const aboutText =
     aboutTextMatch ||
     (useChinese
-      ? `${brand}专注高端数控机床与精密加工场景，提供从打样、量产到售后支持的一体化能力。`
-      : `${brand} focuses on high-end CNC and precision machining scenarios with integrated support from prototyping to mass production.`);
+      ? `${brand}专注于面向企业客户的网站与解决方案建设，提供从需求评估到持续优化的全流程支持。`
+      : `${brand} focuses on enterprise websites and solution delivery, covering requirement discovery, rollout, and continuous optimization.`);
 
   return {
     brand,
@@ -6882,7 +6994,7 @@ const applyGenericStructuredBriefOverrides = (
   prompt: string
 ): GeneratedPage[] => {
   const isChinesePrompt = shouldUseChineseContent(prompt);
-  const fallbackBrand = String(brief.brand || (isChinesePrompt ? "本公司" : "Company")).trim();
+  const fallbackBrand = sanitizeBrandCandidate(String(brief.brand || "").trim()) || (isChinesePrompt ? "本公司" : "Company");
   const pagePathSet = new Set(pages.map((page) => normalizePromptPagePath(String(page.path || "/"))));
 
   const navLinks = (() => {
@@ -6971,6 +7083,12 @@ const applyGenericStructuredBriefOverrides = (
   const replaceLeakText = (value: string) => {
     let next = String(value || "");
     if (!next.trim()) return next;
+    next = next
+      .replace(/\b(navigation|nav|header|footer|menu|section|layout|breadcrumb|topnav|sidebar)\b/gi, " ")
+      .replace(/(导航栏?|页眉|页脚|菜单栏?|布局|面包屑|侧边栏)/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+    if (!next) return "";
     const brandLikeHyphenPattern = /\b[A-Z]{2,}(?:-[A-Z0-9]{2,})+\b/g;
     next = next.replace(brandLikeHyphenPattern, (token) => {
       if (fallbackBrand && token.toLowerCase() === fallbackBrand.toLowerCase()) return token;
@@ -7091,9 +7209,50 @@ const applyStructuredBriefContentEnrichment = (
   prompt: string
 ): GeneratedPage[] => {
   const useChinese = shouldUseChineseContent(prompt);
-  const detailNames = Array.isArray(brief.productDetails)
-    ? brief.productDetails.map((entry) => String(entry?.name || "").trim()).filter(Boolean)
+  const normalizeEntityKey = (value: string) =>
+    String(value || "")
+      .toLowerCase()
+      .replace(/[（）()]/g, " ")
+      .replace(/[^a-z0-9\u4e00-\u9fff]+/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+  const productDetails = Array.isArray(brief.productDetails)
+    ? brief.productDetails
+        .map((entry) => ({
+          name: String(entry?.name || "").trim(),
+          model: String(entry?.model || "").trim() || undefined,
+          category: String(entry?.category || "").trim() || undefined,
+          summary: String(entry?.summary || "").trim() || undefined,
+          image: String(entry?.image || "").trim() || undefined,
+          specs: entry?.specs && typeof entry.specs === "object" ? (entry.specs as Record<string, string>) : undefined,
+          ctaLabel: String(entry?.ctaLabel || "").trim() || undefined,
+        }))
+        .filter((entry) => entry.name)
     : [];
+  const caseDetails = Array.isArray(brief.caseDetails)
+    ? brief.caseDetails
+        .map((entry) => ({
+          title: String(entry?.title || "").trim(),
+          customerType: String(entry?.customerType || "").trim() || undefined,
+          problem: String(entry?.problem || "").trim() || undefined,
+          solution: String(entry?.solution || "").trim() || undefined,
+          result: String(entry?.result || "").trim() || undefined,
+        }))
+        .filter((entry) => entry.title)
+    : [];
+  const productDetailByKey = new Map<string, (typeof productDetails)[number]>();
+  productDetails.forEach((entry) => {
+    const key = normalizeEntityKey(entry.name);
+    if (key && !productDetailByKey.has(key)) productDetailByKey.set(key, entry);
+    const keyedWithModel = normalizeEntityKey(`${entry.name} ${entry.model || ""}`);
+    if (keyedWithModel && !productDetailByKey.has(keyedWithModel)) productDetailByKey.set(keyedWithModel, entry);
+  });
+  const caseDetailByKey = new Map<string, (typeof caseDetails)[number]>();
+  caseDetails.forEach((entry) => {
+    const key = normalizeEntityKey(entry.title);
+    if (key && !caseDetailByKey.has(key)) caseDetailByKey.set(key, entry);
+  });
+  const detailNames = productDetails.map((entry) => entry.name);
   const productItems = Array.from(
     new Set([...(brief.productItems || []).map((item) => String(item || "").trim()).filter(Boolean), ...detailNames])
   ).slice(0, Math.max(12, Number(process.env.BUILDER_ENRICHMENT_PRODUCT_LIMIT || 36)));
@@ -7105,21 +7264,189 @@ const applyStructuredBriefContentEnrichment = (
     0,
     Math.max(8, Number(process.env.BUILDER_ENRICHMENT_CASE_LIMIT || 18))
   );
+  const mergedCaseItems = Array.from(new Set([...caseItems, ...caseDetails.map((entry) => entry.title)])).slice(
+    0,
+    Math.max(8, Number(process.env.BUILDER_ENRICHMENT_CASE_LIMIT || 18))
+  );
+  const splitSemanticSegments = (value: string) =>
+    String(value || "")
+      .split(/[；;，,、\/|]/)
+      .map((part) => part.trim())
+      .filter((part) => part.length >= (useChinese ? 2 : 4));
+  const denseProductItems = (() => {
+    const list = [...productItems];
+    const add = (value: string) => {
+      const text = String(value || "").trim();
+      if (!text) return;
+      if (!list.includes(text)) list.push(text);
+    };
+    productDetails.forEach((entry) => {
+      if (entry.model && entry.name && !entry.name.includes(entry.model)) add(`${entry.name}（${entry.model}）`);
+      if (entry.category && entry.name) add(useChinese ? `${entry.category}机型` : `${entry.category} models`);
+      if (entry.model) add(useChinese ? `${entry.model} 机型` : `${entry.model} model`);
+      splitSemanticSegments(entry.summary || "")
+        .slice(0, 3)
+        .forEach((segment) => add(useChinese ? `${entry.name} · ${segment}` : `${entry.name} · ${segment}`));
+      Object.entries(entry.specs || {})
+        .slice(0, 4)
+        .forEach(([key, value]) => add(useChinese ? `${entry.name} ${key}${value}` : `${entry.name} ${key} ${value}`));
+    });
+    if (list.length < 8) {
+      const fallback = useChinese
+        ? ["高精密加工中心", "多主轴批量加工方案", "自动换刀复合加工方案", "玻璃/亚克力专用加工方案", "金属壳体加工方案", "定制化产线机型"]
+        : [
+            "High-precision machining center",
+            "Multi-spindle batch machining line",
+            "ATC integrated machining solution",
+            "Glass/acrylic dedicated setup",
+            "Metal housing machining setup",
+            "Custom production-line configuration",
+          ];
+      fallback.forEach((item) => add(item));
+    }
+    return list.slice(0, Math.max(12, Number(process.env.BUILDER_ENRICHMENT_PRODUCT_LIMIT || 36)));
+  })();
+  const denseFeatureItems = (() => {
+    const list = [...featureItems];
+    const add = (value: string) => {
+      const text = String(value || "").trim();
+      if (!text) return;
+      if (!list.includes(text)) list.push(text);
+    };
+    productDetails.forEach((entry) => {
+      Object.entries(entry.specs || {})
+        .slice(0, 2)
+        .forEach(([key, value]) => {
+          add(useChinese ? `${key}：${value}` : `${key}: ${value}`);
+        });
+      if (entry.summary) add(entry.summary);
+    });
+    caseDetails.forEach((entry) => {
+      if (entry.result) add(entry.result);
+      if (entry.solution) add(entry.solution);
+      if (entry.problem) add(entry.problem);
+    });
+    if (list.length < 9) {
+      const fallback = useChinese
+        ? [
+            "快速打样流程",
+            "交期保障机制",
+            "工艺参数可追溯",
+            "本地化技术支持",
+            "量产良率优化",
+            "售后响应闭环",
+            "现场调机支持",
+            "设备健康巡检",
+            "工艺迭代优化",
+          ]
+        : [
+            "Rapid prototyping flow",
+            "Lead-time assurance",
+            "Traceable process parameters",
+            "Localized technical support",
+            "Yield optimization for production",
+            "Closed-loop after-sales response",
+            "On-site commissioning support",
+            "Machine health inspection",
+            "Continuous process tuning",
+          ];
+      fallback.forEach((item) => add(item));
+    }
+    return list.slice(0, Math.max(8, Number(process.env.BUILDER_ENRICHMENT_FEATURE_LIMIT || 18)));
+  })();
+  const denseCaseItems = (() => {
+    const list = [...mergedCaseItems];
+    const add = (value: string) => {
+      const text = String(value || "").trim();
+      if (!text) return;
+      if (!list.includes(text)) list.push(text);
+    };
+    caseDetails.forEach((entry) => {
+      if (entry.result) add(useChinese ? `${entry.title}（${entry.result}）` : `${entry.title} (${entry.result})`);
+      if (entry.problem) add(entry.problem);
+      if (entry.solution) add(entry.solution);
+      if (entry.problem) add(useChinese ? `${entry.title}：问题 ${entry.problem}` : `${entry.title}: problem ${entry.problem}`);
+      if (entry.solution) add(useChinese ? `${entry.title}：方案 ${entry.solution}` : `${entry.title}: solution ${entry.solution}`);
+      if (entry.result) add(useChinese ? `${entry.title}：结果 ${entry.result}` : `${entry.title}: result ${entry.result}`);
+    });
+    if (list.length < 6) {
+      const fallback = useChinese
+        ? ["亚克力面板精加工", "手机中框精密加工", "笔记本外壳复杂型腔加工", "摄像头边框高光加工", "键盘按键批量加工", "复合材料高效加工"]
+        : [
+            "Acrylic panel precision finishing",
+            "Phone-frame precision machining",
+            "Laptop shell cavity machining",
+            "Camera bezel high-gloss machining",
+            "Keypad batch machining",
+            "Composite material high-efficiency machining",
+          ];
+      fallback.forEach((item) => add(item));
+    }
+    return list.slice(0, Math.max(8, Number(process.env.BUILDER_ENRICHMENT_CASE_LIMIT || 18)));
+  })();
   const certifications = Array.from(
     new Set((brief.certifications || []).map((item) => String(item || "").trim()).filter(Boolean))
   ).slice(0, 8);
   const aboutText = String(brief.aboutText || "").trim();
-
-  const toCards = (items: string[], href: string) =>
-    items.map((item) => ({
-      title: item,
-      description: useChinese ? `${item}，支持参数定制与工艺验证。` : `${item} with configurable specs and process validation.`,
-      cta: {
-        label: useChinese ? "了解详情" : "Learn more",
-        href,
-        variant: "link",
-      },
-    }));
+  const localImagePool = [
+    "https://images.unsplash.com/photo-1498049794561-7780e7231661?auto=format&fit=crop&w=1600&q=80",
+    "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1600&q=80",
+    "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=80",
+    "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1600&q=80",
+    "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1600&q=80",
+    "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=1600&q=80",
+  ];
+  const hash = (value: string) => {
+    let h = 0;
+    for (let index = 0; index < value.length; index += 1) {
+      h = (h * 33 + value.charCodeAt(index)) >>> 0;
+    }
+    return h;
+  };
+  const pickImage = (pagePath: string, token: string, index = 0) => {
+    const seed = hash(`${pagePath}:${token}:${index}`);
+    return localImagePool[seed % localImagePool.length];
+  };
+  const buildProductDescription = (name: string, detail?: (typeof productDetails)[number]) => {
+    if (!detail) return useChinese ? `${name}，支持参数定制与工艺验证。` : `${name} with configurable specs and process validation.`;
+    const specsPreview = Object.entries(detail.specs || {})
+      .slice(0, 2)
+      .map(([key, value]) => `${key}: ${value}`)
+      .join(useChinese ? "；" : " · ");
+    const segments = [detail.summary || "", specsPreview].filter(Boolean);
+    if (segments.length > 0) return segments.join(useChinese ? "；" : " ");
+    return useChinese ? `${name}，支持参数定制与工艺验证。` : `${name} with configurable specs and process validation.`;
+  };
+  const buildCaseDescription = (name: string, detail?: (typeof caseDetails)[number]) => {
+    if (!detail) return useChinese ? `${name}，覆盖方案落地与结果验证。` : `${name} with solution delivery and measurable outcomes.`;
+    const segments = [detail.problem || "", detail.solution || "", detail.result || ""].filter(Boolean);
+    if (segments.length > 0) return segments.join(useChinese ? "；" : " ");
+    return useChinese ? `${name}，覆盖方案落地与结果验证。` : `${name} with solution delivery and measurable outcomes.`;
+  };
+  const toCards = (items: string[], href: string, pagePath: string, keySeed: string) =>
+    items.map((item, index) => {
+      const key = normalizeEntityKey(item);
+      const productDetail = productDetailByKey.get(key);
+      const caseDetail = caseDetailByKey.get(key);
+      const isCaseContext = pagePath === "/cases" || href === "/cases" || /case/i.test(keySeed);
+      const title = productDetail?.model ? `${productDetail.name} · ${productDetail.model}` : caseDetail?.title || item;
+      const description = isCaseContext
+        ? buildCaseDescription(item, caseDetail)
+        : buildProductDescription(item, productDetail);
+      const subtitle = productDetail?.category || caseDetail?.customerType || "";
+      const imageSrc = productDetail?.image || pickImage(pagePath, `${keySeed}:${item}`, index);
+      return {
+        title,
+        subtitle,
+        description,
+        image: imageSrc ? { src: imageSrc, alt: title } : undefined,
+        cta: {
+          label: productDetail?.ctaLabel || (useChinese ? "了解详情" : "Learn more"),
+          href,
+          variant: "link",
+        },
+      };
+    });
 
   const toFeatures = (items: string[]) =>
     items.map((item) => ({
@@ -7141,6 +7468,33 @@ const applyStructuredBriefContentEnrichment = (
     });
     return deduped;
   };
+  const capRepetitiveMiddleBlocks = (content: any[]) => {
+    const roleMax = new Map<string, number>([
+      ["approach", 2],
+      ["products", 2],
+      ["socialproof", 2],
+      ["story", 2],
+    ]);
+    const roleCount = new Map<string, number>();
+    const classify = (item: any) => {
+      const token = String(item?.type || "").toLowerCase();
+      if (/feature|approach|process|workflow|capability/.test(token)) return "approach";
+      if (/cardsgrid|productcatalog|product|catalog|pricing|plan/.test(token)) return "products";
+      if (/testimonial|social|proof|logo|certification/.test(token)) return "socialproof";
+      if (/contentstory|story|timeline|about|faq/.test(token)) return "story";
+      return "other";
+    };
+    return content.filter((item) => {
+      const type = String(item?.type || "").toLowerCase();
+      if (/navbar|navigation|hero|footer|creationfooterfallback|leadcapture|contact|cta/.test(type)) return true;
+      const role = classify(item);
+      const max = roleMax.get(role);
+      if (!max) return true;
+      const next = (roleCount.get(role) || 0) + 1;
+      roleCount.set(role, next);
+      return next <= max;
+    });
+  };
 
   return pages.map((page) => {
     const pagePath = normalizePromptPagePath(String(page.path || "/"));
@@ -7150,6 +7504,114 @@ const applyStructuredBriefContentEnrichment = (
     const findIndex = (pattern: RegExp) => content.findIndex((item: any) => pattern.test(String(item?.type || "")));
     const hasType = (pattern: RegExp) => findIndex(pattern) >= 0;
     const ctaIndex = findIndex(/leadcapture|contact|cta/i);
+    const applyHeroByPageType = () => {
+      const heroIndex = findIndex(/hero/i);
+      if (heroIndex < 0) return;
+      const current = (content[heroIndex] || {}) as {
+        type?: string;
+        props?: Record<string, unknown>;
+        [key: string]: unknown;
+      };
+      const currentProps =
+        current?.props && typeof current.props === "object" ? { ...(current.props as Record<string, unknown>) } : {};
+      const contactChannels = [brief.whatsapp, brief.email].filter((item) => String(item || "").trim()).join(" / ");
+      const heroByPath = {
+        "/": {
+          title: brief.heroTitle || (useChinese ? "高精密数控机床解决方案" : "High-Precision CNC Solutions"),
+          subtitle:
+            brief.heroSubtitle ||
+            (useChinese
+              ? "聚焦3C零组件与精密零件加工，兼顾精度、节拍与交付效率。"
+              : "Built for 3C components and precision parts with balanced quality, throughput, and lead-time."),
+          primaryLabel: useChinese ? "查看产品中心" : "Explore Products",
+          primaryHref: "/products",
+          secondaryLabel: useChinese ? "获取定制方案" : "Request Custom Plan",
+          secondaryHref: "/contact",
+        },
+        "/about": {
+          title: useChinese ? "公司概况" : "About Us",
+          subtitle: useChinese ? "聚焦企业历程、研发能力与制造体系。"
+            : "Company background, R&D capability, and manufacturing system overview.",
+          primaryLabel: useChinese ? "查看产品中心" : "View Products",
+          primaryHref: "/products",
+          secondaryLabel: useChinese ? "联系团队" : "Contact Team",
+          secondaryHref: "/contact",
+        },
+        "/products": {
+          title: useChinese ? "产品中心" : "Product Center",
+          subtitle: useChinese ? "按机型、参数与应用场景快速选型。"
+            : "Select models quickly by machine type, key specs, and use scenarios.",
+          primaryLabel: useChinese ? "索取报价" : "Request Quote",
+          primaryHref: "/contact",
+          secondaryLabel: useChinese ? "查看案例" : "View Cases",
+          secondaryHref: "/cases",
+        },
+        "/cases": {
+          title: useChinese ? "应用案例" : "Application Cases",
+          subtitle: useChinese ? "围绕材质、工艺难点与量产指标呈现真实项目。"
+            : "Real projects covering material challenges, process methods, and KPI outcomes.",
+          primaryLabel: useChinese ? "查看解决方案" : "View Solutions",
+          primaryHref: "/solutions",
+          secondaryLabel: useChinese ? "咨询同类场景" : "Discuss Your Scenario",
+          secondaryHref: "/contact",
+        },
+        "/solutions": {
+          title: useChinese ? "解决方案" : "Solutions",
+          subtitle: useChinese ? "围绕工艺路线、设备配置与交付ROI制定方案。"
+            : "Plan by process route, machine configuration, and delivery ROI.",
+          primaryLabel: useChinese ? "获取定制方案" : "Get Custom Plan",
+          primaryHref: "/contact",
+          secondaryLabel: useChinese ? "查看产品组合" : "See Product Mix",
+          secondaryHref: "/products",
+        },
+        "/contact": {
+          title: brief.contactTitle || (useChinese ? "联系我们" : "Contact Us"),
+          subtitle:
+            (useChinese
+              ? `提交需求信息，我们将在1个工作日内响应。${contactChannels ? `可通过 ${contactChannels} 快速沟通。` : ""}`
+              : `Share your requirement and receive a response within one business day.${contactChannels ? ` Reach us via ${contactChannels}.` : ""}`
+            ).trim(),
+          primaryLabel: useChinese ? "提交询盘" : "Submit Inquiry",
+          primaryHref: "/contact",
+          secondaryLabel: useChinese ? "返回首页" : "Back to Home",
+          secondaryHref: "/",
+        },
+      } as Record<string, { title: string; subtitle: string; primaryLabel: string; primaryHref: string; secondaryLabel?: string; secondaryHref?: string }>;
+      const target = heroByPath[pagePath];
+      if (!target) return;
+      const ctas = [
+        { label: target.primaryLabel, href: target.primaryHref, variant: "primary" as const },
+        ...(target.secondaryLabel && target.secondaryHref
+          ? [{ label: target.secondaryLabel, href: target.secondaryHref, variant: "secondary" as const }]
+          : []),
+      ];
+      currentProps.title = target.title;
+      currentProps.heading = target.title;
+      currentProps.headline = target.title;
+      currentProps.titletext = target.title;
+      currentProps.herotitletext = target.title;
+      currentProps.heroTitletext = target.title;
+      currentProps.subtitle = target.subtitle;
+      currentProps.description = target.subtitle;
+      currentProps.subhead = target.subtitle;
+      currentProps.desctext = target.subtitle;
+      currentProps.herodesctext = target.subtitle;
+      currentProps.heroSubtext = target.subtitle;
+      currentProps.ctas = ctas;
+      currentProps.heroPrimaryTexttext = target.primaryLabel;
+      currentProps.herobtntexttext = target.primaryLabel;
+      currentProps.ctatexttext = target.primaryLabel;
+      if (target.secondaryLabel) {
+        currentProps.heroSecondaryTexttext = target.secondaryLabel;
+        currentProps.herobtntxttext = target.secondaryLabel;
+      }
+      content[heroIndex] = {
+        ...current,
+        type: String(current.type || "HeroSplit"),
+        props: currentProps,
+      } as any;
+    };
+    applyHeroByPageType();
 
     const upsertCardsBlock = (
       title: string,
@@ -7172,7 +7634,7 @@ const applyStructuredBriefContentEnrichment = (
           density: "normal",
           cardStyle: "solid",
           maxWidth: "xl",
-          items: toCards(items, href),
+          items: toCards(items, href, pagePath, keySeed),
           paddingY: "lg",
           motionPreset: "stagger",
         },
@@ -7186,7 +7648,7 @@ const applyStructuredBriefContentEnrichment = (
       }
     };
 
-    const upsertFeatureBlock = (title: string, subtitle: string, items: string[], keySeed: string) => {
+    const upsertFeatureBlock = (title: string, subtitle: string, items: string[], keySeed: string, replaceExisting = true) => {
       if (!items.length) return;
       const block = {
         type: "FeatureGrid",
@@ -7204,9 +7666,41 @@ const applyStructuredBriefContentEnrichment = (
         _key: `${pagePath}:${keySeed}:enriched`,
       };
       const featureIndex = findIndex(/featuregrid|features/i);
-      if (featureIndex >= 0) {
+      if (featureIndex >= 0 && replaceExisting) {
         content[featureIndex] = block;
       } else {
+        content.splice(ctaIndex >= 0 ? ctaIndex : content.length, 0, block);
+      }
+    };
+    const ensureContentStory = (input: {
+      id: string;
+      anchor: string;
+      title: string;
+      subtitle: string;
+      body: string;
+      ctas?: Array<{ label: string; href: string; variant?: "link" | "primary" | "secondary" }>;
+    }) => {
+      const existingIndex = findIndex(/contentstory|story/i);
+      const block = {
+        type: "ContentStory",
+        props: {
+          id: input.id,
+          anchor: input.anchor,
+          title: input.title,
+          subtitle: input.subtitle,
+          body: input.body,
+          ctas: Array.isArray(input.ctas) ? input.ctas : undefined,
+          variant: "split",
+          maxWidth: "xl",
+          paddingY: "lg",
+        },
+        _key: `${pagePath}:${input.anchor}:enriched`,
+      };
+      if (existingIndex >= 0 && /selection-guide|solution-process|case-summary|about-overview/.test(String(input.id || ""))) {
+        if (!String((content[existingIndex] as any)?.props?.id || "").includes(input.id)) {
+          content.splice(existingIndex + 1, 0, block);
+        }
+      } else if (existingIndex < 0) {
         content.splice(ctaIndex >= 0 ? ctaIndex : content.length, 0, block);
       }
     };
@@ -7214,78 +7708,137 @@ const applyStructuredBriefContentEnrichment = (
     if (pagePath === "/") {
       upsertCardsBlock(
         useChinese ? "产品中心" : "Product Center",
-        useChinese ? "核心机型与加工场景概览。" : "Overview of core machine models and machining scenarios.",
-        productItems,
+        useChinese ? "核心产品与应用场景概览。" : "Overview of core offerings and application scenarios.",
+        denseProductItems.slice(0, Math.max(4, Number(process.env.BUILDER_HOME_PRODUCTS_MIN || 6))),
         "/products",
         "home-products"
       );
       upsertFeatureBlock(
         useChinese ? "能力优势" : "Key Advantages",
         useChinese ? "围绕样机速度、交付效率与本地支持构建。" : "Built around prototyping speed, delivery efficiency, and local support.",
-        featureItems,
+        denseFeatureItems,
         "home-features"
       );
       if (caseItems.length) {
         upsertCardsBlock(
           useChinese ? "应用案例" : "Application Cases",
           useChinese ? "典型行业应用与交付实践。" : "Representative industry applications and delivery practice.",
-          caseItems,
+          denseCaseItems.slice(0, Math.max(4, Number(process.env.BUILDER_HOME_CASES_MIN || 6))),
           "/cases",
           "home-cases",
           false
         );
       }
       if (certifications.length) {
-        upsertFeatureBlock(
-          useChinese ? "资质认证" : "Certifications",
-          useChinese ? "质量与合规体系认证。" : "Quality and compliance certifications.",
-          certifications,
-          "home-certifications"
-        );
+        content.splice(ctaIndex >= 0 ? ctaIndex : content.length, 0, {
+          type: "ContentStory",
+          props: {
+            id: "home-certifications",
+            anchor: "home-certifications",
+            title: useChinese ? "资质认证" : "Certifications",
+            subtitle: useChinese ? "质量与合规体系认证。" : "Quality and compliance certifications.",
+            body: certifications.join(useChinese ? "；" : " · "),
+            variant: "simple",
+            maxWidth: "xl",
+            paddingY: "lg",
+          },
+        });
       }
     } else if (pagePath === "/products") {
       upsertCardsBlock(
         useChinese ? "产品中心" : "Products",
-        useChinese ? "按加工对象划分的完整机型列表。" : "Complete machine lineup by machining target.",
-        productItems,
+        useChinese ? "按业务场景划分的完整产品列表。" : "Complete product lineup by business scenario.",
+        denseProductItems.slice(0, Math.max(8, Number(process.env.BUILDER_PRODUCTS_PAGE_MIN || 12))),
         "/products",
         "products"
       );
-      const featureIndex = findIndex(/featuregrid|features/i);
-      if (featureIndex >= 0) {
-        content[featureIndex] = {
-          type: "ContentStory",
-          props: {
-            id: "products-selection-guide",
-            anchor: "selection-guide",
-            title: useChinese ? "选型指南" : "Selection Guide",
-            subtitle: useChinese
-              ? "按工件类型、节拍与精度要求匹配机型。"
-              : "Match machine models by part type, takt time, and precision target.",
-            body: useChinese
-              ? "围绕中框、外壳、边框与按键等典型工件，提供参数区间与交付建议。"
-              : "Provide parameter ranges and delivery recommendations for typical parts.",
-            variant: "split",
-            maxWidth: "xl",
-            paddingY: "lg",
-          },
-        };
-      }
+      const productFeatureItems =
+        denseFeatureItems.length > 0
+          ? denseFeatureItems.slice(0, 6)
+          : useChinese
+          ? ["按工件材质选型", "按节拍目标匹配", "按精度与成本平衡"]
+          : ["Select by material", "Match by cycle time", "Balance precision and cost"];
+      upsertFeatureBlock(
+        useChinese ? "选型维度" : "Selection Dimensions",
+        useChinese ? "从材质、节拍、精度三个维度完成机型筛选。" : "Select models by material, throughput, and precision targets.",
+        productFeatureItems,
+        "products-dimensions",
+        false
+      );
+      ensureContentStory({
+        id: "products-selection-guide",
+        anchor: "selection-guide",
+        title: useChinese ? "选型指南" : "Selection Guide",
+        subtitle: useChinese ? "按工件类型、节拍与精度要求匹配机型。" : "Match product combinations by use case, timeline, and target outcomes.",
+        body: useChinese
+          ? "围绕业务目标与约束条件，提供参数范围、试样建议与交付节奏。"
+          : "Provide parameter ranges, pilot recommendations, and delivery cadence based on business goals and constraints.",
+      });
     } else if (pagePath === "/solutions") {
       upsertFeatureBlock(
         useChinese ? "定制方案" : "Custom Solutions",
         useChinese ? "围绕客户工艺节拍提供方案配置。" : "Solution configuration aligned to customer process cadence.",
-        featureItems,
+        denseFeatureItems.slice(0, Math.max(9, Number(process.env.BUILDER_SOLUTIONS_FEATURES_MIN || 12))),
         "solutions"
       );
+      upsertCardsBlock(
+        useChinese ? "推荐设备组合" : "Recommended Equipment Mix",
+        useChinese ? "按典型应用场景组合主机、刀具与工艺参数。" : "Bundle machine, tooling, and process parameters by application scenario.",
+        denseProductItems.slice(0, Math.max(6, Number(process.env.BUILDER_SOLUTIONS_PRODUCTS_MIN || 8))),
+        "/products",
+        "solutions-products",
+        false
+      );
+      ensureContentStory({
+        id: "solutions-process",
+        anchor: "solution-process",
+        title: useChinese ? "实施路径" : "Implementation Path",
+        subtitle: useChinese ? "从需求澄清到验收交付的分阶段方法。" : "A phased method from requirement alignment to delivery acceptance.",
+        body: denseFeatureItems.slice(0, 3).join(useChinese ? "；" : " · ") || (useChinese ? "需求评估；打样验证；量产交付" : "Assess requirements · Validate pilot · Deliver for production"),
+      });
     } else if (pagePath === "/cases") {
       upsertCardsBlock(
         useChinese ? "应用案例" : "Cases",
-        useChinese ? "真实项目加工案例与落地结果。" : "Real machining projects and delivery outcomes.",
-        caseItems,
+        useChinese ? "真实项目案例与落地结果。" : "Real project examples and delivery outcomes.",
+        denseCaseItems.slice(0, Math.max(6, Number(process.env.BUILDER_CASES_PAGE_MIN || 10))),
         "/cases",
         "cases"
       );
+      const testimonialIndex = findIndex(/testimonial|review|socialproof/i);
+      if (testimonialIndex < 0 && caseDetails.length > 0) {
+        content.splice(ctaIndex >= 0 ? ctaIndex : content.length, 0, {
+          type: "TestimonialsGrid",
+          props: {
+            id: "cases-outcomes",
+            anchor: "case-outcomes",
+            title: useChinese ? "结果与反馈" : "Outcomes & Feedback",
+            subtitle: useChinese ? "聚焦良率、成本、交付周期等关键指标。" : "Focus on yield, cost, and delivery cycle KPIs.",
+            items: caseDetails.slice(0, 6).map((entry) => ({
+              quote: entry.result || entry.solution || (useChinese ? "项目交付稳定，产线效率提升。" : "Stable delivery with improved production efficiency."),
+              author: entry.customerType || (useChinese ? "客户项目团队" : "Customer team"),
+              role: entry.title,
+              avatar: {
+                src: pickImage(pagePath, entry.title, 0),
+                alt: entry.title,
+              },
+            })),
+            variant: "cards",
+            maxWidth: "xl",
+            paddingY: "lg",
+          },
+        });
+      }
+      ensureContentStory({
+        id: "cases-summary",
+        anchor: "case-summary",
+        title: useChinese ? "案例方法论" : "Case Delivery Method",
+        subtitle: useChinese ? "以问题定义、方案验证、量产复盘构建闭环。" : "Close the loop with problem framing, solution validation, and production review.",
+        body: caseDetails
+          .slice(0, 3)
+          .map((entry) => entry.result || entry.solution || entry.problem || entry.title)
+          .filter(Boolean)
+          .join(useChinese ? "；" : " · "),
+      });
     } else if (pagePath === "/about") {
       if (aboutText) {
         const storyIndex = findIndex(/contentstory|story|about/i);
@@ -7303,6 +7856,14 @@ const applyStructuredBriefContentEnrichment = (
               variant: "split",
             },
           };
+        } else {
+          ensureContentStory({
+            id: "about-overview",
+            anchor: "about-overview",
+            title: useChinese ? "关于我们" : "About Us",
+            subtitle: useChinese ? "企业简介与发展历程" : "Company profile and development",
+            body: aboutText,
+          });
         }
       }
       if (certifications.length) {
@@ -7318,7 +7879,7 @@ const applyStructuredBriefContentEnrichment = (
     const nextData = {
       ...(page.data as Record<string, unknown>),
       root: (page.data as any)?.root,
-      content: dedupeLocalContent(content),
+      content: capRepetitiveMiddleBlocks(dedupeLocalContent(content)),
     };
     return {
       ...(page as any),
@@ -7382,8 +7943,82 @@ const expandCatalogPagesFromBrief = (
           name: item,
           summary: useChinese ? `${item} 参数可定制，支持打样与批量交付。` : `${item} with configurable specs and pilot-to-mass delivery.`,
         }));
+  const splitSummarySegments = (value: string) =>
+    String(value || "")
+      .split(/[；;，,、\/|]/)
+      .map((part) => part.trim())
+      .filter((part) => part.length >= (useChinese ? 2 : 4));
+  const syntheticCatalogMin = clampPositiveInt(
+    Number(process.env.BUILDER_CATALOG_SYNTHETIC_MIN || 8),
+    8,
+    2,
+    24
+  );
+  const expandedSourceDetails: CatalogDetail[] = [];
+  const pushCatalogDetail = (detail: CatalogDetail) => {
+    const name = String(detail?.name || "").trim();
+    if (!name) return;
+    expandedSourceDetails.push({
+      ...detail,
+      name,
+      model: String(detail?.model || "").trim() || undefined,
+      category: String(detail?.category || "").trim() || undefined,
+      summary: String(detail?.summary || "").trim() || undefined,
+      image: String(detail?.image || "").trim() || undefined,
+    });
+  };
+  sourceDetails.forEach((detail) => {
+    pushCatalogDetail(detail);
+    Object.entries(detail.specs || {})
+      .slice(0, 3)
+      .forEach(([key, value]) => {
+        const specLabel = useChinese ? `${key}${value}` : `${key} ${value}`;
+        pushCatalogDetail({
+          ...detail,
+          name: `${detail.name} · ${specLabel}`,
+          summary: useChinese
+            ? `${detail.name}，关键参数：${key}${value}。`
+            : `${detail.name}, key spec: ${key} ${value}.`,
+        });
+      });
+    splitSummarySegments(detail.summary || "")
+      .slice(0, 2)
+      .forEach((segment) => {
+        pushCatalogDetail({
+          ...detail,
+          name: `${detail.name} · ${segment}`,
+          summary: useChinese ? `${detail.name}，${segment}。` : `${detail.name}, ${segment}.`,
+        });
+      });
+    if (detail.category) {
+      pushCatalogDetail({
+        ...detail,
+        name: useChinese ? `${detail.category}应用机型` : `${detail.category} application model`,
+        summary: detail.summary,
+      });
+    }
+  });
+  if (expandedSourceDetails.length < syntheticCatalogMin) {
+    const fallbackSeeds = Array.from(
+      new Set(
+        [
+          ...(brief.productItems || []),
+          ...(brief.featureItems || []),
+          ...(brief.caseItems || []),
+        ]
+          .map((item) => String(item || "").trim())
+          .filter(Boolean)
+      )
+    );
+    fallbackSeeds.slice(0, syntheticCatalogMin - expandedSourceDetails.length).forEach((seed) => {
+      pushCatalogDetail({
+        name: seed,
+        summary: useChinese ? `${seed}，支持按需求配置与交付。` : `${seed} with configurable delivery.`,
+      });
+    });
+  }
   const normalizedDetails = Array.from(
-    sourceDetails.reduce((acc, item) => {
+    expandedSourceDetails.reduce((acc, item) => {
       const name = String(item?.name || "").trim();
       if (!name) return acc;
       const key = `${name.toLowerCase()}::${String(item?.model || "").trim().toLowerCase()}`;
@@ -7430,6 +8065,7 @@ const expandCatalogPagesFromBrief = (
     }, new Map<string, { label: string; href: string; variant: "link" }>())
   )
     .map((entry) => entry[1])
+    .filter((item) => inferEnterprisePageTypeFromPath(item.href) !== "legal")
     .slice(0, 8);
 
   const fallbackNavbar =
@@ -7570,24 +8206,44 @@ const expandCatalogPagesFromBrief = (
         },
       },
     ];
-    if (categories.length > 1 && params.chunkIndex === 0) {
-      contentBlocks.push({
-        type: "FeatureGrid",
-        props: {
-          id: "products-filters",
-          title: useChinese ? "分类筛选" : "Category Filters",
-          subtitle: useChinese ? "按设备分类快速定位目标机型。" : "Quickly locate models by category.",
-          variant: "4col",
-          maxWidth: "xl",
-          paddingY: "md",
-          items: categories.slice(0, 12).map((category) => ({
-            title: category,
-            desc: useChinese ? `查看 ${category} 相关机型` : `Explore models under ${category}`,
-            icon: "filter",
-          })),
-        },
-      });
-    }
+    contentBlocks.push({
+      type: "FeatureGrid",
+      props: {
+        id: "products-filters",
+        title: useChinese ? "选型维度" : "Selection Dimensions",
+        subtitle:
+          categories.length > 1
+            ? useChinese
+              ? "按设备分类快速定位目标机型。"
+              : "Quickly locate models by category."
+            : useChinese
+            ? "从材质、节拍、精度三个维度完成机型筛选。"
+            : "Select models by material, throughput, and precision targets.",
+        variant: "4col",
+        maxWidth: "xl",
+        paddingY: "md",
+        items:
+          categories.length > 1 && params.chunkIndex === 0
+            ? categories.slice(0, 12).map((category) => ({
+                title: category,
+                desc: useChinese ? `查看 ${category} 相关机型` : `Explore models under ${category}`,
+                icon: "filter",
+              }))
+            : (useChinese
+                ? ["按材质匹配主轴配置", "按节拍评估多头并行", "按精度确定治具与工艺", "按交期规划交付批次"]
+                : [
+                    "Match spindle setup by material",
+                    "Evaluate multi-head throughput",
+                    "Align tooling with precision goals",
+                    "Plan delivery by production phase",
+                  ]
+              ).map((text) => ({
+                title: text,
+                desc: useChinese ? "支持按项目约束快速组合参数。" : "Build parameter sets around project constraints.",
+                icon: "check-circle",
+              })),
+      },
+    });
     contentBlocks.push({
       type: "CardsGrid",
       props: {
@@ -7605,21 +8261,31 @@ const expandCatalogPagesFromBrief = (
         motionPreset: "stagger",
       },
     });
-    if (params.totalChunks > 1) {
-      contentBlocks.push({
-        type: "ContentStory",
-        props: {
-          id: `products-pagination-${params.chunkIndex + 1}`,
-          title: useChinese ? "目录分页" : "Catalog Pagination",
-          subtitle: useChinese ? "快速跳转到其他目录页。" : "Jump between catalog pages.",
-          body: paginationLinks.map((item) => `${item.label} → ${item.href}`).join(" | "),
-          ctas: paginationLinks,
-          variant: "simple",
-          maxWidth: "xl",
-          paddingY: "md",
-        },
-      });
-    }
+    contentBlocks.push({
+      type: "ContentStory",
+      props: {
+        id: `products-guide-${params.chunkIndex + 1}`,
+        title: useChinese ? "目录导览" : "Catalog Guide",
+        subtitle:
+          params.totalChunks > 1
+            ? useChinese
+              ? "快速跳转到其他目录页。"
+              : "Jump between catalog pages."
+            : useChinese
+            ? "按机型能力、参数与交付节奏完成选型。"
+            : "Choose models by capability, specs, and delivery cadence.",
+        body:
+          params.totalChunks > 1
+            ? paginationLinks.map((item) => `${item.label} → ${item.href}`).join(" | ")
+            : useChinese
+            ? "建议先确定加工材质与精度目标，再结合节拍与预算筛选机型。"
+            : "Start from material and precision targets, then filter by throughput and budget.",
+        ctas: params.totalChunks > 1 ? paginationLinks : [{ label: useChinese ? "联系选型顾问" : "Talk to Advisor", href: "/contact", variant: "link" as const }],
+        variant: "simple",
+        maxWidth: "xl",
+        paddingY: "md",
+      },
+    });
     if (Array.isArray(brief.faqItems) && brief.faqItems.length > 0 && params.chunkIndex === 0) {
       contentBlocks.push({
         type: "FAQAccordion",
@@ -7726,7 +8392,7 @@ const expandCatalogPagesFromBrief = (
             props: {
               id: `product-detail-specs-${index + 1}`,
               title: useChinese ? "核心参数" : "Key Specs",
-              subtitle: useChinese ? "覆盖行程、精度、主轴与节拍等关键指标。" : "Travel, precision, spindle, cycle-time and more.",
+              subtitle: useChinese ? "覆盖能力、配置、交付与服务等关键指标。" : "Coverage for capability, configuration, delivery, and support metrics.",
               variant: "3col",
               maxWidth: "xl",
               paddingY: "md",
@@ -7763,10 +8429,10 @@ const expandCatalogPagesFromBrief = (
               body:
                 item.summary ||
                 (useChinese
-                  ? "该机型适用于高精密加工场景，可按工艺需求进行参数与夹治具定制。"
-                  : "This model serves high-precision machining with configurable process parameters and fixtures."),
+                  ? "该产品支持按业务目标进行参数配置与实施建议。"
+                  : "This offering supports configurable parameters and implementation guidance for business goals."),
               ctas: [
-                { label: useChinese ? "预约看厂" : "Schedule a Factory Visit", href: "/contact", variant: "link" as const },
+                { label: useChinese ? "预约咨询" : "Schedule Consultation", href: "/contact", variant: "link" as const },
               ],
               variant: "split",
               maxWidth: "xl",
@@ -7778,7 +8444,7 @@ const expandCatalogPagesFromBrief = (
             props: {
               id: `product-detail-cta-${index + 1}`,
               title: useChinese ? "提交需求，获取定制配置" : "Share requirements for a tailored configuration",
-              subtitle: useChinese ? "支持样机打样、节拍评估与产线导入。" : "Supports prototyping, takt assessment, and line onboarding.",
+              subtitle: useChinese ? "支持方案评估、分阶段实施与持续优化。" : "Supports solution assessment, phased implementation, and ongoing optimization.",
               cta: { label: useChinese ? "立即咨询" : "Talk to Sales", href: "/contact", variant: "primary" as const },
               maxWidth: "xl",
               paddingY: "md",
@@ -7845,32 +8511,41 @@ const hashSemanticImageSeed = (value: string) => {
   return hash % 997;
 };
 
-const semanticImageKeywordPools: Record<string, string[]> = {
+const semanticImageUrlPools: Record<string, string[]> = {
   hero: [
-    "cnc machine factory",
-    "precision manufacturing workshop",
-    "industrial machinery closeup",
-    "automated production line",
+    "https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?auto=format&fit=crop&w=1600&q=80",
+    "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1600&q=80",
+    "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=80",
   ],
   products: [
-    "cnc machining center",
-    "machine tool spindle",
-    "industrial equipment showcase",
-    "precision metal processing",
+    "https://images.unsplash.com/photo-1498049794561-7780e7231661?auto=format&fit=crop&w=1600&q=80",
+    "https://images.unsplash.com/photo-1517336714739-489689fd1ca8?auto=format&fit=crop&w=1600&q=80",
+    "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=1600&q=80",
   ],
   cases: [
-    "machined metal components",
-    "precision parts quality control",
-    "factory production result",
-    "industrial case study manufacturing",
+    "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=1600&q=80",
+    "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1600&q=80",
+    "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1600&q=80",
   ],
   industry: [
-    "industrial factory floor",
-    "advanced manufacturing plant",
-    "smart factory automation",
-    "machine workshop interior",
+    "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1600&q=80",
+    "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1600&q=80",
+    "https://images.unsplash.com/photo-1497366412874-3415097a27e7?auto=format&fit=crop&w=1600&q=80",
   ],
-  neutral: ["industrial design studio", "engineering workspace", "technical office environment"],
+  neutral: [
+    "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1600&q=80",
+    "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=80",
+    "https://images.unsplash.com/photo-1497366412874-3415097a27e7?auto=format&fit=crop&w=1600&q=80",
+  ],
+};
+
+const isDynamicUnsplashUrl = (value: string) => /^https?:\/\/source\.unsplash\.com\//i.test(String(value || "").trim());
+
+const isReplaceableExternalImageUrl = (value: string) => {
+  const url = String(value || "").trim().toLowerCase();
+  if (!url) return false;
+  if (isDynamicUnsplashUrl(url)) return true;
+  return /placeholder|dummyimage|placehold|loremflickr|picsum\.photos/.test(url);
 };
 
 const isCncLikePrompt = (value: string) =>
@@ -7942,22 +8617,13 @@ const buildSemanticUnsplashUrl = (input: {
   index?: number;
   imageIntent?: string;
 }) => {
-  const prompt = String(input.prompt || "");
   const bucket = resolveSemanticImageBucket(input);
   if (bucket === "none") return "";
-  const pool = semanticImageKeywordPools[bucket] ?? semanticImageKeywordPools.neutral;
+  const pool = semanticImageUrlPools[bucket] ?? semanticImageUrlPools.neutral;
   const seed = hashSemanticImageSeed(
-    `${input.pagePath}:${String(input.blockType || "")}:${String(input.token || "")}:${Number(input.index || 0)}:${prompt.slice(0, 120)}`
+    `${input.pagePath}:${String(input.blockType || "")}:${String(input.token || "")}:${Number(input.index || 0)}`
   );
-  const baseKeyword = pool[seed % pool.length] || semanticImageKeywordPools.neutral[0];
-  const promptKeywords = extractSemanticPromptKeywords(prompt, 4);
-  const cjkKeywords = promptKeywords.filter((token) => /[\u4e00-\u9fff]/.test(token)).slice(0, 2);
-  const latinKeywords = promptKeywords.filter((token) => !/[\u4e00-\u9fff]/.test(token)).slice(0, 2);
-  const querySegments = [baseKeyword, ...latinKeywords];
-  if (isCncLikePrompt(prompt)) querySegments.push("precision cnc");
-  if (cjkKeywords.length) querySegments.push(cjkKeywords.join(" "));
-  const query = querySegments.filter(Boolean).join(", ");
-  return `https://source.unsplash.com/1600x900/?${encodeURIComponent(query)}&sig=${seed}`;
+  return pool[seed % pool.length] || semanticImageUrlPools.neutral[0];
 };
 
 const looksLikeFinalImageField = (keyPath: string[]) => {
@@ -7985,8 +8651,10 @@ const buildFinalSemanticImageUrl = (
   input: { prompt: string; designNorthStar?: Record<string, unknown>; imageIntent?: string }
 ) => {
   const current = String(currentValue || "").trim();
-  if (!/^https?:\/\//i.test(current)) return "";
+  const isHttp = /^https?:\/\//i.test(current);
+  if (!isHttp) return "";
   if (/^data:image\//i.test(current) || /\/generated-pen-assets\//i.test(current)) return "";
+  if (!isReplaceableExternalImageUrl(current)) return "";
   const token = `${pagePath}:${keyPath.join(".")}:${current.slice(0, 48)}`;
   return buildSemanticUnsplashUrl({
     prompt: `${String(input.prompt || "")} ${String(input.designNorthStar?.industry || "")}`,
@@ -8183,17 +8851,36 @@ const applyVisualMediaCoverage = (pages: GeneratedPage[], prompt: string): Gener
       };
     });
 
-    const bodyVisualCount = nextContent
+    const pageType = inferEnterprisePageTypeFromPath(normalizePromptPagePath(pagePath));
+    const minVisualByPageType: Record<string, number> = {
+      home: 4,
+      products: 4,
+      cases: 3,
+      solutions: 3,
+      about: 2,
+      contact: 2,
+      support: 2,
+      pricing: 3,
+      legal: 1,
+      blog: 2,
+      generic: 2,
+    };
+    const minVisuals = minVisualByPageType[pageType] ?? 2;
+    let bodyVisualCount = nextContent
       .filter((item) => !/(navbar|navigation|footer|creationfooterfallback)/i.test(String((item as any)?.type || "")))
       .filter((item) => blockContainsAbsoluteMedia(item as any)).length;
-    if (bodyVisualCount === 0) {
-      const fallbackIndex = nextContent.findIndex((item) =>
-        /(herosplit|featurewithmedia|cardsgrid|casestudies|featuregrid|contentstory|leadcapturecta)/i.test(
-          String((item as any)?.type || "")
+    if (bodyVisualCount < minVisuals) {
+      const candidateIndices = nextContent
+        .map((item, index) => ({ item, index }))
+        .filter(
+          ({ item }) =>
+            !/(navbar|navigation|footer|creationfooterfallback)/i.test(String((item as any)?.type || "")) &&
+            !blockContainsAbsoluteMedia(item as any)
         )
-      );
-      if (fallbackIndex >= 0) {
-        const target = nextContent[fallbackIndex] as Record<string, unknown>;
+        .map(({ index }) => index);
+      for (const [slot, targetIndex] of candidateIndices.entries()) {
+        if (bodyVisualCount >= minVisuals) break;
+        const target = nextContent[targetIndex] as Record<string, unknown>;
         const targetProps =
           target?.props && typeof target.props === "object"
             ? ({ ...(target.props as Record<string, unknown>) } as Record<string, unknown>)
@@ -8202,21 +8889,32 @@ const applyVisualMediaCoverage = (pages: GeneratedPage[], prompt: string): Gener
           prompt,
           pagePath,
           blockType: String(target?.type || "").toLowerCase(),
-          token: "page-fallback-visual",
+          token: `page-visual-quota-${slot + 1}`,
+          index: slot,
           imageIntent: defaultIntent,
         });
-        if (src) {
-          targetProps.background = "image";
-          targetProps.backgroundMedia = { kind: "image", src };
-          if (typeof targetProps.backgroundOverlay !== "string" || !targetProps.backgroundOverlay.trim()) {
-            targetProps.backgroundOverlay = "linear-gradient(180deg, rgba(3,8,12,0.22) 0%, rgba(3,8,12,0.48) 100%)";
-          }
-          if (typeof targetProps.backgroundOverlayOpacity !== "number") targetProps.backgroundOverlayOpacity = 0.38;
-          nextContent[fallbackIndex] = {
-            ...target,
-            props: targetProps,
+        if (!src) continue;
+        if (!hasAbsoluteMediaSrc(targetProps.media as any)) {
+          targetProps.media = {
+            kind: "image",
+            src,
+            alt:
+              typeof targetProps.title === "string" && targetProps.title.trim()
+                ? targetProps.title.trim()
+                : "Section visual",
           };
         }
+        targetProps.background = "image";
+        targetProps.backgroundMedia = { kind: "image", src };
+        if (typeof targetProps.backgroundOverlay !== "string" || !targetProps.backgroundOverlay.trim()) {
+          targetProps.backgroundOverlay = "linear-gradient(180deg, rgba(3,8,12,0.2) 0%, rgba(3,8,12,0.46) 100%)";
+        }
+        if (typeof targetProps.backgroundOverlayOpacity !== "number") targetProps.backgroundOverlayOpacity = 0.34;
+        nextContent[targetIndex] = {
+          ...target,
+          props: targetProps,
+        };
+        bodyVisualCount += 1;
       }
     }
 
@@ -8245,15 +8943,17 @@ const sanitizeGeneratedProps = (
   const templateCopyPatterns = [
     /\blorem ipsum\b/i,
     /\byour brand\b/i,
-    /\bour (?:company|mission|vision|services?|products?)\b/i,
-    /\btrusted by\b/i,
-    /\bbook (?:a )?demo\b/i,
-    /\bget started\b/i,
-    /\bdiscover more\b/i,
-    /\blearn more\b/i,
     /\bcontact us today\b/i,
     /\bthis section\b/i,
-    /\bplaceholder\b/i,
+    /\bslide\s*\d+\b/i,
+    /\bhero\s*slide\b/i,
+    /\blearn\s+more\b/i,
+    /\bexplore\b/i,
+    /\boverview\b/i,
+    /\bdetails?\b/i,
+    /\bwe\s+are\b/i,
+    /\bhtml\b/i,
+    /\bplaceholder(?:\s+(?:text|copy))?\b/i,
     /\{\{[^}]+\}\}/,
     /\[\s*(?:title|subtitle|description|content|cta)\s*\]/i,
   ];
@@ -8305,8 +9005,32 @@ const sanitizeGeneratedProps = (
     const cjkCount = (compact.match(/[\u3400-\u9fff]/g) || []).length;
     const latinCount = (compact.match(/[A-Za-z]/g) || []).length;
     const leaf = String(keyPath[keyPath.length - 1] || "").toLowerCase();
-    const textLikeLeaf = /(title|subtitle|headline|desc|description|body|content|copy|text|label|cta|button)/.test(leaf);
-    if (outputLanguage === "zh-CN" && textLikeLeaf && cjkCount <= 2 && latinCount >= 20) return true;
+    const textLikeLeaf = /(title|subtitle|headline|desc|description|summary|body|content|copy|text|label|cta|button|alt|caption|name|tag|eyebrow)/.test(
+      leaf
+    );
+    const latinTokens = Array.from(new Set(compact.match(/[A-Za-z][A-Za-z0-9_-]{1,}/g) || []));
+    const safeTechnicalToken = /^(?:ISO|CE|SGS|CNC|PCB|ATC|ROI|FAQ|API|SKU|OEM|ODM|SEA|LC|S)$/i;
+    const meaningfulLatinTokenCount = latinTokens.filter((token) => !safeTechnicalToken.test(token)).length;
+    if (
+      outputLanguage === "zh-CN" &&
+      textLikeLeaf &&
+      !/^[A-Z0-9 .\-_/]{2,30}$/.test(compact) &&
+      (cjkCount <= 1 && latinCount >= 8)
+    ) {
+      return true;
+    }
+    if (
+      outputLanguage === "zh-CN" &&
+      textLikeLeaf &&
+      !/^[A-Z0-9 .\-_/]{2,30}$/.test(compact) &&
+      latinCount >= 22 &&
+      cjkCount / Math.max(1, latinCount) < 0.15
+    ) {
+      return true;
+    }
+    if (outputLanguage === "zh-CN" && textLikeLeaf && cjkCount === 0 && meaningfulLatinTokenCount >= 2) {
+      return true;
+    }
     return false;
   };
   const rewriteTemplateCopy = (text: string, keyPath: string[]) => {
@@ -8381,14 +9105,100 @@ type GeneratedPage = {
   };
 };
 
+const ensureUniqueIdsForPageContent = (
+  content: Array<{ type?: string; props?: Record<string, unknown> }>,
+  pagePath: string
+) => {
+  const usedIds = new Map<string, number>();
+  const pageToken = toSlug(pagePath || "page") || "page";
+  return content.map((item, itemIndex) => {
+    if (!item || typeof item !== "object") return item;
+    const props =
+      item.props && typeof item.props === "object"
+        ? ({ ...(item.props as Record<string, unknown>) } as Record<string, unknown>)
+        : {};
+    const rawId = typeof props.id === "string" ? props.id.trim() : "";
+    const anchorToken = typeof props.anchor === "string" ? props.anchor.trim() : "";
+    const typeToken = toSlug(String(item.type || "")) || "section";
+    const fallbackId = `${pageToken}-${toSlug(anchorToken) || typeToken}-${itemIndex + 1}`;
+    const baseId = rawId || fallbackId;
+    const seen = (usedIds.get(baseId) ?? 0) + 1;
+    usedIds.set(baseId, seen);
+    const uniqueId = seen === 1 ? baseId : `${baseId}-${seen}`;
+    props.id = uniqueId;
+    return {
+      ...item,
+      props,
+    };
+  });
+};
+
 const sanitizeFinalPagesOutput = (
   pages: GeneratedPage[],
   input: { prompt: string; designNorthStar?: Record<string, unknown>; profileId?: unknown }
 ): GeneratedPage[] =>
-  pages.map((page) => ({
-    ...page,
-    data: sanitizeGeneratedProps(page.data, { ...input, pagePath: page.path }) as GeneratedPage["data"],
-  }));
+  pages.map((page) => {
+    const sanitizedData = sanitizeGeneratedProps(page.data, { ...input, pagePath: page.path }) as GeneratedPage["data"];
+    const safeContent = Array.isArray(sanitizedData?.content) ? sanitizedData.content : [];
+    return {
+      ...page,
+      data: {
+        ...sanitizedData,
+        content: ensureUniqueIdsForPageContent(safeContent as Array<{ type?: string; props?: Record<string, unknown> }>, page.path) as GeneratedPage["data"]["content"],
+      },
+    };
+  });
+
+const coerceInternalHrefToAvailablePath = (href: string, availablePaths: Set<string>) => {
+  const raw = String(href || "").trim();
+  if (!raw) return raw;
+  if (/^(mailto:|tel:|#|https?:\/\/)/i.test(raw)) return raw;
+  const pathname = normalizePromptPagePath(raw.split("?")[0]?.split("#")[0] || raw);
+  const canonical = normalizePromptPagePath(resolveCanonicalRoute(pathname, availablePaths));
+  if (availablePaths.has(canonical)) return canonical;
+  const segments = canonical.split("/").filter(Boolean);
+  if (segments.length > 1) {
+    const topLevel = normalizePromptPagePath(resolveCanonicalRoute(`/${segments[0]}`, availablePaths));
+    if (availablePaths.has(topLevel)) return topLevel;
+  }
+  if (/[0-9]/.test(pathname) && availablePaths.has("/products")) return "/products";
+  if (/(case|study|project|result|proof)/i.test(pathname) && availablePaths.has("/cases")) return "/cases";
+  if (/(service|solution|workflow|process|capability)/i.test(pathname) && availablePaths.has("/solutions")) {
+    return "/solutions";
+  }
+  return availablePaths.has("/") ? "/" : canonical;
+};
+
+const coerceContentInternalHrefsToAvailablePaths = (
+  content: Array<{ type?: string; props?: Record<string, unknown> }>,
+  availablePaths: Set<string>
+) => {
+  const rewrite = (value: unknown): unknown => {
+    if (Array.isArray(value)) return value.map((item) => rewrite(item));
+    if (!value || typeof value !== "object") return value;
+    const record = value as Record<string, unknown>;
+    const next: Record<string, unknown> = {};
+    Object.entries(record).forEach(([key, child]) => {
+      if (typeof child === "string" && /href$/i.test(key)) {
+        next[key] = coerceInternalHrefToAvailablePath(child, availablePaths);
+        return;
+      }
+      next[key] = rewrite(child);
+    });
+    return next;
+  };
+  return content.map((item) => {
+    if (!item || typeof item !== "object") return item;
+    const props =
+      item.props && typeof item.props === "object"
+        ? (rewrite(item.props) as Record<string, unknown>)
+        : (item.props as Record<string, unknown> | undefined);
+    return {
+      ...item,
+      ...(props ? { props } : {}),
+    };
+  });
+};
 
 const contextualFallbackHref = (
   keyPath: string[],
@@ -9716,13 +10526,17 @@ async function callLlm({
             continue;
           }
           lastError = error;
-          if (providerDisableMs > 0 && isAuthOrQuotaProviderError(error) && llmProviders.length > 1) {
+          if (
+            providerDisableMs > 0 &&
+            llmProviders.length > 1 &&
+            (isAuthOrQuotaProviderError(error) || isNetworkOrRetryableProviderError(error))
+          ) {
             providerDisabledUntil.set(provider.name, Date.now() + providerDisableMs);
             logWarn(`${logPrefix} request:provider_disabled`, {
               provider: provider.name,
               requestedModel: modelName,
               disableMs: providerDisableMs,
-              reason: "auth_or_quota",
+              reason: isAuthOrQuotaProviderError(error) ? "auth_or_quota" : "network_or_retryable",
             });
           }
           logWarn(`${logPrefix} request:provider_failed`, {
@@ -10065,6 +10879,19 @@ async function architectNode(state: GraphState) {
 async function builderNode(state: GraphState) {
   const requestedSectionGenerationStrategy = state.generationStrategy ?? sectionGenerationStrategy;
   let activeSectionGenerationStrategy = requestedSectionGenerationStrategy;
+  const fastPathMode = Boolean(state.singleCandidateOnly);
+  const runtimeSectionMaxAttempts = fastPathMode ? 1 : effectiveSectionMaxAttempts;
+  const runtimeNetworkRetryAttempts = fastPathMode ? 0 : configuredNetworkRetryAttempts;
+  const runtimeAllowNonNetworkRetries = fastPathMode ? false : allowNonNetworkRetries;
+  const runtimeEnableBuilderRepair = fastPathMode ? false : enableBuilderRepair;
+  const runtimeEnableBuilderRefinement = fastPathMode ? false : enableBuilderRefinement;
+  const runtimeEnableTemplateRefinement = fastPathMode ? false : enableTemplateRefinement;
+  const runtimeBuilderTimeoutMs = fastPathMode ? Math.min(builderTimeoutMs, 18000) : builderTimeoutMs;
+  const runtimeBuilderRecoveryTimeoutMs = fastPathMode ? Math.min(builderRecoveryTimeoutMs, 22000) : builderRecoveryTimeoutMs;
+  const pageBuildMode = Boolean(state.pageBuildMode?.enabled);
+  const pageBuildTargetPath = pageBuildMode
+    ? normalizePromptPagePath(String(state.pageBuildMode?.path || "/"))
+    : null;
   const blueprint = (state.blueprint ?? {}) as ArchitectBlueprint;
   const contractNormalizationIssues: Array<Record<string, unknown>> = [];
   let skillOrchestrationDiagnostics: Record<string, unknown> = {};
@@ -10079,190 +10906,291 @@ async function builderNode(state: GraphState) {
     sourceCount: 0,
   };
   let pages = normalizePages(blueprint);
-  const requestedPages = extractRequestedPagesFromPrompt(state.prompt ?? "");
+  if (pageBuildTargetPath) {
+    pages = pages.filter((page) => normalizePromptPagePath(String(page.path || "/")) === pageBuildTargetPath);
+  }
   const structuredBrief = parseStructuredBrief(state.prompt ?? "");
-  const hasStructuredNavContract = (structuredBrief?.nav?.length ?? 0) >= 3;
-  if (requestedPages.length) {
-    const byPath = new Map(pages.map((page) => [normalizePromptPagePath(String(page.path || "/")), page] as const));
-    requestedPages.forEach((requested) => {
-      if (byPath.has(requested.path)) return;
-      byPath.set(requested.path, {
-        path: requested.path,
-        name: requested.name,
-        sections: [],
-      } as any);
-    });
-    pages = normalizePages({ pages: Array.from(byPath.values()) });
-  }
-  if (requestedPages.length >= 3 || hasStructuredNavContract) {
-    const explicitPathSet = new Set<string>(["/"]);
-    requestedPages.forEach((requested) => explicitPathSet.add(normalizePromptPagePath(String(requested.path || "/"))));
-    if (Array.isArray(structuredBrief?.nav)) {
-      structuredBrief.nav.forEach((label) => explicitPathSet.add(inferRequestedPagePathFromLabel(label)));
+  const plannerPreparation =
+    pageBuildMode &&
+    blueprint &&
+    typeof blueprint === "object" &&
+    (blueprint as any).__plannerPreparation &&
+    typeof (blueprint as any).__plannerPreparation === "object"
+      ? ((blueprint as any).__plannerPreparation as PlannerPreparationMetadata)
+      : null;
+  const reusePlannerPreparation = Boolean(pageBuildMode && plannerPreparation?.prepared);
+  let templateResolution: LayeredTemplateResolution;
+  if (reusePlannerPreparation) {
+    const preparedPages = normalizePages({ pages: (plannerPreparation?.pages ?? []) as any });
+    if (preparedPages.length > 0) {
+      pages = preparedPages;
     }
-    if (Array.isArray(structuredBrief?.footerLinks)) {
-      structuredBrief.footerLinks.forEach((label) => explicitPathSet.add(inferRequestedPagePathFromLabel(label)));
-    }
-    // Keep legal pages stable for enterprise sites even when user nav is partial.
-    explicitPathSet.add("/privacy");
-    if (/(terms?|条款|服务条款|legal|tos)/i.test(String(state.prompt || ""))) {
-      explicitPathSet.add("/terms");
-    }
-    pages = normalizePages({
-      pages: pages.filter((page) => explicitPathSet.has(normalizePromptPagePath(String(page.path || "/")))),
-    });
-  }
-  if (looksLikeEnterpriseWebsite({ prompt: state.prompt ?? "", pages })) {
-    const pageByPath = new Map(
-      pages.map((page) => [normalizePromptPagePath(String(page.path || "/")), page] as const)
+    activeSectionGenerationStrategy = parseSectionGenerationStrategy(
+      plannerPreparation?.selectedStrategy,
+      activeSectionGenerationStrategy
     );
-    const useChinese = shouldUseChineseContent(state.prompt ?? "");
-    if (!pageByPath.has("/privacy")) {
-      pages = normalizePages({
-        pages: [
-          ...pages,
-          {
-            path: "/privacy",
-            name: useChinese ? "隐私政策" : "Privacy",
-            sections: [],
-          } as any,
-        ],
-      });
-    }
-  }
-  if (looksLikeEnterpriseWebsite({ prompt: state.prompt ?? "", pages }) && requestedPages.length < 3 && !hasStructuredNavContract) {
-    pages = normalizePages({
-      pages: ensureEnterpriseSitePages(
-        pages,
-        (definition) => ({
-          path: definition.path,
-          name: definition.name,
+    contractNormalizationIssues.push(...(plannerPreparation?.contractNormalizationIssues ?? []));
+    skillOrchestrationApplied = Boolean(plannerPreparation?.skillOrchestration?.applied);
+    skillOrchestrationSuggestion = plannerPreparation?.skillOrchestration?.suggestion ?? null;
+    skillOrchestrationDiagnostics =
+      plannerPreparation?.skillOrchestration?.diagnostics &&
+      typeof plannerPreparation.skillOrchestration.diagnostics === "object"
+        ? (plannerPreparation.skillOrchestration.diagnostics as Record<string, unknown>)
+        : {};
+    templateResolution = {
+      profileId: plannerPreparation?.templatePlanProfile ?? null,
+      siteStyleShell: null,
+      layer: normalizeTemplateResolutionLayer(plannerPreparation?.resolutionLayer),
+      pages,
+      diagnostics: {
+        matchedPagePaths: Array.isArray(plannerPreparation?.matchedPagePaths)
+          ? plannerPreparation.matchedPagePaths
+          : pages.map((page) => normalizePromptPagePath(String(page.path || "/"))),
+        matchedPageCoverage:
+          Number.isFinite(Number(plannerPreparation?.matchedPageCoverage)) && Number(plannerPreparation?.matchedPageCoverage) >= 0
+            ? Number(plannerPreparation?.matchedPageCoverage)
+            : pages.length > 0
+              ? 1
+              : 0,
+        templateKinds: Array.isArray(plannerPreparation?.templateKinds)
+          ? (plannerPreparation.templateKinds as any[])
+          : [],
+        strategy: activeSectionGenerationStrategy,
+      },
+    };
+    logInfo(`${logPrefix} builder:planner_prepared_reuse`, {
+      pageBuildTargetPath,
+      pages: pages.length,
+      strategy: activeSectionGenerationStrategy,
+      profileId: templateResolution.profileId,
+      layer: templateResolution.layer,
+    });
+  } else {
+    const requestedPages = pageBuildMode ? [] : extractRequestedPagesFromPrompt(state.prompt ?? "");
+    const hasStructuredNavContract = !pageBuildMode && (structuredBrief?.nav?.length ?? 0) >= 3;
+    const hasStructuredCatalogContract =
+      !pageBuildMode &&
+      (hasStructuredCatalogContractSignal(structuredBrief) ||
+        hasStructuredCatalogContractSignalFromPrompt(String(state.prompt || "")));
+    if (requestedPages.length) {
+      const byPath = new Map(pages.map((page) => [normalizePromptPagePath(String(page.path || "/")), page] as const));
+      requestedPages.forEach((requested) => {
+        if (byPath.has(requested.path)) return;
+        byPath.set(requested.path, {
+          path: requested.path,
+          name: requested.name,
           sections: [],
-        }),
-        { prompt: state.prompt ?? "" }
-      ),
-    });
-  }
-  const preTemplateContractNormalization = normalizePagesBySiteContract(pages as any[], {
-    prompt: state.prompt ?? "",
-  });
-  preTemplateContractNormalization.issues.forEach((issue) => {
-    contractNormalizationIssues.push({ stage: "pre_template", ...issue });
-    const payload = { stage: "pre_template", code: issue.code, message: issue.message, details: issue.details };
-    if (issue.severity === "error") {
-      logWarn(`${logPrefix} builder:contract_normalization_error`, payload);
-    } else {
-      logInfo(`${logPrefix} builder:contract_normalization_warning`, payload);
-    }
-  });
-  pages = normalizePages({ pages: preTemplateContractNormalization.pages as any });
-  const skillOrchestration = orchestrateTemplateAndSectionCandidates({
-    prompt: state.prompt ?? "",
-    pages,
-    strategy: activeSectionGenerationStrategy,
-  });
-  pages = normalizePages({ pages: skillOrchestration.pages as any });
-  skillOrchestrationSuggestion = skillOrchestration.strategySuggestion;
-  skillOrchestrationDiagnostics = {
-    ...skillOrchestration.diagnostics,
-    strategySuggestion: skillOrchestrationSuggestion,
-  };
-  if ((skillOrchestration.diagnostics.sectionReorderedPages ?? []).length > 0) {
-    logInfo(`${logPrefix} builder:skill_orchestration_reorder`, {
-      reorderedPages: skillOrchestration.diagnostics.sectionReorderedPages,
-      count: skillOrchestration.diagnostics.sectionReorderedPages.length,
-    });
-  }
-  if (skillOrchestrationSuggestion && skillOrchestrationSuggestion !== activeSectionGenerationStrategy) {
-    const canOverrideStrategy =
-      activeSectionGenerationStrategy === "hybrid" ||
-      (activeSectionGenerationStrategy === "template_first" &&
-        (skillOrchestrationSuggestion === "hybrid" || skillOrchestrationSuggestion === "llm_first"));
-    if (!canOverrideStrategy) {
-      logInfo(`${logPrefix} builder:skill_orchestration_strategy_override_skipped`, {
-        from: activeSectionGenerationStrategy,
-        to: skillOrchestrationSuggestion,
+        } as any);
       });
-    } else {
-    activeSectionGenerationStrategy = skillOrchestrationSuggestion;
-    skillOrchestrationApplied = true;
-    logInfo(`${logPrefix} builder:skill_orchestration_strategy_override`, {
-      from: requestedSectionGenerationStrategy,
-      to: activeSectionGenerationStrategy,
-      reason: "structured_signal_and_page_type_match",
-    });
+      pages = normalizePages({ pages: Array.from(byPath.values()) });
     }
-  }
-  const outputLanguage = resolveOutputLanguage(state.prompt ?? "");
-  if (
-    outputLanguage === "zh-CN" &&
-    activeSectionGenerationStrategy === "template_first" &&
-    looksLikeEnterpriseWebsite({ prompt: state.prompt ?? "", pages })
-  ) {
-    activeSectionGenerationStrategy = "hybrid";
-    skillOrchestrationApplied = true;
-    logInfo(`${logPrefix} builder:strategy_language_override`, {
-      from: requestedSectionGenerationStrategy,
-      to: activeSectionGenerationStrategy,
-      reason: "zh_enterprise_avoids_template_lock",
-    });
-  }
-  const templateResolution = resolveTemplatePlan({
-    prompt: state.prompt ?? "",
-    pages,
-    strategy: activeSectionGenerationStrategy,
-  });
-  pages = normalizePages({ pages: templateResolution.pages as any });
-  const postTemplateContractNormalization = normalizePagesBySiteContract(pages as any[], {
-    prompt: state.prompt ?? "",
-  });
-  postTemplateContractNormalization.issues.forEach((issue) => {
-    contractNormalizationIssues.push({ stage: "post_template", ...issue });
-    const payload = { stage: "post_template", code: issue.code, message: issue.message, details: issue.details };
-    if (issue.severity === "error") {
-      logWarn(`${logPrefix} builder:contract_normalization_error`, payload);
-    } else {
-      logInfo(`${logPrefix} builder:contract_normalization_warning`, payload);
+    if (requestedPages.length >= 3 || hasStructuredNavContract) {
+      const explicitPathSet = new Set<string>(["/"]);
+      requestedPages.forEach((requested) => explicitPathSet.add(normalizePromptPagePath(String(requested.path || "/"))));
+      if (Array.isArray(structuredBrief?.nav)) {
+        structuredBrief.nav.forEach((label) => explicitPathSet.add(inferRequestedPagePathFromLabel(label)));
+      }
+      if (Array.isArray(structuredBrief?.footerLinks)) {
+        structuredBrief.footerLinks.forEach((label) => explicitPathSet.add(inferRequestedPagePathFromLabel(label)));
+      }
+      // Keep legal pages stable for enterprise sites even when user nav is partial.
+      explicitPathSet.add("/privacy");
+      if (/(terms?|条款|服务条款|legal|tos)/i.test(String(state.prompt || ""))) {
+        explicitPathSet.add("/terms");
+      }
+      pages = normalizePages({
+        pages: pages.filter((page) => explicitPathSet.has(normalizePromptPagePath(String(page.path || "/")))),
+      });
     }
-  });
-  pages = normalizePages({ pages: postTemplateContractNormalization.pages as any });
+    if (!pageBuildMode && looksLikeEnterpriseWebsite({ prompt: state.prompt ?? "", pages })) {
+      const pageByPath = new Map(
+        pages.map((page) => [normalizePromptPagePath(String(page.path || "/")), page] as const)
+      );
+      const useChinese = shouldUseChineseContent(state.prompt ?? "");
+      if (!pageByPath.has("/privacy")) {
+        pages = normalizePages({
+          pages: [
+            ...pages,
+            {
+              path: "/privacy",
+              name: useChinese ? "隐私政策" : "Privacy",
+              sections: [],
+            } as any,
+          ],
+        });
+      }
+    }
+    if (
+      !pageBuildMode &&
+      looksLikeEnterpriseWebsite({ prompt: state.prompt ?? "", pages }) &&
+      requestedPages.length < 3 &&
+      !hasStructuredNavContract
+    ) {
+      pages = normalizePages(
+        hasStructuredCatalogContract
+          ? {
+              pages: ensureStructuredDualChainPages(pages as any[], state.prompt ?? "", structuredBrief),
+            }
+          : {
+              pages: ensureEnterpriseSitePages(
+                pages,
+                (definition) => ({
+                  path: definition.path,
+                  name: definition.name,
+                  sections: [],
+                }),
+                { prompt: state.prompt ?? "" }
+              ),
+            }
+      );
+    }
+    const preTemplateContractNormalization = normalizePagesBySiteContract(pages as any[], {
+      prompt: state.prompt ?? "",
+    });
+    preTemplateContractNormalization.issues.forEach((issue) => {
+      contractNormalizationIssues.push({ stage: "pre_template", ...issue });
+      const payload = { stage: "pre_template", code: issue.code, message: issue.message, details: issue.details };
+      if (issue.severity === "error") {
+        logWarn(`${logPrefix} builder:contract_normalization_error`, payload);
+      } else {
+        logInfo(`${logPrefix} builder:contract_normalization_warning`, payload);
+      }
+    });
+    pages = normalizePages({ pages: preTemplateContractNormalization.pages as any });
+    const skillOrchestration = orchestrateTemplateAndSectionCandidates({
+      prompt: state.prompt ?? "",
+      pages,
+      strategy: activeSectionGenerationStrategy,
+    });
+    pages = normalizePages({ pages: skillOrchestration.pages as any });
+    skillOrchestrationSuggestion = skillOrchestration.strategySuggestion;
+    skillOrchestrationDiagnostics = {
+      ...skillOrchestration.diagnostics,
+      strategySuggestion: skillOrchestrationSuggestion,
+    };
+    if ((skillOrchestration.diagnostics.sectionReorderedPages ?? []).length > 0) {
+      logInfo(`${logPrefix} builder:skill_orchestration_reorder`, {
+        reorderedPages: skillOrchestration.diagnostics.sectionReorderedPages,
+        count: skillOrchestration.diagnostics.sectionReorderedPages.length,
+      });
+    }
+    if (skillOrchestrationSuggestion && skillOrchestrationSuggestion !== activeSectionGenerationStrategy) {
+      const canOverrideStrategy =
+        activeSectionGenerationStrategy === "hybrid" ||
+        (activeSectionGenerationStrategy === "template_first" &&
+          allowTemplateFirstUpshift &&
+          (skillOrchestrationSuggestion === "hybrid" || skillOrchestrationSuggestion === "llm_first"));
+      if (!canOverrideStrategy) {
+        logInfo(`${logPrefix} builder:skill_orchestration_strategy_override_skipped`, {
+          from: activeSectionGenerationStrategy,
+          to: skillOrchestrationSuggestion,
+        });
+      } else {
+        activeSectionGenerationStrategy = skillOrchestrationSuggestion;
+        skillOrchestrationApplied = true;
+        logInfo(`${logPrefix} builder:skill_orchestration_strategy_override`, {
+          from: requestedSectionGenerationStrategy,
+          to: activeSectionGenerationStrategy,
+          reason: "structured_signal_and_page_type_match",
+        });
+      }
+    }
+    const outputLanguage = resolveOutputLanguage(state.prompt ?? "");
+    if (
+      forceHybridForZhEnterpriseWhenTemplateFirst &&
+      outputLanguage === "zh-CN" &&
+      activeSectionGenerationStrategy === "template_first" &&
+      looksLikeEnterpriseWebsite({ prompt: state.prompt ?? "", pages })
+    ) {
+      activeSectionGenerationStrategy = "hybrid";
+      skillOrchestrationApplied = true;
+      logInfo(`${logPrefix} builder:strategy_language_override`, {
+        from: requestedSectionGenerationStrategy,
+        to: activeSectionGenerationStrategy,
+        reason: "zh_enterprise_avoids_template_lock",
+      });
+    }
+    templateResolution = resolveTemplatePlan({
+      prompt: state.prompt ?? "",
+      pages,
+      strategy: activeSectionGenerationStrategy,
+    });
+    pages = normalizePages({ pages: templateResolution.pages as any });
+    const postTemplateContractNormalization = normalizePagesBySiteContract(pages as any[], {
+      prompt: state.prompt ?? "",
+    });
+    postTemplateContractNormalization.issues.forEach((issue) => {
+      contractNormalizationIssues.push({ stage: "post_template", ...issue });
+      const payload = { stage: "post_template", code: issue.code, message: issue.message, details: issue.details };
+      if (issue.severity === "error") {
+        logWarn(`${logPrefix} builder:contract_normalization_error`, payload);
+      } else {
+        logInfo(`${logPrefix} builder:contract_normalization_warning`, payload);
+      }
+    });
+    pages = normalizePages({ pages: postTemplateContractNormalization.pages as any });
+  }
   const siteBlueprint = buildSiteBlueprint({
     profileId: templateResolution.profileId,
     prompt: state.prompt ?? "",
     pages,
   });
   const linkGraph = buildSiteLinkGraph(siteBlueprint, state.prompt ?? "");
-  const scopedRag = await buildScopedRagContextByPage({
-    prompt: state.prompt ?? "",
-    pages: pages.map((page) => ({ path: page.path, name: page.name })),
-    structuredInput: state.structuredInput ?? null,
-    knowledgeBaseClient,
-    enabled: enableScopedRag,
-    concurrency: scopedRagConcurrency,
-  });
-  scopedRagDiagnostics = {
-    ...scopedRag.summary,
-    pages: Object.values(scopedRag.byPath).map((item) => ({
-      path: item.path,
-      pageType: item.pageType,
-      requiredFields: item.requiredFields,
-      coveredFields: item.coveredFields,
-      missingFields: item.missingFields,
-      used: item.used,
-      queryCount: item.queryCount,
-      sourceCount: item.sourceCount,
-      queries: item.queries,
-    })),
-  };
-  logInfo(`${logPrefix} builder:scoped_rag`, scopedRagDiagnostics);
-  const scopedPromptByPath = new Map<string, string>(
-    Object.values(scopedRag.byPath).map((item) => {
+  const plannedRagQueriesByPath = new Map<string, string[]>(
+    (Array.isArray(state.pageBuildJobs) ? state.pageBuildJobs : []).map((job) => [
+      normalizePromptPagePath(job.pagePath || "/"),
+      Array.isArray(job.ragQueries) ? job.ragQueries : [],
+    ])
+  );
+  const hasPreScopedPrompt = pageBuildMode && /#\s*Page Scoped Fact Pack/i.test(String(state.prompt || ""));
+  const scopedPromptByPath = new Map<string, string>();
+  if (hasPreScopedPrompt) {
+    pages.forEach((page) => scopedPromptByPath.set(page.path || "/", String(state.prompt ?? "")));
+    scopedRagDiagnostics = {
+      enabled: enableScopedRag,
+      precomputed: true,
+      pageCount: pages.length,
+      usedPageCount: pages.length,
+      queryCount: 0,
+      sourceCount: 0,
+    };
+    logInfo(`${logPrefix} builder:scoped_rag`, scopedRagDiagnostics);
+  } else {
+    const scopedRag = await buildScopedRagContextByPage({
+      prompt: state.prompt ?? "",
+      pages: pages.map((page) => ({
+        path: page.path,
+        name: page.name,
+        queryHints: plannedRagQueriesByPath.get(normalizePromptPagePath(page.path || "/")) || [],
+      })),
+      structuredInput: state.structuredInput ?? null,
+      knowledgeBaseClient,
+      enabled: enableScopedRag,
+      concurrency: scopedRagConcurrency,
+      fastMode: fastPathMode,
+    });
+    scopedRagDiagnostics = {
+      ...scopedRag.summary,
+      pages: Object.values(scopedRag.byPath).map((item) => ({
+        path: item.path,
+        pageType: item.pageType,
+        requiredFields: item.requiredFields,
+        coveredFields: item.coveredFields,
+        missingFields: item.missingFields,
+        used: item.used,
+        queryCount: item.queryCount,
+        sourceCount: item.sourceCount,
+        queries: item.queries,
+      })),
+    };
+    logInfo(`${logPrefix} builder:scoped_rag`, scopedRagDiagnostics);
+    Object.values(scopedRag.byPath).forEach((item) => {
       const scopedPrompt = item.context
         ? `${String(state.prompt ?? "").trim()}\n\n# Page Scoped Fact Pack\n${item.context}`
         : String(state.prompt ?? "");
-      return [item.path, scopedPrompt] as const;
-    })
-  );
+      scopedPromptByPath.set(item.path, scopedPrompt);
+    });
+  }
   const resolvePromptForPagePath = (pagePath: string) =>
     scopedPromptByPath.get(pagePath) ?? String(state.prompt ?? "");
   const allSections = flattenSections(pages);
@@ -10295,6 +11223,24 @@ async function builderNode(state: GraphState) {
       motionProfile: templateResolution.siteStyleShell?.motionProfile ?? "",
     });
   }
+  const plannerPreparationMeta =
+    blueprint &&
+    typeof blueprint === "object" &&
+    (blueprint as any).__plannerPreparation &&
+    typeof (blueprint as any).__plannerPreparation === "object"
+      ? ((blueprint as any).__plannerPreparation as PlannerPreparationMetadata)
+      : null;
+  const globalChrome =
+    plannerPreparationMeta?.globalChrome ??
+    state.globalChrome ??
+    resolvePlannerGlobalChrome({
+      templateResolution,
+      fallback: {
+        navigationBlockType: navbarComponentName,
+        footerBlockType: footerFallbackComponentName,
+        motionProfile: "subtle",
+      },
+    });
   let themeContract = (theme?.themeContract as ThemeContract) ?? {};
   const planning = state.planning ?? null;
   const completedSectionKeys = planning?.getCompletedSectionKeys() ?? new Set<string>();
@@ -10336,22 +11282,24 @@ async function builderNode(state: GraphState) {
     skillOrchestrationReorderedPageCount: Array.isArray(skillOrchestrationDiagnostics.sectionReorderedPages)
       ? (skillOrchestrationDiagnostics.sectionReorderedPages as unknown[]).length
       : 0,
-    retryMode: builderRetryMode,
-    sectionMaxAttempts: effectiveSectionMaxAttempts,
-    networkRetryAttempts: configuredNetworkRetryAttempts,
+    retryMode: fastPathMode ? `${builderRetryMode}:fast_path` : builderRetryMode,
+    sectionMaxAttempts: runtimeSectionMaxAttempts,
+    networkRetryAttempts: runtimeNetworkRetryAttempts,
     builderRecoveryMaxTokens,
-    refinementEnabled: enableBuilderRefinement,
-    repairEnabled: enableBuilderRepair,
+    refinementEnabled: runtimeEnableBuilderRefinement,
+    repairEnabled: runtimeEnableBuilderRepair,
+    templateRefinementEnabled: runtimeEnableTemplateRefinement,
+    fastPathMode,
     templatePlanProfile: templateResolution.profileId,
     skeleton: siteBlueprint.skeleton,
     sitePages: siteBlueprint.pages.map((page) => page.path).join(","),
     navLinks: linkGraph.navigationLinks.length,
       resolutionLayer: templateResolution.layer,
       matchedPageCoverage: templateResolution.diagnostics.matchedPageCoverage,
-      scopedRagEnabled: scopedRag.summary.enabled,
-      scopedRagUsedPages: scopedRag.summary.usedPageCount,
-      scopedRagQueryCount: scopedRag.summary.queryCount,
-      scopedRagSourceCount: scopedRag.summary.sourceCount,
+      scopedRagEnabled: Boolean((scopedRagDiagnostics as any).enabled),
+      scopedRagUsedPages: Number((scopedRagDiagnostics as any).usedPageCount || 0),
+      scopedRagQueryCount: Number((scopedRagDiagnostics as any).queryCount || 0),
+      scopedRagSourceCount: Number((scopedRagDiagnostics as any).sourceCount || 0),
     });
   if (templateResolution.profileId) {
     logInfo(`${logPrefix} builder:template_plan_applied`, {
@@ -10409,7 +11357,7 @@ async function builderNode(state: GraphState) {
             toolChoice: { type: "tool", name: builderTool.name },
             modelOverride: options.modelOverride,
           },
-          options.timeoutMs ?? builderTimeoutMs,
+          options.timeoutMs ?? runtimeBuilderTimeoutMs,
           "builder_section_timeout"
         );
       } catch (error) {
@@ -10431,7 +11379,7 @@ async function builderNode(state: GraphState) {
     });
     if (!isEmptyResponse(raw)) return raw;
 
-    if (!allowNonNetworkRetries) {
+    if (!runtimeAllowNonNetworkRetries) {
       if (compactPromptText) {
         const compactRetryPrompt = `${compactPromptText}\n\n必须通过工具返回 JSON，不要返回 {} 或空响应。只输出 component + block。`;
         logInfo(`${logPrefix} builder:section:tool_compact_recovery`, {
@@ -10442,7 +11390,7 @@ async function builderNode(state: GraphState) {
           prompt: compactRetryPrompt,
           temp: Math.max(0.15, temperature - 0.25),
           maxTokens: builderRecoveryMaxTokens,
-          timeoutMs: builderRecoveryTimeoutMs,
+          timeoutMs: runtimeBuilderRecoveryTimeoutMs,
         });
         if (!isEmptyResponse(compactRaw)) return compactRaw;
         if (fallbackModelDefault && fallbackModelDefault !== primaryModelDefault) {
@@ -10451,7 +11399,7 @@ async function builderNode(state: GraphState) {
             temp: Math.max(0.1, temperature - 0.3),
             maxTokens: builderRecoveryMaxTokens,
             modelOverride: fallbackModelDefault,
-            timeoutMs: builderRecoveryTimeoutMs,
+            timeoutMs: runtimeBuilderRecoveryTimeoutMs,
           });
           if (!isEmptyResponse(compactFallbackRaw)) return compactFallbackRaw;
         }
@@ -10469,7 +11417,7 @@ async function builderNode(state: GraphState) {
           temperature: Math.max(0.1, temperature - 0.3),
           maxTokens: builderRecoveryMaxTokens,
         },
-        builderRecoveryTimeoutMs,
+        runtimeBuilderRecoveryTimeoutMs,
         "builder_section_emergency_timeout"
       );
       if (!isEmptyResponse(emergencyTextRaw)) return emergencyTextRaw;
@@ -10482,7 +11430,7 @@ async function builderNode(state: GraphState) {
             maxTokens: builderRecoveryMaxTokens,
             modelOverride: fallbackModelDefault,
           },
-          builderRecoveryTimeoutMs,
+          runtimeBuilderRecoveryTimeoutMs,
           "builder_section_emergency_fallback_timeout"
         );
         if (!isEmptyResponse(emergencyTextFallbackRaw)) return emergencyTextFallbackRaw;
@@ -10495,7 +11443,7 @@ async function builderNode(state: GraphState) {
       prompt: retryPrompt,
       temp: Math.max(0.2, temperature - 0.2),
       maxTokens: builderMaxTokens,
-      timeoutMs: builderTimeoutMs,
+      timeoutMs: runtimeBuilderTimeoutMs,
     });
     if (!isEmptyResponse(retryRaw)) return retryRaw;
     if (compactPromptText) {
@@ -10507,7 +11455,7 @@ async function builderNode(state: GraphState) {
         prompt: compactRetryPrompt,
         temp: Math.max(0.15, temperature - 0.25),
         maxTokens: builderRecoveryMaxTokens,
-        timeoutMs: builderRecoveryTimeoutMs,
+        timeoutMs: runtimeBuilderRecoveryTimeoutMs,
       });
       if (!isEmptyResponse(compactRaw)) return compactRaw;
       if (fallbackModelDefault && fallbackModelDefault !== primaryModelDefault) {
@@ -10516,7 +11464,7 @@ async function builderNode(state: GraphState) {
           temp: Math.max(0.1, temperature - 0.3),
           maxTokens: builderRecoveryMaxTokens,
           modelOverride: fallbackModelDefault,
-          timeoutMs: builderRecoveryTimeoutMs,
+          timeoutMs: runtimeBuilderRecoveryTimeoutMs,
         });
         if (!isEmptyResponse(compactFallbackRaw)) return compactFallbackRaw;
       }
@@ -10527,7 +11475,7 @@ async function builderNode(state: GraphState) {
         temp: Math.max(0.1, temperature - 0.3),
         maxTokens: builderRecoveryMaxTokens,
         modelOverride: fallbackModelDefault,
-        timeoutMs: builderRecoveryTimeoutMs,
+        timeoutMs: runtimeBuilderRecoveryTimeoutMs,
       });
       if (!isEmptyResponse(fallbackRaw)) return fallbackRaw;
     }
@@ -10539,7 +11487,7 @@ async function builderNode(state: GraphState) {
         temperature: Math.max(0.1, temperature - 0.3),
         maxTokens: builderRecoveryMaxTokens,
       },
-      builderRecoveryTimeoutMs,
+      runtimeBuilderRecoveryTimeoutMs,
       "builder_section_notool_timeout"
     );
     if (!isEmptyResponse(textRaw)) return textRaw;
@@ -10552,7 +11500,7 @@ async function builderNode(state: GraphState) {
           maxTokens: builderRecoveryMaxTokens,
           modelOverride: fallbackModelDefault,
         },
-        builderRecoveryTimeoutMs,
+        runtimeBuilderRecoveryTimeoutMs,
         "builder_section_notool_fallback_timeout"
       );
       if (!isEmptyResponse(textFallbackRaw)) return textFallbackRaw;
@@ -10563,8 +11511,10 @@ async function builderNode(state: GraphState) {
   const maxConcurrency = Number.isFinite(defaultSectionConcurrency)
     ? Math.max(1, defaultSectionConcurrency)
     : 3;
-  const skipTemplateRefinementForLargeSite = pages.length >= 5 || sections.length >= 30;
-  if (skipTemplateRefinementForLargeSite && enableTemplateRefinement) {
+  const skipTemplateRefinementForLargeSite =
+    parseEnvBoolean(process.env.BUILDER_SKIP_TEMPLATE_REFINEMENT_FOR_LARGE_SITE, false) &&
+    (pages.length >= 5 || sections.length >= 30);
+      if (skipTemplateRefinementForLargeSite && runtimeEnableTemplateRefinement) {
     logInfo(`${logPrefix} builder:template_refinement_skipped`, {
       reason: "large_structured_site",
       pages: pages.length,
@@ -10601,7 +11551,7 @@ async function builderNode(state: GraphState) {
           ...baseInfo,
           strategy: activeSectionGenerationStrategy,
           variant: templateVariant,
-          refinementEnabled: enableTemplateRefinement,
+          refinementEnabled: runtimeEnableTemplateRefinement,
         });
       const baseResult = createTemplateSectionResult(
         context,
@@ -10624,7 +11574,7 @@ async function builderNode(state: GraphState) {
         });
       }
       // LLM lightweight refinement: refine text content while keeping structure
-      if (enableTemplateRefinement && baseResult.status === "ok") {
+      if (runtimeEnableTemplateRefinement && baseResult.status === "ok") {
         const allowRefinementForLayer =
           templateResolution.layer === "section" && !skipTemplateRefinementForLargeSite;
         if (!allowRefinementForLayer) {
@@ -10650,9 +11600,9 @@ async function builderNode(state: GraphState) {
           variant: templateVariant,
         });
     }
-    const maxAttempts = allowNonNetworkRetries
-      ? effectiveSectionMaxAttempts
-      : effectiveSectionMaxAttempts + configuredNetworkRetryAttempts;
+    const maxAttempts = runtimeAllowNonNetworkRetries
+      ? runtimeSectionMaxAttempts
+      : runtimeSectionMaxAttempts + runtimeNetworkRetryAttempts;
     for (let attempt = 1; attempt <= maxAttempts; attempt += 1) {
       const compositionPreset = getCompositionPresetRules(
         context.section.type,
@@ -10709,7 +11659,7 @@ async function builderNode(state: GraphState) {
         let normalized = parsed
           .map((payload) => normalizeSectionPayload(payload, compositionPreset))
           .find(Boolean);
-        if (!normalized && allowNonNetworkRetries) {
+        if (!normalized && runtimeAllowNonNetworkRetries) {
           const strictRaw = await callBuilderLlm(
             `${prompt}\n\n只返回严格 JSON，不要 Markdown、不要解释文本。`,
             0.3,
@@ -10781,7 +11731,7 @@ async function builderNode(state: GraphState) {
           message,
           failureType,
         });
-        if (enableBuilderRepair && isLast && (failureType === "parse" || failureType === "layout")) {
+        if (runtimeEnableBuilderRepair && isLast && (failureType === "parse" || failureType === "layout")) {
           try {
             const repairPrompt = buildRepairPrompt(prompt);
             const compactRepairPrompt = buildRepairPrompt(compactPrompt);
@@ -10832,7 +11782,7 @@ async function builderNode(state: GraphState) {
         }
         const shouldRetry =
           !isLast &&
-          (allowNonNetworkRetries || (!allowNonNetworkRetries && failureType === "network"));
+          (runtimeAllowNonNetworkRetries || (!runtimeAllowNonNetworkRetries && failureType === "network"));
         if (!shouldRetry) {
           if (templatePrimary && enableTemplateShadowRun) {
             logWarn(`${logPrefix} builder:section:template_shadow_failed`, {
@@ -11242,11 +12192,11 @@ async function builderNode(state: GraphState) {
     await Promise.all(planningUpdates);
   }
 
-  if (refinementCandidates.length && !enableBuilderRefinement) {
+  if (refinementCandidates.length && !runtimeEnableBuilderRefinement) {
     logInfo(`${logPrefix} builder:refine:skipped`, {
       sections: refinementCandidates.length,
       reason: "refinement_disabled",
-      retryMode: builderRetryMode,
+      retryMode: fastPathMode ? `${builderRetryMode}:fast_path` : builderRetryMode,
     });
     refinementCandidates.forEach((candidate) => {
       const context = candidate.context;
@@ -11254,7 +12204,7 @@ async function builderNode(state: GraphState) {
     });
   }
 
-  if (refinementCandidates.length && enableBuilderRefinement) {
+  if (refinementCandidates.length && runtimeEnableBuilderRefinement) {
     const refinementConcurrency = Math.max(
       1,
       Number(process.env.OPENROUTER_REFINEMENT_CONCURRENCY || 1)
@@ -11642,10 +12592,14 @@ async function builderNode(state: GraphState) {
       }) as Record<string, unknown>;
       if (isNavbarLikeBlock(item)) {
         if (shouldPreserveTemplateExclusiveChrome && isTemplateExclusiveBlock(item)) {
+          const linkedProps = applyLinkGraphToNavbarProps(
+            sanitizeInternalHrefsInProps(sanitizedExistingProps, linkGraph) as Record<string, unknown>,
+            linkGraph
+          );
           item.props = ensureAnchor(
             ensurePropsId(
               sanitizeSemanticProps(
-                sanitizeInternalHrefsInProps(sanitizedExistingProps, linkGraph),
+                linkedProps,
                 linkGraph,
                 page.path || "/"
               ) as Record<string, unknown>,
@@ -11676,10 +12630,14 @@ async function builderNode(state: GraphState) {
       }
       if (isFooterLikeBlock(item)) {
         if (shouldPreserveTemplateExclusiveChrome && isTemplateExclusiveBlock(item)) {
+          const linkedProps = applyLinkGraphToFooterProps(
+            sanitizeInternalHrefsInProps(sanitizedExistingProps, linkGraph) as Record<string, unknown>,
+            linkGraph
+          );
           item.props = ensureAnchor(
             ensurePropsId(
               sanitizeSemanticProps(
-                sanitizeInternalHrefsInProps(sanitizedExistingProps, linkGraph),
+                linkedProps,
                 linkGraph,
                 page.path || "/"
               ) as Record<string, unknown>,
@@ -12408,74 +13366,195 @@ async function builderNode(state: GraphState) {
     const ctaBlock = themeDrivenBody.length > 0 ? themeDrivenBody[themeDrivenBody.length - 1] : null;
     if (nonThemeDrivenBody.length === 0) {
       const pageToken = toSlug(page.path || `page-${pageIndex + 1}`) || `page-${pageIndex + 1}`;
-      const heroFallback = buildDeterministicFallbackBlock(
-        buildSyntheticSectionContext(
-          pageIndex,
-          `${pageToken}-hero`,
-          "Hero",
-          localeDefaults.useChinese ? "呈现页面核心价值。" : "Present page value proposition."
-        ),
-        state.prompt ?? "",
-        designNorthStar as Record<string, unknown>,
-        theme as Record<string, unknown>,
-        { skipRegistry: true }
-      );
-      const storyFallback = buildDeterministicFallbackBlock(
-        buildSyntheticSectionContext(
-          pageIndex,
-          `${pageToken}-story`,
-          "Content",
-          localeDefaults.useChinese ? "说明核心差异化能力。" : "Explain core differentiation."
-        ),
-        state.prompt ?? "",
-        designNorthStar as Record<string, unknown>,
-        theme as Record<string, unknown>,
-        { skipRegistry: true }
-      );
-      const featureFallback = buildDeterministicFallbackBlock(
-        buildSyntheticSectionContext(
-          pageIndex,
-          `${pageToken}-features`,
-          "Features",
-          localeDefaults.useChinese ? "展示核心能力亮点。" : "Show feature highlights."
-        ),
-        state.prompt ?? "",
-        designNorthStar as Record<string, unknown>,
-        theme as Record<string, unknown>,
-        { skipRegistry: true }
-      );
-      const ctaFallback =
-        ctaBlock ??
-        {
-          type: "LeadCaptureCTA",
-          props: {
-            id: "home-cta-recovered",
-            anchor: "footer-cta",
-            title: localeDefaults.useChinese ? "立即开启项目" : "Start your project",
-            subtitle: localeDefaults.useChinese
-              ? "与团队沟通，获取匹配业务场景的方案。"
-              : "Talk with our team and get a tailored plan.",
-            cta: {
-              label: localeDefaults.useChinese ? "联系销售" : "Contact Sales",
-              href: "/contact",
-              variant: "primary",
-            },
-            variant: "card",
+      const pagePath = normalizePromptPagePath(String(page.path || "/"));
+      const pageType = inferEnterprisePageTypeFromPath(pagePath);
+      const recoveryPlanByPageType: Record<string, Array<{ kind: string; label: string; intent: string }>> = {
+        home: [
+          {
+            kind: "hero",
+            label: "Hero",
+            intent: localeDefaults.useChinese ? "呈现核心价值与行业定位。" : "Present value proposition and market focus.",
           },
-          _key: `${page.path}:cta:recovered`,
-        };
-      page.data.content = dedupeComposedPageContent(
-        [
-          preservedNavbar,
-          { type: heroFallback.type, props: heroFallback.props, _key: `${page.path}:hero:recovered` },
-          { type: storyFallback.type, props: storyFallback.props, _key: `${page.path}:story:recovered` },
-          { type: featureFallback.type, props: featureFallback.props, _key: `${page.path}:features:recovered` },
-          ctaFallback,
-          preservedFooter,
+          {
+            kind: "products",
+            label: "Products",
+            intent: localeDefaults.useChinese ? "展示核心产品与参数卖点。" : "Show core products and specification highlights.",
+          },
+          {
+            kind: "socialproof",
+            label: "Trust",
+            intent: localeDefaults.useChinese ? "展示客户案例与交付证明。" : "Provide customer proof and delivery evidence.",
+          },
         ],
+        products: [
+          {
+            kind: "hero",
+            label: "Catalog Hero",
+            intent: localeDefaults.useChinese ? "引导产品选型与参数比对。" : "Guide product selection and spec comparison.",
+          },
+          {
+            kind: "products",
+            label: "Catalog",
+            intent: localeDefaults.useChinese ? "提供结构化机型目录。" : "Provide a structured model catalog.",
+          },
+          {
+            kind: "approach",
+            label: "Capabilities",
+            intent: localeDefaults.useChinese ? "补充工艺能力与交付优势。" : "Add process capability and delivery strengths.",
+          },
+        ],
+        solutions: [
+          {
+            kind: "hero",
+            label: "Solutions Hero",
+            intent: localeDefaults.useChinese ? "聚焦行业场景与方案价值。" : "Highlight scenario fit and solution value.",
+          },
+          {
+            kind: "approach",
+            label: "Approach",
+            intent: localeDefaults.useChinese ? "给出问题-方法-结果的方案路径。" : "Show problem-method-outcome approach.",
+          },
+          {
+            kind: "story",
+            label: "Execution Story",
+            intent: localeDefaults.useChinese ? "说明落地流程与保障机制。" : "Describe delivery flow and safeguards.",
+          },
+        ],
+        cases: [
+          {
+            kind: "hero",
+            label: "Cases Hero",
+            intent: localeDefaults.useChinese ? "引导浏览应用案例场景。" : "Guide users into application case stories.",
+          },
+          {
+            kind: "socialproof",
+            label: "Case Results",
+            intent: localeDefaults.useChinese ? "展示案例结果与量化收益。" : "Present case outcomes and quantified impact.",
+          },
+          {
+            kind: "products",
+            label: "Related Products",
+            intent: localeDefaults.useChinese ? "关联案例对应机型与能力。" : "Map cases to relevant products and capabilities.",
+          },
+        ],
+        about: [
+          {
+            kind: "hero",
+            label: "About Hero",
+            intent: localeDefaults.useChinese ? "突出公司定位与发展方向。" : "Highlight company positioning and direction.",
+          },
+          {
+            kind: "story",
+            label: "Company Story",
+            intent: localeDefaults.useChinese ? "补充发展历程与组织能力。" : "Add company history and organization capability.",
+          },
+          {
+            kind: "approach",
+            label: "Core Capabilities",
+            intent: localeDefaults.useChinese ? "展示制造、研发与服务能力。" : "Show manufacturing, R&D, and service capabilities.",
+          },
+        ],
+        legal: [
+          {
+            kind: "story",
+            label: "Legal Content",
+            intent: localeDefaults.useChinese ? "提供法律与隐私相关条款正文。" : "Provide legal and privacy policy content.",
+          },
+        ],
+      };
+      const typeOverrideByKind = (kind: string) => {
+        if (kind === "hero") {
+          if (pageType === "products" || pageType === "about" || pageType === "support") return "HeroCentered";
+          return "HeroSplit";
+        }
+        if (kind === "products") return "CardsGrid";
+        if (kind === "approach") return "FeatureGrid";
+        if (kind === "socialproof") return "TestimonialsGrid";
+        if (kind === "story") return "ContentStory";
+        return "ContentStory";
+      };
+      const recoveryPlan =
+        recoveryPlanByPageType[pageType] ||
+        (pageType === "contact"
+          ? []
+          : [
+              {
+                kind: "hero",
+                label: "Hero",
+                intent: localeDefaults.useChinese ? "呈现页面核心价值。" : "Present page value proposition.",
+              },
+              {
+                kind: "story",
+                label: "Story",
+                intent: localeDefaults.useChinese ? "说明核心差异化能力。" : "Explain core differentiation.",
+              },
+              {
+                kind: "approach",
+                label: "Highlights",
+                intent: localeDefaults.useChinese ? "展示关键能力亮点。" : "Show capability highlights.",
+              },
+            ]);
+      const recoveredBodyBlocks = recoveryPlan.map((entry, index) => {
+        const fallback = buildDeterministicFallbackBlock(
+          buildSyntheticSectionContext(
+            pageIndex,
+            `${pageToken}-${entry.kind}-${index + 1}`,
+            entry.label,
+            entry.intent
+          ),
+          state.prompt ?? "",
+          designNorthStar as Record<string, unknown>,
+          theme as Record<string, unknown>,
+          { skipRegistry: true }
+        );
+        const props =
+          fallback.props && typeof fallback.props === "object"
+            ? ({ ...(fallback.props as Record<string, unknown>) } as Record<string, unknown>)
+            : {};
+        if (typeof props.id !== "string" || !props.id.trim()) {
+          props.id = `${entry.kind}-${pageToken}-recovered-${index + 1}`;
+        }
+        if (typeof props.anchor !== "string" || !props.anchor.trim()) {
+          props.anchor = entry.kind === "socialproof" ? "social-proof" : entry.kind;
+        }
+        return {
+          type: typeOverrideByKind(entry.kind),
+          props,
+          _key: `${page.path}:${entry.kind}:recovered:${index}`,
+        };
+      });
+      const shouldAddRecoveredCta = pageType !== "legal" && pageType !== "contact";
+      const ctaFallback =
+        shouldAddRecoveredCta
+          ? ctaBlock ?? {
+              type: "LeadCaptureCTA",
+              props: {
+                id: `${pageToken}-cta-recovered`,
+                anchor: "footer-cta",
+                title: localeDefaults.useChinese ? "立即开启项目" : "Start your project",
+                subtitle: localeDefaults.useChinese
+                  ? "与团队沟通，获取匹配业务场景的方案。"
+                  : "Talk with our team and get a tailored plan.",
+                cta: {
+                  label: localeDefaults.useChinese ? "联系销售" : "Contact Sales",
+                  href: "/contact",
+                  variant: "primary",
+                },
+                variant: "card",
+              },
+              _key: `${page.path}:cta:recovered`,
+            }
+          : null;
+      page.data.content = dedupeComposedPageContent(
+        [preservedNavbar, ...recoveredBodyBlocks, ...(ctaFallback ? [ctaFallback] : []), preservedFooter],
         page.path || "/"
       );
-      logWarn(`${logPrefix} builder:page_body_recovered`, { pagePath: page.path, reason: "empty_non_theme_body" });
+      logWarn(`${logPrefix} builder:page_body_recovered`, {
+        pagePath: page.path,
+        pageType,
+        reason: "empty_non_theme_body",
+        recoveredKinds: recoveryPlan.map((entry) => entry.kind),
+      });
       return;
     }
     page.data.content = dedupeComposedPageContent(
@@ -12816,6 +13895,14 @@ async function builderNode(state: GraphState) {
       page,
       requiredSectionKinds,
       outputLanguage: outputLanguageForPageContract,
+      expectedProductCount: resolveExpectedProductCountForPath({
+        path: pagePath,
+        structuredInput: state.structuredInput ?? null,
+      }),
+      expectedCaseCount: resolveExpectedCaseCountForPath({
+        path: pagePath,
+        structuredInput: state.structuredInput ?? null,
+      }),
     });
     const pageErrors = pageContract.issues.filter((issue) => issue.severity === "error");
     const pageWarnings = pageContract.issues.filter((issue) => issue.severity === "warning");
@@ -12930,64 +14017,212 @@ async function builderNode(state: GraphState) {
   if (promptRequestsCtaCoverage || shouldEnforceEnterpriseHomeCoverage) {
     pagesOut = ensurePromptCoverageKind(pagesOut, "cta");
   }
-  const contractValidation = validateGeneratedSiteContract({
-    prompt: state.prompt ?? "",
-    pages: pagesOut as any[],
-  });
-  logInfo(`${logPrefix} builder:contract_gate`, {
-    pass: contractValidation.pass,
-    issueCount: contractValidation.issues.length,
-    errors: contractValidation.issues.filter((issue) => issue.severity === "error").length,
-    warnings: contractValidation.issues.filter((issue) => issue.severity === "warning").length,
-  });
-  if (!contractValidation.pass) {
-    errors.push(
-      `contract_gate_failed:errors=${contractValidation.issues.filter((issue) => issue.severity === "error").length}:warnings=${contractValidation.issues.filter((issue) => issue.severity === "warning").length}`
+  // Recovery can replace rich content with deterministic minimal blocks.
+  // Re-apply structured enrichment and media coverage to keep density stable.
+  if (pageContractFailedCount > 0 && shouldApplyStrictStructuredOverrides) {
+    pagesOut = applyStructuredBriefOverrides(
+      pagesOut,
+      state.prompt ?? "",
+      templateResolution.profileId ?? null,
+      state.structuredInput ?? null
     );
-  }
-  const contractWarnings = contractValidation.issues.filter((issue) => issue.severity === "warning");
-  if (contractWarnings.length > 0) {
-    contractWarnings.slice(0, 12).forEach((issue) => {
-      logWarn(`${logPrefix} builder:contract_warning`, {
-        code: issue.code,
-        message: issue.message,
-        details: issue.details,
-      });
+    pagesOut = applyVisualMediaCoverage(pagesOut, state.prompt ?? "");
+    logInfo(`${logPrefix} builder:post_contract_reenrichment`, {
+      failedPages: pageContractFailedCount,
+      pages: pagesOut.length,
     });
   }
-
-  const qaReport = evaluateGenerationQa({
-    siteBlueprint,
-    pages: pagesOut,
-    linkGraph,
+  const enforceContactLeadCaptureOnPages = (inputPages: typeof pagesOut) =>
+    inputPages.map((page) => {
+      const pagePath = normalizePairPath(page?.path || "/");
+      if (pagePath !== "/contact") return page;
+      const content = Array.isArray(page?.data?.content) ? page.data.content : [];
+      const navbar = content.find((item: any) => isNavbarLikeBlock(item));
+      const footer = [...content].reverse().find((item: any) => isFooterLikeBlock(item));
+      const body = content.filter((item: any) => !isNavbarLikeBlock(item) && !isFooterLikeBlock(item));
+      const existingLeadCapture = body.find((item: any) => /leadcapturecta/i.test(String(item?.type || "")));
+      const baseProps =
+        existingLeadCapture?.props && typeof existingLeadCapture.props === "object"
+          ? ({ ...(existingLeadCapture.props as Record<string, unknown>) } as Record<string, unknown>)
+          : ({} as Record<string, unknown>);
+      const contactProps = enforceContactTextStyleProps({
+        ...baseProps,
+        id:
+          typeof baseProps.id === "string" && baseProps.id.trim()
+            ? baseProps.id.trim()
+            : "contact-form-main",
+        anchor:
+          typeof baseProps.anchor === "string" && baseProps.anchor.trim()
+            ? baseProps.anchor.trim()
+            : "contact",
+        variant: "contact",
+        showForm: true,
+        title:
+          typeof baseProps.title === "string" && baseProps.title.trim()
+            ? baseProps.title.trim()
+            : localeDefaults.useChinese
+              ? "联系我们"
+              : "Contact Our Team",
+        subtitle:
+          typeof baseProps.subtitle === "string" && baseProps.subtitle.trim()
+            ? baseProps.subtitle.trim()
+            : localeDefaults.useChinese
+              ? "请提交需求信息，我们会尽快与您联系。"
+              : "Share your requirements and we will follow up shortly.",
+        cta:
+          baseProps.cta && typeof baseProps.cta === "object"
+            ? baseProps.cta
+            : {
+                label: localeDefaults.contact,
+                href: "/contact",
+                variant: "primary",
+              },
+        submitLabel:
+          typeof baseProps.submitLabel === "string" && baseProps.submitLabel.trim()
+            ? baseProps.submitLabel.trim()
+            : localeDefaults.useChinese
+              ? "提交询盘"
+              : "Submit Request",
+      });
+      const contactBlock = {
+        ...(existingLeadCapture && typeof existingLeadCapture === "object" ? existingLeadCapture : {}),
+        type: "LeadCaptureCTA",
+        props: ensureAnchor(ensurePropsId(contactProps, "contact-form-main"), "contact"),
+        _key: `${pagePath}:contact:hard_gate`,
+      } as any;
+      const filteredBody = body.filter((item: any) => !isContactLikeBlock(item) && !isCtaLikeBlock(item));
+      const rebuiltContent = dedupeComposedPageContent(
+        [...(navbar ? [navbar] : []), ...filteredBody, contactBlock, ...(footer ? [footer] : [])],
+        pagePath
+      );
+      return {
+        ...page,
+        data: {
+          root:
+            page?.data?.root && typeof page.data.root === "object"
+              ? page.data.root
+              : { props: { title: page.name, theme } },
+          content: rebuiltContent,
+        },
+      };
+    });
+  pagesOut = enforceContactLeadCaptureOnPages(pagesOut);
+  // Final hard pass: recovery/injection steps above may re-introduce template residue or stale hrefs.
+  pagesOut = sanitizeFinalPagesOutput(pagesOut, {
     prompt: state.prompt ?? "",
-    thresholds: {
-      coverage: Number(process.env.BUILDER_QA_COVERAGE_THRESHOLD || 0.85),
-      linkIntegrity: Number(process.env.BUILDER_QA_LINK_THRESHOLD || 0.95),
-      themeConsistency: Number(process.env.BUILDER_QA_THEME_THRESHOLD || 0.9),
-      semantic: Number(process.env.BUILDER_QA_SEMANTIC_THRESHOLD || 0.9),
-      overall: Number(process.env.BUILDER_QA_OVERALL_THRESHOLD || 0.9),
+    designNorthStar: designNorthStar ?? undefined,
+    profileId: templateResolution.profileId ?? null,
+  });
+  const finalAvailablePaths = new Set(
+    pagesOut
+      .map((page) => normalizePromptPagePath(String(page.path || "/")))
+      .filter((path) => path.startsWith("/"))
+  );
+  pagesOut = pagesOut.map((page) => ({
+    ...page,
+    data: {
+      ...page.data,
+      content: coerceContentInternalHrefsToAvailablePaths(
+        Array.isArray(page?.data?.content) ? page.data.content : [],
+        finalAvailablePaths
+      ) as any,
     },
-  });
-  logInfo(`${logPrefix} builder:qa_gate`, {
-    pass: qaReport.pass,
-    coverageScore: qaReport.coverageScore,
-    linkIntegrityScore: qaReport.linkIntegrityScore,
-    themeConsistencyScore: qaReport.themeConsistencyScore,
-    semanticFidelityScore: qaReport.semanticFidelityScore,
-    overallScore: qaReport.overallScore,
-    missingPages: qaReport.details.missingPages.join(","),
-    brokenLinks: qaReport.details.brokenLinks.length,
-    inconsistentThemePages: qaReport.details.inconsistentThemePages.join(","),
-    semanticHitPages: qaReport.details.semanticHitPages.join(","),
-    sourceBrandLeakPages: qaReport.details.sourceBrandLeakPages.join(","),
-    templateCopyPages: (qaReport.details as any).templateCopyPages?.join(",") || "",
-    criticalDuplicatePairs: (qaReport.details as any).criticalDuplicatePairs?.join(",") || "",
-  });
-  if (!qaReport.pass) {
-    errors.push(
-      `qa_gate_failed:coverage=${qaReport.coverageScore.toFixed(3)}:links=${qaReport.linkIntegrityScore.toFixed(3)}:theme=${qaReport.themeConsistencyScore.toFixed(3)}:semantic=${qaReport.semanticFidelityScore.toFixed(3)}:overall=${qaReport.overallScore.toFixed(3)}`
-    );
+  }));
+  const contractValidation = pageBuildMode
+    ? { pass: true, issues: [] as ReturnType<typeof validateGeneratedSiteContract>["issues"] }
+    : validateGeneratedSiteContract({
+        prompt: state.prompt ?? "",
+        pages: pagesOut as any[],
+      });
+  if (pageBuildMode) {
+    logInfo(`${logPrefix} builder:contract_gate`, {
+      pass: true,
+      issueCount: 0,
+      skipped: true,
+      reason: "page_build_mode",
+    });
+  } else {
+    logInfo(`${logPrefix} builder:contract_gate`, {
+      pass: contractValidation.pass,
+      issueCount: contractValidation.issues.length,
+      errors: contractValidation.issues.filter((issue) => issue.severity === "error").length,
+      warnings: contractValidation.issues.filter((issue) => issue.severity === "warning").length,
+    });
+    if (!contractValidation.pass) {
+      errors.push(
+        `contract_gate_failed:errors=${contractValidation.issues.filter((issue) => issue.severity === "error").length}:warnings=${contractValidation.issues.filter((issue) => issue.severity === "warning").length}`
+      );
+    }
+    const contractWarnings = contractValidation.issues.filter((issue) => issue.severity === "warning");
+    if (contractWarnings.length > 0) {
+      contractWarnings.slice(0, 12).forEach((issue) => {
+        logWarn(`${logPrefix} builder:contract_warning`, {
+          code: issue.code,
+          message: issue.message,
+          details: issue.details,
+        });
+      });
+    }
+  }
+
+  const qaReport = pageBuildMode
+    ? {
+        pass: true,
+        coverageScore: 1,
+        linkIntegrityScore: 1,
+        themeConsistencyScore: 1,
+        semanticFidelityScore: 1,
+        overallScore: 1,
+        details: {
+          missingPages: [],
+          brokenLinks: [],
+          inconsistentThemePages: [],
+          semanticHitPages: [],
+          sourceBrandLeakPages: [],
+          templateCopyPages: [],
+          criticalDuplicatePairs: [],
+        },
+      }
+    : evaluateGenerationQa({
+        siteBlueprint,
+        pages: pagesOut,
+        linkGraph,
+        prompt: state.prompt ?? "",
+        thresholds: {
+          coverage: Number(process.env.BUILDER_QA_COVERAGE_THRESHOLD || 0.85),
+          linkIntegrity: Number(process.env.BUILDER_QA_LINK_THRESHOLD || 0.95),
+          themeConsistency: Number(process.env.BUILDER_QA_THEME_THRESHOLD || 0.9),
+          semantic: Number(process.env.BUILDER_QA_SEMANTIC_THRESHOLD || 0.9),
+          overall: Number(process.env.BUILDER_QA_OVERALL_THRESHOLD || 0.9),
+        },
+      });
+  if (pageBuildMode) {
+    logInfo(`${logPrefix} builder:qa_gate`, {
+      pass: true,
+      skipped: true,
+      reason: "page_build_mode",
+    });
+  } else {
+    logInfo(`${logPrefix} builder:qa_gate`, {
+      pass: qaReport.pass,
+      coverageScore: qaReport.coverageScore,
+      linkIntegrityScore: qaReport.linkIntegrityScore,
+      themeConsistencyScore: qaReport.themeConsistencyScore,
+      semanticFidelityScore: qaReport.semanticFidelityScore,
+      overallScore: qaReport.overallScore,
+      missingPages: qaReport.details.missingPages.join(","),
+      brokenLinks: qaReport.details.brokenLinks.length,
+      inconsistentThemePages: qaReport.details.inconsistentThemePages.join(","),
+      semanticHitPages: qaReport.details.semanticHitPages.join(","),
+      sourceBrandLeakPages: qaReport.details.sourceBrandLeakPages.join(","),
+      templateCopyPages: (qaReport.details as any).templateCopyPages?.join(",") || "",
+      criticalDuplicatePairs: (qaReport.details as any).criticalDuplicatePairs?.join(",") || "",
+    });
+    if (!qaReport.pass) {
+      errors.push(
+        `qa_gate_failed:coverage=${qaReport.coverageScore.toFixed(3)}:links=${qaReport.linkIntegrityScore.toFixed(3)}:theme=${qaReport.themeConsistencyScore.toFixed(3)}:semantic=${qaReport.semanticFidelityScore.toFixed(3)}:overall=${qaReport.overallScore.toFixed(3)}`
+      );
+    }
   }
 
   const generatedPaths = new Set(
@@ -13010,6 +14245,7 @@ async function builderNode(state: GraphState) {
     components: Array.from(componentsMap.values()),
     pages: pagesOut,
     theme: lockedTheme,
+    globalChrome,
     siteBlueprint,
     qaReport,
     resolvedByLayer: {
@@ -13028,6 +14264,7 @@ async function builderNode(state: GraphState) {
       templateKinds: templateResolution.diagnostics.templateKinds,
       styleFamily: templateResolution.siteStyleShell?.styleFamily ?? null,
       motionProfile: templateResolution.siteStyleShell?.motionProfile ?? null,
+      globalChrome,
       adaptation: {
         scenario: adaptation.scenario,
         templateFamily: adaptation.templateFamily,
@@ -13066,6 +14303,2016 @@ async function builderNode(state: GraphState) {
   };
 }
 
+const hitlEnabled = parseEnvBoolean(process.env.BUILDER_HITL_ENABLED, false);
+const hitlRequireApproval = parseEnvBoolean(process.env.BUILDER_HITL_REQUIRE_APPROVAL, false);
+
+const shouldRunHitl = (state: GraphState) => {
+  if (!hitlEnabled) return false;
+  const blueprint =
+    state.blueprint && typeof state.blueprint === "object"
+      ? (state.blueprint as Record<string, unknown>)
+      : null;
+  if (blueprint && blueprint.__hitlApproved === true) return false;
+  const manifest = state.manifest ?? {};
+  const hitlConfig =
+    manifest && typeof manifest === "object" && manifest.hitl && typeof manifest.hitl === "object"
+      ? (manifest.hitl as Record<string, unknown>)
+      : null;
+  if (hitlConfig && hitlConfig.enabled === false) return false;
+  const allowInterrupt = hitlConfig ? hitlConfig.mode === "interrupt" : false;
+  if (!allowInterrupt) return false;
+  return true;
+};
+
+const normalizePlannerPagePath = (value: unknown) => resolveCanonicalRoute(normalizePromptPagePath(String(value || "/")));
+
+const inferPlannerSectionKind = (section: { type?: string; id?: string; intent?: string }) => {
+  const token = `${String(section?.type || "")} ${String(section?.id || "")} ${String(section?.intent || "")}`
+    .toLowerCase()
+    .trim();
+  if (/navigation|navbar|header|topnav|menu/.test(token)) return "navigation";
+  if (/hero|masthead|banner|intro|pagehero/.test(token)) return "hero";
+  if (/story|narrative|mission|vision|timeline|about/.test(token)) return "story";
+  if (/approach|feature|capability|process|workflow|benefit|faq/.test(token)) return "approach";
+  if (/product|catalog|collection|showcase|pricing|plan|machine|equipment/.test(token)) return "products";
+  if (/social|proof|testimonial|review|trust|logo|partner|certification|case/.test(token)) return "socialproof";
+  if (/contact|lead|inquiry|form|quote/.test(token)) return "contact";
+  if (/cta|call.?to.?action|footercta|getstarted|start/.test(token)) return "cta";
+  if (/footer|legal|copyright|bottom/.test(token)) return "footer";
+  return "other";
+};
+
+const buildPlannerRagQueries = (input: {
+  prompt: string;
+  pagePath: string;
+  pageName: string;
+  pageType: ReturnType<typeof inferEnterprisePageTypeFromPath>;
+  requiredSectionKinds: string[];
+}) => {
+  const useChinese = shouldUseChineseContent(input.prompt);
+  const pageLabel = `${input.pageName || input.pagePath} ${input.pagePath}`.trim();
+  const baseQueries = useChinese
+    ? [`${input.prompt} ${pageLabel} 核心信息`, `${input.prompt} ${pageLabel} 参数 案例 资质`, `${pageLabel} 常见问题 联系方式`]
+    : [
+        `${input.prompt} ${pageLabel} company profile`,
+        `${input.prompt} ${pageLabel} products specs case studies`,
+        `${pageLabel} FAQ contact`,
+      ];
+  const pageSpecificQueries =
+    input.pageType === "products"
+      ? useChinese
+        ? [`${input.prompt} 产品参数 型号 规格`, `${input.prompt} 产品应用场景 客户案例`]
+        : [`${input.prompt} product specs model lineup`, `${input.prompt} product applications customer cases`]
+      : input.pageType === "solutions"
+        ? useChinese
+          ? [`${input.prompt} 解决方案 流程 收益`, `${input.prompt} 行业痛点 交付成果`]
+          : [`${input.prompt} solution workflow measurable outcomes`, `${input.prompt} industry pain points delivery results`]
+        : input.pageType === "cases"
+          ? useChinese
+            ? [`${input.prompt} 应用案例 客户成果`, `${input.prompt} 案例 数据 成效`]
+            : [`${input.prompt} application cases customer outcomes`, `${input.prompt} case metrics result impact`]
+          : input.pageType === "about"
+            ? useChinese
+              ? [`${input.prompt} 公司简介 发展历程 资质认证`, `${input.prompt} 团队能力 交付规模`]
+              : [`${input.prompt} company profile history certifications`, `${input.prompt} team capability delivery scale`]
+            : input.pageType === "contact"
+              ? useChinese
+                ? [`${input.prompt} 联系方式 地址 电话 邮箱`, `${input.prompt} 询盘表单 字段 建议`]
+                : [`${input.prompt} contact details address phone email`, `${input.prompt} quote form fields recommendations`]
+              : input.pageType === "support"
+                ? useChinese
+                  ? [`${input.prompt} 售后支持 服务政策 FAQ`, `${input.prompt} 响应时间 保修范围`]
+                  : [`${input.prompt} after-sales support policy FAQ`, `${input.prompt} response time warranty scope`]
+                : input.pageType === "legal"
+                  ? useChinese
+                    ? [`${input.prompt} 隐私政策 条款 合规`, `${input.prompt} 数据处理 用户权利`]
+                    : [`${input.prompt} privacy policy terms compliance`, `${input.prompt} data processing user rights`]
+                  : [];
+  const kindLabelMap = useChinese
+    ? {
+        navigation: "导航",
+        hero: "首屏",
+        story: "品牌故事",
+        approach: "能力介绍",
+        products: "产品展示",
+        socialproof: "案例与背书",
+        contact: "联系与表单",
+        cta: "行动号召",
+        footer: "页脚",
+      }
+    : {
+        navigation: "navigation",
+        hero: "hero section",
+        story: "brand story",
+        approach: "capabilities",
+        products: "product showcase",
+        socialproof: "proof and testimonials",
+        contact: "contact and form",
+        cta: "call to action",
+        footer: "footer",
+      };
+  const sectionKindQueries = input.requiredSectionKinds.slice(0, 4).map((kind) => {
+    const mapped = (kindLabelMap as Record<string, string>)[kind] || kind;
+    return useChinese
+      ? `${input.prompt} ${pageLabel} ${mapped} 内容素材`
+      : `${input.prompt} ${pageLabel} ${mapped} content sources`;
+  });
+  return Array.from(new Set([...pageSpecificQueries, ...sectionKindQueries, ...baseQueries]))
+    .map((item) => item.replace(/\s+/g, " ").trim())
+    .filter(Boolean)
+    .slice(0, 8);
+};
+
+const resolveStructuredProductCount = (structuredInput: StructuredSiteInput | null | undefined) =>
+  Array.isArray(structuredInput?.products) ? structuredInput!.products!.filter(Boolean).length : 0;
+
+const resolveStructuredCaseCount = (structuredInput: StructuredSiteInput | null | undefined) =>
+  Array.isArray(structuredInput?.cases) ? structuredInput!.cases!.filter(Boolean).length : 0;
+
+const resolveExpectedProductCountForPath = (input: {
+  path: string;
+  structuredInput: StructuredSiteInput | null | undefined;
+}) => {
+  const total = resolveStructuredProductCount(input.structuredInput);
+  if (total <= 0) return 0;
+  const normalizedPath = normalizePromptPagePath(String(input.path || "/"));
+  if (!normalizedPath.startsWith("/products")) return 0;
+  const pageSize = clampPositiveInt(
+    Number(input.structuredInput?.catalogPageSize || process.env.BUILDER_CATALOG_PAGE_SIZE || 12),
+    12,
+    6,
+    24
+  );
+  if (normalizedPath === "/products") {
+    return Math.min(total, pageSize);
+  }
+  const pageMatch = normalizedPath.match(/^\/products\/page-(\d+)$/i);
+  if (pageMatch) {
+    const pageIndex = Math.max(2, Number(pageMatch[1] || 2));
+    const consumed = (pageIndex - 1) * pageSize;
+    const remaining = Math.max(0, total - consumed);
+    return Math.min(pageSize, remaining);
+  }
+  return 0;
+};
+
+const resolveExpectedCaseCountForPath = (input: {
+  path: string;
+  structuredInput: StructuredSiteInput | null | undefined;
+}) => {
+  const total = resolveStructuredCaseCount(input.structuredInput);
+  if (total <= 0) return 0;
+  const pageType = inferEnterprisePageTypeFromPath(normalizePromptPagePath(String(input.path || "/")));
+  return pageType === "cases" ? total : 0;
+};
+
+const resolvePageBuildStrategy = (
+  pageType: ReturnType<typeof inferEnterprisePageTypeFromPath>,
+  plannerStrategy: SectionGenerationStrategy
+): SectionGenerationStrategy => {
+  if (pageType === "contact" || pageType === "legal") return "template_first";
+  if (
+    plannerStrategy === "template_first" &&
+    (pageType === "home" ||
+      pageType === "about" ||
+      pageType === "products" ||
+      pageType === "solutions" ||
+      pageType === "cases" ||
+      pageType === "support")
+  ) {
+    return "hybrid";
+  }
+  return plannerStrategy;
+};
+
+const emitGenerationProgress = (
+  reporter: GenerationProgressReporter | undefined,
+  stage: string,
+  detail?: Record<string, unknown>
+) => {
+  if (!reporter) return;
+  try {
+    reporter({ stage, ...(detail && Object.keys(detail).length > 0 ? { detail } : {}) });
+  } catch (error: any) {
+    logWarn(`${logPrefix} generation:progress_report_failed`, {
+      stage,
+      message: error?.message ?? String(error),
+    });
+  }
+};
+
+const normalizeTemplateResolutionLayer = (value: unknown): LayeredTemplateResolution["layer"] => {
+  const token = String(value || "").trim().toLowerCase();
+  if (token === "full-site" || token === "page" || token === "section" || token === "block" || token === "llm") {
+    return token as LayeredTemplateResolution["layer"];
+  }
+  return "llm";
+};
+
+const resolvePlannerGlobalChrome = (input: {
+  templateResolution: LayeredTemplateResolution;
+  fallback?: GlobalChromeContract | null;
+}): GlobalChromeContract => {
+  const fallback = input.fallback ?? {
+    navigationBlockType: navbarComponentName,
+    footerBlockType: footerFallbackComponentName,
+    motionProfile: "subtle" as const,
+  };
+  const shell =
+    input.templateResolution?.siteStyleShell && typeof input.templateResolution.siteStyleShell === "object"
+      ? input.templateResolution.siteStyleShell
+      : null;
+  const normalizeMotion = (value: unknown): GlobalChromeContract["motionProfile"] => {
+    const token = String(value || "").trim().toLowerCase();
+    if (token === "none" || token === "subtle" || token === "showcase" || token === "immersive") {
+      return token as GlobalChromeContract["motionProfile"];
+    }
+    return fallback.motionProfile;
+  };
+  const normalizeType = (value: unknown, defaultValue: string) => {
+    const token = String(value || "").trim();
+    return token && /^[A-Za-z][A-Za-z0-9_]*$/.test(token) ? token : defaultValue;
+  };
+  return {
+    navigationBlockType: normalizeType(shell?.navigationBlockType, fallback.navigationBlockType),
+    footerBlockType: normalizeType(shell?.footerBlockType, fallback.footerBlockType),
+    motionProfile: normalizeMotion(shell?.motionProfile),
+  };
+};
+
+const prepareBlueprintForPlanner = (input: {
+  prompt: string;
+  pages: ReturnType<typeof normalizePages>;
+  requestedStrategy: SectionGenerationStrategy;
+  lockApprovedPages?: boolean;
+}): {
+  pages: ReturnType<typeof normalizePages>;
+  selectedStrategy: SectionGenerationStrategy;
+  templateResolution: LayeredTemplateResolution;
+  globalChrome: GlobalChromeContract;
+  contractNormalizationIssues: Array<Record<string, unknown>>;
+  skillOrchestration: {
+    applied: boolean;
+    suggestion: SectionGenerationStrategy | null;
+    diagnostics: Record<string, unknown>;
+  };
+} => {
+  const prompt = String(input.prompt || "");
+  const lockApprovedPages = input.lockApprovedPages === true;
+  let pages = normalizePages({ pages: input.pages as any });
+  const plannerDiagnostics: Record<string, unknown> = {
+    initialPages: pages.length,
+    lockApprovedPages,
+  };
+  const requestedPages = lockApprovedPages ? [] : extractRequestedPagesFromPrompt(prompt);
+  const structuredBrief = parseStructuredBrief(prompt);
+  const hasStructuredNavContract = !lockApprovedPages && (structuredBrief?.nav?.length ?? 0) >= 3;
+  const hasStructuredCatalogContract =
+    !lockApprovedPages &&
+    (hasStructuredCatalogContractSignal(structuredBrief) || hasStructuredCatalogContractSignalFromPrompt(prompt));
+  plannerDiagnostics.requestedPages = requestedPages.length;
+  plannerDiagnostics.hasStructuredNavContract = hasStructuredNavContract;
+  plannerDiagnostics.hasStructuredCatalogContract = hasStructuredCatalogContract;
+  if (requestedPages.length) {
+    const byPath = new Map(pages.map((page) => [normalizePromptPagePath(String(page.path || "/")), page] as const));
+    requestedPages.forEach((requested) => {
+      if (byPath.has(requested.path)) return;
+      byPath.set(requested.path, {
+        path: requested.path,
+        name: requested.name,
+        sections: [],
+      } as any);
+    });
+    pages = normalizePages({ pages: Array.from(byPath.values()) });
+  }
+  plannerDiagnostics.afterRequestedMergePages = pages.length;
+  if (requestedPages.length >= 3 || hasStructuredNavContract) {
+    const explicitPathSet = new Set<string>(["/"]);
+    requestedPages.forEach((requested) => explicitPathSet.add(normalizePromptPagePath(String(requested.path || "/"))));
+    if (Array.isArray(structuredBrief?.nav)) {
+      structuredBrief.nav.forEach((label) => explicitPathSet.add(inferRequestedPagePathFromLabel(label)));
+    }
+    if (Array.isArray(structuredBrief?.footerLinks)) {
+      structuredBrief.footerLinks.forEach((label) => explicitPathSet.add(inferRequestedPagePathFromLabel(label)));
+    }
+    explicitPathSet.add("/privacy");
+    if (/(terms?|条款|服务条款|legal|tos)/i.test(prompt)) {
+      explicitPathSet.add("/terms");
+    }
+    pages = normalizePages({
+      pages: pages.filter((page) => explicitPathSet.has(normalizePromptPagePath(String(page.path || "/")))),
+    });
+  }
+  plannerDiagnostics.afterExplicitFilterPages = pages.length;
+  const plannerEnterpriseLike = looksLikeEnterpriseWebsite({ prompt, pages });
+  plannerDiagnostics.enterpriseLike = plannerEnterpriseLike;
+  if (!lockApprovedPages && plannerEnterpriseLike) {
+    const existingPaths = new Set(pages.map((page) => normalizePromptPagePath(String(page.path || "/"))));
+    const extraPages: Array<Record<string, unknown>> = [];
+    if (!existingPaths.has("/privacy")) {
+      extraPages.push({
+        path: "/privacy",
+        name: shouldUseChineseContent(prompt) ? "隐私政策" : "Privacy",
+        sections: [],
+      });
+    }
+    if (/(terms?|条款|服务条款|legal|tos)/i.test(prompt) && !existingPaths.has("/terms")) {
+      extraPages.push({
+        path: "/terms",
+        name: shouldUseChineseContent(prompt) ? "服务条款" : "Terms",
+        sections: [],
+      });
+    }
+    if (extraPages.length > 0) {
+      pages = normalizePages({
+        pages: [...pages, ...(extraPages as any[])],
+      });
+    }
+  }
+  if (!lockApprovedPages && plannerEnterpriseLike) {
+    if (hasStructuredCatalogContract) {
+      pages = normalizePages({
+        pages: ensureStructuredDualChainPages(pages as any[], prompt, structuredBrief),
+      });
+    } else if (requestedPages.length < 3 && !hasStructuredNavContract) {
+      pages = normalizePages({
+        pages: ensureEnterpriseSitePages(
+          pages as any,
+          (definition) =>
+            ({
+              path: definition.path,
+              name: definition.name,
+              sections: [],
+            }) as any,
+          {
+            prompt,
+            allowCoreProduct: /(core[-\s]?product|核心产品|旗舰产品|明星产品)/i.test(prompt),
+          }
+        ) as any,
+      });
+    }
+  }
+  plannerDiagnostics.afterEnterpriseEnsurePages = pages.length;
+  logInfo(`${logPrefix} planner:pre_contract`, plannerDiagnostics);
+  const contractNormalizationIssues: Array<Record<string, unknown>> = [];
+  let selectedStrategy = input.requestedStrategy;
+  let skillOrchestrationApplied = false;
+  let skillOrchestrationSuggestion: SectionGenerationStrategy | null = null;
+  let skillOrchestrationDiagnostics: Record<string, unknown> = {};
+
+  const preTemplateContractNormalization = normalizePagesBySiteContract(pages as any[], { prompt });
+  preTemplateContractNormalization.issues.forEach((issue) => {
+    contractNormalizationIssues.push({ stage: "planner_pre_template", ...issue });
+  });
+  pages = normalizePages({ pages: preTemplateContractNormalization.pages as any });
+
+  const skillOrchestration = orchestrateTemplateAndSectionCandidates({
+    prompt,
+    pages,
+    strategy: selectedStrategy,
+  });
+  pages = normalizePages({ pages: skillOrchestration.pages as any });
+  skillOrchestrationSuggestion = skillOrchestration.strategySuggestion;
+  skillOrchestrationDiagnostics = {
+    ...skillOrchestration.diagnostics,
+    strategySuggestion: skillOrchestrationSuggestion,
+  };
+  if (skillOrchestrationSuggestion && skillOrchestrationSuggestion !== selectedStrategy) {
+    const canOverrideStrategy =
+      selectedStrategy === "hybrid" ||
+      (selectedStrategy === "template_first" &&
+        allowTemplateFirstUpshift &&
+        (skillOrchestrationSuggestion === "hybrid" || skillOrchestrationSuggestion === "llm_first"));
+    if (canOverrideStrategy) {
+      selectedStrategy = skillOrchestrationSuggestion;
+      skillOrchestrationApplied = true;
+    }
+  }
+
+  const outputLanguage = resolveOutputLanguage(prompt);
+  if (
+    forceHybridForZhEnterpriseWhenTemplateFirst &&
+    outputLanguage === "zh-CN" &&
+    selectedStrategy === "template_first" &&
+    looksLikeEnterpriseWebsite({ prompt, pages })
+  ) {
+    selectedStrategy = "hybrid";
+    skillOrchestrationApplied = true;
+  }
+
+  let templateResolution = resolveTemplatePlan({
+    prompt,
+    pages,
+    strategy: selectedStrategy,
+  });
+  pages = normalizePages({ pages: templateResolution.pages as any });
+
+  const postTemplateContractNormalization = normalizePagesBySiteContract(pages as any[], { prompt });
+  postTemplateContractNormalization.issues.forEach((issue) => {
+    contractNormalizationIssues.push({ stage: "planner_post_template", ...issue });
+  });
+  pages = normalizePages({ pages: postTemplateContractNormalization.pages as any });
+  if (!lockApprovedPages && plannerEnterpriseLike && hasStructuredCatalogContract) {
+    pages = normalizePages({
+      pages: ensureStructuredDualChainPages(pages as any[], prompt, structuredBrief),
+    });
+  }
+
+  templateResolution = {
+    ...templateResolution,
+    layer: normalizeTemplateResolutionLayer(templateResolution.layer),
+    pages,
+  };
+
+  return {
+    pages,
+    selectedStrategy,
+    templateResolution,
+    globalChrome: resolvePlannerGlobalChrome({ templateResolution }),
+    contractNormalizationIssues,
+    skillOrchestration: {
+      applied: skillOrchestrationApplied,
+      suggestion: skillOrchestrationSuggestion,
+      diagnostics: skillOrchestrationDiagnostics,
+    },
+  };
+};
+
+async function sitePlannerNode(state: GraphState) {
+  const blueprint = (state.blueprint ?? {}) as ArchitectBlueprint;
+  let pages = normalizePages(blueprint);
+  if (!pages.length) {
+    const fallback = buildFallbackBlueprint(state.prompt ?? "");
+    pages = normalizePages(fallback);
+  }
+  const prompt = String(state.prompt ?? "");
+  const requestedStrategy = state.generationStrategy ?? sectionGenerationStrategy;
+  const plannerPrepared = prepareBlueprintForPlanner({
+    prompt,
+    pages,
+    requestedStrategy,
+    lockApprovedPages: (blueprint as any)?.__hitlApproved === true,
+  });
+  pages = plannerPrepared.pages;
+  const plannerPreparation: PlannerPreparationMetadata = {
+    prepared: true,
+    requestedStrategy,
+    selectedStrategy: plannerPrepared.selectedStrategy,
+    templatePlanProfile: plannerPrepared.templateResolution.profileId ?? null,
+    resolutionLayer: plannerPrepared.templateResolution.layer,
+    matchedPagePaths: plannerPrepared.templateResolution.diagnostics.matchedPagePaths ?? [],
+    matchedPageCoverage: plannerPrepared.templateResolution.diagnostics.matchedPageCoverage ?? 0,
+    templateKinds: plannerPrepared.templateResolution.diagnostics.templateKinds ?? [],
+    styleFamily: plannerPrepared.templateResolution.siteStyleShell?.styleFamily ?? null,
+    motionProfile: plannerPrepared.templateResolution.siteStyleShell?.motionProfile ?? null,
+    globalChrome: plannerPrepared.globalChrome,
+    contractNormalizationIssues: plannerPrepared.contractNormalizationIssues,
+    skillOrchestration: plannerPrepared.skillOrchestration,
+    pages,
+  };
+  const plannerPreparedBlueprint: ArchitectBlueprint = {
+    ...(blueprint ?? {}),
+    pages,
+    __plannerPreparation: plannerPreparation,
+  } as ArchitectBlueprint;
+  const pageJobs: PageBuildJob[] = pages.map((page, pageIndex) => {
+    const pagePath = normalizePlannerPagePath(page.path || "/");
+    const pageName = String(page.name || (pageIndex === 0 ? "Home" : `Page ${pageIndex + 1}`));
+    const pageType = inferEnterprisePageTypeFromPath(pagePath);
+    const plannedKinds = Array.from(
+      new Set(
+        (Array.isArray(page.sections) ? page.sections : [])
+          .map((section) =>
+            inferPlannerSectionKind({
+              type: section?.type,
+              id: section?.id,
+              intent: section?.intent,
+            })
+          )
+          .filter((kind) => kind !== "other")
+      )
+    );
+    const requiredSectionKinds = Array.from(
+      new Set([...(resolveRequiredSectionKindsByPageType(pageType) || []), ...plannedKinds])
+    );
+    return {
+      pageIndex,
+      pagePath,
+      pageName,
+      pageType,
+      requiredSectionKinds,
+      ragQueries: buildPlannerRagQueries({
+        prompt,
+        pagePath,
+        pageName,
+        pageType,
+        requiredSectionKinds,
+      }),
+      hardness: PAGE_HARDNESS_RULES_BY_TYPE[pageType] || PAGE_HARDNESS_RULES_BY_TYPE.generic,
+      page: {
+        ...page,
+        path: pagePath,
+        name: pageName,
+      },
+      strategy: resolvePageBuildStrategy(pageType, plannerPrepared.selectedStrategy),
+    } as PageBuildJob;
+  });
+
+  let effectiveJobs = pageJobs;
+  if (shouldRunHitl(state)) {
+    const resume = interrupt<{
+      stage: "site_planner";
+      message: string;
+      pages: Array<{
+        path: string;
+        name: string;
+        pageType: string;
+        sectionCount: number;
+        requiredSectionKinds: string[];
+        ragQueryCount: number;
+      }>;
+    }, { approved?: boolean; pages?: Array<{ path: string; name?: string }> | null }>({
+      stage: "site_planner",
+      message: "Confirm or revise site structure before page fan-out",
+      pages: pageJobs.map((job) => ({
+        path: job.pagePath,
+        name: job.pageName,
+        pageType: job.pageType,
+        sectionCount: Array.isArray(job.page.sections) ? job.page.sections.length : 0,
+        requiredSectionKinds: job.requiredSectionKinds,
+        ragQueryCount: job.ragQueries.length,
+      })),
+    });
+    if (hitlRequireApproval && (!resume || resume.approved !== true)) {
+      throw new Error("hitl_site_plan_not_approved");
+    }
+    if (resume && Array.isArray(resume.pages) && resume.pages.length > 0) {
+      const byPath = new Map(pageJobs.map((job) => [normalizePlannerPagePath(job.pagePath), job] as const));
+      effectiveJobs = resume.pages
+        .map((entry, index) => {
+          const path = normalizePlannerPagePath(entry.path || "/");
+          const matched = byPath.get(path);
+          if (!matched) return null;
+          const name = String(entry.name || matched.pageName || (index === 0 ? "Home" : `Page ${index + 1}`));
+          return {
+            ...matched,
+            pageIndex: index,
+            pagePath: path,
+            pageName: name,
+            page: {
+              ...matched.page,
+              path,
+              name,
+            },
+          } as PageBuildJob;
+        })
+        .filter((item): item is PageBuildJob => Boolean(item));
+      if (!effectiveJobs.length) effectiveJobs = pageJobs;
+    }
+  }
+
+  logInfo(`${logPrefix} planner:site`, {
+    pages: effectiveJobs.length,
+    strategy: plannerPrepared.selectedStrategy,
+    hitl: shouldRunHitl(state),
+    pageTypes: effectiveJobs.map((job) => `${job.pagePath}:${job.pageType}`),
+    ragQueries: effectiveJobs.reduce((sum, job) => sum + job.ragQueries.length, 0),
+    prepared: true,
+    layer: plannerPreparation.resolutionLayer,
+    profileId: plannerPreparation.templatePlanProfile,
+    matchedPageCoverage: plannerPreparation.matchedPageCoverage,
+    globalChrome: plannerPreparation.globalChrome,
+  });
+
+  if (state.planning) {
+    await state.planning.markBlueprintComplete(
+      plannerPreparedBlueprint as Record<string, unknown>,
+      effectiveJobs.map((job) => ({
+        path: job.pagePath,
+        name: job.pageName,
+        sections: Array.isArray(job.page.sections) ? job.page.sections : [],
+      }))
+    );
+  }
+
+  return {
+    blueprint: plannerPreparedBlueprint as Record<string, unknown>,
+    globalChrome: plannerPreparation.globalChrome,
+    generationStrategy: plannerPrepared.selectedStrategy,
+    pageBuildJobs: effectiveJobs,
+    pageBuildResults: [],
+    currentPageJob: null,
+    pageBuildMode: null,
+    resolvedByLayer: {
+      ...(state.resolvedByLayer ?? {}),
+      plannerPreparation: {
+        prepared: true,
+        selectedStrategy: plannerPreparation.selectedStrategy,
+        resolutionLayer: plannerPreparation.resolutionLayer,
+        matchedPageCoverage: plannerPreparation.matchedPageCoverage,
+        templatePlanProfile: plannerPreparation.templatePlanProfile,
+        globalChrome: plannerPreparation.globalChrome,
+        skillOrchestration: plannerPreparation.skillOrchestration,
+      },
+    },
+  };
+}
+
+export type SitePlanPreviewPage = {
+  path: string;
+  name: string;
+  pageType: ReturnType<typeof inferEnterprisePageTypeFromPath>;
+  sectionCount: number;
+  requiredSectionKinds: string[];
+  ragQueryCount: number;
+  strategy: SectionGenerationStrategy;
+};
+
+export type SitePlanPreviewResult = {
+  pages: SitePlanPreviewPage[];
+  globalChrome: GlobalChromeContract;
+  requestedStrategy: SectionGenerationStrategy;
+  selectedStrategy: SectionGenerationStrategy;
+  resolutionLayer: LayeredTemplateResolution["layer"];
+  templatePlanProfile: string | null;
+  matchedPageCoverage: number;
+};
+
+export const previewP2WSitePlan = (input: {
+  prompt: string;
+  blueprint?: Record<string, unknown>;
+  requestedStrategy?: SectionGenerationStrategy;
+}): SitePlanPreviewResult => {
+  const prompt = String(input.prompt ?? "");
+  const sourceBlueprint = (input.blueprint ?? {}) as ArchitectBlueprint;
+  let pages = normalizePages(sourceBlueprint);
+  if (!pages.length) {
+    const fallback = buildFallbackBlueprint(prompt);
+    pages = normalizePages(fallback);
+  }
+  const requestedStrategy = input.requestedStrategy ?? sectionGenerationStrategy;
+  const plannerPrepared = prepareBlueprintForPlanner({
+    prompt,
+    pages,
+    requestedStrategy,
+  });
+  const previewJobs: SitePlanPreviewPage[] = plannerPrepared.pages.map((page, pageIndex) => {
+    const pagePath = normalizePlannerPagePath(page.path || "/");
+    const pageName = String(page.name || (pageIndex === 0 ? "Home" : `Page ${pageIndex + 1}`));
+    const pageType = inferEnterprisePageTypeFromPath(pagePath);
+    const plannedKinds = Array.from(
+      new Set(
+        (Array.isArray(page.sections) ? page.sections : [])
+          .map((section) =>
+            inferPlannerSectionKind({
+              type: section?.type,
+              id: section?.id,
+              intent: section?.intent,
+            })
+          )
+          .filter((kind) => kind !== "other")
+      )
+    );
+    const requiredSectionKinds = Array.from(
+      new Set([...(resolveRequiredSectionKindsByPageType(pageType) || []), ...plannedKinds])
+    );
+    return {
+      path: pagePath,
+      name: pageName,
+      pageType,
+      sectionCount: Array.isArray(page.sections) ? page.sections.length : 0,
+      requiredSectionKinds,
+      ragQueryCount: buildPlannerRagQueries({
+        prompt,
+        pagePath,
+        pageName,
+        pageType,
+        requiredSectionKinds,
+      }).length,
+      strategy: resolvePageBuildStrategy(pageType, plannerPrepared.selectedStrategy),
+    };
+  });
+  return {
+    pages: previewJobs,
+    globalChrome: plannerPrepared.globalChrome,
+    requestedStrategy,
+    selectedStrategy: plannerPrepared.selectedStrategy,
+    resolutionLayer: plannerPrepared.templateResolution.layer,
+    templatePlanProfile: plannerPrepared.templateResolution.profileId ?? null,
+    matchedPageCoverage: Number(plannerPrepared.templateResolution.diagnostics.matchedPageCoverage ?? 0),
+  };
+};
+
+const routePlannerToPageBuilders = (state: GraphState) => {
+  const jobs = Array.isArray(state.pageBuildJobs) ? state.pageBuildJobs : [];
+  if (!jobs.length) return "globalAssembler";
+  const resolvePageBuilderNodeName = (pageType: string) => {
+    switch (String(pageType || "generic")) {
+      case "home":
+        return "pageBuilderHome";
+      case "products":
+        return "pageBuilderProducts";
+      case "solutions":
+        return "pageBuilderSolutions";
+      case "cases":
+        return "pageBuilderCases";
+      case "about":
+        return "pageBuilderAbout";
+      case "contact":
+        return "pageBuilderContact";
+      case "support":
+        return "pageBuilderSupport";
+      case "legal":
+        return "pageBuilderLegal";
+      case "pricing":
+        return "pageBuilderPricing";
+      case "blog":
+        return "pageBuilderBlog";
+      default:
+        return "pageBuilderGeneric";
+    }
+  };
+  return jobs.map(
+    (job) =>
+      new Send(resolvePageBuilderNodeName(job.pageType), {
+        prompt: state.prompt ?? "",
+        manifest: state.manifest ?? {},
+        structuredInput: state.structuredInput ?? null,
+        pageTypeSkillsEnabled: state.pageTypeSkillsEnabled ?? null,
+        singleCandidateOnly: state.singleCandidateOnly ?? false,
+        generationStrategy: state.generationStrategy ?? sectionGenerationStrategy,
+        skillContext: state.skillContext ?? { architect: "", builder: "" },
+        designSystemContext: state.designSystemContext ?? { master: "", pages: {} },
+        blueprint: state.blueprint ?? {},
+        globalChrome: state.globalChrome ?? {
+          navigationBlockType: navbarComponentName,
+          footerBlockType: footerFallbackComponentName,
+          motionProfile: "subtle",
+        },
+        pageBuildJobs: jobs,
+        currentPageJob: job,
+        pageBuildMode: { enabled: true, path: job.pagePath },
+      })
+  );
+};
+
+const PageBuilderSubgraphState = Annotation.Root({
+  prompt: Annotation<string>,
+  manifest: Annotation<Record<string, unknown>>,
+  structuredInput: Annotation<StructuredSiteInput | null>({
+    value: (_left, right) => right,
+    default: () => null,
+  }),
+  pageTypeSkillsEnabled: Annotation<boolean | null>({
+    value: (_left, right) => right,
+    default: () => null,
+  }),
+  singleCandidateOnly: Annotation<boolean>({
+    value: (_left, right) => Boolean(right),
+    default: () => false,
+  }),
+  generationStrategy: Annotation<SectionGenerationStrategy>({
+    value: (_left, right) => right,
+    default: () => sectionGenerationStrategy,
+  }),
+  skillContext: Annotation<{ architect: string; builder: string }>({
+    value: (_left, right) => right,
+    default: () => ({ architect: "", builder: "" }),
+  }),
+  designSystemContext: Annotation<DesignSystemContext>({
+    value: (_left, right) => right,
+    default: () => ({ master: "", pages: {} }),
+  }),
+  globalChrome: Annotation<GlobalChromeContract>({
+    value: (_left, right) => right,
+    default: () => ({
+      navigationBlockType: navbarComponentName,
+      footerBlockType: footerFallbackComponentName,
+      motionProfile: "subtle",
+    }),
+  }),
+  blueprint: Annotation<Record<string, unknown>>({
+    value: (_left, right) => right,
+    default: () => ({}),
+  }),
+  pageJob: Annotation<PageBuildJob | null>({
+    value: (_left, right) => right,
+    default: () => null,
+  }),
+  scopedPrompt: Annotation<string>({
+    value: (_left, right) => right,
+    default: () => "",
+  }),
+  scopedRagDiagnostics: Annotation<Record<string, unknown>>({
+    value: (_left, right) => right,
+    default: () => ({}),
+  }),
+  generatedResult: Annotation<PageBuildResult | null>({
+    value: (_left, right) => right,
+    default: () => null,
+  }),
+  result: Annotation<PageBuildResult | null>({
+    value: (_left, right) => right,
+    default: () => null,
+  }),
+});
+
+type PageBuilderSubgraphStateType = typeof PageBuilderSubgraphState.State;
+
+async function pageBuilderScopedRagNode(state: PageBuilderSubgraphStateType) {
+  const pageJob = state.pageJob;
+  if (!pageJob) {
+    return { scopedPrompt: String(state.prompt ?? "").trim(), scopedRagDiagnostics: {} };
+  }
+  const pageTypeSkill = buildPageTypeSkillDirective({
+    pagePath: pageJob.pagePath,
+    pageName: pageJob.pageName,
+    prompt: state.prompt ?? "",
+    pageTypeSkillsEnabled: state.pageTypeSkillsEnabled ?? undefined,
+  });
+  const scopedRag = await buildScopedRagContextByPage({
+    prompt: state.prompt ?? "",
+    pages: [{ path: pageJob.pagePath, name: pageJob.pageName, queryHints: pageJob.ragQueries }],
+    structuredInput: state.structuredInput ?? null,
+    knowledgeBaseClient,
+    enabled: enableScopedRag,
+    concurrency: 1,
+  });
+  const scopedForPage = scopedRag.byPath[pageJob.pagePath];
+  const scopedFactPack = scopedForPage?.context
+    ? `\n\n# Page Scoped Fact Pack\n${scopedForPage.context}`
+    : "";
+  const outputLanguage = resolveOutputLanguage(String(state.prompt ?? ""));
+  const expectedProductCount = resolveExpectedProductCountForPath({
+    path: pageJob.pagePath,
+    structuredInput: state.structuredInput ?? null,
+  });
+  const expectedCaseCount = resolveExpectedCaseCountForPath({
+    path: pageJob.pagePath,
+    structuredInput: state.structuredInput ?? null,
+  });
+  const hardGateHints: string[] = [];
+  const pageType = pageTypeSkill.pageType;
+  if (["home", "products", "solutions", "cases"].includes(pageType)) {
+    hardGateHints.push(
+      outputLanguage === "zh-CN"
+        ? "至少包含 1 个媒体驱动区块（FeatureWithMedia/Gallery/Carousel/含图片媒体字段）。"
+        : "Include at least one media-forward section (FeatureWithMedia/Gallery/Carousel or image/media fields)."
+    );
+  }
+  if (pageType === "products") {
+    const minProducts = Math.max(6, Number(expectedProductCount || 0));
+    hardGateHints.push(
+      outputLanguage === "zh-CN"
+        ? `产品列表至少 ${minProducts} 条，每条含“名称 + 参数/型号 + 场景/卖点 + CTA”。`
+        : `Render at least ${minProducts} products, each with name + spec/model + scenario/benefit + CTA.`
+    );
+  }
+  if (pageType === "solutions") {
+    hardGateHints.push(
+      outputLanguage === "zh-CN"
+        ? "解决方案至少 3 个方法要点，且包含问题-方法-结果链路。"
+        : "Provide at least 3 approach points in a problem -> method -> outcome chain."
+    );
+  }
+  if (pageType === "cases") {
+    const minCases = Math.max(3, Number(expectedCaseCount || 0));
+    hardGateHints.push(
+      outputLanguage === "zh-CN"
+        ? `案例至少 ${minCases} 条，每条含客户背景、挑战、方案与量化结果。`
+        : `Provide at least ${minCases} cases, each with client context, challenge, solution, and measurable outcome.`
+    );
+  }
+  if (pageType === "contact") {
+    hardGateHints.push(
+      outputLanguage === "zh-CN"
+        ? "必须有可提交表单与明确响应承诺；联系区禁止渐变文字。"
+        : "Contact page must include a submittable form and response-time promise; gradient text is forbidden in contact area."
+    );
+  }
+  hardGateHints.push(
+    outputLanguage === "zh-CN"
+      ? "禁止模板占位文案与同构复用；使用事实包信息扩写，不得只做泛化句。"
+      : "No template placeholder copy or isomorphic reuse; expand with fact-pack evidence instead of generic filler."
+  );
+  const pageScopedPrompt = `${String(state.prompt ?? "").trim()}
+
+# Page Builder Skill
+- skill: ${pageTypeSkill.skillName}
+- pageType: ${pageTypeSkill.pageType}
+- guidance: ${pageTypeSkill.guidance}
+
+# Page Contract
+- requiredSectionKinds: ${pageJob.requiredSectionKinds.join(", ") || "none"}
+- navVariant: ${pageJob.hardness.nav.variant}
+- heroComposition: ${pageJob.hardness.hero.compositionPreset}
+- repeatBudget: ${JSON.stringify(pageJob.hardness.sectionRepeatBudget || {})}
+- ragQueries: ${pageJob.ragQueries.join(" | ") || "none"}
+
+# Hard Gates To Satisfy
+${hardGateHints.map((hint) => `- ${hint}`).join("\n")}${scopedFactPack}`.trim();
+  return {
+    scopedPrompt: pageScopedPrompt,
+    scopedRagDiagnostics: {
+      summary: scopedRag.summary,
+      page: scopedForPage
+        ? {
+            path: scopedForPage.path,
+            pageType: scopedForPage.pageType,
+            requiredFields: scopedForPage.requiredFields,
+            coveredFields: scopedForPage.coveredFields,
+            missingFields: scopedForPage.missingFields,
+            queryCount: scopedForPage.queryCount,
+            sourceCount: scopedForPage.sourceCount,
+            used: scopedForPage.used,
+            queries: scopedForPage.queries,
+          }
+        : null,
+      planner: {
+        pageType: pageJob.pageType,
+        requiredSectionKinds: pageJob.requiredSectionKinds,
+        ragQueries: pageJob.ragQueries,
+      },
+    },
+  };
+}
+
+async function pageBuilderGenerateNode(state: PageBuilderSubgraphStateType) {
+  const pageJob = state.pageJob;
+  if (!pageJob) {
+    return { generatedResult: null };
+  }
+  const pageTypeSkill = buildPageTypeSkillDirective({
+    pagePath: pageJob.pagePath,
+    pageName: pageJob.pageName,
+    prompt: state.prompt ?? "",
+    pageTypeSkillsEnabled: state.pageTypeSkillsEnabled ?? undefined,
+  });
+  const sourceBlueprint = (state.blueprint ?? {}) as ArchitectBlueprint;
+  const singlePageBlueprint: ArchitectBlueprint = {
+    ...sourceBlueprint,
+    pages: [
+      {
+        ...pageJob.page,
+        path: pageJob.pagePath,
+        name: pageJob.pageName,
+      },
+    ],
+  };
+  const buildResult = await builderNode({
+    prompt: String(state.scopedPrompt || state.prompt || ""),
+    manifest: state.manifest ?? {},
+    structuredInput: state.structuredInput ?? null,
+    pageTypeSkillsEnabled: state.pageTypeSkillsEnabled ?? null,
+    singleCandidateOnly: state.singleCandidateOnly ?? false,
+    blueprint: singlePageBlueprint as Record<string, unknown>,
+    generationStrategy: state.generationStrategy ?? sectionGenerationStrategy,
+    planning: null,
+    skillContext: state.skillContext ?? { architect: "", builder: "" },
+    designSystemContext: state.designSystemContext ?? { master: "", pages: {} },
+    components: [],
+    pages: [],
+    theme: {},
+    siteBlueprint: {},
+    resolvedByLayer: {},
+    qaReport: {},
+    globalChrome: state.globalChrome ?? {
+      navigationBlockType: navbarComponentName,
+      footerBlockType: footerFallbackComponentName,
+      motionProfile: "subtle",
+    },
+    pageBuildJobs: [pageJob],
+    currentPageJob: pageJob,
+    pageBuildResults: [],
+    pageBuildMode: { enabled: true, path: pageJob.pagePath },
+    errors: [],
+  } as GraphState);
+  const generatedPages = Array.isArray((buildResult as any)?.pages) ? ((buildResult as any).pages as any[]) : [];
+  const matchedPage =
+    generatedPages.find((page) => normalizePlannerPagePath(page?.path || "/") === pageJob.pagePath) ??
+    generatedPages[0] ??
+    {
+      path: pageJob.pagePath,
+      name: pageJob.pageName,
+      data: { root: { props: { title: pageJob.pageName } }, content: [] },
+    };
+  const policyAppliedPage =
+    matchedPage && typeof matchedPage === "object"
+      ? applyPageTypeSkillPolicyToPage({
+          pagePath: pageJob.pagePath,
+          prompt: state.prompt ?? "",
+          page: matchedPage as Record<string, unknown>,
+          pageTypeSkillsEnabled: state.pageTypeSkillsEnabled ?? undefined,
+        })
+      : (matchedPage as Record<string, unknown>);
+  const result: PageBuildResult = {
+    pageIndex: pageJob.pageIndex,
+    pagePath: pageJob.pagePath,
+    pageName: String((policyAppliedPage as any)?.name || matchedPage?.name || pageJob.pageName),
+    page: policyAppliedPage as Record<string, unknown>,
+    components: Array.isArray((buildResult as any)?.components) ? ((buildResult as any).components as any[]) : [],
+    errors: Array.isArray((buildResult as any)?.errors) ? ((buildResult as any).errors as string[]) : [],
+    resolvedByLayer:
+      (buildResult as any)?.resolvedByLayer && typeof (buildResult as any).resolvedByLayer === "object"
+        ? {
+            ...((buildResult as any).resolvedByLayer as Record<string, unknown>),
+            pageTypeSkill: {
+              pageType: pageTypeSkill.pageType,
+              skillName: pageTypeSkill.skillName,
+            },
+            scopedRagSubgraph:
+              state.scopedRagDiagnostics && typeof state.scopedRagDiagnostics === "object"
+                ? state.scopedRagDiagnostics
+                : {},
+          }
+        : {},
+    qaReport:
+      (buildResult as any)?.qaReport && typeof (buildResult as any).qaReport === "object"
+        ? ((buildResult as any).qaReport as Record<string, unknown>)
+        : {},
+    theme:
+      (buildResult as any)?.theme && typeof (buildResult as any).theme === "object"
+        ? ((buildResult as any).theme as Record<string, unknown>)
+        : {},
+  };
+  return { generatedResult: result };
+}
+
+const inferPageContractKind = (block: Record<string, unknown>): string => {
+  const props =
+    block?.props && typeof block.props === "object" ? (block.props as Record<string, unknown>) : {};
+  const token = `${String(block?.type || "")} ${String(props.id || "")} ${String(props.anchor || "")}`
+    .toLowerCase()
+    .trim();
+  if (!token) return "other";
+  if (/navigation|navbar|header|topnav|menu/.test(token)) return "navigation";
+  if (/hero|masthead|banner|intro/.test(token)) return "hero";
+  if (/story|content|timeline|about/.test(token)) return "story";
+  if (/approach|feature|process|workflow|capability|faq/.test(token)) return "approach";
+  if (/product|catalog|showcase|pricing/.test(token)) return "products";
+  if (/social|proof|testimonial|logo|certification/.test(token)) return "socialproof";
+  if (/contact|lead|form|quote/.test(token)) return "contact";
+  if (/cta|calltoaction|call-to-action/.test(token)) return "cta";
+  if (/footer|copyright|legal/.test(token)) return "footer";
+  return "other";
+};
+
+const buildPageContractRecoveryCopy = (
+  kind: string,
+  outputLanguage: "zh-CN" | "en-US"
+): { title: string; subtitle: string } => {
+  const zh: Record<string, { title: string; subtitle: string }> = {
+    navigation: { title: "导航", subtitle: "快速访问核心页面。" },
+    hero: { title: "核心价值", subtitle: "聚焦业务价值、交付能力与行动入口。" },
+    story: { title: "业务概述", subtitle: "面向目标客户说明能力边界与服务范围。" },
+    approach: { title: "解决路径", subtitle: "以问题、方法与结果构建可执行方案。" },
+    products: { title: "产品与参数", subtitle: "提供型号、参数与应用场景的结构化信息。" },
+    socialproof: { title: "案例与背书", subtitle: "展示客户场景、成果数据与可信证明。" },
+    contact: { title: "联系我们", subtitle: "提交需求后由工程团队尽快响应。" },
+    cta: { title: "立即咨询", subtitle: "获取报价、方案与交付计划。" },
+    footer: { title: "页脚信息", subtitle: "提供隐私、条款与联系入口。" },
+  };
+  const en: Record<string, { title: string; subtitle: string }> = {
+    navigation: { title: "Navigation", subtitle: "Quick links to key pages." },
+    hero: { title: "Core Value", subtitle: "Highlight value, capability, and conversion action." },
+    story: { title: "Business Overview", subtitle: "Explain scope and delivery confidence for target buyers." },
+    approach: { title: "Execution Approach", subtitle: "Present problem, method, and measurable outcomes." },
+    products: { title: "Products & Specs", subtitle: "Provide structured model, spec, and scenario information." },
+    socialproof: { title: "Proof & Cases", subtitle: "Show customer context, outcomes, and trust evidence." },
+    contact: { title: "Contact", subtitle: "Share requirements and the team will follow up quickly." },
+    cta: { title: "Get Quote", subtitle: "Request pricing, solution, and delivery plan." },
+    footer: { title: "Footer", subtitle: "Provide legal and contact access points." },
+  };
+  const map = outputLanguage === "zh-CN" ? zh : en;
+  return map[kind] || (outputLanguage === "zh-CN"
+    ? { title: "业务信息", subtitle: "该区块用于补齐页面结构。" }
+    : { title: "Business Content", subtitle: "This block is used to restore page structure." });
+};
+
+const recoverPageForContract = (input: {
+  page: Record<string, unknown>;
+  path: string;
+  requiredSectionKinds: string[];
+  outputLanguage: "zh-CN" | "en-US";
+  prompt: string;
+  expectedProductCount?: number;
+  expectedCaseCount?: number;
+  structuredProducts?: StructuredProductRecord[];
+  structuredCases?: StructuredCaseRecord[];
+}): Record<string, unknown> => {
+  const page = input.page && typeof input.page === "object" ? ({ ...input.page } as Record<string, unknown>) : {};
+  const data =
+    page.data && typeof page.data === "object" ? ({ ...(page.data as Record<string, unknown>) } as Record<string, unknown>) : {};
+  const rawContent = Array.isArray(data.content) ? ([...(data.content as unknown[])] as Record<string, unknown>[]) : [];
+  const sanitizedContent = rawContent
+    .map((block) => {
+      if (!block || typeof block !== "object") return null;
+      const next = { ...(block as Record<string, unknown>) };
+      const props =
+        next.props && typeof next.props === "object" ? ({ ...(next.props as Record<string, unknown>) } as Record<string, unknown>) : {};
+      next.props = sanitizeGeneratedProps(props, {
+        prompt: input.prompt,
+        pagePath: input.path,
+      }) as Record<string, unknown>;
+      if (/contact|lead|quote|cta/i.test(`${String(next.type || "")} ${String((next.props as any)?.id || "")}`)) {
+        next.props = enforceContactTextStyleProps(next.props as Record<string, unknown>);
+      }
+      return next;
+    })
+    .filter((item): item is Record<string, unknown> => Boolean(item));
+  const fallbackSeed =
+    sanitizedContent.find((item) => !isNavbarLikeBlock(item as any) && !isFooterLikeBlock(item as any)) ??
+    sanitizedContent[0] ??
+    ({ type: "ContentStory", props: {} } as Record<string, unknown>);
+  const resolveRecoveryBlockType = (kind: string) => {
+    switch (kind) {
+      case "navigation":
+        return "Navbar";
+      case "hero":
+        return "HeroSplit";
+      case "story":
+        return "ContentStory";
+      case "approach":
+        return "FeatureGrid";
+      case "products":
+        return "CardsGrid";
+      case "socialproof":
+        return "TestimonialsGrid";
+      case "contact":
+        return "LeadCaptureCTA";
+      case "cta":
+        return "LeadCaptureCTA";
+      case "footer":
+        return footerFallbackComponentName;
+      default:
+        return String(fallbackSeed?.type || "ContentStory");
+    }
+  };
+  const presentKinds = new Set(sanitizedContent.map((item) => inferPageContractKind(item)));
+  const requiredKinds = Array.from(new Set(input.requiredSectionKinds.filter(Boolean)));
+  const recoveredContent = [...sanitizedContent];
+
+  requiredKinds.forEach((kind) => {
+    if (presentKinds.has(kind)) return;
+    const seedProps =
+      fallbackSeed.props && typeof fallbackSeed.props === "object"
+        ? ({ ...(fallbackSeed.props as Record<string, unknown>) } as Record<string, unknown>)
+        : {};
+    const copy = buildPageContractRecoveryCopy(kind, input.outputLanguage);
+    let nextProps: Record<string, unknown> = {
+      ...seedProps,
+      id: `${kind}-recovered`,
+      anchor: kind === "socialproof" ? "social-proof" : kind,
+      title: copy.title,
+      subtitle: copy.subtitle,
+    };
+    if (kind === "contact") {
+      nextProps = enforceContactTextStyleProps({
+        ...nextProps,
+        variant: "contact",
+        showForm: true,
+        cta: { label: input.outputLanguage === "zh-CN" ? "立即咨询" : "Contact", href: "/contact", variant: "primary" },
+      });
+    }
+    const nextBlock: Record<string, unknown> = {
+      ...fallbackSeed,
+      type: resolveRecoveryBlockType(kind),
+      props: nextProps,
+    };
+    if (kind === "navigation") {
+      recoveredContent.unshift(nextBlock);
+    } else if (kind === "footer") {
+      recoveredContent.push(nextBlock);
+    } else {
+      const footerIndex = recoveredContent.findIndex((item) => inferPageContractKind(item) === "footer");
+      if (footerIndex >= 0) recoveredContent.splice(footerIndex, 0, nextBlock);
+      else recoveredContent.push(nextBlock);
+    }
+    presentKinds.add(kind);
+  });
+
+  const recoveredWithIds = ensureUniqueIdsForPageContent(
+    recoveredContent as Array<{ type?: string; props?: Record<string, unknown> }>,
+    input.path
+  );
+
+  const ensureProductsCoverage = (
+    items: Array<{ type?: string; props?: Record<string, unknown> }>
+  ): Array<{ type?: string; props?: Record<string, unknown> }> => {
+    const expected = Math.max(0, Number(input.expectedProductCount ?? 0));
+    if (expected <= 0) return items;
+    const productIndex = items.findIndex((item) => {
+      const token = `${String(item?.type || "")} ${String(item?.props?.id || "")} ${String(item?.props?.anchor || "")}`.toLowerCase();
+      return /product|catalog|cardsgrid|pricing|plan/.test(token);
+    });
+    if (productIndex < 0) return items;
+    const block = items[productIndex];
+    const props = block?.props && typeof block.props === "object" ? ({ ...(block.props as Record<string, unknown>) } as Record<string, unknown>) : {};
+    const currentItems = Array.isArray(props.items) ? ([...(props.items as unknown[])] as Record<string, unknown>[]) : [];
+    if (currentItems.length >= expected) return items;
+    const structured = Array.isArray(input.structuredProducts) ? input.structuredProducts : [];
+    const language = input.outputLanguage;
+    while (currentItems.length < expected) {
+      const source = structured[currentItems.length];
+      currentItems.push({
+        title:
+          String(source?.name || "").trim() ||
+          (language === "zh-CN" ? `产品 ${currentItems.length + 1}` : `Product ${currentItems.length + 1}`),
+        description:
+          String(source?.summary || source?.model || "").trim() ||
+          (language === "zh-CN" ? "参数信息完善中" : "Specification details available on request"),
+        cta: {
+          label: language === "zh-CN" ? "查看详情" : "View Details",
+          href: "/products",
+          variant: "link",
+        },
+      });
+    }
+    props.items = currentItems;
+    const next = [...items];
+    next[productIndex] = {
+      ...(block as Record<string, unknown>),
+      props,
+    } as any;
+    return next;
+  };
+  const recoveredWithProducts = ensureProductsCoverage(
+    recoveredWithIds as Array<{ type?: string; props?: Record<string, unknown> }>
+  );
+  const pageType = inferEnterprisePageTypeFromPath(normalizePromptPagePath(String(input.path || "/")));
+
+  const ensureApproachCoverage = (
+    items: Array<{ type?: string; props?: Record<string, unknown> }>
+  ): Array<{ type?: string; props?: Record<string, unknown> }> => {
+    if (pageType !== "solutions") return items;
+    const minPoints = 3;
+    const approachIndex = items.findIndex((item) => {
+      const token = `${String(item?.type || "")} ${String(item?.props?.id || "")} ${String(item?.props?.anchor || "")}`.toLowerCase();
+      return /approach|feature|benefit|process|capability|workflow/.test(token);
+    });
+    if (approachIndex < 0) return items;
+    const block = items[approachIndex];
+    const props = block?.props && typeof block.props === "object" ? ({ ...(block.props as Record<string, unknown>) } as Record<string, unknown>) : {};
+    const listKeys = ["items", "points", "features", "benefits", "steps", "list"];
+    const listKey = listKeys.find((key) => Array.isArray(props[key])) || "items";
+    const currentItems = Array.isArray(props[listKey]) ? ([...(props[listKey] as unknown[])] as Record<string, unknown>[]) : [];
+    const language = input.outputLanguage;
+    while (currentItems.length < minPoints) {
+      const idx = currentItems.length + 1;
+      currentItems.push({
+        title: language === "zh-CN" ? `方案要点 ${idx}` : `Solution Point ${idx}`,
+        description:
+          language === "zh-CN" ? "聚焦交付效率、质量稳定与成本优化。" : "Focused on delivery speed, quality stability, and cost efficiency.",
+      });
+    }
+    props[listKey] = currentItems;
+    const next = [...items];
+    next[approachIndex] = {
+      ...(block as Record<string, unknown>),
+      props,
+    } as any;
+    return next;
+  };
+
+  const ensureCasesCoverage = (
+    items: Array<{ type?: string; props?: Record<string, unknown> }>
+  ): Array<{ type?: string; props?: Record<string, unknown> }> => {
+    const expected = Math.max(0, Number(input.expectedCaseCount ?? 0));
+    if (expected <= 0 || pageType !== "cases") return items;
+    const casesIndex = items.findIndex((item) => {
+      const token = `${String(item?.type || "")} ${String(item?.props?.id || "")} ${String(item?.props?.anchor || "")}`.toLowerCase();
+      return /social|proof|testimonial|case|application|project|story/.test(token);
+    });
+    if (casesIndex < 0) return items;
+    const block = items[casesIndex];
+    const props = block?.props && typeof block.props === "object" ? ({ ...(block.props as Record<string, unknown>) } as Record<string, unknown>) : {};
+    const listKeys = ["items", "cases", "stories", "testimonials", "entries", "projects", "results", "slides"];
+    const listKey = listKeys.find((key) => Array.isArray(props[key])) || "items";
+    const currentItems = Array.isArray(props[listKey]) ? ([...(props[listKey] as unknown[])] as Record<string, unknown>[]) : [];
+    const structured = Array.isArray(input.structuredCases) ? input.structuredCases : [];
+    const language = input.outputLanguage;
+    while (currentItems.length < expected) {
+      const source = structured[currentItems.length];
+      const index = currentItems.length + 1;
+      currentItems.push({
+        title:
+          String(source?.title || "").trim() || (language === "zh-CN" ? `案例 ${index}` : `Case ${index}`),
+        description:
+          String(source?.result || source?.solution || source?.problem || "").trim() ||
+          (language === "zh-CN" ? "展示关键成果与交付数据。" : "Showcasing measurable outcomes and delivery impact."),
+      });
+    }
+    props[listKey] = currentItems;
+    const next = [...items];
+    next[casesIndex] = {
+      ...(block as Record<string, unknown>),
+      props,
+    } as any;
+    return next;
+  };
+
+  const recoveredWithApproach = ensureApproachCoverage(
+    recoveredWithProducts as Array<{ type?: string; props?: Record<string, unknown> }>
+  );
+  const recoveredWithCases = ensureCasesCoverage(
+    recoveredWithApproach as Array<{ type?: string; props?: Record<string, unknown> }>
+  );
+  const hasMediaSignalForContractRecovery = (
+    items: Array<{ type?: string; props?: Record<string, unknown> }>
+  ) =>
+    items.some((item) => {
+      const token = `${String(item?.type || "")} ${String(item?.props?.id || "")} ${String(item?.props?.anchor || "")}`
+        .toLowerCase()
+        .trim();
+      if (!token) return false;
+      if (/(withmedia|gallery|carousel|slider|video|image|photo|showcase|mosaic|splithero)/.test(token)) {
+        return true;
+      }
+      const props = item?.props && typeof item.props === "object" ? (item.props as Record<string, unknown>) : {};
+      return Object.entries(props).some(([key, value]) => {
+        if (!/(?:image|img|media|photo|cover|thumbnail|poster|video|background)/i.test(key)) return false;
+        if (typeof value === "string") return value.trim().length > 0;
+        if (Array.isArray(value)) return value.length > 0;
+        return Boolean(value && typeof value === "object");
+      });
+    });
+  const ensureVisualCoverage = (
+    items: Array<{ type?: string; props?: Record<string, unknown> }>
+  ): Array<{ type?: string; props?: Record<string, unknown> }> => {
+    if (!["home", "products", "solutions", "cases"].includes(pageType)) return items;
+    if (hasMediaSignalForContractRecovery(items)) return items;
+    const language = input.outputLanguage;
+    const visualBlock = {
+      type: "FeatureWithMedia",
+      props: {
+        id: `${pageType}-media-recovered`,
+        anchor: `${pageType}-visual`,
+        title: language === "zh-CN" ? "视觉展示" : "Visual Showcase",
+        subtitle:
+          language === "zh-CN"
+            ? "补齐页面视觉表达，突出产品与应用场景。"
+            : "Restores visual expression for products and application scenarios.",
+        mediaType: "image",
+        mediaPosition: "right",
+      },
+    };
+    const next = [...items];
+    const footerIndex = next.findIndex((item) => inferPageContractKind(item as any) === "footer");
+    if (footerIndex >= 0) {
+      next.splice(footerIndex, 0, visualBlock);
+    } else {
+      next.push(visualBlock);
+    }
+    return next;
+  };
+  const recoveredWithVisualCoverage = ensureVisualCoverage(
+    recoveredWithCases as Array<{ type?: string; props?: Record<string, unknown> }>
+  );
+
+  return {
+    ...page,
+    path: input.path,
+    data: {
+      ...data,
+      content: recoveredWithVisualCoverage,
+    },
+  };
+};
+
+async function pageBuilderContractNode(state: PageBuilderSubgraphStateType) {
+  const pageJob = state.pageJob;
+  const generatedResult = state.generatedResult;
+  if (!pageJob || !generatedResult) {
+    return { result: generatedResult ?? null };
+  }
+  const outputLanguage = resolveOutputLanguage(String(state.prompt ?? ""));
+  const expectedProductCount = resolveExpectedProductCountForPath({
+    path: pageJob.pagePath,
+    structuredInput: state.structuredInput ?? null,
+  });
+  const expectedCaseCount = resolveExpectedCaseCountForPath({
+    path: pageJob.pagePath,
+    structuredInput: state.structuredInput ?? null,
+  });
+  let finalPage = generatedResult.page as any;
+  let report = evaluateGeneratedPageContract({
+    page: generatedResult.page as any,
+    requiredSectionKinds: pageJob.requiredSectionKinds,
+    outputLanguage,
+    expectedProductCount,
+      expectedCaseCount,
+    });
+  // Upstream pageBuildMode can emit transient page_contract_failed entries that
+  // should be replaced by the final decision from this dedicated contract node.
+  const upstreamErrors = Array.isArray(generatedResult.errors) ? generatedResult.errors : [];
+  const errors = upstreamErrors.filter((entry) => !/^page_contract_failed:/i.test(String(entry || "")));
+  let pageErrors = report.issues.filter((issue) => issue.severity === "error");
+  let recoveryApplied = false;
+  let recoveryPass = false;
+  if (pageErrors.length > 0) {
+    const recoveredPage = recoverPageForContract({
+      page: generatedResult.page as Record<string, unknown>,
+      path: pageJob.pagePath,
+      requiredSectionKinds: pageJob.requiredSectionKinds,
+      outputLanguage,
+      prompt: String(state.prompt ?? ""),
+      expectedProductCount,
+      expectedCaseCount,
+      structuredProducts: Array.isArray(state.structuredInput?.products)
+        ? state.structuredInput?.products
+        : [],
+      structuredCases: Array.isArray(state.structuredInput?.cases)
+        ? state.structuredInput?.cases
+        : [],
+    });
+    const recoveredReport = evaluateGeneratedPageContract({
+      page: recoveredPage as any,
+      requiredSectionKinds: pageJob.requiredSectionKinds,
+      outputLanguage,
+      expectedProductCount,
+      expectedCaseCount,
+    });
+    const recoveredErrors = recoveredReport.issues.filter((issue) => issue.severity === "error");
+    recoveryApplied = true;
+    if (recoveredErrors.length <= pageErrors.length) {
+      finalPage = recoveredPage;
+      report = recoveredReport;
+      pageErrors = recoveredErrors;
+    }
+    recoveryPass = recoveredErrors.length === 0;
+  }
+  if (pageErrors.length > 0) {
+    errors.push(
+      `page_contract_failed:${pageJob.pagePath}:${pageErrors.map((issue) => issue.code).join("|") || "unknown"}`
+    );
+  }
+  const resolvedByLayer = {
+    ...((generatedResult.resolvedByLayer as Record<string, unknown> | undefined) ?? {}),
+    pageContract: {
+      path: pageJob.pagePath,
+      pageType: report.pageType,
+      pass: report.pass,
+      issueCount: report.issues.length,
+      errorCount: pageErrors.length,
+      warningCount: report.issues.filter((issue) => issue.severity === "warning").length,
+      requiredSectionKinds: pageJob.requiredSectionKinds,
+      recoveryApplied,
+      recoveryPass,
+    },
+  };
+  return {
+    result: {
+      ...generatedResult,
+      page: finalPage,
+      errors,
+      resolvedByLayer,
+    },
+  };
+}
+
+const PAGE_BUILDER_SUBGRAPH_TYPES = [
+  "home",
+  "products",
+  "solutions",
+  "cases",
+  "about",
+  "contact",
+  "support",
+  "legal",
+  "pricing",
+  "blog",
+  "generic",
+] as const;
+
+type PageBuilderSubgraphType = (typeof PAGE_BUILDER_SUBGRAPH_TYPES)[number];
+
+const createPageBuilderSubgraph = () =>
+  new StateGraph(PageBuilderSubgraphState)
+    .addNode("scopedRag", pageBuilderScopedRagNode)
+    .addNode("generate", pageBuilderGenerateNode)
+    .addNode("pageContract", pageBuilderContractNode)
+    .addEdge(START, "scopedRag")
+    .addEdge("scopedRag", "generate")
+    .addEdge("generate", "pageContract")
+    .addEdge("pageContract", END)
+    .compile();
+
+const pageBuilderSubgraphByType = Object.fromEntries(
+  PAGE_BUILDER_SUBGRAPH_TYPES.map((pageType) => [pageType, createPageBuilderSubgraph()])
+) as Record<PageBuilderSubgraphType, ReturnType<typeof createPageBuilderSubgraph>>;
+
+const resolvePageBuilderSubgraphType = (value: unknown): PageBuilderSubgraphType => {
+  const token = String(value || "generic").trim().toLowerCase();
+  return (PAGE_BUILDER_SUBGRAPH_TYPES as readonly string[]).includes(token)
+    ? (token as PageBuilderSubgraphType)
+    : "generic";
+};
+
+async function pageBuilderNode(
+  state: GraphState,
+  expectedType: PageBuilderSubgraphType = "generic"
+): Promise<Partial<GraphState>> {
+  const pageJob = state.currentPageJob;
+  if (!pageJob) return {};
+  const actualType = resolvePageBuilderSubgraphType(pageJob.pageType);
+  const subgraphType = expectedType === "generic" ? actualType : expectedType;
+  const pageBuilderSubgraph = pageBuilderSubgraphByType[subgraphType] ?? pageBuilderSubgraphByType.generic;
+  logInfo(`${logPrefix} page_builder:start`, {
+    pagePath: pageJob.pagePath,
+    pageIndex: pageJob.pageIndex,
+    pageType: actualType,
+    subgraphType,
+    requiredSectionKinds: pageJob.requiredSectionKinds,
+    ragQueryCount: Array.isArray(pageJob.ragQueries) ? pageJob.ragQueries.length : 0,
+  });
+  const subgraphResult = await pageBuilderSubgraph.invoke({
+    prompt: state.prompt ?? "",
+    manifest: state.manifest ?? {},
+    structuredInput: state.structuredInput ?? null,
+    pageTypeSkillsEnabled: state.pageTypeSkillsEnabled ?? null,
+    singleCandidateOnly: state.singleCandidateOnly ?? false,
+    generationStrategy: pageJob.strategy ?? state.generationStrategy ?? sectionGenerationStrategy,
+    skillContext: state.skillContext ?? { architect: "", builder: "" },
+    designSystemContext: state.designSystemContext ?? { master: "", pages: {} },
+    globalChrome: state.globalChrome ?? {
+      navigationBlockType: navbarComponentName,
+      footerBlockType: footerFallbackComponentName,
+      motionProfile: "subtle",
+    },
+    blueprint: state.blueprint ?? {},
+    pageJob,
+  });
+  const pageResult =
+    subgraphResult?.result && typeof subgraphResult.result === "object"
+      ? (subgraphResult.result as PageBuildResult)
+      : null;
+  if (!pageResult) {
+    return {
+      pageBuildResults: [],
+    };
+  }
+  logInfo(`${logPrefix} page_builder:ok`, {
+    pagePath: pageResult.pagePath,
+    pageIndex: pageResult.pageIndex,
+    pageType: actualType,
+    subgraphType,
+    errors: pageResult.errors.length,
+  });
+  return {
+    pageBuildResults: [pageResult],
+  };
+}
+
+const typedPageBuilderNode =
+  (expectedType: PageBuilderSubgraphType) =>
+  async (state: GraphState): Promise<Partial<GraphState>> => {
+    const actualType = resolvePageBuilderSubgraphType(state.currentPageJob?.pageType || "generic");
+    if (expectedType !== "generic" && actualType !== expectedType) {
+      logWarn(`${logPrefix} page_builder:type_mismatch`, {
+        expectedType,
+        actualType,
+        pagePath: state.currentPageJob?.pagePath || "/",
+      });
+    }
+    return pageBuilderNode(state, expectedType);
+  };
+
+const dedupeComponentsByName = (components: Array<{ name: string; code: string }>) => {
+  const seen = new Set<string>();
+  const output: Array<{ name: string; code: string }> = [];
+  components.forEach((component) => {
+    const name = String(component?.name || "").trim();
+    const code = String(component?.code || "").trim();
+    if (!name || !code || seen.has(name)) return;
+    seen.add(name);
+    output.push({ name, code });
+  });
+  return output;
+};
+
+async function globalAssemblerNode(state: GraphState) {
+  const expectedJobs = Array.isArray(state.pageBuildJobs) ? state.pageBuildJobs.length : 0;
+  const completedJobs = Array.isArray(state.pageBuildResults) ? state.pageBuildResults.length : 0;
+  if (expectedJobs > 0 && completedJobs < expectedJobs) {
+    logInfo(`${logPrefix} assembler:waiting`, {
+      expectedJobs,
+      completedJobs,
+    });
+    return {};
+  }
+  const results = Array.isArray(state.pageBuildResults) ? state.pageBuildResults : [];
+  if (!results.length) {
+    logWarn(`${logPrefix} assembler:empty_results_fallback`, { reason: "page_build_results_empty" });
+    return builderNode({
+      ...state,
+      pageBuildMode: null,
+      currentPageJob: null,
+      pageBuildResults: [],
+    } as GraphState);
+  }
+  const sorted = [...results].sort((a, b) => a.pageIndex - b.pageIndex);
+  const dedupedByPath = new Map<string, PageBuildResult>();
+  sorted.forEach((item) => {
+    const key = normalizePlannerPagePath(item.pagePath || (item.page as any)?.path || "/");
+    if (!dedupedByPath.has(key)) dedupedByPath.set(key, item);
+  });
+  const mergedResults = Array.from(dedupedByPath.values());
+  const mergedPages = mergedResults.map((item, index) => {
+    const pageRecord =
+      item.page && typeof item.page === "object" ? ({ ...(item.page as Record<string, unknown>) } as Record<string, unknown>) : {};
+    const path = normalizePlannerPagePath((pageRecord.path as string) || item.pagePath || "/");
+    const name = String((pageRecord.name as string) || item.pageName || (index === 0 ? "Home" : `Page ${index + 1}`));
+    const root =
+      pageRecord.data &&
+      typeof pageRecord.data === "object" &&
+      (pageRecord.data as Record<string, unknown>).root &&
+      typeof (pageRecord.data as Record<string, unknown>).root === "object"
+        ? ((pageRecord.data as Record<string, unknown>).root as Record<string, unknown>)
+        : { props: { title: name, theme: item.theme ?? {} } };
+    const content =
+      pageRecord.data &&
+      typeof pageRecord.data === "object" &&
+      Array.isArray((pageRecord.data as Record<string, unknown>).content)
+        ? (((pageRecord.data as Record<string, unknown>).content as unknown[]) ?? [])
+        : [];
+    return {
+      path,
+      name,
+      sections: Array.isArray(pageRecord.sections) ? (pageRecord.sections as ArchitectSection[]) : [],
+      data: {
+        root,
+        content,
+      },
+    };
+  });
+  const mergedTheme =
+    mergedResults.find((item) => item.theme && Object.keys(item.theme).length > 0)?.theme ??
+    ((((state.blueprint as ArchitectBlueprint)?.theme || {}) as Record<string, unknown>) ?? {});
+  const plannerPreparation =
+    state.blueprint &&
+    typeof state.blueprint === "object" &&
+    (state.blueprint as any).__plannerPreparation &&
+    typeof (state.blueprint as any).__plannerPreparation === "object"
+      ? ((state.blueprint as any).__plannerPreparation as PlannerPreparationMetadata)
+      : null;
+  const plannerGlobalChrome = plannerPreparation?.globalChrome ?? state.globalChrome ?? {
+    navigationBlockType: navbarComponentName,
+    footerBlockType: footerFallbackComponentName,
+    motionProfile: "subtle" as const,
+  };
+  const siteBlueprint = buildSiteBlueprint({
+    profileId: null,
+    prompt: state.prompt ?? "",
+    pages: mergedPages.map((page) => ({
+      path: page.path,
+      name: page.name,
+      sections: Array.isArray(page.sections) ? page.sections : [],
+    })),
+  });
+  const linkGraph = buildSiteLinkGraph(siteBlueprint, state.prompt ?? "");
+  const components = dedupeComponentsByName(
+    mergedResults.flatMap((item) =>
+      Array.isArray(item.components)
+        ? item.components
+            .map((component) => ({
+              name: String((component as any)?.name || ""),
+              code: String((component as any)?.code || ""),
+            }))
+            .filter((component) => component.name && component.code)
+        : []
+    )
+  );
+  const availableChromeTypes = new Set<string>([
+    navbarComponentName,
+    footerFallbackComponentName,
+    ...components.map((component) => component.name),
+  ]);
+  const globalChrome: GlobalChromeContract = {
+    navigationBlockType: availableChromeTypes.has(plannerGlobalChrome.navigationBlockType)
+      ? plannerGlobalChrome.navigationBlockType
+      : navbarComponentName,
+    footerBlockType: availableChromeTypes.has(plannerGlobalChrome.footerBlockType)
+      ? plannerGlobalChrome.footerBlockType
+      : footerFallbackComponentName,
+    motionProfile: plannerGlobalChrome.motionProfile ?? "subtle",
+  };
+  const globalNavLinks = (() => {
+    const source = Array.isArray(linkGraph.navigationLinks) ? linkGraph.navigationLinks : [];
+    const links = source
+      .map((link) => {
+        const href = normalizePlannerPagePath(String(link?.href || "/"));
+        if (!href.startsWith("/")) return null;
+        if (inferEnterprisePageTypeFromPath(href) === "legal") return null;
+        const label = resolveLocalizedPageLabel(
+          String(link?.label || "").trim() || defaultPageLabelForPath(href, state.prompt ?? ""),
+          href,
+          state.prompt ?? ""
+        );
+        return { label, href, variant: "link" as const };
+      })
+      .filter((item): item is { label: string; href: string; variant: "link" } => Boolean(item));
+    const deduped = Array.from(
+      links.reduce((acc, item) => {
+        if (!acc.has(item.href)) acc.set(item.href, item);
+        return acc;
+      }, new Map<string, { label: string; href: string; variant: "link" }>())
+    ).map((entry) => entry[1]);
+    if (!deduped.some((item) => item.href === "/")) {
+      deduped.unshift({
+        label: resolveLocalizedPageLabel(defaultPageLabelForPath("/", state.prompt ?? ""), "/", state.prompt ?? ""),
+        href: "/",
+        variant: "link",
+      });
+    }
+    return deduped.slice(0, 8);
+  })();
+  const globalNavText = globalNavLinks.map((item) => item.label).filter(Boolean).join(" | ");
+  const canonicalBrandName =
+    sanitizeBrandCandidate(extractBrandNameFromPromptShared(state.prompt ?? "")) ||
+    sanitizeBrandCandidate(extractBrandNameFromPromptLite(state.prompt ?? "")) ||
+    (resolveOutputLanguage(state.prompt ?? "") === "zh-CN" ? "本公司" : "Company");
+  const normalizePageContentForAssembler = (pagePath: string, content: unknown[]) => {
+    const safe = (Array.isArray(content) ? content : []).filter(Boolean) as Array<Record<string, unknown>>;
+    const navbar = safe.find((item) => isNavbarLikeBlock(item as any));
+    const footer = [...safe].reverse().find((item) => isFooterLikeBlock(item as any));
+    const body = safe.filter((item) => !isNavbarLikeBlock(item as any) && !isFooterLikeBlock(item as any));
+    const dedupedBody: Array<Record<string, unknown>> = [];
+    const byKey = new Map<string, number>();
+    const scoreItem = (item: Record<string, unknown>, idx: number) => {
+      const props = item?.props && typeof item.props === "object" ? (item.props as Record<string, unknown>) : {};
+      const id = String(props.id || "");
+      let score = 0;
+      if (id.startsWith("structured-")) score += 20;
+      if (/hero/i.test(String(item.type || ""))) score += 10;
+      score += Math.max(0, 8 - idx);
+      return score;
+    };
+    body.forEach((item, idx) => {
+      const props = item?.props && typeof item.props === "object" ? (item.props as Record<string, unknown>) : {};
+      const anchor = String(props.anchor || "").trim().toLowerCase();
+      const kind = inferPageContractKind(item);
+      const key = `${anchor || "no-anchor"}::${kind}`;
+      const existing = byKey.get(key);
+      if (existing === undefined) {
+        byKey.set(key, dedupedBody.length);
+        dedupedBody.push(item);
+        return;
+      }
+      if (scoreItem(item, idx) > scoreItem(dedupedBody[existing], existing)) {
+        dedupedBody[existing] = item;
+      }
+    });
+    if (pagePath === "/contact") {
+      const heroIndexes = dedupedBody
+        .map((item, index) => ({ item, index }))
+        .filter(({ item }) => /hero|masthead|banner/i.test(String(item?.type || "")))
+        .map(({ index }) => index);
+      if (heroIndexes.length > 0 && heroIndexes[0] !== 0) {
+        const firstHero = dedupedBody[heroIndexes[0]];
+        const nextBody = dedupedBody.filter((_, index) => index !== heroIndexes[0]);
+        dedupedBody.splice(0, dedupedBody.length, firstHero, ...nextBody);
+      }
+    }
+    const pageType = inferEnterprisePageTypeFromPath(normalizePlannerPagePath(pagePath || "/"));
+    if (pageType === "legal") {
+      const storyBlock =
+        dedupedBody.find((item) => inferPageContractKind(item) === "story") ??
+        dedupedBody.find((item) => /contentstory/i.test(String(item?.type || ""))) ??
+        dedupedBody[0];
+      return [...(navbar ? [navbar] : []), ...(storyBlock ? [storyBlock] : []), ...(footer ? [footer] : [])];
+    }
+    return [...(navbar ? [navbar] : []), ...dedupedBody, ...(footer ? [footer] : [])];
+  };
+  const assembledAvailablePaths = new Set(
+    mergedPages.map((entry) => normalizePlannerPagePath(String(entry.path || "/")))
+  );
+  let pagesOut = mergedPages.map((page) => {
+    const content = Array.isArray((page as any)?.data?.content) ? ((page as any).data.content as any[]) : [];
+    const chromeAlignedContent = content.map((item) => {
+      if (!item || typeof item !== "object") return item;
+      if (isNavbarLikeBlock(item as any)) {
+        const sourceProps =
+          (item as any).props && typeof (item as any).props === "object"
+            ? ({ ...((item as any).props as Record<string, unknown>) } as Record<string, unknown>)
+            : {};
+        sourceProps.links = globalNavLinks;
+        sourceProps.navlinks = globalNavLinks;
+        sourceProps.navItems = globalNavLinks;
+        sourceProps.menuItems = globalNavLinks;
+        sourceProps.navtext = globalNavText;
+        sourceProps.toplinkstext = globalNavText;
+        sourceProps.logoText = canonicalBrandName;
+        sourceProps.logotext = canonicalBrandName;
+        sourceProps.brandtext = canonicalBrandName.toUpperCase();
+        return {
+          ...(item as any),
+          type: globalChrome.navigationBlockType,
+          props: sourceProps,
+        };
+      }
+      if (isFooterLikeBlock(item as any)) {
+        const sourceProps =
+          (item as any).props && typeof (item as any).props === "object"
+            ? ({ ...((item as any).props as Record<string, unknown>) } as Record<string, unknown>)
+            : {};
+        sourceProps.logoText = canonicalBrandName;
+        sourceProps.ftlogotext = canonicalBrandName;
+        sourceProps.flogotext = canonicalBrandName;
+        if (typeof sourceProps.legal !== "string" || !String(sourceProps.legal).trim()) {
+          sourceProps.legal =
+            resolveOutputLanguage(state.prompt ?? "") === "zh-CN"
+              ? `© ${new Date().getFullYear()} ${canonicalBrandName} 版权所有`
+              : `© ${new Date().getFullYear()} ${canonicalBrandName}. All rights reserved.`;
+        }
+        return {
+          ...(item as any),
+          type: globalChrome.footerBlockType,
+          props: sourceProps,
+        };
+      }
+      return item;
+    });
+    return {
+      path: page.path,
+      name: page.name,
+      data: {
+        root:
+          (page as any)?.data?.root && typeof (page as any).data.root === "object"
+            ? (page as any).data.root
+            : { props: { title: page.name, theme: mergedTheme } },
+        content: coerceContentInternalHrefsToAvailablePaths(
+          normalizePageContentForAssembler(page.path, chromeAlignedContent),
+          assembledAvailablePaths
+        ),
+      },
+    };
+  });
+  pagesOut = sanitizeFinalPagesOutput(pagesOut as GeneratedPage[], {
+    prompt: state.prompt ?? "",
+    designNorthStar: mergedTheme as Record<string, unknown>,
+    profileId: null,
+  }) as typeof pagesOut;
+  pagesOut = applyVisualMediaCoverage(pagesOut as GeneratedPage[], state.prompt ?? "") as typeof pagesOut;
+  const finalAssembledPaths = new Set(
+    pagesOut.map((entry) => normalizePlannerPagePath(String(entry.path || "/")))
+  );
+  pagesOut = pagesOut.map((page) => ({
+    ...page,
+    data: {
+      ...(page as any).data,
+      content: coerceContentInternalHrefsToAvailablePaths(
+        Array.isArray((page as any)?.data?.content) ? ((page as any).data.content as any[]) : [],
+        finalAssembledPaths
+      ) as any,
+    },
+  }));
+  const outputLanguage = resolveOutputLanguage(state.prompt ?? "");
+  const requiredKindsByPath = new Map<string, string[]>(
+    (Array.isArray(state.pageBuildJobs) ? state.pageBuildJobs : []).map((job) => [
+      normalizePlannerPagePath(job.pagePath || "/"),
+      Array.isArray(job.requiredSectionKinds) ? job.requiredSectionKinds : [],
+    ])
+  );
+  const pageContractReports = pagesOut.map((page) =>
+    evaluateGeneratedPageContract({
+      page,
+      requiredSectionKinds: requiredKindsByPath.get(normalizePlannerPagePath(page.path || "/")) || [],
+      outputLanguage,
+      expectedProductCount: resolveExpectedProductCountForPath({
+        path: String(page.path || "/"),
+        structuredInput: state.structuredInput ?? null,
+      }),
+      expectedCaseCount: resolveExpectedCaseCountForPath({
+        path: String(page.path || "/"),
+        structuredInput: state.structuredInput ?? null,
+      }),
+    })
+  );
+  const contractValidation = validateGeneratedSiteContract({
+    prompt: state.prompt ?? "",
+    pages: pagesOut as any[],
+  });
+  const qaReport = evaluateGenerationQa({
+    siteBlueprint,
+    pages: pagesOut,
+    linkGraph,
+    prompt: state.prompt ?? "",
+    thresholds: {
+      coverage: Number(process.env.BUILDER_QA_COVERAGE_THRESHOLD || 0.85),
+      linkIntegrity: Number(process.env.BUILDER_QA_LINK_THRESHOLD || 0.95),
+      themeConsistency: Number(process.env.BUILDER_QA_THEME_THRESHOLD || 0.9),
+      semantic: Number(process.env.BUILDER_QA_SEMANTIC_THRESHOLD || 0.9),
+      overall: Number(process.env.BUILDER_QA_OVERALL_THRESHOLD || 0.9),
+    },
+  });
+  const adaptation = buildTemplateAdaptationSummary({
+    prompt: state.prompt,
+    profileId: null,
+    pages: pagesOut,
+  });
+  const adaptationErrorCount = adaptation.findings.filter((finding) => finding.severity === "error").length;
+  const adaptationWarningCount = adaptation.findings.filter((finding) => finding.severity === "warning").length;
+  const errors = mergedResults.flatMap((item) =>
+    Array.isArray(item.errors)
+      ? item.errors
+          .filter((entry) => typeof entry === "string" && entry.trim().length > 0)
+          .map((entry) => `page_builder_error:${item.pagePath}:${entry}`)
+      : []
+  );
+  if (!contractValidation.pass) {
+    errors.push(
+      `contract_gate_failed:errors=${contractValidation.issues.filter((issue) => issue.severity === "error").length}:warnings=${contractValidation.issues.filter((issue) => issue.severity === "warning").length}`
+    );
+  }
+  if (!qaReport.pass) {
+    errors.push(
+      `qa_gate_failed:coverage=${qaReport.coverageScore.toFixed(3)}:links=${qaReport.linkIntegrityScore.toFixed(3)}:theme=${qaReport.themeConsistencyScore.toFixed(3)}:semantic=${qaReport.semanticFidelityScore.toFixed(3)}:overall=${qaReport.overallScore.toFixed(3)}`
+    );
+  }
+  logInfo(`${logPrefix} assembler:ok`, {
+    pages: pagesOut.length,
+    components: components.length,
+    contractPass: contractValidation.pass,
+    qaPass: qaReport.pass,
+  });
+  return {
+    components,
+    pages: pagesOut,
+    theme: mergedTheme,
+    globalChrome,
+    siteBlueprint,
+    qaReport,
+    resolvedByLayer: {
+      strategy: sectionGenerationStrategy,
+      requestedStrategy: state.generationStrategy ?? sectionGenerationStrategy,
+      selectedStrategy: state.generationStrategy ?? sectionGenerationStrategy,
+      templatePlanProfile: null,
+      skeleton: siteBlueprint.skeleton,
+      navLinks: linkGraph.navigationLinks.length,
+      footerColumns: linkGraph.footerColumns.length,
+      harmonizedNavbarBlocks: pagesOut.length,
+      harmonizedFooterBlocks: pagesOut.length,
+      resolutionLayer: "page",
+      matchedPagePaths: pagesOut.map((page) => page.path),
+      matchedPageCoverage: 1,
+      templateKinds: [],
+      styleFamily: null,
+      motionProfile: globalChrome.motionProfile,
+      globalChrome,
+      adaptation: {
+        scenario: adaptation.scenario,
+        templateFamily: adaptation.templateFamily,
+        referenceMode: adaptation.referenceMode,
+        errorCount: adaptationErrorCount,
+        warningCount: adaptationWarningCount,
+        findings: adaptation.findings,
+        pageContracts: adaptation.pageContracts,
+      },
+      qa: {
+        pass: qaReport.pass,
+        coverageScore: qaReport.coverageScore,
+        linkIntegrityScore: qaReport.linkIntegrityScore,
+        themeConsistencyScore: qaReport.themeConsistencyScore,
+        semanticFidelityScore: qaReport.semanticFidelityScore,
+        overallScore: qaReport.overallScore,
+      },
+      contract: {
+        pass: contractValidation.pass,
+        normalizationIssueCount: 0,
+        validationIssueCount: contractValidation.issues.length,
+        pageIssueCount: pageContractReports.reduce((sum, report) => sum + report.issues.length, 0),
+        pageFailedCount: pageContractReports.filter((report) => !report.pass).length,
+        pageReports: pageContractReports.map((report, index) => ({
+          path: pagesOut[index]?.path || "/",
+          pageType: report.pageType,
+          pass: report.pass,
+          issueCount: report.issues.length,
+          errorCount: report.issues.filter((issue) => issue.severity === "error").length,
+          warningCount: report.issues.filter((issue) => issue.severity === "warning").length,
+        })),
+        normalizationIssues: [],
+        validationIssues: contractValidation.issues,
+      },
+      scopedRag: {
+        enabled: enableScopedRag,
+        fanOutMode: true,
+        pageCount: pagesOut.length,
+      },
+      skillOrchestration: {
+        applied: true,
+        suggestion: state.generationStrategy ?? sectionGenerationStrategy,
+        diagnostics: {
+          mode: "send_fanout",
+          pageBuilderSubgraph: "typed_registry",
+          jobs: Array.isArray(state.pageBuildJobs) ? state.pageBuildJobs.length : 0,
+          completed: Array.isArray(state.pageBuildResults) ? state.pageBuildResults.length : 0,
+        },
+      },
+    },
+    errors,
+  };
+}
+
 type GenerationCandidateResult = {
   blueprint?: Record<string, unknown>;
   theme?: Record<string, unknown>;
@@ -13077,7 +16324,13 @@ type GenerationCandidateResult = {
   errors?: string[];
 };
 
-const resolveCandidateStrategiesForPrompt = (prompt: string): SectionGenerationStrategy[] => {
+const resolveCandidateStrategiesForPrompt = (
+  prompt: string,
+  preferredGenerationStrategy?: SectionGenerationStrategy
+): SectionGenerationStrategy[] => {
+  if (preferredGenerationStrategy) {
+    return [parseSectionGenerationStrategy(preferredGenerationStrategy, sectionGenerationStrategy)];
+  }
   if (!enableMultiCandidateSelection) return [sectionGenerationStrategy];
   const rawPrompt = String(prompt || "");
   if (multiCandidateMaxPromptChars > 0 && rawPrompt.length > multiCandidateMaxPromptChars) {
@@ -13251,47 +16504,98 @@ export async function generateP2WProject(input: {
   prompt: string;
   manifest: Record<string, unknown>;
   structuredInput?: StructuredSiteInput;
+  pageTypeSkillsEnabled?: boolean;
   planning?: { dir: string; requestId?: string; batchSize?: number };
+  preferredGenerationStrategy?: SectionGenerationStrategy;
+  singleCandidateOnly?: boolean;
+  blueprintOverride?: Record<string, unknown>;
+  progressReporter?: GenerationProgressReporter;
 }) {
-  const useGlobalFactPack = !enableScopedRag;
-  const serperFactPack = useGlobalFactPack
-    ? await buildSerperFactPack(input.prompt, { structuredInput: input.structuredInput })
-    : {
-        enabled: false,
-        used: false,
-        queryCount: 0,
-        sourceCount: 0,
-        context: "",
-        coveredFields: [],
-        missingFields: [],
-      };
-  const effectivePrompt = `${input.prompt}${serperFactPack.context || ""}`;
-  if (useGlobalFactPack && serperFactPack.enabled) {
-    logInfo(`${logPrefix} serper:fact_pack`, {
-      mode: "global",
-      used: serperFactPack.used,
-      queryCount: serperFactPack.queryCount,
-      sourceCount: serperFactPack.sourceCount,
-      coveredFields: serperFactPack.coveredFields,
-      missingFields: serperFactPack.missingFields,
-    });
-  } else if (enableScopedRag) {
-    logInfo(`${logPrefix} serper:fact_pack`, {
-      mode: "scoped",
-      enabled: true,
-      note: "Global fact pack disabled; page-scoped retrieval runs in builder stage.",
-    });
-  }
+  const effectivePrompt = String(input.prompt ?? "");
+  const reportProgress = (stage: string, detail?: Record<string, unknown>) =>
+    emitGenerationProgress(input.progressReporter, stage, detail);
+  logInfo(`${logPrefix} serper:fact_pack`, {
+    mode: "scoped",
+    enabled: true,
+    note: "Global fact pack is disabled; page-scoped retrieval runs in builder stage.",
+  });
   const [skillContext, designSystemContext] = await Promise.all([
     loadSkillContext(),
     loadDesignSystemContext(),
   ]);
+
+  const wrapTypedPageBuilderNodeWithProgress = (nodeType: PageBuilderSubgraphType) => {
+    const baseNode = typedPageBuilderNode(nodeType);
+    return async (state: GraphState): Promise<Partial<GraphState>> => {
+      const pagePath = String(state.currentPageJob?.pagePath || "/");
+      const pageType = resolvePageBuilderSubgraphType(state.currentPageJob?.pageType || nodeType);
+      reportProgress("page_builder_started", {
+        nodeType,
+        pagePath,
+        pageType,
+      });
+      const output = await baseNode(state);
+      const result =
+        Array.isArray(output?.pageBuildResults) && output.pageBuildResults.length > 0
+          ? output.pageBuildResults.find((entry) => entry.pagePath === pagePath) || output.pageBuildResults[0]
+          : null;
+      reportProgress("page_builder_completed", {
+        nodeType,
+        pagePath,
+        pageType,
+        errorCount: Array.isArray(result?.errors) ? result.errors.length : 0,
+      });
+      return output;
+    };
+  };
+
   const graph = new StateGraph(State)
-    .addNode("architect", architectNode)
-    .addNode("builder", builderNode)
-    .addEdge(START, "architect")
-    .addEdge("architect", "builder")
-    .addEdge("builder", END)
+    .addNode("sitePlanner", async (state: GraphState): Promise<Partial<GraphState>> => {
+      reportProgress("planner_started", {
+        promptLength: String(state.prompt || "").length,
+      });
+      const output = await sitePlannerNode(state);
+      reportProgress("planner_completed", {
+        pageJobCount: Array.isArray(output?.pageBuildJobs) ? output.pageBuildJobs.length : 0,
+      });
+      return output;
+    })
+    .addNode("pageBuilderHome", wrapTypedPageBuilderNodeWithProgress("home"))
+    .addNode("pageBuilderProducts", wrapTypedPageBuilderNodeWithProgress("products"))
+    .addNode("pageBuilderSolutions", wrapTypedPageBuilderNodeWithProgress("solutions"))
+    .addNode("pageBuilderCases", wrapTypedPageBuilderNodeWithProgress("cases"))
+    .addNode("pageBuilderAbout", wrapTypedPageBuilderNodeWithProgress("about"))
+    .addNode("pageBuilderContact", wrapTypedPageBuilderNodeWithProgress("contact"))
+    .addNode("pageBuilderSupport", wrapTypedPageBuilderNodeWithProgress("support"))
+    .addNode("pageBuilderLegal", wrapTypedPageBuilderNodeWithProgress("legal"))
+    .addNode("pageBuilderPricing", wrapTypedPageBuilderNodeWithProgress("pricing"))
+    .addNode("pageBuilderBlog", wrapTypedPageBuilderNodeWithProgress("blog"))
+    .addNode("pageBuilderGeneric", wrapTypedPageBuilderNodeWithProgress("generic"))
+    .addNode("globalAssembler", async (state: GraphState): Promise<Partial<GraphState>> => {
+      reportProgress("assembler_started", {
+        pageResultCount: Array.isArray(state.pageBuildResults) ? state.pageBuildResults.length : 0,
+      });
+      const output = await globalAssemblerNode(state);
+      reportProgress("assembler_completed", {
+        pageCount: Array.isArray(output?.pages) ? output.pages.length : 0,
+        errorCount: Array.isArray(output?.errors) ? output.errors.length : 0,
+      });
+      return output;
+    })
+    .addEdge(START, "sitePlanner")
+    .addConditionalEdges("sitePlanner", routePlannerToPageBuilders)
+    .addEdge("pageBuilderHome", "globalAssembler")
+    .addEdge("pageBuilderProducts", "globalAssembler")
+    .addEdge("pageBuilderSolutions", "globalAssembler")
+    .addEdge("pageBuilderCases", "globalAssembler")
+    .addEdge("pageBuilderAbout", "globalAssembler")
+    .addEdge("pageBuilderContact", "globalAssembler")
+    .addEdge("pageBuilderSupport", "globalAssembler")
+    .addEdge("pageBuilderLegal", "globalAssembler")
+    .addEdge("pageBuilderPricing", "globalAssembler")
+    .addEdge("pageBuilderBlog", "globalAssembler")
+    .addEdge("pageBuilderGeneric", "globalAssembler")
+    .addEdge("globalAssembler", END)
     .compile();
 
   const planning = input.planning?.dir
@@ -13302,21 +16606,37 @@ export async function generateP2WProject(input: {
         batchSize: input.planning.batchSize,
       })
     : null;
-  const candidateStrategies = resolveCandidateStrategiesForPrompt(effectivePrompt);
+  let candidateStrategies = resolveCandidateStrategiesForPrompt(
+    effectivePrompt,
+    input.preferredGenerationStrategy
+  );
+  if (input.singleCandidateOnly) {
+    candidateStrategies = [candidateStrategies[0] ?? sectionGenerationStrategy];
+  }
   const runPlanning = candidateStrategies.length > 1 ? null : planning;
   const baseInput = {
     prompt: effectivePrompt,
     manifest: input.manifest,
     structuredInput: input.structuredInput ?? null,
+    pageTypeSkillsEnabled:
+      typeof input.pageTypeSkillsEnabled === "boolean" ? input.pageTypeSkillsEnabled : null,
+    singleCandidateOnly: Boolean(input.singleCandidateOnly),
     planning: runPlanning,
     skillContext,
     designSystemContext,
-    blueprint: planning?.getBlueprint() ?? undefined,
+    blueprint: input.blueprintOverride ?? planning?.getBlueprint() ?? undefined,
   };
 
+  const primaryStrategy = candidateStrategies[0] ?? sectionGenerationStrategy;
+  reportProgress("candidate_started", { strategy: primaryStrategy, order: 1 });
   const primaryResult = await graph.invoke({
     ...baseInput,
-    generationStrategy: candidateStrategies[0] ?? sectionGenerationStrategy,
+    generationStrategy: primaryStrategy,
+  });
+  reportProgress("candidate_completed", {
+    strategy: primaryStrategy,
+    order: 1,
+    errorCount: totalErrorCount(primaryResult?.errors),
   });
 
   const candidates: Array<{
@@ -13341,11 +16661,17 @@ export async function generateP2WProject(input: {
 
   if (!shortCircuitSelection) {
     for (const strategy of candidateStrategies.slice(1)) {
+      reportProgress("candidate_started", { strategy, order: candidates.length + 1 });
       const candidateResult = await graph.invoke({
         ...baseInput,
         planning: null,
         blueprint: reusableBlueprint,
         generationStrategy: strategy,
+      });
+      reportProgress("candidate_completed", {
+        strategy,
+        order: candidates.length + 1,
+        errorCount: totalErrorCount(candidateResult?.errors),
       });
       candidates.push({
         strategy,
@@ -13391,6 +16717,10 @@ export async function generateP2WProject(input: {
   };
 
   logInfo(`${logPrefix} generation:candidate_selection`, candidateSelection);
+  reportProgress("candidate_selection_completed", {
+    selectedStrategy: selected?.strategy ?? sectionGenerationStrategy,
+    candidateCount: candidates.length,
+  });
 
   const result = {
     ...(selected?.result ?? primaryResult),
@@ -13403,7 +16733,7 @@ export async function generateP2WProject(input: {
     },
   };
 
-  return {
+  const payload = {
     blueprint: result.blueprint ?? {},
     theme: result.theme ?? (result.blueprint as any)?.theme ?? {},
     pages: result.pages ?? [],
@@ -13413,4 +16743,10 @@ export async function generateP2WProject(input: {
     resolvedByLayer: result.resolvedByLayer ?? {},
     errors: result.errors ?? [],
   };
+  reportProgress("generation_graph_completed", {
+    pageCount: Array.isArray(payload.pages) ? payload.pages.length : 0,
+    componentCount: Array.isArray(payload.components) ? payload.components.length : 0,
+    errorCount: totalErrorCount(payload.errors),
+  });
+  return payload;
 }

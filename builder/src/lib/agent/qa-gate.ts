@@ -44,6 +44,7 @@ export type QaGateReport = {
     repetitiveSectionPages: string[];
     repetitiveStructurePairs: string[];
     criticalDuplicatePairs: string[];
+    inconsistentNavSignaturePages: string[];
   };
 };
 
@@ -84,6 +85,35 @@ const blockIsNavbar = (item: { type?: string; props?: Record<string, unknown> } 
   const anchor = String(item?.props?.anchor || "").toLowerCase();
   const id = String(item?.props?.id || "").toLowerCase();
   return type.includes("navbar") || type.includes("navigation") || anchor === "top" || id.includes("navbar");
+};
+
+const extractNavSignature = (blocks: Array<{ type?: string; props?: Record<string, unknown> }>) => {
+  const navbar = blocks.find((block) => blockIsNavbar(block));
+  if (!navbar || !navbar.props || typeof navbar.props !== "object") return "";
+  const props = navbar.props as Record<string, unknown>;
+  const linksRaw = Array.isArray(props.links) ? (props.links as Array<Record<string, unknown>>) : [];
+  const fromLinks = linksRaw
+    .map((entry) => ({
+      label: String(entry?.label || "").replace(/\s+/g, " ").trim(),
+      href: String(entry?.href || "").trim(),
+    }))
+    .filter((entry) => entry.href.startsWith("/"))
+    .map((entry) => ({ ...entry, href: normalizePagePath(entry.href) }));
+  const fromLegacySlots = Array.from({ length: 8 }, (_, index) => {
+    const slot = index + 1;
+    return {
+      label: String(props[`navl${slot}text`] || "").replace(/\s+/g, " ").trim(),
+      href: String(props[`navl${slot}href`] || "").trim(),
+    };
+  })
+    .filter((entry) => entry.label && entry.href.startsWith("/"))
+    .map((entry) => ({ ...entry, href: normalizePagePath(entry.href) }));
+  const links = [...fromLinks, ...fromLegacySlots];
+  if (!links.length) return "";
+  const deduped = Array.from(
+    new Map(links.map((entry) => [`${entry.label}::${entry.href}`, entry] as const)).values()
+  );
+  return deduped.map((entry) => `${entry.label}::${entry.href}`).join("|");
 };
 
 const blockIsFooter = (item: { type?: string; props?: Record<string, unknown> } | undefined) => {
@@ -148,12 +178,18 @@ const inferPageIntent = (pathValue: string, nameValue: string) => {
   if (/privacy|terms?|policy|legal|cookie|gdpr/.test(token)) return "legal";
   if (/contact|consult|quote|sales|get[-\s]?in[-\s]?touch/.test(token)) return "contact";
   if (/faq|support|help|docs|documentation|knowledge/.test(token)) return "support";
+  if (/about|company|team|history|profile/.test(token)) return "about";
+  if (/products?|catalog|pricing|plans?|series|models?/.test(token)) return "products";
+  if (/solutions?|approach|workflow|capability/.test(token)) return "solutions";
+  if (/cases?|projects?|applications?|portfolio|customers?/.test(token)) return "cases";
   if (/home|^\/$/.test(token)) return "home";
   return "generic";
 };
 
 const minMiddleSectionsForIntent = (intent: string) => {
-  if (intent === "home") return 3;
+  if (intent === "home") return 4;
+  if (intent === "products" || intent === "solutions" || intent === "cases") return 3;
+  if (intent === "about") return 2;
   if (intent === "contact" || intent === "support" || intent === "legal") return 1;
   return 2;
 };
@@ -234,9 +270,10 @@ const collectTextValues = (value: unknown, out: string[]) => {
   });
 };
 
-const genericPlaceholderRegex = /\b(?:story|approach|socialproof|products?|cta|contact|hero|navigation|footer)\s+section\b/i;
+const genericPlaceholderRegex =
+  /^(?:this\s+)?(?:story|approach|social\s*proof|socialproof|product|products|cta|contact|hero|navigation|footer)\s+section(?:\s*(?:content|copy|text|details|placeholder|goes\s+here))?[.!?]?$/i;
 const templateCopyRegex =
-  /\blorem ipsum\b|\byour brand\b|\bour (?:mission|vision|values?|services?|products?)\b|\btrusted by\b|\bbook (?:a )?demo\b|\bget started\b|\bdiscover more\b|\blearn more\b|\bthis section\b|\bplaceholder\b|\{\{[^}]+\}\}|\[\s*(?:title|subtitle|description|content|cta)\s*\]/i;
+  /\blorem ipsum\b|\byour brand\b|\bthis section\b|\bplaceholder(?:\s+(?:text|copy))?\b|\{\{[^}]+\}\}|\[\s*(?:title|subtitle|description|content|cta)\s*\]/i;
 const brandCandidateStopwords = new Set(
   [
     "home",
@@ -409,6 +446,7 @@ export const evaluateGenerationQa = (input: {
   const middleDiversityScore = clamp(middleTypeSet.size / 4);
   const repetitiveStructurePairs: string[] = [];
   const criticalDuplicatePairs: string[] = [];
+  const inconsistentNavSignaturePages: string[] = [];
   const totalPairs = Math.max(0, (pageRoleSequences.length * (pageRoleSequences.length - 1)) / 2);
   for (let left = 0; left < pageRoleSequences.length; left += 1) {
     for (let right = left + 1; right < pageRoleSequences.length; right += 1) {
@@ -422,7 +460,10 @@ export const evaluateGenerationQa = (input: {
   }
   const pathSequenceMap = new Map(pageRoleSequences.map((entry) => [normalizePagePath(entry.path), entry.roles]));
   const criticalPairs: Array<[string, string]> = [
+    ["/", "/about"],
+    ["/products", "/solutions"],
     ["/solutions", "/cases"],
+    ["/products", "/cases"],
   ];
   for (const [leftPath, rightPath] of criticalPairs) {
     const leftRoles = pathSequenceMap.get(leftPath) || [];
@@ -463,7 +504,10 @@ export const evaluateGenerationQa = (input: {
     const joinedRaw = textValues.join(" ");
     const joinedLower = joinedRaw.toLowerCase();
     if (expectedBrand && joinedLower.includes(expectedBrand.toLowerCase())) semanticHitPages.push(pagePath);
-    if (genericPlaceholderRegex.test(joinedLower)) genericPlaceholderPages.push(pagePath);
+    const hasGenericPlaceholder = textValues.some((item) =>
+      genericPlaceholderRegex.test(String(item || "").replace(/\s+/g, " ").trim().toLowerCase())
+    );
+    if (hasGenericPlaceholder) genericPlaceholderPages.push(pagePath);
     if (templateCopyRegex.test(joinedLower)) templateCopyPages.push(pagePath);
     const cjkCount = (joinedLower.match(/[\u3400-\u9fff]/g) || []).length;
     const latinCount = (joinedLower.match(/[a-z]/gi) || []).length;
@@ -515,6 +559,19 @@ export const evaluateGenerationQa = (input: {
     brandCoverage * 0.7 + (1 - placeholderPenalty) * 0.15 + (1 - languageMismatchPenalty) * 0.15 - contactGradientPenalty
   );
 
+  const navSignatures = contentPages
+    .map((page) => ({
+      path: normalizePagePath(page?.path),
+      signature: extractNavSignature(Array.isArray(page?.data?.content) ? page.data.content : []),
+    }))
+    .filter((entry) => entry.signature);
+  const baseNavSignature = navSignatures[0]?.signature || "";
+  if (baseNavSignature) {
+    navSignatures.forEach((entry) => {
+      if (entry.signature !== baseNavSignature) inconsistentNavSignaturePages.push(entry.path);
+    });
+  }
+
   const overallScore = clamp(
     coverageScore * 0.25 +
       linkIntegrityScore * 0.2 +
@@ -532,6 +589,7 @@ export const evaluateGenerationQa = (input: {
     contactGradientTextPages.length === 0 &&
     templateCopyPages.length === 0 &&
     criticalDuplicatePairs.length === 0 &&
+    inconsistentNavSignaturePages.length === 0 &&
     (!strictRepetitionGate || repetitiveSectionPages.length === 0);
 
   return {
@@ -560,6 +618,7 @@ export const evaluateGenerationQa = (input: {
       repetitiveSectionPages: Array.from(new Set(repetitiveSectionPages)),
       repetitiveStructurePairs: Array.from(new Set(repetitiveStructurePairs)),
       criticalDuplicatePairs: Array.from(new Set(criticalDuplicatePairs)),
+      inconsistentNavSignaturePages: Array.from(new Set(inconsistentNavSignaturePages)),
     },
   };
 };

@@ -18,9 +18,39 @@ type GeneratedPage = {
   data: Data;
 };
 
+type HitlSitePlannerPage = {
+  path: string;
+  name: string;
+  pageType: string;
+  sectionCount: number;
+  requiredSectionKinds: string[];
+  ragQueryCount: number;
+  strategy?: string;
+};
+
+type HitlSitePlannerPayload = {
+  stage: "site_planner";
+  message: string;
+  pages: HitlSitePlannerPage[];
+  selectedStrategy?: string;
+  requestedStrategy?: string;
+  resolutionLayer?: string;
+};
+
+type PendingHitlPlan = {
+  id: string;
+  prompt: string;
+  pages: Array<HitlSitePlannerPage & { selected: boolean }>;
+  selectedStrategy?: string;
+  requestedStrategy?: string;
+  resolutionLayer?: string;
+};
+
 type GenerationResponse = {
   id: string;
   prompt: string;
+  status?: string;
+  hitl?: HitlSitePlannerPayload;
   blueprint?: Record<string, unknown>;
   theme?: Record<string, unknown>;
   siteBlueprint?: Record<string, unknown>;
@@ -38,6 +68,7 @@ export default function CreationClient() {
   const [loading, setLoading] = React.useState(false);
   const [error, setError] = React.useState<string | null>(null);
   const [result, setResult] = React.useState<GenerationResponse | null>(null);
+  const [pendingHitl, setPendingHitl] = React.useState<PendingHitlPlan | null>(null);
   const [pages, setPages] = React.useState<GeneratedPage[]>([]);
   const [pageIndex, setPageIndex] = React.useState(0);
   const [compileFailures, setCompileFailures] = React.useState<string[]>([]);
@@ -156,6 +187,7 @@ export default function CreationClient() {
 
   const handleGenerate = async () => {
     setError(null);
+    setPendingHitl(null);
     if (!prompt.trim()) {
       setError("请输入一句话描述");
       return;
@@ -165,12 +197,28 @@ export default function CreationClient() {
       const res = await fetch("/api/creation", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ prompt, persist: true }),
+        body: JSON.stringify({ prompt, persist: true, hitl: { enabled: true } }),
       });
       const payload = await res.json();
       if (!res.ok) {
         throw new Error(payload?.error ?? "generation_failed");
       }
+      const hitl = payload?.hitl as HitlSitePlannerPayload | undefined;
+      if (payload?.status === "hitl_pending" && hitl?.stage === "site_planner" && Array.isArray(hitl.pages)) {
+        setResult(null);
+        setPages([]);
+        setPageIndex(0);
+        setPendingHitl({
+          id: String(payload.id || ""),
+          prompt,
+          pages: hitl.pages.map((page) => ({ ...page, selected: true })),
+          selectedStrategy: hitl.selectedStrategy,
+          requestedStrategy: hitl.requestedStrategy,
+          resolutionLayer: hitl.resolutionLayer,
+        });
+        return;
+      }
+      setPendingHitl(null);
       setResult(payload);
     } catch (err: any) {
       setError(err?.message ?? "generation_failed");
@@ -178,6 +226,55 @@ export default function CreationClient() {
       setLoading(false);
     }
   };
+
+  const handleToggleHitlPage = React.useCallback((path: string) => {
+    setPendingHitl((prev) => {
+      if (!prev) return prev;
+      return {
+        ...prev,
+        pages: prev.pages.map((page) =>
+          page.path === path ? { ...page, selected: !page.selected } : page
+        ),
+      };
+    });
+  }, []);
+
+  const handleConfirmHitlPlan = React.useCallback(async () => {
+    if (!pendingHitl) return;
+    const selectedPages = pendingHitl.pages.filter((page) => page.selected);
+    if (selectedPages.length === 0) {
+      setError("请至少保留一个页面");
+      return;
+    }
+    setError(null);
+    setLoading(true);
+    try {
+      const res = await fetch("/api/creation", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          prompt: pendingHitl.prompt,
+          persist: true,
+          resumeId: pendingHitl.id,
+          hitl: {
+            enabled: true,
+            approved: true,
+            pages: selectedPages.map((page) => ({ path: page.path, name: page.name })),
+          },
+        }),
+      });
+      const payload = await res.json();
+      if (!res.ok) {
+        throw new Error(payload?.error ?? "generation_failed");
+      }
+      setPendingHitl(null);
+      setResult(payload);
+    } catch (err: any) {
+      setError(err?.message ?? "generation_failed");
+    } finally {
+      setLoading(false);
+    }
+  }, [pendingHitl]);
 
   const handleSave = async () => {
     if (!result) return;
@@ -322,6 +419,38 @@ export default function CreationClient() {
                     <li key={`${item}-${index}`}>{item}</li>
                   ))}
                 </ul>
+              </div>
+            ) : null}
+            {pendingHitl ? (
+              <div className="rounded-lg border border-border/60 bg-muted/20 p-3">
+                <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">Site Plan Review</p>
+                <p className="mt-2 text-xs text-muted-foreground">
+                  先确认页面结构，再继续生成。可取消不需要的页面。
+                </p>
+                <div className="mt-3 space-y-2">
+                  {pendingHitl.pages.map((page) => (
+                    <label key={page.path} className="flex cursor-pointer items-start gap-2 rounded-md border border-border/50 p-2 text-xs">
+                      <input
+                        type="checkbox"
+                        checked={page.selected}
+                        onChange={() => handleToggleHitlPage(page.path)}
+                        className="mt-0.5"
+                      />
+                      <span className="min-w-0">
+                        <span className="block font-medium">{page.name}</span>
+                        <span className="block text-muted-foreground">{page.path} · {page.pageType}</span>
+                      </span>
+                    </label>
+                  ))}
+                </div>
+                <div className="mt-3 flex items-center gap-2">
+                  <Button size="sm" onClick={handleConfirmHitlPlan} disabled={loading}>
+                    确认并生成
+                  </Button>
+                  <Button size="sm" variant="ghost" onClick={() => setPendingHitl(null)} disabled={loading}>
+                    取消
+                  </Button>
+                </div>
               </div>
             ) : null}
             {compileFailures.length ? (

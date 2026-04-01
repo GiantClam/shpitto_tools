@@ -9,8 +9,25 @@ const countMatches = (value: string, pattern: RegExp) => {
   return Array.isArray(matches) ? matches.length : 0;
 };
 
+const LANGUAGE_SEED_SPLITTER =
+  /\n\s*#\s*(?:Page Scoped Fact Pack|Page Builder Skill|Page Contract|Structured Input Contract|Compact Tool Context|Context)\b/i;
+
+const extractLanguageSeed = (raw: string) => {
+  const normalized = String(raw || "");
+  if (!normalized.trim()) return "";
+  const chunks = normalized.split(LANGUAGE_SEED_SPLITTER);
+  const head = String(chunks[0] || "").trim();
+  if (head) return head;
+  const fallback = normalized
+    .split(/\r?\n/)
+    .slice(0, 6)
+    .join(" ")
+    .trim();
+  return fallback || normalized.trim();
+};
+
 export const resolveOutputLanguage = (prompt: string): OutputLanguage => {
-  const raw = String(prompt || "");
+  const raw = extractLanguageSeed(String(prompt || ""));
   if (!raw.trim()) return "en-US";
 
   const explicitChinese = explicitChinesePattern.test(raw);

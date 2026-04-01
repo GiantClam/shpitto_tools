@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 
 import { logInfo, logWarn } from "@/lib/logger";
+import { extractBrandNameFromPrompt, sanitizeBrandCandidate } from "@/lib/agent/brand-utils";
 import { shouldUseChineseContent } from "@/lib/agent/language";
 
 type SectionKind =
@@ -1585,7 +1586,10 @@ const extractPromptDomain = (prompt: string): string => {
   const raw = String(prompt || "").trim();
   if (!raw) return "";
 
-  const urlMatch = raw.match(/https?:\/\/[^\s"'<>]+/i);
+  const marker = raw.search(/\n#\s*External\s+Fact\s+Pack(?:\s*\(Serper\))?/i);
+  const sourcePrompt = marker >= 0 ? raw.slice(0, marker) : raw;
+
+  const urlMatch = sourcePrompt.match(/https?:\/\/[^\s"'<>]+/i);
   if (urlMatch) {
     try {
       return normalizeDomain(new URL(urlMatch[0]).hostname);
@@ -1594,7 +1598,7 @@ const extractPromptDomain = (prompt: string): string => {
     }
   }
 
-  const domainLike = raw.match(/\b(?:www\.)?([a-z0-9-]+(?:\.[a-z0-9-]+)+)\b/i);
+  const domainLike = sourcePrompt.match(/\b(?:www\.)?([a-z0-9-]+(?:\.[a-z0-9-]+)*\.[a-z]{2,24})\b/i);
   if (domainLike?.[1]) {
     return normalizeDomain(domainLike[1]);
   }
@@ -1611,6 +1615,7 @@ const computeDomainMatchScore = (profile: StyleProfile, promptDomain: string): n
 };
 
 const PROFILE_IDENTITY_BLACKLIST = new Set([
+  "auto",
   "desktop",
   "mobile",
   "homepage",
@@ -1624,6 +1629,9 @@ const PROFILE_IDENTITY_BLACKLIST = new Set([
   "tech",
   "new",
 ]);
+
+const PROFILE_IDENTITY_GENERIC_PATTERN =
+  /(?:home|homepage|website|site|template|style|design|framework|brand|company|official|product|products|solution|solutions|support|blog|news|privacy|terms|contact|about|page|industry|industrial|corp|corporate|官网|网站|首页|主页|模板|风格|设计|品牌|公司|企业|工业|制造|产品|方案|支持|服务|联系|关于|案例|博客|新闻|隐私|条款)/i;
 
 const GENERIC_PROFILE_KEYWORD_BLACKLIST = new Set([
   "home",
@@ -1667,7 +1675,10 @@ const collectProfileIdentityTokens = (profile: StyleProfile): string[] => {
   const tokens = new Set<string>();
   const pushToken = (value: string) => {
     const token = normalizeComparableToken(value);
-    if (token.length >= 4) tokens.add(token);
+    if (token.length < 4) return;
+    if (PROFILE_IDENTITY_BLACKLIST.has(token)) return;
+    if (PROFILE_IDENTITY_GENERIC_PATTERN.test(token)) return;
+    tokens.add(token);
   };
 
   for (const rawValue of [profile.id, profile.name, profile.sourceDomain || ""]) {
@@ -2430,12 +2441,15 @@ const computeQualityBonus = (profile: StyleProfile): number => {
 };
 
 export const selectStyleProfile = (prompt: string): StyleProfile | null => {
-  const normalizedPrompt = normalizeComparableToken(prompt);
+  const rawPrompt = String(prompt || "");
+  const marker = rawPrompt.search(/\n#\s*External\s+Fact\s+Pack(?:\s*\(Serper\))?/i);
+  const selectionPrompt = marker >= 0 ? rawPrompt.slice(0, marker) : rawPrompt;
+  const normalizedPrompt = normalizeComparableToken(selectionPrompt);
   if (!normalizedPrompt) return null;
 
-  const promptSignals = extractTaxonomySignals(prompt);
-  const promptDomain = extractPromptDomain(prompt);
-  const promptViewportPreference = inferPromptViewportPreference(prompt);
+  const promptSignals = extractTaxonomySignals(selectionPrompt);
+  const promptDomain = extractPromptDomain(selectionPrompt);
+  const promptViewportPreference = inferPromptViewportPreference(selectionPrompt);
 
   let best: StyleProfile | null = null;
   let bestScore = 0;
@@ -2448,7 +2462,7 @@ export const selectStyleProfile = (prompt: string): StyleProfile | null => {
     const keywordScore = profile.keywords.reduce((acc, keyword) => {
       const token = normalizeComparableToken(keyword);
       if (!token || GENERIC_PROFILE_KEYWORD_BLACKLIST.has(token)) return acc;
-      if (token && includesSemanticToken(prompt, keyword)) {
+      if (token && includesSemanticToken(selectionPrompt, keyword)) {
         matchedChars += token.length;
         return acc + 1;
       }
@@ -2456,14 +2470,36 @@ export const selectStyleProfile = (prompt: string): StyleProfile | null => {
     }, 0);
 
     // --- Layer 2: semantic taxonomy matching ---
-    const explicitReferenceMatch = computeExplicitReferenceMatch(profile, prompt);
+    const explicitReferenceMatch = computeExplicitReferenceMatch(profile, selectionPrompt);
     const identityMatch = computeIdentityMatch(profile, normalizedPrompt);
     const semanticScore = computeProfileSemanticScore(profile, promptSignals);
     const domainScore = computeDomainMatchScore(profile, promptDomain);
     const viewportScore = computeViewportPreferenceScore(profile, promptViewportPreference);
-    const intentStructureScore = computeIntentStructureScore(profile, prompt, promptSignals);
-    const specializedIntentScore = computeSpecializedIntentScore(profile, prompt);
+    const intentStructureScore = computeIntentStructureScore(profile, selectionPrompt, promptSignals);
+    const specializedIntentScore = computeSpecializedIntentScore(profile, selectionPrompt);
     const qualityBonus = computeQualityBonus(profile);
+    const identityAnchors = collectProfileIdentityTokens(profile);
+    const profileIdToken = normalizeToken(String(profile.id || ""));
+
+    if (
+      profileIdToken.startsWith("auto") &&
+      domainScore <= 0 &&
+      explicitReferenceMatch.score <= 0 &&
+      identityMatch.score <= 0
+    ) {
+      continue;
+    }
+
+    // Guardrail: brand-anchored profiles must be explicitly referenced by prompt identity/domain.
+    // Prevents generic enterprise prompts from accidentally inheriting unrelated source-brand templates.
+    if (
+      identityAnchors.length > 0 &&
+      domainScore <= 0 &&
+      explicitReferenceMatch.score <= 0 &&
+      identityMatch.score <= 0
+    ) {
+      continue;
+    }
 
     // Require at least one intent signal, avoid selecting only by quality.
     if (
@@ -2893,18 +2929,13 @@ export type TemplatePersonalizationContext = {
 // Extract brand name from prompt (first quoted string, or first capitalized phrase)
 // ---------------------------------------------------------------------------
 const extractBrandName = (prompt: string): string | null => {
-  // Try quoted brand name first: "Brand Name" or 「品牌名」
-  const quoted = prompt.match(/["「]([^"」]{1,40})["」]/);
-  if (quoted) return quoted[1].trim();
-  // Try Chinese pattern: 为X生成/制作/创建官网
-  const chinese = prompt.match(/为\s*([A-Za-z\u4e00-\u9fff][\w\u4e00-\u9fff\s-]{1,30})\s*(?:生成|制作|创建|构建|设计)/i);
-  if (chinese) return chinese[1].trim();
-  // Try English pattern: for X generate/build/create
-  const english = prompt.match(/for\s+([A-Za-z][A-Za-z0-9\s-]{1,40})\s+(?:generate|build|create|design)/i);
-  if (english) return english[1].trim();
-  // Try "叫/called/named X" pattern
-  const named = prompt.match(/(?:叫|called|named|品牌名?(?:为|是)?)\s*[：:]?\s*([A-Za-z\u4e00-\u9fff][\w\u4e00-\u9fff\s]{0,30})/i);
-  if (named) return named[1].trim();
+  const shared = extractBrandNameFromPrompt(prompt);
+  if (shared) return shared;
+  const inline = String(prompt || "").match(/for\s+([A-Za-z][A-Za-z0-9&.\s-]{1,48}?)(?:\s*\(|,|\s+(?:an?|the)\b)/i);
+  if (inline?.[1]) {
+    const candidate = sanitizeBrandCandidate(inline[1]);
+    if (candidate) return candidate;
+  }
   return null;
 };
 
