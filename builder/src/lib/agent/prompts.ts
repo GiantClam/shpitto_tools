@@ -577,3 +577,74 @@ ${sectionRules}# Hard Requirements
 # Task
 只生成这个 section 的独立组件和对应 Puck block。若复杂约束冲突，优先保证组件可运行、结构清晰、输出合法。`;
 }
+
+export const DESIGN_SYSTEM_PROMPTS = {
+  selector: `You are a design system recommendation expert.
+
+Based on the user requirements, recommend the most suitable design systems from the available brands.
+
+User requirements: {userPrompt}
+
+Available design systems: {availableBrands}
+
+Analyze each brand and recommend the top 3-5 most suitable ones.
+Return JSON with a "recommendations" array.`,
+
+  builder: `You are a React UI component generator following a design system.
+
+Generate React + Tailwind CSS components based on the provided DESIGN.md specification.
+
+## Design System Context
+{designContext}
+
+## Page Requirements
+- Page name: {pageName}
+- Required sections: {sections}
+
+## Critical Requirements
+1. Use exact color values from the design system
+2. Follow the typography hierarchy exactly
+3. Use shadow-as-border technique where specified
+4. Use React 18+ with TypeScript
+5. Each section should be a separate exported component
+
+Return JSON with a "components" array.`,
+
+  qa: `You are a design QA expert checking if generated components follow the DESIGN.md specification.
+
+## Design System Context
+{designContext}
+
+## Generated Components
+{components}
+
+## Check Requirements
+1. Colors: Are all colors from the design system palette?
+2. Typography: Do font families, sizes, weights match?
+3. Shadows: Is the shadow-as-border technique used correctly?
+4. Spacing: Does spacing follow the 8px grid system?
+
+Return JSON with passed, score, and checks array.`,
+};
+
+export const DESIGN_CONTEXT_TEMPLATE = `## Design System: {brandName}
+
+### Colors (CSS Variables)
+:root {
+{colorVariables}
+}
+
+### Typography Hierarchy
+{typographyHierarchy}
+
+### Shadow System
+{shadowSystem}
+
+### Spacing Scale
+Base: {spacingBase}px
+Scale: {spacingScale}
+
+### Layout
+Max width: {maxWidth}
+Grid: {grid}
+`;

@@ -1,4 +1,28 @@
-# Findings
+# LC-CNC 网站设计发现
+
+## 行业分析
+- CNC机床行业特点：工业、精密、可靠、专业
+- 视觉风格倾向：简洁、专业、技术感
+- 目标用户：制造业采购工程师、企业主、CNC操作员
+
+## 设计决策
+- 主色调: 工业蓝 (#1E3A5F) - 传达专业、可靠
+- 辅助色: 深灰 (#2D3748) - 工业感
+- 强调色: 橙色 (#F69920) - CTA按钮、关键信息
+- 背景: 浅灰 (#F7FAFC) / 白色
+- 文字: 深灰 (#1A202C) / 中灰 (#4A5568)
+
+## 字体选择
+- 标题: Inter (700, 600)
+- 正文: Noto Sans SC (400, 500)
+- 等宽: JetBrains Mono (技术参数)
+
+## 布局规则
+- 最大宽度: 1280px
+- 栅格: 12列
+- 断点: 320px / 768px / 1024px / 1440px
+
+## 历史记录
 
 - 2026-03-16 preview-link instability root cause and fix:
   - the remaining preview failures were not all layout regressions; a second root cause was global registry churn
@@ -1102,6 +1126,43 @@
     - `/custom-solutions -> Navbar > HeroSplit > FeatureGrid > CardsGrid > TestimonialsGrid > LeadCaptureCTA > Footer`
     - `/about -> Navbar > HeroSplit > ContentStory > CardsGrid > TestimonialsGrid > LeadCaptureCTA > Footer`
     - `/contact -> Navbar > HeroSplit > FeatureGrid > TestimonialsGrid > LeadCaptureCTA > Footer`
+
+## LC-CNC Website Design System (2026-04-08)
+
+**Company:** LC-CNC™ (Lingchuang Intelligent)
+**Industry:** CNC Machine Manufacturing
+**Market:** Southeast Asia, English website
+**Style:** Industrial, high-contrast, clean
+
+### Color Palette
+- Primary: `#F97316` (Industrial Orange)
+- Secondary: `#64748B` (Steel Blue)
+- Neutrals: `#F8FAFC` to `#020617` (Industrial Gray Scale)
+- Background Light: `#F1F5F9`
+- Background Dark: `#0F172A` / `#020617`
+- Text Primary: `#0F172A`
+- Text Inverse: `#FFFFFF`
+
+### Typography
+- Headings: `'Oswald', sans-serif`
+- Body: `'Inter', sans-serif`
+- Accent/Tech specs: `'JetBrains Mono', monospace`
+
+### Section Backgrounds
+- Hero: Dark slate (`#0F172A`) with grid pattern
+- Products: Light gray (`#F1F5F9`)
+- Features: White with orange accent strip
+- Cases: Dark slate (grayscale)
+- About: White
+- Contact: Light gray
+- Footer: Dark (`#020617`)
+
+### Components
+- Buttons: Sharp 4px radius, orange primary, green WhatsApp
+- Cards: White bg, 1px border, hover lift effect
+- Animations: Fade in scroll, translateY hovers
+
+---
 
 ## 2026-03-26 Website generation refactor (enterprise coverage + middle sections)
 

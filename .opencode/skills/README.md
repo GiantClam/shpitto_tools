@@ -17,6 +17,7 @@ skills/
 ├── theme-factory/              # 主题生成器 (12KB)
 ├── webapp-testing/             # Playwright 测试 (16KB)
 ├── frontend-design/            # 前端设计 (16KB)
+├── design-website-generator/   # 网站生成 (58+ 设计系统) (NEW)
 ├── code-simplifier/            # 代码简化 (4KB)
 └── code-review/                # 代码审查 (8KB)
 ```
@@ -44,6 +45,7 @@ skills/
 
 | Skill | 功能 | 触发命令 |
 |-------|------|----------|
+| **design-website-generator** | 基于 58+ 设计系统生成网站 | `/design-generate` |
 | **web-artifacts-builder** | 构建复杂 React artifacts | `/build-artifact` |
 | **theme-factory** | 10个预设主题 + 自定义 | `/theme [主题名]` |
 | **frontend-design** | 独特生产级前端设计 | `/design` |
